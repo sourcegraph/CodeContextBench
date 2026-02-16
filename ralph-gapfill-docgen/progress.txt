@@ -1,0 +1,199 @@
+## Codebase Patterns
+- Doc gen tasks: benchmarks/ccb_docgen/{task_id}/ — new suite
+- Three task subtypes: architecture_doc, api_reference, migration_guide
+- Output format: /workspace/documentation.md (agent writes the doc)
+- Scoring: weighted checklist via ground_truth.json — required_topics (each concept is a weighted fraction)
+- Architecture docs: component responsibilities, data flow, extension points, error handling
+- API references: method signatures, parameter semantics, error cases, usage examples from tests/internal callers
+- Migration guides: breaking changes identified, migration steps per change, common pitfalls
+- Migration tasks: Dockerfile provides two worktrees or directories (old version + new version)
+- ground_truth.json: architecture uses required_topics[], file_references[], data_flow[], extension_points[]
+- ground_truth.json: all per-category weights must sum to 1.0; top-level weights must sum to 1.0
+- instruction.md: specify scope (which subsystem/API surface) but NOT file locations
+- Config: configs/docgen_2config.sh (created by infra Ralph)
+- MCP advantage: nls_search for component discovery, find_references for tracing interactions, compare_revisions for migration tasks
+
+## Progress
+
+## 2026-02-16 - US-001
+- Created docgen-arch-001: Envoy HTTP Connection Manager architecture doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-arch-001/task.toml (category=architecture_doc, language=cpp, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-arch-001/instruction.md (covers ConnectionManagerImpl, FilterManager, Router::Filter, ClusterManagerImpl)
+  - benchmarks/ccb_docgen/docgen-arch-001/tests/ground_truth.json (13 required_topics, 5 file_references, 3 data_flow, 4 extension_points)
+  - benchmarks/ccb_docgen/docgen-arch-001/tests/test.sh (Python-based weighted checklist verifier)
+  - benchmarks/ccb_docgen/docgen-arch-001/environment/Dockerfile (blobless clone of envoyproxy/envoy at commit 1d0ba73)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-arch-001 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.855)
+- **Learnings for future iterations:**
+  - Architecture doc verifier uses 4 scoring categories: required_topics (0.40), file_references (0.25), data_flow (0.20), extension_points (0.15)
+  - For data_flow items, use check_all_patterns (all patterns must match) vs check_any_pattern for topics
+  - Envoy repo is large — use --filter=blob:none --no-checkout in Dockerfile for fast clones
+  - Verify ground_truth.json weights sum to 1.0 per category before committing
+  - The investigation task test.sh (inv-debug-001) is the closest template for docgen verifiers — same Python scoring engine
+  - docgen_2config.sh has two arrays to populate: ALL_TASK_IDS and TASK_SG_REPO_NAMES
+---
+
+## 2026-02-16 - US-002
+- Created docgen-arch-002: Istio Pilot Discovery Service architecture doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-arch-002/task.toml (category=architecture_doc, language=go, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-arch-002/instruction.md (covers DiscoveryServer, ADS, PushContext, ServiceRegistry, multi-cluster support)
+  - benchmarks/ccb_docgen/docgen-arch-002/tests/ground_truth.json (13 required_topics, 5 file_references, 3 data_flow, 4 extension_points)
+  - benchmarks/ccb_docgen/docgen-arch-002/tests/test.sh (copied from docgen-arch-001, generic Python-based verifier)
+  - benchmarks/ccb_docgen/docgen-arch-002/environment/Dockerfile (blobless clone of istio/istio at commit f8af3cae)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-arch-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.860, total_selected: 190→191)
+- **Learnings for future iterations:**
+  - Istio Pilot architecture has 4 key layers: DiscoveryServer (xDS gRPC), ADS (connection model), PushContext (config snapshot), ServiceRegistry (K8s + multi-cluster)
+  - Used WebSearch and WebFetch to research Istio architecture before writing ground truth
+  - Found specific commit (f8af3caeb1) from GitHub's master branch via WebFetch
+  - Ground truth covers pilot/pkg/xds/ (discovery.go, ads.go), pilot/pkg/model/push_context.go, pilot/pkg/serviceregistry/kube/controller/
+  - Same 4-category scoring pattern as docgen-arch-001: required_topics (0.40), file_references (0.25), data_flow (0.20), extension_points (0.15)
+  - MCP advantage higher for Istio (0.860) than Envoy (0.855) due to more cross-file dependencies (0.92 vs 0.90)
+  - test.sh is reusable across all docgen architecture tasks — just copy from docgen-arch-001
+---
+
+## 2026-02-16 - US-003
+- Created docgen-arch-003: Terraform Plan/Apply Pipeline architecture doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-arch-003/task.toml (category=architecture_doc, language=go, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-arch-003/instruction.md (covers Graph Builder, Provider Interface, State Management, Execution Flow)
+  - benchmarks/ccb_docgen/docgen-arch-003/tests/ground_truth.json (13 required_topics, 5 file_references, 3 data_flow, 4 extension_points)
+  - benchmarks/ccb_docgen/docgen-arch-003/tests/test.sh (updated to handle new scoring_categories JSON structure)
+  - benchmarks/ccb_docgen/docgen-arch-003/environment/Dockerfile (blobless clone of hashicorp/terraform at commit a3dc5711)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-arch-003 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.865)
+- **Learnings for future iterations:**
+  - Terraform architecture has 4 key layers: Graph Builder (transforms-based DAG construction), Provider Interface (plugin coordination), State Management (concurrent-safe access), Execution (walker pattern with dynamic expansion)
+  - Used WebSearch + WebFetch to research Terraform's internal architecture from docs/architecture.md
+  - Found specific commit (a3dc571150) from GitHub's main branch via WebFetch
+  - Ground truth covers internal/terraform/ (context.go, graph_builder/, node_resource/), internal/providers/, internal/states/
+  - Updated test.sh verifier to handle new ground_truth.json structure with nested "scoring_categories" (topics[], files[], flows[], points[])
+  - MCP benefit score (0.865) is highest so far due to high cross_file_deps (0.93) and semantic_search_potential (0.88)
+  - The ground_truth.json structure evolved: now uses "scoring_categories" with nested objects instead of flat arrays
+  - Key Terraform components: GraphTransformer interface, ConfigTransformer, StateTransformer, ReferenceTransformer, ProviderTransformer, EvalContext, statemgr, SyncState, GraphNodeExecutable, ContextGraphWalker, GraphNodeDynamicExpandable
+---
+## 2026-02-16 - US-004
+- Created docgen-api-001: VS Code Extension Diagnostic API reference doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-api-001/task.toml (category=api_reference, language=typescript, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-api-001/instruction.md (covers Diagnostic API: Diagnostic class, DiagnosticCollection, DiagnosticSeverity, createDiagnosticCollection(), getDiagnostics(), onDidChangeDiagnostics)
+  - benchmarks/ccb_docgen/docgen-api-001/tests/ground_truth.json (4 scoring categories: api_methods, behavioral_notes, usage_examples, documentation_structure)
+  - benchmarks/ccb_docgen/docgen-api-001/tests/test.sh (Python-based weighted checklist verifier for API docs)
+  - benchmarks/ccb_docgen/docgen-api-001/environment/Dockerfile (blobless clone of microsoft/vscode at commit 69d110f2, sparse checkout of src/vs/vscode.d.ts, src/vs/workbench, extensions)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-api-001 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.84, total_selected: 191→192)
+- **Learnings for future iterations:**
+  - API reference tasks have 4 scoring categories: api_methods (0.40), behavioral_notes (0.30), usage_examples (0.20), documentation_structure (0.10)
+  - API method items focus on completeness: all interfaces, classes, properties, methods, enums
+  - Behavioral notes capture non-obvious semantics: disposal behavior, set() vs merge semantics, event firing conditions, persistence, optional parameters
+  - Usage examples require: basic usage, event subscription, cleanup patterns, advanced features, real-world patterns from internal code
+  - Documentation structure ensures proper organization: Overview, Core Types, Functions, Events, Usage Examples, Common Patterns/Error Handling sections
+  - test.sh verifier for API docs uses check_patterns() with re.DOTALL flag to match across lines
+  - VS Code Diagnostic API: 21 API methods/properties (covers full API surface), 12 behavioral notes (disposal, set semantics, event model), 5 usage examples (basic, events, cleanup, related info, real-world)
+  - Sparse checkout in Dockerfile speeds up clones: --filter=blob:none --no-checkout + sparse-checkout set [paths]
+  - MCP benefit for API reference (0.84) is slightly lower than architecture (0.86) due to narrower cross-file scope (0.85 vs 0.93), but higher semantic_search_potential (0.90 vs 0.88) and task_category_weight (0.70 vs 0.65)
+  - ground_truth.json weight validation is critical: all per-category items must sum to 1.0, all category weights must sum to 1.0
+---
+## 2026-02-16 - US-005
+- Created docgen-api-002: Cilium eBPF Map API reference doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-api-002/task.toml (category=api_reference, language=go, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-api-002/instruction.md (covers Map lifecycle, CRUD operations, BatchIterator, pinning/persistence, Key/Value interfaces, Event system, LoadCollection)
+  - benchmarks/ccb_docgen/docgen-api-002/tests/ground_truth.json (29 api_methods, 13 behavioral_notes, 5 usage_examples, 8 documentation_structure items)
+  - benchmarks/ccb_docgen/docgen-api-002/tests/test.sh (copied from docgen-api-001, generic Python-based verifier)
+  - benchmarks/ccb_docgen/docgen-api-002/environment/Dockerfile (blobless clone of cilium/cilium at commit ad6b298d, sparse checkout of pkg/bpf, pkg/maps, pkg/datapath/maps)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-api-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.853, total_selected: 194→195)
+- **Learnings for future iterations:**
+  - Cilium eBPF Map API has 7 major areas: Core Map Type (NewMap, OpenMap, OpenOrCreate, lifecycle), CRUD Operations (Lookup/Update/Delete + batch), Iteration (DumpWithCallback, BatchIterator), Pinning/Persistence (BPFFSRoot, MapPath), Key/Value Interfaces (MapKey, MapValue, MapPerCPUValue), Event System (DumpAndSubscribe, Event types), Collection Loading (LoadCollection)
+  - Used WebSearch and WebFetch to research Cilium's pkg/bpf package API surface from pkg.go.dev
+  - Found specific commit (ad6b298dbd) from GitHub's main branch via WebFetch
+  - Ground truth covers pkg/bpf/ (Map, BatchIterator, EndpointKey, LoadCollection), pkg/maps/, pkg/datapath/maps/ (MapSweeper for GC)
+  - Same 4-category scoring pattern as docgen-api-001: api_methods (0.40), behavioral_notes (0.30), usage_examples (0.20), documentation_structure (0.10)
+  - API reference tasks focus on behavioral semantics: Create vs CreateUnpinned (pinning), OpenOrCreate (existing map behavior), DeleteLocked (must use within DumpCallback), BatchIterator retry on ENOSPC, event cleanup via Handle.Close()
+  - MCP benefit score (0.853) is slightly higher than docgen-api-001 (0.84) due to higher semantic_search_potential (0.92 vs 0.90) but lower cross_file_deps (0.88 vs 0.85)
+  - Weight validation is CRITICAL: ran into api_methods summing to 1.07 and behavioral_notes to 0.98. Fixed by adjusting individual item weights iteratively until all categories sum to 1.0
+  - Sparse checkout pattern for Cilium: --filter=blob:none --no-checkout + sparse-checkout set pkg/bpf pkg/maps pkg/datapath/maps
+  - Cilium eBPF map lifecycle: Map creation (NewMap), opening (OpenMap, OpenOrCreate), CRUD (Lookup/Update/Delete), iteration (BatchIterator with ENOSPC retry), pinning to BPF filesystem (/sys/fs/bpf), event subscription (DumpAndSubscribe), GC via MapSweeper
+---
+## 2026-02-16 - US-006
+- Created docgen-api-003: Kafka KafkaConsumer Java API reference doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-api-003/task.toml (category=api_reference, language=java, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-api-003/instruction.md (covers KafkaConsumer lifecycle, poll semantics, offset management, rebalance mechanics, flow control, error handling)
+  - benchmarks/ccb_docgen/docgen-api-003/tests/ground_truth.json (38 api_methods, 14 behavioral_notes, 5 usage_examples, 8 documentation_structure items)
+  - benchmarks/ccb_docgen/docgen-api-003/tests/test.sh (copied from docgen-api-001, generic Python-based verifier)
+  - benchmarks/ccb_docgen/docgen-api-003/environment/Dockerfile (blobless clone of apache/kafka at commit e678b4b, sparse checkout of clients/src/main/java/org/apache/kafka/clients/consumer)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-api-003 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.846, total_selected: 195→196)
+- **Learnings for future iterations:**
+  - Kafka KafkaConsumer API has 8 major areas: Core Lifecycle (constructors, close), Subscription/Assignment (subscribe/assign/unsubscribe), Polling (poll with blocking semantics), Offset Management (commitSync/Async, position, committed), Position Control (seek, seekToBeginning/End, offsetsForTimes), Flow Control (pause/resume), Metadata (listTopics, partitionsFor, metrics), Group Coordination (ConsumerRebalanceListener, enforceRebalance)
+  - Used WebSearch and WebFetch to research Kafka Consumer API from official Apache Kafka javadocs (3.6.2 and earlier)
+  - Found specific commit (e678b4b) from GitHub's trunk branch via WebFetch
+  - Ground truth covers clients/src/main/java/org/apache/kafka/clients/consumer/ (KafkaConsumer, ConsumerRebalanceListener, ConsumerRecords, etc.)
+  - Same 4-category scoring pattern as docgen-api-001 and docgen-api-002: api_methods (0.40), behavioral_notes (0.30), usage_examples (0.20), documentation_structure (0.10)
+  - API reference tasks require comprehensive behavioral coverage: poll() may block beyond timeout during rebalance callbacks, commitSync vs commitAsync semantics, thread safety (NOT thread-safe except wakeup), max.poll.interval.ms enforcement, committed offset is "next message to read" (off-by-one), transactional read_committed isolation
+  - MCP benefit score (0.846) reflects high semantic search needs (0.91) for finding behavioral patterns, usage examples from tests, and understanding rebalance/offset semantics
+  - Weight validation CRITICAL: initially api_methods summed to 0.885 instead of 1.0. Fixed by scaling all weights proportionally (scale_factor = 1.13) then adjusting last item to make exact 1.0
+  - ground_truth.json format uses "patterns" (array) and "name" fields (not "pattern" and "description") to match verifier expectations
+  - Sparse checkout pattern for Kafka: --filter=blob:none --no-checkout + sparse-checkout set clients/src/main/java/org/apache/kafka/clients/consumer
+  - Kafka Consumer behavioral complexity: poll() drives event loop and rebalances, CommitFailedException when fenced, WakeupException for safe interruption, pause/resume for backpressure, onPartitionsRevoked/Assigned callbacks for state management
+---
+## 2026-02-16 - US-007
+- Created docgen-migration-001: Terraform v1.9.0 → v1.10.0 migration guide task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-migration-001/task.toml (category=migration_guide, language=go, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-migration-001/instruction.md (covers S3 backend, moved blocks, sensitive values, ephemeral resources)
+  - benchmarks/ccb_docgen/docgen-migration-001/tests/ground_truth.json (4 scoring categories: breaking_changes, migration_steps, code_examples, documentation_structure)
+  - benchmarks/ccb_docgen/docgen-migration-001/tests/test.sh (Python-based weighted checklist verifier for migration guides)
+  - benchmarks/ccb_docgen/docgen-migration-001/environment/Dockerfile (git worktrees for v1.9.0 and v1.10.0)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-migration-001 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.887, total_selected: 196→197)
+- **Learnings for future iterations:**
+  - Migration guide tasks have 4 scoring categories: breaking_changes (0.50), migration_steps (0.30), code_examples (0.15), documentation_structure (0.05)
+  - breaking_changes focus on identifying what changed: S3 backend assume_role, moved blocks resource. prefix requirement, sensitive value conditional behavior, ephemeral resources
+  - migration_steps emphasize actionable instructions: step-by-step assume_role migration, resource. prefix updates, nonsensitive() fixes, testing validation
+  - code_examples require before/after comparisons for each breaking change
+  - documentation_structure ensures proper organization: Overview, Breaking Changes, Migration Steps, Testing, Rollback sections
+  - Migration tasks use git worktrees instead of separate clones for efficiency and disk space
+  - Dockerfile pattern: clone with --filter=blob:none, create worktrees for old/new commits, remove main clone
+  - Used WebSearch and WebFetch to research Terraform v1.10 breaking changes from GitHub releases and issues (Issue #36413 for sensitive value tracking)
+  - Found specific commits via WebFetch: v1.9.0 (7637a92, June 26 2024), v1.10.0 (24236f4, November 27 2024)
+  - MCP benefit score for migration guides (0.887) is highest in docgen suite due to: high cross_file_deps (0.95), high semantic_search_potential (0.95), and highest task_category_weight (0.75 vs 0.70 for API, 0.65 for arch)
+  - test.sh verifier uses OR logic (check_all=False) for pattern matching — more forgiving than architecture docs which use AND logic for data_flow
+  - Pass threshold for all docgen tasks: 0.7 overall score
+  - Ground truth covers 4 major Terraform v1.10 changes: S3 backend IAM role deprecation + native state locking, moved blocks syntax, sensitive marks in conditionals, ephemeral resources/values
+---
+## 2026-02-16 - US-008
+- Created docgen-migration-002: Envoy External Processing (ext_proc) Filter Migration Guide (v1.30 → v1.31)
+- Files created:
+  - benchmarks/ccb_docgen/docgen-migration-002/task.toml (category=migration_guide, language=cpp, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-migration-002/instruction.md (covers ext_proc filter: observability mode, new config fields, upstream filter support)
+  - benchmarks/ccb_docgen/docgen-migration-002/tests/ground_truth.json (4 scoring categories: breaking_changes, migration_steps, code_examples, documentation_structure)
+  - benchmarks/ccb_docgen/docgen-migration-002/tests/test.sh (copied from docgen-migration-001, generic Python-based verifier)
+  - benchmarks/ccb_docgen/docgen-migration-002/environment/Dockerfile (git worktrees for v1.30.0 and v1.31.0)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-migration-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.880, total_selected: 197→198)
+- **Learnings for future iterations:**
+  - Envoy v1.30.0 → v1.31.0 focus: ext_proc filter configuration changes (narrower scope than full xDS v2→v3 migration)
+  - Used WebSearch and WebFetch to research Envoy release notes from official docs (v1.30.0 April 2024, v1.31.0 July 2024)
+  - Found specific commits via WebFetch from GitHub releases: v1.30.0 (50ea83e602), v1.31.0 (7b8baff175)
+  - Key breaking changes: observability_mode deprecates async_mode, HTTP/2 codec default change (oghttp2 → true), upstream filter chain support
+  - Ground truth covers 5 breaking changes (observability mode, HTTP/2 codec, ProcessingMode, upstream filters, new config fields), 5 migration steps, 4 code examples
+  - Same 4-category scoring as docgen-migration-001: breaking_changes (0.50), migration_steps (0.30), code_examples (0.15), documentation_structure (0.05)
+  - MCP benefit score (0.880) reflects high cross_file_deps (0.93) and semantic_search_potential (0.94) for finding API changes across proto/impl
+  - Weight validation critical: verified all category weights sum to 1.0 and top-level weights sum to 1.0
+  - Dockerfile pattern matches docgen-migration-001: git worktrees for two versions, remove main clone to save space
+  - Ext_proc filter spans: api/envoy/extensions/filters/http/ext_proc/v3/ (proto), source/extensions/filters/http/ext_proc/ (impl), docs/root/configuration/http/http_filters/ext_proc_filter.rst (docs)
+  - Migration tasks benefit most from MCP (task_category_weight=0.75) compared to API reference (0.70) and architecture (0.65)
+---

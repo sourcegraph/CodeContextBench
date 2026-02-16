@@ -178,3 +178,40 @@
   - Different benchmarks use different Sourcegraph repo formats: pytorch uses `sg-benchmarks/repo--hash` (no github.com), enterprise uses `github.com/org/repo` (public). Codereview now uses public repos.
   - TASK_SG_REPO_NAMES is a bash associative array — syntax checking with `bash -n` catches errors
 ---
+## 2026-02-16 - US-009
+- Verified cr-calcom-001 task is fully scaffolded (was completed but not marked in PRD)
+- Task uses cal.com PR #26801 (feature opt-in scope configuration)
+- 4 defects across 3 TypeScript files: FeatureOptInService.ts, config.ts, _router.ts
+- All acceptance criteria met: task.toml, instruction.md (no TODOs), Dockerfile, test.sh (executable, hybrid scoring), expected_defects.json, expected_patches/, registered in selected_benchmark_tasks.json
+- Files changed: prd.json (marked US-009 as passing)
+- **Learnings for future iterations:**
+  - PRD can get out of sync with actual work if previous iterations didn't update it — always verify actual file state before assuming work needs to be done
+  - Validation checklist useful: directory exists, files exist, metadata correct, no TODOs, executable permissions, registration in JSON
+---
+
+## 2026-02-16 - US-010
+- Updated configs/codereview_2config.sh TASK_SG_REPO_NAMES to use public GitHub repos instead of sg-benchmarks clones
+- Changed from: github.com/sg-benchmarks/{repo}--{commit} to github.com/{org}/{repo}
+- All three tasks now point to: TryGhost/Ghost, dotnet/aspnetcore, calcom/cal.com
+- Script syntax validated with bash -n
+- Files changed: configs/codereview_2config.sh, prd.json
+- **Learnings for future iterations:**
+  - PRD referred to "codereview_3config.sh" but actual file is "codereview_2config.sh" — the 2config pattern is standard (2 configs: baseline + sourcegraph_full)
+  - Public GitHub repos are used for Sourcegraph when the actual repos are available (vs sg-benchmarks clones for pinned commits)
+  - TASK_SG_REPO_NAMES uses format github.com/{org}/{repo} for public repos
+---
+
+## 2026-02-16 - PRD Completion Verification
+- Verified all 14 user stories (US-001 through US-014) are complete
+- All codereview benchmark deliverables confirmed:
+  - 3 tasks: cr-ghost-001 (Ghost/TS), cr-aspnetcore-001 (aspnetcore/C#), cr-calcom-001 (cal.com/TS)
+  - Infrastructure: DIR_PREFIX_TO_SUITE in generate_manifest.py and aggregate_status.py
+  - Documentation: CLAUDE.md, TASK_CATALOG.md, TASK_SELECTION.md updated
+  - Config: codereview_2config.sh with public repo mappings
+  - Validation: preflight checks pass (ALL CHECKS PASSED)
+- Files changed: prd.json (marked final 4 stories as complete)
+- **Learnings for future iterations:**
+  - When verifying completion, check both PRD status AND actual deliverables on disk
+  - Preflight validation (`python3 scripts/validate_tasks_preflight.py --suite <name>`) is the definitive completion gate
+  - Worktree names don't always match branch names — check git branch output to understand the setup
+---

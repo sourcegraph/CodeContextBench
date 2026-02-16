@@ -70,6 +70,14 @@ TASK_FILTER=""
 
 # All docgen task IDs — populated by task-creation Ralphs
 ALL_TASK_IDS=(
+    "docgen-arch-001"
+    "docgen-arch-002"
+    "docgen-arch-003"
+    "docgen-api-001"
+    "docgen-api-002"
+    "docgen-api-003"
+    "docgen-migration-001"
+    "docgen-migration-002"
 )
 
 # Parse arguments
@@ -125,6 +133,14 @@ setup_dual_accounts
 # Sourcegraph repo name mapping for docgen tasks
 # Populated by task-creation Ralphs alongside ALL_TASK_IDS
 declare -A TASK_SG_REPO_NAMES=(
+    ["docgen-arch-001"]="github.com/envoyproxy/envoy"
+    ["docgen-arch-002"]="github.com/istio/istio"
+    ["docgen-arch-003"]="github.com/hashicorp/terraform"
+    ["docgen-api-001"]="github.com/microsoft/vscode"
+    ["docgen-api-002"]="github.com/cilium/cilium"
+    ["docgen-api-003"]="github.com/apache/kafka"
+    ["docgen-migration-001"]="github.com/hashicorp/terraform"
+    ["docgen-migration-002"]="github.com/envoyproxy/envoy"
 )
 
 # Derive short model name for run directory
