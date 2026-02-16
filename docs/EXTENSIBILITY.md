@@ -69,3 +69,14 @@ python3 scripts/docs_consistency_check.py
 ```
 
 This validates that core docs do not reference missing scripts/configs.
+
+## 6) Task Environment Variants
+
+When adding benchmark environment variants, keep canonical task definitions intact:
+
+1. Keep `environment/Dockerfile` as the canonical default.
+2. Add variant files with explicit names (for example `Dockerfile.isolated`,
+   `Dockerfile.sg_only`).
+3. Document variant intent and caveats in-suite (for example
+   `benchmarks/ccb_k8sdocs/VARIANTS.md`).
+4. Treat variant runs as separate studies in reporting and curation.

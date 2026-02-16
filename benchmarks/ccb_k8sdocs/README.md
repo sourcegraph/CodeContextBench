@@ -4,6 +4,9 @@
 
 This benchmark evaluates AI coding agents on documentation generation and update tasks for the Kubernetes codebase. The design leverages the extensive Kubernetes ecosystem to test how well agents can understand complex distributed systems code and produce accurate, comprehensive documentation.
 
+Environment variants for these tasks are documented in
+`benchmarks/ccb_k8sdocs/VARIANTS.md`.
+
 ## Benchmark Design
 
 ### Core Hypothesis
