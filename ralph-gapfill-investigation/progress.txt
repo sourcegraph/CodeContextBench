@@ -178,3 +178,27 @@
   - Recording rule evaluation slowdown (200s → 3000s) is a dramatic regression magnitude that makes the task compelling
   - Issues #6968 and #7048 reported the regression — these provide user-facing symptom descriptions that match the investigation task
 ---
+## 2026-02-16 - US-008
+- Implemented inv-regression-002: Historical regression hunt task for Prometheus alert rule state loss on config reload
+- Based on real Prometheus bug (commit a48a01836, June 2017): inconsistent map key format between loadGroups and ApplyConfig
+- Root cause: loadGroups changed from using 'rg.Name' to 'rg.Name+";"+fn' to support same group name across different files, but ApplyConfig still used 'newg.name' (only the name, no filename), causing old group lookup to fail during config reload
+- 4-hop causal chain: commit changes map key in loadGroups → ApplyConfig not updated → lookup fails (key mismatch) → state copy skipped → alert 'for' state lost
+- Files created:
+  - benchmarks/ccb_investigation/inv-regression-002/task.toml (category=regression_hunt, language=go, difficulty=hard)
+  - benchmarks/ccb_investigation/inv-regression-002/instruction.md (2400+ chars, describes state loss symptom, hints at map key inconsistency)
+  - benchmarks/ccb_investigation/inv-regression-002/environment/Dockerfile (pins to a48a01836, the regressing commit)
+  - benchmarks/ccb_investigation/inv-regression-002/tests/test.sh (identical scorer)
+  - benchmarks/ccb_investigation/inv-regression-002/tests/ground_truth.json (12 findings, 6 file refs, 4 chain entries, 4 neg checks)
+- Files modified:
+  - configs/investigation_2config.sh (added inv-regression-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (added entry, count now 207)
+- **Learnings for future iterations:**
+  - git log --grep with --oneline is effective for finding regression fixes: `git log --grep="regression\|revert\|fix.*rule" -- rules/manager.go`
+  - Commit a48a01836 changed the key format in loadGroups but not in ApplyConfig, classic "update one call site, miss another" bug
+  - The fix (PR #3382, commit e86d82ad2, Nov 2017) introduced a groupKey() helper function to ensure both places use the same key format
+  - Web search for "Prometheus recording rule regression" finds issues but not always the fix commits — git log is more reliable
+  - git show and git blame are essential for understanding when a line was last changed and who introduced the current implementation
+  - For map key bugs, the pattern is: one function generates keys, another consumes them, mismatch causes silent failures (no error, just missing data)
+  - Alert rule state loss is a serious production issue: affects all alerts with "for" clauses, causes alerts to reset during config reloads
+  - The groupKey format "name;file" allows the same group name in different rule files, which is a valid Prometheus configuration pattern
+---
