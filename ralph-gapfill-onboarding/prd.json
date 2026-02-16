@@ -117,7 +117,7 @@
         "Task registered"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "Kafka: ./gradlew build, ./gradlew test, Jenkins CI. Non-trivial multi-module Gradle project."
     }
   ]

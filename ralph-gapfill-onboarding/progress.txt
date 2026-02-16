@@ -169,3 +169,26 @@
   - MCP benefit score 0.73 for workflow discovery: high context complexity (large repo), moderate cross-file deps (discovering docs/configs), high semantic search potential (finding CONTRIBUTING.md, CI files)
   - instruction.md is 2752 chars (well above 500 char preflight threshold)
 ---
+## 2026-02-16 - US-008
+- Created onboard-workflow-002: Kafka contributor workflow discovery task
+- Files created:
+  - benchmarks/ccb_onboarding/onboard-workflow-002/task.toml (category=workflow_discovery, language=java, difficulty=hard)
+  - benchmarks/ccb_onboarding/onboard-workflow-002/instruction.md (6 questions: build prerequisites, Gradle build system, running tests, CI pipeline, code review process, developer workflow example)
+  - benchmarks/ccb_onboarding/onboard-workflow-002/environment/Dockerfile (clone apache/kafka@3.9.0)
+  - benchmarks/ccb_onboarding/onboard-workflow-002/tests/test.sh (copied from workflow-001, reusable pattern)
+  - benchmarks/ccb_onboarding/onboard-workflow-002/tests/ground_truth.json (8 findings, 8 file refs, 2 causal chains, 2 negative checks)
+- Files modified:
+  - configs/selected_benchmark_tasks.json (task entry already present, updated total_selected: 198)
+  - configs/onboarding_2config.sh (added task ID and SG repo mapping)
+- **Learnings for future iterations:**
+  - Kafka uses Gradle build system (NOT Maven or Bazel) — negative checks catch this common misconception
+  - Key workflow commands: ./gradlew build, ./gradlew test, ./gradlew :module:test
+  - CI uses Jenkins (primary) + GitHub Actions — documented in Jenkinsfile and .github/workflows/
+  - Code review process: Apache JIRA ticket → fork → branch → code → PR → committer review
+  - Ground truth for Kafka workflow: 8 required findings (Gradle, build commands, test commands, JUnit, Jenkins, JIRA, PR process), 8 file references (CONTRIBUTING.md, build.gradle, Jenkinsfile, etc.), 2 causal chains (build workflow + PR workflow)
+  - instruction.md is 2342 chars (well above 500 char preflight threshold)
+  - test.sh verifier continues to be fully reusable across all onboarding task types (orientation, handoff, workflow)
+  - MCP benefit score 0.72 for Kafka workflow: high context complexity (multi-module Gradle), moderate cross-file deps (CONTRIBUTING.md, build configs), high semantic search potential (finding docs/configs)
+  - The selected_benchmark_tasks.json entry was pre-populated (from infra Ralph) — just needed total_selected count update
+  - Negative checks are critical for workflow tasks: prevents claiming wrong build system (Maven/Bazel instead of Gradle)
+---
