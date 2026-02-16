@@ -1,0 +1,119 @@
+{
+  "project": "Benchmark Gap-Fill: Advanced Doc Generation",
+  "branchName": "ralph/gapfill-docgen",
+  "description": "Create 8 doc generation tasks in new ccb_docgen suite. Supersedes ceiling-saturated ccb_k8sdocs. Tasks require generating architecture docs, API references, and migration guides for complex multi-package systems. Weighted checklist scoring on topic coverage.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Create docgen-arch-001: Envoy HTTP connection manager architecture doc",
+      "description": "As a benchmark developer, I want a task where the agent produces an architecture document for Envoy's HTTP connection manager spanning filter chain, codec, router, and upstream components. Must explain how components interact, not just list APIs.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-arch-001/ has complete task files",
+        "task.toml has category=architecture_doc, language=cpp, difficulty=hard, time_limit_sec=1200",
+        "instruction.md asks for architecture doc covering: component responsibilities, data flow, extension points, error handling",
+        "ground_truth.json has 10-15 required concepts with file references, weighted by importance",
+        "Output format: /workspace/documentation.md",
+        "Task registered in configs/selected_benchmark_tasks.json and docgen_2config.sh"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Envoy conn manager spans: source/common/http/conn_manager_impl.cc, source/common/http/filter_manager.cc, source/common/router/router.cc, source/common/upstream/cluster_manager_impl.cc."
+    },
+    {
+      "id": "US-002",
+      "title": "Create docgen-arch-002: Istio Pilot discovery architecture doc",
+      "description": "As a benchmark developer, I want a task documenting Istio Pilot's discovery service architecture: xDS serving, config translation, service registry, and multi-cluster support.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-arch-002/ has complete task files",
+        "ground_truth.json has 10-15 required concepts spanning pilot/pkg/xds/, pilot/pkg/model/, pilot/pkg/config/",
+        "Task registered"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Istio Pilot: pilot/pkg/xds/ads.go (ADS server), pilot/pkg/model/push_context.go, pilot/pkg/networking/core/. Search for DiscoveryServer struct."
+    },
+    {
+      "id": "US-003",
+      "title": "Create docgen-arch-003: Terraform plan/apply pipeline architecture doc",
+      "description": "As a benchmark developer, I want a task documenting Terraform's plan/apply pipeline: graph builder, provider interface, state management, and hook system.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-arch-003/ has complete task files",
+        "language=go, 10-15 required concepts",
+        "Task registered"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Terraform: internal/terraform/context.go, graph_builder_plan.go, node_resource_apply.go, internal/providers/provider.go."
+    },
+    {
+      "id": "US-004",
+      "title": "Create docgen-api-001: VS Code Extension API reference",
+      "description": "As a benchmark developer, I want a task where the agent generates API reference documentation for a specific VS Code extension API surface (e.g., TextDocument API or Diagnostic API). Must include parameter semantics, error cases, and usage examples from internal callers.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-api-001/ has complete task files",
+        "language=typescript",
+        "instruction.md specifies a particular API surface to document (not the entire extension API)",
+        "ground_truth.json includes: required API methods, required behavioral notes, required usage examples",
+        "Task registered"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "VS Code: src/vs/vscode.d.ts defines the API surface. src/vs/workbench/ and extensions/ have internal callers. Use find_references to discover usage patterns."
+    },
+    {
+      "id": "US-005",
+      "title": "Create docgen-api-002: Cilium eBPF map API reference",
+      "description": "As a benchmark developer, I want a task documenting Cilium's eBPF map API: map types, operations, Go wrappers, and lifecycle management.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-api-002/ has complete task files",
+        "language=go, ground_truth.json includes map types, CRUD operations, GC/pinning behavior",
+        "Task registered"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Cilium: pkg/maps/ (Go wrappers), bpf/ (C definitions). Map lifecycle: creation, pinning, GC via pkg/maps/ctmap/, pkg/maps/lbmap/."
+    },
+    {
+      "id": "US-006",
+      "title": "Create docgen-api-003: Kafka Consumer API reference",
+      "description": "As a benchmark developer, I want a task documenting Kafka's KafkaConsumer Java API with behavioral notes about rebalancing, offset management, and error handling.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-api-003/ has complete task files",
+        "language=java, ground_truth includes: poll semantics, rebalance callbacks, offset commit strategies",
+        "Task registered"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "Kafka: clients/src/main/java/org/apache/kafka/clients/consumer/KafkaConsumer.java. Rich behavioral semantics around poll(), commitSync(), rebalance listeners."
+    },
+    {
+      "id": "US-007",
+      "title": "Create docgen-migration-001: Migration guide from Terraform code changes",
+      "description": "As a benchmark developer, I want a task where the agent analyzes breaking changes between two Terraform versions and produces a migration guide. Dockerfile provides two commits (old stable, new stable with breaking changes).",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-migration-001/ has complete task files",
+        "Dockerfile clones repo and sets up two worktrees or directories for old and new versions",
+        "instruction.md asks: 'Analyze changes between version X and Y. Produce a migration guide for users upgrading.'",
+        "ground_truth.json includes: required breaking changes identified, correct migration steps per change",
+        "Task registered"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "Choose two Terraform minor versions with documented breaking changes (see CHANGELOG.md). MCP compare_revisions directly compares the two versions."
+    },
+    {
+      "id": "US-008",
+      "title": "Create docgen-migration-002: Migration guide from Envoy version upgrade",
+      "description": "As a benchmark developer, I want a migration guide task for an Envoy version upgrade with known API changes (e.g., v2 → v3 xDS API migration).",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_docgen/docgen-migration-002/ has complete task files",
+        "language=cpp, ground_truth has specific API changes and migration steps",
+        "MCP advantage: compare_revisions + diff_search for finding all changed APIs",
+        "Task registered"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Envoy xDS v2→v3 migration is well-documented. Choose a narrower scope — e.g., changes in a specific filter's config proto between two versions."
+    }
+  ]
+}
