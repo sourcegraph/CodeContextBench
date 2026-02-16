@@ -57,7 +57,7 @@ You must:
 }
 ```
 
-**Important**: Paths should be relative to the kernel source root (e.g., `drivers/acpi/video_detect.c`, not `/workspace/drivers/acpi/video_detect.c`).
+**Important**: Paths should be relative to the kernel source root (e.g., `kernel/sched/core.c`, not `/workspace/kernel/sched/core.c`).
 
 ## Success Criteria
 

@@ -58,7 +58,7 @@ You must:
 }
 ```
 
-**Important**: Paths should be relative to the kernel source root (e.g., `sound/pci/hda/hda_intel.c`, not `/workspace/sound/...`).
+**Important**: Paths should be relative to the kernel source root (e.g., `kernel/sched/core.c`, not `/workspace/kernel/sched/core.c`).
 
 ## Success Criteria
 

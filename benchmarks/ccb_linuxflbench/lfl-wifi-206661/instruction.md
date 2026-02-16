@@ -36,7 +36,7 @@ You must:
 }
 ```
 
-**Important**: Paths should be relative to the kernel source root (e.g., `drivers/net/wireless/intel/iwlwifi/pcie/drv.c`, not `/workspace/drivers/...`).
+**Important**: Paths should be relative to the kernel source root (e.g., `kernel/sched/core.c`, not `/workspace/kernel/sched/core.c`).
 
 ## Success Criteria
 
