@@ -141,3 +141,13 @@
   - cr-calcom-001 was scaffolded by previous iteration but not marked as complete in PRD — verify actual completion before assuming PRD state is accurate
   - All 3 codereview tasks now have: task.toml (language, difficulty, MCP config), instruction.md (no TODOs, 3000+ chars), Dockerfile (correct COPY paths), test.sh (hybrid scoring), expected ground truth files
 ---
+
+## 2026-02-16 - US-010
+- Updated codereview_2config.sh TASK_SG_REPO_NAMES to use public GitHub repos instead of sg-benchmarks snapshots
+- Fixed usage comment to match actual filename (script is _2config not _3config per PRD typo)
+- Files changed: configs/codereview_2config.sh, prd.json
+- **Learnings for future iterations:**
+  - PRD said "codereview_3config.sh" but all benchmarks use _2config pattern (2 configs: baseline + SG_full)
+  - Different benchmarks use different Sourcegraph repo formats: pytorch uses `sg-benchmarks/repo--hash` (no github.com), enterprise uses `github.com/org/repo` (public). Codereview now uses public repos.
+  - TASK_SG_REPO_NAMES is a bash associative array — syntax checking with `bash -n` catches errors
+---
