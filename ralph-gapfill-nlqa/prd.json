@@ -46,7 +46,7 @@
         "Task registered in configs/selected_benchmark_tasks.json and nlqa_2config.sh"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Key Terraform packages: internal/terraform/context.go, internal/terraform/graph_builder_plan.go, internal/providers/. Search for PlanGraphBuilder, NodeApplyableProvider."
     },
     {
@@ -61,7 +61,7 @@
         "Both tasks registered in configs/selected_benchmark_tasks.json and nlqa_2config.sh"
       ],
       "priority": 4,
-      "passes": false,
+      "passes": true,
       "notes": "Kafka: clients/src/main/java/org/apache/kafka/clients/producer/ → server/src/main/java/org/apache/kafka/server/ → clients/src/main/java/org/apache/kafka/clients/consumer/. Envoy: source/server/listener_impl.cc → source/common/http/conn_manager_impl.cc → source/common/router/router.cc → source/common/upstream/."
     },
     {
