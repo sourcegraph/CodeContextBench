@@ -83,8 +83,8 @@
         "Task registered"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": "Kafka: clients/src/main/java/org/apache/kafka/clients/consumer/KafkaConsumer.java. Rich behavioral semantics around poll(), commitSync(), rebalance listeners."
+      "passes": true,
+      "notes": "Kafka at commit e678b4b (trunk 2026-02-16). 38 api_methods items (constructor variants, subscribe/assign, poll, commitSync/Async, position/seek, pause/resume, offset discovery, metadata, lifecycle, ConsumerRebalanceListener). 14 behavioral_notes items (poll blocking, commit semantics, rebalance coordination, thread safety, group membership, transactional isolation, resource management). 5 usage_examples items. Registered in selected_benchmark_tasks.json (mcp_benefit_score=0.846) and docgen_2config.sh."
     },
     {
       "id": "US-007",

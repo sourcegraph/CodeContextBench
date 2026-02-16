@@ -123,3 +123,27 @@
   - Sparse checkout pattern for Cilium: --filter=blob:none --no-checkout + sparse-checkout set pkg/bpf pkg/maps pkg/datapath/maps
   - Cilium eBPF map lifecycle: Map creation (NewMap), opening (OpenMap, OpenOrCreate), CRUD (Lookup/Update/Delete), iteration (BatchIterator with ENOSPC retry), pinning to BPF filesystem (/sys/fs/bpf), event subscription (DumpAndSubscribe), GC via MapSweeper
 ---
+## 2026-02-16 - US-006
+- Created docgen-api-003: Kafka KafkaConsumer Java API reference doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-api-003/task.toml (category=api_reference, language=java, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-api-003/instruction.md (covers KafkaConsumer lifecycle, poll semantics, offset management, rebalance mechanics, flow control, error handling)
+  - benchmarks/ccb_docgen/docgen-api-003/tests/ground_truth.json (38 api_methods, 14 behavioral_notes, 5 usage_examples, 8 documentation_structure items)
+  - benchmarks/ccb_docgen/docgen-api-003/tests/test.sh (copied from docgen-api-001, generic Python-based verifier)
+  - benchmarks/ccb_docgen/docgen-api-003/environment/Dockerfile (blobless clone of apache/kafka at commit e678b4b, sparse checkout of clients/src/main/java/org/apache/kafka/clients/consumer)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-api-003 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.846, total_selected: 195→196)
+- **Learnings for future iterations:**
+  - Kafka KafkaConsumer API has 8 major areas: Core Lifecycle (constructors, close), Subscription/Assignment (subscribe/assign/unsubscribe), Polling (poll with blocking semantics), Offset Management (commitSync/Async, position, committed), Position Control (seek, seekToBeginning/End, offsetsForTimes), Flow Control (pause/resume), Metadata (listTopics, partitionsFor, metrics), Group Coordination (ConsumerRebalanceListener, enforceRebalance)
+  - Used WebSearch and WebFetch to research Kafka Consumer API from official Apache Kafka javadocs (3.6.2 and earlier)
+  - Found specific commit (e678b4b) from GitHub's trunk branch via WebFetch
+  - Ground truth covers clients/src/main/java/org/apache/kafka/clients/consumer/ (KafkaConsumer, ConsumerRebalanceListener, ConsumerRecords, etc.)
+  - Same 4-category scoring pattern as docgen-api-001 and docgen-api-002: api_methods (0.40), behavioral_notes (0.30), usage_examples (0.20), documentation_structure (0.10)
+  - API reference tasks require comprehensive behavioral coverage: poll() may block beyond timeout during rebalance callbacks, commitSync vs commitAsync semantics, thread safety (NOT thread-safe except wakeup), max.poll.interval.ms enforcement, committed offset is "next message to read" (off-by-one), transactional read_committed isolation
+  - MCP benefit score (0.846) reflects high semantic search needs (0.91) for finding behavioral patterns, usage examples from tests, and understanding rebalance/offset semantics
+  - Weight validation CRITICAL: initially api_methods summed to 0.885 instead of 1.0. Fixed by scaling all weights proportionally (scale_factor = 1.13) then adjusting last item to make exact 1.0
+  - ground_truth.json format uses "patterns" (array) and "name" fields (not "pattern" and "description") to match verifier expectations
+  - Sparse checkout pattern for Kafka: --filter=blob:none --no-checkout + sparse-checkout set clients/src/main/java/org/apache/kafka/clients/consumer
+  - Kafka Consumer behavioral complexity: poll() drives event loop and rebalances, CommitFailedException when fenced, WakeupException for safe interruption, pause/resume for backpressure, onPartitionsRevoked/Assigned callbacks for state management
+---
