@@ -70,7 +70,7 @@
         "python3 -c \"exec(open('scripts/generate_manifest.py').read().split('def ')[0]); print(DIR_PREFIX_TO_SUITE.get('navprove_'))\" prints ccb_navprove"
       ],
       "priority": 4,
-      "passes": false,
+      "passes": true,
       "notes": "Simple dict addition in both files. Add alphabetically near 'nlqa_' entry."
     },
     {

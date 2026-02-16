@@ -93,3 +93,13 @@
   - The `_run_single` function name must be unique per script and match the run_paired_configs call
   - SOURCEGRAPH_REPO_NAME is set per-task by looking up TASK_SG_REPO_NAMES in the _run_single function
 ---
+
+## 2026-02-16 - US-004
+- Added `"navprove_": "ccb_navprove"` to DIR_PREFIX_TO_SUITE in both `scripts/aggregate_status.py` and `scripts/generate_manifest.py`
+- Placed alphabetically between `locobench_` and `nlqa_` entries
+- Files changed: scripts/aggregate_status.py, scripts/generate_manifest.py (1 line each)
+- **Learnings for future iterations:**
+  - Both scripts have identical DIR_PREFIX_TO_SUITE dicts — always update both in lockstep
+  - AC test commands using `exec(open(...).read().split('def ')[0])` fail because `__file__` is undefined in exec context; use AST-based verification instead
+  - The aggregate_status.py line for DIR_PREFIX_TO_SUITE is ~line 51, generate_manifest.py ~line 26
+---
