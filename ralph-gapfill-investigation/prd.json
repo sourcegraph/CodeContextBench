@@ -48,8 +48,8 @@
         "Task registered"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": "Terraform: plan phase builds graph → evaluates nodes → calls provider → stores state. Bug in state serialization that only manifests when provider returns specific type."
+      "passes": true,
+      "notes": "Based on real Terraform bug (PR #34567/issues #34144, #34323): schema-sensitive attributes not applied to provider responses from ReadResource/PlanResourceChange, causing phantom diffs and incomplete sensitive_attributes in state. 4-hop chain: provider response (unmarked) → node_resource_abstract_instance.go (only prior-state marks applied) → state serialization (incomplete AttrSensitivePaths) → evaluate.go (compensating schema marks create asymmetry → phantom diffs). Pre-fix commit: 9658f9df."
     },
     {
       "id": "US-004",

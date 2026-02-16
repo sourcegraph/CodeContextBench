@@ -12,7 +12,9 @@
 - Regression task naming: use inv-regression-001b (or inv-regression-002) to avoid conflict with existing inv-regression-001
 - Dockerfile: pin to commit where bug exists (pre-fix for investigations, post-regression for regression hunts)
 - MCP advantage: find_references for cross-package tracing, commit_search for regression hunts, diff_search for code changes
-- Config: investigation_2config.sh — add new task IDs to existing TASKS array
+- Config: investigation_2config.sh — add new task IDs to existing TASKS array AND TASK_SG_REPO_NAMES mapping
+- Repos not on Sourcegraph (Istio, Terraform core): use `gh` CLI to search GitHub issues/PRs instead
+- Scoring calibration: always test perfect (1.0), weak (~0.2), and medium (~0.5) reports before committing
 
 ## Progress
 
@@ -60,4 +62,27 @@
   - Key Istio xDS push pipeline: config change → PushContext → SidecarScope.DependsOnConfig() → push/skip decision
   - When a repo isn't on Sourcegraph, the task still works — baseline agents investigate locally, SG_full agents can search related repos
   - The `consolidatedDestRule.from` field (added by fix) is the key concept — tracks all contributing DRs' NamespacedNames
+---
+
+## 2026-02-16 - US-003
+- Implemented inv-deep-003: Deep causal chain investigation task for Terraform sensitive attribute handling
+- Based on real Terraform bug (PR #34567/issues #34144, #34323): schema-sensitive attributes not applied to provider responses, causing phantom plan diffs
+- 4-hop causal chain: ReadResource/PlanResourceChange returns value without marks → node_resource_abstract_instance.go re-applies only prior-state marks (missing schema marks) → state serialization stores incomplete AttrSensitivePaths → evaluate.go compensates by adding schema marks only during expression evaluation → asymmetry causes phantom diffs
+- Files created:
+  - benchmarks/ccb_investigation/inv-deep-003/task.toml (category=deep_causal_chain, language=go, difficulty=hard)
+  - benchmarks/ccb_investigation/inv-deep-003/instruction.md
+  - benchmarks/ccb_investigation/inv-deep-003/environment/Dockerfile (pins to 9658f9df, parent of fix c4a2f740)
+  - benchmarks/ccb_investigation/inv-deep-003/tests/test.sh (identical scorer)
+  - benchmarks/ccb_investigation/inv-deep-003/tests/ground_truth.json (11 findings, 6 file refs, 4 chain entries, 2 neg checks)
+- Files modified:
+  - configs/investigation_2config.sh (added inv-deep-003 to TASKS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (added entry, count now 203)
+- Scoring validation: perfect report → 1.0, weak baseline → 0.18, medium baseline → 0.61
+- **Learnings for future iterations:**
+  - hashicorp/terraform is NOT indexed on the Sourcegraph instance — only terraform-provider-google is. Used GitHub API (gh) for research.
+  - Terraform's sensitive value handling is a rich source of deep causal chain bugs — the cty marks system spans providers → graph nodes → state → evaluator → command output
+  - Key Terraform mark-handling files: marks.go (mark functions), node_resource_abstract_instance.go (provider response processing), evaluate.go (expression evaluation), instance_object.go (state serialization)
+  - PR #34567 by jbardin is the canonical fix for sensitive mark asymmetry — it applies schema marks to ReadResource and PlanResourceChange responses rather than only during evaluation
+  - Related bugs worth investigating for future tasks: PR #36465 (non-deterministic AttrSensitivePaths order), PR #35017 (51-file mark consistency overhaul), PR #28381 (double-marked crash), PR #32891 (module output mark coarsening)
+  - For scoring calibration: test with "perfect", "weak", and "medium" reports to verify the scoring range spans 0.0-1.0 with weak baseline in 0.2-0.4
 ---

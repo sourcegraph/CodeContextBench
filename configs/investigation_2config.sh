@@ -76,6 +76,7 @@ ALL_TASK_IDS=(
     "inv-migration-001"
     "inv-deep-001"
     "inv-deep-002"
+    "inv-deep-003"
 )
 
 # Parse arguments
@@ -133,6 +134,7 @@ declare -A TASK_SG_REPO_NAMES=(
     ["inv-migration-001"]="github.com/django/django"
     ["inv-deep-001"]="github.com/envoyproxy/envoy"
     ["inv-deep-002"]="github.com/istio/istio"
+    ["inv-deep-003"]="github.com/hashicorp/terraform"
 )
 
 # Derive short model name for run directory
