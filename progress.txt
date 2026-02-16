@@ -131,3 +131,24 @@
 - MCP tools used: sg_read_file (74%), sg_list_files (19%), sg_keyword_search (6%), sg_find_references (2%). Deep Search: 0%.
 - **Recommendation**: Redesign around cross-codebase discovery tasks for MCP to shine
 ---
+
+## 2026-02-16 - US-009
+- Verified cr-calcom-001 task was already fully scaffolded
+- Task targets cal.com PR #26801 (scope configuration feature, merge commit 4b99072)
+- 4 defects across 3 TypeScript files: inverted filter condition, missing scope fallback, missing slug validation, ignored policy config
+- Files verified: task.toml, instruction.md, Dockerfile, inject_defects.sh, test.sh, expected_defects.json, 4 expected patch files
+- Already registered in configs/selected_benchmark_tasks.json
+- **Learnings for future iterations:**
+  - US-009 was marked as incomplete in PRD but all files were already scaffolded — always verify completion status before starting work
+  - cal.com task follows same pattern as ghost/aspnetcore: hybrid scoring, inject_defects.sh, 3-file cross-layer review scope
+---
+
+## 2026-02-16 - US-010
+- Updated TASK_SG_REPO_NAMES in configs/codereview_2config.sh from sg-benchmarks forks to public GitHub repos
+- Fixed cr-ghost-001 repo field in selected_benchmark_tasks.json (was "agentic-review-benchmarks/benchmark-pr-mapping", now "TryGhost/Ghost")
+- Files changed: configs/codereview_2config.sh, configs/selected_benchmark_tasks.json
+- **Learnings for future iterations:**
+  - PRD referenced "codereview_3config.sh" but actual file is "codereview_2config.sh" — codebase uses _2config naming for baseline+MCP configs
+  - cr-ghost-001's repo field wasn't updated in US-007 as claimed in that story's acceptance criteria — discovered and fixed now
+  - Sourcegraph repo names format: github.com/org/repo (not github.com/sg-benchmarks/repo--hash)
+---

@@ -144,8 +144,8 @@
         "Verify script syntax: bash -n configs/codereview_3config.sh passes"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": "Sourcegraph repo names for public repos: github.com/TryGhost/Ghost, github.com/dotnet/aspnetcore, github.com/calcom/cal.com"
+      "passes": true,
+      "notes": "Completed. Updated codereview_2config.sh (not 3config - follows codebase convention) with public repos. Fixed cr-ghost-001 repo in selection file."
     },
     {
       "id": "US-011",
