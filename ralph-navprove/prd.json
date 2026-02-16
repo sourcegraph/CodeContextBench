@@ -56,7 +56,7 @@
         "bash -n configs/navprove_2config.sh passes (valid syntax)"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Follow configs/investigation_2config.sh as template. Key differences: different TASKS_DIR, different task IDs, different SG repo mappings. Use --path mode (tasks are custom, not in harbor registry)."
     },
     {

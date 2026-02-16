@@ -78,3 +78,18 @@
   - Shellcheck not installed on this machine; skip that AC or install it
   - Harbor uploads only the task's `tests/` dir, NOT `_shared/` — must copy verifier into each task's tests/ (see US-005 notes)
 ---
+
+## 2026-02-16 - US-003
+- Created `configs/navprove_2config.sh` (280 lines, executable)
+- Follows investigation_2config.sh pattern exactly: source _common.sh, enforce_subscription_mode, ensure_fresh_token, setup_dual_accounts
+- ALL_TASK_IDS: 9 navprove tasks (4 qutebrowser, 1 ansible, 1 teleport, 1 vuls, 1 flipt, 1 tutanota)
+- TASK_SG_REPO_NAMES: maps all 9 tasks to full GitHub org/repo Sourcegraph paths
+- Paired execution via run_paired_configs, supports --parallel, --baseline-only, --full-only, --task flags
+- JOBS_BASE pattern: `runs/${CATEGORY}/navprove_${MODEL_SHORT}_${TIMESTAMP}`
+- Passes bash -n syntax check
+- Files changed: configs/navprove_2config.sh (new)
+- **Learnings for future iterations:**
+  - 2config scripts follow a very rigid template — copy investigation_2config.sh and rename 5 things: TASKS_DIR, ALL_TASK_IDS, TASK_SG_REPO_NAMES, function prefix (_investigation_ → _navprove_), JOBS_BASE prefix, banner text
+  - The `_run_single` function name must be unique per script and match the run_paired_configs call
+  - SOURCEGRAPH_REPO_NAME is set per-task by looking up TASK_SG_REPO_NAMES in the _run_single function
+---
