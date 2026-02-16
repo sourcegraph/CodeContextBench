@@ -137,3 +137,35 @@
   - This is harder than sec-reach-001 because agents must understand Envoy's architecture (two separate HTTP servers)
 ---
 
+## 2026-02-16 - US-006
+- Created sec-reach-003: Apache Kafka SCRAM authentication nonce validation reachability task
+- Task type: Reachability analysis in Java codebase (first Java security task)
+- Agent must trace call path from network input to SCRAM nonce validation and assess exploitability
+- Files created:
+  - benchmarks/ccb_security/sec-reach-003/task.toml (reachability, java, hard, 1200s)
+  - benchmarks/ccb_security/sec-reach-003/instruction.md (provides evaluateResponse function, asks for complete call chain from network socket)
+  - benchmarks/ccb_security/sec-reach-003/environment/Dockerfile (pins to pre-fix commit 0cd95bc2, uses openjdk:17-slim base)
+  - benchmarks/ccb_security/sec-reach-003/tests/ground_truth.json (6 findings, 3 file refs, 5-step causal chain, 4 negative checks)
+  - benchmarks/ccb_security/sec-reach-003/tests/test.sh (weighted checklist scorer)
+  - benchmarks/ccb_security/sec-reach-003/tests/expected_patches/README.md (placeholder - analysis-only task)
+- Files modified:
+  - configs/security_2config.sh (added sec-reach-003 to ALL_TASK_IDS and TASK_SG_REPO_NAMES with github.com/apache/kafka)
+  - configs/selected_benchmark_tasks.json (registered task with MCP benefit score 0.87, updated statistics)
+  - ralph-gapfill-security/prd.json (marked US-006 as passes: true)
+- **Learnings for future iterations:**
+  - CVE-2024-56128 is a SCRAM (RFC 5802) authentication nonce validation vulnerability
+  - Vulnerable code: evaluateResponse() in ScramSaslServer uses endsWith() instead of equals() to validate client nonce
+  - Fix commit: b385b38e56990a9d3e22f752422e8be812cf0d5d (December 20, 2024)
+  - Pre-fix commit: 0cd95bc2d82106ea9fb36061d8419f7fc9051d69 (parent of fix)
+  - IMPORTANT: The CVE advisory claims fix is in 3.7.2, 3.8.1, 3.9.0 but the fix ONLY exists in trunk/4.0 branch — has NOT been backported to those versions
+  - This is the first Java security task (language diversity from C/C++/Go)
+  - Attack path: SocketServer/Processor → SaslServerAuthenticator → ScramSaslServer.evaluateResponse() → nonce validation
+  - Exploitability: YES from network input, but ONLY when SCRAM is used without TLS (plaintext deployments)
+  - TLS mitigates the vulnerability by encrypting the SCRAM exchange (prevents plaintext interception)
+  - Ground truth includes 5-step causal chain covering network layer → SASL layer → SCRAM mechanism → state machine
+  - Negative checks prevent wrong conclusions: must NOT claim unreachable, must NOT blame consumers/producers, must NOT claim full auth bypass
+  - Dockerfile uses openjdk:17-slim base (first Java task, different from debian:bookworm-slim used for C tasks)
+  - Task registered in selected_benchmark_tasks.json with updated statistics (total_selected: 192, ccb_security: 6, java: 19)
+  - Preflight validation passed for all 6 security tasks
+---
+

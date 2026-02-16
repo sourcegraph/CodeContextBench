@@ -94,8 +94,8 @@
         "Task registered"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": "Kafka has had several deserialization and authentication-bypass CVEs. Choose one with clear call path from network handler to vulnerable code."
+      "passes": true,
+      "notes": "CVE-2024-56128: SCRAM authentication nonce validation vulnerability. Fix commit: b385b38e56990a9d3e22f752422e8be812cf0d5d. Pre-fix: 0cd95bc2d82106ea9fb36061d8419f7fc9051d69. Vulnerable file: clients/src/main/java/org/apache/kafka/common/security/scram/internals/ScramSaslServer.java. Vulnerable code: evaluateResponse() uses endsWith() instead of equals() for nonce validation. Exploitable from network input via SaslServerAuthenticator → ScramSaslServer path. Requires plaintext SCRAM (mitigated by TLS)."
     },
     {
       "id": "US-007",
