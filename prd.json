@@ -156,8 +156,8 @@
         "Update header ## Benchmarks (10) to ## Benchmarks (11)"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Already complete. CodeReview row exists in CLAUDE.md benchmarks table (line 52) with correct info: '3 | TS, C#, Mixed | AI code review: find & fix injected PR defects | Active'. Header already shows '13 total, 11 active'."
     },
     {
       "id": "US-012",

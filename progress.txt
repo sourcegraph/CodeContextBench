@@ -158,3 +158,13 @@
   - The TASK_SG_REPO_NAMES mapping had 7 tasks (not 3) — only the first 3 were using sg-benchmarks staging repos
   - bash -n is the syntax checker for bash scripts
 ---
+
+## 2026-02-16 - US-011
+- Verified CLAUDE.md benchmarks table already includes CodeReview row (line 52)
+- Header already shows "13 total, 11 active" which includes CodeReview
+- No changes needed — acceptance criteria already met
+- Files changed: prd.json (marking US-011 complete)
+- **Learnings for future iterations:**
+  - Some tasks in the PRD may already be complete from previous work — always check working tree first
+  - The benchmarks table was updated in an earlier commit (likely the scaffold commit or bulk infra commit)
+---
