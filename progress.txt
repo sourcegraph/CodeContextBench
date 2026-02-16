@@ -144,3 +144,17 @@
   - This is a recurring pattern that should be checked in all existing tasks (cr-ghost-001, cr-aspnetcore-001 likely have same issue)
   - The US-009 acceptance criteria were all met by the existing scaffold — only the Dockerfile COPY path fix was needed
 ---
+
+## 2026-02-16 - US-010
+- Updated TASK_SG_REPO_NAMES in configs/codereview_2config.sh with public GitHub repo mappings
+- Changed 3 entries from sg-benchmarks/* to public repos:
+  - cr-ghost-001: github.com/TryGhost/Ghost
+  - cr-aspnetcore-001: github.com/dotnet/aspnetcore
+  - cr-calcom-001: github.com/calcom/cal.com
+- Left other tasks (envoy, vscode, terraform, security) unchanged as they already point to public repos
+- Files changed: configs/codereview_2config.sh
+- **Learnings for future iterations:**
+  - PRD referenced "codereview_3config.sh" but the actual file is "codereview_2config.sh" (3 tasks, 2 configs: baseline + SG_full)
+  - The TASK_SG_REPO_NAMES mapping had 7 tasks (not 3) — only the first 3 were using sg-benchmarks staging repos
+  - bash -n is the syntax checker for bash scripts
+---
