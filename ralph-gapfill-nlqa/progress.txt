@@ -33,3 +33,26 @@
   - Use Sourcegraph keyword_search and go_to_definition for researching large C++ codebases — nls_search is good for conceptual queries
   - Dockerfile pattern: FROM ubuntu:22.04, git clone --filter=blob:none --no-checkout, git checkout <SHA>
 ---
+
+## 2026-02-16 - US-002
+- Created nlqa-arch-002: Istio Pilot xDS serving architecture Q&A task
+- Files created:
+  - benchmarks/ccb_nlqa/nlqa-arch-002/task.toml (go, hard, 1200s, istio/istio)
+  - benchmarks/ccb_nlqa/nlqa-arch-002/instruction.md (4 questions: config ingestion, internal model, xDS generation/dispatch, resource translation)
+  - benchmarks/ccb_nlqa/nlqa-arch-002/environment/Dockerfile (pinned to v1.24.3 SHA 44d0e58e)
+  - benchmarks/ccb_nlqa/nlqa-arch-002/tests/ground_truth.json (8 findings, 6 file refs, 2 causal chains, 2 negative checks)
+  - benchmarks/ccb_nlqa/nlqa-arch-002/tests/test.sh (copied from nlqa-arch-001)
+- Files modified:
+  - configs/nlqa_2config.sh (added nlqa-arch-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (added nlqa-arch-002 entry)
+- **Learnings for future iterations:**
+  - Istio v1.24.3 commit SHA: 44d0e58e49d0dc89e27fc4f8679c68132d46b887 (tag SHA: 295f53acbac89279afa3d73cbda61940385f0df1 is annotated, need to dereference)
+  - Key Istio Pilot packages: pilot/pkg/xds/ (DiscoveryServer, generators), pilot/pkg/model/ (PushContext, Service, IstioEndpoint), pilot/pkg/networking/core/ (ConfigGenerator, ClusterBuilder)
+  - DiscoveryServer is the central xDS server; ConfigUpdate → debounce → PushContext.InitContext → pushXds → generators
+  - Pluggable generators: CdsGenerator, EdsGenerator, LdsGenerator, RdsGenerator registered in Generators map, dispatched by findGenerator()
+  - ConfigGenerator interface defines BuildClusters/BuildListeners/BuildHTTPRoutes; implemented by ConfigGeneratorImpl
+  - PushContext is the per-push config snapshot with indexes for VirtualServices, DestinationRules, services, sidecars, etc.
+  - CRD client (crdclient.Client) implements ConfigStoreController, watches K8s CRDs via typed informers
+  - Mixer (removed in 1.8) and Galley (removed in 1.9) are NOT part of current Istio pipeline — good negative checks
+  - istio/istio is NOT indexed on this Sourcegraph instance — had to use web API and pre-existing knowledge
+---

@@ -3527,6 +3527,24 @@
       },
       "selection_rationale": "NL codebase Q&A: Envoy HTTP filter chain architecture requiring multi-hop cross-package tracing",
       "task_dir": "ccb_nlqa/nlqa-arch-001"
+    },
+    {
+      "task_id": "nlqa-arch-002",
+      "benchmark": "ccb_nlqa",
+      "sdlc_phase": "Architecture & Design",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "architecture_qa",
+      "repo": "istio/istio",
+      "mcp_benefit_score": 0.89,
+      "mcp_breakdown": {
+        "context_complexity": 0.90,
+        "cross_file_deps": 0.90,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.90
+      },
+      "selection_rationale": "NL codebase Q&A: Istio Pilot xDS serving architecture requiring cross-package tracing through config ingestion, model translation, and xDS generation",
+      "task_dir": "ccb_nlqa/nlqa-arch-002"
     }
   ]
 }

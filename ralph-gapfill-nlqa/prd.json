@@ -32,7 +32,7 @@
         "Task registered in configs/selected_benchmark_tasks.json and nlqa_2config.sh"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "Key Istio packages: pilot/pkg/xds/, pilot/pkg/model/, pilot/pkg/networking/. Use Sourcegraph to find DiscoveryServer, ConfigController."
     },
     {
