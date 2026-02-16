@@ -3521,9 +3521,9 @@
       "mcp_benefit_score": 0.91,
       "mcp_breakdown": {
         "context_complexity": 0.95,
-        "cross_file_deps": 0.90,
+        "cross_file_deps": 0.9,
         "semantic_search_potential": 0.85,
-        "task_category_weight": 0.90
+        "task_category_weight": 0.9
       },
       "selection_rationale": "NL codebase Q&A: Envoy HTTP filter chain architecture requiring multi-hop cross-package tracing",
       "task_dir": "ccb_nlqa/nlqa-arch-001"
@@ -3538,10 +3538,10 @@
       "repo": "istio/istio",
       "mcp_benefit_score": 0.89,
       "mcp_breakdown": {
-        "context_complexity": 0.90,
-        "cross_file_deps": 0.90,
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
         "semantic_search_potential": 0.85,
-        "task_category_weight": 0.90
+        "task_category_weight": 0.9
       },
       "selection_rationale": "NL codebase Q&A: Istio Pilot xDS serving architecture requiring cross-package tracing through config ingestion, model translation, and xDS generation",
       "task_dir": "ccb_nlqa/nlqa-arch-002"
@@ -3556,10 +3556,10 @@
       "repo": "hashicorp/terraform",
       "mcp_benefit_score": 0.88,
       "mcp_breakdown": {
-        "context_complexity": 0.90,
+        "context_complexity": 0.9,
         "cross_file_deps": 0.85,
         "semantic_search_potential": 0.85,
-        "task_category_weight": 0.90
+        "task_category_weight": 0.9
       },
       "selection_rationale": "NL codebase Q&A: Terraform plan/apply pipeline architecture requiring tracing through CLI command, graph builder, provider resolution, and per-resource diff computation",
       "task_dir": "ccb_nlqa/nlqa-arch-003"
@@ -3572,12 +3572,12 @@
       "difficulty": "hard",
       "category": "dataflow_qa",
       "repo": "apache/kafka",
-      "mcp_benefit_score": 0.90,
+      "mcp_benefit_score": 0.9,
       "mcp_breakdown": {
         "context_complexity": 0.92,
-        "cross_file_deps": 0.90,
+        "cross_file_deps": 0.9,
         "semantic_search_potential": 0.88,
-        "task_category_weight": 0.90
+        "task_category_weight": 0.9
       },
       "selection_rationale": "NL codebase Q&A: Kafka message lifecycle data flow tracing from producer batching through broker replication to consumer fetch, requiring multi-hop reasoning across producer/broker/consumer packages",
       "task_dir": "ccb_nlqa/nlqa-flow-001"
@@ -3592,13 +3592,31 @@
       "repo": "envoyproxy/envoy",
       "mcp_benefit_score": 0.89,
       "mcp_breakdown": {
-        "context_complexity": 0.90,
-        "cross_file_deps": 0.90,
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
         "semantic_search_potential": 0.85,
-        "task_category_weight": 0.90
+        "task_category_weight": 0.9
       },
       "selection_rationale": "NL codebase Q&A: Envoy request routing data flow tracing from listener accept through filter chains to upstream connection, requiring cross-package tracing through network/HTTP layers",
       "task_dir": "ccb_nlqa/nlqa-flow-002"
+    },
+    {
+      "task_id": "nlqa-flow-003",
+      "benchmark": "ccb_nlqa",
+      "sdlc_phase": "Architecture & Design",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "dataflow_qa",
+      "repo": "argoproj/argo-cd",
+      "mcp_benefit_score": 0.88,
+      "mcp_breakdown": {
+        "context_complexity": 0.88,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "NL codebase Q&A: Argo CD sync reconciliation data flow from Git fetch through manifest generation and diff computation to cluster synchronization, requiring cross-package tracing through controller/reposerver/util layers",
+      "task_dir": "ccb_nlqa/nlqa-flow-003"
     }
   ]
 }

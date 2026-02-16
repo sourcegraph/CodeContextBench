@@ -75,6 +75,7 @@ ALL_TASK_IDS=(
     nlqa-arch-003
     nlqa-flow-001
     nlqa-flow-002
+    nlqa-flow-003
 )
 
 # Parse arguments
@@ -135,6 +136,7 @@ declare -A TASK_SG_REPO_NAMES=(
     [nlqa-arch-003]="github.com/hashicorp/terraform"
     [nlqa-flow-001]="github.com/apache/kafka"
     [nlqa-flow-002]="github.com/envoyproxy/envoy"
+    [nlqa-flow-003]="github.com/argoproj/argo-cd"
 )
 
 # Derive short model name for run directory
