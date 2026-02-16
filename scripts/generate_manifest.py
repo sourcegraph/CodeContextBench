@@ -114,6 +114,7 @@ def scan_config_dir(config_path: Path) -> dict[str, dict]:
     """Scan a config directory (e.g., baseline/) for task-level results.
 
     Returns dict mapping task_name -> {result_data, trial_dir, timestamp, model}.
+    Only returns the LATEST result per task (for backward compat).
     """
     tasks = {}
     if not config_path.is_dir():
@@ -166,6 +167,59 @@ def scan_config_dir(config_path: Path) -> dict[str, dict]:
                     except (json.JSONDecodeError, KeyError):
                         pass
     return tasks
+
+
+def scan_config_dir_all_runs(config_path: Path) -> dict[str, list[dict]]:
+    """Scan a config directory and return ALL valid runs per task (not just latest).
+
+    Returns dict mapping task_name -> [list of task_entries], one per run.
+    Used for run_history / variance analysis.
+    """
+    tasks: dict[str, list[dict]] = defaultdict(list)
+    if not config_path.is_dir():
+        return dict(tasks)
+
+    for batch_dir in sorted(config_path.iterdir()):
+        if not batch_dir.is_dir():
+            continue
+        if "__" in batch_dir.name and not batch_dir.name.startswith("20"):
+            result_file = batch_dir / "result.json"
+            if result_file.exists():
+                try:
+                    data = json.loads(result_file.read_text())
+                    task_name = data.get("task_name", batch_dir.name.rsplit("__", 1)[0])
+                    task_name = _normalize_task_name(task_name)
+                    model = _extract_model_from_config(batch_dir)
+                    tasks[task_name].append({
+                        "data": data,
+                        "trial_dir": batch_dir,
+                        "batch_dir": config_path,
+                        "model": model,
+                    })
+                except (json.JSONDecodeError, KeyError):
+                    pass
+        else:
+            for trial_dir in sorted(batch_dir.iterdir()):
+                if not trial_dir.is_dir():
+                    continue
+                if trial_dir.name.startswith("20"):
+                    continue
+                result_file = trial_dir / "result.json"
+                if result_file.exists():
+                    try:
+                        data = json.loads(result_file.read_text())
+                        task_name = data.get("task_name", trial_dir.name.rsplit("__", 1)[0])
+                        task_name = _normalize_task_name(task_name)
+                        model = _extract_model_from_config(trial_dir)
+                        tasks[task_name].append({
+                            "data": data,
+                            "trial_dir": trial_dir,
+                            "batch_dir": batch_dir,
+                            "model": model,
+                        })
+                    except (json.JSONDecodeError, KeyError):
+                        pass
+    return dict(tasks)
 
 
 def extract_task_info(task_entry: dict) -> dict:
@@ -303,6 +357,124 @@ def load_selected_tasks(path: Path) -> dict[str, set[str]]:
         return dict(result)
     except (json.JSONDecodeError, OSError):
         return {}
+
+
+def _is_valid_run(entry: dict) -> bool:
+    """Check if a run entry represents a valid (non-errored) execution."""
+    data = entry["data"]
+    exception = data.get("exception_info")
+    if exception is not None:
+        return False
+    if not _has_agent_output(data):
+        return False
+    return True
+
+
+def _is_from_paired_batch(entry: dict) -> bool:
+    """Check if a run entry comes from a paired_rerun batch."""
+    batch_dir = entry.get("batch_dir")
+    if batch_dir is None:
+        return False
+    # Walk up to find the run-level dir (parent of config dir)
+    # batch_dir could be a timestamp subdir or the config dir itself
+    path = Path(batch_dir)
+    for parent in [path, path.parent, path.parent.parent]:
+        if "paired_rerun" in parent.name:
+            return True
+    return False
+
+
+def build_run_history(
+    selected_tasks: dict[str, set[str]] | None = None,
+) -> dict[str, dict[str, dict[str, list[dict]]]]:
+    """Scan all runs and build complete run history per (suite, config, task).
+
+    Returns nested dict: suite -> config -> task_name -> [list of run summaries].
+    Each run summary contains: started_at, reward, status, is_paired, run_dir.
+    Only includes valid runs (agent actually executed, no infra errors).
+    """
+    # suite -> config -> task_name -> [entries]
+    history: dict[str, dict[str, dict[str, list[dict]]]] = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(list))
+    )
+
+    for run_dir in sorted(RUNS_DIR.iterdir()):
+        if not run_dir.is_dir() or should_skip(run_dir.name):
+            continue
+        suite = detect_suite(run_dir.name)
+        if suite is None:
+            continue
+
+        for config in CONFIGS:
+            config_path = run_dir / config
+            if not config_path.exists():
+                continue
+
+            all_runs = scan_config_dir_all_runs(config_path)
+            for task_name, entries in all_runs.items():
+                # Filter to selected tasks if provided
+                if selected_tasks:
+                    allowed = selected_tasks.get(suite)
+                    if allowed is not None and _normalize_task_name(task_name) not in allowed:
+                        continue
+
+                for entry in entries:
+                    if not _is_valid_run(entry):
+                        continue
+                    data = entry["data"]
+                    verifier = data.get("verifier_result") or {}
+                    rewards = verifier.get("rewards") or {}
+                    reward = rewards.get("reward")
+
+                    history[suite][config][task_name].append({
+                        "started_at": data.get("started_at", ""),
+                        "reward": float(reward) if reward is not None else 0.0,
+                        "status": "passed" if reward and reward > 0 else "failed",
+                        "is_paired": _is_from_paired_batch(entry),
+                        "run_dir": run_dir.name,
+                    })
+
+    # Sort each task's runs by started_at
+    for suite in history:
+        for config in history[suite]:
+            for task_name in history[suite][config]:
+                history[suite][config][task_name].sort(
+                    key=lambda r: r["started_at"]
+                )
+
+    return dict(history)
+
+
+def build_run_history_section(history: dict) -> dict:
+    """Build the run_history section for MANIFEST from full history data.
+
+    For each (suite, config, task), stores:
+    - n_runs: total valid runs
+    - mean_reward, std_reward: statistics across runs
+    - runs: list of {started_at, reward, status, is_paired, run_dir}
+    """
+    import statistics
+
+    section = {}
+    for suite in sorted(history):
+        for config in sorted(history[suite]):
+            key = f"{suite}/{config}"
+            tasks = {}
+            for task_name in sorted(history[suite][config]):
+                runs = history[suite][config][task_name]
+                rewards = [r["reward"] for r in runs]
+                n = len(rewards)
+                mean_r = round(statistics.mean(rewards), 4) if n > 0 else 0.0
+                std_r = round(statistics.stdev(rewards), 4) if n > 1 else 0.0
+                tasks[task_name] = {
+                    "n_runs": n,
+                    "mean_reward": mean_r,
+                    "std_reward": std_r,
+                    "runs": runs,
+                }
+            if tasks:
+                section[key] = tasks
+    return section
 
 
 def main():
@@ -483,12 +655,24 @@ def main():
         runs[manifest_key] = run_entry
         total_tasks += task_count
 
+    # Build run history (all valid runs per task, for variance analysis)
+    history = build_run_history(selected_tasks or None)
+    run_history_section = build_run_history_section(history)
+
+    # Count tasks with multiple runs
+    multi_run_count = 0
+    for key_tasks in run_history_section.values():
+        for task_data in key_tasks.values():
+            if task_data["n_runs"] > 1:
+                multi_run_count += 1
+
     manifest = {
         "description": "Canonical run manifest for CodeContextBench evaluation",
         "generated": datetime.now(timezone.utc).isoformat(),
         "total_tasks": total_tasks,
         "total_runs": len(runs),
         "runs": runs,
+        "run_history": run_history_section,
     }
 
     output_path = RUNS_DIR / "MANIFEST.json"
@@ -498,6 +682,8 @@ def main():
     print(f"MANIFEST generated: {output_path}")
     print(f"  Total runs: {len(runs)}")
     print(f"  Total tasks: {total_tasks}")
+    if multi_run_count:
+        print(f"  Tasks with multiple valid runs: {multi_run_count}")
     print()
     for key, run in runs.items():
         print(f"  {key:45s}  tasks={run['task_count']:>3d}  passed={run['passed']:>3d}  failed={run['failed']:>3d}  errored={run['errored']:>3d}  mean_reward={run['mean_reward']:.3f}")

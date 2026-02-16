@@ -359,6 +359,156 @@ def _format_stats_section(stats: dict) -> str:
     return "\n".join(lines)
 
 
+def gather_paired_analysis(suite_filter: str | None = None) -> dict:
+    """Build a paired analysis using all valid runs, clipped to min(N_bl, N_sg) per task.
+
+    Loads run_history from MANIFEST and selects the optimal set of paired
+    runs for comparative analysis. Prefers paired_rerun batches when available.
+
+    Returns structured analysis with per-task variance and paired comparisons.
+    """
+    manifest_path = RUNS_DIR / "MANIFEST.json"
+    if not manifest_path.is_file():
+        return {"error": "MANIFEST.json not found. Run generate_manifest.py first."}
+
+    manifest = json.loads(manifest_path.read_text())
+    run_history = manifest.get("run_history", {})
+
+    if not run_history:
+        return {"error": "No run_history in MANIFEST. Regenerate with latest generate_manifest.py."}
+
+    # Collect paired data per (suite, task)
+    paired_tasks = []
+    total_pairs = 0
+
+    # Group run_history by suite
+    suite_configs: dict[str, dict[str, dict]] = defaultdict(dict)
+    for key, tasks in run_history.items():
+        suite, config = key.split("/", 1)
+        suite_configs[suite][config] = tasks
+
+    for suite, configs in sorted(suite_configs.items()):
+        if suite_filter and suite != suite_filter:
+            continue
+
+        bl_tasks = configs.get("baseline", {})
+        sg_tasks = configs.get("sourcegraph_full", {})
+
+        # Find tasks present in both configs
+        common_tasks = set(bl_tasks.keys()) & set(sg_tasks.keys())
+
+        for task_name in sorted(common_tasks):
+            bl_runs = bl_tasks[task_name]["runs"]
+            sg_runs = sg_tasks[task_name]["runs"]
+
+            # Select paired runs: min(N_bl, N_sg), preferring paired batches
+            n_pairs = min(len(bl_runs), len(sg_runs))
+            if n_pairs == 0:
+                continue
+
+            # Sort: paired batches first, then by started_at (latest first)
+            def _sort_key(r):
+                return (-int(r.get("is_paired", False)), r.get("started_at", ""))
+
+            bl_sorted = sorted(bl_runs, key=_sort_key, reverse=True)[:n_pairs]
+            sg_sorted = sorted(sg_runs, key=_sort_key, reverse=True)[:n_pairs]
+
+            bl_rewards = [r["reward"] for r in bl_sorted]
+            sg_rewards = [r["reward"] for r in sg_sorted]
+
+            import statistics
+            bl_mean = round(statistics.mean(bl_rewards), 4)
+            sg_mean = round(statistics.mean(sg_rewards), 4)
+            delta = round(sg_mean - bl_mean, 4)
+
+            entry = {
+                "suite": suite,
+                "task_name": task_name,
+                "n_pairs": n_pairs,
+                "n_baseline_total": len(bl_runs),
+                "n_sg_full_total": len(sg_runs),
+                "baseline_mean_reward": bl_mean,
+                "sg_full_mean_reward": sg_mean,
+                "delta": delta,
+                "baseline_rewards": bl_rewards,
+                "sg_full_rewards": sg_rewards,
+            }
+
+            if n_pairs > 1:
+                entry["baseline_std"] = round(statistics.stdev(bl_rewards), 4)
+                entry["sg_full_std"] = round(statistics.stdev(sg_rewards), 4)
+
+            # Flag flaky tasks (variance > 0 in either config)
+            entry["flaky"] = len(set(bl_rewards)) > 1 or len(set(sg_rewards)) > 1
+
+            paired_tasks.append(entry)
+            total_pairs += n_pairs
+
+    # Aggregate stats
+    all_bl = [t["baseline_mean_reward"] for t in paired_tasks]
+    all_sg = [t["sg_full_mean_reward"] for t in paired_tasks]
+    all_deltas = [t["delta"] for t in paired_tasks]
+
+    import statistics
+    summary = {
+        "total_tasks": len(paired_tasks),
+        "total_pairs_used": total_pairs,
+        "flaky_tasks": sum(1 for t in paired_tasks if t["flaky"]),
+        "tasks_with_multiple_runs": sum(1 for t in paired_tasks if t["n_pairs"] > 1),
+    }
+    if all_bl:
+        summary["baseline_mean"] = round(statistics.mean(all_bl), 4)
+        summary["sg_full_mean"] = round(statistics.mean(all_sg), 4)
+        summary["mean_delta"] = round(statistics.mean(all_deltas), 4)
+        if len(all_deltas) > 1:
+            summary["std_delta"] = round(statistics.stdev(all_deltas), 4)
+
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "analysis_type": "paired_min_runs",
+        "description": "Comparative analysis using min(N_baseline, N_sg_full) valid runs per task, preferring paired batches",
+        "summary": summary,
+        "tasks": paired_tasks,
+    }
+
+
+def format_paired_analysis_table(data: dict) -> str:
+    """Format paired analysis as ASCII table."""
+    lines = []
+    lines.append(f"Paired Analysis Report  (generated: {data['generated_at']})")
+    lines.append(f"Method: {data['description']}")
+    lines.append("")
+
+    s = data["summary"]
+    lines.append(f"  Tasks compared:       {s['total_tasks']}")
+    lines.append(f"  Total run pairs used: {s['total_pairs_used']}")
+    lines.append(f"  Tasks w/ multi-runs:  {s['tasks_with_multiple_runs']}")
+    lines.append(f"  Flaky tasks:          {s['flaky_tasks']}")
+    if "baseline_mean" in s:
+        lines.append(f"  Baseline mean reward: {s['baseline_mean']:.4f}")
+        lines.append(f"  SG_full mean reward:  {s['sg_full_mean']:.4f}")
+        lines.append(f"  Mean delta:           {s['mean_delta']:+.4f}")
+        if "std_delta" in s:
+            lines.append(f"  Std delta:            {s['std_delta']:.4f}")
+    lines.append("")
+
+    # Per-task detail
+    header = f"  {'Suite':20s}  {'Task':35s}  {'N':>3s}  {'BL':>6s}  {'SG':>6s}  {'Delta':>7s}  {'Flaky':>5s}"
+    lines.append(header)
+    lines.append("  " + "-" * (len(header) - 2))
+
+    for t in data["tasks"]:
+        flaky_mark = "  *" if t["flaky"] else ""
+        row = (
+            f"  {t['suite']:20s}  {t['task_name'][:35]:35s}  "
+            f"{t['n_pairs']:>3d}  {t['baseline_mean_reward']:>6.3f}  "
+            f"{t['sg_full_mean_reward']:>6.3f}  {t['delta']:>+7.3f}{flaky_mark}"
+        )
+        lines.append(row)
+
+    return "\n".join(lines)
+
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Compare benchmark results across agent configurations."
@@ -387,11 +537,28 @@ def parse_args():
         "--baseline-labels", action="store_true",
         help="Use enterprise-friendly tier labels in table output (baseline -> 'IDE-native', SG_full -> 'Context infra')",
     )
+    parser.add_argument(
+        "--paired-analysis", action="store_true",
+        help="Use paired analysis: min(N_baseline, N_sg_full) runs per task, preferring paired batches. "
+             "Reads run_history from MANIFEST.json.",
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+
+    if args.paired_analysis:
+        data = gather_paired_analysis(suite_filter=args.suite)
+        if "error" in data:
+            print(f"ERROR: {data['error']}", file=sys.stderr)
+            sys.exit(1)
+        if args.format == "table":
+            print(format_paired_analysis_table(data))
+        else:
+            print(json.dumps(data, indent=2))
+        return
+
     data = gather_comparison(
         suite_filter=args.suite,
         timeout_hours=args.timeout_hours,
