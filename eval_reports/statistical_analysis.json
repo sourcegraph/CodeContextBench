@@ -1,0 +1,42 @@
+{
+  "n": 132,
+  "baseline_mean": 0.6465348484848484,
+  "baseline_std": 0.4044592441153479,
+  "baseline_median": 0.8778,
+  "treatment_mean": 0.6462386363636363,
+  "treatment_std": 0.39502661783882326,
+  "treatment_median": 0.775,
+  "diff_mean": -0.0002962121212121239,
+  "t_test": {
+    "t_stat": -0.006,
+    "p_value": 0.995197,
+    "df": 261.9,
+    "n_a": 132,
+    "n_b": 132,
+    "is_significant": false,
+    "interpretation": "Treatment is not significantly lower than baseline (t=-0.006, p=0.9952, df=261.9)"
+  },
+  "effect_size": {
+    "d": -0.0007,
+    "magnitude": "negligible",
+    "ci_lower": -0.242,
+    "ci_upper": 0.2405
+  },
+  "bootstrap_ci": {
+    "estimate": -0.000296,
+    "ci_lower": -0.040445,
+    "ci_upper": 0.040178
+  },
+  "mcnemar": {
+    "chi2": 0.125,
+    "p_value": 0.723674,
+    "b": 5,
+    "c": 3,
+    "n": 132,
+    "is_significant": false,
+    "interpretation": "McNemar: treatment improved (b=5, c=3, chi2=0.125, p=0.7237)"
+  },
+  "improved": 13,
+  "degraded": 20,
+  "neutral": 99
+}
