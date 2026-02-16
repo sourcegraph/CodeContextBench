@@ -70,6 +70,14 @@ TASK_FILTER=""
 
 # All onboarding task IDs — populated by task-creation Ralphs
 ALL_TASK_IDS=(
+    "onboard-orient-001"
+    "onboard-orient-002"
+    "onboard-orient-003"
+    "onboard-handoff-001"
+    "onboard-handoff-002"
+    "onboard-handoff-003"
+    "onboard-workflow-001"
+    "onboard-workflow-002"
 )
 
 # Parse arguments
@@ -125,6 +133,14 @@ setup_dual_accounts
 # Sourcegraph repo name mapping for onboarding tasks
 # Populated by task-creation Ralphs alongside ALL_TASK_IDS
 declare -A TASK_SG_REPO_NAMES=(
+    ["onboard-orient-001"]="github.com/cilium/cilium"
+    ["onboard-orient-002"]="github.com/argoproj/argo-cd"
+    ["onboard-orient-003"]="github.com/apache/kafka"
+    ["onboard-handoff-001"]="github.com/envoyproxy/envoy"
+    ["onboard-handoff-002"]="github.com/hashicorp/terraform"
+    ["onboard-handoff-003"]="github.com/cilium/cilium"
+    ["onboard-workflow-001"]="github.com/envoyproxy/envoy"
+    ["onboard-workflow-002"]="github.com/apache/kafka"
 )
 
 # Derive short model name for run directory

@@ -5,7 +5,7 @@
     "generated_by": "scripts/select_benchmark_tasks.py",
     "random_seed": 42,
     "total_available": 835,
-    "total_selected": 197
+    "total_selected": 198
   },
   "methodology": {
     "description": "Tasks selected via stratified sampling across 10 benchmarks, covering all SDLC phases. Each task scored for MCP benefit using weighted combination of context complexity, cross-file dependencies, semantic search potential, and task category affinity.",
@@ -34,7 +34,7 @@
       "ccb_tac": "all (8)",
       "ccb_dependeval": "all (32, 4 langs x 2 types x 4 instances)",
       "ccb_sweperf": "all (3)",
-      "ccb_crossrepo": "all (7)",
+      "ccb_crossrepo": "all (5)",
       "ccb_dibench": "8 (2 per language: python, rust, javascript, csharp)",
       "ccb_linuxflbench": "5 (representative tasks across kernel subsystems)",
       "ccb_investigation": "all (4, investigation-only: debug, impact, migration, regression)",
@@ -68,7 +68,7 @@
       "ccb_swebenchpro": 36,
       "ccb_sweperf": 3,
       "ccb_tac": 8,
-      "ccb_crossrepo": 8,
+      "ccb_crossrepo": 5,
       "ccb_dibench": 8,
       "ccb_linuxflbench": 5,
       "ccb_investigation": 4,
@@ -1837,132 +1837,6 @@
       "task_dir": "ccb_crossrepo/simple_test_01"
     },
     {
-      "task_id": "crossrepo-sym-001",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go,cpp",
-      "difficulty": "hard",
-      "category": "symbol_resolution",
-      "repo": "envoyproxy/envoy,grpc/grpc-go",
-      "mcp_benefit_score": 0.94,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-sym-001"
-    },
-    {
-      "task_id": "crossrepo-sym-002",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "symbol_resolution",
-      "repo": "kubernetes/kubernetes,kubernetes/autoscaler",
-      "mcp_benefit_score": 0.94,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-sym-002"
-    },
-    {
-      "task_id": "crossrepo-sym-003",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "symbol_resolution",
-      "repo": "hashicorp/terraform,hashicorp/terraform-provider-aws",
-      "mcp_benefit_score": 0.94,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-sym-003"
-    },
-    {
-      "task_id": "crossrepo-impl-001",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "symbol_resolution",
-      "repo": "kubernetes/api,kubernetes/apimachinery",
-      "mcp_benefit_score": 0.94,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-impl-001"
-    },
-    {
-      "task_id": "crossrepo-impl-002",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "symbol_resolution",
-      "repo": "envoyproxy/go-control-plane,istio/istio,emissary-ingress/emissary",
-      "mcp_benefit_score": 0.94,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-impl-002"
-    },
-    {
-      "task_id": "crossrepo-chain-001",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "very_hard",
-      "category": "symbol_resolution",
-      "repo": "kubernetes/kubernetes,kubernetes/api,kubernetes/apimachinery",
-      "mcp_benefit_score": 0.96,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 1.0,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.95
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-chain-001"
-    },
-    {
-      "task_id": "crossrepo-chain-002",
-      "benchmark": "ccb_crossrepo",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go,protobuf",
-      "difficulty": "very_hard",
-      "category": "symbol_resolution",
-      "repo": "istio/istio,envoyproxy/go-control-plane,envoyproxy/data-plane-api",
-      "mcp_benefit_score": 0.96,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 1.0,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.95
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_crossrepo/crossrepo-chain-002"
-    },
-    {
       "task_id": "ccb_dibench-python-inducer-cgen",
       "benchmark": "ccb_dibench",
       "sdlc_phase": "Implementation (feature)",
@@ -2113,7 +1987,7 @@
       "language": "javascript",
       "difficulty": "hard",
       "category": "code-review",
-      "repo": "TryGhost/Ghost",
+      "repo": "agentic-review-benchmarks/benchmark-pr-mapping",
       "mcp_benefit_score": 0.82,
       "mcp_breakdown": {
         "context_complexity": 0.85,
@@ -3093,7 +2967,7 @@
         "semantic_search_potential": 0.8,
         "task_category_weight": 0.8
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Shared storage interface pattern \u2014 go_to_definition and find_references natural.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Shared storage interface pattern — go_to_definition and find_references natural.",
       "task_dir": "ccb_enterprise/multi-team-ownership-002"
     },
     {
@@ -3111,7 +2985,7 @@
         "semantic_search_potential": 0.85,
         "task_category_weight": 0.75
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Legacy encoding chain with no type hints \u2014 MCP nls_search finds functions by behavior.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Legacy encoding chain with no type hints — MCP nls_search finds functions by behavior.",
       "task_dir": "ccb_enterprise/legacy-dependency-001"
     },
     {
@@ -3129,7 +3003,7 @@
         "semantic_search_potential": 0.85,
         "task_category_weight": 0.85
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Cross-language proto+Go change \u2014 MCP searches across .proto and .go files.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Cross-language proto+Go change — MCP searches across .proto and .go files.",
       "task_dir": "ccb_enterprise/polyglot-ecosystem-001"
     },
     {
@@ -3147,7 +3021,7 @@
         "semantic_search_potential": 0.85,
         "task_category_weight": 0.85
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Function signature propagation across 10 call sites \u2014 find_references gives instant complete list.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Function signature propagation across 10 call sites — find_references gives instant complete list.",
       "task_dir": "ccb_enterprise/dep-refactor-001"
     },
     {
@@ -3165,7 +3039,7 @@
         "semantic_search_potential": 0.9,
         "task_category_weight": 0.9
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Interface method addition \u2014 find_references locates all concrete implementations instantly.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Interface method addition — find_references locates all concrete implementations instantly.",
       "task_dir": "ccb_enterprise/dep-refactor-002"
     },
     {
@@ -3183,7 +3057,7 @@
         "semantic_search_potential": 0.8,
         "task_category_weight": 0.85
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Transitive dependency tracing \u2014 go_to_definition chains through imports faster than manual file reads.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Transitive dependency tracing — go_to_definition chains through imports faster than manual file reads.",
       "task_dir": "ccb_enterprise/dep-discovery-001"
     },
     {
@@ -3201,7 +3075,7 @@
         "semantic_search_potential": 0.9,
         "task_category_weight": 0.9
       },
-      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Impact analysis \u2014 find_references on get_list_filter gives immediate comprehensive file list.",
+      "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Impact analysis — find_references on get_list_filter gives immediate comprehensive file list.",
       "task_dir": "ccb_enterprise/dep-impact-001"
     },
     {
@@ -3635,6 +3509,150 @@
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
       "task_dir": "ccb_largerepo/big-code-strata-refac-001"
+    },
+    {
+      "task_id": "onboard-orient-001",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "codebase_orientation",
+      "repo": "cilium/cilium",
+      "mcp_benefit_score": 0.92,
+      "mcp_breakdown": {
+        "context_complexity": 0.95,
+        "cross_file_deps": 0.85,
+        "semantic_search_potential": 0.95,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Onboarding orientation task — agent must explore large unfamiliar codebase, high MCP benefit from code search and navigation",
+      "task_dir": "ccb_onboarding/onboard-orient-001"
+    },
+    {
+      "task_id": "onboard-orient-002",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "codebase_orientation",
+      "repo": "argoproj/argo-cd",
+      "mcp_benefit_score": 0.91,
+      "mcp_breakdown": {
+        "context_complexity": 0.93,
+        "cross_file_deps": 0.88,
+        "semantic_search_potential": 0.92,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Onboarding orientation task for multi-binary architecture — agent must understand component boundaries and interactions, high MCP benefit from navigation",
+      "task_dir": "ccb_onboarding/onboard-orient-002"
+    },
+    {
+      "task_id": "onboard-orient-003",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "java",
+      "difficulty": "hard",
+      "category": "codebase_orientation",
+      "repo": "apache/kafka",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.96,
+        "cross_file_deps": 0.87,
+        "semantic_search_potential": 0.91,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Onboarding orientation task for complex multi-module Gradle project — agent must understand build system, module organization, and Scala/Java boundary, high MCP benefit from code search",
+      "task_dir": "ccb_onboarding/onboard-orient-003"
+    },
+    {
+      "task_id": "onboard-handoff-001",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "team_handoff",
+      "repo": "envoyproxy/envoy",
+      "mcp_benefit_score": 0.88,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.8,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.85
+      },
+      "selection_rationale": "Team handoff simulation for Envoy ext_authz filter — agent must produce handoff doc covering purpose, dependencies, key files, failure modes, testing, debugging. High MCP benefit from find_references for downstream discovery.",
+      "task_dir": "ccb_onboarding/onboard-handoff-001"
+    },
+    {
+      "task_id": "onboard-handoff-002",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "team_handoff",
+      "repo": "hashicorp/terraform",
+      "mcp_benefit_score": 0.87,
+      "mcp_breakdown": {
+        "context_complexity": 0.85,
+        "cross_file_deps": 0.85,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.85
+      },
+      "selection_rationale": "Team handoff simulation for Terraform state backend subsystem — agent must produce handoff doc covering purpose, backend types, locking mechanism, failure modes, extension points. High MCP benefit from list_files for structure discovery and nls_search for interface implementations.",
+      "task_dir": "ccb_onboarding/onboard-handoff-002"
+    },
+    {
+      "task_id": "onboard-handoff-003",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "team_handoff",
+      "repo": "cilium/cilium",
+      "mcp_benefit_score": 0.91,
+      "mcp_breakdown": {
+        "context_complexity": 0.95,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.8
+      },
+      "selection_rationale": "Team handoff simulation for Cilium eBPF datapath subsystem — agent must produce handoff doc covering eBPF loader, policy enforcement, monitoring, debugging. Very high MCP benefit due to complex Go+C boundary, multiple eBPF programs, and deep kernel integration.",
+      "task_dir": "ccb_onboarding/onboard-handoff-003"
+    },
+    {
+      "task_id": "onboard-workflow-001",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "workflow_discovery",
+      "repo": "envoyproxy/envoy",
+      "mcp_benefit_score": 0.73,
+      "mcp_breakdown": {
+        "context_complexity": 0.8,
+        "cross_file_deps": 0.6,
+        "semantic_search_potential": 0.75,
+        "task_category_weight": 0.8
+      },
+      "selection_rationale": "Workflow discovery for Envoy contributor process — agent must produce contributor guide covering Bazel build system, test framework, CI pipeline (GitHub Actions + Azure Pipelines), code review process. High MCP benefit from nls_search for finding CONTRIBUTING.md and CI configs, list_files for discovering test structure.",
+      "task_dir": "ccb_onboarding/onboard-workflow-001"
+    },
+    {
+      "task_id": "onboard-workflow-002",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "java",
+      "difficulty": "hard",
+      "category": "workflow_discovery",
+      "repo": "apache/kafka",
+      "mcp_benefit_score": 0.72,
+      "mcp_breakdown": {
+        "context_complexity": 0.8,
+        "cross_file_deps": 0.65,
+        "semantic_search_potential": 0.7,
+        "task_category_weight": 0.8
+      },
+      "selection_rationale": "Workflow discovery for Kafka contributor process — agent must produce contributor guide covering Gradle build system, test framework, CI pipeline (Jenkins + GitHub Actions), JIRA workflow, code review process. High MCP benefit from nls_search for finding CONTRIBUTING.md and build configs, list_files for discovering multi-module structure.",
+      "task_dir": "ccb_onboarding/onboard-workflow-002"
     }
   ]
 }
