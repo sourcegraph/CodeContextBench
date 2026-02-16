@@ -125,3 +125,26 @@
   - Used Terraform v1.9.0 stable release for mature backend system
   - MCP benefit: list_files for discovering backend implementations, nls_search for finding interface definitions, read_file for understanding patterns
 ---
+## 2026-02-16 - US-006
+- Created onboard-handoff-003: Cilium eBPF datapath subsystem team handoff task
+- Files created:
+  - benchmarks/ccb_onboarding/onboard-handoff-003/task.toml (category=team_handoff, language=go, difficulty=hard)
+  - benchmarks/ccb_onboarding/onboard-handoff-003/instruction.md (handoff scenario with 7 sections: purpose, dependencies, key files, failure modes, testing, debugging, adding new hook)
+  - benchmarks/ccb_onboarding/onboard-handoff-003/environment/Dockerfile (clone cilium/cilium@v1.16.5)
+  - benchmarks/ccb_onboarding/onboard-handoff-003/tests/test.sh (weighted checklist scorer, reused from handoff-001/002)
+  - benchmarks/ccb_onboarding/onboard-handoff-003/tests/ground_truth.json (10 required_findings, 8 file_refs, 4 causal_chains, 2 negative checks)
+- Files modified:
+  - configs/selected_benchmark_tasks.json (added task entry, total_selected: 196)
+  - configs/onboarding_2config.sh (added task ID and SG repo mapping)
+- **Learnings for future iterations:**
+  - Cilium eBPF datapath spans both Go (loader, orchestration) and C (eBPF programs) — complex boundary
+  - Key directories: pkg/datapath/loader/ (Go loader), bpf/ (C eBPF programs), pkg/maps/ (eBPF map management)
+  - Cilium uses multiple eBPF programs: bpf_host.c (host networking), bpf_lxc.c (container networking), bpf_overlay.c (overlay networking), etc.
+  - eBPF verifier failures are a critical failure mode — agents must understand kernel compatibility constraints
+  - Policy enforcement via policymap updates (eBPF maps) — policies translate to key-value updates
+  - Debugging tools: bpftool, cilium monitor, cilium bpf, tc filter show
+  - Ground truth patterns for eBPF tasks: loader flow (compile -> load -> attach), policy-to-BPF chain (policy update -> endpoint regeneration -> eBPF reload)
+  - Negative checks catch common misconceptions: "eBPF runs in userspace" (NO, kernel), "single eBPF program" (NO, multiple program types)
+  - test.sh verifier continues to be fully reusable across all onboarding task types (orientation, handoff, workflow)
+  - MCP benefit is very high (0.91) due to complex Go+C boundary, multiple eBPF programs, and deep kernel integration
+---
