@@ -16,27 +16,27 @@ Benchmark tasks are executed via **Harbor** (Docker container-based runner) with
 
 ```bash
 # Sequential (default)
-./configs/swebenchpro_3config.sh
+./configs/swebenchpro_2config.sh
 
 # Parallel with auto-detected concurrency
-./configs/swebenchpro_3config.sh --parallel
+./configs/swebenchpro_2config.sh --parallel
 
 # Parallel with explicit job count
-./configs/swebenchpro_3config.sh --parallel 4
+./configs/swebenchpro_2config.sh --parallel 4
 ```
 
 All 11 benchmark config scripts accept the `--parallel` flag:
-- `swebenchpro_3config.sh` — SWE-bench Pro (36 tasks)
-- `pytorch_3config.sh` — PyTorch (12 tasks)
-- `locobench_3config.sh` — LoCoBench (25 tasks)
-- `repoqa_3config.sh` — RepoQA (10 tasks)
-- `k8s_docs_3config.sh` — Kubernetes Docs (5 tasks)
-- `crossrepo_3config.sh` — Cross-Repo (4-5 tasks)
-- `largerepo_3config.sh` — Large Repo (4 tasks)
-- `tac_3config.sh` — TAC (8 tasks)
-- `dibench_3config.sh` — DIBench (8 tasks)
-- `sweperf_3config.sh` — SWE-Perf (3 tasks)
-- `linuxflbench_3config.sh` — LinuxFLBench (5 tasks)
+- `swebenchpro_2config.sh` — SWE-bench Pro (36 tasks)
+- `pytorch_2config.sh` — PyTorch (12 tasks)
+- `locobench_2config.sh` — LoCoBench (25 tasks)
+- `repoqa_2config.sh` — RepoQA (10 tasks)
+- `k8s_docs_2config.sh` — Kubernetes Docs (5 tasks)
+- `crossrepo_2config.sh` — Cross-Repo (4-5 tasks)
+- `largerepo_2config.sh` — Large Repo (4 tasks)
+- `tac_2config.sh` — TAC (8 tasks)
+- `dibench_2config.sh` — DIBench (8 tasks)
+- `sweperf_2config.sh` — SWE-Perf (3 tasks)
+- `linuxflbench_2config.sh` — LinuxFLBench (5 tasks)
 
 ### Config Scripts Structure
 
@@ -230,7 +230,7 @@ After all runs complete:
 
 ```bash
 python3 scripts/generate_manifest.py    # Regenerate MANIFEST.json
-python3 scripts/generate_report.py      # Aggregate results into report
+python3 scripts/generate_eval_report.py      # Aggregate results into report
 ```
 
 The MANIFEST tracks all runs, task counts, pass/fail rates, and mean rewards.

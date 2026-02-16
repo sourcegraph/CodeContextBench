@@ -60,19 +60,19 @@ benchmarks/              # Task definitions organized by benchmark suite
   ccb_tac/               #   TheAgentCompany tasks (8 tasks)
 configs/                 # 3-config comparison shell runners + task selection
   _common.sh             #   Shared infra: token refresh, parallel execution, multi-account
-  codereview_3config.sh  #   Per-suite runner: CodeReview (3 tasks)
-  crossrepo_3config.sh   #   Per-suite runner: CrossRepo (5 tasks)
-  dibench_3config.sh     #   Per-suite runner: DIBench (8 tasks)
-  k8s_docs_3config.sh    #   Per-suite runner: K8s Docs (5 tasks)
-  largerepo_3config.sh   #   Per-suite runner: Large Repo (4 tasks)
-  linuxflbench_3config.sh #  Per-suite runner: LinuxFLBench (5 tasks)
-  locobench_3config.sh   #   Per-suite runner: LoCoBench (25 tasks)
-  pytorch_3config.sh     #   Per-suite runner: PyTorch (12 tasks)
-  repoqa_3config.sh      #   Per-suite runner: RepoQA (10 tasks)
+  codereview_2config.sh  #   Per-suite runner: CodeReview (3 tasks)
+  crossrepo_2config.sh   #   Per-suite runner: CrossRepo (5 tasks)
+  dibench_2config.sh     #   Per-suite runner: DIBench (8 tasks)
+  k8s_docs_2config.sh    #   Per-suite runner: K8s Docs (5 tasks)
+  largerepo_2config.sh   #   Per-suite runner: Large Repo (4 tasks)
+  linuxflbench_2config.sh #  Per-suite runner: LinuxFLBench (5 tasks)
+  locobench_2config.sh   #   Per-suite runner: LoCoBench (25 tasks)
+  pytorch_2config.sh     #   Per-suite runner: PyTorch (12 tasks)
+  dependeval_2config.sh  #   Per-suite runner: DependEval (32 tasks)
   run_selected_tasks.sh  #   Unified runner for all tasks
-  swebenchpro_3config.sh #   Per-suite runner: SWE-Bench Pro (36 tasks)
-  sweperf_3config.sh     #   Per-suite runner: SWE-Perf (3 tasks)
-  tac_3config.sh         #   Per-suite runner: TheAgentCompany (8 tasks)
+  swebenchpro_2config.sh #   Per-suite runner: SWE-Bench Pro (36 tasks)
+  sweperf_2config.sh     #   Per-suite runner: SWE-Perf (3 tasks)
+  tac_2config.sh         #   Per-suite runner: TheAgentCompany (8 tasks)
   selected_benchmark_tasks.json  # Canonical task selection with metadata
 scripts/                 # Metrics extraction, evaluation, and operational tooling
   ccb_metrics/           #   Python package: models, extractors, discovery, judge context
@@ -148,25 +148,25 @@ bash configs/run_selected_tasks.sh --dry-run
 Per-suite runners are also available for individual benchmarks:
 
 ```bash
-bash configs/swebenchpro_3config.sh      # 36 SWE-Bench Pro tasks
-bash configs/locobench_3config.sh        # 25 LoCoBench tasks
-bash configs/pytorch_3config.sh          # 12 PyTorch tasks
-bash configs/repoqa_3config.sh           # 10 RepoQA tasks
-bash configs/tac_3config.sh              # 8 TheAgentCompany tasks
-bash configs/dibench_3config.sh          # 8 DIBench tasks
-bash configs/crossrepo_3config.sh        # 5 CrossRepo tasks
-bash configs/k8s_docs_3config.sh         # 5 K8s Docs tasks
-bash configs/linuxflbench_3config.sh     # 5 LinuxFLBench tasks (see note below)
-bash configs/largerepo_3config.sh        # 4 Large Repo tasks
-bash configs/sweperf_3config.sh          # 3 SWE-Perf tasks
-bash configs/codereview_3config.sh       # 3 CodeReview tasks
+bash configs/swebenchpro_2config.sh      # 36 SWE-Bench Pro tasks
+bash configs/locobench_2config.sh        # 25 LoCoBench tasks
+bash configs/pytorch_2config.sh          # 12 PyTorch tasks
+bash configs/dependeval_2config.sh       # 32 DependEval tasks
+bash configs/tac_2config.sh              # 8 TheAgentCompany tasks
+bash configs/dibench_2config.sh          # 8 DIBench tasks
+bash configs/crossrepo_2config.sh        # 5 CrossRepo tasks
+bash configs/k8s_docs_2config.sh         # 5 K8s Docs tasks
+bash configs/linuxflbench_2config.sh     # 5 LinuxFLBench tasks (see note below)
+bash configs/largerepo_2config.sh        # 4 Large Repo tasks
+bash configs/sweperf_2config.sh          # 3 SWE-Perf tasks
+bash configs/codereview_2config.sh       # 3 CodeReview tasks
 ```
 
 All runners support `--baseline-only` and `--full-only` flags.
 
 **LinuxFLBench note:** Docker image build is slow (~10 min) due to Linux kernel partial clone (~2GB). Pre-build images before running to save time.
 
-**DependEval note:** DependEval tasks use `--path` mode with local task directories. There is no unified `dependeval_3config.sh` yet; tasks are tracked via `configs/dependeval_selected_instances.json`.
+**DependEval note:** DependEval runs use local task directories and are handled by `configs/dependeval_2config.sh`.
 
 Requires [Harbor](https://github.com/laude-institute/harbor/tree/main) installed and configured with a Claude API key.
 

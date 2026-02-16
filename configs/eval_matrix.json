@@ -1,0 +1,72 @@
+{
+  "description": "Canonical benchmark config matrix and extension registry for CodeContextBench.",
+  "official_default_configs": [
+    "baseline",
+    "sourcegraph_full"
+  ],
+  "supported_configs": [
+    "baseline",
+    "sourcegraph_base",
+    "sourcegraph_full",
+    "sourcegraph_isolated",
+    "github_base",
+    "github_full"
+  ],
+  "config_definitions": {
+    "baseline": {
+      "baseline_mcp_type": "none",
+      "mcp_enabled": false,
+      "provider": "none",
+      "track_in_official": true,
+      "status": "active"
+    },
+    "sourcegraph_base": {
+      "baseline_mcp_type": "sourcegraph_base",
+      "mcp_enabled": true,
+      "provider": "sourcegraph",
+      "track_in_official": true,
+      "status": "legacy_or_targeted"
+    },
+    "sourcegraph_full": {
+      "baseline_mcp_type": "sourcegraph_full",
+      "mcp_enabled": true,
+      "provider": "sourcegraph",
+      "track_in_official": true,
+      "status": "active"
+    },
+    "sourcegraph_isolated": {
+      "baseline_mcp_type": "sourcegraph_isolated",
+      "mcp_enabled": true,
+      "provider": "sourcegraph",
+      "track_in_official": true,
+      "status": "experimental"
+    },
+    "sourcegraph_only": {
+      "baseline_mcp_type": "sourcegraph_only",
+      "mcp_enabled": true,
+      "provider": "sourcegraph",
+      "track_in_official": true,
+      "status": "experimental"
+    },
+    "github_base": {
+      "baseline_mcp_type": "github_base",
+      "mcp_enabled": true,
+      "provider": "github",
+      "track_in_official": false,
+      "status": "experimental_scaffold"
+    },
+    "github_full": {
+      "baseline_mcp_type": "github_full",
+      "mcp_enabled": true,
+      "provider": "github",
+      "track_in_official": false,
+      "status": "experimental_scaffold"
+    }
+  },
+  "provider_templates": {
+    "github": {
+      "example_config_name": "github_full",
+      "notes": "Reserved template for future GitHub MCP integration."
+    }
+  }
+}

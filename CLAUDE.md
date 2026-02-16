@@ -107,7 +107,7 @@ The script generates an OAuth URL — open it in your local browser, log in, pas
 python3 scripts/generate_manifest.py
 
 # Generate evaluation report
-python3 scripts/generate_report.py
+python3 scripts/generate_eval_report.py
 
 # Select benchmark tasks
 python3 scripts/select_benchmark_tasks.py
@@ -163,7 +163,7 @@ MAINTENANCE
 |-------|--------|---------|
 | `/compare-configs` | `scripts/compare_configs.py` | Show divergent tasks across baseline/SG_full, "MCP helps" vs "MCP hurts". Now includes optional MCP-conditioned analysis. |
 | `/cost-report` | `scripts/cost_report.py` | Token usage and estimated cost by suite/config, most expensive tasks |
-| `/generate-report` | `scripts/generate_report.py` | Aggregate CCB evaluation report from completed runs |
+| `/generate-report` | `scripts/generate_eval_report.py` | Aggregate CCB evaluation report from completed runs |
 | `/evaluate-traces` | `scripts/audit_traces.py` | Comprehensive trace evaluation: data integrity, output quality, efficiency analysis. Includes zero-MCP vs used-MCP classification. |
 | `/mcp-audit` | `scripts/mcp_audit.py` | MCP usage patterns: used vs zero-MCP, intensity buckets, reward/time deltas conditioned on actual MCP adoption |
 

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Official Run Triage",
+  "description": "Per-run triage metadata for runs/official/<run_dir>/triage.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "reason_code",
+    "reviewed_at",
+    "reviewer"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": [
+        "include",
+        "exclude",
+        "pending"
+      ]
+    },
+    "reason_code": {
+      "type": "string",
+      "description": "Short machine-readable reason, e.g. valid_official, infra_error, superseded, experiment."
+    },
+    "notes": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "description": "Optional source of the decision, e.g. manual_triage, bootstrap_manifest_backfill."
+    }
+  }
+}
