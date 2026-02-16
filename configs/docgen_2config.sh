@@ -72,6 +72,7 @@ TASK_FILTER=""
 ALL_TASK_IDS=(
     "docgen-arch-001"
     "docgen-arch-002"
+    "docgen-arch-003"
 )
 
 # Parse arguments
@@ -129,6 +130,7 @@ setup_dual_accounts
 declare -A TASK_SG_REPO_NAMES=(
     ["docgen-arch-001"]="github.com/envoyproxy/envoy"
     ["docgen-arch-002"]="github.com/istio/istio"
+    ["docgen-arch-003"]="github.com/hashicorp/terraform"
 )
 
 # Derive short model name for run directory

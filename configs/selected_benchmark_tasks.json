@@ -3545,6 +3545,24 @@
       },
       "selection_rationale": "All ccb_docgen tasks selected (new benchmark suite)",
       "task_dir": "ccb_docgen/docgen-arch-002"
+    },
+    {
+      "task_id": "docgen-arch-003",
+      "benchmark": "ccb_docgen",
+      "sdlc_phase": "Documentation",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "architecture_doc",
+      "repo": "hashicorp/terraform",
+      "mcp_benefit_score": 0.865,
+      "mcp_breakdown": {
+        "context_complexity": 0.95,
+        "cross_file_deps": 0.93,
+        "semantic_search_potential": 0.88,
+        "task_category_weight": 0.65
+      },
+      "selection_rationale": "All ccb_docgen tasks selected (new benchmark suite)",
+      "task_dir": "ccb_docgen/docgen-arch-003"
     }
   ]
 }
