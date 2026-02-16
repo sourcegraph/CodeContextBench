@@ -105,3 +105,18 @@
   - Large config.json files (>25K tokens) need python3 extraction — can't Read tool directly
 ---
 
+## 2026-02-16 - US-003
+- Populated navprove-ansible-vault-001 with content (reference patch, Dockerfile, instruction.md)
+- Files changed:
+  - benchmarks/ccb_navprove/navprove-ansible-vault-001/tests/reference_fix.patch (13699 bytes, extracted from source config.json)
+  - benchmarks/ccb_navprove/navprove-ansible-vault-001/environment/Dockerfile (uses ansible base image + pytest/pytest-timeout)
+  - benchmarks/ccb_navprove/navprove-ansible-vault-001/instruction.md (symptom-only description of tarfile extraction fragility)
+- Source bug: ansible drops Python 3.10 support — the testable bug is in galaxy collection install: custom tar member cache with name normalization (removesuffix) instead of standard getmember() API
+- Failing tests: test_extract_tar_dir_exists, test_extract_tar_dir_does_not_exist
+- All acceptance criteria verified: patch starts with 'diff --git', instruction.md >200 bytes, grep -cE returns 0
+- **Learnings for future iterations:**
+  - Ansible source patch is large (9 files, ~300 lines) but the testable core is narrow: the _extract_tar_dir function's custom cache vs standard getmember()
+  - The ansible base image follows same /app pattern as qutebrowser — reuse same Dockerfile structure with /workspace symlink
+  - The navprove task name "vault" doesn't match the actual bug (Python version drop) — task names are labels, content comes from source
+---
+

@@ -49,7 +49,7 @@
         "tests/reference_fix.patch first line starts with 'diff --git' or '---'"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Source: benchmarks/ccb_swebenchpro/tasks/instance_ansible-ansible-b2a289dcbb702003377221e25f62c8a3608f0e89-v173091e2e36d38c978002990795f66cfc0af30ad"
     },
     {
