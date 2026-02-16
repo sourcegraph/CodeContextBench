@@ -432,6 +432,46 @@ def _load_task_metrics_tokens() -> dict[tuple[str, str], int]:
     return tokens
 
 
+def _load_task_metrics_cost() -> dict[tuple[str, str], float]:
+    """Load (task_id, config) -> total run cost in USD from task_metrics.json.
+
+    Uses the pre-computed cost_usd field which accounts for all token types
+    at Anthropic pricing: input ($15/Mtok), cache_create ($3.75/Mtok),
+    cache_read ($0.30/Mtok), output ($75/Mtok). This is the full-run cost,
+    not just the cost up to first relevant file.
+    """
+    costs: dict[tuple[str, str], float] = {}
+    if not RUNS_DIR.exists():
+        return costs
+    for run_dir in RUNS_DIR.iterdir():
+        if not run_dir.is_dir() or should_skip(run_dir.name):
+            continue
+        for config_dir in run_dir.iterdir():
+            if not config_dir.is_dir() or config_dir.name not in CONFIGS:
+                continue
+            config = config_dir.name
+            for batch_dir in config_dir.iterdir():
+                if not batch_dir.is_dir() or not _is_batch_timestamp(batch_dir.name):
+                    continue
+                for task_dir in batch_dir.iterdir():
+                    if not task_dir.is_dir():
+                        continue
+                    metrics_file = task_dir / "task_metrics.json"
+                    if not metrics_file.is_file():
+                        continue
+                    try:
+                        m = json.loads(metrics_file.read_text())
+                        task_id = m.get("task_id", "")
+                        cost = m.get("cost_usd")
+                        if task_id and cost is not None and cost > 0:
+                            key = (task_id, config)
+                            if key not in costs:
+                                costs[key] = float(cost)
+                    except (json.JSONDecodeError, OSError, ValueError):
+                        continue
+    return costs
+
+
 def _zscore(values: list[float]) -> list[float]:
     """Z-score normalize a list of values. Returns 0 for constant lists."""
     if len(values) < 2:
@@ -575,8 +615,11 @@ def compute_cost_efficiency(
     """Compute cost-efficiency metrics: tokens per relevant file found.
 
     Returns per-config and per-suite aggregates with deltas.
+    Includes both efficiency metrics (cost to first relevant) and
+    full-run ROI metrics (total cost with vs without MCP).
     """
     token_data = _load_task_metrics_tokens()
+    cost_data = _load_task_metrics_cost()
     if not token_data:
         return None
 
@@ -587,6 +630,7 @@ def compute_cost_efficiency(
         if inp_tok is None or inp_tok == 0:
             continue
         tokens_per_rel = inp_tok / s.n_overlap if s.n_overlap > 0 else None
+        total_cost = cost_data.get((s.task_id, s.config_name))
         records.append({
             "task_id": s.task_id,
             "config": s.config_name,
@@ -598,6 +642,7 @@ def compute_cost_efficiency(
             "cost_before_first_relevant": s.cost_before_first_relevant,
             "output_tokens_before_first_relevant": s.output_tokens_before_first_relevant,
             "agent_time_to_first_relevant": s.agent_time_to_first_relevant,
+            "total_cost_usd": total_cost,
             "ttfr_step": s.ttfr_step,
             "n_steps_to_first": s.n_steps_to_first,
         })
@@ -623,6 +668,7 @@ def compute_cost_efficiency(
         cost_vals = [r["cost_before_first_relevant"] for r in recs if r["cost_before_first_relevant"] is not None]
         out_tok_vals = [r["output_tokens_before_first_relevant"] for r in recs if r["output_tokens_before_first_relevant"] is not None]
         agent_ttfr_vals = [r["agent_time_to_first_relevant"] for r in recs if r["agent_time_to_first_relevant"] is not None]
+        total_cost_vals = [r["total_cost_usd"] for r in recs if r["total_cost_usd"] is not None]
         return {
             "n_tasks": len(recs),
             "mean_tokens_per_relevant_file": round(statistics.mean(tpr_vals), 0) if tpr_vals else None,
@@ -632,9 +678,12 @@ def compute_cost_efficiency(
             "mean_cost_before_first_relevant": round(statistics.mean(cost_vals), 4) if cost_vals else None,
             "mean_output_tokens_before_first_relevant": round(statistics.mean(out_tok_vals), 0) if out_tok_vals else None,
             "mean_agent_time_to_first_relevant": round(statistics.mean(agent_ttfr_vals), 1) if agent_ttfr_vals else None,
+            "mean_total_cost_usd": round(statistics.mean(total_cost_vals), 4) if total_cost_vals else None,
+            "median_total_cost_usd": round(statistics.median(total_cost_vals), 4) if total_cost_vals else None,
             "mean_input_tokens": round(statistics.mean(tok_vals), 0) if tok_vals else None,
             "mean_overlap": round(statistics.mean(overlap_vals), 2) if overlap_vals else None,
             "n_with_tbfr": len(tbfr_vals),
+            "n_with_total_cost": len(total_cost_vals),
         }
 
     overall = {cfg: _agg(recs) for cfg, recs in sorted(by_config.items())}
@@ -648,6 +697,7 @@ def compute_cost_efficiency(
     sg = overall.get("sourcegraph_full", {})
     deltas = {}
     delta_metrics = (
+        "mean_total_cost_usd",
         "mean_tokens_per_relevant_file",
         "mean_tokens_before_first_relevant",
         "mean_cost_before_first_relevant",
@@ -905,6 +955,27 @@ def run_ir_analysis(
                         ),
                     }
 
+                # Total run cost (full ROI comparison)
+                cost_data = _load_task_metrics_cost()
+                if cost_data:
+                    paired_total_cost = [
+                        (cost_data[(tid, "baseline")], cost_data[(tid, "sourcegraph_full")])
+                        for tid in sorted(common)
+                        if (tid, "baseline") in cost_data
+                        and (tid, "sourcegraph_full") in cost_data
+                    ]
+                    if len(paired_total_cost) >= 5:
+                        bl_tc = [p[0] for p in paired_total_cost]
+                        sg_tc = [p[1] for p in paired_total_cost]
+                        stat_tests["total_cost_usd"] = {
+                            "n_paired": len(paired_total_cost),
+                            "welchs_t": welchs_t_test(bl_tc, sg_tc),
+                            "cohens_d": cohens_d(bl_tc, sg_tc),
+                            "bootstrap_ci_delta": bootstrap_ci(
+                                [s - b for b, s in zip(bl_tc, sg_tc)]
+                            ),
+                        }
+
                 result["statistical_tests"] = stat_tests
         except ImportError:
             pass
@@ -1018,6 +1089,7 @@ def format_table(data: dict) -> str:
         lines.append(f"  Paired tasks: {stats.get('n_paired', 0)}")
         for metric_name in (
             "file_recall", "mrr", "ttfr", "tt_all_r",
+            "total_cost_usd",
             "cost_before_first_relevant", "output_tokens_before_first_relevant",
             "agent_time_to_first_relevant",
         ):
@@ -1120,32 +1192,39 @@ def format_table(data: dict) -> str:
         lines.append("COST EFFICIENCY:")
         overall = ce.get("overall", {})
         if overall:
+            lines.append("  Full-run ROI (total cost per task):")
+            roi_header = f"    {'Config':20s} {'TotalCost':>12s} {'n':>5s}"
+            lines.append(roi_header)
+            lines.append("    " + "-" * (len(roi_header) - 4))
+            for cfg, agg in sorted(overall.items()):
+                total_cost = agg.get("mean_total_cost_usd")
+                n_cost = agg.get("n_with_total_cost", 0)
+                tc_s = f"${total_cost:>11.4f}" if total_cost else f"{'N/A':>12s}"
+                lines.append(f"    {cfg:20s} {tc_s} {n_cost:>5d}")
+            lines.append("")
+
+            lines.append("  Efficiency metrics (cost to first relevant file):")
             header = (
-                f"  {'Config':20s} {'Tok/RelFile':>12s} {'TokBefore1st':>12s} "
-                f"{'$Before1st':>10s} {'OutTokB1st':>12s} {'AgentTTFR':>10s} "
-                f"{'MeanTokens':>12s} {'MeanOverlap':>12s} {'n':>5s}"
+                f"    {'Config':20s} {'$Before1st':>10s} {'AgentTTFR':>10s} "
+                f"{'OutTokB1st':>12s} {'Tok/RelFile':>12s} {'MeanOverlap':>12s} {'n':>5s}"
             )
             lines.append(header)
-            lines.append("  " + "-" * (len(header) - 2))
+            lines.append("    " + "-" * (len(header) - 4))
             for cfg, agg in sorted(overall.items()):
-                tpr = agg.get("mean_tokens_per_relevant_file")
-                tbfr = agg.get("mean_tokens_before_first_relevant")
                 cost = agg.get("mean_cost_before_first_relevant")
-                out_tok = agg.get("mean_output_tokens_before_first_relevant")
                 agent_ttfr = agg.get("mean_agent_time_to_first_relevant")
-                tok = agg.get("mean_input_tokens")
+                out_tok = agg.get("mean_output_tokens_before_first_relevant")
+                tpr = agg.get("mean_tokens_per_relevant_file")
                 ovl = agg.get("mean_overlap")
                 n = agg.get("n_tasks", 0)
-                tpr_s = f"{tpr:>12,.0f}" if tpr else f"{'N/A':>12s}"
-                tbfr_s = f"{tbfr:>12,.0f}" if tbfr else f"{'N/A':>12s}"
                 cost_s = f"${cost:>9.4f}" if cost else f"{'N/A':>10s}"
-                out_tok_s = f"{out_tok:>12,.0f}" if out_tok else f"{'N/A':>12s}"
                 attfr_s = f"{agent_ttfr:>9.1f}s" if agent_ttfr else f"{'N/A':>10s}"
-                tok_s = f"{tok:>12,.0f}" if tok else f"{'N/A':>12s}"
+                out_tok_s = f"{out_tok:>12,.0f}" if out_tok else f"{'N/A':>12s}"
+                tpr_s = f"{tpr:>12,.0f}" if tpr else f"{'N/A':>12s}"
                 ovl_s = f"{ovl:>12.1f}" if ovl else f"{'N/A':>12s}"
                 lines.append(
-                    f"  {cfg:20s} {tpr_s} {tbfr_s} {cost_s} "
-                    f"{out_tok_s} {attfr_s} {tok_s} {ovl_s} {n:>5d}"
+                    f"    {cfg:20s} {cost_s} {attfr_s} "
+                    f"{out_tok_s} {tpr_s} {ovl_s} {n:>5d}"
                 )
             lines.append("")
 
@@ -1413,6 +1492,7 @@ def format_report_markdown(data: dict) -> str:
         lines.append("|--------|--------|---------|-----------|-----------|-------------|")
         for metric_name in (
             "file_recall", "mrr", "ttfr", "tt_all_r",
+            "total_cost_usd",
             "cost_before_first_relevant", "output_tokens_before_first_relevant",
             "agent_time_to_first_relevant",
         ):
