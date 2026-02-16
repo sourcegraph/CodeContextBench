@@ -74,6 +74,7 @@ ALL_TASK_IDS=(
     "inv-regression-001"
     "inv-debug-001"
     "inv-migration-001"
+    "inv-deep-001"
 )
 
 # Parse arguments
@@ -129,6 +130,7 @@ declare -A TASK_SG_REPO_NAMES=(
     ["inv-regression-001"]="github.com/grafana/grafana"
     ["inv-debug-001"]="github.com/prometheus/prometheus"
     ["inv-migration-001"]="github.com/django/django"
+    ["inv-deep-001"]="github.com/envoyproxy/envoy"
 )
 
 # Derive short model name for run directory

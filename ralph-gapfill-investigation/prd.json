@@ -1,0 +1,134 @@
+{
+  "project": "Benchmark Gap-Fill: Harder Investigation Tasks",
+  "branchName": "ralph/gapfill-investigation",
+  "description": "Expand ccb_investigation from 4 tasks (scoring 0.96-0.985 — near ceiling) to 12 tasks with deeper causal chains, larger search spaces, multi-component interactions, and historical regression hunts. Same output format and scoring as existing tasks.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Create inv-deep-001: Deep causal chain in Envoy filter pipeline",
+      "description": "As a benchmark developer, I want an investigation task with a 4-5 hop causal chain. Symptom appears in Envoy's access log (wrong response code) but root cause is in a filter 4 layers back in the filter chain. Agent must trace through 4+ packages to find root cause.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-deep-001/ has complete task files (task.toml, instruction.md, environment/Dockerfile, tests/test.sh, tests/ground_truth.json)",
+        "task.toml has category=deep_causal_chain, language=cpp, difficulty=hard, time_limit_sec=1200",
+        "instruction.md presents a symptom and asks for root cause investigation",
+        "ground_truth.json has 8-12 required_findings (more than existing tasks' 5-8)",
+        "ground_truth.json causal_chain has 4-5 ordered steps (more than existing 2-3)",
+        "ground_truth.json negative_checks has 2+ plausible-but-wrong explanations",
+        "Expected baseline score: 0.3-0.5 (significantly harder than current 0.9+)",
+        "Dockerfile pins to a commit where the bug exists",
+        "Task registered in configs/selected_benchmark_tasks.json and investigation_2config.sh"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Choose a real or realistic Envoy bug where: symptom is in access log → caused by wrong header in router → caused by filter modifying header → caused by config parsing bug → caused by proto default value issue. Use Sourcegraph to find realistic file paths."
+    },
+    {
+      "id": "US-002",
+      "title": "Create inv-deep-002: Deep causal chain in Istio control plane",
+      "description": "As a benchmark developer, I want a deep causal chain task in Istio. Symptom: Envoy sidecar gets wrong route config. Root cause: Pilot's config translation has a bug 4 hops back in the translation pipeline.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-deep-002/ has complete task files",
+        "causal_chain has 4-5 ordered steps through pilot/pkg/xds/ → pilot/pkg/networking/ → pilot/pkg/model/ → pilot/pkg/config/",
+        "8-12 required_findings, 2+ negative_checks",
+        "Expected baseline score: 0.3-0.5",
+        "Task registered"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Istio translation pipeline: ServiceEntry → Model → Route config → xDS push. Bug somewhere in model→route translation that propagates silently."
+    },
+    {
+      "id": "US-003",
+      "title": "Create inv-deep-003: Deep causal chain in Terraform",
+      "description": "As a benchmark developer, I want a deep causal chain task in Terraform. Symptom: terraform apply creates wrong resource. Root cause is in state management interacting with graph evaluation 4 hops back.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-deep-003/ has complete task files",
+        "language=go, 4-5 hop chain through internal/command/ → internal/terraform/ → internal/states/ → internal/providers/",
+        "8-12 required_findings, 2+ negative_checks",
+        "Task registered"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Terraform: plan phase builds graph → evaluates nodes → calls provider → stores state. Bug in state serialization that only manifests when provider returns specific type."
+    },
+    {
+      "id": "US-004",
+      "title": "Create inv-interaction-001: Multi-component race condition in Kubernetes",
+      "description": "As a benchmark developer, I want an investigation task where the bug emerges from interaction between 3 Kubernetes controllers. No single controller is buggy — the bug only appears when scheduler + node controller + kubelet interact under specific timing.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-interaction-001/ has complete task files",
+        "task.toml has category=multi_component_interaction, difficulty=hard",
+        "instruction.md describes the emergent failure WITHOUT naming the interacting components",
+        "ground_truth.json required_findings: must identify ALL 3 interacting components",
+        "ground_truth.json causal_chain: must describe the specific timing/ordering that triggers the bug",
+        "Expected baseline score: 0.2-0.4 (interaction bugs are the hardest class)",
+        "Task registered"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "K8s: scheduler selects node → node controller marks node NotReady → kubelet evicts pod → scheduler re-schedules to same node → loop. Use Sourcegraph commit_search to find real scheduling/eviction race conditions."
+    },
+    {
+      "id": "US-005",
+      "title": "Create inv-interaction-002: Multi-component interaction in Cilium",
+      "description": "As a benchmark developer, I want a multi-component interaction task in Cilium. Bug emerges from interaction between eBPF datapath + userspace agent + Kubernetes watcher under specific conditions (e.g., rapid policy updates).",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-interaction-002/ has complete task files",
+        "language=go, difficulty=hard",
+        "Must identify interaction between 3 components",
+        "causal_chain describes timing condition",
+        "Expected baseline score: 0.2-0.4",
+        "Task registered"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Cilium: pkg/datapath/ (eBPF) + pkg/policy/ (userspace) + pkg/k8s/ (watcher). Race between policy update and map synchronization."
+    },
+    {
+      "id": "US-006",
+      "title": "Create inv-interaction-003: Multi-component interaction in Kafka",
+      "description": "As a benchmark developer, I want a multi-component interaction task in Kafka. Bug from producer + broker + consumer interaction (e.g., rebalance during produce causes message loss).",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-interaction-003/ has complete task files",
+        "language=java, 3 interacting components",
+        "Task registered"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "Kafka: producer commits offset → broker triggers rebalance → consumer reads from wrong offset. Classic distributed systems interaction bug."
+    },
+    {
+      "id": "US-007",
+      "title": "Create inv-regression-001: Historical regression hunt in Grafana",
+      "description": "As a benchmark developer, I want a task where the agent must use commit history to find when/why a regression was introduced in Grafana. Dockerfile provides repo at post-regression commit. Agent must find the regressing commit SHA, explain what changed, and why it broke things.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-regression-001b/ has complete task files (use -001b to avoid conflict with existing inv-regression-001)",
+        "task.toml has category=regression_hunt, difficulty=hard, time_limit_sec=1200",
+        "instruction.md describes the regression symptom but NOT when it was introduced",
+        "ground_truth.json required_findings include: regressing commit SHA, changed function, mechanism of regression",
+        "ground_truth.json causal_chain: commit X changed function Y in way Z → broke assumption W → regression manifests as symptom S",
+        "Expected baseline score: 0.2-0.4 (baseline agents lack commit search)",
+        "MCP advantage: commit_search + diff_search + compare_revisions are essential",
+        "Task registered"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "Choose a real Grafana regression with clear bisection point. Dashboard migration bugs are good candidates — check pkg/services/dashboardversion/ or pkg/services/dashboards/. Use Sourcegraph commit_search to find regression-fix commits and work backward."
+    },
+    {
+      "id": "US-008",
+      "title": "Create inv-regression-002: Historical regression hunt in Prometheus",
+      "description": "As a benchmark developer, I want a regression hunt task in Prometheus. Agent must find the commit that introduced a recording rule evaluation regression.",
+      "acceptanceCriteria": [
+        "benchmarks/ccb_investigation/inv-regression-002/ has complete task files",
+        "ground_truth.json includes: regressing commit SHA, changed function, mechanism",
+        "MCP tools essential: commit_search, diff_search",
+        "Expected baseline score: 0.2-0.4",
+        "Task registered"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Prometheus: rules/manager.go, rules/recording.go. Search for regression-fix commits in these files. Pin Dockerfile to post-regression, pre-fix commit."
+    }
+  ]
+}

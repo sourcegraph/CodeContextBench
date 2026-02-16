@@ -1,0 +1,40 @@
+## Codebase Patterns
+- Investigation tasks: benchmarks/ccb_investigation/{task_id}/ — existing suite, expand from 4 to 12 tasks
+- Existing tasks: inv-debug-001, inv-impact-001, inv-migration-001, inv-regression-001 (all score 0.9+)
+- New tasks must be SIGNIFICANTLY harder: target baseline 0.2-0.5 (not 0.9+)
+- Three new subtypes: deep_causal_chain (4-5 hops), multi_component_interaction (3+ components), regression_hunt (use commit history)
+- Output format: /logs/agent/investigation.md (same as existing)
+- Scoring: weighted checklist via ground_truth.json (same scorer as existing — test.sh is shared across suite)
+- ground_truth.json for harder tasks: 8-12 required_findings (vs 5-8), 4-5 hop causal_chains (vs 2-3), 2+ negative_checks (vs 1)
+- Deep causal: symptom in package A → root cause in package D/E, with 3+ intermediate packages
+- Multi-component: bug emerges from interaction between 3+ independent components under specific timing
+- Regression hunt: agent must find the COMMIT that introduced the regression (commit_search + diff_search essential)
+- Regression task naming: use inv-regression-001b (or inv-regression-002) to avoid conflict with existing inv-regression-001
+- Dockerfile: pin to commit where bug exists (pre-fix for investigations, post-regression for regression hunts)
+- MCP advantage: find_references for cross-package tracing, commit_search for regression hunts, diff_search for code changes
+- Config: investigation_2config.sh — add new task IDs to existing TASKS array
+
+## Progress
+
+## 2026-02-16 - US-001
+- Implemented inv-deep-001: Deep causal chain investigation task for Envoy filter pipeline
+- Based on real Envoy bug (PR #40856/commit 25f893b): router double-processes response_headers_to_add for local replies
+- 5-hop causal chain: access log symptom → sendLocalReply double-calls finalizeResponseHeaders → modify_headers_ callback → header_parser.cc append/append_action parsing → proto default value trap (APPEND_IF_EXISTS_OR_ADD = enum 0)
+- Files created:
+  - benchmarks/ccb_investigation/inv-deep-001/task.toml (category=deep_causal_chain, language=cpp, difficulty=hard)
+  - benchmarks/ccb_investigation/inv-deep-001/instruction.md
+  - benchmarks/ccb_investigation/inv-deep-001/environment/Dockerfile (pins to 25f893b~1)
+  - benchmarks/ccb_investigation/inv-deep-001/tests/test.sh (identical scorer)
+  - benchmarks/ccb_investigation/inv-deep-001/tests/ground_truth.json (12 findings, 7 file refs, 3 chain entries, 2 neg checks)
+- Files modified:
+  - configs/investigation_2config.sh (added inv-deep-001 to TASKS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (added entry, updated count 171→172)
+- **Learnings for future iterations:**
+  - Sourcegraph commit_search is essential for finding real bugs to base tasks on — search for fix commits and work backward to pre-fix state
+  - The scorer test.sh is identical across all investigation tasks — just copy it
+  - ground_truth.json weights within each section (required_findings, file_references, etc.) must sum to 1.0
+  - Use `check_all_patterns` for causal_chain (ALL patterns must match) vs `check_any_pattern` for findings (any ONE pattern matches)
+  - Negative checks are critical for preventing false positives — pattern must NOT match for credit
+  - Dockerfile pattern: `git clone --filter=blob:none --no-checkout` then `git checkout <commit>` for specific state
+  - Envoy has rich header mutation bugs around the deprecated `append` BoolValue → `append_action` enum transition (commits 01b90ef, e7ebb02, 50ead8a/4c79c71)
+---
