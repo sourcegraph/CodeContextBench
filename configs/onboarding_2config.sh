@@ -71,6 +71,7 @@ TASK_FILTER=""
 # All onboarding task IDs — populated by task-creation Ralphs
 ALL_TASK_IDS=(
     "onboard-orient-001"
+    "onboard-orient-002"
 )
 
 # Parse arguments
@@ -127,6 +128,7 @@ setup_dual_accounts
 # Populated by task-creation Ralphs alongside ALL_TASK_IDS
 declare -A TASK_SG_REPO_NAMES=(
     ["onboard-orient-001"]="github.com/cilium/cilium"
+    ["onboard-orient-002"]="github.com/argoproj/argo-cd"
 )
 
 # Derive short model name for run directory

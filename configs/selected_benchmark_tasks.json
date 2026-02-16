@@ -5,7 +5,7 @@
     "generated_by": "scripts/select_benchmark_tasks.py",
     "random_seed": 42,
     "total_available": 835,
-    "total_selected": 191
+    "total_selected": 192
   },
   "methodology": {
     "description": "Tasks selected via stratified sampling across 10 benchmarks, covering all SDLC phases. Each task scored for MCP benefit using weighted combination of context complexity, cross-file dependencies, semantic search potential, and task category affinity.",
@@ -3527,6 +3527,24 @@
       },
       "selection_rationale": "Onboarding orientation task \u2014 agent must explore large unfamiliar codebase, high MCP benefit from code search and navigation",
       "task_dir": "ccb_onboarding/onboard-orient-001"
+    },
+    {
+      "task_id": "onboard-orient-002",
+      "benchmark": "ccb_onboarding",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "codebase_orientation",
+      "repo": "argoproj/argo-cd",
+      "mcp_benefit_score": 0.91,
+      "mcp_breakdown": {
+        "context_complexity": 0.93,
+        "cross_file_deps": 0.88,
+        "semantic_search_potential": 0.92,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Onboarding orientation task for multi-binary architecture \u2014 agent must understand component boundaries and interactions, high MCP benefit from navigation",
+      "task_dir": "ccb_onboarding/onboard-orient-002"
     }
   ]
 }
