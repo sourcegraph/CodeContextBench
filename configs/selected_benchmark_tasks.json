@@ -3527,6 +3527,24 @@
       },
       "selection_rationale": "CVE triage in large C codebase requires searching for SOCKS5-related code across multiple files",
       "task_dir": "ccb_security/sec-cve-001"
+    },
+    {
+      "task_id": "sec-cve-002",
+      "benchmark": "ccb_security",
+      "sdlc_phase": "Requirements & Discovery",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "cve_triage",
+      "repo": "envoyproxy/envoy",
+      "mcp_benefit_score": 0.88,
+      "mcp_breakdown": {
+        "context_complexity": 0.95,
+        "cross_file_deps": 0.85,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "CVE triage in large C++ proxy codebase requires navigating HTTP/2 connection management across many source files",
+      "task_dir": "ccb_security/sec-cve-002"
     }
   ]
 }

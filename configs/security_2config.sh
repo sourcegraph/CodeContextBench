@@ -71,6 +71,7 @@ TASK_FILTER=""
 # All security task IDs — populated by task-creation Ralphs
 ALL_TASK_IDS=(
     sec-cve-001
+    sec-cve-002
 )
 
 # Parse arguments
@@ -127,6 +128,7 @@ setup_dual_accounts
 # Populated by task-creation Ralphs alongside ALL_TASK_IDS
 declare -A TASK_SG_REPO_NAMES=(
     [sec-cve-001]="github.com/curl/curl"
+    [sec-cve-002]="github.com/envoyproxy/envoy"
 )
 
 # Derive short model name for run directory
