@@ -81,8 +81,8 @@
         "Task registered"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "Cilium: pkg/datapath/ (eBPF) + pkg/policy/ (userspace) + pkg/k8s/ (watcher). Race between policy update and map synchronization."
+      "passes": true,
+      "notes": "Based on real Cilium bug (PR #42049, commit 696017a): Identity allocator's OnListDone closes listDone before SelectorCache processes events, causing GetSelections() to return incomplete identity set during endpoint regeneration. 3-component interaction: identity allocator (pkg/allocator/) + SelectorCache (pkg/policy/) + endpoint regeneration (pkg/endpoint/). Pre-fix commit: 1ded914d."
     },
     {
       "id": "US-006",

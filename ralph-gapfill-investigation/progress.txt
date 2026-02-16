@@ -113,3 +113,25 @@
   - For multi-component tasks, negative checks should verify the agent doesn't blame the "innocent" components (kubelet, scheduler) as root cause
   - K8s repo IS indexed on Sourcegraph, making commit_search and find_references directly available for MCP agents
 ---
+
+## 2026-02-16 - US-005
+- Implemented inv-interaction-002: Multi-component interaction investigation task for Cilium identity/SelectorCache/endpoint race
+- Based on real Cilium bug (PR #42049/commit 696017a): Identity allocator's OnListDone closes listDone channel before SelectorCache processes queued identity events, causing GetSelections() to return incomplete set during endpoint regeneration
+- 3-component interaction: (1) Identity allocator allocates identities, sends events to channel, closes listDone too early → (2) SelectorCache receives events asynchronously via UpdateIdentities, but events not yet processed → (3) Endpoint regeneration calls GetSelections() which returns incomplete identity set → eBPF policy maps miss allowed identities → packet drops
+- Files created:
+  - benchmarks/ccb_investigation/inv-interaction-002/task.toml (category=multi_component_interaction, language=go, difficulty=hard)
+  - benchmarks/ccb_investigation/inv-interaction-002/instruction.md (describes symptom without naming specific functions)
+  - benchmarks/ccb_investigation/inv-interaction-002/environment/Dockerfile (pins to 1ded914d, parent of fix 696017a)
+  - benchmarks/ccb_investigation/inv-interaction-002/tests/test.sh (identical scorer)
+  - benchmarks/ccb_investigation/inv-interaction-002/tests/ground_truth.json (12 findings, 7 file refs, 4 chain entries, 2 neg checks)
+- Files modified:
+  - configs/investigation_2config.sh (added inv-interaction-002 to TASKS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (added entry, count now 205)
+- Scoring validation: perfect report → 0.98, weak baseline → 0.30 (within target 0.2-0.4)
+- **Learnings for future iterations:**
+  - Cilium repo is NOT indexed on the Sourcegraph instance — used GitHub API (gh api) to search PRs and get commit details
+  - Cilium's identity → SelectorCache → endpoint pipeline is a rich source of race conditions: PR #42049 (identity/selector sync), PR #37910 (selectorPolicy orphaning), PR #42500 (FQDN correctness)
+  - The fix pattern "add a Done channel to synchronization events" is a common Go pattern for blocking until async consumers finish processing
+  - For Cilium tasks, the 3 components map roughly to: identity subsystem (pkg/identity/, pkg/allocator/) + policy subsystem (pkg/policy/) + endpoint subsystem (pkg/endpoint/)
+  - The "events channel" pattern (buffered channel between producer and consumer) is the common source of these async race conditions
+---
