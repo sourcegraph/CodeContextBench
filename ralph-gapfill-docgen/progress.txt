@@ -147,3 +147,29 @@
   - Sparse checkout pattern for Kafka: --filter=blob:none --no-checkout + sparse-checkout set clients/src/main/java/org/apache/kafka/clients/consumer
   - Kafka Consumer behavioral complexity: poll() drives event loop and rebalances, CommitFailedException when fenced, WakeupException for safe interruption, pause/resume for backpressure, onPartitionsRevoked/Assigned callbacks for state management
 ---
+## 2026-02-16 - US-007
+- Created docgen-migration-001: Terraform v1.9.0 → v1.10.0 migration guide task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-migration-001/task.toml (category=migration_guide, language=go, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-migration-001/instruction.md (covers S3 backend, moved blocks, sensitive values, ephemeral resources)
+  - benchmarks/ccb_docgen/docgen-migration-001/tests/ground_truth.json (4 scoring categories: breaking_changes, migration_steps, code_examples, documentation_structure)
+  - benchmarks/ccb_docgen/docgen-migration-001/tests/test.sh (Python-based weighted checklist verifier for migration guides)
+  - benchmarks/ccb_docgen/docgen-migration-001/environment/Dockerfile (git worktrees for v1.9.0 and v1.10.0)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-migration-001 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.887, total_selected: 196→197)
+- **Learnings for future iterations:**
+  - Migration guide tasks have 4 scoring categories: breaking_changes (0.50), migration_steps (0.30), code_examples (0.15), documentation_structure (0.05)
+  - breaking_changes focus on identifying what changed: S3 backend assume_role, moved blocks resource. prefix requirement, sensitive value conditional behavior, ephemeral resources
+  - migration_steps emphasize actionable instructions: step-by-step assume_role migration, resource. prefix updates, nonsensitive() fixes, testing validation
+  - code_examples require before/after comparisons for each breaking change
+  - documentation_structure ensures proper organization: Overview, Breaking Changes, Migration Steps, Testing, Rollback sections
+  - Migration tasks use git worktrees instead of separate clones for efficiency and disk space
+  - Dockerfile pattern: clone with --filter=blob:none, create worktrees for old/new commits, remove main clone
+  - Used WebSearch and WebFetch to research Terraform v1.10 breaking changes from GitHub releases and issues (Issue #36413 for sensitive value tracking)
+  - Found specific commits via WebFetch: v1.9.0 (7637a92, June 26 2024), v1.10.0 (24236f4, November 27 2024)
+  - MCP benefit score for migration guides (0.887) is highest in docgen suite due to: high cross_file_deps (0.95), high semantic_search_potential (0.95), and highest task_category_weight (0.75 vs 0.70 for API, 0.65 for arch)
+  - test.sh verifier uses OR logic (check_all=False) for pattern matching — more forgiving than architecture docs which use AND logic for data_flow
+  - Pass threshold for all docgen tasks: 0.7 overall score
+  - Ground truth covers 4 major Terraform v1.10 changes: S3 backend IAM role deprecation + native state locking, moved blocks syntax, sensitive marks in conditionals, ephemeral resources/values
+---

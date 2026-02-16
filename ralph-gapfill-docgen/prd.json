@@ -98,8 +98,8 @@
         "Task registered"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": "Choose two Terraform minor versions with documented breaking changes (see CHANGELOG.md). MCP compare_revisions directly compares the two versions."
+      "passes": true,
+      "notes": "Terraform v1.9.0 → v1.10.0 (commits 7637a92 → 24236f4). Breaking changes: S3 backend assume_role migration, moved blocks resource. prefix, sensitive value conditionals, ephemeral resources. Registered in selected_benchmark_tasks.json (mcp_benefit_score=0.887) and docgen_2config.sh."
     },
     {
       "id": "US-008",
