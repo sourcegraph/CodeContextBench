@@ -1,7 +1,7 @@
 # Navprove Task Environment
 # Source: qutebrowser/qutebrowser (6b320dc1)
 
-FROM jefzda/sweap-images:qutebrowser.qutebrowser-qutebrowser__qutebrowser-6b320dc18662580e1313d2548fdd6231d2a97e6d-v363c8a7e5ccdf6968fc7ab84a2053ac78036691d
+FROM jefzda/sweap-images:qutebrowser.qutebrowser-qutebrowser__qutebrowser-6b320dc18662580e1313d2548fdd6231d2a97e6d-v363c8a7e5ccdf6968fc7ab84a2053ac780366
 
 # Install uv for Python package management
 RUN curl -LsSf https://astral.sh/uv/0.7.13/install.sh | sh || true
