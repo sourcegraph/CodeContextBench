@@ -14,6 +14,7 @@
 #   --model MODEL          Override model (default: claude-opus-4-6)
 #   --category CATEGORY    Run category (default: official)
 #   --parallel N           Number of parallel task subshells (default: 1)
+#   --timeout-multiplier N Override Harbor timeout multiplier (default: 3)
 #
 # Prerequisites:
 #   - ~/evals/.env.local with USE_SUBSCRIPTION=true (default: 2-account Max subscription)
@@ -60,7 +61,7 @@ TASKS_DIR="/home/stephanie_jarmak/CodeContextBench/benchmarks/ccb_k8sdocs"
 AGENT_PATH="agents.claude_baseline_agent:BaselineClaudeCodeAgent"
 MODEL="${MODEL:-anthropic/claude-opus-4-6}"
 CONCURRENCY=2
-TIMEOUT_MULTIPLIER=3  # 3x default for 900s task timeout
+TIMEOUT_MULTIPLIER="${TIMEOUT_MULTIPLIER:-3}"  # 3x default for 900s task timeout
 RUN_BASELINE=true
 RUN_FULL=true
 CATEGORY="${CATEGORY:-official}"
@@ -86,6 +87,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --parallel)
             PARALLEL_JOBS="$2"
+            shift 2
+            ;;
+        --timeout-multiplier)
+            TIMEOUT_MULTIPLIER="$2"
             shift 2
             ;;
         *)

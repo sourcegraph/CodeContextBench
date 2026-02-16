@@ -392,6 +392,17 @@ setup_dual_accounts() { setup_multi_accounts; }
 
 # Refresh tokens for all registered accounts.
 ensure_fresh_token_all() {
+    # Some scripts call this before setup_multi_accounts/setup_dual_accounts.
+    # Ensure account homes are discovered so refresh is never silently skipped.
+    if [ ${#CLAUDE_HOMES[@]} -eq 0 ]; then
+        setup_multi_accounts
+    fi
+
+    # Safety fallback in case setup_multi_accounts did not populate for any reason.
+    if [ ${#CLAUDE_HOMES[@]} -eq 0 ]; then
+        CLAUDE_HOMES=("${HOME}")
+    fi
+
     for home_dir in "${CLAUDE_HOMES[@]}"; do
         echo "Refreshing token for HOME=$home_dir ..."
         HOME="$home_dir" ensure_fresh_token

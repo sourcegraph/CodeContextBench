@@ -17,6 +17,7 @@
 #   --full-only            Run only MCP-Full (sourcegraph_full)
 #   --model MODEL          Override model (default: claude-opus-4-6)
 #   --category CATEGORY    Run category (default: official)
+#   --timeout-multiplier N Override Harbor timeout multiplier (default: 10)
 #
 # Prerequisites:
 #   - ~/evals/.env.local with USE_SUBSCRIPTION=true (default: 2-account Max subscription)
@@ -67,7 +68,7 @@ TASKS_DIR="/home/stephanie_jarmak/CodeContextBench/benchmarks/${SUITE}"
 AGENT_PATH="agents.claude_baseline_agent:BaselineClaudeCodeAgent"
 MODEL="${MODEL:-anthropic/claude-opus-4-6}"
 CONCURRENCY=1
-TIMEOUT_MULTIPLIER=10
+TIMEOUT_MULTIPLIER="${TIMEOUT_MULTIPLIER:-10}"
 RUN_BASELINE=true
 RUN_FULL=true
 CATEGORY="${CATEGORY:-official}"
@@ -93,6 +94,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --parallel)
             PARALLEL_JOBS="$2"
+            shift 2
+            ;;
+        --timeout-multiplier)
+            TIMEOUT_MULTIPLIER="$2"
             shift 2
             ;;
         *)
@@ -131,6 +136,11 @@ declare -A TASK_SG_REPO_NAMES=(
     ["lfl-nfs-117651"]="github.com/sg-benchmarks/linux--07cc49f6"
     ["lfl-sata-203475"]="github.com/sg-benchmarks/linux--fa5941f4"
     ["lfl-sound-53441"]="github.com/sg-benchmarks/linux--07c4ee00"
+)
+
+# Per-task timeout multiplier overrides for known long-running tasks.
+declare -A TASK_TIMEOUT_MULTIPLIERS=(
+    ["lfl-nfs-117651"]="15"
 )
 
 # Derive short model name for run directory
@@ -197,6 +207,7 @@ _linuxflbench_run_single() {
     local jobs_base=${5:-$JOBS_BASE}
     local jobs_subdir="${jobs_base}/${config}"
     local task_path="${TASKS_DIR}/${task_id}"
+    local timeout_mult="${TASK_TIMEOUT_MULTIPLIERS[$task_id]:-$TIMEOUT_MULTIPLIER}"
 
     mkdir -p "$jobs_subdir"
 
@@ -205,7 +216,7 @@ _linuxflbench_run_single() {
         return 1
     fi
 
-    echo "Running task: $task_id ($config) [HOME=$task_home]"
+    echo "Running task: $task_id ($config) [HOME=$task_home] [timeout x${timeout_mult}]"
 
     local sg_repo="${TASK_SG_REPO_NAMES[$task_id]:-}"
     if [ -n "$sg_repo" ]; then
@@ -220,7 +231,7 @@ _linuxflbench_run_single() {
         --model "$MODEL" \
         --jobs-dir "$jobs_subdir" \
         -n $CONCURRENCY \
-        --timeout-multiplier $TIMEOUT_MULTIPLIER \
+        --timeout-multiplier "$timeout_mult" \
         2>&1 | tee "${jobs_subdir}/${task_id}.log" \
         || {
             echo "WARNING: Task $task_id ($config) failed (exit code: $?)"
