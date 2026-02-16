@@ -4,8 +4,8 @@
     "version": "1.0",
     "generated_by": "scripts/select_benchmark_tasks.py",
     "random_seed": 42,
-    "total_available": 835,
-    "total_selected": 190
+    "total_available": 837,
+    "total_selected": 192
   },
   "methodology": {
     "description": "Tasks selected via stratified sampling across 10 benchmarks, covering all SDLC phases. Each task scored for MCP benefit using weighted combination of context complexity, cross-file dependencies, semantic search potential, and task category affinity.",
@@ -3545,6 +3545,60 @@
       },
       "selection_rationale": "NL codebase Q&A: Istio Pilot xDS serving architecture requiring cross-package tracing through config ingestion, model translation, and xDS generation",
       "task_dir": "ccb_nlqa/nlqa-arch-002"
+    },
+    {
+      "task_id": "nlqa-arch-003",
+      "benchmark": "ccb_nlqa",
+      "sdlc_phase": "Architecture & Design",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "architecture_qa",
+      "repo": "hashicorp/terraform",
+      "mcp_benefit_score": 0.88,
+      "mcp_breakdown": {
+        "context_complexity": 0.90,
+        "cross_file_deps": 0.85,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.90
+      },
+      "selection_rationale": "NL codebase Q&A: Terraform plan/apply pipeline architecture requiring tracing through CLI command, graph builder, provider resolution, and per-resource diff computation",
+      "task_dir": "ccb_nlqa/nlqa-arch-003"
+    },
+    {
+      "task_id": "nlqa-flow-001",
+      "benchmark": "ccb_nlqa",
+      "sdlc_phase": "Architecture & Design",
+      "language": "java",
+      "difficulty": "hard",
+      "category": "dataflow_qa",
+      "repo": "apache/kafka",
+      "mcp_benefit_score": 0.90,
+      "mcp_breakdown": {
+        "context_complexity": 0.92,
+        "cross_file_deps": 0.90,
+        "semantic_search_potential": 0.88,
+        "task_category_weight": 0.90
+      },
+      "selection_rationale": "NL codebase Q&A: Kafka message lifecycle data flow tracing from producer batching through broker replication to consumer fetch, requiring multi-hop reasoning across producer/broker/consumer packages",
+      "task_dir": "ccb_nlqa/nlqa-flow-001"
+    },
+    {
+      "task_id": "nlqa-flow-002",
+      "benchmark": "ccb_nlqa",
+      "sdlc_phase": "Architecture & Design",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "dataflow_qa",
+      "repo": "envoyproxy/envoy",
+      "mcp_benefit_score": 0.89,
+      "mcp_breakdown": {
+        "context_complexity": 0.90,
+        "cross_file_deps": 0.90,
+        "semantic_search_potential": 0.85,
+        "task_category_weight": 0.90
+      },
+      "selection_rationale": "NL codebase Q&A: Envoy request routing data flow tracing from listener accept through filter chains to upstream connection, requiring cross-package tracing through network/HTTP layers",
+      "task_dir": "ccb_nlqa/nlqa-flow-002"
     }
   ]
 }

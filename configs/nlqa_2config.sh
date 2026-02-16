@@ -72,6 +72,9 @@ TASK_FILTER=""
 ALL_TASK_IDS=(
     nlqa-arch-001
     nlqa-arch-002
+    nlqa-arch-003
+    nlqa-flow-001
+    nlqa-flow-002
 )
 
 # Parse arguments
@@ -129,6 +132,9 @@ setup_dual_accounts
 declare -A TASK_SG_REPO_NAMES=(
     [nlqa-arch-001]="github.com/envoyproxy/envoy"
     [nlqa-arch-002]="github.com/istio/istio"
+    [nlqa-arch-003]="github.com/hashicorp/terraform"
+    [nlqa-flow-001]="github.com/apache/kafka"
+    [nlqa-flow-002]="github.com/envoyproxy/envoy"
 )
 
 # Derive short model name for run directory
