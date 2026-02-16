@@ -79,6 +79,7 @@ ALL_TASK_IDS=(
     "inv-deep-003"
     "inv-interaction-001"
     "inv-interaction-002"
+    "inv-interaction-003"
 )
 
 # Parse arguments
@@ -139,6 +140,7 @@ declare -A TASK_SG_REPO_NAMES=(
     ["inv-deep-003"]="github.com/hashicorp/terraform"
     ["inv-interaction-001"]="github.com/kubernetes/kubernetes"
     ["inv-interaction-002"]="github.com/cilium/cilium"
+    ["inv-interaction-003"]="github.com/apache/kafka"
 )
 
 # Derive short model name for run directory
