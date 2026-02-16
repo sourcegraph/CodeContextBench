@@ -36,6 +36,7 @@ DIR_PREFIX_TO_SUITE = {
     "k8s_docs_": "ccb_k8sdocs",
     "linuxflbench_": "ccb_linuxflbench",
     "locobench_": "ccb_locobench",
+    "navprove_": "ccb_navprove",
     "nlqa_": "ccb_nlqa",
     "onboarding_": "ccb_onboarding",
     "pytorch_": "ccb_pytorch",
