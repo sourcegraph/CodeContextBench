@@ -1,7 +1,7 @@
 # CodeContextBench Evaluation Report
 
-Generated: 2026-02-16T13:09:26.287215+00:00
-Report ID: eval_20260216_130926
+Generated: 2026-02-16T14:43:19.258630+00:00
+Report ID: eval_20260216_144319
 
 ## Run Inventory
 
@@ -17,12 +17,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | anthropic/claude-opus-4-6          | sourcegraph_base | 1     | 2026-02-10 16-44-09 |
 | ccb_largerepo                           | sourcegraph_base_precise | anthropic/claude-opus-4-6          | sourcegraph_base | 1     | 2026-02-10 17-07-44 |
 | ccb_largerepo                           | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 4     | 2026-02-08 18-45-22 |
-| ccb_locobench                           | baseline                 | anthropic/claude-opus-4-6          | none             | 25    | 2026-02-12 11-36-51 |
-| ccb_locobench                           | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 25    | 2026-02-07 22-05-15 |
 | ccb_pytorch                             | baseline                 | anthropic/claude-opus-4-6          | none             | 11    | 2026-02-10 16-40-10 |
 | ccb_pytorch                             | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 11    | 2026-02-08 14-51-56 |
-| ccb_repoqa                              | baseline                 | anthropic/claude-opus-4-5-20251101 | none             | 10    | 2026-02-03 16-35-20 |
-| ccb_repoqa                              | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 10    | 2026-02-08 13-25-29 |
 | ccb_swebenchpro                         | baseline                 | anthropic/claude-opus-4-6          | none             | 36    | 2026-02-12 11-10-31 |
 | ccb_swebenchpro                         | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 36    | 2026-02-12 11-59-48 |
 | ccb_sweperf                             | baseline                 | anthropic/claude-opus-4-5-20251101 | none             | 3     | 2026-02-05 01-04-11 |
@@ -35,6 +31,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 12    | 2026-02-16 03-45-25 |
 | governance                              | baseline                 | anthropic/claude-opus-4-6          | none             | 8     | 2026-02-16 03-45-26 |
 | governance                              | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 8     | 2026-02-16 03-45-29 |
+| investigation                           | baseline                 | anthropic/claude-opus-4-6          | none             | 4     | 2026-02-16 13-14-43 |
+| investigation                           | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 4     | 2026-02-16 13-14-44 |
 | largerepo                               | baseline                 | anthropic/claude-opus-4-6          | none             | 25    | 2026-02-16 04-44-23 |
 | largerepo                               | sourcegraph_full         | anthropic/claude-opus-4-6          | sourcegraph_full | 25    | 2026-02-16 07-06-21 |
 | linuxflbench                            | baseline                 | anthropic/claude-opus-4-5-20251101 | none             | 5     | 2026-02-06 16-28-49 |
@@ -57,10 +55,10 @@ Report ID: eval_20260216_130926
 
 | Config                   | Mean Reward | Pass Rate | Tasks |
 | ------------------------ | ----------- | --------- | ----- |
-| baseline                 | 0.580       | 0.743     | 311   |
+| baseline                 | 0.581       | 0.730     | 280   |
 | sourcegraph_base_latest  | 0.700       | 1.000     | 1     |
 | sourcegraph_base_precise | 0.700       | 1.000     | 1     |
-| sourcegraph_full         | 0.618       | 0.792     | 316   |
+| sourcegraph_full         | 0.611       | 0.754     | 285   |
 
 ## Per-Benchmark Breakdown (Mean Reward)
 
@@ -70,15 +68,14 @@ Report ID: eval_20260216_130926
 | ccb_dibench                             | 0.500    | -                       | -                        | 0.500            |
 | ccb_k8sdocs                             | 0.920    | -                       | -                        | 0.920            |
 | ccb_largerepo                           | 0.250    | 0.700                   | 0.700                    | 0.425            |
-| ccb_locobench                           | 0.374    | -                       | -                        | 0.499            |
-| ccb_pytorch                             | 0.429    | -                       | -                        | 0.328            |
-| ccb_repoqa                              | 1.000    | -                       | -                        | 1.000            |
+| ccb_pytorch                             | 0.273    | -                       | -                        | 0.265            |
 | ccb_swebenchpro                         | 0.722    | -                       | -                        | 0.824            |
 | ccb_sweperf                             | 0.591    | -                       | -                        | 0.484            |
 | ccb_tac                                 | 0.492    | -                       | -                        | 0.544            |
 | codereview                              | 0.933    | -                       | -                        | 1.000            |
 | enterprise                              | 0.821    | -                       | -                        | 0.756            |
 | governance                              | 0.550    | -                       | -                        | 0.544            |
+| investigation                           | 0.960    | -                       | -                        | 0.985            |
 | largerepo                               | 0.000    | -                       | -                        | 0.425            |
 | linuxflbench                            | 0.860    | -                       | -                        | 0.880            |
 | paired_rerun                            | 0.558    | -                       | -                        | 0.590            |
@@ -105,12 +102,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | 5,803,848         | 491                | 5,803,759         | 587.1              | 1406.0              | $195.9150       |
 | ccb_largerepo                           | sourcegraph_base_precise | 74                | 19,906             | 5,276,890         | 1494.6             | 2170.2              | $3.6124         |
 | ccb_largerepo                           | sourcegraph_full         | 1,693             | 26,879             | 8,073,793         | 2247.1             | 3931.5              | $5.7837         |
-| ccb_locobench                           | baseline                 | 300               | 15,658             | 2,562,315         | 363.7              | 408.5               | $4.4495         |
-| ccb_locobench                           | sourcegraph_full         | 1,132             | 23,906             | 5,179,082         | 805.3              | 1144.2              | $7.9783         |
-| ccb_pytorch                             | baseline                 | 379               | 9,552              | 2,086,912         | 321.8              | 862.9               | $1.6603         |
-| ccb_pytorch                             | sourcegraph_full         | 259               | 11,681             | 2,925,310         | 301.6              | 940.4               | $2.1658         |
-| ccb_repoqa                              | baseline                 | 2                 | 1,283              | 157,722           | 43.9               | 165.1               | $0.1666         |
-| ccb_repoqa                              | sourcegraph_full         | 5                 | 1,171              | 198,223           | 32.6               | 306.6               | $0.2427         |
+| ccb_pytorch                             | baseline                 | 1,783             | 9,481              | 2,533,532         | 268.7              | 977.7               | $1.8711         |
+| ccb_pytorch                             | sourcegraph_full         | 224               | 12,449             | 3,742,737         | 685.4              | 2954.1              | $2.5841         |
 | ccb_swebenchpro                         | baseline                 | 403               | 10,459             | 2,912,192         | 426.8              | 763.1               | $2.2214         |
 | ccb_swebenchpro                         | sourcegraph_full         | 443               | 10,907             | 2,908,117         | 421.1              | 1537.6              | $2.1028         |
 | ccb_sweperf                             | baseline                 | 2                 | 18,896             | 5,061,122         | 452.7              | 795.7               | $3.8225         |
@@ -123,6 +116,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | 57                | 22,980             | 4,966,936         | 813.5              | 1370.8              | $4.5353         |
 | governance                              | baseline                 | 387               | 20,654             | 3,853,032         | 1074.4             | 2192.5              | $3.2935         |
 | governance                              | sourcegraph_full         | 207               | 18,448             | 3,678,853         | 919.8              | 2056.0              | $2.7275         |
+| investigation                           | baseline                 | 210               | 6,361              | 1,027,994         | 253.6              | 511.5               | $2.0043         |
+| investigation                           | sourcegraph_full         | 28                | 9,943              | 2,175,810         | 218.9              | 475.2               | $1.8773         |
 | largerepo                               | baseline                 | 18,064            | 8,811              | 1,298,281         | 876.1              | 2210.0              | $3.3219         |
 | largerepo                               | sourcegraph_full         | 697,947           | 11,836             | 3,105,234         | 1268.4             | 2231.1              | $27.2613        |
 | linuxflbench                            | baseline                 | 41                | 6,408              | 1,324,768         | 232.5              | 568.4               | $1.0380         |
@@ -155,12 +150,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | 60.0             | 8.0            | 52.0             | 0.133          |
 | ccb_largerepo                           | sourcegraph_base_precise | 104.0            | 4.0            | 100.0            | 0.038          |
 | ccb_largerepo                           | sourcegraph_full         | 107.5            | 5.0            | 102.5            | 0.050          |
-| ccb_locobench                           | baseline                 | 56.7             | 0.0            | 56.7             | 0.000          |
-| ccb_locobench                           | sourcegraph_full         | 77.0             | 15.2           | 61.8             | 0.292          |
-| ccb_pytorch                             | baseline                 | 50.1             | 0.0            | 50.1             | 0.000          |
-| ccb_pytorch                             | sourcegraph_full         | 49.3             | 6.3            | 43.0             | 0.107          |
-| ccb_repoqa                              | baseline                 | 5.9              | 0.0            | 5.9              | 0.000          |
-| ccb_repoqa                              | sourcegraph_full         | 6.2              | 4.0            | 2.2              | 0.680          |
+| ccb_pytorch                             | baseline                 | 58.4             | 0.0            | 58.4             | 0.000          |
+| ccb_pytorch                             | sourcegraph_full         | 65.5             | 12.9           | 52.5             | 0.169          |
 | ccb_swebenchpro                         | baseline                 | 50.8             | 0.0            | 50.8             | 0.000          |
 | ccb_swebenchpro                         | sourcegraph_full         | 51.2             | 7.0            | 44.2             | 0.158          |
 | ccb_sweperf                             | baseline                 | 60.7             | 0.0            | 60.7             | 0.000          |
@@ -173,6 +164,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | 77.8             | 10.5           | 67.3             | 0.205          |
 | governance                              | baseline                 | 72.9             | 0.0            | 72.9             | 0.000          |
 | governance                              | sourcegraph_full         | 63.4             | 6.9            | 56.5             | 0.117          |
+| investigation                           | baseline                 | 41.2             | 0.0            | 41.2             | 0.000          |
+| investigation                           | sourcegraph_full         | 48.5             | 29.0           | 19.5             | 0.596          |
 | largerepo                               | baseline                 | 45.4             | 0.0            | 45.4             | 0.000          |
 | largerepo                               | sourcegraph_full         | 82.1             | 25.1           | 57.0             | 0.432          |
 | linuxflbench                            | baseline                 | 31.6             | 0.0            | 31.6             | 0.000          |
@@ -205,12 +198,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | 7.0                   | 1.0               | 0.0                | 0.000            |
 | ccb_largerepo                           | sourcegraph_base_precise | 3.0                   | 0.0               | 0.0                | 0.000            |
 | ccb_largerepo                           | sourcegraph_full         | 3.8                   | 0.5               | 0.0                | 0.000            |
-| ccb_locobench                           | baseline                 | -                     | -                 | -                  | -                |
-| ccb_locobench                           | sourcegraph_full         | 4.6                   | 0.7               | 0.0                | 0.004            |
 | ccb_pytorch                             | baseline                 | -                     | -                 | -                  | -                |
-| ccb_pytorch                             | sourcegraph_full         | 3.3                   | 0.3               | 0.0                | 0.000            |
-| ccb_repoqa                              | baseline                 | -                     | -                 | -                  | -                |
-| ccb_repoqa                              | sourcegraph_full         | 2.0                   | 0.9               | 0.0                | 0.000            |
+| ccb_pytorch                             | sourcegraph_full         | 6.9                   | 0.2               | 0.0                | 0.000            |
 | ccb_swebenchpro                         | baseline                 | -                     | -                 | -                  | -                |
 | ccb_swebenchpro                         | sourcegraph_full         | 3.7                   | 0.0               | 0.0                | 0.000            |
 | ccb_sweperf                             | baseline                 | -                     | -                 | -                  | -                |
@@ -223,6 +212,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | 4.2                   | 0.7               | 0.0                | 0.000            |
 | governance                              | baseline                 | -                     | -                 | -                  | -                |
 | governance                              | sourcegraph_full         | 3.6                   | 0.4               | 0.0                | 0.000            |
+| investigation                           | baseline                 | -                     | -                 | -                  | -                |
+| investigation                           | sourcegraph_full         | 12.5                  | 1.5               | 0.0                | 0.000            |
 | largerepo                               | baseline                 | -                     | -                 | -                  | -                |
 | largerepo                               | sourcegraph_full         | 10.7                  | 0.9               | 0.0                | 0.000            |
 | linuxflbench                            | baseline                 | -                     | -                 | -                  | -                |
@@ -255,12 +246,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | 12.0                | 251.0            | 71.0               |
 | ccb_largerepo                           | sourcegraph_base_precise | 9.0                 | 206.0            | 92.0               |
 | ccb_largerepo                           | sourcegraph_full         | 7.5                 | 331.2            | 143.0              |
-| ccb_locobench                           | baseline                 | 5.6                 | 858.7            | 103.7              |
-| ccb_locobench                           | sourcegraph_full         | 5.4                 | 794.9            | 96.2               |
-| ccb_pytorch                             | baseline                 | 3.0                 | 72.4             | 81.6               |
-| ccb_pytorch                             | sourcegraph_full         | 3.0                 | 274.0            | 77.8               |
-| ccb_repoqa                              | baseline                 | -                   | -                | -                  |
-| ccb_repoqa                              | sourcegraph_full         | -                   | -                | -                  |
+| ccb_pytorch                             | baseline                 | 3.0                 | 130.0            | 106.0              |
+| ccb_pytorch                             | sourcegraph_full         | 3.5                 | 188.1            | 77.2               |
 | ccb_swebenchpro                         | baseline                 | 4.6                 | 129.2            | 67.0               |
 | ccb_swebenchpro                         | sourcegraph_full         | 5.1                 | 170.4            | 68.7               |
 | ccb_sweperf                             | baseline                 | 2.3                 | 452.0            | 104.7              |
@@ -273,6 +260,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | 3.2                 | 179.0            | 65.5               |
 | governance                              | baseline                 | 2.2                 | 135.4            | 71.0               |
 | governance                              | sourcegraph_full         | 1.9                 | 68.8             | 26.8               |
+| investigation                           | baseline                 | 1.0                 | 155.8            | 0.0                |
+| investigation                           | sourcegraph_full         | 1.0                 | 165.5            | 0.0                |
 | largerepo                               | baseline                 | 4.6                 | 419.3            | 24.3               |
 | largerepo                               | sourcegraph_full         | 5.7                 | 456.2            | 45.8               |
 | linuxflbench                            | baseline                 | 1.0                 | 7.0              | 0.0                |
@@ -305,12 +294,8 @@ Report ID: eval_20260216_130926
 | ccb_largerepo                           | sourcegraph_base_latest  | -                   | 11820.5                 | $195.9150       |
 | ccb_largerepo                           | sourcegraph_base_precise | 0.986               | 0.0                     | $3.6124         |
 | ccb_largerepo                           | sourcegraph_full         | 0.986               | 0.1                     | $5.7837         |
-| ccb_locobench                           | baseline                 | 0.944               | 0.0                     | $4.4495         |
-| ccb_locobench                           | sourcegraph_full         | 0.958               | 0.0                     | $7.9783         |
-| ccb_pytorch                             | baseline                 | 0.974               | 0.1                     | $1.6603         |
-| ccb_pytorch                             | sourcegraph_full         | 0.978               | 0.0                     | $2.1658         |
-| ccb_repoqa                              | baseline                 | 0.955               | 0.0                     | $0.1666         |
-| ccb_repoqa                              | sourcegraph_full         | 0.890               | 0.0                     | $0.2427         |
+| ccb_pytorch                             | baseline                 | 0.977               | 0.1                     | $1.8711         |
+| ccb_pytorch                             | sourcegraph_full         | 0.981               | 0.0                     | $2.5841         |
 | ccb_swebenchpro                         | baseline                 | 0.969               | 0.1                     | $2.2214         |
 | ccb_swebenchpro                         | sourcegraph_full         | 0.975               | 0.0                     | $2.1028         |
 | ccb_sweperf                             | baseline                 | 0.974               | 0.0                     | $3.8225         |
@@ -323,6 +308,8 @@ Report ID: eval_20260216_130926
 | enterprise                              | sourcegraph_full         | 0.759               | 0.0                     | $4.5353         |
 | governance                              | baseline                 | 0.887               | 0.1                     | $3.2935         |
 | governance                              | sourcegraph_full         | 0.981               | 0.0                     | $2.7275         |
+| investigation                           | baseline                 | 0.963               | 0.0                     | $2.0043         |
+| investigation                           | sourcegraph_full         | 0.954               | 0.0                     | $1.8773         |
 | largerepo                               | baseline                 | 0.747               | 232.2                   | $3.3219         |
 | largerepo                               | sourcegraph_full         | 0.895               | 880.9                   | $27.2613        |
 | linuxflbench                            | baseline                 | 0.967               | 0.0                     | $1.0380         |
@@ -353,17 +340,17 @@ Report ID: eval_20260216_130926
 | SDLC Phase                   | Tasks | baseline | sourcegraph_base_latest | sourcegraph_base_precise | sourcegraph_full |
 | ---------------------------- | ----- | -------- | ----------------------- | ------------------------ | ---------------- |
 | Analysis                     | 8     | -        | -                       | -                        | -                |
-| Architecture & Design        | 26    | 0.681    | -                       | -                        | 0.702            |
+| Architecture & Design        | 26    | 0.759    | -                       | -                        | 0.760            |
 | Debugging                    | 3     | -        | -                       | -                        | -                |
 | Documentation                | 5     | 0.920    | -                       | -                        | 0.913            |
-| Implementation (bug fix)     | 62    | 0.564    | -                       | -                        | 0.595            |
+| Implementation (bug fix)     | 62    | 0.547    | -                       | -                        | 0.576            |
 | Implementation (feature)     | 44    | 0.457    | 0.700                   | 0.700                    | 0.535            |
 | Implementation (refactor)    | 2     | 0.725    | -                       | -                        | 0.725            |
-| Implementation (refactoring) | 15    | 0.358    | -                       | -                        | 0.410            |
+| Implementation (refactoring) | 15    | 0.377    | -                       | -                        | 0.352            |
 | Maintenance                  | 2     | 0.200    | -                       | -                        | 0.200            |
 | Planning (impact analysis)   | 2     | 0.928    | -                       | -                        | 0.839            |
 | Refactoring                  | 4     | -        | -                       | -                        | -                |
-| Requirements & Discovery     | 12    | 0.825    | -                       | -                        | 0.833            |
+| Requirements & Discovery     | 16    | 0.758    | -                       | -                        | 0.774            |
 | Security review              | 3     | -        | -                       | -                        | -                |
 | Testing & QA                 | 8     | 0.754    | -                       | -                        | 0.714            |
 
@@ -371,23 +358,23 @@ Report ID: eval_20260216_130926
 
 | Language   | Tasks | baseline | sourcegraph_base_latest | sourcegraph_base_precise | sourcegraph_full |
 | ---------- | ----- | -------- | ----------------------- | ------------------------ | ---------------- |
-| c          | 14    | 0.658    | -                       | -                        | 0.630            |
-| cpp        | 19    | 0.331    | -                       | -                        | 0.353            |
-| csharp     | 6     | 0.417    | -                       | -                        | 0.425            |
-| go         | 35    | 0.741    | 0.700                   | 0.700                    | 0.756            |
-| java       | 20    | 0.767    | -                       | -                        | 0.841            |
+| c          | 14    | 0.698    | -                       | -                        | 0.694            |
+| cpp        | 19    | 0.267    | -                       | -                        | 0.303            |
+| csharp     | 6     | 0.384    | -                       | -                        | 0.386            |
+| go         | 38    | 0.755    | 0.700                   | 0.700                    | 0.769            |
+| java       | 20    | 0.721    | -                       | -                        | 0.809            |
 | javascript | 14    | 0.725    | -                       | -                        | 0.893            |
-| python     | 54    | 0.579    | -                       | -                        | 0.562            |
+| python     | 55    | 0.573    | -                       | -                        | 0.557            |
 | python,cpp | 1     | 1.000    | -                       | -                        | 1.000            |
-| rust       | 13    | 0.427    | -                       | -                        | 0.570            |
-| typescript | 20    | 0.669    | -                       | -                        | 0.733            |
+| rust       | 13    | 0.549    | -                       | -                        | 0.552            |
+| typescript | 20    | 0.669    | -                       | -                        | 0.721            |
 
 ## Performance by MCP Benefit Score
 
 | MCP Benefit Score   | Tasks | baseline | sourcegraph_base_latest | sourcegraph_base_precise | sourcegraph_full |
 | ------------------- | ----- | -------- | ----------------------- | ------------------------ | ---------------- |
 | 0.0-0.4 (low)       | 0     | -        | -                       | -                        | -                |
-| 0.4-0.6 (medium)    | 34    | 0.480    | -                       | -                        | 0.541            |
-| 0.6-0.8 (high)      | 73    | 0.624    | -                       | -                        | 0.667            |
-| 0.8-1.0 (very high) | 68    | 0.605    | 0.700                   | 0.700                    | 0.629            |
+| 0.4-0.6 (medium)    | 34    | 0.459    | -                       | -                        | 0.524            |
+| 0.6-0.8 (high)      | 73    | 0.616    | -                       | -                        | 0.658            |
+| 0.8-1.0 (very high) | 72    | 0.641    | 0.700                   | 0.700                    | 0.640            |
 

@@ -9,12 +9,8 @@ ccb_largerepo,baseline,86.0,0.0,86.0,0.000
 ccb_largerepo,sourcegraph_base_latest,60.0,8.0,52.0,0.133
 ccb_largerepo,sourcegraph_base_precise,104.0,4.0,100.0,0.038
 ccb_largerepo,sourcegraph_full,107.5,5.0,102.5,0.050
-ccb_locobench,baseline,56.7,0.0,56.7,0.000
-ccb_locobench,sourcegraph_full,77.0,15.2,61.8,0.292
-ccb_pytorch,baseline,50.1,0.0,50.1,0.000
-ccb_pytorch,sourcegraph_full,49.3,6.3,43.0,0.107
-ccb_repoqa,baseline,5.9,0.0,5.9,0.000
-ccb_repoqa,sourcegraph_full,6.2,4.0,2.2,0.680
+ccb_pytorch,baseline,58.4,0.0,58.4,0.000
+ccb_pytorch,sourcegraph_full,65.5,12.9,52.5,0.169
 ccb_swebenchpro,baseline,50.8,0.0,50.8,0.000
 ccb_swebenchpro,sourcegraph_full,51.2,7.0,44.2,0.158
 ccb_sweperf,baseline,60.7,0.0,60.7,0.000
@@ -27,6 +23,8 @@ enterprise,baseline,55.8,0.0,55.8,0.000
 enterprise,sourcegraph_full,77.8,10.5,67.3,0.205
 governance,baseline,72.9,0.0,72.9,0.000
 governance,sourcegraph_full,63.4,6.9,56.5,0.117
+investigation,baseline,41.2,0.0,41.2,0.000
+investigation,sourcegraph_full,48.5,29.0,19.5,0.596
 largerepo,baseline,45.4,0.0,45.4,0.000
 largerepo,sourcegraph_full,82.1,25.1,57.0,0.432
 linuxflbench,baseline,31.6,0.0,31.6,0.000

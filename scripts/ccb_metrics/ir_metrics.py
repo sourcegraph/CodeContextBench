@@ -23,8 +23,8 @@ from typing import Optional
 # Anthropic Claude pricing (per million tokens) — Opus 4, Feb 2026
 # ---------------------------------------------------------------------------
 _PRICE_PER_MTOK_INPUT = 15.0          # uncached input
-_PRICE_PER_MTOK_CACHE_CREATE = 3.75   # cache creation
-_PRICE_PER_MTOK_CACHE_READ = 0.30     # cache read (50x cheaper than input)
+_PRICE_PER_MTOK_CACHE_CREATE = 18.75  # cache creation (1.25× input)
+_PRICE_PER_MTOK_CACHE_READ = 1.50     # cache read (0.1× input)
 _PRICE_PER_MTOK_OUTPUT = 75.0         # output / completion
 
 
@@ -781,7 +781,7 @@ def extract_cost_metrics_before_first_relevant(
     """Extract multiple cost metrics from claude-code.txt up to the TTFR step.
 
     Tracks per-type token totals and computes dollar-weighted cost using
-    Anthropic pricing. Cache reads ($0.30/Mtok) are properly distinguished
+    Anthropic Opus pricing. Cache reads ($1.50/Mtok) are properly distinguished
     from output tokens ($75/Mtok), fixing the measurement artifact where
     all-token sums made SG_full appear 384% more expensive.
 

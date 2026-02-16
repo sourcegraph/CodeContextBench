@@ -436,8 +436,8 @@ def _load_task_metrics_cost() -> dict[tuple[str, str], float]:
     """Load (task_id, config) -> total run cost in USD from task_metrics.json.
 
     Uses the pre-computed cost_usd field which accounts for all token types
-    at Anthropic pricing: input ($15/Mtok), cache_create ($3.75/Mtok),
-    cache_read ($0.30/Mtok), output ($75/Mtok). This is the full-run cost,
+    at Anthropic Opus pricing: input ($15/Mtok), cache_create ($18.75/Mtok),
+    cache_read ($1.50/Mtok), output ($75/Mtok). This is the full-run cost,
     not just the cost up to first relevant file.
     """
     costs: dict[tuple[str, str], float] = {}
@@ -472,6 +472,62 @@ def _load_task_metrics_cost() -> dict[tuple[str, str], float]:
     return costs
 
 
+def _load_zero_mcp_sg_tasks() -> set[str]:
+    """Load task_ids where SG_full config had zero MCP tool usage.
+
+    These are invalid treatment runs — MCP tools were available but never
+    invoked, so the run is effectively a baseline with extra prompt overhead.
+    Exclude these from all SG_full aggregations.
+    """
+    zero_mcp: set[str] = set()
+    if not RUNS_DIR.exists():
+        return zero_mcp
+    # Track latest per task_id (same dedup logic as other loaders)
+    seen: dict[str, str] = {}  # task_id -> started_at
+    for run_dir in RUNS_DIR.iterdir():
+        if not run_dir.is_dir() or should_skip(run_dir.name):
+            continue
+        for config_dir in run_dir.iterdir():
+            if not config_dir.is_dir() or config_dir.name != "sourcegraph_full":
+                continue
+            for batch_dir in config_dir.iterdir():
+                if not batch_dir.is_dir() or not _is_batch_timestamp(batch_dir.name):
+                    continue
+                for task_dir in batch_dir.iterdir():
+                    if not task_dir.is_dir():
+                        continue
+                    metrics_file = task_dir / "task_metrics.json"
+                    if not metrics_file.is_file():
+                        continue
+                    try:
+                        m = json.loads(metrics_file.read_text())
+                        task_id = m.get("task_id", "")
+                        if not task_id:
+                            continue
+                        mcp_calls = m.get("tool_calls_mcp")
+                        mcp_ratio = m.get("mcp_ratio")
+                        is_zero = (mcp_calls is None or mcp_calls == 0
+                                   or (mcp_ratio is not None and mcp_ratio == 0))
+                        # Timestamp-based dedup
+                        started_at = ""
+                        result_file = task_dir / "result.json"
+                        if result_file.is_file():
+                            try:
+                                rdata = json.loads(result_file.read_text())
+                                started_at = rdata.get("started_at", "")
+                            except (json.JSONDecodeError, OSError):
+                                pass
+                        if task_id not in seen or started_at > seen[task_id]:
+                            seen[task_id] = started_at
+                            if is_zero:
+                                zero_mcp.add(task_id)
+                            else:
+                                zero_mcp.discard(task_id)
+                    except (json.JSONDecodeError, OSError, ValueError):
+                        continue
+    return zero_mcp
+
+
 def _zscore(values: list[float]) -> list[float]:
     """Z-score normalize a list of values. Returns 0 for constant lists."""
     if len(values) < 2:
@@ -501,15 +557,17 @@ def compute_mcp_value_scores(
     """
     manifest_rewards = _load_manifest_rewards()
     token_data = _load_task_metrics_tokens()
+    zero_mcp = _load_zero_mcp_sg_tasks()
 
-    # Build per-config lookups
+    # Build per-config lookups (exclude zero-MCP SG_full runs)
     bl_ir: dict[str, IRScores] = {}
     sg_ir: dict[str, IRScores] = {}
     for s in ir_scores:
         if s.config_name == "baseline":
             bl_ir[s.task_id] = s
         elif s.config_name == "sourcegraph_full":
-            sg_ir[s.task_id] = s
+            if s.task_id not in zero_mcp:
+                sg_ir[s.task_id] = s
 
     common = set(bl_ir) & set(sg_ir)
     if len(common) < 3:
@@ -620,12 +678,15 @@ def compute_cost_efficiency(
     """
     token_data = _load_task_metrics_tokens()
     cost_data = _load_task_metrics_cost()
+    zero_mcp = _load_zero_mcp_sg_tasks()
     if not token_data:
         return None
 
-    # Build per-task data
+    # Build per-task data (exclude zero-MCP SG_full runs)
     records: list[dict] = []
     for s in ir_scores:
+        if s.config_name == "sourcegraph_full" and s.task_id in zero_mcp:
+            continue
         inp_tok = token_data.get((s.task_id, s.config_name))
         if inp_tok is None or inp_tok == 0:
             continue
@@ -808,6 +869,25 @@ def run_ir_analysis(
         all_scores.append(scores)
         by_suite_config[(suite, config)].append(scores)
 
+    # Filter out zero-MCP SG_full runs (invalid treatment data)
+    zero_mcp_tasks = _load_zero_mcp_sg_tasks()
+    n_before = len(all_scores)
+    flagged_ids = set()
+    if zero_mcp_tasks:
+        filtered_scores: list[IRScores] = []
+        filtered_by_sc: dict[tuple[str, str], list[IRScores]] = defaultdict(list)
+        for s in all_scores:
+            if s.config_name == "sourcegraph_full" and s.task_id in zero_mcp_tasks:
+                flagged_ids.add(s.task_id)
+                continue
+            filtered_scores.append(s)
+            suite_key = _infer_suite(s.task_id) or "unknown"
+            filtered_by_sc[(suite_key, s.config_name)].append(s)
+        all_scores = filtered_scores
+        by_suite_config = filtered_by_sc
+
+    n_flagged = n_before - len(all_scores)
+
     # Aggregate
     overall_by_config: dict[str, list[IRScores]] = defaultdict(list)
     for s in all_scores:
@@ -819,6 +899,8 @@ def run_ir_analysis(
             "total_runs_analyzed": len(all_scores),
             "skipped_no_ground_truth": skipped_no_gt,
             "skipped_no_transcript": skipped_no_transcript,
+            "excluded_zero_mcp_sg": n_flagged,
+            "excluded_zero_mcp_task_ids": sorted(flagged_ids),
         },
         "overall_by_config": {
             cfg: aggregate_ir_scores(scores)
@@ -1031,6 +1113,9 @@ def format_table(data: dict) -> str:
     lines.append(f"Runs analyzed:           {s.get('total_runs_analyzed', 0)}")
     lines.append(f"Skipped (no GT):         {s.get('skipped_no_ground_truth', 0)}")
     lines.append(f"Skipped (no transcript): {s.get('skipped_no_transcript', 0)}")
+    n_zero_mcp = s.get("excluded_zero_mcp_sg", 0)
+    if n_zero_mcp:
+        lines.append(f"Excluded (zero-MCP SG):  {n_zero_mcp}  (invalid: MCP available but never used)")
     lines.append("")
 
     # Overall by config

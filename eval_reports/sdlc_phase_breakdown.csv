@@ -1,15 +1,15 @@
 SDLC Phase,Tasks,baseline,sourcegraph_base_latest,sourcegraph_base_precise,sourcegraph_full
 Analysis,8,-,-,-,-
-Architecture & Design,26,0.681,-,-,0.702
+Architecture & Design,26,0.759,-,-,0.760
 Debugging,3,-,-,-,-
 Documentation,5,0.920,-,-,0.913
-Implementation (bug fix),62,0.564,-,-,0.595
+Implementation (bug fix),62,0.547,-,-,0.576
 Implementation (feature),44,0.457,0.700,0.700,0.535
 Implementation (refactor),2,0.725,-,-,0.725
-Implementation (refactoring),15,0.358,-,-,0.410
+Implementation (refactoring),15,0.377,-,-,0.352
 Maintenance,2,0.200,-,-,0.200
 Planning (impact analysis),2,0.928,-,-,0.839
 Refactoring,4,-,-,-,-
-Requirements & Discovery,12,0.825,-,-,0.833
+Requirements & Discovery,16,0.758,-,-,0.774
 Security review,3,-,-,-,-
 Testing & QA,8,0.754,-,-,0.714

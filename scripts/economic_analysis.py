@@ -425,7 +425,7 @@ def build_output(
         "methodology": (
             "Cost figures are hypothetical API costs computed from per-message "
             "token counts in claude-code.txt transcripts. Pricing: input $15/MTok, "
-            "output $75/MTok, cache_write $18.75/MTok, cache_read $1.875/MTok. "
+            "output $75/MTok, cache_write $18.75/MTok, cache_read $1.50/MTok. "
             "Subscription accounts mean actual spend is $0. ROI metrics are "
             "MODELED ESTIMATES."
         ),

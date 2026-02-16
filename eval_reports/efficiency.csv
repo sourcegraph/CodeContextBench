@@ -9,12 +9,8 @@ ccb_largerepo,baseline,85,"23,860","7,356,855",997.2,2903.4,$5.4184
 ccb_largerepo,sourcegraph_base_latest,"5,803,848",491,"5,803,759",587.1,1406.0,$195.9150
 ccb_largerepo,sourcegraph_base_precise,74,"19,906","5,276,890",1494.6,2170.2,$3.6124
 ccb_largerepo,sourcegraph_full,"1,693","26,879","8,073,793",2247.1,3931.5,$5.7837
-ccb_locobench,baseline,300,"15,658","2,562,315",363.7,408.5,$4.4495
-ccb_locobench,sourcegraph_full,"1,132","23,906","5,179,082",805.3,1144.2,$7.9783
-ccb_pytorch,baseline,379,"9,552","2,086,912",321.8,862.9,$1.6603
-ccb_pytorch,sourcegraph_full,259,"11,681","2,925,310",301.6,940.4,$2.1658
-ccb_repoqa,baseline,2,"1,283","157,722",43.9,165.1,$0.1666
-ccb_repoqa,sourcegraph_full,5,"1,171","198,223",32.6,306.6,$0.2427
+ccb_pytorch,baseline,"1,783","9,481","2,533,532",268.7,977.7,$1.8711
+ccb_pytorch,sourcegraph_full,224,"12,449","3,742,737",685.4,2954.1,$2.5841
 ccb_swebenchpro,baseline,403,"10,459","2,912,192",426.8,763.1,$2.2214
 ccb_swebenchpro,sourcegraph_full,443,"10,907","2,908,117",421.1,1537.6,$2.1028
 ccb_sweperf,baseline,2,"18,896","5,061,122",452.7,795.7,$3.8225
@@ -27,6 +23,8 @@ enterprise,baseline,240,"6,187","921,836",679.1,1256.2,$2.5200
 enterprise,sourcegraph_full,57,"22,980","4,966,936",813.5,1370.8,$4.5353
 governance,baseline,387,"20,654","3,853,032",1074.4,2192.5,$3.2935
 governance,sourcegraph_full,207,"18,448","3,678,853",919.8,2056.0,$2.7275
+investigation,baseline,210,"6,361","1,027,994",253.6,511.5,$2.0043
+investigation,sourcegraph_full,28,"9,943","2,175,810",218.9,475.2,$1.8773
 largerepo,baseline,"18,064","8,811","1,298,281",876.1,2210.0,$3.3219
 largerepo,sourcegraph_full,"697,947","11,836","3,105,234",1268.4,2231.1,$27.2613
 linuxflbench,baseline,41,"6,408","1,324,768",232.5,568.4,$1.0380

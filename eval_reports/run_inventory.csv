@@ -9,12 +9,8 @@ ccb_largerepo,baseline,anthropic/claude-opus-4-5-20251101,none,4,2026-02-05 22-5
 ccb_largerepo,sourcegraph_base_latest,anthropic/claude-opus-4-6,sourcegraph_base,1,2026-02-10 16-44-09
 ccb_largerepo,sourcegraph_base_precise,anthropic/claude-opus-4-6,sourcegraph_base,1,2026-02-10 17-07-44
 ccb_largerepo,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,4,2026-02-08 18-45-22
-ccb_locobench,baseline,anthropic/claude-opus-4-6,none,25,2026-02-12 11-36-51
-ccb_locobench,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,25,2026-02-07 22-05-15
 ccb_pytorch,baseline,anthropic/claude-opus-4-6,none,11,2026-02-10 16-40-10
 ccb_pytorch,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,11,2026-02-08 14-51-56
-ccb_repoqa,baseline,anthropic/claude-opus-4-5-20251101,none,10,2026-02-03 16-35-20
-ccb_repoqa,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,10,2026-02-08 13-25-29
 ccb_swebenchpro,baseline,anthropic/claude-opus-4-6,none,36,2026-02-12 11-10-31
 ccb_swebenchpro,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,36,2026-02-12 11-59-48
 ccb_sweperf,baseline,anthropic/claude-opus-4-5-20251101,none,3,2026-02-05 01-04-11
@@ -27,6 +23,8 @@ enterprise,baseline,anthropic/claude-opus-4-6,none,12,2026-02-16 04-03-20
 enterprise,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,12,2026-02-16 03-45-25
 governance,baseline,anthropic/claude-opus-4-6,none,8,2026-02-16 03-45-26
 governance,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,8,2026-02-16 03-45-29
+investigation,baseline,anthropic/claude-opus-4-6,none,4,2026-02-16 13-14-43
+investigation,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,4,2026-02-16 13-14-44
 largerepo,baseline,anthropic/claude-opus-4-6,none,25,2026-02-16 04-44-23
 largerepo,sourcegraph_full,anthropic/claude-opus-4-6,sourcegraph_full,25,2026-02-16 07-06-21
 linuxflbench,baseline,anthropic/claude-opus-4-5-20251101,none,5,2026-02-06 16-28-49
