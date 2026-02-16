@@ -199,3 +199,34 @@
   - TASK_SG_REPO_NAMES can handle multiple repos separated by spaces (useful for transitive dependency tasks)
 ---
 
+## 2026-02-16 - US-008
+- Created sec-transitive-002: Transitive dependency vulnerability (NOT AFFECTED case) - grpcurl with CVE-2023-39325
+- Task type: Transitive dependency triage where the consuming project is NOT affected despite having vulnerable library
+- Agent must distinguish HTTP/2 client vs server usage and prove grpcurl is safe
+- Files created:
+  - benchmarks/ccb_security/sec-transitive-002/task.toml (transitive_dependency, go, hard, 1200s)
+  - benchmarks/ccb_security/sec-transitive-002/instruction.md (CVE-2023-39325 in golang.org/x/net, grpcurl analysis)
+  - benchmarks/ccb_security/sec-transitive-002/environment/Dockerfile (clones grpcurl v1.8.7, grpc-go v1.56.2, x/net v0.14.0)
+  - benchmarks/ccb_security/sec-transitive-002/tests/ground_truth.json (7 findings, 3 file refs, 5 causal chain steps, 4 negative checks)
+  - benchmarks/ccb_security/sec-transitive-002/tests/test.sh (weighted checklist scorer)
+  - benchmarks/ccb_security/sec-transitive-002/tests/expected_patches/README.md (analysis-only task)
+- Files modified:
+  - configs/security_2config.sh (added sec-transitive-002 to ALL_TASK_IDS and TASK_SG_REPO_NAMES with 3 repos)
+  - configs/selected_benchmark_tasks.json (registered task with MCP benefit score 0.86, updated statistics: total_selected 193, Requirements & Discovery 8, ccb_security 8, go 40)
+  - ralph-gapfill-security/prd.json (marked US-008 as passes: true)
+- **Learnings for future iterations:**
+  - CVE-2023-39325 (HTTP/2 rapid reset DoS) affects HTTP/2 **SERVER** only (golang.org/x/net/http2.Server.ServeConn)
+  - Vulnerable symbol: golang.org/x/net/http2.Server.ServeConn (not http2.Transport which is client-side)
+  - grpcurl v1.8.7 is a perfect NOT-AFFECTED example: it's a CLI tool that makes gRPC calls (HTTP/2 client) but never runs an HTTP/2 server
+  - Dependency chain: grpcurl → google.golang.org/grpc v1.56.2 → golang.org/x/net v0.14.0 (VULNERABLE)
+  - grpc-go uses http2.Transport (client) for making outbound gRPC calls, NOT http2.Server
+  - This task demonstrates a common false positive scenario in dependency scanning tools
+  - ground_truth.json emphasizes client vs server distinction with 7 findings focused on proving NOT affected
+  - Negative checks are critical: must NOT claim affected, must NOT claim HIGH/CRITICAL risk, must NOT confuse client and server
+  - This is HARDER than sec-transitive-001 (affected case) because agents must prove a negative by exhaustively checking all code paths
+  - MCP benefit score 0.86 (slightly higher than sec-transitive-001's 0.85) due to higher semantic_search_potential (0.92 vs 0.90)
+  - Paired with sec-transitive-001 for calibration: one affected, one not affected
+  - All 8 security tasks now complete and validated via preflight checks
+  - This completes the ccb_security benchmark suite with balanced coverage: 3 CVE location tasks, 3 reachability tasks, 2 transitive dependency tasks (1 affected, 1 not affected)
+---
+

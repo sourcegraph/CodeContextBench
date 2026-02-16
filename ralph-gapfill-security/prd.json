@@ -124,8 +124,8 @@
         "Task registered"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": "Pair with sec-transitive-001 for calibration. One affected, one not. The 'not affected' case is harder \u2014 agent must prove a negative by exhaustively checking all call paths."
+      "passes": true,
+      "notes": "Task completed. Uses grpcurl (gRPC CLI client) with CVE-2023-39325 in golang.org/x/net v0.14.0. grpcurl is NOT affected because it uses HTTP/2 client (http2.Transport) not server (http2.Server.ServeConn). Perfect example of false positive in dependency scanning. Paired with sec-transitive-001 for calibration (affected vs not-affected)."
     }
   ]
 }

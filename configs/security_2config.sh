@@ -77,6 +77,7 @@ ALL_TASK_IDS=(
     sec-reach-002
     sec-reach-003
     sec-transitive-001
+    sec-transitive-002
 )
 
 # Parse arguments
@@ -139,6 +140,7 @@ declare -A TASK_SG_REPO_NAMES=(
     [sec-reach-002]="github.com/envoyproxy/envoy"
     [sec-reach-003]="github.com/apache/kafka"
     [sec-transitive-001]="github.com/charmbracelet/wish github.com/gliderlabs/ssh go.googlesource.com/crypto"
+    [sec-transitive-002]="github.com/fullstorydev/grpcurl github.com/grpc/grpc-go go.googlesource.com/net"
 )
 
 # Derive short model name for run directory
