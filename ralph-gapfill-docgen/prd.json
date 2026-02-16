@@ -57,8 +57,8 @@
         "Task registered"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": "VS Code: src/vs/vscode.d.ts defines the API surface. src/vs/workbench/ and extensions/ have internal callers. Use find_references to discover usage patterns."
+      "passes": true,
+      "notes": "VS Code at commit 69d110f2 (main 2026-02-16). Focuses on Diagnostic API (vscode.languages namespace). 21 api_methods items (Diagnostic class, DiagnosticCollection interface, createDiagnosticCollection(), getDiagnostics(), onDidChangeDiagnostics event). 12 behavioral_notes items (disposal, set() semantics, event firing). 5 usage_examples items. Registered in selected_benchmark_tasks.json (mcp_benefit_score=0.84) and docgen_2config.sh."
     },
     {
       "id": "US-005",

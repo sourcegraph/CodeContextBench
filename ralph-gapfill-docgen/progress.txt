@@ -77,3 +77,26 @@
   - The ground_truth.json structure evolved: now uses "scoring_categories" with nested objects instead of flat arrays
   - Key Terraform components: GraphTransformer interface, ConfigTransformer, StateTransformer, ReferenceTransformer, ProviderTransformer, EvalContext, statemgr, SyncState, GraphNodeExecutable, ContextGraphWalker, GraphNodeDynamicExpandable
 ---
+## 2026-02-16 - US-004
+- Created docgen-api-001: VS Code Extension Diagnostic API reference doc task
+- Files created:
+  - benchmarks/ccb_docgen/docgen-api-001/task.toml (category=api_reference, language=typescript, difficulty=hard, time_limit_sec=1200)
+  - benchmarks/ccb_docgen/docgen-api-001/instruction.md (covers Diagnostic API: Diagnostic class, DiagnosticCollection, DiagnosticSeverity, createDiagnosticCollection(), getDiagnostics(), onDidChangeDiagnostics)
+  - benchmarks/ccb_docgen/docgen-api-001/tests/ground_truth.json (4 scoring categories: api_methods, behavioral_notes, usage_examples, documentation_structure)
+  - benchmarks/ccb_docgen/docgen-api-001/tests/test.sh (Python-based weighted checklist verifier for API docs)
+  - benchmarks/ccb_docgen/docgen-api-001/environment/Dockerfile (blobless clone of microsoft/vscode at commit 69d110f2, sparse checkout of src/vs/vscode.d.ts, src/vs/workbench, extensions)
+- Files modified:
+  - configs/docgen_2config.sh (added docgen-api-001 to ALL_TASK_IDS and TASK_SG_REPO_NAMES)
+  - configs/selected_benchmark_tasks.json (registered task with mcp_benefit_score=0.84, total_selected: 191→192)
+- **Learnings for future iterations:**
+  - API reference tasks have 4 scoring categories: api_methods (0.40), behavioral_notes (0.30), usage_examples (0.20), documentation_structure (0.10)
+  - API method items focus on completeness: all interfaces, classes, properties, methods, enums
+  - Behavioral notes capture non-obvious semantics: disposal behavior, set() vs merge semantics, event firing conditions, persistence, optional parameters
+  - Usage examples require: basic usage, event subscription, cleanup patterns, advanced features, real-world patterns from internal code
+  - Documentation structure ensures proper organization: Overview, Core Types, Functions, Events, Usage Examples, Common Patterns/Error Handling sections
+  - test.sh verifier for API docs uses check_patterns() with re.DOTALL flag to match across lines
+  - VS Code Diagnostic API: 21 API methods/properties (covers full API surface), 12 behavioral notes (disposal, set semantics, event model), 5 usage examples (basic, events, cleanup, related info, real-world)
+  - Sparse checkout in Dockerfile speeds up clones: --filter=blob:none --no-checkout + sparse-checkout set [paths]
+  - MCP benefit for API reference (0.84) is slightly lower than architecture (0.86) due to narrower cross-file scope (0.85 vs 0.93), but higher semantic_search_potential (0.90 vs 0.88) and task_category_weight (0.70 vs 0.65)
+  - ground_truth.json weight validation is critical: all per-category items must sum to 1.0, all category weights must sum to 1.0
+---
