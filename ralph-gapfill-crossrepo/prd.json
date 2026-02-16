@@ -32,8 +32,8 @@
         "Task registered in selected_benchmark_tasks.json and crossrepo_2config.sh"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": "client-go's SharedInformerFactory is used pervasively across the K8s ecosystem. Good candidate for cross-repo find_references."
+      "passes": true,
+      "notes": "Used kubernetes/kubernetes + kubernetes/autoscaler. Method: Apps().V1().Deployments(). Ground truth: 11 verified callers (8 k8s, 3 autoscaler) via Sourcegraph keyword_search + read_file. Both repos indexed on Sourcegraph."
     },
     {
       "id": "US-003",

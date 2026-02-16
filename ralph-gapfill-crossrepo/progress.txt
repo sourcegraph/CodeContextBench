@@ -39,3 +39,26 @@
   - Existing crossrepo tasks use a shared base Docker image, but new symbol tasks clone repos directly in per-task Dockerfiles
   - The F1 scorer template is a direct copy — no customization needed beyond setting OUTPUT_PATH
 ---
+## 2026-02-16 - US-002
+- Implemented crossrepo-sym-002: Find all callers of Apps().V1().Deployments() across kubernetes/kubernetes and kubernetes/autoscaler
+- Files created:
+  - benchmarks/ccb_crossrepo/crossrepo-sym-002/task.toml
+  - benchmarks/ccb_crossrepo/crossrepo-sym-002/instruction.md
+  - benchmarks/ccb_crossrepo/crossrepo-sym-002/environment/Dockerfile
+  - benchmarks/ccb_crossrepo/crossrepo-sym-002/tests/test.sh (copied from F1 template)
+  - benchmarks/ccb_crossrepo/crossrepo-sym-002/tests/ground_truth.json
+- Files modified:
+  - configs/selected_benchmark_tasks.json (added crossrepo-sym-002 entry, updated counts 191→192, 6→7 crossrepo tasks)
+  - configs/crossrepo_2config.sh (added SG repo mapping for crossrepo-sym-002 → github.com/kubernetes/kubernetes)
+- Ground truth: 11 verified callers (8 kubernetes/kubernetes, 3 kubernetes/autoscaler) built via Sourcegraph keyword_search + read_file verification
+  - Production code: 5 callers (kube-controller-manager, VPA, cluster-autoscaler)
+  - Controller tests: 6 callers (deployment, disruption, integration tests)
+- Method: SharedInformerFactory.Apps().V1().Deployments() from k8s.io/client-go/informers
+- **Learnings for future iterations:**
+  - kubernetes/kubernetes and kubernetes/autoscaler both indexed on Sourcegraph — good for MCP advantage
+  - Apps().V1().Deployments() is a high-level API method used across controller initialization and test setup
+  - Sourcegraph keyword_search for "Apps().V1().Deployments()" returns precise results with low false positives
+  - Ground truth includes both production controller init code and meaningful controller unit tests (not just utility/mock setup)
+  - Excluded: generated code (*_generated.go), pure mock/fake files, test-only utility functions
+  - Pinned commits: kubernetes/kubernetes@31bf3ed, kubernetes/autoscaler@0ccfef9 (2026-02-16)
+---
