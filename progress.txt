@@ -168,3 +168,17 @@
   - Some tasks in the PRD may already be complete from previous work — always check working tree first
   - The benchmarks table was updated in an earlier commit (likely the scaffold commit or bulk infra commit)
 ---
+
+## 2026-02-16 - US-012
+- Verified TASK_CATALOG.md already includes CodeReview section (section 11, lines 543-573)
+- TOC includes "11. CodeReview (3 tasks)" entry
+- Section has all required components:
+  - Focus description (hybrid scoring: detection + fix quality)
+  - Language/repo/time-limit header
+  - Task table with 3 tasks, difficulty=hard, MCP scores 0.820-0.840
+  - Per-task descriptions for cr-ghost-001, cr-aspnetcore-001, cr-calcom-001
+- No changes needed — acceptance criteria already met
+- Files changed: prd.json (marking US-012 complete)
+- **Learnings for future iterations:**
+  - Documentation files (CLAUDE.md, TASK_CATALOG.md) were updated in bulk in previous commits
+---
