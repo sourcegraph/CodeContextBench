@@ -144,8 +144,8 @@
         "Verify script syntax: bash -n configs/codereview_3config.sh passes"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": "Sourcegraph repo names for public repos: github.com/TryGhost/Ghost, github.com/dotnet/aspnetcore, github.com/calcom/cal.com"
+      "passes": true,
+      "notes": "Updated TASK_SG_REPO_NAMES to use public GitHub repos (not sg-benchmarks snapshots). Fixed comment: codereview_2config.sh not _3config. All 3 tasks mapped correctly."
     },
     {
       "id": "US-011",

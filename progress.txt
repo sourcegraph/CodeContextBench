@@ -131,3 +131,13 @@
 - MCP tools used: sg_read_file (74%), sg_list_files (19%), sg_keyword_search (6%), sg_find_references (2%). Deep Search: 0%.
 - **Recommendation**: Redesign around cross-codebase discovery tasks for MCP to shine
 ---
+
+## 2026-02-16 - US-009
+- Verified cr-calcom-001 already fully scaffolded: cal.com PR #26801 (feature opt-in scope config), 4 defects across 3 TypeScript files
+- Fixed critical Dockerfile bug in all 3 tasks: COPY paths must be relative to task root (environment/inject_defects.sh not inject_defects.sh)
+- Files changed: 3 Dockerfiles (cr-ghost-001, cr-aspnetcore-001, cr-calcom-001), prd.json
+- **Learnings for future iterations:**
+  - Progress.txt line 82 correctly documented Harbor build context, but the implementation in US-006/US-008 didn't follow it — always cross-check patterns vs actual code
+  - cr-calcom-001 was scaffolded by previous iteration but not marked as complete in PRD — verify actual completion before assuming PRD state is accurate
+  - All 3 codereview tasks now have: task.toml (language, difficulty, MCP config), instruction.md (no TODOs, 3000+ chars), Dockerfile (correct COPY paths), test.sh (hybrid scoring), expected ground truth files
+---
