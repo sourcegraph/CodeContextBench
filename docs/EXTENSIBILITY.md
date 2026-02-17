@@ -77,6 +77,6 @@ When adding benchmark environment variants, keep canonical task definitions inta
 1. Keep `environment/Dockerfile` as the canonical default.
 2. Add variant files with explicit names (for example `Dockerfile.isolated`,
    `Dockerfile.sg_only`).
-3. Document variant intent and caveats in-suite (for example
-   `benchmarks/ccb_k8sdocs/VARIANTS.md`).
+3. Document variant intent and caveats in a per-suite `VARIANTS.md`
+   (for example under `benchmarks/ccb_k8sdocs/`).
 4. Treat variant runs as separate studies in reporting and curation.
