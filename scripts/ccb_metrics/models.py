@@ -99,6 +99,16 @@ class TaskMetrics:
     mcp_latency_p95_ms: Optional[float] = None
     context_window_peak_pct: Optional[float] = None
 
+    # Time-to-relevant/context metrics (requires ground truth files)
+    ttfr: Optional[float] = None
+    ttfr_step: Optional[int] = None
+    tt_all_r: Optional[float] = None
+    n_steps_to_first: Optional[int] = None
+    tokens_before_first_relevant: Optional[int] = None
+    cost_before_first_relevant: Optional[float] = None
+    output_tokens_before_first_relevant: Optional[int] = None
+    agent_time_to_first_relevant: Optional[float] = None
+
     def to_dict(self) -> dict:
         return asdict(self)
 

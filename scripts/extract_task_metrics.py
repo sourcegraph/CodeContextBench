@@ -25,6 +25,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ccb_metrics.models import TaskMetrics
+from ccb_metrics.ground_truth import load_registry, TaskGroundTruth
+from ccb_metrics.ir_metrics import (
+    extract_time_to_context,
+    extract_cost_metrics_before_first_relevant,
+    extract_agent_time_to_first_relevant,
+)
 from ccb_metrics.extractors import (
     extract_task_from_result_json,
     extract_task_tokens_from_transcript,
@@ -49,6 +55,9 @@ from ccb_metrics.extractors import (
 )
 from ccb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
 
+GT_CACHE = Path(__file__).resolve().parent.parent / "configs" / "ground_truth_files.json"
+_GT_REGISTRY: dict[str, TaskGroundTruth] | None = None
+
 
 def _extract_task_id(dirname: str) -> str:
     """Derive task_id from directory name (strip __hash suffix)."""
@@ -56,6 +65,39 @@ def _extract_task_id(dirname: str) -> str:
     if len(parts) >= 2:
         return "__".join(parts[:-1])
     return dirname
+
+
+def _load_ground_truth_registry() -> dict[str, TaskGroundTruth]:
+    global _GT_REGISTRY
+    if _GT_REGISTRY is not None:
+        return _GT_REGISTRY
+    if GT_CACHE.is_file():
+        try:
+            _GT_REGISTRY = load_registry(GT_CACHE)
+            return _GT_REGISTRY
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            pass
+    _GT_REGISTRY = {}
+    return _GT_REGISTRY
+
+
+def _lookup_ground_truth(task_id: str, registry: dict[str, TaskGroundTruth]) -> TaskGroundTruth | None:
+    if not task_id:
+        return None
+
+    # Candidate key variants seen across benchmark families.
+    candidates = [task_id]
+    if task_id.startswith("ccb_"):
+        candidates.append(task_id[4:])
+    for prefix in ("ccb_dibench-", "ccb_tac-", "ccb_largerepo-"):
+        if task_id.startswith(prefix):
+            candidates.append(task_id[len("ccb_"):])
+
+    for key in candidates:
+        gt = registry.get(key)
+        if gt is not None:
+            return gt
+    return None
 
 
 def process_task_dir(
@@ -214,6 +256,35 @@ def process_task_dir(
     latency = extract_mcp_latency_from_trajectory(trajectory_path)
     tm.mcp_latency_p50_ms = latency["mcp_latency_p50_ms"]
     tm.mcp_latency_p95_ms = latency["mcp_latency_p95_ms"]
+
+    # --- Time-to-relevant/context metrics (requires ground truth + transcript) ---
+    gt_registry = _load_ground_truth_registry()
+    gt = _lookup_ground_truth(tm.task_id, gt_registry)
+    if gt is not None and getattr(gt, "files", None) and transcript_path.is_file():
+        ttc = extract_time_to_context(
+            trajectory_path=trajectory_path,
+            transcript_path=transcript_path,
+            ground_truth_files=gt.files,
+        )
+        if ttc:
+            tm.ttfr = ttc.get("ttfr")
+            tm.ttfr_step = ttc.get("ttfr_step")
+            tm.tt_all_r = ttc.get("tt_all_r")
+            tm.n_steps_to_first = ttc.get("n_steps_to_first")
+
+            cost_metrics = extract_cost_metrics_before_first_relevant(
+                transcript_path=transcript_path,
+                n_steps_to_first=tm.n_steps_to_first,
+            )
+            if cost_metrics:
+                tm.tokens_before_first_relevant = cost_metrics.get("tokens_total")
+                tm.output_tokens_before_first_relevant = cost_metrics.get("output_tokens")
+                tm.cost_before_first_relevant = cost_metrics.get("cost_usd")
+
+            tm.agent_time_to_first_relevant = extract_agent_time_to_first_relevant(
+                trajectory_path=trajectory_path,
+                n_steps_to_first=tm.n_steps_to_first,
+            )
 
     return tm
 

@@ -37,9 +37,39 @@ STAGING_DIR = PROJECT_ROOT / "runs" / "staging"
 OFFICIAL_DIR = PROJECT_ROOT / "runs" / "official"
 VALIDATE_SCRIPT = PROJECT_ROOT / "scripts" / "validate_task_run.py"
 MANIFEST_SCRIPT = PROJECT_ROOT / "scripts" / "generate_manifest.py"
+EXTRACT_METRICS_SCRIPT = PROJECT_ROOT / "scripts" / "extract_task_metrics.py"
+SELECTED_TASKS_FILE = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__v1_hinted"]
 CONFIGS = ["baseline", "sourcegraph_base", "sourcegraph_full", "sourcegraph_isolated", "sourcegraph_only"]
+
+DIR_PREFIX_TO_SUITE = {
+    "bigcode_mcp_": "ccb_largerepo",
+    "bigcode_sgcompare_": "ccb_largerepo",
+    "codereview_": "ccb_codereview",
+    "crossrepo_": "ccb_crossrepo",
+    "dependeval_": "ccb_dependeval",
+    "dibench_": "ccb_dibench",
+    "docgen_": "ccb_docgen",
+    "enterprise_": "ccb_enterprise",
+    "governance_": "ccb_governance",
+    "investigation_": "ccb_investigation",
+    "k8s_docs_": "ccb_k8sdocs",
+    "linuxflbench_": "ccb_linuxflbench",
+    "locobench_": "ccb_locobench",
+    "navprove_": "ccb_navprove",
+    "nlqa_": "ccb_nlqa",
+    "onboarding_": "ccb_onboarding",
+    "paired_rerun_crossrepo_": "ccb_crossrepo",
+    "paired_rerun_dibench_": "ccb_dibench",
+    "paired_rerun_pytorch_": "ccb_pytorch",
+    "pytorch_": "ccb_pytorch",
+    "repoqa_": "ccb_repoqa",
+    "security_": "ccb_security",
+    "swebenchpro_": "ccb_swebenchpro",
+    "sweperf_": "ccb_sweperf",
+    "tac_": "ccb_tac",
+}
 
 # ANSI colors
 GREEN = "\033[92m"
@@ -92,6 +122,120 @@ def find_task_dirs(config_path: Path) -> list[Path]:
             task_dirs.append(entry)
 
     return task_dirs
+
+
+def suite_from_task_id(task_id: str) -> str | None:
+    """Infer suite from task_id when run name isn't enough."""
+    if task_id.startswith("instance_"):
+        return "ccb_swebenchpro"
+    if task_id.startswith("sgt-"):
+        return "ccb_pytorch"
+    if task_id.startswith("big-code-"):
+        return "ccb_largerepo"
+    if task_id.startswith("dibench-"):
+        return "ccb_dibench"
+    if task_id.startswith("cr-"):
+        return "ccb_codereview"
+    if task_id.endswith("-doc-001"):
+        return "ccb_k8sdocs"
+    if task_id.startswith("lfl-"):
+        return "ccb_linuxflbench"
+    if task_id.startswith("bug_localization_") or task_id.startswith("refactor_rename_") or task_id.startswith("cross_file_reasoning_"):
+        return "ccb_crossrepo"
+    if "_expert_" in task_id:
+        return "ccb_locobench"
+    if task_id.startswith("multifile_editing-") or task_id.startswith("file_span_fix-") or task_id.startswith("dependency_recognition-"):
+        return "ccb_dependeval"
+    if task_id.startswith("repoqa-"):
+        return "ccb_repoqa"
+    if task_id.startswith("sweperf-") or task_id.startswith("sweperf_") or task_id.startswith("django_perf_"):
+        return "ccb_sweperf"
+    if task_id.startswith("tac-") or task_id.startswith("simple_test_") or task_id.startswith("api_upgrade_") or task_id.startswith("hyperloglog") or task_id.startswith("write-unit-test"):
+        return "ccb_tac"
+    if "answer_extraction" in task_id or "function_recall" in task_id or "question_answer" in task_id:
+        return "ccb_repoqa"
+    if task_id.startswith("onboard-"):
+        return "ccb_onboarding"
+    if task_id.startswith("gov-"):
+        return "ccb_governance"
+    if task_id.startswith("sec-"):
+        return "ccb_security"
+    if task_id.startswith("ent-") or task_id.startswith("dep-") or task_id.startswith("multi-team-") or task_id.startswith("polyglot-"):
+        return "ccb_enterprise"
+    return None
+
+
+def suite_from_run_name(run_name: str) -> str | None:
+    for prefix, suite in DIR_PREFIX_TO_SUITE.items():
+        if run_name.startswith(prefix):
+            return suite
+    return None
+
+
+def benchmark_for_task(run_name: str, task_dir: Path) -> str | None:
+    suite = suite_from_run_name(run_name)
+    if suite:
+        return suite
+    task_name = task_dir.name.rsplit("__", 1)[0]
+    return suite_from_task_id(task_name)
+
+
+def extract_missing_task_metrics(run_dir: Path, *, execute: bool) -> tuple[int, int, list[str]]:
+    """Generate missing task_metrics.json files for a run.
+
+    Returns:
+        (missing_count, generated_count, errors)
+    """
+    missing_count = 0
+    generated_count = 0
+    errors: list[str] = []
+
+    for config_name in CONFIGS:
+        config_path = run_dir / config_name
+        if not config_path.is_dir():
+            continue
+
+        for task_dir in find_task_dirs(config_path):
+            result_json = task_dir / "result.json"
+            metrics_json = task_dir / "task_metrics.json"
+            if not result_json.is_file() or metrics_json.is_file():
+                continue
+
+            missing_count += 1
+            if not execute:
+                continue
+
+            benchmark = benchmark_for_task(run_dir.name, task_dir)
+            if benchmark is None:
+                errors.append(f"{config_name}/{task_dir.name}: could not infer benchmark")
+                continue
+
+            cmd = [
+                sys.executable,
+                str(EXTRACT_METRICS_SCRIPT),
+                "--task-dir",
+                str(task_dir),
+                "--benchmark",
+                benchmark,
+                "--config",
+                config_name,
+            ]
+            if SELECTED_TASKS_FILE.is_file():
+                cmd.extend(["--selected-tasks", str(SELECTED_TASKS_FILE)])
+
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=120,
+            )
+            if proc.returncode == 0 and metrics_json.is_file():
+                generated_count += 1
+            else:
+                detail = proc.stderr.strip() or proc.stdout.strip() or f"exit {proc.returncode}"
+                errors.append(f"{config_name}/{task_dir.name}: {detail[:240]}")
+
+    return missing_count, generated_count, errors
 
 
 def validate_run(run_dir: Path) -> ValidationResult:
@@ -335,6 +479,35 @@ def cmd_promote(
                 print(f"  Use --force to bypass.")
             skipped.append(run_dir.name)
             continue
+
+        missing_metrics, generated_metrics, metric_errors = extract_missing_task_metrics(
+            run_dir, execute=execute
+        )
+
+        if execute:
+            if missing_metrics == 0:
+                print(f"\n  {GREEN}Metrics:{RESET} all task_metrics.json files already present.")
+            else:
+                print(
+                    f"\n  Metrics extraction: {generated_metrics}/{missing_metrics} generated"
+                )
+                if metric_errors:
+                    print(f"  {RED}Extraction errors:{RESET} {len(metric_errors)}")
+                    for err in metric_errors[:5]:
+                        print(f"    - {err}")
+                    if len(metric_errors) > 5:
+                        print(f"    ... {len(metric_errors) - 5} more")
+                    if not force:
+                        print(
+                            f"\n  {RED}BLOCKED:{RESET} Failed to generate all task_metrics.json files."
+                        )
+                        print("  Use --force to bypass.")
+                        skipped.append(run_dir.name)
+                        continue
+        elif missing_metrics > 0:
+            print(
+                f"\n  {BOLD}DRY RUN:{RESET} would generate {missing_metrics} missing task_metrics.json file(s) before move."
+            )
 
         if execute:
             print(f"\n  Promoting: {run_dir.name}")
