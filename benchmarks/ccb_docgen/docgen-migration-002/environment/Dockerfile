@@ -15,13 +15,6 @@ WORKDIR /workspace/envoy-repo
 RUN git worktree add ../envoy-v1.30 50ea83e602d5da162df89fd5798301e22f5540cf
 RUN git worktree add ../envoy-v1.31 7b8baff1758f0a584dcc3cb657b5032000bcb3d7
 
-# Remove the main clone to save space
-WORKDIR /workspace
-RUN rm -rf envoy-repo
-
-# Verify the versions
-RUN cd envoy-v1.30 && git log -1 --oneline
-RUN cd envoy-v1.31 && git log -1 --oneline
-
+# Keep main clone (worktrees reference its .git directory)
 # Set working directory to workspace root
 WORKDIR /workspace
