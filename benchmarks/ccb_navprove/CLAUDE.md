@@ -15,7 +15,7 @@ This suite tests your ability to navigate a large codebase, locate a reported bu
 
 ## Output Requirements
 
-Write your regression test to `/workspace/regression_test.{ext}` (use the appropriate extension for the project language — `.py`, `.go`, or `.test.ts`).
+Write your regression test as a **single file** at `/workspace/regression_test.{ext}` (use the appropriate extension for the project language — `.py`, `.go`, or `.test.ts`). Do NOT create a directory — write a single file directly at that path.
 
 Your regression test MUST:
 1. **Import or invoke** the buggy component directly

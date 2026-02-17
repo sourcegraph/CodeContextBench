@@ -18,8 +18,8 @@ These issues affect all URL segments where increment/decrement operates: the hos
 ## Your Task
 
 1. Investigate the codebase to find the root cause of these URL number manipulation bugs
-2. Write a regression test at `/workspace/regression_test` (Python)
-3. Your test must be self-contained and runnable with `python3 -m pytest --timeout=60`
+2. Write a regression test as a single file at `/workspace/regression_test.py`
+3. Your test must be self-contained and runnable with `python3 -m pytest -c /dev/null --timeout=60 /workspace/regression_test.py`
 
 ## Constraints
 

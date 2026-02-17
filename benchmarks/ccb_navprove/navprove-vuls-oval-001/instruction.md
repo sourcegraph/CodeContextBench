@@ -18,8 +18,8 @@ The vulnerability scanner's library detection subsystem is broken due to incompa
 ## Your Task
 
 1. Investigate the codebase to find the root cause of these library scanning failures
-2. Write a regression test at `/workspace/regression_test` (Go)
-3. Your test must be self-contained and runnable with `go test -run TestRegression -v -timeout 60s`
+2. Write a regression test as a single file at `/workspace/regression_test.go`
+3. Your test must be self-contained and runnable with `go test -run TestRegression -v -timeout 60s /workspace/regression_test.go`
 
 ## Constraints
 

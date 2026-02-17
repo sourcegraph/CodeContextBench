@@ -37,9 +37,29 @@ write_score() {
 }
 
 # --- Edge case: agent test does not exist or is empty ---
+# Fallback: if agent created a directory instead of a file, look for test files inside
 if [[ ! -f "$AGENT_TEST_PATH" ]]; then
-    echo "ERROR: Agent test not found at $AGENT_TEST_PATH" >> "$SUMMARY_LOG"
-    write_score "0.0"
+    # Strip extension to get potential directory name
+    DIR_PATH="${AGENT_TEST_PATH%.*}"
+    # Remove .test suffix if present (e.g., regression_test.test.ts -> regression_test)
+    DIR_PATH="${DIR_PATH%.test}"
+    FOUND_TEST=""
+    if [[ -d "$DIR_PATH" ]]; then
+        echo "NOTE: $AGENT_TEST_PATH not found as file, searching directory $DIR_PATH/" >> "$SUMMARY_LOG"
+        # Look for test files matching common patterns
+        for pattern in "regression_test.*" "test_*" "*_test.*" "*.test.*"; do
+            FOUND_TEST=$(find "$DIR_PATH" -maxdepth 1 -name "$pattern" -type f | head -1)
+            [[ -n "$FOUND_TEST" ]] && break
+        done
+        if [[ -n "$FOUND_TEST" ]]; then
+            echo "NOTE: Using fallback test file: $FOUND_TEST" >> "$SUMMARY_LOG"
+            AGENT_TEST_PATH="$FOUND_TEST"
+        fi
+    fi
+    if [[ ! -f "$AGENT_TEST_PATH" ]]; then
+        echo "ERROR: Agent test not found at $AGENT_TEST_PATH" >> "$SUMMARY_LOG"
+        write_score "0.0"
+    fi
 fi
 
 if [[ ! -s "$AGENT_TEST_PATH" ]]; then
