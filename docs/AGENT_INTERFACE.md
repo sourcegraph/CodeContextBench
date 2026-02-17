@@ -10,7 +10,7 @@ The agent's working directory is one of:
 
 | Path | Used by |
 |------|---------|
-| `/workspace/` | Most benchmarks (K8s Docs, LargeRepo, TAC, CodeReview, LinuxFLBench) |
+| `/workspace/` | Most benchmarks (DocGen, LargeRepo, TAC, CodeReview, LinuxFLBench, Enterprise, etc.) |
 | `/app/` | SWE-bench Pro |
 | `/testbed/` | Some SWE-bench variants |
 

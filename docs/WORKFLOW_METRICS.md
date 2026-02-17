@@ -8,22 +8,23 @@
 
 ## Overview
 
-CodeContextBench measures AI coding agent performance across 14 benchmark
-suites. To translate raw benchmark metrics (tokens, tool calls, task time)
-into business-relevant productivity estimates, we map each benchmark suite
-to an **engineering workflow category** and apply conservative
-token-to-time conversion multipliers.
+CodeContextBench measures AI coding agent performance across 17 active
+benchmark suites. To translate raw benchmark metrics (tokens, tool calls,
+task time) into business-relevant productivity estimates, we map each
+benchmark suite to an **engineering workflow category** and apply
+conservative token-to-time conversion multipliers.
 
 ## Workflow Categories
 
 | Category | Description | Benchmark Suites |
 |----------|-------------|-----------------|
-| Code Comprehension | Reading, understanding, and reviewing unfamiliar code | LoCoBench, RepoQA, CodeReview |
+| Code Comprehension | Reading, understanding, and reviewing unfamiliar code | CodeReview, NLQA, NavProve |
 | Cross-Repo Navigation | Tracing dependencies across repositories or large monorepos | CrossRepo, LargeRepo |
-| Dependency Analysis | Resolving, analyzing, and installing project dependencies | DependEval, DIBench |
-| Bug Localization | Fault localization, root-cause analysis, minimal-fix identification | LinuxFLBench, SWE-Perf |
-| Feature Implementation | Implementing features, modifying code based on issue descriptions | SWE-bench Pro, PyTorch, TAC |
-| Onboarding | Ramping up on unfamiliar projects, reading docs, first tasks | K8s Docs, Investigation |
+| Dependency Analysis | Resolving, analyzing, and installing project dependencies | DIBench, Enterprise |
+| Bug Localization | Fault localization, root-cause analysis, minimal-fix identification | LinuxFLBench, SWE-Perf, Investigation |
+| Feature Implementation | Implementing features, modifying code based on issue descriptions | SWE-bench Pro, PyTorch, TAC, Governance |
+| Onboarding | Ramping up on unfamiliar projects, reading docs, first tasks | DocGen, Onboarding |
+| Security & Compliance | Security analysis, CVE assessment, policy enforcement | Security, Governance |
 
 ## Token-to-Time Conversion
 

@@ -10,21 +10,26 @@ This repository contains **benchmark task definitions**, **evaluation configs**,
 
 | Suite | Tasks | Languages | Evaluation Method | SDLC Phase |
 |-------|------:|-----------|-------------------|------------|
-| `ccb_swebenchpro` | 36 | Go, TypeScript, Python | LLM judge + test suite | Bug fixing |
-| `ccb_locobench` | 25 | 9 languages | LLM judge + semantic similarity | Architecture, Refactoring |
-| `ccb_pytorch` | 12 | C++ | LLM judge + test suite | Bug fixing |
-| `ccb_repoqa` | 10 | Python, C++, Java, Rust, TypeScript | LLM judge + path/name matching | Code navigation |
-| `ccb_tac` | 8 | C++, Python | LLM judge + deterministic checks | Mixed (4 phases) |
+| `ccb_swebenchpro` | 36 | Go, TypeScript, Python, JavaScript | LLM judge + test suite | Bug fixing |
+| `ccb_largerepo` | 25 | Go, Rust, C/C++, Java, Python, TypeScript | LLM judge + test suite | Feature impl, Analysis, Debugging, Security |
+| `ccb_docgen` | 13 | Go, C++, Java, TypeScript | LLM judge + keyword checks | Documentation |
+| `ccb_crossrepo` | 12 | Go, C++ | LLM judge + test suite | Architecture, Bug fix, Refactoring, Discovery |
+| `ccb_enterprise` | 12 | Go, Python | LLM judge + test suite | Impact analysis, Feature impl, Bug fix |
+| `ccb_pytorch` | 11 | C++ | LLM judge + test suite | Bug fixing |
+| `ccb_navprove` | 9 | Go, Python, TypeScript | LLM judge + test suite | Debugging |
+| `ccb_codereview` | 8 | C, C++, C#, Go, Java, JavaScript, TypeScript | Hybrid detection + fix scoring | Testing & QA |
 | `ccb_dibench` | 8 | Python, Rust, JavaScript, C# | LLM judge + syntax/dependency validation | Dependency inference |
-| `ccb_k8sdocs` | 5 | Go | LLM judge + test scripts | Documentation |
-| `ccb_crossrepo` | 5 | Go | LLM judge + test suite | Architecture, Refactoring, Bug fix, Testing |
+| `ccb_governance` | 8 | Go, Python | LLM judge + test suite | Feature impl, Bug fix |
+| `ccb_nlqa` | 8 | Go, C++, Java, TypeScript | LLM judge + test suite | Debugging, Discovery |
+| `ccb_onboarding` | 8 | Go, C++, Java | LLM judge + test suite | Discovery |
+| `ccb_security` | 8 | Go, C, C++, Java | LLM judge + test suite | Discovery |
+| `ccb_tac` | 8 | C++, Python | LLM judge + deterministic checks | Mixed (4 phases) |
 | `ccb_linuxflbench` | 5 | C | Test script verification | Kernel fault localization |
-| `ccb_largerepo` | 4 | Go, Rust, C++, TypeScript | LLM judge + test suite | Feature implementation |
+| `ccb_investigation` | 4 | Go, Python | LLM judge + test suite | Discovery |
 | `ccb_sweperf` | 3 | Python | LLM judge + test suite | Testing & QA |
-| `ccb_codereview` | 3 | JavaScript, C#, TypeScript | Hybrid detection + fix scoring | PR defect detection |
-| **Total** | **156** | | | |
+| **Total** | **186** | | | |
 
-Archived from official consideration: `ccb_dependeval`, `ccb_locobench`, `ccb_repoqa`, and `ccb_k8sdocs` (superseded by `ccb_docgen`).
+Archived suites (not included in official evaluation): `ccb_dependeval`, `ccb_locobench`, `ccb_repoqa`, and `ccb_k8sdocs` (superseded by `ccb_docgen`). Task files live under `benchmarks/archive/` or their original directories.
 
 ---
 
@@ -46,34 +51,44 @@ See [docs/CONFIGS.md](docs/CONFIGS.md) for the full tool-by-tool breakdown.
 
 ```
 benchmarks/              # Task definitions organized by benchmark suite
-  archive/               #   Archived suites (e.g., ccb_dependeval, ccb_locobench, ccb_repoqa)
-  ccb_codereview/        #   AI code review: PR defect detection (3 tasks)
-  ccb_crossrepo/         #   Enterprise codebase challenges (5 tasks)
+  archive/               #   Archived suites (ccb_dependeval, ccb_repoqa, ccb_k8sdocs, ccb_locobench)
+  ccb_codereview/        #   AI code review: PR defect detection (8 tasks)
+  ccb_crossrepo/         #   Cross-repository reasoning (12 tasks)
   ccb_dibench/           #   Dependency inference tasks (8 tasks)
-  ccb_k8sdocs/           #   K8s package documentation generation (5 tasks)
-  ccb_largerepo/         #   Large-repo code navigation (4 tasks)
+  ccb_docgen/            #   Documentation generation (13 tasks)
+  ccb_enterprise/        #   Enterprise codebase challenges (12 tasks)
+  ccb_governance/        #   Access control and policy enforcement (8 tasks)
+  ccb_investigation/     #   Deep debugging and investigation (4 tasks)
+  ccb_largerepo/         #   Large-repo code navigation (25 tasks)
   ccb_linuxflbench/      #   Linux kernel fault localization (5 tasks)
-  ccb_locobench/         #   LoCoBench long-context agent tasks (25 tasks)
-  ccb_pytorch/           #   GitHub-mined SWE tasks (12 tasks)
-  ccb_repoqa/            #   Semantic code navigation (10 tasks)
+  ccb_navprove/          #   Navigation and provenance reasoning (9 tasks)
+  ccb_nlqa/              #   Natural-language code Q&A (8 tasks)
+  ccb_onboarding/        #   Codebase onboarding and orientation (8 tasks)
+  ccb_pytorch/           #   PyTorch PR-level tasks (11 tasks)
+  ccb_security/          #   Security analysis and CVE reasoning (8 tasks)
   ccb_swebenchpro/       #   SWE-Bench Pro bug-fixing tasks (36 tasks)
   ccb_sweperf/           #   Performance testing (3 tasks)
   ccb_tac/               #   TheAgentCompany tasks (8 tasks)
 configs/                 # 3-config comparison shell runners + task selection
   _common.sh             #   Shared infra: token refresh, parallel execution, multi-account
-  codereview_2config.sh  #   Per-suite runner: CodeReview (3 tasks)
-  crossrepo_2config.sh   #   Per-suite runner: CrossRepo (5 tasks)
+  codereview_2config.sh  #   Per-suite runner: CodeReview (8 tasks)
+  crossrepo_2config.sh   #   Per-suite runner: CrossRepo (12 tasks)
   dibench_2config.sh     #   Per-suite runner: DIBench (8 tasks)
-  k8s_docs_2config.sh    #   Per-suite runner: K8s Docs (5 tasks)
-  largerepo_2config.sh   #   Per-suite runner: Large Repo (4 tasks)
+  docgen_2config.sh      #   Per-suite runner: DocGen (13 tasks)
+  enterprise_2config.sh  #   Per-suite runner: Enterprise (12 tasks)
+  governance_2config.sh  #   Per-suite runner: Governance (8 tasks)
+  investigation_2config.sh # Per-suite runner: Investigation (4 tasks)
+  largerepo_2config.sh   #   Per-suite runner: LargeRepo (25 tasks)
   linuxflbench_2config.sh #  Per-suite runner: LinuxFLBench (5 tasks)
-  locobench_2config.sh   #   Per-suite runner: LoCoBench (25 tasks)
-  pytorch_2config.sh     #   Per-suite runner: PyTorch (12 tasks)
-  dependeval_2config.sh  #   Per-suite runner: DependEval (32 tasks)
-  run_selected_tasks.sh  #   Unified runner for all tasks
+  navprove_2config.sh    #   Per-suite runner: NavProve (9 tasks)
+  nlqa_2config.sh        #   Per-suite runner: NLQA (8 tasks)
+  onboarding_2config.sh  #   Per-suite runner: Onboarding (8 tasks)
+  pytorch_2config.sh     #   Per-suite runner: PyTorch (11 tasks)
+  security_2config.sh    #   Per-suite runner: Security (8 tasks)
   swebenchpro_2config.sh #   Per-suite runner: SWE-Bench Pro (36 tasks)
   sweperf_2config.sh     #   Per-suite runner: SWE-Perf (3 tasks)
   tac_2config.sh         #   Per-suite runner: TheAgentCompany (8 tasks)
+  run_selected_tasks.sh  #   Unified runner for all tasks
   selected_benchmark_tasks.json  # Canonical task selection with metadata
 scripts/                 # Metrics extraction, evaluation, and operational tooling
   ccb_metrics/           #   Python package: models, extractors, discovery, judge context
@@ -89,12 +104,30 @@ scripts/                 # Metrics extraction, evaluation, and operational tooli
   generate_manifest.py   #   Rebuild MANIFEST from on-disk results
   archive_run.py         #   Archive old runs to save disk
   rerun_failed.py        #   Generate rerun commands for failed tasks
-docs/                    # Configuration documentation and diagnosis reports
+  abc_audit.py           #   ABC benchmark quality audit framework
+  abc_score_task.py      #   Per-task quality scoring
+  abc_criteria.py        #   ABC criteria data model (32 criteria)
+  docs_consistency_check.py # Documentation drift guard
+tests/                   # Unit tests for scripts/
+  test_abc_audit.py      #   Tests for ABC audit framework
+  test_abc_criteria.py   #   Tests for ABC criteria data model
+  test_abc_score_task.py #   Tests for task quality scorer
+  test_extract_task_metrics.py # Tests for metrics extraction
+docs/                    # Operational documentation
   CONFIGS.md             #   3-config tool breakdown
   ERROR_CATALOG.md       #   Known error fingerprints, causes, fixes
   QA_PROCESS.md          #   Quality assurance and validation pipeline
   TASK_CATALOG.md        #   Detailed per-task reference
   TASK_SELECTION.md      #   Selection criteria, difficulty calibration, MCP scoring
+  SCORING_SEMANTICS.md   #   Reward and pass interpretation per benchmark
+  WORKFLOW_METRICS.md    #   Timing/cost metric definitions
+  AGENT_INTERFACE.md     #   Runtime I/O contract for agents
+  EXTENSIBILITY.md       #   Safe suite/task/config extension guide
+  LEADERBOARD.md         #   Ranking policy
+  SUBMISSION.md          #   Submission format specification
+skills/                  # AI agent skill definitions (operational runbooks)
+  ccb/                   #   CCB-specific: pre-run, monitoring, triage, analysis, maintenance
+  general/               #   Reusable: workflow tools, agent delegation, dev practices
 schemas/                 # JSON schemas for MANIFEST.json, task.toml, etc.
 ```
 
@@ -133,10 +166,10 @@ See `python3 scripts/generate_eval_report.py --help` for all options.
 
 ## Running with Harbor
 
-The unified runner executes all 156 tasks across the 3-config matrix:
+The unified runner executes all 186 tasks across the 3-config matrix:
 
 ```bash
-# Run all 156 tasks across 3 configs
+# Run all 186 tasks across 3 configs
 bash configs/run_selected_tasks.sh
 
 # Run only the baseline config
@@ -150,24 +183,27 @@ Per-suite runners are also available for individual benchmarks:
 
 ```bash
 bash configs/swebenchpro_2config.sh      # 36 SWE-Bench Pro tasks
-bash configs/locobench_2config.sh        # 25 LoCoBench tasks
-bash configs/pytorch_2config.sh          # 12 PyTorch tasks
-bash configs/dependeval_2config.sh       # 32 DependEval tasks
-bash configs/tac_2config.sh              # 8 TheAgentCompany tasks
+bash configs/largerepo_2config.sh        # 25 LargeRepo tasks
+bash configs/docgen_2config.sh           # 13 DocGen tasks
+bash configs/crossrepo_2config.sh        # 12 CrossRepo tasks
+bash configs/enterprise_2config.sh       # 12 Enterprise tasks
+bash configs/pytorch_2config.sh          # 11 PyTorch tasks
+bash configs/navprove_2config.sh         # 9 NavProve tasks
+bash configs/codereview_2config.sh       # 8 CodeReview tasks
 bash configs/dibench_2config.sh          # 8 DIBench tasks
-bash configs/crossrepo_2config.sh        # 5 CrossRepo tasks
-bash configs/k8s_docs_2config.sh         # 5 K8s Docs tasks
+bash configs/governance_2config.sh       # 8 Governance tasks
+bash configs/nlqa_2config.sh             # 8 NLQA tasks
+bash configs/onboarding_2config.sh       # 8 Onboarding tasks
+bash configs/security_2config.sh         # 8 Security tasks
+bash configs/tac_2config.sh              # 8 TheAgentCompany tasks
 bash configs/linuxflbench_2config.sh     # 5 LinuxFLBench tasks (see note below)
-bash configs/largerepo_2config.sh        # 4 Large Repo tasks
+bash configs/investigation_2config.sh    # 4 Investigation tasks
 bash configs/sweperf_2config.sh          # 3 SWE-Perf tasks
-bash configs/codereview_2config.sh       # 3 CodeReview tasks
 ```
 
 All runners support `--baseline-only` and `--full-only` flags.
 
 **LinuxFLBench note:** Docker image build is slow (~10 min) due to Linux kernel partial clone (~2GB). Pre-build images before running to save time.
-
-**DependEval note:** DependEval is archived from official reporting. Task files live under `benchmarks/archive/ccb_dependeval/` and can still be run via `configs/dependeval_2config.sh` when needed.
 
 Requires [Harbor](https://github.com/laude-institute/harbor/tree/main) installed and configured with a Claude API key.
 
@@ -209,6 +245,19 @@ Key scripts organized by workflow phase:
 | **Maintenance** | `sync_task_metadata.py` | `python3 scripts/sync_task_metadata.py [--fix]` |
 | **Maintenance** | `archive_run.py` | `python3 scripts/archive_run.py <run_dir> [--compress]` |
 | **Maintenance** | `rerun_failed.py` | `python3 scripts/rerun_failed.py [--fingerprint timeout] [--suite ccb_pytorch]` |
+
+---
+
+## AI Agent Skills
+
+The `skills/` directory contains structured runbooks for AI coding agents operating on this repository. These encode operational workflows — infrastructure checks, task validation, failure triage, report generation — so any agent (Claude Code, Cursor, Copilot, etc.) can follow them autonomously.
+
+| Category | Skills | Description |
+|----------|--------|-------------|
+| **CCB Operations** | 20 skills in 6 files | Pre-run checks, monitoring, triage, analysis, maintenance, task authoring |
+| **General Purpose** | 11 skills in 4 files | Session management, agent delegation, search patterns, dev practices |
+
+Skills are plain markdown and tool-agnostic. See [`skills/README.md`](skills/README.md) for the full index and integration guides for Cursor, Claude Code, and other agents. See [`docs/SKILLS.md`](docs/SKILLS.md) for background on the skills system.
 
 ---
 

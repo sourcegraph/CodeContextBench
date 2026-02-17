@@ -48,17 +48,21 @@ To qualify for a benchmark's leaderboard, a submission must include results for 
 | Benchmark | Tasks | Reward Type |
 |-----------|-------|-------------|
 | SWE-bench Pro | 36 | test_ratio |
-| DependEval | 32 | binary |
-| LoCoBench | 25 | semantic_similarity |
-| PyTorch | 12 | diff_similarity |
-| RepoQA | 10 | semantic_similarity |
+| LargeRepo | 25 | checklist |
+| DocGen | 13 | checklist |
+| CrossRepo | 12 | semantic_similarity |
+| Enterprise | 12 | checklist |
+| PyTorch | 11 | diff_similarity |
+| NavProve | 9 | checklist |
+| CodeReview | 8 | checklist |
 | DIBench | 8 | binary |
+| Governance | 8 | checklist |
+| NLQA | 8 | checklist |
+| Onboarding | 8 | checklist |
+| Security | 8 | checklist |
 | TAC | 8 | checklist |
-| K8s Docs | 5 | checklist |
-| CrossRepo | 5 | semantic_similarity |
 | LinuxFLBench | 5 | checklist |
-| LargeRepo | 4 | checklist |
-| CodeReview | 3 | checklist |
+| Investigation | 4 | checklist |
 | SWE-Perf | 3 | test_ratio |
 
 A submission with 34 of 36 SWE-bench Pro results does **not** appear on the SWE-bench Pro leaderboard. Partial results are retained in the data for analysis but excluded from rankings.
@@ -71,7 +75,7 @@ The **CCB Aggregate Score** is the unweighted (macro) average of per-benchmark m
 ccb_aggregate = sum(per_benchmark_mean_rewards) / N_qualifying_benchmarks
 ```
 
-All benchmarks carry equal weight regardless of task count. The aggregate score is computed over benchmarks where the submission has complete results. A submission with complete results for 8 of 13 benchmarks gets an aggregate over those 8. Submissions with more complete benchmarks are ranked higher when scores are close.
+All benchmarks carry equal weight regardless of task count. The aggregate score is computed over benchmarks where the submission has complete results. A submission with complete results for 10 of 17 benchmarks gets an aggregate over those 10. Submissions with more complete benchmarks are ranked higher when scores are close.
 
 ## Tie-Breaking
 
@@ -90,9 +94,9 @@ Reward values are always 0.0–1.0, but the semantics differ by benchmark:
 |-------------|-----------|-----------------|
 | **test_ratio** | SWE-bench Pro, SWE-Perf | 80% of test cases pass |
 | **diff_similarity** | PyTorch | Patch is 80% similar to the reference diff |
-| **semantic_similarity** | LoCoBench, RepoQA, CrossRepo | Agent output is 80% semantically similar to the reference answer |
-| **checklist** | K8s Docs, LargeRepo, CodeReview, LinuxFLBench, TAC | 80% of weighted checklist items satisfied |
-| **binary** | DIBench, DependEval | Not applicable — reward is either 0.0 or 1.0 |
+| **semantic_similarity** | CrossRepo | Agent output is 80% semantically similar to the reference answer |
+| **checklist** | DocGen, LargeRepo, CodeReview, LinuxFLBench, TAC, Enterprise, Governance, NavProve, NLQA, Onboarding, Security, Investigation | 80% of weighted checklist items satisfied |
+| **binary** | DIBench | Not applicable — reward is either 0.0 or 1.0 |
 
 ### Reward Type Details
 
@@ -104,26 +108,30 @@ Reward values are always 0.0–1.0, but the semantics differ by benchmark:
 
 ## Calculation Example
 
-An agent runs all 13 benchmarks and achieves:
+An agent runs all 17 benchmarks and achieves:
 
 | Benchmark | Mean Reward |
 |-----------|-------------|
 | SWE-bench Pro | 0.650 |
-| DependEval | 0.800 |
-| LoCoBench | 0.500 |
-| PyTorch | 0.100 |
-| RepoQA | 1.000 |
-| DIBench | 0.500 |
-| TAC | 0.250 |
-| K8s Docs | 0.920 |
-| CrossRepo | 0.000 |
-| LinuxFLBench | 0.860 |
 | LargeRepo | 0.250 |
-| CodeReview | 0.933 |
+| DocGen | 0.700 |
+| CrossRepo | 0.400 |
+| Enterprise | 0.350 |
+| PyTorch | 0.100 |
+| NavProve | 0.450 |
+| CodeReview | 0.600 |
+| DIBench | 0.500 |
+| Governance | 0.400 |
+| NLQA | 0.500 |
+| Onboarding | 0.550 |
+| Security | 0.400 |
+| TAC | 0.250 |
+| LinuxFLBench | 0.860 |
+| Investigation | 0.300 |
 | SWE-Perf | 0.600 |
 
-**CCB Aggregate Score** = (0.650 + 0.800 + 0.500 + 0.100 + 1.000 + 0.500 + 0.250 + 0.920 + 0.000 + 0.860 + 0.250 + 0.933 + 0.600) / 13 = **0.566**
+**CCB Aggregate Score** = sum of means / 17 = **0.462**
 
-**Benchmarks completed** = 13/13
+**Benchmarks completed** = 17/17
 
-**Pass rate** = tasks with reward > 0.0 / total tasks = e.g., 120 / 156 = 0.769
+**Pass rate** = tasks with reward > 0.0 / total tasks = e.g., 140 / 186 = 0.753
