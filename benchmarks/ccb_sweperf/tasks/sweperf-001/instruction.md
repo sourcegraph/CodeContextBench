@@ -76,7 +76,7 @@ Higher values indicate better optimization. A value of 0.5 means 2x speedup.
 └── benchmark_results.json  # Your benchmark output
 ```
 
-## Output Format
+## Deliverable
 
 After optimizing the code, write benchmark results to `/workspace/benchmark_results.json`:
 

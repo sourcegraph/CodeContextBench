@@ -25,7 +25,7 @@ Your `doc.go` file should:
 4. **Subpackages**: Reference important subpackages (`cpumanager`, `memorymanager`, `topologymanager`, `devicemanager`) and their relationship to the main package
 5. **Platform Considerations**: Note differences between Linux and Windows implementations, and cgroup v1 vs v2 if relevant
 
-### Key Files to Examine
+### Relevant Components to Examine
 
 - `container_manager.go` - Main interface definitions
 - `container_manager_linux.go` - Linux-specific implementation

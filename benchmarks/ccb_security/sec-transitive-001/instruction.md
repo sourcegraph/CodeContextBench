@@ -60,11 +60,11 @@ Analyze the code and provide a security triage report answering these questions:
    - What is the risk level? (CRITICAL/HIGH/MEDIUM/LOW)
    - What is the remediation path?
 
-## Output Format
+## Deliverable
 
 Write your analysis to `/logs/agent/triage.md` with the following sections:
 
-```markdown
+```
 # CVE-2024-45337 Transitive Dependency Analysis
 
 ## Summary

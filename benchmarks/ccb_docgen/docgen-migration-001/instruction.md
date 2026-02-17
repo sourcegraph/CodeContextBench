@@ -7,8 +7,8 @@ Analyze the changes between Terraform v1.9.0 and v1.10.0 and produce a comprehen
 ## Context
 
 The workspace contains two versions of the Terraform codebase:
-- **v1.9.0**: Located in `/workspace/terraform-v1.9.0/` (commit 7637a92)
-- **v1.10.0**: Located in `/workspace/terraform-v1.10.0/` (commit 24236f4)
+- **v1.9.0**: implemented in `/workspace/terraform-v1.9.0/` (commit 7637a92)
+- **v1.10.0**: implemented in `/workspace/terraform-v1.10.0/` (commit 24236f4)
 
 Your task is to identify breaking changes and behavioral changes that affect users, then document migration steps.
 

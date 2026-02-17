@@ -43,7 +43,7 @@ Envoy has two separate network interfaces:
    - Typically bound to 127.0.0.1 (localhost only)
    - NOT meant for external access
 
-## Expected Output Format
+## Expected Deliverable
 
 Write your analysis to `/logs/agent/triage.md` with the following sections:
 

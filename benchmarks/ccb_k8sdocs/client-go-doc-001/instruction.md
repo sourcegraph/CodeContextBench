@@ -46,7 +46,7 @@ Your `doc.go` file should:
 - Reference related packages by their full import paths
 - Include practical guidance (when to use typed vs dynamic clients, in-cluster vs out-of-cluster)
 
-### Key Files to Examine
+### Relevant Components to Examine
 
 - `kubernetes/clientset.go` — Typed Clientset
 - `dynamic/interface.go` — Dynamic client interface

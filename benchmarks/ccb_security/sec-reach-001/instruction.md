@@ -2,7 +2,7 @@
 
 ## Background
 
-You are performing security reachability analysis on the curl codebase. A potential vulnerability has been identified in the function `do_SOCKS5()` located in `lib/socks.c`. This function handles SOCKS5 proxy handshake operations.
+You are performing security reachability analysis on the curl codebase. A potential vulnerability has been identified in the function `do_SOCKS5()` implemented in `lib/socks.c`. This function handles SOCKS5 proxy handshake operations.
 
 ## Your Task
 

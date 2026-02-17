@@ -77,6 +77,6 @@ Rate the severity considering:
 - Do NOT provide fix code - this is analysis only
 - Focus on reachability and exploitability, not on implementing patches
 
-## Output Format
+## Deliverable
 
 Write your analysis to `/logs/agent/triage.md` in markdown format with the sections listed above.

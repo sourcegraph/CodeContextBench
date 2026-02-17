@@ -47,13 +47,13 @@ Your API reference must include:
 - **Advanced patterns**: Event subscription, cleanup, related information
 - **Real-world patterns**: Extract usage examples from internal VS Code code
 
-## Output Format
+## Deliverable
 
 Write your documentation to `/workspace/documentation.md` using Markdown format.
 
-Structure your documentation as follows:
+You may choose any clear structure as long as all required sections are covered:
 
-```markdown
+```
 # VS Code Diagnostic API Reference
 
 ## Overview

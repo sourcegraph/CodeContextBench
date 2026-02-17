@@ -74,7 +74,7 @@ Write your answer to `/logs/agent/investigation.md` with the following structure
 <ordered list of transformation points from Git fetch to cluster sync with data structures at each step>
 
 ## Evidence
-<consolidated list of key file paths and line references>
+<consolidated list of supporting file paths and line references>
 ```
 
 ## Constraints

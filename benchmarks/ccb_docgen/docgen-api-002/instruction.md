@@ -62,7 +62,7 @@ Your documentation must include:
    - Real-world patterns from Cilium internals
 4. **Documentation Structure**: Organize clearly with sections for each category above
 
-## Output Format
+## Deliverable
 
 Write your documentation to `/workspace/documentation.md` in Markdown format.
 

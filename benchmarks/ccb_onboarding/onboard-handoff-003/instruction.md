@@ -23,7 +23,7 @@ Explore the cilium/cilium codebase and create a structured handoff document cove
 - How does the Go code interact with the C eBPF programs?
 - What kernel APIs does the datapath rely on?
 
-### 3. Key Files
+### 3. Relevant Components
 - What are the main source files and directories for the datapath subsystem?
 - Where is the eBPF loader implemented?
 - Where are the eBPF C programs located?
@@ -62,11 +62,11 @@ Explore the cilium/cilium codebase and create a structured handoff document cove
 - How do you integrate a new hook with the existing policy engine?
 - How is a new hook registered and attached to network interfaces?
 
-## Output Format
+## Deliverable
 
 Create your handoff document as a markdown file at `/logs/agent/onboarding.md`.
 
-Structure your document with clear section headers matching the 7 sections above. Include:
+Deliver a clear, well-structured document that covers all requested sections. Include:
 - Specific file paths and directory names
 - Key function/type names
 - Code flow descriptions
@@ -77,7 +77,7 @@ Structure your document with clear section headers matching the 7 sections above
 
 Your handoff document will be evaluated on:
 - **Completeness**: All 7 sections addressed with substantive content
-- **Accuracy**: Correct identification of key files, interfaces, and architectural patterns
+- **Accuracy**: Correct identification of relevant components, interfaces, and architectural patterns
 - **Specificity**: Concrete file paths, type names, and code references (not generic descriptions)
 - **Understanding**: Demonstrates comprehension of how the eBPF datapath works, including the Go+C boundary
 - **Depth**: Goes beyond surface-level file listing to explain how components interact and why design decisions were made

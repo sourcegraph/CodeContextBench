@@ -40,7 +40,7 @@ Your documentation should cover the following architectural components:
 - **Extension Points**: Identify where the architecture allows for customization or extension
 - **Error Handling**: Explain how errors are propagated and handled during execution
 
-## Output Format
+## Deliverable
 
 Write your documentation to `/workspace/documentation.md` in Markdown format.
 

@@ -29,7 +29,7 @@ Explore the Argo CD codebase and answer the following questions. Write your answ
 
 Write your answers to `/logs/agent/onboarding.md` with this structure:
 
-```markdown
+```
 # Argo CD Codebase Orientation
 
 ## 1. Main Entry Points

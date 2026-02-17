@@ -43,7 +43,7 @@ Your `doc.go` file should:
 - Reference related packages (k8s.io/client-go/kubernetes/typed, metav1)
 - Explain practical controller migration patterns
 
-### Key Files to Examine
+### Relevant Components to Examine
 
 - The generated apply configuration types in version-specific subdirectories
 - `internal/` — Internal utilities for apply configurations

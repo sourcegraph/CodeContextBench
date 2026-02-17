@@ -50,11 +50,11 @@ The regression likely involves one or more of these components:
 
 Focus your investigation on commits that touched these areas and could plausibly affect query performance.
 
-## Output Format
+## Deliverable
 
 Write your findings to `/logs/agent/investigation.md` with the following structure:
 
-```markdown
+```
 # Investigation Report: Prometheus Recording Rule Performance Regression
 
 ## Summary
