@@ -11,6 +11,7 @@
 - In sandboxed environments, `runs/staging` may resolve to an external symlink target; use a writable `--category` override when dry-running scaffolds locally.
 - In `scripts/ccb_metrics`, resolve transcript artifacts through a shared candidate list (not hardcoded `agent/claude-code.txt`) so non-Claude harness outputs are discoverable.
 - In `scripts/ccb_metrics/extractors.py`, treat unknown `MODEL_PRICING` keys deterministically by falling back to `_DEFAULT_MODEL` and emitting a one-time warning to keep cross-harness cost reports explainable.
+- Harness readiness preflight should enforce exact rollout MCP policy (`none` + `sourcegraph_full`) from registry entries and fail non-zero when required env vars are missing.
 
 ## Progress
 
@@ -124,4 +125,17 @@
     - Acceptance checks rely on exact terminology (`ChatGPT login`, `API key`, `fail-fast`, `sourcegraph_full`), so keep those terms verbatim in docs.
   - Useful context (e.g., "the evaluation panel is in component X")
     - `docs/CONFIGS.md` is already referenced for rollout config behavior, making it the lowest-friction location for Codex policy additions versus creating a new doc.
+---
+
+## 2026-02-17 04:10:21 UTC - US-010
+- Implemented `scripts/check_harness_readiness.py` to validate `configs/harness_registry.json` structure, required harness keys, and rollout MCP constraints (`none` and `sourcegraph_full`) with support for `--harness` scoped checks.
+- Added required environment validation with non-zero exit behavior on missing vars, including global MCP readiness (`SOURCEGRAPH_ACCESS_TOKEN`) and harness auth env checks where applicable.
+- Files changed: `scripts/check_harness_readiness.py`, `ralph-multi-harness/prd.json`, `ralph-multi-harness/progress.txt`
+- **Learnings for future iterations:**
+  - Patterns discovered (e.g., "this codebase uses X for Y")
+    - Keep readiness checks deterministic by validating registry policy and environment prerequisites in one script that returns `0` only when both pass.
+  - Gotchas encountered (e.g., "don't forget to update Z when changing W")
+    - Treat auth marker files as valid credential sources to avoid false negatives when harnesses authenticate via local login state instead of env vars.
+  - Useful context (e.g., "the evaluation panel is in component X")
+    - `--harness` with `choices` (`codex`, `cursor`, `gemini`, `copilot`, `openhands`) provides a low-noise preflight path before full-batch runs.
 ---
