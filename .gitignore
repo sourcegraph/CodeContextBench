@@ -21,8 +21,10 @@ runs/
 tasks/
 ralph/
 ralph-*/
-!ralph-ent-governance/
 reports/
+eval_reports/
+tmp/
+.cache/
 *.log
 
 # Large external datasets (reference by symlink or variable)
@@ -43,3 +45,7 @@ vendor/dependeval_repos/
 *.pem
 .claude/*
 !.claude/commands/
+
+# Local benchmark agent/session state
+benchmarks/.claude/
+benchmarks/locobench-agent/.claude/

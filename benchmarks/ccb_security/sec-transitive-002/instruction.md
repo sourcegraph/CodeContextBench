@@ -68,11 +68,11 @@ Analyze the code and provide a security triage report answering these questions:
    - What is the risk level? (CRITICAL/HIGH/MEDIUM/LOW/NONE)
    - Why is it affected or not affected?
 
-## Output Format
+## Deliverable
 
 Write your analysis to `/logs/agent/triage.md` with the following sections:
 
-```markdown
+```
 # CVE-2023-39325 Transitive Dependency Analysis
 
 ## Summary

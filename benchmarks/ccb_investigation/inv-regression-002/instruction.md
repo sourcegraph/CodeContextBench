@@ -71,11 +71,11 @@ The bug involves an **inconsistency in map key formatting** between two parts of
 - Another part uses a different format to retrieve those same groups
 - This mismatch causes the "copy state from old group to new group" logic to fail
 
-## Output Format
+## Deliverable
 
 Write your findings to `/logs/agent/investigation.md` with the following structure:
 
-```markdown
+```
 # Investigation Report: Prometheus Alert Rule State Loss on Config Reload
 
 ## Summary

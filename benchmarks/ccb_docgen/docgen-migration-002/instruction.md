@@ -29,7 +29,7 @@ The ext_proc filter is primarily located in:
 - Implementation: `source/extensions/filters/http/ext_proc/`
 - Documentation: `docs/root/configuration/http/http_filters/ext_proc_filter.rst`
 
-## Output Format
+## Deliverable
 
 Write your migration guide to `/workspace/documentation.md` in Markdown format with the following sections:
 

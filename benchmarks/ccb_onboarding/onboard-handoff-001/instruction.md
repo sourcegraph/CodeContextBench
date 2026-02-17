@@ -17,7 +17,7 @@ What does the ext_authz filter do? What problems does it solve? When would someo
 - **Upstream dependencies**: What other Envoy components or libraries does ext_authz depend on?
 - **Downstream consumers**: What uses or integrates with ext_authz? How is it configured in Envoy's filter chain?
 
-### 3. Key Files
+### 3. Relevant Components
 List the most important source files for this filter. For each file, explain its role (e.g., "configuration parsing", "request handling", "gRPC client implementation").
 
 ### 4. Failure Modes
@@ -29,11 +29,11 @@ How is this filter tested? Where are the tests located? Are there integration te
 ### 6. Debugging
 If something goes wrong with ext_authz in production, how would you debug it? What logs, metrics, or traces would you look at?
 
-## Output Format
+## Deliverable
 
 Write your findings to `/logs/agent/onboarding.md` using the following structure:
 
-```markdown
+```
 # ext_authz Filter Handoff Document
 
 ## 1. Purpose
@@ -46,7 +46,7 @@ Write your findings to `/logs/agent/onboarding.md` using the following structure
 ### Downstream Consumers
 [What depends on ext_authz]
 
-## 3. Key Files
+## 3. Relevant Components
 - **path/to/file.cc**: [Role/responsibility]
 - **path/to/file.h**: [Role/responsibility]
 ...

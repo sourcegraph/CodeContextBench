@@ -49,7 +49,7 @@ The service discovery layer feeding the DiscoveryServer. Explain:
 2. **Data Flow** — the path from Istio config change → DiscoveryServer → xDS push to Envoy proxies
 3. **Extension Points** — where users extend Istio (custom config translation, external service registries, telemetry plugins)
 4. **Error Handling** — how errors at each stage (config validation, push failures, proxy disconnects) are handled
-5. **Key Source Files** — reference the actual source files in the istio/istio repository (e.g., `pilot/pkg/xds/discovery.go`, `pilot/pkg/model/push_context.go`)
+5. **relevant source files** — reference the actual source files in the istio/istio repository (e.g., `pilot/pkg/xds/discovery.go`, `pilot/pkg/model/push_context.go`)
 
 ## Anti-Requirements
 

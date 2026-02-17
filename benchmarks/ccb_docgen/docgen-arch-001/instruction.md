@@ -46,7 +46,7 @@ The upstream connection pool and cluster management layer. Explain:
 2. **Data Flow** — the path of an HTTP request from downstream bytes to upstream dispatch, and the response path back
 3. **Extension Points** — where users extend Envoy (HTTP filters, cluster extensions, load balancers, access loggers)
 4. **Error Handling** — how errors at each stage (codec errors, filter errors, upstream failures) are handled
-5. **Key Source Files** — reference the actual source files in the envoyproxy/envoy repository
+5. **relevant source files** — reference the actual source files in the envoyproxy/envoy repository
 
 ## Anti-Requirements
 

@@ -21,11 +21,11 @@ Explore the hashicorp/terraform codebase and create a structured handoff documen
 - What are the downstream dependencies (what do backends call)?
 - How does the backend system integrate with the broader Terraform architecture?
 
-### 3. Key Files
+### 3. Relevant Components
 - What are the main source files and directories for the backend subsystem?
-- Where is the Backend interface defined?
+- What modules/interfaces define the Backend interface?
 - Where are concrete backend implementations located?
-- Where is the state locking mechanism defined?
+- What modules/interfaces define the state locking mechanism?
 - What files are critical for understanding how backends work?
 
 ### 4. Failure Modes
@@ -54,11 +54,11 @@ Explore the hashicorp/terraform codebase and create a structured handoff documen
 - What files need to be created or modified?
 - How is a new backend registered with the system?
 
-## Output Format
+## Deliverable
 
 Create your handoff document as a markdown file at `/logs/agent/onboarding.md`.
 
-Structure your document with clear section headers matching the 7 sections above. Include:
+Deliver a clear, well-structured document that covers all requested sections. Include:
 - Specific file paths and directory names
 - Key function/type names
 - Code flow descriptions
@@ -68,7 +68,7 @@ Structure your document with clear section headers matching the 7 sections above
 
 Your handoff document will be evaluated on:
 - **Completeness**: All 7 sections addressed with substantive content
-- **Accuracy**: Correct identification of key files, interfaces, and architectural patterns
+- **Accuracy**: Correct identification of relevant components, interfaces, and architectural patterns
 - **Specificity**: Concrete file paths, type names, and code references (not generic descriptions)
 - **Understanding**: Demonstrates comprehension of how the subsystem works, not just surface-level file listing
 

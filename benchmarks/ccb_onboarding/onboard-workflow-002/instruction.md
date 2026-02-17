@@ -34,11 +34,11 @@ Provide a step-by-step example workflow for a contributor who wants to fix a bug
 
 ---
 
-## Output Format
+## Deliverable
 
-Save your findings to `/logs/agent/onboarding.md` with numbered sections corresponding to the questions above:
+Save your findings to `/logs/agent/onboarding.md`. Use any clear structure as long as all questions above are answered:
 
-```markdown
+```
 # Kafka Contributor Guide
 
 ## 1. Build Prerequisites

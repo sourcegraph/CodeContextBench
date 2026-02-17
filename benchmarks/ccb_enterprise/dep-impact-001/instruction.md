@@ -24,7 +24,7 @@ Identify all files in the Django repository that define, override, call, or refe
 5. **Find test references** — Search tests/ for `get_list_filter` usage
 6. **Write submission** — Create `/workspace/submission.json` containing a JSON array of all affected file paths, relative to the repository root
 
-### Output Format
+### Deliverable
 
 Create `/workspace/submission.json` with a JSON array of file paths:
 ```json

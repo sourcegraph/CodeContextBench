@@ -46,7 +46,7 @@ Your `doc.go` file should:
 - Explain adaptations from networking to server request context
 - Include the key formulas
 
-### Key Files to Examine
+### Relevant Components to Examine
 
 - `queueset.go` — Main QueueSet implementation
 - `types.go` — Type definitions

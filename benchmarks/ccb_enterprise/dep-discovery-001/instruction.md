@@ -33,7 +33,7 @@ Exclude all external dependencies (standard library, `google.golang.org/`, `go.u
 
 Check ALL `.go` files in each package directory — imports may be split across multiple files. When multiple valid topological orderings exist, any correct ordering is accepted.
 
-### Output Format
+### Deliverable
 
 Create `/workspace/submission.json` with a JSON array of package paths in dependency order:
 ```json

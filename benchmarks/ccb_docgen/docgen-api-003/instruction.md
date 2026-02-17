@@ -84,7 +84,7 @@ Organize documentation with clear sections:
 - Configuration-driven behaviors
 - Common patterns and best practices
 
-## Output Format
+## Deliverable
 
 Write your documentation to `/workspace/documentation.md` in Markdown format.
 

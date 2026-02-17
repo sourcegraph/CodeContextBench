@@ -20,11 +20,11 @@ Explore the Apache Kafka repository and answer the following questions. Write yo
 
 6. **Adding a New Broker Config**: If you needed to add a new broker configuration parameter, what files would you modify and what steps would you follow? Include details about validation, dynamic updates, and testing.
 
-## Output Format
+## Deliverable
 
 Write your answers to `/logs/agent/onboarding.md` in the following format:
 
-```markdown
+```
 # Apache Kafka Codebase Orientation
 
 ## 1. Build System and Broker Startup

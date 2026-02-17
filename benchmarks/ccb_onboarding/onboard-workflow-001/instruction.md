@@ -44,7 +44,7 @@ Explore the Envoy repository and create a contributor guide covering the essenti
 
 Write your contributor guide to `/logs/agent/onboarding.md` with this structure:
 
-```markdown
+```
 # Envoy Contributor Guide
 
 ## 1. Build Prerequisites

@@ -46,7 +46,7 @@ Your `doc.go` file should:
 - Reference practical alternatives (CRDs, admission webhooks)
 - Use bullet lists for enumerating sub-packages
 
-### Key Files to Examine
+### Relevant Components to Examine
 
 - `pkg/server/genericapiserver.go` — GenericAPIServer
 - `pkg/admission/interfaces.go` — Admission plugin interfaces
