@@ -10,17 +10,17 @@ This repository contains **benchmark task definitions**, **evaluation configs**,
 
 Eight suites organized by software development lifecycle phase:
 
-| Suite | SDLC Phase | Phase 1 Tasks | Target | Description |
-|-------|-----------|------:|------:|-------------|
-| `ccb_understand` | Requirements & Discovery | 20 | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
-| `ccb_design` | Architecture & Design | 20 | 20 | Architecture analysis, dependency graphs, change impact |
-| `ccb_fix` | Bug Repair | 25 | 25 | Diagnosing and fixing real bugs across production codebases |
-| `ccb_build` | Feature & Refactoring | 25 | 25 | New features, refactoring, dependency management |
-| `ccb_test` | Testing & QA | 14 | 20 | Code review, performance testing, code search validation |
-| `ccb_document` | Documentation | 13 | 20 | API references, architecture docs, migration guides |
-| `ccb_secure` | Security & Compliance | 20 | 20 | CVE analysis, reachability, governance, access control |
-| `ccb_debug` | Debugging & Investigation | 20 | 20 | Root cause tracing, fault localization, provenance |
-| **Total** | | **157** | **170** | |
+| Suite | SDLC Phase | Tasks | Description |
+|-------|-----------|------:|-------------|
+| `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
+| `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
+| `ccb_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
+| `ccb_build` | Feature & Refactoring | 25 | New features, refactoring, dependency management |
+| `ccb_test` | Testing & QA | 14 | Code review, performance testing, code search validation |
+| `ccb_document` | Documentation | 13 | API references, architecture docs, migration guides |
+| `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
+| `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
+| **Total** | | **157** | |
 
 See `docs/PRD_SDLC_SUITE_REORGANIZATION.md` for the reorganization rationale and task mapping.
 
