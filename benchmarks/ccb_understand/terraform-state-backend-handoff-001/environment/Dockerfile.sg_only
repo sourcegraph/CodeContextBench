@@ -1,0 +1,20 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# NO repo clone — agent uses Sourcegraph MCP exclusively for code access.
+# Onboarding tasks produce /logs/agent/onboarding.md only.
+RUN git init && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
+
+# Create output directories
+RUN mkdir -p /logs/agent /logs/verifier /app
