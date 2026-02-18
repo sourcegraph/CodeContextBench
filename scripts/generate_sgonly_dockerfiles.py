@@ -228,6 +228,9 @@ RUN git init && \\
 
 RUN mkdir -p /logs/agent /logs/verifier
 
+# Mark sg_only mode so verifiers can skip local-path checks
+RUN touch /tmp/.sg_only_mode
+
 ENTRYPOINT []
 """
 

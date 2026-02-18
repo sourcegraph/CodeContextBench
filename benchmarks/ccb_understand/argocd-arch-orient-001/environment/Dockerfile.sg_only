@@ -21,4 +21,6 @@ RUN git init && \
 
 RUN mkdir -p /logs/agent /logs/verifier
 
+RUN touch /tmp/.sg_only_mode
+
 ENTRYPOINT []
