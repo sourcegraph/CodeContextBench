@@ -1,0 +1,55 @@
+version = "1.0"
+
+[metadata]
+name = "docgen-inline-002"
+description = "Generate Javadoc for Kafka's record batch serialization classes documenting thread-safety and performance"
+license = "Apache-2.0"
+
+[task]
+id = "docgen-inline-002"
+repo = "apache/kafka"
+category = "inline_docstring_generation"
+language = "java"
+difficulty = "hard"
+time_limit_sec = 1800
+
+[task.metadata]
+complexity_dimension = "documentation_reasoning"
+doc_type = "javadoc"
+target_module = "clients/src/main/java/org/apache/kafka/common/record/"
+output_path = "/workspace/documentation.md"
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+reward_type = "checklist"
+description = "Weighted checklist: Javadoc presence (0.30) + thread-safety documentation (0.30) + performance notes (0.20) + cross-reference accuracy (0.20)"
+
+[environment]
+build_timeout_sec = 900.0
+
+[environment.setup_scripts]
+mcp_config = """#!/bin/bash
+if [ -n "$SOURCEGRAPH_ACCESS_TOKEN" ] && [ -n "$SOURCEGRAPH_URL" ]; then
+  echo "Setting up Sourcegraph MCP configuration..."
+  mkdir -p /root/.config/claude
+  cat > /root/.config/claude/mcp.json << 'MCPEOF'
+{
+  "mcpServers": {
+    "sourcegraph": {
+      "command": "npx",
+      "args": ["-y", "@sourcegraph/mcp-server"],
+      "env": {
+        "SRC_ACCESS_TOKEN": "$SOURCEGRAPH_ACCESS_TOKEN",
+        "SOURCEGRAPH_URL": "$SOURCEGRAPH_URL"
+      }
+    }
+  }
+}
+MCPEOF
+  echo "OK MCP configuration created"
+else
+  echo "No Sourcegraph credentials provided, MCP disabled"
+fi
+exit 0
+"""

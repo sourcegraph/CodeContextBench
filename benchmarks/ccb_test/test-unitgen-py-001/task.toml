@@ -1,0 +1,45 @@
+version = "1.0"
+
+[metadata]
+name = "test-unitgen-py-001"
+description = "Generate unit tests for Django's cache middleware module"
+license = "BSD-3-Clause"
+
+[task]
+id = "test-unitgen-py-001"
+repo = "django/django"
+category = "unit-test-generation"
+language = "python"
+difficulty = "medium"
+time_limit_sec = 1200
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+reward_type = "checklist"
+description = "Weighted checklist: test file presence (0.25) + test class/function count (0.35) + edge case coverage (0.25) + Django TestCase usage (0.15)"
+
+[environment]
+build_timeout_sec = 1200.0
+
+[environment.setup_scripts]
+mcp_config = """#!/bin/bash
+if [ -n "$SOURCEGRAPH_ACCESS_TOKEN" ] && [ -n "$SOURCEGRAPH_URL" ]; then
+  mkdir -p /root/.config/claude
+  cat > /root/.config/claude/mcp.json << 'MCPEOF'
+{
+  "mcpServers": {
+    "sourcegraph": {
+      "command": "npx",
+      "args": ["-y", "@sourcegraph/mcp-server"],
+      "env": {
+        "SRC_ACCESS_TOKEN": "$SOURCEGRAPH_ACCESS_TOKEN",
+        "SOURCEGRAPH_URL": "$SOURCEGRAPH_URL"
+      }
+    }
+  }
+}
+MCPEOF
+fi
+exit 0
+"""

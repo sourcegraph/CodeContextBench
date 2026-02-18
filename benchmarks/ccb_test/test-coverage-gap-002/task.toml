@@ -1,0 +1,45 @@
+version = "1.0"
+
+[metadata]
+name = "test-coverage-gap-002"
+description = "Map test coverage gaps in Kafka's consumer group coordinator"
+license = "Apache-2.0"
+
+[task]
+id = "test-coverage-gap-002"
+repo = "apache/kafka"
+category = "test-coverage-gap-analysis"
+language = "java"
+difficulty = "hard"
+time_limit_sec = 1800
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+reward_type = "checklist"
+description = "Weighted checklist: failure mode recall (0.40) + proposed test correctness (0.30) + coverage delta estimate (0.30)"
+
+[environment]
+build_timeout_sec = 1800.0
+
+[environment.setup_scripts]
+mcp_config = """#!/bin/bash
+if [ -n "$SOURCEGRAPH_ACCESS_TOKEN" ] && [ -n "$SOURCEGRAPH_URL" ]; then
+  mkdir -p /root/.config/claude
+  cat > /root/.config/claude/mcp.json << 'EOF'
+{
+  "mcpServers": {
+    "sourcegraph": {
+      "command": "npx",
+      "args": ["-y", "@sourcegraph/mcp-server"],
+      "env": {
+        "SRC_ACCESS_TOKEN": "$SOURCEGRAPH_ACCESS_TOKEN",
+        "SOURCEGRAPH_URL": "$SOURCEGRAPH_URL"
+      }
+    }
+  }
+}
+EOF
+fi
+exit 0
+"""
