@@ -1,260 +1,285 @@
 # CodeContextBench Benchmarks
 
-This directory contains all benchmark task definitions for evaluating coding agents with and without Sourcegraph MCP. The canonical task selection is defined in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (186 tasks across 17 active benchmarks). Archived suites are in `archive/`.
+157 tasks organized into 8 suites aligned with the software development lifecycle (SDLC). Each suite targets a distinct phase of engineering work. The canonical task selection is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json).
 
-See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for the selection methodology.
-
----
-
-## Active Benchmarks
-
-### 1. [ccb_swebenchpro/](ccb_swebenchpro/) - Multi-Language Bug Fixing
-**Tasks**: 36
-**Languages**: Go, TypeScript, Python, JavaScript
-**SDLC Phase**: Implementation (bug fix)
-**Focus**: Long-horizon software engineering on production codebases
-**Repositories**: flipt-io/flipt, tutao/tutanota, internetarchive/openlibrary, ansible/ansible, and more
-**Task Format**: Harbor (via adapter, pre-generated)
+See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodology and [`docs/PRD_SDLC_SUITE_REORGANIZATION.md`](../docs/PRD_SDLC_SUITE_REORGANIZATION.md) for the migration rationale.
 
 ---
 
-### 2. [ccb_largerepo/](ccb_largerepo/) - Large Codebase Navigation
-**Tasks**: 25
-**Languages**: Go, Rust, C/C++, Java, Python, TypeScript
-**SDLC Phases**: Feature implementation, Analysis, Debugging, Refactoring, Security review
-**Focus**: Feature implementation, analysis, and debugging in very large codebases (1GB+)
-**Repositories**: Kubernetes, Servo, TensorRT-LLM, VS Code, Django, Kafka, PostgreSQL, and more
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## Suite Overview
+
+| Suite | SDLC Phase | Tasks | Description |
+|-------|-----------|------:|-------------|
+| `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
+| `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
+| `ccb_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
+| `ccb_build` | Feature & Refactoring | 25 | New features, refactoring, dependency management |
+| `ccb_test` | Testing & QA | 14 | Code review, performance testing, code search validation |
+| `ccb_document` | Documentation | 13 | API references, architecture docs, migration guides |
+| `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
+| `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
+| **Total** | | **157** | |
 
 ---
 
-### 3. [ccb_docgen/](ccb_docgen/) - Documentation Generation
-**Tasks**: 13
-**Languages**: Go, C++, Java, TypeScript
-**SDLC Phase**: Documentation
-**Focus**: Generate accurate API documentation, architecture guides, and migration plans by reading source code. Supersedes `ccb_k8sdocs` with broader language and task-type coverage.
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_understand (20 tasks) — Requirements & Discovery
+
+Codebase comprehension, natural-language Q&A, onboarding exercises, and knowledge recovery tasks.
+
+| Task | Focus |
+|------|-------|
+| `argocd-arch-orient-001` | Explore Argo CD architecture |
+| `argocd-sync-reconcile-qa-001` | Trace Argo CD sync reconciliation |
+| `cilium-ebpf-datapath-handoff-001` | Document eBPF datapath subsystem |
+| `cilium-ebpf-fault-qa-001` | Explain eBPF fault isolation |
+| `cilium-project-orient-001` | Explore Cilium project structure |
+| `django-composite-field-recover-001` | Add composite field validator |
+| `django-template-inherit-recall-001` | Fix template inheritance regression |
+| `envoy-contributor-workflow-001` | Learn Envoy contributor workflow |
+| `envoy-ext-authz-handoff-001` | Document ext_authz filter ownership |
+| `envoy-filter-chain-qa-001` | Explain HTTP filter chain architecture |
+| `envoy-request-routing-qa-001` | Trace Envoy request routing path |
+| `istio-xds-serving-qa-001` | Explain xDS serving architecture |
+| `k8s-cri-containerd-reason-001` | Trace K8s CRI containerd implementation |
+| `kafka-build-orient-001` | Explore Kafka build system |
+| `kafka-contributor-workflow-001` | Learn Kafka contribution process |
+| `kafka-message-lifecycle-qa-001` | Trace Kafka message lifecycle |
+| `numpy-dtype-localize-001` | Trace nullable integer dtype incompatibility |
+| `terraform-plan-pipeline-qa-001` | Explain terraform plan pipeline |
+| `terraform-state-backend-handoff-001` | Document state backend subsystem |
+| `vscode-ext-host-qa-001` | Explain extension host isolation |
 
 ---
 
-### 4. [ccb_crossrepo/](ccb_crossrepo/) - Cross-Repository Reasoning
-**Tasks**: 12
-**Languages**: Go, C++
-**SDLC Phases**: Architecture & Design, Bug fix, Refactoring, Discovery, Testing & QA
-**Focus**: API migration, bug localization, cross-file reasoning, and symbol tracing across multiple repositories
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-**Note**: Requires `harbor-ccb_crossrepo:base` Docker image built from `base/` directory.
+## ccb_design (20 tasks) — Architecture & Design
+
+Architecture analysis, dependency chain tracing, change impact assessment, and design proposals.
+
+| Task | Focus |
+|------|-------|
+| `camel-routing-arch-001` | Trace Camel message routing architecture |
+| `django-modeladmin-impact-001` | Find ModelAdmin.get_list_filter overrides |
+| `django-orm-query-arch-001` | Map Django ORM query compilation pipeline |
+| `django-pre-validate-signal-design-001` | Add pre-validation Django model signal |
+| `django-rate-limit-design-001` | Implement rate limiting middleware correctly |
+| `envoy-routeconfig-dep-chain-001` | Follow RouteConfiguration definition chain |
+| `envoy-stream-aggregated-sym-001` | Find StreamAggregatedResources callers |
+| `etcd-grpc-api-upgrade-001` | Migrate grpc.Dial to grpc.NewClient |
+| `flink-checkpoint-arch-001` | Map Flink checkpoint coordination |
+| `flipt-protobuf-metadata-design-001` | Add protobuf evaluation metadata field |
+| `flipt-transitive-deps-001` | List transitive package dependencies |
+| `k8s-crd-lifecycle-arch-001` | Trace K8s CRD lifecycle ecosystem |
+| `k8s-dra-allocation-impact-001` | Analyze DRA AllocationMode API impact |
+| `k8s-scheduler-arch-001` | Explain K8s scheduler architecture |
+| `k8s-sharedinformer-sym-001` | Locate SharedInformer factory usages |
+| `k8s-typemeta-dep-chain-001` | Trace TypeMeta dependency chain |
+| `kafka-flink-streaming-arch-001` | Trace Kafka-Flink streaming data flow |
+| `postgres-query-exec-arch-001` | Trace PostgreSQL query execution pipeline |
+| `quantlib-barrier-pricing-arch-001` | Trace QuantLib barrier option pricing |
+| `terraform-provider-iface-sym-001` | Find provider.Provider implementations |
 
 ---
 
-### 5. [ccb_enterprise/](ccb_enterprise/) - Enterprise Codebase Challenges
-**Tasks**: 12
-**Languages**: Go, Python
-**SDLC Phases**: Impact analysis, Feature implementation, Bug fix, Refactoring
-**Focus**: Enterprise-grade challenges: dependency discovery, impact analysis, multi-team ownership, knowledge fragmentation, legacy dependencies
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_fix (25 tasks) — Bug Repair
+
+Diagnosing and fixing real bugs across production codebases (SWE-bench Pro, PyTorch, large repos).
+
+| Task | Focus |
+|------|-------|
+| `ansible-abc-imports-fix-001` | Inconsistent collection ABC imports |
+| `ansible-module-respawn-fix-001` | Module respawn under compatible interpreters |
+| `django-modelchoice-fk-fix-001` | Fix ModelChoiceField ForeignKey rendering |
+| `django-select-for-update-fix-001` | Django select_for_update ORM crash |
+| `flipt-cockroachdb-backend-fix-001` | Support CockroachDB first-class backend |
+| `flipt-ecr-auth-oci-fix-001` | Dynamic AWS ECR authentication OCI |
+| `flipt-eval-latency-fix-001` | Add evaluation latency tracking |
+| `flipt-otlp-exporter-fix-001` | Add OTLP exporter support tracing |
+| `flipt-trace-sampling-fix-001` | Add sampling ratio propagator config |
+| `k8s-dra-scheduler-event-fix-001` | K8s DRA scheduler event handling |
+| `kafka-producer-bufpool-fix-001` | Kafka producer buffer pool race condition |
+| `navidrome-windows-log-fix-001` | Windows log output line ending normalization |
+| `nodebb-notif-dropdown-fix-001` | Notifications dropdown category selector |
+| `nodebb-plugin-validate-fix-001` | Plugin activation identifier validation |
+| `openlibrary-fntocli-adapter-fix-001` | FnToCLI adapter list inputs paths |
+| `openlibrary-search-query-fix-001` | Work search query parsing normalization |
+| `openlibrary-solr-boolean-fix-001` | Solr boolean clause limit alignment |
+| `protonmail-conv-testhooks-fix-001` | Conversation message view test hooks |
+| `protonmail-dropdown-sizing-fix-001` | Dropdown unified sizing configuration |
+| `protonmail-holiday-calendar-fix-001` | Public holiday calendar management |
+| `pytorch-cudnn-version-fix-001` | Expose cuDNN runtime version |
+| `pytorch-dynamo-keyerror-fix-001` | Fix dynamo keyerror and attribute |
+| `pytorch-release-210-fix-001` | Release 2.10 bug fix changes |
+| `pytorch-relu-gelu-fusion-fix-001` | Revert Inductor ReLU/GELU fusions |
+| `pytorch-tracer-graph-cleanup-fix-001` | Cleanup graphs for failed tracer outputs |
 
 ---
 
-### 6. [ccb_pytorch/](ccb_pytorch/) - Real PyTorch Pull Requests
-**Tasks**: 11
-**Languages**: C++ (PyTorch)
-**SDLC Phase**: Implementation (bug fix, feature)
-**Focus**: Multi-file code changes on real production codebase
-**Repository**: PyTorch (pytorch/pytorch)
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_build (25 tasks) — Feature & Refactoring
+
+New feature implementation, code refactoring, and dependency management tasks.
+
+| Task | Focus |
+|------|-------|
+| `bustub-hyperloglog-impl-001` | Implement HyperLogLog cardinality estimator |
+| `camel-fix-protocol-feat-001` | Implement camel-fix component FIX protocol |
+| `cgen-deps-install-001` | Set required package configuration |
+| `codecoverage-deps-install-001` | Configure project dependency versions |
+| `django-dep-refactor-001` | Dependency refactoring (Django) |
+| `dotenv-expand-deps-install-001` | Fix build system dependencies |
+| `dotnetkoans-deps-install-001` | Edit build dependencies, tests pass |
+| `envoy-grpc-server-impl-001` | Identify gRPC server implementations |
+| `eslint-markdown-deps-install-001` | Add missing package dependencies |
+| `flink-pricing-window-feat-001` | Implement PricingSessionWindow for trading |
+| `flipt-dep-refactor-001` | Dependency refactoring (Flipt) |
+| `python-http-class-naming-refac-001` | Standardize HTTP class naming |
+| `iamactionhunter-deps-install-001` | Resolve missing dependencies build |
+| `k8s-noschedule-taint-feat-001` | Implement NoScheduleNoTraffic taint effect |
+| `k8s-runtime-object-impl-001` | Find runtime.Object interface implementors |
+| `k8s-score-normalizer-refac-001` | Rename ScoreExtensions to ScoreNormalizer |
+| `kafka-batch-accumulator-refac-001` | Rename RecordAccumulator to BatchAccumulator |
+| `pcap-parser-deps-install-001` | Setup library dependencies correctly |
+| `rust-subtype-relation-refac-001` | Rename SubtypePredicate to SubtypeRelation |
+| `servo-scrollend-event-feat-001` | Add scrollend DOM event support |
+| `similar-asserts-deps-install-001` | Configure Cargo dependency resolution |
+| `strata-cds-tranche-feat-001` | Implement CDS tranche CDO product |
+| `strata-fx-european-refac-001` | Rename FxVanillaOption to FxEuropeanOption |
+| `tensorrt-mxfp4-quant-feat-001` | Add W4A8_MXFP4_INT8 quantization mode |
+| `vscode-stale-diagnostics-feat-001` | Fix stale diagnostics after git branch |
 
 ---
 
-### 7. [ccb_navprove/](ccb_navprove/) - Navigation & Provenance Reasoning
-**Tasks**: 9
-**Languages**: Go, Python, TypeScript
-**SDLC Phase**: Debugging
-**Focus**: Navigation through complex codebases to trace provenance, locate behaviors, and prove hypotheses about code behavior
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_test (14 tasks) — Testing & QA
+
+Code review with injected defects, performance testing, and code search validation.
+
+| Task | Focus |
+|------|-------|
+| `aspnetcore-code-review-001` | Code review: ASP.NET Core |
+| `calcom-code-review-001` | Code review: Cal.com |
+| `envoy-code-review-001` | Code review: Envoy |
+| `ghost-code-review-001` | Code review: Ghost |
+| `llamacpp-context-window-search-001` | Find PR improving context window |
+| `llamacpp-file-modify-search-001` | Locate recent file modification PR |
+| `numpy-array-sum-perf-001` | Optimize array sum function |
+| `openhands-search-file-test-001` | Write search_file function tests |
+| `pandas-groupby-perf-001` | Accelerate groupby aggregate |
+| `curl-security-review-001` | Code review: curl security |
+| `kafka-security-review-001` | Code review: Kafka security |
+| `sklearn-kmeans-perf-001` | Speed up K-means clustering |
+| `terraform-code-review-001` | Code review: Terraform |
+| `vscode-code-review-001` | Code review: VS Code |
 
 ---
 
-### 8. [ccb_codereview/](ccb_codereview/) - AI Code Review
-**Tasks**: 8
-**Languages**: C, C++, C#, Go, Java, JavaScript, TypeScript
-**SDLC Phase**: Testing & QA
-**Focus**: Review real pull requests with injected defects -- find bugs, compliance violations, and fix them
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_document (13 tasks) — Documentation
+
+API reference generation, architecture documentation, and migration guide creation.
+
+| Task | Focus |
+|------|-------|
+| `cilium-api-doc-gen-001` | Cilium API reference generation |
+| `envoy-arch-doc-gen-001` | Envoy architecture documentation |
+| `envoy-migration-doc-gen-001` | Envoy migration guide generation |
+| `istio-arch-doc-gen-001` | Istio architecture documentation |
+| `k8s-apiserver-doc-gen-001` | K8s API server documentation |
+| `k8s-applyconfig-doc-gen-001` | K8s ApplyConfig documentation |
+| `k8s-clientgo-doc-gen-001` | K8s client-go documentation |
+| `k8s-controller-mgr-doc-gen-001` | K8s controller manager documentation |
+| `k8s-fairqueuing-doc-gen-001` | K8s fair queuing documentation |
+| `kafka-api-doc-gen-001` | Kafka API reference generation |
+| `terraform-arch-doc-gen-001` | Terraform architecture documentation |
+| `terraform-migration-doc-gen-001` | Terraform migration guide generation |
+| `vscode-api-doc-gen-001` | VS Code API reference generation |
 
 ---
 
-### 9. [ccb_dibench/](ccb_dibench/) - Dependency Inference
-**Tasks**: 8
-**Languages**: Python, Rust, JavaScript, C#
-**SDLC Phase**: Implementation (feature)
-**Focus**: Infer and configure missing dependencies in build files by analyzing source code
-**Source**: Microsoft DI-Bench (https://github.com/microsoft/DI-Bench)
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-**Note**: Each task includes the full project repo with dependencies stripped from build files.
+## ccb_secure (20 tasks) — Security & Compliance
+
+CVE analysis, vulnerability reachability, governance enforcement, and access control.
+
+| Task | Focus |
+|------|-------|
+| `curl-cve-triage-001` | curl CVE triage and analysis |
+| `curl-vuln-reachability-001` | curl vulnerability reachability |
+| `django-audit-trail-implement-001` | Django audit trail implementation |
+| `django-cross-team-boundary-001` | Django cross-team boundary enforcement |
+| `django-csrf-session-audit-001` | Analyze Django CSRF/session security |
+| `django-legacy-dep-vuln-001` | Django legacy dependency vulnerability |
+| `django-policy-enforcement-001` | Django policy enforcement |
+| `django-repo-scoped-access-001` | Django repo-scoped access control |
+| `django-role-based-access-001` | Django role-based access |
+| `django-sensitive-file-exclusion-001` | Django sensitive file exclusion |
+| `envoy-cve-triage-001` | Envoy CVE triage and analysis |
+| `envoy-vuln-reachability-001` | Envoy vulnerability reachability |
+| `flipt-degraded-context-fix-001` | Flipt error handling, missing deps |
+| `flipt-repo-scoped-access-001` | Flipt repo-scoped access control |
+| `golang-net-cve-triage-001` | golang/net CVE triage and analysis |
+| `grpcurl-transitive-vuln-001` | grpcurl transitive vulnerability |
+| `kafka-sasl-auth-audit-001` | Analyze Kafka SASL authentication flow |
+| `kafka-vuln-reachability-001` | Kafka vulnerability reachability |
+| `postgres-client-auth-audit-001` | Analyze PostgreSQL client auth pipeline |
+| `wish-transitive-vuln-001` | wish transitive vulnerability |
 
 ---
 
-### 10. [ccb_governance/](ccb_governance/) - Access Control & Policy Enforcement
-**Tasks**: 8
-**Languages**: Go, Python
-**SDLC Phases**: Implementation (feature, bug fix)
-**Focus**: Repo-scoped access control, audit trails, policy enforcement, cross-team boundaries, sensitive file exclusion
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## ccb_debug (20 tasks) — Debugging & Investigation
+
+Root cause tracing, fault localization, regression provenance, and deep investigation.
+
+| Task | Focus |
+|------|-------|
+| `ansible-vault-regression-prove-001` | Find & prove: Ansible vault bug |
+| `django-admins-migration-audit-001` | Audit Django ADMINS/MANAGERS migration |
+| `envoy-duplicate-headers-debug-001` | Trace duplicate response headers |
+| `flipt-cache-regression-prove-001` | Find & prove: Flipt cache bug |
+| `grafana-table-panel-regression-001` | Hunt dashboard table panel regression |
+| `istio-xds-destrul-debug-001` | Diagnose dropped xDS DestinationRule |
+| `linux-acpi-backlight-fault-001` | Locate ACPI backlight brightness bug |
+| `linux-hda-intel-suspend-fault-001` | Diagnose HDA Intel sound suspend |
+| `linux-iwlwifi-subdevice-fault-001` | Locate iwlwifi firmware PCI subdevice |
+| `linux-nfs-inode-revalidate-fault-001` | Debug NFS mount inode revalidate |
+| `linux-ssd-trim-timeout-fault-001` | Fix Samsung SSD TRIM timeout issue |
+| `prometheus-queue-reshard-debug-001` | Debug remote-write queue resharding |
+| `qutebrowser-bookmark-regression-prove-001` | Find & prove: qutebrowser bookmark |
+| `qutebrowser-download-regression-prove-001` | Find & prove: qutebrowser download |
+| `qutebrowser-tab-regression-prove-001` | Find & prove: qutebrowser tab |
+| `qutebrowser-url-regression-prove-001` | Find & prove: qutebrowser URL |
+| `teleport-ssh-regression-prove-001` | Find & prove: Teleport SSH |
+| `terraform-phantom-update-debug-001` | Identify phantom resource update trigger |
+| `tutanota-search-regression-prove-001` | Find & prove: Tutanota search |
+| `vuls-oval-regression-prove-001` | Find & prove: Vuls OVAL |
 
 ---
 
-### 11. [ccb_nlqa/](ccb_nlqa/) - Natural-Language Code Q&A
-**Tasks**: 8
-**Languages**: Go, C++, Java, TypeScript
-**SDLC Phases**: Debugging, Requirements & Discovery
-**Focus**: Answer natural-language questions about code architecture, data flow, and debugging scenarios
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
+## Task Directory Structure
 
----
+Each task follows this layout:
 
-### 12. [ccb_onboarding/](ccb_onboarding/) - Codebase Onboarding
-**Tasks**: 8
-**Languages**: Go, C++, Java
-**SDLC Phase**: Requirements & Discovery
-**Focus**: Onboarding to unfamiliar codebases: orientation, handoff comprehension, workflow understanding
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-
----
-
-### 13. [ccb_security/](ccb_security/) - Security Analysis
-**Tasks**: 8
-**Languages**: Go, C, C++, Java
-**SDLC Phase**: Requirements & Discovery
-**Focus**: CVE analysis, reachability assessment, and transitive dependency security analysis
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-
----
-
-### 14. [ccb_tac/](ccb_tac/) - TheAgentCompany Tasks
-**Tasks**: 8
-**Languages**: C++, Python
-**SDLC Phases**: Requirements & Discovery, Implementation (feature), Testing & QA, Maintenance
-**Focus**: Diverse SDE tasks (codebase search, implementation, unit testing, troubleshooting)
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-
----
-
-### 15. [ccb_linuxflbench/](ccb_linuxflbench/) - Linux Kernel Fault Localization
-**Tasks**: 5
-**Languages**: C
-**SDLC Phase**: Implementation (bug fix)
-**Focus**: Locate root cause of real Linux kernel bugs from Bugzilla reports
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-**Note**: Docker image build is slow (~10 min) due to Linux kernel partial clone (~2GB).
-
----
-
-### 16. [ccb_investigation/](ccb_investigation/) - Deep Investigation
-**Tasks**: 4
-**Languages**: Go, Python
-**SDLC Phase**: Requirements & Discovery
-**Focus**: Deep debugging, interaction tracing, and impact analysis requiring thorough codebase investigation
-**Task Format**: Harbor (task.toml, instruction.md, tests/)
-
----
-
-### 17. [ccb_sweperf/](ccb_sweperf/) - Performance Testing
-**Tasks**: 3
-**Languages**: Python
-**SDLC Phase**: Testing & QA
-**Focus**: Performance-oriented software engineering tasks
-**Task Format**: Harbor (via adapter, pre-generated)
-
----
-
-## Benchmark Summary
-
-| Benchmark | Tasks | Languages | SDLC Phase |
-|-----------|------:|-----------|------------|
-| ccb_swebenchpro | 36 | Go, TypeScript, Python, JavaScript | Bug fixing |
-| ccb_largerepo | 25 | Go, Rust, C/C++, Java, Python, TypeScript | Feature impl, Analysis, Security |
-| ccb_docgen | 13 | Go, C++, Java, TypeScript | Documentation |
-| ccb_crossrepo | 12 | Go, C++ | Architecture, Bug fix, Refactoring |
-| ccb_enterprise | 12 | Go, Python | Impact analysis, Feature impl, Bug fix |
-| ccb_pytorch | 11 | C++ | Bug fixing, Feature impl |
-| ccb_navprove | 9 | Go, Python, TypeScript | Debugging |
-| ccb_codereview | 8 | 7 languages | Testing & QA |
-| ccb_dibench | 8 | Python, Rust, JavaScript, C# | Dependency inference |
-| ccb_governance | 8 | Go, Python | Feature impl, Bug fix |
-| ccb_nlqa | 8 | Go, C++, Java, TypeScript | Debugging, Discovery |
-| ccb_onboarding | 8 | Go, C++, Java | Discovery |
-| ccb_security | 8 | Go, C, C++, Java | Discovery |
-| ccb_tac | 8 | C++, Python | Mixed (4 phases) |
-| ccb_linuxflbench | 5 | C | Fault localization |
-| ccb_investigation | 4 | Go, Python | Discovery |
-| ccb_sweperf | 3 | Python | Testing & QA |
-| **Total** | **186** | | |
-
----
-
-## Archived Benchmarks
-
-Archived suites are not included in official evaluation. Task files are preserved for reference.
-
-### [archive/ccb_dependeval/](archive/ccb_dependeval/) - Dependency Ordering (ARCHIVED)
-**Reason**: Superseded by ccb_dibench and ccb_enterprise dependency tasks.
-**Tasks**: 32 | **Languages**: Java, JavaScript, Python, TypeScript
-
-### [archive/ccb_repoqa/](archive/ccb_repoqa/) - Semantic Code Navigation (ARCHIVED)
-**Reason**: Ceiling saturation -- scores 1.000/1.000 on both baseline and SG_full configs, providing zero discriminative signal.
-**Tasks**: 10 | **Languages**: Python, C++, Java, Rust, TypeScript
-
-### [archive/ccb_k8sdocs/](archive/ccb_k8sdocs/) - K8s Documentation (ARCHIVED)
-**Reason**: Superseded by ccb_docgen, which provides broader language coverage and more task types.
-**Tasks**: 5 | **Languages**: Go
-
-### [archive/ccb_locobench/](archive/ccb_locobench/) - Long-Context Agent Tasks (ARCHIVED)
-**Reason**: Removed from official evaluation.
-**Tasks**: 25 | **Languages**: C, C++, C#, Python, Rust, TypeScript
+```
+{task-name}/
+  task.toml          # Task metadata: id, language, difficulty, timeouts
+  instruction.md     # Agent instructions (what to do)
+  environment/       # Dockerfile and build context
+  tests/             # test.sh, ground truth, eval scripts
+  solution/          # Reference solution (optional)
+```
 
 ---
 
 ## Running Benchmarks
 
-### 3-Config Comparison (Recommended)
-
-Each benchmark has a shell runner in [`configs/`](../configs/) that executes selected tasks across the 3-config matrix (Baseline, MCP-Base, MCP-Full):
-
 ```bash
-# Run all selected tasks for all benchmarks
+# Run all 157 tasks across 2 configs (Baseline + MCP-Full)
 bash configs/run_selected_tasks.sh
 
-# Run only baseline config
-bash configs/run_selected_tasks.sh --baseline-only
+# Run a single SDLC phase
+bash configs/run_selected_tasks.sh --benchmark ccb_fix
 
-# Per-suite example
-bash configs/swebenchpro_2config.sh
-bash configs/largerepo_2config.sh
-bash configs/docgen_2config.sh
-```
-
-### Single Task Run
-
-```bash
-harbor run --path benchmarks/ccb_largerepo/big-code-vsc-001 \
+# Single task
+harbor run --path benchmarks/ccb_build/servo-scrollend-event-feat-001 \
   --agent-import-path agents.claude_baseline_agent:BaselineClaudeCodeAgent \
   --model anthropic/claude-haiku-4-5-20251001 \
   -n 1
 ```
 
 See [`docs/CONFIGS.md`](../docs/CONFIGS.md) for the full tool-by-tool breakdown of each config.
-
----
-
-## Results & Analysis
-
-After running benchmarks, generate evaluation reports:
-
-```bash
-python3 scripts/generate_eval_report.py \
-  --runs-dir /path/to/runs/official/ \
-  --output-dir ./eval_reports/
-```
-
-See the root [README.md](../README.md) for the full metrics extraction pipeline.

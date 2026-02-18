@@ -1,7 +1,0 @@
---- a/src/vs/editor/common/core/position.ts
-+++ b/src/vs/editor/common/core/position.ts
-@@ -103,5 +103,5 @@
-
--		return a.column <= b.column;
-+		return a.column < b.column;
- 	}

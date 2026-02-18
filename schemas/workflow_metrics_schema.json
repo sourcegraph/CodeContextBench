@@ -50,7 +50,7 @@
       "properties": {
         "task_name": { "type": "string", "description": "Task identifier (hash-stripped)." },
         "suite": { "type": "string", "description": "Benchmark suite (e.g., ccb_pytorch)." },
-        "config": { "type": "string", "description": "Agent configuration (baseline, sourcegraph_base, sourcegraph_full)." },
+        "config": { "type": "string", "description": "Agent configuration (baseline, sourcegraph_full)." },
         "workflow_category": { "type": ["string", "null"], "description": "Mapped workflow category from taxonomy." },
         "reward": { "type": ["number", "null"], "description": "Task reward (0.0 or 1.0)." },
         "agent_task_time_seconds": { "type": ["number", "null"], "description": "Agent task time in seconds (coding + tool use)." },

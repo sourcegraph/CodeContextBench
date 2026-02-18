@@ -1,5 +1,0 @@
---- a/packages/features/feature-opt-in/services/FeatureOptInService.ts
-+++ b/packages/features/feature-opt-in/services/FeatureOptInService.ts
-@@ listFeaturesForUser
--    return featureIds.map((featureId) => resolvedStates[featureId]).filter((state) => !state.globalEnabled);
-+    return featureIds.map((featureId) => resolvedStates[featureId]).filter((state) => state.globalEnabled);

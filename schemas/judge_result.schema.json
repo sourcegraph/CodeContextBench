@@ -15,7 +15,7 @@
     },
     "config": {
       "type": "string",
-      "description": "Agent configuration label (e.g., baseline, sourcegraph_base, sourcegraph_full)"
+      "description": "Agent configuration label (e.g., baseline, sourcegraph_full)"
     },
     "judge_score": {
       "type": "number",
