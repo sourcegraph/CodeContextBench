@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PREFIX="${PREFIX:-/usr/local}"
+export PATH="${PREFIX}/bin:$PATH"
+
+echo "Installing GitHub Copilot CLI to ${PREFIX}"
+
+if command -v copilot >/dev/null 2>&1; then
+  echo "Copilot CLI already installed; skipping"
+  exit 0
+fi
+
+curl -fsSL https://gh.io/copilot-install | PREFIX="$PREFIX" bash
