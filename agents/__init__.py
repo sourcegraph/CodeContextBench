@@ -41,6 +41,14 @@ from .ablation_config import (
     create_example_config,
 )
 
+from .harnesses import (
+    CodexHarnessAgent,
+    CopilotHarnessAgent,
+    CursorHarnessAgent,
+    GeminiHarnessAgent,
+    OpenHandsHarnessAgent,
+)
+
 __all__ = [
     # Metrics extraction
     "TrialMetrics",
@@ -69,4 +77,11 @@ __all__ = [
     "OutputConfig",
     "parse_ablation_config",
     "create_example_config",
+
+    # Harness agents
+    "CodexHarnessAgent",
+    "CopilotHarnessAgent",
+    "CursorHarnessAgent",
+    "GeminiHarnessAgent",
+    "OpenHandsHarnessAgent",
 ]

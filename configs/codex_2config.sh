@@ -29,7 +29,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 source "$SCRIPT_DIR/_common.sh"
 
 SELECTION_FILE="$SCRIPT_DIR/selected_benchmark_tasks.json"
-AGENT_PATH="${AGENT_PATH:-agents.codex_driver_agent:CodexDriverAgent}"
+AGENT_PATH="${AGENT_PATH:-agents.harnesses.codex:CodexHarnessAgent}"
 MODEL="${MODEL:-gpt-5.3-codex}"
 CATEGORY="${CATEGORY:-staging}"
 BENCHMARK_FILTER=""

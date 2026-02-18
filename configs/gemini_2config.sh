@@ -29,7 +29,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 source "$SCRIPT_DIR/_common.sh"
 
 SELECTION_FILE="$SCRIPT_DIR/selected_benchmark_tasks.json"
-AGENT_PATH="${AGENT_PATH:-agents.gemini_driver_agent:GeminiDriverAgent}"
+AGENT_PATH="${AGENT_PATH:-agents.harnesses.gemini:GeminiHarnessAgent}"
 MODEL="${MODEL:-gemini-2.0-flash}"
 CATEGORY="${CATEGORY:-staging}"
 BENCHMARK_FILTER=""

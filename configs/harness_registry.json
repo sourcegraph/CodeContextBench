@@ -1,7 +1,7 @@
 {
   "codex": {
     "harness_name": "codex",
-    "agent_import_path": "agents.codex_driver_agent:CodexDriverAgent",
+    "agent_import_path": "agents.harnesses.codex:CodexHarnessAgent",
     "default_model": "gpt-5.3-codex",
     "allowed_mcp_modes": [
       "none",
@@ -10,7 +10,7 @@
   },
   "cursor": {
     "harness_name": "cursor",
-    "agent_import_path": "agents.cursor_driver_agent:CursorDriverAgent",
+    "agent_import_path": "agents.harnesses.cursor:CursorHarnessAgent",
     "default_model": "anthropic/claude-opus-4-6",
     "allowed_mcp_modes": [
       "none",
@@ -19,7 +19,7 @@
   },
   "gemini": {
     "harness_name": "gemini",
-    "agent_import_path": "agents.gemini_driver_agent:GeminiDriverAgent",
+    "agent_import_path": "agents.harnesses.gemini:GeminiHarnessAgent",
     "default_model": "gemini-2.0-flash",
     "allowed_mcp_modes": [
       "none",
@@ -28,7 +28,7 @@
   },
   "copilot": {
     "harness_name": "copilot",
-    "agent_import_path": "agents.copilot_driver_agent:CopilotDriverAgent",
+    "agent_import_path": "agents.harnesses.copilot:CopilotHarnessAgent",
     "default_model": "anthropic/claude-opus-4-6",
     "allowed_mcp_modes": [
       "none",
@@ -37,7 +37,7 @@
   },
   "openhands": {
     "harness_name": "openhands",
-    "agent_import_path": "agents.openhands_driver_agent:OpenHandsDriverAgent",
+    "agent_import_path": "agents.harnesses.openhands:OpenHandsHarnessAgent",
     "default_model": "anthropic/claude-opus-4-6",
     "allowed_mcp_modes": [
       "none",

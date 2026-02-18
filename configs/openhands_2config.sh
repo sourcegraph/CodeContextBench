@@ -29,7 +29,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 source "$SCRIPT_DIR/_common.sh"
 
 SELECTION_FILE="$SCRIPT_DIR/selected_benchmark_tasks.json"
-AGENT_PATH="${AGENT_PATH:-agents.openhands_driver_agent:OpenHandsDriverAgent}"
+AGENT_PATH="${AGENT_PATH:-agents.harnesses.openhands:OpenHandsHarnessAgent}"
 MODEL="${MODEL:-anthropic/claude-opus-4-6}"
 CATEGORY="${CATEGORY:-staging}"
 BENCHMARK_FILTER=""
