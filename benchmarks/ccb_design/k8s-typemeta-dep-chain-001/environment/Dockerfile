@@ -1,7 +1,7 @@
 FROM golang:1.23-alpine AS base
 
-# Install git for cloning
-RUN apk add --no-cache git bash
+# Install git, bash, and python3 (needed by verifier test.sh scoring)
+RUN apk add --no-cache git bash python3
 
 # Clone repos at pinned commits
 WORKDIR /workspace
