@@ -49,7 +49,7 @@ TIMEOUT_MULTIPLIER=10
 RUN_BASELINE=true
 RUN_FULL=true
 CATEGORY="${CATEGORY:-staging}"
-TASK_FILTER=""
+TASK_FILTERS=()
 
 if [ ! -d "${BENCHMARK_DIR}/${SUITE}" ]; then
     echo "ERROR: Suite directory not found: ${BENCHMARK_DIR}/${SUITE}"
@@ -82,7 +82,7 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
         --task)
-            TASK_FILTER="$2"
+            TASK_FILTERS+=("$2")
             shift 2
             ;;
         *)
@@ -92,8 +92,8 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [ -n "$TASK_FILTER" ]; then
-    TASK_IDS=("$TASK_FILTER")
+if [ ${#TASK_FILTERS[@]} -gt 0 ]; then
+    TASK_IDS=("${TASK_FILTERS[@]}")
 else
     TASK_IDS=("${ALL_TASK_IDS[@]}")
 fi

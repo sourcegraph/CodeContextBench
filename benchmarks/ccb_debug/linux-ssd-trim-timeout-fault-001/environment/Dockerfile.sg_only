@@ -1,22 +1,29 @@
 # linux-ssd-trim-timeout-fault-001 — sg_only_env variant
-# Uses ccb-linux-base (has Claude Code pre-installed) but removes kernel source.
-# Agent uses Sourcegraph MCP for code access, writes JSON answer to /workspace/.
+# No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
+# Uses ubuntu:22.04 (replaces ccb-linux-base to fix Harbor test upload).
 
-FROM ccb-linux-base:v4.14.114
+FROM ubuntu:22.04
 
-# Remove kernel source from /workspace/ — agent uses MCP instead of local source
-RUN find /workspace -mindepth 1 -delete 2>/dev/null; true
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Re-init workspace as empty git repo
-RUN git init /workspace && \
-    git -C /workspace config user.email "agent@example.com" && \
-    git -C /workspace config user.name "Agent"
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    python3 \
+    gawk \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Empty git repo so agent can commit work
+RUN git init && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
 
 RUN mkdir -p /logs/agent /logs/verifier
 
 # Mark sg_only mode so verifiers can skip local-path checks
-RUN touch /tmp/.sg_only_mode && echo '/workspace' > /tmp/.sg_only_workdir
-
-WORKDIR /workspace
+RUN touch /tmp/.sg_only_mode
 
 ENTRYPOINT []

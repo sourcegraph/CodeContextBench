@@ -160,13 +160,24 @@ def has_defect_injection(task_dir):
     return (task_dir / "environment" / "inject_defects.sh").exists()
 
 
+def has_sgonly_wrapper(task_dir):
+    """Check if the task already has sgonly_verifier_wrapper.sh in tests/.
+
+    Tasks with this wrapper are build-requiring — the wrapper restores /repo_full
+    before verification, which requires the Dockerfile.sg_only to set up /repo_full.
+    """
+    return (task_dir / "tests" / "sgonly_verifier_wrapper.sh").exists()
+
+
 def is_write_only_verifier(task_dir):
     """Check if the verifier just checks text output (no compilation/tests).
 
-    Tasks with inject_defects.sh are NEVER write-only — the verifier checks
-    whether the agent fixed the defected source files locally.
+    Tasks with inject_defects.sh or sgonly_verifier_wrapper.sh are NEVER
+    write-only — the verifier checks local source files.
     """
     if has_defect_injection(task_dir):
+        return False
+    if has_sgonly_wrapper(task_dir):
         return False
     test_sh = task_dir / "tests" / "test.sh"
     if not test_sh.exists():
@@ -247,37 +258,39 @@ ENTRYPOINT []
 def generate_ccb_linux_base_sgonly(task_dir, dockerfile_text):
     """Generate sg_only for ccb-linux-base tasks (kernel source at /workspace/).
 
-    ccb-linux-base already has Claude Code CLI installed. For sg_only, we:
-    1. Keep the same ccb-linux-base image (avoids npm/Node install issues)
-    2. Remove the kernel source from /workspace/ (agent uses MCP instead)
-    3. Re-init /workspace as empty git repo
-    4. Mark sg_only mode
+    Uses ubuntu:22.04 instead of ccb-linux-base to avoid Harbor test-upload
+    failures that occur with ccb-linux-base derived images. In sg_only mode
+    the agent uses Sourcegraph MCP for code access — kernel source not needed.
+    Installs gawk for verifier scripts that use awk arithmetic.
     """
-    # Extract the exact base image tag (e.g. ccb-linux-base:v5.6.7)
-    m = re.search(r'^FROM\s+(ccb-linux-base:\S+)', dockerfile_text, re.MULTILINE)
-    base_image = m.group(1) if m else 'ccb-linux-base:latest'
-
     task_name = task_dir.name
     return f"""# {task_name} — sg_only_env variant
-# Uses ccb-linux-base (has Claude Code pre-installed) but removes kernel source.
-# Agent uses Sourcegraph MCP for code access, writes JSON answer to /workspace/.
+# No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
+# Uses ubuntu:22.04 (replaces ccb-linux-base to fix Harbor test upload).
 
-FROM {base_image}
+FROM ubuntu:22.04
 
-# Remove kernel source from /workspace/ — agent uses MCP instead of local source
-RUN find /workspace -mindepth 1 -delete 2>/dev/null; true
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Re-init workspace as empty git repo
-RUN git init /workspace && \\
-    git -C /workspace config user.email "agent@example.com" && \\
-    git -C /workspace config user.name "Agent"
+RUN apt-get update && apt-get install -y --no-install-recommends \\
+    git \\
+    ca-certificates \\
+    python3 \\
+    gawk \\
+    curl \\
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Empty git repo so agent can commit work
+RUN git init && \\
+    git config user.email "agent@example.com" && \\
+    git config user.name "Agent"
 
 RUN mkdir -p /logs/agent /logs/verifier
 
 # Mark sg_only mode so verifiers can skip local-path checks
-RUN touch /tmp/.sg_only_mode && echo '/workspace' > /tmp/.sg_only_workdir
-
-WORKDIR /workspace
+RUN touch /tmp/.sg_only_mode
 
 ENTRYPOINT []
 """
