@@ -2,6 +2,7 @@
 # Inject defects into the Terraform codebase for code review benchmarking
 # Each defect simulates a realistic bug that an AI code reviewer should catch
 # 6 defects across 4 files, 3 require cross-file reasoning
+# v2: defect-5 pattern updated for v1.10.3 (includes comment lines in if-block)
 
 set -e
 cd /workspace
@@ -144,6 +145,8 @@ with open(path) as f:
 old = '''	diags = diags.Append(checkApplyTimeVariables(plan.ApplyTimeVariables, opts.SetVariables, config))
 
 	if diags.HasErrors() {
+		// If the apply request is invalid in some way then we'll bail out
+		// here before we do any real work.
 		return nil, nil, diags
 	}
 

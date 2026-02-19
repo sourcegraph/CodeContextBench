@@ -24,7 +24,7 @@ RUN git clone --filter=blob:none --no-checkout https://github.com/hashicorp/terr
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 
-# Inject defects into the codebase
+# Inject defects into the codebase (v2: fixed defect-5 pattern for v1.10.3 comments)
 COPY inject_defects.sh /tmp/inject_defects.sh
 RUN chmod +x /tmp/inject_defects.sh && /tmp/inject_defects.sh && rm /tmp/inject_defects.sh
 
