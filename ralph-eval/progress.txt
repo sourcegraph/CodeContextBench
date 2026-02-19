@@ -193,3 +193,38 @@
   - The centralized `judge_scores.json` merge used `if "judge_score" not in info` — changed to `if info.get("judge_score") is None` now that fields are pre-initialized to None
 ---
 [2026-02-19 17:03:26 UTC] Iteration 9 started
+[2026-02-19 17:06:05 UTC] Iteration 9 no story markers found
+[2026-02-19 17:06:05 UTC] Iteration 9 complete
+[2026-02-19 17:06:07 UTC] Iteration 10 started
+
+## 2026-02-19T - US-010
+- Implemented dual-score tables in generate_eval_report.py
+- Files changed:
+  - `scripts/ccb_metrics/models.py` — added `oracle_confidence: Optional[str] = None` to TaskMetrics
+  - `scripts/ccb_metrics/discovery.py` — loads `oracle_confidence` from judge_result.json
+  - `scripts/generate_eval_report.py` — added `_pearson_r()`, `_build_dual_score_per_task()`, `_build_dual_score_aggregate()`; tables inserted conditionally after Per-Benchmark Breakdown
+- **Learnings for future iterations:**
+  - `TaskMetrics` already had `judge_score`, `judge_rubric`, `judge_model` but was missing `oracle_confidence` — added it
+  - `discovery.py` loads judge_result.json fields one-by-one; add new fields there when TaskMetrics gains judge fields
+  - `statistics.correlation` available Python 3.10+; use `try/except (ImportError, AttributeError)` for fallback
+  - Per-task table only includes tasks where `judge_score is not None`; backward compat is automatic
+  - DIVERGENT threshold is `abs(delta) > 0.3` appended as ` [DIVERGENT]` suffix in delta cell
+  - `RunMetrics` requires `model`, `timestamp`, `task_count` positional args — remember when building test RunMetrics objects
+---
+[2026-02-19 17:09:11 UTC] Iteration 10 no story markers found
+[2026-02-19 17:09:11 UTC] Iteration 10 complete
+[2026-02-19 17:09:13 UTC] Max iterations reached without COMPLETE
+
+## 2026-02-19T - US-015
+- Implemented verifier self-tests and idempotency in validate_tasks_preflight.py
+- Files changed:
+  - `scripts/validate_tasks_preflight.py` — added FixtureResult, run_fixture_tests(), format_fixture_summary(), _read_reward(), _discover_fixtures(), _resolve_fixture_placement(), _setup_fixture_sandbox(), _can_run_outside_docker(), _rewrite_paths_in_script(), _run_verifier_in_sandbox(); added --fixture-tests, --idempotency, --fixture-timeout-sec flags; --smoke-runtime now also triggers fixture self-tests
+- **Learnings for future iterations:**
+  - `_can_run_outside_docker()` uses pattern-matching heuristics to skip Docker-only verifiers (mvn, make, go test, find_and_prove, --pre-fix-rev, Path(/workspace).exists())
+  - `_rewrite_paths_in_script()` rewrites /workspace, /tests, /logs to sandbox paths using regex with negative lookbehind to avoid double-substitution
+  - `_setup_fixture_sandbox()` creates tmpdir with workspace/, logs/agent/, logs/verifier/, tests/; sets up git repo with baseline commit + agent commit so change-detection guards pass
+  - `format_fixture_summary()` now accepts `non_idempotent_count` parameter; summary line format: "Verifier self-tests: N/M pass, K non-idempotent, S skipped"
+  - fixture metadata fields: `perfect_expected_min/max`, `empty_expected_min/max`, `verifier_type`, `fixture_files` (per-fixture file placement metadata)
+  - Exit code 1 triggered by `fixture_score_mismatch` CRITICAL issues; non-idempotent is WARNING (non-blocking)
+  - aspnetcore-code-review-001 fixture test: perfect_input=1.00, empty_input=0.00 PASS
+---

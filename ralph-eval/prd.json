@@ -184,7 +184,7 @@
         "python3 scripts/generate_eval_report.py runs without errors"
       ],
       "priority": 10,
-      "passes": false,
+      "passes": true,
       "notes": "Depends on US-009 (manifest has judge data). Read generate_eval_report.py first. Add judge columns conditionally — check if any task in the manifest has judge_score != null before adding column headers."
     },
     {
@@ -272,7 +272,7 @@
         "python3 scripts/validate_tasks_preflight.py --help shows new flags"
       ],
       "priority": 15,
-      "passes": false,
+      "passes": true,
       "notes": "Depends on US-014 (fixtures exist). The smoke-runtime flag already exists in validate_tasks_preflight.py — extend its logic to also check fixtures when present. Running test.sh outside Docker requires simulating the container environment (set WORKSPACE, create /logs/verifier/), which may need a lightweight wrapper."
     }
   ]
