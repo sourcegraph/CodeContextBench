@@ -603,7 +603,7 @@
         "python3 scripts/generate_eval_report.py runs without errors"
       ],
       "priority": 20,
-      "passes": false,
+      "passes": true,
       "notes": "The report should clearly show that baseline has lower oracle_coverage on mcp_only repos."
     },
     {

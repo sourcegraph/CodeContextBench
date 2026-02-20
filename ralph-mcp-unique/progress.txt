@@ -513,3 +513,30 @@
   - DIR_PREFIX_TO_SUITE run dir prefix: `ccb_mcp_crossrepo_tracing_` (with trailing underscore) maps to suite name `ccb_mcp_crossrepo_tracing`
   - mcp_benefit_score assigned by difficulty: easy=0.70, medium=0.80-0.85, hard=0.90-0.95 (DS variants = 0.95)
 ---
+[2026-02-20 21:39:55 UTC] Iteration 10 no story markers found
+[2026-02-20 21:39:55 UTC] Iteration 10 complete
+[2026-02-20 21:39:57 UTC] Iteration 11 started
+
+## 2026-02-20 - US-020: Report generator integration for retrieval metrics
+- Extended `scripts/generate_eval_report.py` to include 'MCP Retrieval Performance' section
+- Added `collect_retrieval_data(runs_dir)` to `scripts/ccb_metrics/discovery.py` — walks same dir structure as `discover_runs()`, collects `retrieval_metrics.json` from each task output directory
+- Exported `collect_retrieval_data` from `scripts/ccb_metrics/__init__.py`
+- Added 4 new table builder functions to `generate_eval_report.py`:
+  - `_build_retrieval_per_task()` — oracle_coverage, time-to-first-hit, repos/orgs per task
+  - `_build_retrieval_per_suite()` — mean coverage/repos per suite aggregate
+  - `_build_retrieval_comparison()` — baseline vs MCP-Full delta per task
+  - `_build_retrieval_tool_breakdown()` — which MCP tools drive discovery, aggregated per suite
+- Section is backwards-compatible: omitted when no `retrieval_metrics.json` files found
+- `generate_report()` collects retrieval data and passes to table builders
+- All 4 table builders return None when no data — they are guarded by `if _has_retrieval_data(retrieval_data)`
+- Quality checks: `python3 -m py_compile` passes for all changed files
+- `python3 scripts/generate_eval_report.py --help` runs without errors
+- Repo health check: PASSED
+
+- Files changed: `scripts/ccb_metrics/discovery.py`, `scripts/ccb_metrics/__init__.py`, `scripts/generate_eval_report.py`, `ralph-mcp-unique/prd.json`
+- **Learnings for future iterations:**
+  - `collect_retrieval_data` uses same skip/dedup patterns as `discover_runs` — latest batch wins
+  - Retrieval comparison table uses heuristic: baseline = config without "sourcegraph"/"mcp" in name; mcp = config with "sourcegraph_full"/"mcp_full"
+  - Table builders are None-returning optional functions — consistent with other optional tables (swebench_partial, search_patterns, etc.)
+  - Collecting retrieval data is a separate pass over the runs dir (not integrated into task discovery) to avoid schema changes to TaskMetrics
+---

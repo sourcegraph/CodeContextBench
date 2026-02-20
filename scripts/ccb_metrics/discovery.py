@@ -405,3 +405,68 @@ def discover_runs(runs_dir: str | Path) -> list[RunMetrics]:
         results.append(run)
 
     return results
+
+
+def collect_retrieval_data(
+    runs_dir: str | Path,
+) -> dict[tuple[str, str, str], dict]:
+    """Collect retrieval_metrics.json files from all task output directories.
+
+    Walks the same directory structure as :func:`discover_runs` and collects
+    ``retrieval_metrics.json`` files written by
+    ``scripts/ccb_metrics/retrieval.py``.
+
+    Args:
+        runs_dir: Path to the runs/official/ (or staging) directory.
+
+    Returns:
+        Dict mapping ``(benchmark, config_name, task_id)`` to the parsed
+        retrieval metrics dict.  Empty dict if no files are found.
+        When the same task appears in multiple batch directories, the latest
+        batch's data is kept (same dedup policy as :func:`discover_runs`).
+    """
+    runs_dir = Path(runs_dir)
+    result: dict[tuple[str, str, str], dict] = {}
+
+    if not runs_dir.is_dir():
+        return result
+
+    _SKIP_PATTERNS = (
+        "archive", "__broken", "__duplicate", "__all_errored", "__partial", "__integrated"
+    )
+
+    for run_dir in sorted(runs_dir.iterdir()):
+        if not run_dir.is_dir():
+            continue
+        run_name = run_dir.name
+        if any(pat in run_name for pat in _SKIP_PATTERNS):
+            continue
+        benchmark = normalize_benchmark_name(_infer_benchmark(run_name))
+
+        for config_dir in sorted(run_dir.iterdir()):
+            if not config_dir.is_dir():
+                continue
+            config_name = config_dir.name
+
+            for batch_dir in sorted(config_dir.iterdir()):
+                if not batch_dir.is_dir() or not _is_batch_dir(batch_dir):
+                    continue
+
+                for task_dir in sorted(batch_dir.iterdir()):
+                    if not _is_task_dir(task_dir):
+                        continue
+
+                    ret_path = task_dir / "retrieval_metrics.json"
+                    if not ret_path.is_file():
+                        continue
+
+                    task_id = _extract_task_id(task_dir.name)
+                    try:
+                        data = json.loads(ret_path.read_text())
+                    except (OSError, json.JSONDecodeError):
+                        continue
+
+                    # Latest batch wins (same dedup policy as discover_runs)
+                    result[(benchmark, config_name, task_id)] = data
+
+    return result

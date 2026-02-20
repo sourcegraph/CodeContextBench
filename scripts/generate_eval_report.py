@@ -32,7 +32,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from ccb_metrics import discover_runs, EvalReport, RunMetrics
+from ccb_metrics import discover_runs, collect_retrieval_data, EvalReport, RunMetrics
 from ccb_metrics.task_selection import (
     load_selected_tasks,
     build_task_index,
@@ -516,6 +516,193 @@ def _build_swebench_partial(runs: list[RunMetrics]) -> Optional[tuple[list[str],
 
 
 # ---------------------------------------------------------------------------
+# MCP Retrieval Performance tables
+# ---------------------------------------------------------------------------
+
+# Type alias: (benchmark, config_name, task_id) -> retrieval metrics dict
+_RetrievalData = dict[tuple[str, str, str], dict]
+
+
+def _has_retrieval_data(retrieval_data: _RetrievalData) -> bool:
+    return bool(retrieval_data)
+
+
+def _build_retrieval_per_task(
+    runs: list[RunMetrics],
+    retrieval_data: _RetrievalData,
+) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: per-task oracle coverage, time-to-first-hit, repos/orgs touched."""
+    # Collect rows for any task that has retrieval data
+    rows = []
+    for r in sorted(runs, key=lambda x: (x.benchmark, x.config_name)):
+        for t in sorted(r.tasks, key=lambda x: x.task_id):
+            key = (r.benchmark, r.config_name, t.task_id)
+            m = retrieval_data.get(key)
+            if m is None:
+                continue
+            ttfh = m.get("time_to_first_oracle_hit_ms")
+            rows.append([
+                r.benchmark,
+                r.config_name,
+                t.task_id,
+                _fmt(m.get("oracle_coverage")),
+                f"{int(ttfh):,}" if ttfh is not None else "-",
+                str(m.get("unique_repos_touched", 0)),
+                str(m.get("unique_orgs_touched", 0)),
+            ])
+
+    if not rows:
+        return None
+
+    headers = [
+        "Suite", "Config", "Task",
+        "Oracle Coverage", "Time-to-First-Hit (ms)",
+        "Repos Touched", "Orgs Touched",
+    ]
+    return headers, rows
+
+
+def _build_retrieval_per_suite(
+    runs: list[RunMetrics],
+    retrieval_data: _RetrievalData,
+) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: per-suite aggregate retrieval metrics."""
+    # Group by (benchmark, config_name)
+    agg: dict[tuple[str, str], list[dict]] = {}
+    for r in runs:
+        for t in r.tasks:
+            key = (r.benchmark, r.config_name, t.task_id)
+            m = retrieval_data.get(key)
+            if m is None:
+                continue
+            gkey = (r.benchmark, r.config_name)
+            agg.setdefault(gkey, []).append(m)
+
+    if not agg:
+        return None
+
+    headers = [
+        "Suite", "Config", "Tasks",
+        "Mean Coverage", "Mean Repos Touched", "Mean Orgs Touched",
+    ]
+    rows = []
+    for (bench, config) in sorted(agg.keys()):
+        items = agg[(bench, config)]
+        n = len(items)
+        mean_cov = _safe_mean([m.get("oracle_coverage") for m in items])
+        mean_repos = _safe_mean([m.get("unique_repos_touched") for m in items])
+        mean_orgs = _safe_mean([m.get("unique_orgs_touched") for m in items])
+        rows.append([
+            bench,
+            config,
+            str(n),
+            _fmt(mean_cov),
+            _fmt(mean_repos, 1),
+            _fmt(mean_orgs, 1),
+        ])
+    return headers, rows
+
+
+def _build_retrieval_comparison(
+    runs: list[RunMetrics],
+    retrieval_data: _RetrievalData,
+) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: baseline vs MCP-Full oracle coverage comparison per task."""
+    # Identify baseline and mcp configs
+    configs = sorted({r.config_name for r in runs})
+    # Heuristic: baseline has no "mcp" or "sourcegraph" in name; sg_full has "sourcegraph_full"
+    baseline_configs = [c for c in configs if "sourcegraph" not in c.lower() and "mcp" not in c.lower()]
+    mcp_configs = [c for c in configs if "sourcegraph_full" in c.lower() or "mcp_full" in c.lower()]
+
+    if not baseline_configs or not mcp_configs:
+        return None
+
+    # Build (benchmark, task_id) -> {config -> metrics} lookup
+    lookup: dict[tuple[str, str], dict[str, dict]] = {}
+    for r in runs:
+        for t in r.tasks:
+            key = (r.benchmark, r.config_name, t.task_id)
+            m = retrieval_data.get(key)
+            if m is None:
+                continue
+            task_key = (r.benchmark, t.task_id)
+            lookup.setdefault(task_key, {})[r.config_name] = m
+
+    rows = []
+    for (bench, task_id) in sorted(lookup.keys()):
+        cmap = lookup[(bench, task_id)]
+        for bl_config in baseline_configs:
+            for mcp_config in mcp_configs:
+                bl = cmap.get(bl_config)
+                mcp = cmap.get(mcp_config)
+                if bl is None and mcp is None:
+                    continue
+                bl_cov = bl.get("oracle_coverage") if bl else None
+                mcp_cov = mcp.get("oracle_coverage") if mcp else None
+                delta = (mcp_cov - bl_cov) if (bl_cov is not None and mcp_cov is not None) else None
+                bl_orgs = str(bl.get("unique_orgs_touched", 0)) if bl else "-"
+                mcp_orgs = str(mcp.get("unique_orgs_touched", 0)) if mcp else "-"
+                rows.append([
+                    bench,
+                    task_id,
+                    _fmt(bl_cov),
+                    _fmt(mcp_cov),
+                    _fmt(delta) if delta is not None else "-",
+                    bl_orgs,
+                    mcp_orgs,
+                ])
+
+    if not rows:
+        return None
+
+    headers = [
+        "Suite", "Task",
+        "Baseline Coverage", "MCP-Full Coverage", "Delta",
+        "Baseline Orgs", "MCP Orgs",
+    ]
+    return headers, rows
+
+
+def _build_retrieval_tool_breakdown(
+    runs: list[RunMetrics],
+    retrieval_data: _RetrievalData,
+) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: which MCP tools drive oracle discovery, aggregated per suite."""
+    # Aggregate mcp_tool_counts across all tasks with retrieval data
+    # Key: (benchmark, config_name, tool_name) -> total_calls
+    tool_agg: dict[tuple[str, str, str], int] = {}
+    found_any = False
+
+    for r in runs:
+        for t in r.tasks:
+            key = (r.benchmark, r.config_name, t.task_id)
+            m = retrieval_data.get(key)
+            if m is None:
+                continue
+            mcp_counts = m.get("mcp_tool_counts") or {}
+            for tool, count in mcp_counts.items():
+                found_any = True
+                agg_key = (r.benchmark, r.config_name, tool)
+                tool_agg[agg_key] = tool_agg.get(agg_key, 0) + count
+
+    if not found_any:
+        return None
+
+    # Sort by (benchmark, config, count desc)
+    sorted_items = sorted(
+        tool_agg.items(),
+        key=lambda x: (x[0][0], x[0][1], -x[1]),
+    )
+
+    headers = ["Suite", "Config", "MCP Tool", "Total Calls"]
+    rows = [
+        [bench, config, tool, str(count)]
+        for (bench, config, tool), count in sorted_items
+    ]
+    return headers, rows
+
+
+# ---------------------------------------------------------------------------
 # Report generation
 # ---------------------------------------------------------------------------
 
@@ -585,6 +772,14 @@ def generate_report(
         hc_path.write_text(json.dumps(harness_configs, indent=2) + "\n")
         print(f"Written: {hc_path}")
 
+    # Collect MCP retrieval data (backwards-compatible: empty dict if no files found)
+    print(f"Collecting retrieval metrics from: {runs_dir}")
+    retrieval_data = collect_retrieval_data(runs_dir)
+    if retrieval_data:
+        print(f"Found retrieval_metrics.json for {len(retrieval_data)} task(s).")
+    else:
+        print("No retrieval_metrics.json found — MCP Retrieval Performance section will be omitted.")
+
     # Build all tables
     tables: list[tuple[str, str, list[str], list[list[str]]]] = []
 
@@ -648,6 +843,28 @@ def generate_report(
     if mcp_corr:
         h, r = mcp_corr
         tables.append(("Performance by MCP Benefit Score", "mcp_benefit_correlation", h, r))
+
+    # MCP Retrieval Performance section (only when retrieval_metrics.json data exists)
+    if _has_retrieval_data(retrieval_data):
+        ret_per_task = _build_retrieval_per_task(runs, retrieval_data)
+        if ret_per_task:
+            h, r = ret_per_task
+            tables.append(("MCP Retrieval Performance — Per Task", "retrieval_per_task", h, r))
+
+        ret_per_suite = _build_retrieval_per_suite(runs, retrieval_data)
+        if ret_per_suite:
+            h, r = ret_per_suite
+            tables.append(("MCP Retrieval Performance — Per Suite", "retrieval_per_suite", h, r))
+
+        ret_cmp = _build_retrieval_comparison(runs, retrieval_data)
+        if ret_cmp:
+            h, r = ret_cmp
+            tables.append(("MCP Retrieval Performance — Baseline vs MCP-Full", "retrieval_comparison", h, r))
+
+        ret_tools = _build_retrieval_tool_breakdown(runs, retrieval_data)
+        if ret_tools:
+            h, r = ret_tools
+            tables.append(("MCP Retrieval Performance — Tool Discovery Breakdown", "retrieval_tool_breakdown", h, r))
 
     # Write REPORT.md
     md_lines = [
