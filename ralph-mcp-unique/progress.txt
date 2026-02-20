@@ -57,3 +57,29 @@
   - sourcegraph_mirror is the critical field linking to sg-benchmarks mirrors
   - access_mode on each repo entry is the authoritative source; local_checkout_repos/mcp_only_repos are convenience arrays
 ---
+[2026-02-20 19:50:26 UTC] Iteration 1 no story markers found
+[2026-02-20 19:50:26 UTC] Iteration 1 complete
+[2026-02-20 19:50:28 UTC] Iteration 2 started
+
+## 2026-02-20 - US-003: Create sg-benchmarks mirrors for missing repos
+- Created 7 sg-benchmarks mirror repos on GitHub using orphan-commit approach:
+  - sg-benchmarks/kubernetes-client-go (kubernetes/client-go @ v12.0.0)
+  - sg-benchmarks/kubernetes-api (kubernetes/api @ v0.35.1)
+  - sg-benchmarks/expressjs-express (expressjs/express @ v5.2.1)
+  - sg-benchmarks/lodash (lodash/lodash @ 4.17.21)
+  - sg-benchmarks/prisma-prisma (prisma/prisma @ 7.4.1)
+  - sg-benchmarks/grafana-loki (grafana/loki @ v3.6.6)
+  - sg-benchmarks/grafana-mimir (grafana/mimir @ mimir-3.0.3)
+- All repos public, main branch, orphan commit (no history, minimal push size)
+- Created `ralph-mcp-unique/configs/sg_mirror_revisions.json` tracking all SHAs
+- Created `ralph-mcp-unique/scripts/verify_sg_indexing.py` to check SG indexing status
+- Legacy express mirror `expressjs--express--815f7993` also exists (indexed)
+- **PENDING**: Sourcegraph indexing — repos created but not yet indexed. SG auto-crawls sg-benchmarks org; indexing expected within hours. Run verify_sg_indexing.py to check.
+- Files changed: `ralph-mcp-unique/configs/sg_mirror_revisions.json` (new), `ralph-mcp-unique/scripts/verify_sg_indexing.py` (new)
+- **Learnings for future iterations:**
+  - `gh api repos/sg-benchmarks/<name>` returns 404 for newly created repos; cannot use as existence check before the API propagates
+  - Orphan-commit approach works for all repo sizes (even 500MB+ repos like loki/mimir push fine)
+  - Clean naming convention (org-repo) preferred over SWE-bench hash-suffix convention (org--repo--hash)
+  - SG indexing delay is the bottleneck — create mirrors early, verify later
+  - `.gitignore` has `ralph-*/` pattern; must use `git add -f` for new files under ralph-mcp-unique/
+---
