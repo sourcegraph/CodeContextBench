@@ -238,7 +238,7 @@
         "All templates produce valid output when filled with example data"
       ],
       "priority": 10,
-      "passes": false,
+      "passes": true,
       "notes": "Suite directory is benchmarks/<mcp_suite>/<task_slug>/. Template eval.sh must handle sg_only mode guard and reward.txt path correctly."
     },
     {

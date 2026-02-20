@@ -1,0 +1,42 @@
+# $task_title
+
+## Your Task
+
+$customer_prompt
+
+## Context
+
+$context_description
+
+## Available Resources
+
+$local_repo_description
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+$mcp_repos_description
+
+## Output Format
+
+Create a file at `/workspace/answer.json` with your findings in the following structure:
+
+```json
+{
+  "files": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
+  ],
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+  ],
+  "text": "Narrative explanation of your findings, citing repos and file paths."
+}
+```
+
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
+
+## Evaluation
+
+Your answer will be scored on:
+$evaluation_criteria

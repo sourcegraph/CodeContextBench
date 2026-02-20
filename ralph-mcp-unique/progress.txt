@@ -160,6 +160,27 @@
 [2026-02-20 20:21:26 UTC] Iteration 1 complete
 [2026-02-20 20:21:28 UTC] Iteration 2 started
 
+## 2026-02-20 - US-010: Task generation templates
+- Created `templates/mcp_unique_task/` with 7 files:
+  - `task.toml.j2`: task metadata with mcp_suite, use_case_id, repo_set_id, mcp_unique=true
+  - `instruction.md.j2`: customer-framed prompt with explicit answer.json output format
+  - `eval.sh.j2`: exit-code-first evaluator: calls oracle_checks.py, writes /logs/verifier/reward.txt, handles sg_only mode guard
+  - `task_spec.json.j2`: full TaskSpec with prd/artifacts/evaluation/logging sections
+  - `Dockerfile.j2`: baseline variant (clones local_checkout_repos)
+  - `Dockerfile.sg_only.j2`: MCP-full variant (no clones, marks /tmp/.sg_only_mode)
+  - `README.md`: documents all template variables with type/example/description table
+- All templates use Python string.Template syntax ($variable / ${variable}); bash $$ for literal dollar signs
+- Validation: all 6 templates substituted successfully with sample variables
+- task_spec.json.j2 validated as JSON after substitution; eval.sh.j2 passed bash -n
+- Files changed: `templates/mcp_unique_task/` (7 new files)
+- **Learnings for future iterations:**
+  - string.Template uses $variable syntax; bash code uses $$ to escape literal $
+  - Bash heredocs with $VAR in templates need $$VAR to avoid Template substitution
+  - task_spec.json.j2: "category" variable is separate from "task_family" — easy to miss
+  - Generated eval.sh uses $$(python3 ...) pattern for bash command substitution with $$-escaping
+  - Test sample_vars must include ALL variables used across ALL templates being tested
+---
+
 ## 2026-02-20 - US-009: Repo-set fixtures for starter pack
 - Created 5 repo-set fixtures in `fixtures/repo_sets/`:
   1. `kubernetes-ecosystem.json`: kubernetes/kubernetes (local) + sg-benchmarks/kubernetes-client-go + sg-benchmarks/kubernetes-api + etcd-io/etcd (all mcp_only). cross_org=true, 4 repos, Go.
