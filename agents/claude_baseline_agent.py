@@ -715,7 +715,7 @@ before retrying."""
         
         # MCP configuration flag
         mcp_config_flag = ""
-        if mcp_type in ["sourcegraph", "sourcegraph_full", "sourcegraph_base", "sourcegraph_isolated", "deepsearch", "deepsearch_hybrid"]:
+        if mcp_type in ["sourcegraph", "sourcegraph_full", "sourcegraph_base", "sourcegraph_isolated", "artifact_full", "deepsearch", "deepsearch_hybrid"]:
             mcp_config_flag = "--mcp-config /logs/agent/sessions/.mcp.json "
 
         # Build disallowed tools list (blocks local search to force MCP usage)
