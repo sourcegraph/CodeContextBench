@@ -7,7 +7,7 @@ judge_result.json alongside each task's result.json.
 Usage:
     python3 scripts/run_judge.py --run runs/official/build_baseline_20260219/
     python3 scripts/run_judge.py --run runs/staging/build_baseline_20260219/ --dry-run
-    python3 scripts/run_judge.py --run <run_dir> --ensemble --model claude-haiku-4-5-20251001
+    python3 scripts/run_judge.py --run <run_dir> --ensemble --model gpt-4o
     python3 scripts/run_judge.py --run <run_dir> --suite ccb_fix --task ansible
 """
 
@@ -91,7 +91,7 @@ DIR_PREFIX_TO_SUITE: dict[str, str] = {
     "paired_rerun_pytorch_": "ccb_pytorch",
 }
 
-DEFAULT_MODEL = "claude-haiku-4-5-20251001"
+DEFAULT_MODEL = "gpt-4o"
 
 
 # ---------------------------------------------------------------------------
@@ -215,11 +215,21 @@ def _load_verifier_reward(result_path: Path) -> Optional[float]:
 
 
 def _load_task_description(task_dir: Path) -> str:
-    """Read task instruction text from agent/instruction.txt."""
+    """Read task instruction text from agent/instruction.txt.
+
+    Strips the MCP preamble if present (SG_full runs prepend
+    "# Searching Sourcegraph ..." before the actual task instruction,
+    separated by a "---" line). The judge should only see the task.
+    """
     instruction_path = task_dir / "agent" / "instruction.txt"
     if instruction_path.is_file():
         try:
             text = instruction_path.read_text(errors="replace")
+            # Strip MCP preamble: everything before the first "---" separator
+            if text.lstrip().startswith("# Searching Sourcegraph"):
+                parts = re.split(r"\n---\n", text, maxsplit=1)
+                if len(parts) == 2:
+                    text = parts[1].lstrip()
             # Truncate to avoid overwhelming the judge prompt
             return text[:3000] if len(text) > 3000 else text
         except OSError:
@@ -227,10 +237,18 @@ def _load_task_description(task_dir: Path) -> str:
     return "(no instruction available)"
 
 
-def _extract_agent_output(task_dir: Path) -> str:
-    """Extract a summary of the agent's code output from the transcript.
+# Budget for agent output in the judge prompt.  GPT-4o has 128K context;
+# the rest of the prompt (task description, oracle, template) is ≈5-8K chars.
+# 50K chars ≈ 12K tokens — leaves plenty of headroom.
+_AGENT_OUTPUT_BUDGET = 50_000
 
-    Collects Edit/Write tool calls and formats as a readable summary.
+
+def _extract_agent_output(task_dir: Path) -> str:
+    """Extract the agent's code output from the transcript.
+
+    Collects ALL Edit/Write tool calls without per-item truncation.
+    Only a single total-length budget is applied at the end so the
+    judge sees as much of the actual work as possible.
     """
     transcript_path = resolve_task_transcript_path(task_dir)
     if not transcript_path.is_file():
@@ -242,7 +260,7 @@ def _extract_agent_output(task_dir: Path) -> str:
         return "(transcript read error)"
 
     edits: list[str] = []
-    writes: list[str] = []
+    writes: dict[str, str] = {}  # path -> content (last-write-wins)
 
     for line in lines:
         line = line.strip()
@@ -264,30 +282,37 @@ def _extract_agent_output(task_dir: Path) -> str:
 
             if name == "Edit":
                 fp = inp.get("file_path", "")
+                old_str = inp.get("old_string", "")
                 new_str = inp.get("new_string", "")
-                if fp and new_str and len(edits) < 5:
-                    snippet = new_str[:200] if len(new_str) > 200 else new_str
-                    edits.append(f"Edit {fp}:\n{snippet}")
+                if fp and (new_str or old_str):
+                    edits.append(f"Edit {fp}:\n-{old_str}\n+{new_str}")
 
             elif name == "Write":
                 fp = inp.get("file_path", "")
                 content_str = inp.get("content", "")
-                if fp and content_str and len(writes) < 3:
-                    snippet = content_str[:200] if len(content_str) > 200 else content_str
-                    writes.append(f"Write {fp}:\n{snippet}")
+                if fp and content_str:
+                    # Keep last write to each path (agent may overwrite)
+                    writes[fp] = content_str
 
     parts: list[str] = []
     if edits:
         parts.append("=== Code Edits ===\n" + "\n---\n".join(edits))
     if writes:
-        parts.append("=== New Files ===\n" + "\n---\n".join(writes))
+        write_items = [f"Write {fp}:\n{body}" for fp, body in writes.items()]
+        parts.append("=== Written Files ===\n" + "\n---\n".join(write_items))
 
     if not parts:
         return "(no code changes recorded)"
 
     summary = "\n\n".join(parts)
-    # Keep total length manageable
-    return summary[:4000] if len(summary) > 4000 else summary
+
+    if len(summary) > _AGENT_OUTPUT_BUDGET:
+        summary = summary[:_AGENT_OUTPUT_BUDGET] + (
+            f"\n\n[... truncated — full output is {len(summary)} chars, "
+            f"budget is {_AGENT_OUTPUT_BUDGET} ...]"
+        )
+
+    return summary
 
 
 def _extract_tool_calls_summary(task_dir: Path) -> str:
@@ -446,7 +471,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--run", required=True, metavar="DIR", help="Run directory to evaluate")
     p.add_argument("--suite", metavar="FILTER", help="Only evaluate tasks whose benchmark matches this substring")
     p.add_argument("--task", metavar="FILTER", help="Only evaluate tasks whose task_id contains this substring")
-    p.add_argument("--model", default=DEFAULT_MODEL, help="Anthropic model identifier for judge")
+    p.add_argument("--model", default=DEFAULT_MODEL, help="Judge model (OpenAI: gpt-4o, gpt-4o-mini; Anthropic: claude-*)")
     p.add_argument("--rounds", type=int, default=1, help="Number of scoring rounds (overridden by --ensemble)")
     p.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature")
     p.add_argument("--ensemble", action="store_true", help="Enable 3-round majority-vote ensemble scoring")

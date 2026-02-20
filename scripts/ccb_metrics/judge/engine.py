@@ -1,7 +1,9 @@
 """Core LLM judge engine with multi-round voting.
 
-Constructs prompts, calls the Anthropic backend, parses responses,
-and optionally runs multi-round voting for ensemble scoring.
+Constructs prompts, calls the LLM backend (Anthropic or OpenAI),
+parses responses, and optionally runs multi-round voting for ensemble
+scoring. Default judge is OpenAI (gpt-4o) to avoid same-model-family
+bias when evaluating Claude agent outputs.
 
 Dimension weights:
   correctness=0.30, completeness=0.25, code_quality=0.20,
@@ -15,7 +17,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from typing import Optional
 
-from .backends import AnthropicBackend
+from .backends import create_backend
 from .models import JudgeInput, JudgeResult, normalize_score
 from .prompts import (
     DIRECT_REVIEW_PROMPT,
@@ -129,7 +131,10 @@ class LLMJudge:
     """LLM-based judge for CCB benchmark tasks.
 
     Args:
-        model: Anthropic model identifier.
+        model: Model identifier. Supports Anthropic (``claude-*``) and
+            OpenAI (``gpt-*``, ``o1-*``, ``o3-*``, ``o4-*``) models.
+            Using a different model family from the agent avoids
+            same-family evaluation bias.
         temperature: Sampling temperature (0.0 = deterministic).
         rounds: Default number of voting rounds for evaluate_with_voting.
         dimensions: Subset of dimensions to evaluate. Defaults to all 5.
@@ -149,7 +154,7 @@ class LLMJudge:
         invalid = set(self.dimensions) - set(DIMENSION_WEIGHTS)
         if invalid:
             raise ValueError(f"Invalid dimensions: {invalid}. Valid: {list(DIMENSION_WEIGHTS)}")
-        self._backend = AnthropicBackend(
+        self._backend = create_backend(
             model=model, temperature=temperature
         )
         self._ccb_commit: Optional[str] = None  # lazy-loaded
