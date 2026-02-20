@@ -257,7 +257,7 @@
         "python3 scripts/generate_mcp_unique_tasks.py --help and --dry-run succeed"
       ],
       "priority": 11,
-      "passes": false,
+      "passes": true,
       "notes": "The --curate-oracle flag is the main workflow: generate task skeleton, then auto-populate oracle. This is the zero-human-involvement path for task authoring."
     },
     {

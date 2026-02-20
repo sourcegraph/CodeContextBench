@@ -160,6 +160,24 @@
 [2026-02-20 20:21:26 UTC] Iteration 1 complete
 [2026-02-20 20:21:28 UTC] Iteration 2 started
 
+## 2026-02-20 - US-011: Task generator CLI
+- Created `scripts/generate_mcp_unique_tasks.py` with argparse CLI
+- Flags: --use-case-ids, --category, --family, --all (mutually exclusive filter group)
+- Additional flags: --out, --dry-run, --include-stubs, --curate-oracle, --validate, --verbose
+- Resolves mcp_suite to benchmarks/<ccb_mcp_*>/ directory; derives task_id (CCX-<short_family>-<NNN>) and task_slug (ccx-dep-trace-001)
+- Registry search: configs/use_case_registry.json + fallback to ralph-mcp-unique/configs/
+- build_template_vars() maps registry+fixture fields to all template variables
+- Generates: task.toml, instruction.md, environment/Dockerfile, environment/Dockerfile.sg_only, tests/eval.sh, tests/task_spec.json, tests/oracle_checks.py (copied)
+- validate_generated_task() checks task.toml fields, task_spec.json JSON, eval.sh bash -n, oracle_checks.py py_compile
+- Tested: --dry-run shows 3 tasks for IDs 1/4/10; actual generation+validation passes for ID=1
+- Files changed: `scripts/generate_mcp_unique_tasks.py` (new)
+- **Learnings for future iterations:**
+  - Registry path: always search ralph-mcp-unique/configs/ as fallback
+  - FAMILY_SHORT_NAME dict maps 10 task families to 2-3 word short codes
+  - clone_commands: look up each local_checkout_repo in fixture repos[] to get revision for git clone --branch
+  - oracle_checks.py is copied to tests/ so eval.sh can call it at /tests/oracle_checks.py in Harbor
+---
+
 ## 2026-02-20 - US-010: Task generation templates
 - Created `templates/mcp_unique_task/` with 7 files:
   - `task.toml.j2`: task metadata with mcp_suite, use_case_id, repo_set_id, mcp_unique=true
