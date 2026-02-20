@@ -352,3 +352,41 @@
 [2026-02-20 21:03:25 UTC] Iteration 5 no story markers found
 [2026-02-20 21:03:25 UTC] Iteration 5 complete
 [2026-02-20 21:03:27 UTC] Iteration 6 started
+
+## 2026-02-20 - US-015: Starter tasks — Category E: Onboarding comprehension (2 tasks)
+- Authored 2 complete tasks in benchmarks/ccb_mcp_onboarding/:
+
+**CCX-onboard-041** (E41 — API consumption, python-ml-stack fixture):
+  - Scenario: New engineer auditing which pandas source files `from scipy.stats import` at runtime
+  - Oracle: 4 files in pandas-dev/pandas:
+    - pandas/core/nanops.py (kendalltau, spearmanr for correlation methods)
+    - pandas/plotting/_matplotlib/misc.py (gaussian_kde)
+    - pandas/plotting/_matplotlib/hist.py (gaussian_kde)
+    - pandas/tests/groupby/test_reductions.py (sem)
+  - eval.sh: file_set_match + provenance
+  - Validity gate: VALID (gold=1.0, empty=0.0)
+
+**CCX-onboard-050-ds** (E50 — end-to-end flow, Deep Search variant, kubernetes-ecosystem fixture):
+  - Scenario: Onboarding engineer traces Deployment creation flow end-to-end across 3 repos
+  - Open-ended instruction: "Explain how a client creates a Deployment — trace through all 3 layers"
+  - Oracle chain:
+    - sg-benchmarks/kubernetes-client-go: kubernetes/typed/apps/v1/deployment.go (Create)
+    - kubernetes/kubernetes: pkg/registry/apps/deployment/strategy.go (PrepareForCreate)
+    - etcd-io/etcd: server/storage/mvcc/kvstore_txn.go (Put)
+  - eval.sh: dependency_chain + provenance
+  - tests/criteria.json: 4 AAA quality rubric criteria (flow_completeness, cross_repo_synthesis, technical_accuracy, onboarding_clarity)
+  - deepsearch_relevant=true in selection file
+  - rubric_judge weight=0.4 in task_spec.json (supplementary, not in eval.sh)
+  - Validity gate: VALID (gold=1.0, empty=0.0)
+
+- Both tasks registered in configs/selected_mcp_unique_tasks.json (8 total tasks now)
+- Files changed: benchmarks/ccb_mcp_onboarding/ (2 new task dirs with 19 files total), configs/selected_mcp_unique_tasks.json, prd.json, progress.txt
+- **Learnings for future iterations:**
+  - For "API consumption" oracles, use exact import pattern (`from scipy.stats import`) to get bounded, verifiable oracle — not `import scipy.stats` (which is broader)
+  - Production-only vs all-files oracle: including test files gives more realistic "complete audit" scenario
+  - Deep Search variant design: open-ended cross-repo synthesis question + criteria.json is the right pattern
+  - kubernetes-client-go typed client: `kubernetes/typed/apps/v1/deployment.go` has Create() that POSTs to REST endpoint
+  - etcd Put function: `server/storage/mvcc/kvstore_txn.go:Put()` is the canonical write path
+  - criteria.json uses AAA pattern: each metric description has "Accurate: ... Attributed: ... Actionable: ..."
+  - deepsearch_relevant in task.toml is a new field — verify task.toml doesn't reject unknown fields (it doesn't — task.toml is read by Harbor but extra fields are ignored)
+---
