@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codecontextbench.dev/schemas/mcp_task_spec.schema.json",
+  "title": "MCP-Unique Task Specification",
+  "description": "Unified TaskSpec schema for MCP-unique benchmark instances. Merges SWE-Factory exit-code-first grading with PRDBench PRD-centered criteria. Each task instance defines the PRD, oracle artifacts, evaluation checks, and logging requirements.",
+  "type": "object",
+  "required": [
+    "id",
+    "family",
+    "use_case_id",
+    "category",
+    "mcp_suite",
+    "prd",
+    "artifacts",
+    "evaluation",
+    "logging"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CCX-[a-z0-9-]+-[0-9]{3}$",
+      "description": "Task identifier in format CCX-<family>-<NNN>, e.g. CCX-dep-trace-001."
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Task family identifier matching a taskFamilies entry, e.g. cross-repo-dep-trace."
+    },
+    "use_case_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "Reference to the use case registry entry (1-100)."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+      "description": "Use case category letter."
+    },
+    "mcp_suite": {
+      "type": "string",
+      "enum": [
+        "ccb_mcp_crossrepo_tracing",
+        "ccb_mcp_security",
+        "ccb_mcp_migration",
+        "ccb_mcp_incident",
+        "ccb_mcp_onboarding",
+        "ccb_mcp_compliance",
+        "ccb_mcp_crossorg",
+        "ccb_mcp_domain",
+        "ccb_mcp_org",
+        "ccb_mcp_platform"
+      ],
+      "description": "Target benchmark suite for this task."
+    },
+    "repo_set_id": {
+      "type": "string",
+      "description": "Reference to a repo-set fixture, e.g. kubernetes-ecosystem."
+    },
+    "prd": {
+      "$ref": "#/$defs/prd_section"
+    },
+    "artifacts": {
+      "$ref": "#/$defs/artifacts_section"
+    },
+    "evaluation": {
+      "$ref": "#/$defs/evaluation_section"
+    },
+    "logging": {
+      "$ref": "#/$defs/logging_section"
+    },
+    "rubric_judge": {
+      "$ref": "#/$defs/rubric_judge_section"
+    },
+    "deepsearch_variant": {
+      "$ref": "#/$defs/deepsearch_variant_section"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "prd_section": {
+      "type": "object",
+      "description": "PRD-centered task definition (PRDBench pattern). Defines what the agent must accomplish.",
+      "required": ["user_story", "constraints", "success_definition", "seed_prompt"],
+      "properties": {
+        "user_story": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Customer-framed user story describing the task goal."
+        },
+        "constraints": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Constraints and requirements the solution must satisfy."
+        },
+        "success_definition": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Clear definition of what constitutes a successful completion."
+        },
+        "seed_prompt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The prompt given to the agent to start the task."
+        }
+      },
+      "additionalProperties": false
+    },
+    "artifacts_section": {
+      "type": "object",
+      "description": "Expected artifacts including oracle definitions for evaluation.",
+      "required": ["oracle"],
+      "properties": {
+        "oracle": {
+          "$ref": "#/$defs/oracle_definition"
+        },
+        "expected_output_files": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Files the agent is expected to produce."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_definition": {
+      "type": "object",
+      "description": "Closed-world oracle definition. NO thresholds — raw scores returned for calibration.",
+      "properties": {
+        "required_files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/oracle_file_item"
+          },
+          "description": "Files the agent must discover/reference."
+        },
+        "required_symbols": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/oracle_symbol_item"
+          },
+          "description": "Symbols (functions, classes, variables) the agent must identify."
+        },
+        "required_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/oracle_reference_item"
+          },
+          "description": "Cross-repo references the agent must find."
+        },
+        "dependency_chains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/oracle_chain_item"
+          },
+          "description": "Ordered dependency/call chains the agent must trace."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_file_item": {
+      "type": "object",
+      "required": ["repo", "path"],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "Repository full name, e.g. kubernetes/kubernetes."
+        },
+        "path": {
+          "type": "string",
+          "description": "File path within the repo."
+        },
+        "description": {
+          "type": "string",
+          "description": "Why this file is relevant."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_symbol_item": {
+      "type": "object",
+      "required": ["repo", "path", "symbol"],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "Repository full name."
+        },
+        "path": {
+          "type": "string",
+          "description": "File path containing the symbol."
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Symbol name (function, class, variable)."
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["function", "class", "method", "variable", "constant", "type", "interface", "package"],
+          "description": "Symbol kind."
+        },
+        "description": {
+          "type": "string",
+          "description": "Why this symbol is relevant."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_reference_item": {
+      "type": "object",
+      "required": ["from_repo", "from_path", "to_repo", "to_symbol"],
+      "properties": {
+        "from_repo": {
+          "type": "string",
+          "description": "Repository containing the reference."
+        },
+        "from_path": {
+          "type": "string",
+          "description": "File containing the reference."
+        },
+        "to_repo": {
+          "type": "string",
+          "description": "Repository containing the definition."
+        },
+        "to_symbol": {
+          "type": "string",
+          "description": "Symbol being referenced."
+        },
+        "description": {
+          "type": "string",
+          "description": "Nature of the reference."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_chain_item": {
+      "type": "object",
+      "required": ["chain_id", "steps"],
+      "properties": {
+        "chain_id": {
+          "type": "string",
+          "description": "Identifier for this dependency chain."
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["repo", "path", "symbol"],
+            "properties": {
+              "repo": {"type": "string"},
+              "path": {"type": "string"},
+              "symbol": {"type": "string"},
+              "description": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "description": "Ordered steps in the chain (caller -> callee)."
+        },
+        "description": {
+          "type": "string",
+          "description": "What this chain represents."
+        }
+      },
+      "additionalProperties": false
+    },
+    "evaluation_section": {
+      "type": "object",
+      "description": "Evaluation configuration. SWE-Factory exit-code-first pattern.",
+      "required": ["modes", "checks", "eval_script", "pass_exit_code"],
+      "properties": {
+        "modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["deterministic", "rubric_judge", "hybrid"]
+          },
+          "minItems": 1,
+          "description": "Evaluation modes enabled for this task."
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/eval_check"
+          },
+          "minItems": 1,
+          "description": "Ordered list of evaluation checks to run."
+        },
+        "eval_script": {
+          "type": "string",
+          "description": "Path to the evaluation script, e.g. /tests/eval.sh."
+        },
+        "pass_exit_code": {
+          "type": "integer",
+          "description": "Exit code indicating pass (typically 0)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "eval_check": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "file_set_match",
+            "symbol_resolution",
+            "dependency_chain",
+            "provenance",
+            "keyword_presence",
+            "json_schema_match",
+            "test_ratio"
+          ],
+          "description": "Check type corresponding to oracle_checks.py functions."
+        },
+        "params": {
+          "type": "object",
+          "description": "Check-specific parameters.",
+          "properties": {
+            "test_command": {
+              "type": "string",
+              "description": "Command to run tests (for test_ratio check)."
+            },
+            "context_check_command": {
+              "type": "string",
+              "description": "Command to verify context was used correctly (for test_ratio check)."
+            },
+            "schema_path": {
+              "type": "string",
+              "description": "Path to JSON schema to validate against (for json_schema_match check)."
+            },
+            "required_keywords": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Keywords that must appear (for keyword_presence check)."
+            },
+            "must_cite_repos": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Repos that must be cited (for provenance check)."
+            },
+            "must_cite_paths": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Paths that must be cited (for provenance check)."
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "logging_section": {
+      "type": "object",
+      "description": "Logging and metrics configuration.",
+      "required": ["required_metrics"],
+      "properties": {
+        "required_metrics": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Metrics that must be captured during task execution, e.g. oracle_coverage, time_to_first_hit, repos_touched."
+        }
+      },
+      "additionalProperties": false
+    },
+    "rubric_judge_section": {
+      "type": "object",
+      "description": "Optional rubric-based LLM judge configuration for hybrid evaluation.",
+      "properties": {
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["metric", "description", "max_score"],
+            "properties": {
+              "metric": {
+                "type": "string",
+                "description": "Metric name, e.g. synthesis_quality."
+              },
+              "description": {
+                "type": "string",
+                "description": "AAA-style description of the criterion."
+              },
+              "max_score": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Maximum score for this criterion."
+              }
+            },
+            "additionalProperties": false
+          },
+          "description": "Rubric criteria for LLM judge evaluation."
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Weight of rubric score in hybrid composite (default 0.4)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "deepsearch_variant_section": {
+      "type": "object",
+      "description": "Optional Deep Search variant configuration for tasks designed to benefit from DS synthesis.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether this task has a Deep Search-specific variant."
+        },
+        "variant_prompt": {
+          "type": "string",
+          "description": "Alternative prompt optimized for Deep Search synthesis."
+        },
+        "synthesis_focus": {
+          "type": "string",
+          "description": "What aspect of synthesis DS should excel at for this task."
+        },
+        "additional_criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["metric", "description"],
+            "properties": {
+              "metric": {"type": "string"},
+              "description": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          "description": "Additional evaluation criteria specific to the DS variant."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

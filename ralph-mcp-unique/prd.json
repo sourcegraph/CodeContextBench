@@ -120,7 +120,7 @@
         "python3 -c \"import json; d=json.load(open('configs/use_case_registry.json')); assert len(d['use_cases'])==100\" succeeds"
       ],
       "priority": 4,
-      "passes": false,
+      "passes": true,
       "notes": "G-category tasks should have mcp_suite='ccb_mcp_crossorg' (not crosshost). Mark G-category entries as deferred with a note that cross-host is TBD. Category I tasks should have oracle_type='hybrid' (test_ratio + context verification)."
     },
     {
@@ -139,7 +139,7 @@
         "python3 -c \"import json; json.load(open('schemas/mcp_task_spec.schema.json'))\" succeeds"
       ],
       "priority": 5,
-      "passes": false,
+      "passes": true,
       "notes": "Key change from v1: removed min_recall/min_precision from oracle (thresholds deferred per Q8). Added test_ratio check type for Category I. Added deepsearch_variant section for tasks that have a DS-specific variant."
     },
     {
@@ -161,7 +161,7 @@
         "Stdlib only. python3 -m py_compile succeeds. Doctests pass."
       ],
       "priority": 6,
-      "passes": false,
+      "passes": true,
       "notes": "Key change from v1: NO pass/fail thresholds. Returns raw recall/precision/F1 scores. The composite score is a simple mean across all configured checks. Exit code 0 means 'agent did something' (composite > 0), exit 1 means 'total failure' (composite == 0). This enables threshold calibration later. Added check_test_ratio for Category I."
     },
     {
@@ -178,7 +178,7 @@
         "python3 -m py_compile succeeds"
       ],
       "priority": 7,
-      "passes": false,
+      "passes": true,
       "notes": "Same as v1 but adapted for the threshold-free scoring approach. Gold answer must score > 0, empty must score exactly 0."
     },
     {

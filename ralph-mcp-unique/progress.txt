@@ -83,3 +83,76 @@
   - SG indexing delay is the bottleneck — create mirrors early, verify later
   - `.gitignore` has `ralph-*/` pattern; must use `git add -f` for new files under ralph-mcp-unique/
 ---
+[2026-02-20 20:05:28 UTC] Iteration 2 timed out after 900s
+[2026-02-20 20:08:47 UTC] Ralph start | tool=claude | max_iterations=20 | timeout_sec=1200
+[2026-02-20 20:08:47 UTC] Iteration 1 started
+
+## 2026-02-20 - US-003 Status Update
+- All 7 sg-benchmarks mirror repos exist on GitHub with content pushed (verified via gh api tree checks)
+- kubernetes-client-go (30 entries), kubernetes-api (38), expressjs-express (16), lodash (21), prisma-prisma (37), grafana-loki (41), grafana-mimir (39)
+- **BLOCKED**: Sourcegraph indexing has not occurred yet. All 7 repos return empty results from mcp__sourcegraph__list_repos and keyword_search
+- Cannot mark US-003 passes=true until SG indexing is verified (criterion 8)
+- **Learnings for future iterations:**
+  - GitHub API `size: 0` is delayed stat; use `git/trees/main` to verify content
+  - SG auto-crawl of sg-benchmarks org may take hours to days for new repos
+  - The original repos (kubernetes/client-go, grafana/loki, etc.) are also NOT natively indexed on this SG instance
+---
+
+## 2026-02-20 - US-004: Verified (pre-existing implementation)
+- configs/use_case_registry.json already existed with all 100 entries (created in prior session)
+- Validated: all 100 IDs present, correct categories (10 per cat), correct mcp_suite mapping
+- Categories A, B, D, E: fully populated with mcp_unique, mcp_capabilities_required, oracle_type, difficulty, estimated_repos_needed, deepsearch_relevant
+- Categories C, F, G, H, J: oracle_type='tbd' (stubs). Category I: oracle_type='hybrid' per PRD notes
+- deepsearch_relevant: E=10/10, J=4/10 true
+- salesforce_flags: 100/100 entries populated
+- Schema validation: PASSED against schemas/use_case_registry.schema.json
+- Assertion: len(use_cases)==100 PASSED
+- Files changed: prd.json (US-004 passes=true)
+- **Learnings for future iterations:**
+  - Always validate pre-existing work before assuming it needs to be redone
+  - jsonschema Python package is available for schema validation
+---
+
+## 2026-02-20 - US-005: TaskSpec schema merging SWE-Factory + PRDBench patterns
+- Created `schemas/mcp_task_spec.schema.json` (JSON Schema draft 2020-12)
+- Top-level required: id (CCX-<family>-<NNN> pattern), family, use_case_id, category, mcp_suite, prd, artifacts, evaluation, logging
+- prd section: user_story, constraints, success_definition, seed_prompt
+- artifacts.oracle: required_files, required_symbols, required_references, dependency_chains (NO thresholds)
+- evaluation: modes (deterministic|rubric_judge|hybrid), checks (7 types incl test_ratio), eval_script, pass_exit_code
+- Optional: rubric_judge (criteria array + weight), deepsearch_variant (enabled, variant_prompt, synthesis_focus)
+- Validated with 3 test instances: minimal, hybrid (Cat I test_ratio), Deep Search variant
+- Files changed: `schemas/mcp_task_spec.schema.json` (new)
+- **Learnings for future iterations:**
+  - jsonschema on this system is Draft7 (not Draft202012Validator) — use Draft7Validator.check_schema()
+  - Pattern regex for task ID: `^CCX-[a-z0-9-]+-[0-9]{3}$`
+  - additionalProperties: false catches structural errors early
+---
+
+## 2026-02-20 - US-006: Oracle and evaluation check library
+- Created `scripts/ccb_metrics/oracle_checks.py` — stdlib-only Python library
+- 7 check functions: file_set_match, symbol_resolution, dependency_chain, provenance, keyword_presence, json_schema, test_ratio
+- run_all_checks() aggregates results, computes composite_score as mean of individual primary scores
+- CLI mode: `python3 oracle_checks.py --answer <path> --spec <path> [--verbose]`
+- Exit code 0 if composite > 0 (useful output), 1 if composite == 0 (total failure)
+- 16 doctests all pass, py_compile succeeds
+- Tested with sample data: gold answer scores 0.6167, empty answer scores 0.0000
+- Files changed: `scripts/ccb_metrics/oracle_checks.py` (new)
+- **Learnings for future iterations:**
+  - _get_primary_score() maps check types to their primary metric (f1, recall, chain_recall, etc.)
+  - For json_schema_match, use boolean valid as 0/1 score (no jsonschema dep in stdlib mode)
+  - test_ratio runs subprocess with 300s timeout — adequate for unit test suites
+---
+
+## 2026-02-20 - US-007: Automated validity filtering (fail2pass gate)
+- Created `scripts/validate_mcp_task_instance.py` — fail2pass validation gate
+- CLI: --task-dir (multiple), --verbose, --fix
+- Checks gold oracle answer (must score > 0) and empty answer (must score 0)
+- Reports: VALID, DEGENERATE_PASS, DEGENERATE_FAIL, BROKEN per task
+- --fix mode generates stub oracle_answer.json from task_spec.json oracle definitions
+- Tested: valid task → VALID (exit 0), missing oracle → BROKEN (exit 1), --fix → generates stub → VALID
+- Files changed: `scripts/validate_mcp_task_instance.py` (new)
+- **Learnings for future iterations:**
+  - oracle_answer.json searched in both task root and tests/ subdirectory
+  - Stub generation builds "text" field by concatenating all repo/path/symbol refs (for provenance checks)
+  - tempfile used for empty answer to avoid disk pollution
+---
