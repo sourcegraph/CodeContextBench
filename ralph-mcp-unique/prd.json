@@ -639,7 +639,7 @@
       ],
       "priority": 22,
       "passes": false,
-      "notes": "Goal is validating plumbing and collecting calibration data. Document actual recall/precision scores so we can set thresholds in a follow-up."
+      "notes": "Goal is validating plumbing and collecting calibration data. Document actual recall/precision scores so we can set thresholds in a follow-up. STATUS (2026-02-20): Static validation complete — 12/12 VALID, preflight 0 warnings for ccb_mcp_* tasks, dry-run confirmed. Fixed: eval.sh executable bits, task.toml type='eval'→'test'. Created docs/MCP_UNIQUE_CALIBRATION.md with static oracle coverage analysis. PENDING: actual Harbor runs — run with: configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json"
     },
     {
       "id": "US-023",

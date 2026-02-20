@@ -19,7 +19,7 @@ mcp_unique = true
 deepsearch_relevant = true
 
 [verification]
-type = "eval"
+type = "test"
 command = "bash /tests/eval.sh"
 
 reward_type = "score"
