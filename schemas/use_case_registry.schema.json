@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codecontextbench.dev/schemas/use_case_registry.schema.json",
+  "title": "MCP-Unique Use Case Registry",
+  "description": "Schema for the use case registry encoding 100 GTM use cases with metadata, MCP capability requirements, oracle types, and fixture references.",
+  "type": "object",
+  "required": ["use_cases"],
+  "properties": {
+    "use_cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/use_case_entry"
+      }
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version for forward compatibility.",
+      "const": "1.0"
+    }
+  },
+  "$defs": {
+    "use_case_entry": {
+      "type": "object",
+      "required": [
+        "use_case_id",
+        "category",
+        "title",
+        "customer_prompt",
+        "mcp_suite",
+        "task_family"
+      ],
+      "properties": {
+        "use_case_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Unique use case identifier (1-100)."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+          "description": "Use case category letter."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short descriptive title for the use case."
+        },
+        "customer_prompt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Customer-framed prompt describing the task from an end-user perspective."
+        },
+        "mcp_suite": {
+          "type": "string",
+          "enum": [
+            "ccb_mcp_crossrepo_tracing",
+            "ccb_mcp_security",
+            "ccb_mcp_migration",
+            "ccb_mcp_incident",
+            "ccb_mcp_onboarding",
+            "ccb_mcp_compliance",
+            "ccb_mcp_crossorg",
+            "ccb_mcp_domain",
+            "ccb_mcp_org",
+            "ccb_mcp_platform"
+          ],
+          "description": "Target benchmark suite for this use case."
+        },
+        "task_family": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Task family identifier (e.g. cross-repo-dep-trace, vuln-remediation)."
+        },
+        "mcp_unique": {
+          "type": "boolean",
+          "description": "Whether this task requires MCP to solve (cannot be solved with local-only access)."
+        },
+        "mcp_capabilities_required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "keyword_search",
+              "nls_search",
+              "find_references",
+              "go_to_definition",
+              "read_file",
+              "deepsearch",
+              "compare_revisions",
+              "diff_search",
+              "commit_search"
+            ]
+          },
+          "uniqueItems": true,
+          "description": "MCP tool capabilities required to solve this task."
+        },
+        "oracle_type": {
+          "type": "string",
+          "enum": [
+            "deterministic_json",
+            "exit_code",
+            "unit_tests",
+            "rubric_judge",
+            "hybrid",
+            "tbd"
+          ],
+          "description": "Primary oracle/evaluation type. 'tbd' for categories not yet fully specified."
+        },
+        "oracle_check_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "file_set_match",
+              "symbol_resolution",
+              "dependency_chain",
+              "provenance",
+              "keyword_presence",
+              "json_schema_match",
+              "test_ratio"
+            ]
+          },
+          "uniqueItems": true,
+          "description": "Specific oracle check types used in evaluation."
+        },
+        "repo_set_id": {
+          "type": "string",
+          "description": "Reference to a repo-set fixture (e.g. 'kubernetes-ecosystem')."
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"],
+          "description": "Estimated task difficulty."
+        },
+        "estimated_repos_needed": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Estimated number of repos an agent needs to search to complete the task."
+        },
+        "deepsearch_relevant": {
+          "type": "boolean",
+          "description": "Whether this task is designed to benefit from Sourcegraph Deep Search."
+        },
+        "salesforce_flags": {
+          "type": "object",
+          "description": "Optional Salesforce-derived metadata for GTM alignment.",
+          "properties": {
+            "pain_point": {
+              "type": "string",
+              "description": "Customer pain point from Salesforce data."
+            },
+            "icp_segment": {
+              "type": "string",
+              "description": "Ideal Customer Profile segment."
+            },
+            "revenue_impact": {
+              "type": "string",
+              "description": "Estimated revenue impact tier (e.g. 'high', 'medium', 'low')."
+            },
+            "deal_stage": {
+              "type": "string",
+              "description": "Typical deal stage where this use case surfaces."
+            }
+          },
+          "additionalProperties": true
+        },
+        "gong_evidence": {
+          "type": "object",
+          "description": "Optional Gong call evidence for GTM alignment.",
+          "properties": {
+            "mention_count": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of Gong calls mentioning this use case."
+            },
+            "example_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Representative quotes from customer calls."
+            },
+            "sentiment": {
+              "type": "string",
+              "enum": ["positive", "neutral", "negative", "mixed"],
+              "description": "Overall sentiment from calls."
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
