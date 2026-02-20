@@ -1,0 +1,28 @@
+## Codebase Patterns
+
+- task.toml uses version = "1.0" with [metadata], [task], [verification], [environment] sections
+- Dockerfile build context is `environment/` dir — COPY paths relative to that
+- Harbor uploads tests/ to /tests/ in container — use /tests/ paths in test.sh
+- sg_only mode: mark with /tmp/.sg_only_mode, use Dockerfile.sg_only
+- Oracle checks library must be stdlib-only Python (no external deps)
+- Exit code is THE grading signal (SWE-Factory pattern)
+- eval.sh must write score to /logs/verifier/reward.txt for Harbor compatibility
+- Use real SG-indexed repos for fixtures — verify with mcp__sourcegraph__keyword_search
+- selected_benchmark_tasks.json is the canonical task registry
+- LLM judge pipeline: run_judge.py -> engine.py -> backends.py (OpenAI or Anthropic)
+- Existing judge dimensions: correctness(0.30), completeness(0.25), code_quality(0.20), retrieval_quality(0.15), efficiency(0.10)
+- Oracle discovery chain: ground_truth.json -> expected_defects.json -> expected_changes.json -> solve.sh -> instruction.md -> ground_truth_files.json
+
+---
+
+## 2026-02-20 - PRD Creation
+- Created ralph-mcp-unique/prd.json with 20 user stories
+- Created ralph-mcp-unique/DESIGN.md with full architecture
+- Created ralph-mcp-unique/CLAUDE.md with agent instructions
+- **Learnings for future iterations:**
+  - Existing judge pipeline has 5 dimensions and 3 prompt strategies
+  - Oracle auto-discovery in oracle.py handles 6 data formats with priority chain
+  - Templates should use Python string.Template (no Jinja2 dependency)
+  - The ralph-eval PRD (15 stories) is a good model for story structure
+  - Repo-set fixtures must verify SG indexing before committing
+---
