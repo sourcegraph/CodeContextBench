@@ -26,3 +26,18 @@
   - The ralph-eval PRD (15 stories) is a good model for story structure
   - Repo-set fixtures must verify SG indexing before committing
 ---
+[2026-02-20 18:57:07 UTC] Ralph start | tool=claude | max_iterations=20 | timeout_sec=900
+[2026-02-20 18:57:07 UTC] Iteration 1 started
+
+## 2026-02-20 - US-001: Use Case Registry JSON schema
+- Created `schemas/use_case_registry.schema.json` (JSON Schema draft 2020-12)
+- Defines all required fields: use_case_id (1-100), category (A-J), title, customer_prompt, mcp_suite (10 ccb_mcp_* suites), task_family
+- Optional fields: mcp_unique, mcp_capabilities_required (9 MCP tool enums), oracle_type (incl tbd), oracle_check_types (7 types incl test_ratio), repo_set_id, difficulty, estimated_repos_needed, deepsearch_relevant
+- Optional GTM objects: salesforce_flags, gong_evidence
+- All 7 acceptance criteria verified programmatically
+- Files changed: `schemas/use_case_registry.schema.json` (new)
+- **Learnings for future iterations:**
+  - Follow existing schema patterns in `schemas/` (draft 2020-12, $id, $defs)
+  - additionalProperties: false on entries catches typos early
+  - 'tbd' oracle_type needed for stub categories (C, F, G, H, I, J)
+---

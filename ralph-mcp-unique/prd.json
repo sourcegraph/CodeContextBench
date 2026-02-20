@@ -63,7 +63,7 @@
         "python3 -c \"import json; json.load(open('schemas/use_case_registry.schema.json'))\" succeeds"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": "Key change from v1: mcp_suite field maps to the 10 ccb_mcp_* suites (not the 8 SDLC suites). Added deepsearch_relevant flag and test_ratio to oracle_check_types for Category I tasks."
     },
     {
