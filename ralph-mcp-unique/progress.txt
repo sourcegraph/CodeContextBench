@@ -296,3 +296,32 @@
   - task_spec.json checks array overrides DEFAULT_CHECKS_BY_ORACLE_TYPE; manual edit needed for dep_chain/symbol_resolution
   - Use case 10 has task_family "cross-repo-config-trace" → task_id CCX-config-trace-010 (not dep-trace)
 ---
+[2026-02-20 20:49:06 UTC] Iteration 3 no story markers found
+[2026-02-20 20:49:06 UTC] Iteration 3 complete
+[2026-02-20 20:49:08 UTC] Iteration 4 started
+
+## 2026-02-20 - US-013: Starter tasks — Category B: Vulnerability remediation (2 tasks)
+- Authored 2 complete tasks in benchmarks/ccb_mcp_security/:
+
+**CCX-vuln-remed-011** (B11 — CVE remediation, nodejs-web-stack fixture):
+  - Scenario: CVE-2024-47764 affecting `cookie` npm package < 0.7.0
+  - Oracle: sg-benchmarks/expressjs-express package.json declares `"cookie": "^0.7.1"` as runtime dep
+  - eval.sh: file_set_match + keyword_presence (version constraint "^0.7.1")
+  - Validity gate: VALID (gold=1.0, empty=0.0)
+
+**CCX-vuln-remed-014** (B14 — missing auth middleware, grafana-observability fixture):
+  - Scenario: HTTP handlers registered without authentication middleware in loki/mimir
+  - Oracle: sg-benchmarks/grafana-loki pkg/dataobj/explorer/service.go (4 endpoints via mux.HandleFunc, no auth)
+  - eval.sh: file_set_match + provenance (cites the file path and repo)
+  - Validity gate: VALID (gold=1.0, empty=0.0)
+
+- Both tasks registered in configs/selected_mcp_unique_tasks.json (5 total tasks now)
+- Files changed: benchmarks/ccb_mcp_security/ (2 new task dirs with 10 files each), configs/selected_mcp_unique_tasks.json, prd.json
+- **Learnings for future iterations:**
+  - Sourcegraph verification is essential before writing oracles — "inferred" paths fail the gate
+  - CVE task oracle: use real CVE numbers (CVE-2024-47764 for cookie npm package) for realism
+  - Security task B14: compare "protected" (local grafana) vs "unprotected" (mcp_only loki) for clear MCP advantage
+  - file_set_match + keyword_presence is good combo: file coverage + exact version/string verification
+  - file_set_match + provenance: file coverage + citation verification (text must mention file path and repo)
+  - pkg/dataobj/explorer/service.go confirmed via direct read_file: 4 endpoints, no middleware wrapping
+---

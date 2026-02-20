@@ -1,0 +1,51 @@
+{
+  "id": "CCX-vuln-remed-011",
+  "family": "vuln-remediation",
+  "use_case_id": 11,
+  "category": "B",
+  "mcp_suite": "ccb_mcp_security",
+  "prd": {
+    "user_story": "As a security engineer remediating CVE-2024-47764, I need to find all package.json files across our Node.js web stack repos that declare cookie as a direct runtime dependency.",
+    "constraints": [
+      "Only include entries under 'dependencies', not 'devDependencies' or 'scripts'.",
+      "Search all repos in the nodejs-web-stack fixture: nodejs/node, sg-benchmarks/expressjs-express, sg-benchmarks/lodash, sg-benchmarks/prisma-prisma.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent finds sg-benchmarks/expressjs-express package.json which declares cookie as a direct runtime dependency with version ^0.7.1.",
+    "seed_prompt": "Which package.json files across the nodejs-web-stack repos declare cookie as a direct runtime dependency (in the dependencies field)?"
+  },
+  "artifacts": {
+    "repo_set_id": "nodejs-web-stack",
+    "oracle": {
+      "required_files": [
+        {"repo": "sg-benchmarks/expressjs-express", "path": "package.json"}
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "cookie",
+          "file_filter": "package.json"
+        }
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": ["^0.7.1", "cookie"]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

@@ -40,6 +40,32 @@
       "deepsearch_relevant": false,
       "oracle_check_types": ["symbol_resolution"],
       "repo_set_id": "kubernetes-ecosystem"
+    },
+    {
+      "task_id": "CCX-vuln-remed-011",
+      "mcp_suite": "ccb_mcp_security",
+      "use_case_category": "B",
+      "use_case_id": 11,
+      "language": "javascript",
+      "difficulty": "medium",
+      "repo": "nodejs/node",
+      "task_dir": "benchmarks/ccb_mcp_security/ccx-vuln-remed-011",
+      "deepsearch_relevant": false,
+      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "repo_set_id": "nodejs-web-stack"
+    },
+    {
+      "task_id": "CCX-vuln-remed-014",
+      "mcp_suite": "ccb_mcp_security",
+      "use_case_category": "B",
+      "use_case_id": 14,
+      "language": "go",
+      "difficulty": "hard",
+      "repo": "grafana/grafana",
+      "task_dir": "benchmarks/ccb_mcp_security/ccx-vuln-remed-014",
+      "deepsearch_relevant": false,
+      "oracle_check_types": ["file_set_match", "provenance"],
+      "repo_set_id": "grafana-observability"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "repo": "sg-benchmarks/grafana-loki",
+      "path": "pkg/dataobj/explorer/service.go",
+      "endpoints": [
+        "/dataobj/api/v1/list",
+        "/dataobj/api/v1/inspect",
+        "/dataobj/api/v1/download",
+        "/dataobj/api/v1/provider"
+      ]
+    }
+  ],
+  "text": "Found 1 file in the grafana observability stack that registers HTTP handlers without authentication middleware: sg-benchmarks/grafana-loki pkg/dataobj/explorer/service.go. The Handler() method registers 4 endpoints (/dataobj/api/v1/list, /dataobj/api/v1/inspect, /dataobj/api/v1/download, /dataobj/api/v1/provider) directly via mux.HandleFunc without wrapping in middleware.AuthenticateUser or equivalent. This contrasts with pkg/compactor/ui.go which correctly wraps its handler with middleware.Merge(middleware.AuthenticateUser, ...).",
+  "_metadata": {
+    "oracle_type": "file_set_match",
+    "discovery_method": "sourcegraph_keyword_search",
+    "query": "repo:^github.com/sg-benchmarks/grafana-loki$ mux.HandleFunc",
+    "verified_at": "2026-02-20"
+  }
+}
