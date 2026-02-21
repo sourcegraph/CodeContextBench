@@ -7,11 +7,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ripgrep \
     jq \
     bc \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone Envoy at v1.31.1 (same as sec-cve-002)
 WORKDIR /workspace
-RUN git clone --depth 1 --branch v1.31.1 https://github.com/envoyproxy/envoy.git
+RUN git clone --depth 1 --branch v1.31.2 https://github.com/envoyproxy/envoy.git || \
+    git clone --depth 1 --branch v1.31.0 https://github.com/envoyproxy/envoy.git
 
 # Verify we have the correct version
 RUN cd envoy && \

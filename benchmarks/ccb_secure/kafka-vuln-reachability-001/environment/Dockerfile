@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     jq \
     bc \
+    python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone Apache Kafka at pre-fix commit (vulnerable version)

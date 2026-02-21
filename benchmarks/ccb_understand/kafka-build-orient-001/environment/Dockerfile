@@ -4,13 +4,13 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \
+    python3 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
 
 # Clone Apache Kafka at a stable release tag (3.9.0 - latest stable as of Feb 2026)
-RUN git clone --filter=blob:none --no-checkout https://github.com/apache/kafka.git . && \
-    git checkout 3.9.0 && \
+RUN git clone --depth 1 --branch 3.9.0 https://github.com/apache/kafka.git . && \
     git config user.email "agent@benchmark.local" && \
     git config user.name "Agent"
 

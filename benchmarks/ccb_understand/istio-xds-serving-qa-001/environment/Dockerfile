@@ -7,11 +7,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     python3 \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone Istio at v1.24.3 release (pinned SHA)
-RUN git clone --filter=blob:none --no-checkout https://github.com/istio/istio.git . && \
-    git checkout 44d0e58e49d0dc89e27fc4f8679c68132d46b887 && \
+RUN git init && \
+    git remote add origin https://github.com/istio/istio.git && \
+    git fetch --depth 1 origin 44d0e58e49d0dc89e27fc4f8679c68132d46b887 && \
+    git checkout FETCH_HEAD && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 
