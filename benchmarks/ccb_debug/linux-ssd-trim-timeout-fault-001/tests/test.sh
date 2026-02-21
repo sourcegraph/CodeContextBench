@@ -4,6 +4,10 @@
 # Ground truth: drivers/ata/libata-core.c :: ata_device_blacklist
 
 set -e
+# Artifact mode: parse answer.json, extract analysis text, apply diffs
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 
 cd /workspace
 

@@ -111,6 +111,98 @@ if not changes:
     # Signal no patches needed
     with open("/tmp/.answer_json_no_changes", "w") as f:
         f.write("1")
+
+# ── Generate synthetic review.json for code-review verifiers ──────────────
+# Code-review verifiers expect /workspace/review.json with [{file, description, fix_patch}]
+# Generate this from answer.json changes[] so existing F1 scoring works unchanged.
+if changes:
+    review_entries = []
+    for change in changes:
+        entry = {
+            "file": change.get("file", ""),
+            "description": change.get("description", ""),
+            "fix_patch": change.get("diff", ""),
+        }
+        review_entries.append(entry)
+    review_json_path = "/workspace/review.json"
+    with open(review_json_path, "w") as f:
+        json.dump(review_entries, f, indent=2)
+    print(f"[answer_json_verifier] Generated synthetic review.json ({len(review_entries)} entries)")
+
+# ── Extract new-file diffs to /workspace/ ─────────────────────────────────
+# For find-and-prove tasks: agent writes regression tests as new-file diffs.
+# Extract file content from diffs like "--- /dev/null\n+++ b/regression_test.py"
+# and write directly to /workspace/.
+new_files_written = 0
+for change in changes:
+    diff_text = change.get("diff", "")
+    file_path = change.get("file", "")
+    if not diff_text or not file_path:
+        continue
+
+    # Detect new-file diff: starts from /dev/null
+    if "/dev/null" in diff_text:
+        # Extract added lines (lines starting with +, excluding +++ header)
+        lines = diff_text.split("\n")
+        content_lines = []
+        in_hunk = False
+        for line in lines:
+            if line.startswith("@@"):
+                in_hunk = True
+                continue
+            if in_hunk:
+                if line.startswith("+"):
+                    content_lines.append(line[1:])  # Strip leading +
+                elif line.startswith("-"):
+                    pass  # skip removed lines (shouldn't exist in new-file)
+                elif line.startswith("\\"):
+                    pass  # "\ No newline at end of file"
+                else:
+                    content_lines.append(line)  # context line
+
+        if content_lines:
+            # Determine target path — use file field, write to /workspace/
+            target = os.path.join("/workspace", os.path.basename(file_path))
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+            with open(target, "w") as f:
+                f.write("\n".join(content_lines))
+                if content_lines and not content_lines[-1] == "":
+                    f.write("\n")
+            new_files_written += 1
+            print(f"[answer_json_verifier] Extracted new file: {target}")
+
+if new_files_written > 0:
+    print(f"[answer_json_verifier] Extracted {new_files_written} new files to /workspace/")
+
+# ── Generate fault_localization_result.json ────────────────────────────────
+# Fault-loc verifiers expect /workspace/fault_localization_result.json with
+# {buggy_files, buggy_functions, reasoning, confidence}. Populate from analysis.
+if analysis:
+    fl_result = {}
+    # buggy_files: extract from files_examined
+    fl_files = [fe.get("path", "") for fe in files_examined if fe.get("path")]
+    if fl_files:
+        fl_result["buggy_files"] = fl_files
+    # buggy_functions: look for a "functions" or "buggy_functions" key in analysis
+    fl_funcs = analysis.get("buggy_functions", analysis.get("functions", []))
+    if isinstance(fl_funcs, list) and fl_funcs:
+        fl_result["buggy_functions"] = fl_funcs
+    # reasoning: use the full analysis text
+    if reasoning:
+        fl_result["reasoning"] = reasoning
+    # confidence: look for a confidence key
+    confidence = analysis.get("confidence", None)
+    if isinstance(confidence, (int, float)):
+        fl_result["confidence"] = confidence
+    # Only write if we have substantive content
+    fl_path = "/workspace/fault_localization_result.json"
+    if fl_result and not os.path.exists(fl_path):
+        with open(fl_path, "w") as f:
+            json.dump(fl_result, f, indent=2)
+        print(f"[answer_json_verifier] Generated fault_localization_result.json")
+
+# ── Apply diffs to verify_repo (for code-change verification) ─────────────
+if not changes:
     sys.exit(0)
 
 # We have diffs to apply — need /repo_full

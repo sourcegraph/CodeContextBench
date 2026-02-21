@@ -9,6 +9,10 @@ set -e
 
 # Artifact-only mode: sets VERIFY_REPO, provides apply_patches_from_review_json()
 # Defaults VERIFY_REPO=/workspace when not in artifact mode
+# Artifact mode: parse answer.json, extract analysis text, apply diffs
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 [ -f /tests/artifact_verifier_lib.sh ] && source /tests/artifact_verifier_lib.sh
 VERIFY_REPO="${VERIFY_REPO:-/workspace}"
 

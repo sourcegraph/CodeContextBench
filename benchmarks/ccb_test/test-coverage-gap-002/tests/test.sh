@@ -3,10 +3,19 @@
 set -uo pipefail
 
 [ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+# Artifact mode: parse answer.json, extract analysis text, apply diffs
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 
 mkdir -p /logs/verifier
 
 OUTPUT_FILE="/workspace/coverage_analysis.md"
+# In artifact mode, populate expected output from answer.json analysis
+if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
+    cp "$ANALYSIS_TEXT_FILE" "/workspace/coverage_analysis.md"
+    echo "[answer_json] Copied analysis text to /workspace/coverage_analysis.md"
+fi
 
 if [ ! -f "$OUTPUT_FILE" ]; then
     ALT=$(find /workspace -maxdepth 2 -name "*.md" ! -name "README*" 2>/dev/null | head -1)
