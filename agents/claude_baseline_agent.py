@@ -481,11 +481,23 @@ class BaselineClaudeCodeAgent(ClaudeCode):
             # locally, artifact configs produce diffs as output artifacts.
             if mcp_type == "artifact_full":
                 workflow_tail = (
-                    "3. **Produce artifacts** — Express all code changes as "
-                    "**unified diffs** in your output artifact (e.g., "
-                    "`fix_patch` fields in review.json, or a standalone "
-                    "`solution.patch` file). Do NOT edit source files directly "
-                    "— there are none in your workspace."
+                    "3. **Produce answer.json** — Write ALL output to "
+                    "`/workspace/answer.json` with this structure:\n"
+                    "   ```json\n"
+                    "   {\n"
+                    '     "analysis": {\n'
+                    '       "summary": "Brief description of your approach",\n'
+                    '       "files_examined": [{"path": "file.ext", "description": "..."}],\n'
+                    '       "reasoning": "Detailed explanation or analysis"\n'
+                    "     },\n"
+                    '     "changes": [\n'
+                    '       {"file": "path.ext", "description": "...", "diff": "unified diff"}\n'
+                    "     ]\n"
+                    "   }\n"
+                    "   ```\n"
+                    "   Omit `changes` if the task is analysis-only. "
+                    "Do NOT edit source files directly — produce diffs in "
+                    "`changes[]` instead."
                 )
             else:
                 workflow_tail = (
@@ -640,7 +652,7 @@ before retrying."""
                 repo_filter_system = "Use list_repos to discover available repositories first."
 
             if mcp_type == "artifact_full":
-                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then express your changes as unified diffs in your output artifact.
+                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code. Write ALL output to /workspace/answer.json with "analysis" (summary, files_examined, reasoning) and optional "changes" (file, description, diff) arrays. Do NOT edit source files directly.
 
 {repo_filter_system}"""
             else:

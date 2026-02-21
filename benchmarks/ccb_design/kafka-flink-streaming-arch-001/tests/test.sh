@@ -6,6 +6,10 @@ set -e
 
 # sg_only_env: restore full repo before verification (no-op for regular runs)
 [ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+# Artifact mode: parse answer.json, extract analysis text
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 
 cd /workspace
 mkdir -p /logs/verifier
@@ -19,6 +23,12 @@ source /tests/verifier_lib.sh
 
 # ── Change detection guard ────────────────────────────────────────────────
 SOLUTION_FILE="/logs/agent/solution.md"
+# In artifact mode, populate expected output from answer.json analysis
+if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
+    mkdir -p "/logs/agent"
+    cp "$ANALYSIS_TEXT_FILE" "/logs/agent/solution.md"
+    echo "[answer_json] Copied analysis text to /logs/agent/solution.md"
+fi
 if [ ! -f "$SOLUTION_FILE" ]; then
     echo "No solution.md found — agent did not produce output"
     echo "0.0" > /logs/verifier/reward.txt

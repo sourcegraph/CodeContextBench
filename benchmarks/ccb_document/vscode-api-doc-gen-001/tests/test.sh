@@ -13,9 +13,18 @@ set -e
 
 # sg_only_env: restore full repo before verification (no-op for regular runs)
 [ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+# Artifact mode: parse answer.json, extract analysis text
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 
 
 DOC="/workspace/documentation.md"
+# In artifact mode, populate expected output from answer.json analysis
+if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
+    cp "$ANALYSIS_TEXT_FILE" "/workspace/documentation.md"
+    echo "[answer_json] Copied analysis text to /workspace/documentation.md"
+fi
 GROUND_TRUTH="/tests/ground_truth.json"
 REWARD_FILE="/logs/verifier/reward.txt"
 
