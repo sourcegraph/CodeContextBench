@@ -24,7 +24,23 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+import re
 from typing import Any, Dict, List, Optional
+
+# Hosting prefixes that Sourcegraph MCP tools prepend to repo names.
+# Agents sometimes forget to strip these; normalize before comparison.
+_HOSTING_PREFIX_RE = re.compile(r"^(?:github\.com|gitlab\.com|bitbucket\.org)/")
+
+
+def _normalize_repo(repo: str) -> str:
+    """Strip hosting-provider prefix from a repo name for fuzzy matching.
+
+    >>> _normalize_repo("github.com/sg-benchmarks/kubernetes-client-go")
+    'sg-benchmarks/kubernetes-client-go'
+    >>> _normalize_repo("sg-benchmarks/kubernetes-client-go")
+    'sg-benchmarks/kubernetes-client-go'
+    """
+    return _HOSTING_PREFIX_RE.sub("", repo)
 
 
 def check_file_set_match(
@@ -50,7 +66,7 @@ def check_file_set_match(
     [{'repo': 'a/b', 'path': 'x.go'}]
     """
     def _key(item: Dict[str, str]) -> tuple:
-        return (item.get("repo", ""), item.get("path", ""))
+        return (_normalize_repo(item.get("repo", "")), item.get("path", ""))
 
     oracle_set = {_key(f) for f in oracle_files}
     answer_set = {_key(f) for f in answer_files}
@@ -90,7 +106,7 @@ def check_symbol_resolution(
     1.0
     """
     def _key(item: Dict[str, str]) -> tuple:
-        return (item.get("repo", ""), item.get("path", ""), item.get("symbol", ""))
+        return (_normalize_repo(item.get("repo", "")), item.get("path", ""), item.get("symbol", ""))
 
     oracle_set = {_key(s) for s in oracle_symbols}
     answer_set = {_key(s) for s in answer_symbols}
@@ -133,7 +149,7 @@ def check_dependency_chain(
     1.0
     """
     def _key(item: Dict[str, str]) -> tuple:
-        return (item.get("repo", ""), item.get("path", ""), item.get("symbol", ""))
+        return (_normalize_repo(item.get("repo", "")), item.get("path", ""), item.get("symbol", ""))
 
     oracle_keys = [_key(s) for s in oracle_chain]
     answer_keys = [_key(s) for s in answer_chain]
