@@ -1,0 +1,32 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Base tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    curl \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js 22.x
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Clone fixture repos (baseline has full local access)
+RUN git clone --depth 1 --branch 4.21.1 https://github.com/expressjs/express /workspace/express
+RUN git clone --depth 1 --branch v22.13.0 https://github.com/nodejs/node /workspace/node
+
+# Initialize git identity for agent commits
+RUN git config --global user.email "agent@example.com" && \
+    git config --global user.name "Agent" && \
+    git config --global safe.directory '*'
+
+# Create log directories
+RUN mkdir -p /logs/agent /logs/verifier
+
+ENTRYPOINT []

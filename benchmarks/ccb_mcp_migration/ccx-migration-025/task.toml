@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-migration-025"
+description = "Find all usages of deprecated numpy.distutils across Python ML stack"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-migration-025"
+repo = "numpy/numpy"
+category = "migration-deprecated-api"
+language = "python"
+difficulty = "medium"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_migration"
+use_case_id = 25
+repo_set_id = "python-ml-stack"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Find all usages of deprecated numpy.distutils across Python ML stack"
+
+[environment]
+build_timeout_sec = 600.0

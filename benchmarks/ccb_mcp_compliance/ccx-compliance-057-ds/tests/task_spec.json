@@ -1,0 +1,82 @@
+{
+  "id": "CCX-compliance-057-ds",
+  "family": "compliance-evidence-bundle",
+  "use_case_id": 57,
+  "category": "E",
+  "mcp_suite": "ccb_mcp_compliance",
+  "prd": {
+    "user_story": "As a compliance engineer preparing a SOC 2 audit evidence bundle, I need to trace Grafana's auditLoggingAppPlatform feature flag from its definition through audit infrastructure, API server wiring, and DI registration to prove the audit logging control is implemented end-to-end.",
+    "constraints": [
+      "Identify the feature flag definition in the feature management registry.",
+      "Trace the audit infrastructure layer: Logger interface, Event model, Policy evaluation, Noop implementation.",
+      "Trace the API server wiring: APIGroupAuditor interface, policy aggregation, service DI.",
+      "Include Wire/DI registration files (wireset, wire_gen).",
+      "Write findings to /workspace/answer.json with comprehensive text explaining how the layers connect."
+    ],
+    "success_definition": "Agent identifies the 10 architecturally significant files spanning feature flag definition (registry.go, toggles_gen.go), audit infrastructure (logger.go, event.go, policy.go, noop.go), API server wiring (common.go, helper.go, service.go), and DI registration (wireset.go).",
+    "seed_prompt": "Trace the auditLoggingAppPlatform feature flag in grafana/grafana from its definition through the audit backend infrastructure to the API server wiring. Produce a compliance evidence bundle."
+  },
+  "artifacts": {
+    "repo_set_id": "grafana-observability",
+    "oracle": {
+      "required_files": [
+        {"repo": "grafana/grafana", "path": "pkg/services/featuremgmt/registry.go"},
+        {"repo": "grafana/grafana", "path": "pkg/services/featuremgmt/toggles_gen.go"},
+        {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/logger.go"},
+        {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/event.go"},
+        {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/policy.go"},
+        {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/noop.go"},
+        {"repo": "grafana/grafana", "path": "pkg/services/apiserver/builder/common.go"},
+        {"repo": "grafana/grafana", "path": "pkg/services/apiserver/builder/helper.go"},
+        {"repo": "grafana/grafana", "path": "pkg/services/apiserver/service.go"},
+        {"repo": "grafana/grafana", "path": "pkg/registry/apis/wireset.go"}
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic", "rubric_judge"],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "auditLoggingAppPlatform audit.Backend APIGroupAuditor",
+          "file_filter": ".go"
+        }
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": ["auditLoggingAppPlatform", "APIGroupAuditor", "audit.Backend", "NoopBackend", "Logger"]
+        }
+      },
+      {
+        "type": "provenance",
+        "params": {
+          "must_cite_repos": ["grafana/grafana"],
+          "must_cite_paths": [
+            "pkg/apiserver/auditing/",
+            "pkg/services/featuremgmt/",
+            "pkg/services/apiserver/"
+          ]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "rubric_judge": {
+    "criteria_file": "/tests/criteria.json",
+    "weight": 0.4
+  },
+  "deepsearch_variant": {
+    "enabled": true,
+    "variant_prompt": "Use Deep Search to synthesize the end-to-end audit logging control across feature management, audit infrastructure, and API server wiring in grafana/grafana.",
+    "synthesis_focus": "cross-component compliance tracing"
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

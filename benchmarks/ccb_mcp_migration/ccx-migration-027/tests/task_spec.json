@@ -1,0 +1,60 @@
+{
+  "id": "CCX-migration-027",
+  "family": "migration-breaking-change",
+  "use_case_id": 27,
+  "category": "C",
+  "mcp_suite": "ccb_mcp_migration",
+  "prd": {
+    "user_story": "As a platform engineer auditing deprecated API usage before a major Express version bump, I need to find all source files in expressjs/express that reference the deprecated req.host property.",
+    "constraints": [
+      "Only include files that reference the deprecated req.host property specifically, not req.hostname.",
+      "Include definition files, test files, and changelog entries.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent finds all 3 source files in expressjs/express that reference the deprecated req.host property: the definition in lib/request.js, the test file test/req.host.js, and the changelog History.md.",
+    "seed_prompt": "Which source files in sg-benchmarks/expressjs-express reference the deprecated req.host property specifically (the definition, tests, and changelog)?"
+  },
+  "artifacts": {
+    "repo_set_id": "nodejs-web-stack",
+    "pinned_versions": {
+      "expressjs/express": "4.21.1",
+      "nodejs/node": "v22.13.0"
+    },
+    "sg_mirrors_required": [
+      "expressjs/express (sg-benchmarks/expressjs-express at 4.21.1)"
+    ],
+    "oracle": {
+      "required_files": [
+        {"repo": "sg-benchmarks/expressjs-express", "path": "lib/request.js"},
+        {"repo": "sg-benchmarks/expressjs-express", "path": "test/req.host.js"},
+        {"repo": "sg-benchmarks/expressjs-express", "path": "History.md"}
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "req.host",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": ["req.host", "req.hostname", "deprecated"]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

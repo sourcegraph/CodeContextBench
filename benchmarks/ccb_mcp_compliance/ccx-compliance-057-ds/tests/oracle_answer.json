@@ -1,0 +1,27 @@
+{
+  "files": [
+    {"repo": "grafana/grafana", "path": "pkg/services/featuremgmt/registry.go"},
+    {"repo": "grafana/grafana", "path": "pkg/services/featuremgmt/toggles_gen.go"},
+    {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/logger.go"},
+    {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/event.go"},
+    {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/policy.go"},
+    {"repo": "grafana/grafana", "path": "pkg/apiserver/auditing/noop.go"},
+    {"repo": "grafana/grafana", "path": "pkg/services/apiserver/builder/common.go"},
+    {"repo": "grafana/grafana", "path": "pkg/services/apiserver/builder/helper.go"},
+    {"repo": "grafana/grafana", "path": "pkg/services/apiserver/service.go"},
+    {"repo": "grafana/grafana", "path": "pkg/registry/apis/wireset.go"}
+  ],
+  "text": "The Grafana audit logging control spans 4 architectural layers, forming a complete SOC 2 evidence chain. Layer 1 — Feature Flag Definition: pkg/services/featuremgmt/registry.go defines the auditLoggingAppPlatform feature flag in the feature toggle registry, and pkg/services/featuremgmt/toggles_gen.go contains the generated Go constant FlagAuditLoggingAppPlatform used throughout the codebase. Layer 2 — Audit Infrastructure: pkg/apiserver/auditing/logger.go defines the Logger interface that audit backends must implement, pkg/apiserver/auditing/event.go defines the Event struct modeling individual audit events, pkg/apiserver/auditing/policy.go implements the policy evaluation logic that determines which API operations should be audited, and pkg/apiserver/auditing/noop.go provides the NoopBackend implementation used when audit logging is disabled. Layer 3 — API Server Wiring: pkg/services/apiserver/builder/common.go defines the APIGroupAuditor interface that API group builders implement to declare their audit policies, pkg/services/apiserver/builder/helper.go contains the policy aggregation logic that combines per-group audit policies with the global audit.Backend, and pkg/services/apiserver/service.go is the main API server service that wires the audit backend into the server startup via dependency injection. Layer 4 — DI Registration: pkg/registry/apis/wireset.go contains the Wire provider set that registers the audit components in Grafana's dependency injection container, ensuring the audit backend is available throughout the application lifecycle.",
+  "_metadata": {
+    "oracle_type": "file_set_match",
+    "discovery_method": "sourcegraph_keyword_search",
+    "queries": [
+      "repo:^github.com/grafana/grafana$ auditLoggingAppPlatform",
+      "repo:^github.com/grafana/grafana$ file:pkg/apiserver/auditing/ Logger interface",
+      "repo:^github.com/grafana/grafana$ APIGroupAuditor",
+      "repo:^github.com/grafana/grafana$ file:pkg/registry/apis/ wireset"
+    ],
+    "verified_at": "2026-02-21",
+    "pinned_version": "v11.4.0"
+  }
+}

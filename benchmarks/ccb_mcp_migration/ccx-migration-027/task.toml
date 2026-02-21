@@ -1,0 +1,27 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-migration-027"
+description = "Find all usages of deprecated Express req.host across nodejs web stack"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-migration-027"
+repo = "expressjs/express"
+category = "migration-breaking-change"
+language = "javascript"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_migration"
+use_case_id = 27
+repo_set_id = "nodejs-web-stack"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+reward_type = "score"
+description = "Find all usages of deprecated Express req.host across nodejs web stack"
+
+[environment]
+build_timeout_sec = 600.0

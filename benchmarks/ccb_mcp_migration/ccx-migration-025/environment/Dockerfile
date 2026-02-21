@@ -1,0 +1,29 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Base tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    curl \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Clone all fixture repos at pinned versions (baseline has full local access)
+RUN git clone --depth 1 --branch v2.2.2 https://github.com/numpy/numpy /workspace/numpy
+RUN git clone --depth 1 --branch v1.15.1 https://github.com/scipy/scipy /workspace/scipy
+RUN git clone --depth 1 --branch 1.6.1 https://github.com/scikit-learn/scikit-learn /workspace/scikit-learn
+RUN git clone --depth 1 --branch v2.2.3 https://github.com/pandas-dev/pandas /workspace/pandas
+
+# Initialize git identity for agent commits
+RUN git config --global user.email "agent@example.com" && \
+    git config --global user.name "Agent" && \
+    git config --global safe.directory '*'
+
+# Create log directories
+RUN mkdir -p /logs/agent /logs/verifier
+
+ENTRYPOINT []

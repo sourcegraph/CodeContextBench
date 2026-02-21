@@ -1,0 +1,27 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-incident-037"
+description = "Find all etcd DialTimeout configurations across Kubernetes ecosystem"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-incident-037"
+repo = "kubernetes/kubernetes"
+category = "incident-timeout-config"
+language = "go"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_incident"
+use_case_id = 37
+repo_set_id = "kubernetes-ecosystem"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+reward_type = "score"
+description = "Find all etcd DialTimeout configurations across Kubernetes ecosystem"
+
+[environment]
+build_timeout_sec = 600.0

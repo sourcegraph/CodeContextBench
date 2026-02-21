@@ -69,16 +69,16 @@ Ten suites map to use case categories A-J:
 |-------|----------|-------------|-------|
 | `ccb_mcp_crossrepo_tracing` | A | Cross-repo dependency tracing + symbol resolution | 3 |
 | `ccb_mcp_security` | B | Vulnerability + security remediation at scale | 2 |
-| `ccb_mcp_migration` | C | Framework upgrades across repos | 0 |
-| `ccb_mcp_incident` | D | On-call / incident debugging across microservices | 1 |
-| `ccb_mcp_onboarding` | E | Architecture comprehension + API discovery | 5 |
-| `ccb_mcp_compliance` | F | Compliance / audit / provenance | 0 |
+| `ccb_mcp_migration` | C | Framework upgrades across repos | 2 |
+| `ccb_mcp_incident` | D | On-call / incident debugging across microservices | 3 |
+| `ccb_mcp_onboarding` | E | Architecture comprehension + API discovery | 3 |
+| `ccb_mcp_compliance` | F | Compliance / audit / provenance | 2 |
 | `ccb_mcp_crossorg` | G | Cross-org discovery (repos from different GitHub orgs) | 2 |
 | `ccb_mcp_domain` | H | Domain-specific lineage (deferred) | 0 |
 | `ccb_mcp_org` | I | Agentic coding correctness using org-wide context | 0 |
-| `ccb_mcp_platform` | J | Platform / DevTools / tribal knowledge | 1 |
+| `ccb_mcp_platform` | J | Platform / DevTools / tribal knowledge | 3 |
 
-**Current starter pack: 14 tasks across 6 active suites.** See
+**Current starter pack: 20 tasks across 8 active suites.** See
 `configs/selected_mcp_unique_tasks.json` for the canonical list.
 
 ## Repo Sets
@@ -93,6 +93,7 @@ baseline, truncated for MCP-Full. Common repo groupings across tasks:
 | Python ML stack | scikit-learn, numpy, pandas, scipy | Yes (4 orgs) | Python |
 | Grafana observability | grafana, loki, mimir | No (all grafana) | Go/TS |
 | Multi-org Go | kubernetes, etcd, grafana | Yes (3 orgs) | Go |
+| Prometheus monitoring | prometheus, alertmanager, client_golang | No (all prometheus) | Go |
 
 Repos not natively indexed in Sourcegraph use `sg-benchmarks` mirrors
 (e.g., `sg-benchmarks/kubernetes-client-go`). The Dockerfile is the
@@ -340,12 +341,13 @@ help agents discover cross-repo information more effectively.
 
 ## Deep Search Tasks
 
-Three tasks are designed specifically for Deep Search synthesis:
+Four tasks are designed specifically for Deep Search synthesis:
 
 | Task | Suite | Question Type |
 |------|-------|--------------|
 | `CCX-onboard-050-ds` | onboarding | End-to-end flow across 3 repos |
 | `CCX-explore-042-ds` | onboarding | Data flow architecture map |
+| `CCX-compliance-057-ds` | compliance | Compliance audit across monitoring stack |
 | `CCX-explore-091-ds` | platform | Canonical deployment pattern discovery |
 
 **Design principle**: DS variant instructions are open-ended synthesis questions
@@ -373,7 +375,7 @@ Hybrid score = 0.6 × verifier_reward + 0.4 × rubric_score.
 5. Verify with the validity gate
 6. Add to `configs/selected_mcp_unique_tasks.json`
 
-### Add a New Category (C, F, G, H, I, J)
+### Add a New Category (H, I)
 
 1. Create the use case entries in `configs/use_case_registry.json`
    (set `oracle_type` from `"tbd"` to a real type)

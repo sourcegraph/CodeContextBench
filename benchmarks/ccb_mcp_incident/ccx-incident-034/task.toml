@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-incident-034"
+description = "Incident investigation: Loki client retry and timeout configuration"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-incident-034"
+repo = "grafana/grafana"
+category = "incident-retry-semantics"
+language = "go"
+difficulty = "medium"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_incident"
+use_case_id = 34
+repo_set_id = "grafana-observability"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Incident investigation: Loki client retry and timeout configuration"
+
+[environment]
+build_timeout_sec = 900.0
