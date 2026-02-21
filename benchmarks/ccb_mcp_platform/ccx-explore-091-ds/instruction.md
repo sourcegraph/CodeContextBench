@@ -23,11 +23,10 @@ For each, cite the specific repository, file path, and the key type/function/doc
 
 You are working with the Kubernetes ecosystem in a cross-org environment:
 
-- Local `/workspace/kubernetes/` — `kubernetes/kubernetes` (core orchestrator)
-- Accessible via Sourcegraph MCP:
-  - `sg-benchmarks/kubernetes-client-go` (go-client-library)
-  - `sg-benchmarks/kubernetes-api` (api-type-definitions)
-  - `etcd-io/etcd` (distributed-kv-store)
+- `kubernetes/kubernetes` (core orchestrator)
+- `sg-benchmarks/kubernetes-client-go` (go-client-library)
+- `sg-benchmarks/kubernetes-api` (api-type-definitions)
+- `etcd-io/etcd` (distributed-kv-store)
 
 This question is specifically designed to benefit from cross-repo synthesis. The
 deployment pattern spans the API types repo, the client library repo, and documentation

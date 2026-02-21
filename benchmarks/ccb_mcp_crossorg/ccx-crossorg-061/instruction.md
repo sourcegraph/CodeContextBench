@@ -19,16 +19,16 @@ compile time that a type implements an interface. Finding all such declarations 
 repos from different organizations reveals who has independently implemented the same
 storage abstraction — a key signal for platform compatibility audits.
 
-The search should be **exhaustive across all repos in the ecosystem**, not just the
-local repo. The interface is defined in the Kubernetes ecosystem but can be implemented
+The search should be **exhaustive across all repos in the ecosystem**, not just a
+single repo. The interface is defined in the Kubernetes ecosystem but can be implemented
 by projects from entirely different organizations.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
+Your ecosystem includes the following repositories:
+- `kubernetes/kubernetes` at v1.32.0
+- `etcd-io/etcd` at v3.5.17
+- `grafana/grafana` at v11.4.0
 
 ## Output Format
 

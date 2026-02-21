@@ -221,9 +221,9 @@ _sdlc_run_single() {
 
     # Dockerfile selection based on SOURCE_ACCESS and VERIFIER_MODE:
     #   local  + direct   → original Dockerfile (no swap needed)
-    #   local  + artifact → Dockerfile.artifact_only (source stays readable)
-    #   remote + direct   → Dockerfile.sg_only (source truncated at build time)
-    #   remote + artifact → Dockerfile.artifact_only (preferred) or Dockerfile.sg_only (fallback)
+    #   local  + artifact → Dockerfile.artifact_only (source stays readable for baseline)
+    #   remote + direct   → Dockerfile.sg_only (empty workspace, verifier restores repo)
+    #   remote + artifact → Dockerfile.sg_only (empty workspace, verifier scores output only)
     if [ "$SOURCE_ACCESS" = "local" ] && [ "$VERIFIER_MODE" = "artifact" ]; then
         local artifact="${task_path}/environment/Dockerfile.artifact_only"
         if [ -f "$artifact" ]; then
@@ -249,15 +249,17 @@ _sdlc_run_single() {
         run_task_path="$temp_task_dir"
 
     elif [ "$SOURCE_ACCESS" = "remote" ] && [ "$VERIFIER_MODE" = "artifact" ]; then
-        local artifact="${task_path}/environment/Dockerfile.artifact_only"
+        # Prefer Dockerfile.sg_only (empty workspace) over artifact_only
+        # (which clones then deletes at runtime — unnecessary overhead).
+        # Artifact verifier scores output only; no repo restore needed.
         local chosen_dockerfile=""
-        if [ -f "$artifact" ]; then
-            chosen_dockerfile="Dockerfile.artifact_only"
-        elif [ -f "${task_path}/environment/Dockerfile.sg_only" ]; then
-            echo "WARNING: No Dockerfile.artifact_only for $task_id — falling back to Dockerfile.sg_only"
+        if [ -f "${task_path}/environment/Dockerfile.sg_only" ]; then
             chosen_dockerfile="Dockerfile.sg_only"
+        elif [ -f "${task_path}/environment/Dockerfile.artifact_only" ]; then
+            echo "WARNING: No Dockerfile.sg_only for $task_id — falling back to Dockerfile.artifact_only"
+            chosen_dockerfile="Dockerfile.artifact_only"
         else
-            echo "ERROR: No Dockerfile.artifact_only or Dockerfile.sg_only for $task_id"
+            echo "ERROR: No Dockerfile.sg_only or Dockerfile.artifact_only for $task_id"
             return 1
         fi
         temp_task_dir="/tmp/artifact_${task_id}"

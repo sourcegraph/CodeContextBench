@@ -19,11 +19,10 @@ For each step, cite the specific repository, file path, and function/type name.
 
 You are working in a Kubernetes ecosystem with the following repos:
 
-- Local `/workspace/kubernetes/` — `kubernetes/kubernetes` (the core orchestrator)
-- Accessible via Sourcegraph MCP:
-  - `sg-benchmarks/kubernetes-client-go` (go-client-library)
-  - `sg-benchmarks/kubernetes-api` (api-type-definitions)
-  - `etcd-io/etcd` (distributed-kv-store)
+- `kubernetes/kubernetes` (the core orchestrator)
+- `sg-benchmarks/kubernetes-client-go` (go-client-library)
+- `sg-benchmarks/kubernetes-api` (api-type-definitions)
+- `etcd-io/etcd` (distributed-kv-store)
 
 This question is specifically designed to benefit from cross-repo synthesis. Use your
 search tools to trace the full path across repositories.

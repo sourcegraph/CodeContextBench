@@ -21,14 +21,14 @@ You are doing a security audit of your Node.js web stack, which spans multiple r
 across different organizations. The stack includes the runtime, the web framework, a
 utility library, and a database ORM.
 
-This is a cross-org audit: you need to check all repos in the stack — not just the
-one cloned locally — to ensure no vulnerable dependency slips through.
+This is a cross-org audit: you need to check all repos in the stack to ensure no
+vulnerable dependency slips through.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `nodejs/node` at v22.13.0 → `/workspace/node`
-- `expressjs/express` at 4.21.1 → `/workspace/express`
+Your ecosystem includes the following repositories:
+- `nodejs/node` at v22.13.0
+- `expressjs/express` at 4.21.1
 
 ## Output Format
 
@@ -47,7 +47,7 @@ Create a file at `/workspace/answer.json` with your findings:
 }
 ```
 
-**Important**: Use exact repo identifiers as they appear in Sourcegraph. The repos to search are `nodejs/node`, `sg-benchmarks/expressjs-express`, `sg-benchmarks/lodash`, and `sg-benchmarks/prisma-prisma`. Note: the local `/workspace/express` directory maps to `sg-benchmarks/expressjs-express` in Sourcegraph — use `sg-benchmarks/expressjs-express` as the `repo` value in your answer.
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The repos to search are `nodejs/node`, `sg-benchmarks/expressjs-express`, `sg-benchmarks/lodash`, and `sg-benchmarks/prisma-prisma`. Note: the `expressjs/express` repository corresponds to `sg-benchmarks/expressjs-express` in Sourcegraph — use `sg-benchmarks/expressjs-express` as the `repo` value in your answer.
 **Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-benchmarks/kubernetes-client-go`). Strip this prefix in your answer — use `sg-benchmarks/kubernetes-client-go`, NOT `github.com/sg-benchmarks/kubernetes-client-go`.
 
 Include only entries where `cookie` appears under `"dependencies"` (not `"devDependencies"`

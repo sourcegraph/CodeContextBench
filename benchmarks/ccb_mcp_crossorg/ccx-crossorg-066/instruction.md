@@ -19,17 +19,17 @@ In Go, every module has a canonical `go.mod` file that declares the module path 
 authoritative source. Other repos may vendor or depend on it but are NOT the source
 of truth.
 
-The `kubernetes/kubernetes` repo (available locally) vendors this module — you can
+The `kubernetes/kubernetes` repo vendors this module — you can
 see this at `vendor/go.etcd.io/etcd/client/v3/`. However, this is a vendored copy,
 not the authoritative source. Your task is to find where this module is authoritatively
 maintained.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
+Your ecosystem includes the following repositories:
+- `kubernetes/kubernetes` at v1.32.0
+- `etcd-io/etcd` at v3.5.17
+- `grafana/grafana` at v11.4.0
 
 ## Output Format
 

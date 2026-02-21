@@ -26,11 +26,11 @@ This is a common substring-matching pitfall in migration audits.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `expressjs/express` at 4.21.1 → `/workspace/express`
-- `nodejs/node` at v22.13.0 → `/workspace/node`
-- `lodash/lodash` → `/workspace/lodash` (optional, not needed for this task)
-- `prisma/prisma` → `/workspace/prisma` (optional, not needed for this task)
+Your ecosystem includes the following repositories:
+- `expressjs/express` at 4.21.1
+- `nodejs/node` at v22.13.0
+- `lodash/lodash` (optional, not needed for this task)
+- `prisma/prisma` (optional, not needed for this task)
 
 ## Output Format
 

@@ -22,9 +22,9 @@ definition files. Also include the HTTP fake/stub client used for testing.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
-- `grafana/loki` at v3.3.4 → `/workspace/loki`
+Your ecosystem includes the following repositories:
+- `grafana/grafana` at v11.4.0
+- `grafana/loki` at v3.3.4
 
 ## Output Format
 

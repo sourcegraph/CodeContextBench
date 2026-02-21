@@ -22,9 +22,9 @@ adding observability, or extending the query pipeline.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
-- `grafana/loki` at v3.3.4 → `/workspace/loki`
+Your ecosystem includes the following repositories:
+- `grafana/grafana` at v11.4.0
+- `grafana/loki` at v3.3.4
 
 ## Output Format
 
@@ -44,7 +44,7 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 - For Loki: `"repo": "sg-benchmarks/grafana-loki"`
 **Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-benchmarks/kubernetes-client-go`). Strip this prefix in your answer — use `sg-benchmarks/kubernetes-client-go`, NOT `github.com/sg-benchmarks/kubernetes-client-go`.
 
-The local checkout at `/workspace/loki` corresponds to `sg-benchmarks/grafana-loki`.
+The `grafana/loki` repository corresponds to `sg-benchmarks/grafana-loki` in Sourcegraph.
 
 List the chain steps in order from Grafana (caller) to Loki (callee). Your answer is evaluated
 against a closed-world oracle — precision matters.

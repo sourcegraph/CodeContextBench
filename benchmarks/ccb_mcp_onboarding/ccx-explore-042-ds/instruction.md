@@ -23,11 +23,10 @@ For each step, cite the specific repository, file path, and function/class name.
 
 You are working with the Python ML stack in a cross-org environment:
 
-- Local `/workspace/scikit-learn/` — `scikit-learn/scikit-learn` (ML algorithms)
-- Accessible via Sourcegraph MCP:
-  - `numpy/numpy` (array-computing)
-  - `pandas-dev/pandas` (dataframe-library)
-  - `scipy/scipy` (scientific-computing)
+- `scikit-learn/scikit-learn` (ML algorithms)
+- `numpy/numpy` (array-computing)
+- `pandas-dev/pandas` (dataframe-library)
+- `scipy/scipy` (scientific-computing)
 
 This question is specifically designed to benefit from cross-repo synthesis. The
 data flow spans multiple organizations and can only be fully understood by examining

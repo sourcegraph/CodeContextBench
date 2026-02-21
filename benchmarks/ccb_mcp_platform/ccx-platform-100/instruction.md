@@ -16,10 +16,10 @@ You are performing a platform audit to inventory all deprecated but still-presen
 
 ## Available Resources
 
-The local `/workspace/` directory contains:
-- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
+Your ecosystem includes the following repositories:
+- `kubernetes/kubernetes` at v1.32.0
+- `etcd-io/etcd` at v3.5.17
+- `grafana/grafana` at v11.4.0
 
 ## Output Format
 

@@ -20,8 +20,8 @@ You are performing a compliance audit of the Prometheus monitoring stack. The go
 
 ## Available Resources
 
-The local `/workspace/` directory contains:
-- `prometheus/prometheus` at v3.2.1 → `/workspace/prometheus`
+Your ecosystem includes the following repositories:
+- `prometheus/prometheus` at v3.2.1
 
 ## Output Format
 

@@ -16,10 +16,11 @@ files. Do not include files that only mention `scipy.stats` in docstrings or com
 
 ## Context
 
-You are onboarding to a polyrepo Python scientific stack. The local `/workspace/` contains
+You are onboarding to a polyrepo Python scientific stack. Your ecosystem includes
 `scikit-learn/scikit-learn` as a reference implementation of a well-maintained scipy consumer.
 
-**Note:** The `pandas-dev/pandas` repository is accessible via Sourcegraph MCP tools:
+Your ecosystem includes the following repositories:
+- `scikit-learn/scikit-learn` (ML algorithms)
 - `pandas-dev/pandas` (dataframe-library)
 - `numpy/numpy` (array-computing)
 - `scipy/scipy` (scientific-computing)

@@ -105,6 +105,7 @@ Note: Sourcegraph indexes the remote repository. Local source files are not pres
 # No truncation language — local source files simply aren't present.
 # 25% shorter than V4: removes Workflows, Output Formatting, Common Mistakes, Query Patterns.
 # {repo_scope} is replaced at runtime with the target repository filter.
+# {workflow_tail} is replaced with edit+test steps (direct) or produce-artifact step (artifact_full).
 V5_PREAMBLE_TEMPLATE = """# IMPORTANT: Source Code Access
 
 **Local source files are not present.** Your workspace does not contain source code. You **MUST** use Sourcegraph MCP tools to discover, read, and understand code before making any changes.
@@ -115,8 +116,7 @@ V5_PREAMBLE_TEMPLATE = """# IMPORTANT: Source Code Access
 
 1. **Search first** — Use MCP tools to find relevant files and understand existing patterns
 2. **Read remotely** — Use `sg_read_file` to read full file contents from Sourcegraph
-3. **Edit locally** — Use Edit, Write, and Bash to create or modify files in your working directory
-4. **Verify locally** — Run tests with Bash to check your changes
+{workflow_tail}
 
 ## Tool Selection
 
@@ -477,22 +477,28 @@ class BaselineClaudeCodeAgent(ClaudeCode):
                     "before searching.\n"
                 )
 
-            mcp_preamble = V5_PREAMBLE_TEMPLATE.format(repo_scope=repo_scope)
-            instruction = mcp_preamble + instruction
-
-            # Artifact-full: append guidance about expressing changes as diffs
+            # Workflow steps 3-4 vary by config: direct configs edit+test
+            # locally, artifact configs produce diffs as output artifacts.
             if mcp_type == "artifact_full":
-                artifact_guidance = """
+                workflow_tail = (
+                    "3. **Produce artifacts** — Express all code changes as "
+                    "**unified diffs** in your output artifact (e.g., "
+                    "`fix_patch` fields in review.json, or a standalone "
+                    "`solution.patch` file). Do NOT edit source files directly "
+                    "— there are none in your workspace."
+                )
+            else:
+                workflow_tail = (
+                    "3. **Edit locally** — Use Edit, Write, and Bash to "
+                    "create or modify files in your working directory\n"
+                    "4. **Verify locally** — Run tests with Bash to check "
+                    "your changes"
+                )
 
-## Artifact-Only Evaluation
-
-You are in **artifact-only mode**. Your workspace is empty — all code discovery
-must go through Sourcegraph MCP tools. Express all code changes as **unified
-diffs** in your output artifact (e.g., `fix_patch` fields in review.json, or a
-standalone `solution.patch` file). Do NOT attempt to edit source files directly
-— there are no source files in your workspace.
-"""
-                instruction = instruction + artifact_guidance
+            mcp_preamble = V5_PREAMBLE_TEMPLATE.format(
+                repo_scope=repo_scope, workflow_tail=workflow_tail
+            )
+            instruction = mcp_preamble + instruction
 
         elif mcp_type == "sourcegraph_isolated":
             # Isolated mode: agent has only the target package locally (via sparse checkout).
@@ -633,7 +639,12 @@ before retrying."""
             else:
                 repo_filter_system = "Use list_repos to discover available repositories first."
 
-            mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then create or edit local files based on what you learn. Run tests locally to verify your changes.
+            if mcp_type == "artifact_full":
+                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then express your changes as unified diffs in your output artifact.
+
+{repo_filter_system}"""
+            else:
+                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then create or edit local files based on what you learn. Run tests locally to verify your changes.
 
 {repo_filter_system}"""
             system_prompt_append = EVALUATION_CONTEXT_PROMPT + "\n\n---\n\n" + mcp_system_prompt
@@ -847,22 +858,9 @@ before retrying."""
                     'cd "$WORKDIR"',
                 ]
 
-                # For artifact_full: delete source files so agent must use MCP.
-                # Baseline keeps source readable (mcp_type == "none").
-                # We delete rather than truncate to avoid agents wasting tokens
-                # trying to read visible-but-empty files.
-                if mcp_type == "artifact_full":
-                    script_lines.extend([
-                        '# Delete source files — agent must use MCP to read code',
-                        'find /workspace -type f \\( '
-                        '-name "*.cs" -o -name "*.py" -o -name "*.ts" -o -name "*.tsx" '
-                        '-o -name "*.js" -o -name "*.jsx" -o -name "*.go" -o -name "*.rs" '
-                        '-o -name "*.java" -o -name "*.c" -o -name "*.h" -o -name "*.cpp" '
-                        '-o -name "*.rb" -o -name "*.php" -o -name "*.swift" -o -name "*.kt" '
-                        '-o -name "*.scala" -o -name "*.vue" -o -name "*.svelte" '
-                        '\\) -delete',
-                        'echo "Source files deleted for artifact_full mode"',
-                    ])
+                # Note: artifact_full no longer needs runtime source deletion.
+                # The config layer now uses Dockerfile.sg_only (empty workspace)
+                # for remote+artifact, so there are no source files to delete.
 
                 # If system prompt exists, read it from file and pass via --append-system-prompt
                 if _system_prompt_content:

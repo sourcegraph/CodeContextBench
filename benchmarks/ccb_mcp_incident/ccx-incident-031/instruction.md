@@ -24,7 +24,7 @@ Specifically, find:
 
 ## Important: Avoiding Decoys
 
-The local `kubernetes/kubernetes` checkout at `/workspace/kubernetes` contains
+The `kubernetes/kubernetes` repository contains
 vendored copies of etcd code under `vendor/go.etcd.io/etcd/`. These vendored
 files look identical to the real source but are **not** the authoritative location.
 
@@ -33,14 +33,14 @@ The Kubernetes apiserver also has its own error-mapping layer at
 the etcd error into Kubernetes error types — this is also **not** the authoritative
 source of the original error.
 
-Your answer must cite the **upstream etcd repository** (accessible via Sourcegraph
-MCP tools), not the vendored copies or the Kubernetes error-mapping layer.
+Your answer must cite the **upstream etcd repository**, not the vendored copies
+or the Kubernetes error-mapping layer.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd` (this is where the error originates)
+Your ecosystem includes the following repositories:
+- `kubernetes/kubernetes` at v1.32.0
+- `etcd-io/etcd` at v3.5.17 (this is where the error originates)
 
 ## Output Format
 

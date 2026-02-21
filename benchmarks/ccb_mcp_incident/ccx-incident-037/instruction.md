@@ -31,11 +31,11 @@ passed through, and applied.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `kubernetes/client-go` at v0.32.0 → `/workspace/client-go`
-- `kubernetes/api` at v0.32.0 → `/workspace/api`
-- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
+Your ecosystem includes the following repositories:
+- `kubernetes/kubernetes` at v1.32.0
+- `kubernetes/client-go` at v0.32.0
+- `kubernetes/api` at v0.32.0
+- `etcd-io/etcd` at v3.5.17
 
 ## Output Format
 

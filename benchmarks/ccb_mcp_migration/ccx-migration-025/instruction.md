@@ -30,11 +30,11 @@ have residual references in vendored code and help strings.
 
 ## Available Resources
 
-The local `/workspace/` directory contains all repositories:
-- `numpy/numpy` at v2.2.2 → `/workspace/numpy`
-- `scipy/scipy` at v1.15.1 → `/workspace/scipy`
-- `scikit-learn/scikit-learn` at 1.6.1 → `/workspace/scikit-learn`
-- `pandas-dev/pandas` at v2.2.3 → `/workspace/pandas`
+Your ecosystem includes the following repositories:
+- `numpy/numpy` at v2.2.2
+- `scipy/scipy` at v1.15.1
+- `scikit-learn/scikit-learn` at 1.6.1
+- `pandas-dev/pandas` at v2.2.3
 
 ## Output Format
 

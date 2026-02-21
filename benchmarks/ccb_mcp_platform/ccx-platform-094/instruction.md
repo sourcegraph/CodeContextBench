@@ -20,8 +20,8 @@ You are a platform engineer investigating how code ownership is implemented and 
 
 ## Available Resources
 
-The local `/workspace/` directory contains:
-- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
+Your ecosystem includes the following repositories:
+- `grafana/grafana` at v11.4.0
 
 ## Output Format
 
