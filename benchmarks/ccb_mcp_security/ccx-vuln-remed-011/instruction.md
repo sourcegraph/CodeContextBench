@@ -28,7 +28,7 @@ one cloned locally — to ensure no vulnerable dependency slips through.
 
 The local `/workspace/` directory contains all repositories:
 - `nodejs/node` at v22.13.0 → `/workspace/node`
-- `expressjs/express` at 9de5890 → `/workspace/express`
+- `expressjs/express` at 4.21.1 → `/workspace/express`
 
 ## Output Format
 

@@ -14,7 +14,7 @@ WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
 RUN git clone --depth 1 --branch v22.13.0 https://github.com/nodejs/node /workspace/node
-RUN git clone --depth 1 --branch 4.19.2 https://github.com/expressjs/express /workspace/express
+RUN git clone --depth 1 --branch 4.21.1 https://github.com/expressjs/express /workspace/express
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \
