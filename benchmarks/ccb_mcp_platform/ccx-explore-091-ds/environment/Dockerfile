@@ -15,10 +15,10 @@ WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
 RUN git clone --depth 1 --branch v1.32.0 https://github.com/kubernetes/kubernetes /workspace/kubernetes
-RUN git clone https://github.com/kubernetes/client-go /workspace/client-go --no-checkout && \
-    cd /workspace/client-go && git fetch --depth 1 origin 8020fc4fcf89965904a5f43689f169d6e01d1e80 && git checkout FETCH_HEAD
-RUN git clone https://github.com/kubernetes/api /workspace/api --no-checkout && \
-    cd /workspace/api && git fetch --depth 1 origin fa23dd302759dbb681c1a41f09d24190a38c1d58 && git checkout FETCH_HEAD
+RUN git clone https://github.com/kubernetes/client-go /workspace/client-go && \
+    cd /workspace/client-go && git checkout 8020fc4fcf89965904a5f43689f169d6e01d1e80
+RUN git clone https://github.com/kubernetes/api /workspace/api && \
+    cd /workspace/api && git checkout fa23dd302759dbb681c1a41f09d24190a38c1d58
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

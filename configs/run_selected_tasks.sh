@@ -17,6 +17,8 @@
 #   --use-case-category CATEGORY    Filter by MCP-unique use case category (A-J), only valid with --selection-file
 #   --baseline-only                 Run only baseline (no MCP)
 #   --full-only                     Run only MCP-Full (mcp-remote-direct)
+#   --full-config CONFIG            Full config name (default: mcp-remote-direct)
+#                                   Use mcp-remote-artifact for artifact-based evaluation
 #   --model MODEL                   Override model (default: claude-opus-4-6)
 #   --concurrency N                 Concurrent tasks (default: 2)
 #   --category CATEGORY             Run category (default: staging)
@@ -53,6 +55,7 @@ TIMEOUT_MULTIPLIER=10
 RUN_BASELINE=true
 RUN_FULL=true
 CATEGORY="${CATEGORY:-staging}"
+FULL_CONFIG="${FULL_CONFIG:-mcp-remote-direct}"
 DRY_RUN=false
 SKIP_COMPLETED=false
 AGENT_PATH="agents.claude_baseline_agent:BaselineClaudeCodeAgent"
@@ -91,6 +94,10 @@ while [[ $# -gt 0 ]]; do
             CATEGORY="$2"
             shift 2
             ;;
+        --full-config)
+            FULL_CONFIG="$2"
+            shift 2
+            ;;
         --skip-completed)
             SKIP_COMPLETED=true
             shift
@@ -126,6 +133,11 @@ if [ "$RUN_FULL" = true ] && [ -z "$SOURCEGRAPH_ACCESS_TOKEN" ]; then
 fi
 
 ensure_fresh_token
+
+# Derive baseline config and mcp_type values from FULL_CONFIG
+BASELINE_CONFIG=$(baseline_config_for "$FULL_CONFIG")
+BL_MCP_TYPE=$(config_to_mcp_type "$BASELINE_CONFIG")
+FULL_MCP_TYPE=$(config_to_mcp_type "$FULL_CONFIG")
 
 # ============================================
 # EXTRACT TASKS FROM SELECTION FILE
@@ -199,7 +211,7 @@ echo "Source:        $SELECTION_FILE"
 echo "Model:         $MODEL"
 echo "Total tasks:   $TOTAL_TASKS"
 echo "Concurrency:   $CONCURRENCY"
-echo "Configs:       baseline-local-direct=$RUN_BASELINE mcp-remote-direct=$RUN_FULL"
+echo "Configs:       $BASELINE_CONFIG=$RUN_BASELINE $FULL_CONFIG=$RUN_FULL"
 echo "Skip done:     $SKIP_COMPLETED"
 [ -n "$USE_CASE_CATEGORY_FILTER" ] && echo "Category:      $USE_CASE_CATEGORY_FILTER"
 echo ""
@@ -301,6 +313,17 @@ run_benchmark() {
             echo "WARNING: Task directory not found: $abs_path"
             continue
         fi
+
+        # Swap Dockerfile for artifact configs (both baseline-local-artifact and mcp-remote-artifact)
+        local _df="${abs_path}/environment/Dockerfile"
+        local _df_artifact="${abs_path}/environment/Dockerfile.artifact_only"
+        local _df_swapped=false
+        if [[ "$mcp_mode" == *-artifact ]] && [ -f "$_df_artifact" ]; then
+            cp "$_df" "${_df}.run_bak"
+            cp "$_df_artifact" "$_df"
+            _df_swapped=true
+        fi
+
         BASELINE_MCP_TYPE=$mcp_type harbor run \
             --path "$abs_path" \
             --agent-import-path "$AGENT_PATH" \
@@ -310,6 +333,11 @@ run_benchmark() {
             --timeout-multiplier $TIMEOUT_MULTIPLIER \
             2>&1 | tee -a "${jobs_dir}.log" \
             || echo "WARNING: Task failed: $task_id (continuing...)"
+
+        # Restore original Dockerfile after run
+        if [ "$_df_swapped" = true ]; then
+            mv "${_df}.run_bak" "$_df"
+        fi
     done <<< "$task_ids" 3<<< "$task_dirs"
 
     unset SOURCEGRAPH_REPO_NAME 2>/dev/null || true
@@ -324,10 +352,10 @@ run_benchmark() {
 # ============================================
 for bm in $(echo "${!BENCHMARK_COUNTS[@]}" | tr ' ' '\n' | sort); do
     if [ "$RUN_BASELINE" = true ]; then
-        run_benchmark "$bm" "baseline-local-direct" "none"
+        run_benchmark "$bm" "$BASELINE_CONFIG" "$BL_MCP_TYPE"
     fi
     if [ "$RUN_FULL" = true ]; then
-        run_benchmark "$bm" "mcp-remote-direct" "sourcegraph_full"
+        run_benchmark "$bm" "$FULL_CONFIG" "$FULL_MCP_TYPE"
     fi
 done
 
