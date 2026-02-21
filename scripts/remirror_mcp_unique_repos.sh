@@ -18,6 +18,8 @@ REPOS=(
     "expressjs/express 4.21.1 expressjs-express"
     "grafana/loki v3.3.4 grafana-loki"
     "kubernetes/client-go v0.32.0 kubernetes-client-go"
+    "etcd-io/etcd v3.5.17 etcd-io-etcd"
+    "kubernetes/api v0.32.0 kubernetes-api"
 )
 
 for entry in "${REPOS[@]}"; do

@@ -308,17 +308,16 @@ is_task_completed() {
 declare -a _PIDS=()
 _ACCOUNT_IDX=0  # round-robin index into CLAUDE_HOMES[]
 
-# Pick next account home in round-robin order and advance the index.
-# Prints the chosen home dir; falls back to $HOME if CLAUDE_HOMES is empty.
-_next_account() {
+# Advance _ACCOUNT_IDX and set _PICKED_HOME to the next account.
+# MUST be called directly (not via $()) to keep index in parent shell.
+_pick_next_account() {
     local num=${#CLAUDE_HOMES[@]}
     if [ "$num" -eq 0 ]; then
-        echo "$HOME"
+        _PICKED_HOME="$HOME"
         return
     fi
-    local home="${CLAUDE_HOMES[$_ACCOUNT_IDX]}"
+    _PICKED_HOME="${CLAUDE_HOMES[$_ACCOUNT_IDX]}"
     _ACCOUNT_IDX=$(( (_ACCOUNT_IDX + 1) % num ))
-    echo "$home"
 }
 
 # Block until fewer than PARALLEL_TASKS jobs are running.
@@ -380,8 +379,8 @@ _launch_task_pair() {
     # Launch baseline config — uses original Dockerfile (full local repos)
     if [ "$RUN_BASELINE" = true ]; then
         _wait_for_slot
-        local _bl_home
-        _bl_home=$(_next_account)
+        _pick_next_account
+        local _bl_home="$_PICKED_HOME"
         (
             export HOME="$_bl_home"
             BASELINE_MCP_TYPE=$BL_MCP_TYPE harbor run \
@@ -419,8 +418,8 @@ _launch_task_pair() {
         fi
 
         _wait_for_slot
-        local _full_home
-        _full_home=$(_next_account)
+        _pick_next_account
+        local _full_home="$_PICKED_HOME"
         (
             export HOME="$_full_home"
             BASELINE_MCP_TYPE=$FULL_MCP_TYPE harbor run \

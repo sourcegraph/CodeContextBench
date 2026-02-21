@@ -31,16 +31,32 @@ from typing import Any, Dict, List, Optional
 # Agents sometimes forget to strip these; normalize before comparison.
 _HOSTING_PREFIX_RE = re.compile(r"^(?:github\.com|gitlab\.com|bitbucket\.org)/")
 
+# sg-benchmarks mirrors → upstream canonical names.
+# Allows oracle answers and agent answers to use either name interchangeably.
+_SG_MIRROR_ALIASES = {
+    "sg-benchmarks/kubernetes-client-go": "kubernetes/client-go",
+    "sg-benchmarks/kubernetes-api": "kubernetes/api",
+    "sg-benchmarks/etcd-io-etcd": "etcd-io/etcd",
+    "sg-benchmarks/expressjs-express": "expressjs/express",
+    "sg-benchmarks/grafana-loki": "grafana/loki",
+    "sg-benchmarks/grafana-mimir": "grafana/mimir",
+    "sg-benchmarks/prisma-prisma": "prisma/prisma",
+    "sg-benchmarks/lodash": "lodash/lodash",
+}
+
 
 def _normalize_repo(repo: str) -> str:
-    """Strip hosting-provider prefix from a repo name for fuzzy matching.
+    """Strip hosting-provider prefix and resolve sg-benchmarks aliases.
 
     >>> _normalize_repo("github.com/sg-benchmarks/kubernetes-client-go")
-    'sg-benchmarks/kubernetes-client-go'
+    'kubernetes/client-go'
     >>> _normalize_repo("sg-benchmarks/kubernetes-client-go")
-    'sg-benchmarks/kubernetes-client-go'
+    'kubernetes/client-go'
+    >>> _normalize_repo("etcd-io/etcd")
+    'etcd-io/etcd'
     """
-    return _HOSTING_PREFIX_RE.sub("", repo)
+    repo = _HOSTING_PREFIX_RE.sub("", repo)
+    return _SG_MIRROR_ALIASES.get(repo, repo)
 
 
 def check_file_set_match(

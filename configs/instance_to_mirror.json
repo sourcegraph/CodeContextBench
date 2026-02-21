@@ -559,6 +559,15 @@
       }
     }
   },
+  "mcp_unique_etcd": {
+    "_note": "etcd mirror pinned to v3.5.17 for MCP-unique task commit alignment",
+    "repo": "etcd-io/etcd",
+    "mirror_name": "sg-benchmarks/etcd-io-etcd",
+    "commit": "507c0de87bd5034e3de4ab76ebf96b54dae0cd52",
+    "tag": "v3.5.17",
+    "indexed": true,
+    "used_by": ["ccx-incident-031", "ccx-onboard-050-ds", "ccx-crossorg-066", "ccx-crossorg-061", "ccx-config-trace-010", "ccx-explore-091-ds"]
+  },
   "ccb_dependeval/multifile_editing-typescript-01b00e0e": "sg-benchmarks/dependeval-typescript-me-01b00e0e",
   "ccb_dependeval/multifile_editing-typescript-1469d2cc": "sg-benchmarks/dependeval-typescript-me-1469d2cc",
   "ccb_dependeval/multifile_editing-java-2e96d995": "sg-benchmarks/dependeval-java-me-2e96d995",
