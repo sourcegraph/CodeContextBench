@@ -1,0 +1,26 @@
+# flipt-cache-regression-prove-001 — artifact_only variant (build-requiring)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier applies patches from review.json to /repo_full copy for scoring.
+
+# Navprove Task Environment
+# Source: flipt-io/flipt (6fe76d02)
+
+FROM jefzda/sweap-images:flipt-io.flipt-flipt-io__flipt-6fe76d024ee0c50ddb09c86f4ae0bd4c208fd65f
+
+# Create required directories for Harbor
+RUN mkdir -p /logs
+
+# SWE-bench Pro images have the repository at /app
+# Symlink /workspace -> /app so verifier PATCH_APPLY_DIR works
+RUN ln -sf /app /workspace || true
+
+WORKDIR /app
+
+# --- artifact_only: backup full repo for verifier scoring ---
+# Source stays in /app (readable by baseline agent).
+# MCP agent deletes source files at runtime via agent startup script.
+RUN cp -a /app /repo_full
+RUN touch /tmp/.artifact_only_mode && echo '/app' > /tmp/.artifact_only_workdir
+
+ENTRYPOINT []

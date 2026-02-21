@@ -1,0 +1,24 @@
+# k8s-fairqueuing-doc-gen-001 — artifact_only variant (build-requiring)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier applies patches from review.json to /repo_full copy for scoring.
+
+FROM ccb-repo-k8s-8c9c67c0
+
+# SURGICAL: Remove ONLY the target doc.go (not recursive!)
+RUN rm -f staging/src/k8s.io/apiserver/pkg/util/flowcontrol/fairqueuing/queueset/doc.go
+# Strip "// Package ..." line from files in the immediate directory only
+RUN find staging/src/k8s.io/apiserver/pkg/util/flowcontrol/fairqueuing/queueset -maxdepth 1 -name "*.go" -exec sed -i '/^\/\/ Package/d' {} +
+
+# Create test directory for verifier
+RUN mkdir -p /workspace/tests
+
+# Create /app directory for MCP config upload compatibility
+RUN mkdir -p /app
+# --- artifact_only: backup full repo for verifier scoring ---
+# Source stays in /workspace (readable by baseline agent).
+# MCP agent deletes source files at runtime via agent startup script.
+RUN cp -a /workspace /repo_full
+RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir
+
+ENTRYPOINT []

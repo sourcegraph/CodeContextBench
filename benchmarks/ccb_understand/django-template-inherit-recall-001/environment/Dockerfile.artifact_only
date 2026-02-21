@@ -1,0 +1,29 @@
+# django-template-inherit-recall-001 — artifact_only variant (write-only)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier scores agent output only — no repo restore needed.
+
+FROM ccb-repo-django-674eda1c
+
+# Inject sparse HISTORY.md to simulate institutional memory loss
+RUN cat > HISTORY.md << 'HISTORY'
+# Template Engine Changes
+
+## Recent Updates
+
+- 2024-01: Refactored block handling (Alex - no longer with team)
+- 2023-11: Fixed minor rendering issue
+- 2023-09: Updated template loader
+- 2023-06: Various fixes
+
+No detailed documentation available for template internals.
+Contact: Template team Slack channel (archived)
+HISTORY
+
+RUN git add HISTORY.md && git commit -m "update notes" --quiet
+# --- artifact_only mode ---
+# Sentinel flag for artifact-based verification.
+# Source stays readable for baseline agent; MCP agent deletes at runtime.
+RUN touch /tmp/.artifact_only_mode
+
+ENTRYPOINT []

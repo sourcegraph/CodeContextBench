@@ -1,0 +1,40 @@
+# tensorrt-mxfp4-quant-feat-001 — artifact_only variant (build-requiring)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier applies patches from review.json to /repo_full copy for scoring.
+
+FROM python:3.11-bookworm
+
+WORKDIR /workspace
+
+# Install dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    build-essential \
+    cmake \
+    ninja-build \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone the actual TensorRT-LLM repository at pinned commit
+# This ensures BOTH baseline and MCP agents have identical file access
+RUN git clone --filter=blob:none --no-checkout https://github.com/NVIDIA/TensorRT-LLM.git . && \
+    git checkout b98f3fca2059f5403bee0966434578212bc92f32 && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
+
+# Install Python dependencies (basic setup only)
+# Full build may require CUDA and other deps, but we need the source files
+RUN pip install --upgrade pip && \
+    pip install pybind11==2.13.6 2>&1 || true
+
+# Task setup complete
+# Note: Both baseline and MCP agents now have access to the real TensorRT-LLM source.
+# Baseline will use local grep/find/rg. MCP will use Sourcegraph semantic search.
+# --- artifact_only: backup full repo for verifier scoring ---
+# Source stays in /workspace (readable by baseline agent).
+# MCP agent deletes source files at runtime via agent startup script.
+RUN cp -a /workspace /repo_full
+RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir
+
+ENTRYPOINT []
