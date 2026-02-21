@@ -31,9 +31,10 @@
       "full_name": "sg-benchmarks/lodash",
       "revision": "1dd1ecfd7875372efa8dde5dede50f6d2d323703",
       "logical_name": "utility-library",
-      "access_mode": "mcp_only",
+      "access_mode": "local_checkout",
       "sourcegraph_indexed": true,
-      "sourcegraph_mirror": "sg-benchmarks/lodash"
+      "sourcegraph_mirror": "sg-benchmarks/lodash",
+      "local_path": "/workspace/lodash"
     },
     {
       "host": "github.com",
@@ -42,13 +43,14 @@
       "full_name": "sg-benchmarks/prisma-prisma",
       "revision": "20117d718fb0db9c8a586276e2052f5b130f994b",
       "logical_name": "database-orm",
-      "access_mode": "mcp_only",
+      "access_mode": "local_checkout",
       "sourcegraph_indexed": true,
-      "sourcegraph_mirror": "sg-benchmarks/prisma-prisma"
+      "sourcegraph_mirror": "sg-benchmarks/prisma-prisma",
+      "local_path": "/workspace/prisma"
     }
   ],
-  "local_checkout_repos": ["nodejs/node", "expressjs/express"],
-  "mcp_only_repos": ["sg-benchmarks/lodash", "sg-benchmarks/prisma-prisma"],
+  "local_checkout_repos": ["nodejs/node", "expressjs/express", "sg-benchmarks/lodash", "sg-benchmarks/prisma-prisma"],
+  "mcp_only_repos": [],
   "cross_org": true,
   "language_mix": ["JavaScript", "TypeScript"],
   "primary_language": "JavaScript"

@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /workspace
 
-# Clone local checkout repos (baseline config: agent has local access to these)
+# Clone all fixture repos (baseline has full local access to every repo)
 RUN git clone --depth 1 --branch v1.32.0 https://github.com/kubernetes/kubernetes /workspace/kubernetes
 RUN git clone --depth 1 --branch v11.4.0 https://github.com/grafana/grafana /workspace/grafana
 RUN git clone --depth 1 --branch v3.5.17 https://github.com/etcd-io/etcd /workspace/etcd

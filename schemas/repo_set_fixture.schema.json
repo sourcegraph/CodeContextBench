@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://codecontextbench.dev/schemas/repo_set_fixture.schema.json",
   "title": "MCP-Unique Repo-Set Fixture",
-  "description": "Schema for repo-set fixtures specifying which repositories are available locally vs via MCP only. Supports cross-org discovery (different GitHub orgs). Cross-host (different code hosts) is deferred.",
+  "description": "Schema for repo-set fixtures specifying the repository set for MCP-unique tasks. Baseline gets ALL repos locally; MCP-Full gets the same repos via Sourcegraph. The access_mode field is retained for future use but all repos should be local_checkout. Cross-host (different code hosts) is deferred.",
   "type": "object",
   "required": [
     "repo_set_id",

@@ -31,13 +31,14 @@
       "full_name": "sg-benchmarks/grafana-mimir",
       "revision": "cfaa8c9a705a2417822a5c6224a9fc3128c416c2",
       "logical_name": "metrics-backend",
-      "access_mode": "mcp_only",
+      "access_mode": "local_checkout",
       "sourcegraph_indexed": true,
-      "sourcegraph_mirror": "sg-benchmarks/grafana-mimir"
+      "sourcegraph_mirror": "sg-benchmarks/grafana-mimir",
+      "local_path": "/workspace/mimir"
     }
   ],
-  "local_checkout_repos": ["grafana/grafana", "grafana/loki"],
-  "mcp_only_repos": ["sg-benchmarks/grafana-mimir"],
+  "local_checkout_repos": ["grafana/grafana", "grafana/loki", "sg-benchmarks/grafana-mimir"],
+  "mcp_only_repos": [],
   "cross_org": false,
   "language_mix": ["Go", "TypeScript"],
   "primary_language": "Go"

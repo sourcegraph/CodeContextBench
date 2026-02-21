@@ -1,26 +1,27 @@
 # MCP-Unique / Org-Scale Context Retrieval Tasks
 
-This document covers the MCP-unique benchmark extension — tasks that measure what
-local-only agents *cannot* do: cross-repo discovery, symbol resolution, dependency
+This document covers the MCP-unique benchmark extension — tasks that measure how
+MCP tools help agents with cross-repo discovery, symbol resolution, dependency
 tracing, and deep-search-driven investigation in polyrepo environments.
 
 ## Overview
 
-Traditional CCB tasks give the agent full local code access. MCP-unique tasks
-deliberately restrict the baseline agent to **one local repo** while placing all
-oracle-relevant files in **MCP-only repos** — repos that only Sourcegraph can reach.
-
-This creates a clean measurement of MCP's *unique capability*:
+MCP-unique tasks exercise **org-scale polyrepo** scenarios where the answer
+requires information spread across 3-20 repositories. Both baseline and MCP-Full
+agents have access to all repos — the only difference is the method of access:
 
 ```
-Baseline agent:  local_checkout_repo only
-                 → can find items in 1 repo
-                 → oracle coverage ≈ 0-50%
+Baseline agent:  All repos cloned locally in /workspace
+                 → uses built-in tools (grep, read, glob)
+                 → full information, local search
 
-MCP-Full agent:  local_checkout_repo + Sourcegraph MCP (5-20 repos)
-                 → can find items across all repos
-                 → oracle coverage ≈ 100%
+MCP-Full agent:  Local code truncated/empty
+                 → uses Sourcegraph MCP tools (keyword_search, find_references, etc.)
+                 → full information, remote search
 ```
+
+This measures whether MCP tools help agents work **better or faster** on
+cross-repo tasks — not whether MCP can access information the baseline can't.
 
 **Key differentiators vs existing cross-repo tasks:**
 - **Org-scale quantity**: 3-20 repos per task (vs 2 in old CrossRepo suite)
@@ -335,8 +336,9 @@ metrics = extract_retrieval_metrics(task_dir, oracle_items)
 # }
 ```
 
-**Key metric**: `oracle_coverage` of `mcp_only` repos shows MCP's unique value.
-Baseline agents score near 0% on MCP-only repos; MCP-Full agents score near 100%.
+**Key metric**: `oracle_coverage` measures how many oracle items the agent found.
+Both configs have access to all repos; the comparison shows whether MCP tools
+help agents discover cross-repo information more effectively.
 
 ## Deep Search Tasks
 

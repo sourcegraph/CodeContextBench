@@ -40,7 +40,7 @@ Six additional suites measure what local-only agents *cannot* do: cross-repo dis
 | `ccb_mcp_platform` | J: Platform Knowledge | 1 | Service template discovery and tribal knowledge |
 | **Total** | | **12** | |
 
-Each task restricts the baseline agent to **one local repo** while placing oracle-relevant files in **MCP-only repos** — repos only Sourcegraph can reach. This creates a clean measurement of MCP's unique capability.
+Both baseline and MCP-Full agents have access to **all repos** in each task's fixture. The only difference is the method: baseline reads code locally, MCP-Full uses Sourcegraph MCP tools (local code is truncated). This ensures we measure whether MCP tools help agents work better — not whether MCP can access repos the baseline can't.
 
 See [docs/MCP_UNIQUE_TASKS.md](docs/MCP_UNIQUE_TASKS.md) for the full task system, authoring guide, and oracle evaluation framework. See [docs/MCP_UNIQUE_CALIBRATION.md](docs/MCP_UNIQUE_CALIBRATION.md) for oracle coverage analysis.
 

@@ -12,9 +12,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /workspace
 
-# Clone local checkout repos (baseline config: agent has local access to these)
+# Clone all fixture repos (baseline has full local access to every repo)
 RUN git clone --depth 1 --branch v22.13.0 https://github.com/nodejs/node /workspace/node
 RUN git clone --depth 1 --branch 4.21.1 https://github.com/expressjs/express /workspace/express
+RUN git clone --depth 1 https://github.com/sg-benchmarks/lodash /workspace/lodash
+RUN git clone --depth 1 https://github.com/sg-benchmarks/prisma-prisma /workspace/prisma
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \
