@@ -41,7 +41,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "chain": [
     {
-      "repo": "org/repo-name",
+      "repo": "numpy/numpy",
       "path": "relative/path/to/file.py",
       "symbol": "FunctionOrClassName",
       "description": "What role this plays in the data flow"
@@ -50,6 +50,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Comprehensive narrative explaining how data flows from raw array creation through scientific computation, citing specific files and functions from each repo."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects `repo` values of `numpy/numpy` (array layer), `pandas-dev/pandas` (data structure layer), and `scipy/scipy` (scientific computation layer). The `repo` field must match these exactly.
 
 The `chain` should contain at least 3 steps representing the 3 layers described above.
 

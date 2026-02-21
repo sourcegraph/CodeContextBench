@@ -50,7 +50,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "files": [
     {
-      "repo": "org/repo-name",
+      "repo": "etcd-io/etcd",
       "path": "relative/path/to/file.go",
       "function": "FunctionName"
     }
@@ -58,6 +58,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Narrative explaining: which repo and files contain the authoritative error definition and the function that returns it, and why the kubernetes/kubernetes vendored copies are NOT the correct answer."
 }
 ```
+
+**Important**: Use `etcd-io/etcd` as the exact `repo` identifier in your answer. The oracle checks for files `server/storage/mvcc/kvstore.go` and `server/storage/mvcc/kvstore_txn.go` in `etcd-io/etcd`. Do not cite vendored copies in `kubernetes/kubernetes`.
 
 ## Evaluation
 

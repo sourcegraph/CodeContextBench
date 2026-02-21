@@ -332,10 +332,14 @@ _drain_pool() {
     _PIDS=()
 }
 
-# Launch one task in the background; respects PARALLEL_TASKS slot limit
-# Args: bm mcp_mode mcp_type task_id task_path jobs_dir
-_launch_task() {
-    local bm="$1" mcp_mode="$2" mcp_type="$3" task_id="$4" task_path="$5" jobs_dir="$6"
+# Launch a task PAIR: baseline + full simultaneously for the same task.
+# Follows _common.sh's run_paired_configs pattern: both configs run in parallel
+# per task so timing is comparable and resource utilization is maximized.
+# Dockerfile swap (for artifact mode) is handled once at the task level and
+# restored by a background watcher after BOTH configs complete — no race condition.
+# Args: bm task_id task_path bl_jobs_dir full_jobs_dir
+_launch_task_pair() {
+    local bm="$1" task_id="$2" task_path="$3" bl_jobs_dir="$4" full_jobs_dir="$5"
     local abs_path="$REPO_ROOT/$task_path"
 
     if [ ! -d "$abs_path" ]; then
@@ -343,46 +347,81 @@ _launch_task() {
         return
     fi
 
-    _wait_for_slot
-
-    (
-        local _df="${abs_path}/environment/Dockerfile"
-        local _df_artifact="${abs_path}/environment/Dockerfile.artifact_only"
-        local _df_swapped=false
-        if [[ "$mcp_mode" == *-artifact ]] && [ -f "$_df_artifact" ]; then
-            # Only backup if .run_bak doesn't already exist (idempotent on re-run after kill)
-            if [ ! -f "${_df}.run_bak" ]; then
-                cp "$_df" "${_df}.run_bak"
-            fi
-            cp "$_df_artifact" "$_df"
-            _df_swapped=true
+    # Swap Dockerfile once for both configs (artifact mode only).
+    # Idempotent: skip backup if .run_bak already exists (safe on re-run after kill).
+    local _df="${abs_path}/environment/Dockerfile"
+    local _df_artifact="${abs_path}/environment/Dockerfile.artifact_only"
+    local _df_swapped=false
+    if [[ "$FULL_CONFIG" == *-artifact ]] && [ -f "$_df_artifact" ]; then
+        if [ ! -f "${_df}.run_bak" ]; then
+            cp "$_df" "${_df}.run_bak"
         fi
+        cp "$_df_artifact" "$_df"
+        _df_swapped=true
+    fi
 
-        BASELINE_MCP_TYPE=$mcp_type harbor run \
-            --path "$abs_path" \
-            --agent-import-path "$AGENT_PATH" \
-            --model "$MODEL" \
-            --jobs-dir "$jobs_dir" \
-            -n "$CONCURRENCY" \
-            --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
-            2>&1 | tee -a "${jobs_dir}.log" \
-            || echo "WARNING: Task failed: $task_id (continuing...)"
+    local pair_pids=()
 
-        if [ "$_df_swapped" = true ]; then
-            mv "${_df}.run_bak" "$_df"
-        fi
-    ) &
-    _PIDS+=("$!")
-    echo "  [${mcp_mode}] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots used)"
-    # Stagger launches by 2s to avoid Harbor timestamp-based job directory collisions
-    sleep 2
+    # Launch baseline config
+    if [ "$RUN_BASELINE" = true ]; then
+        _wait_for_slot
+        (
+            BASELINE_MCP_TYPE=$BL_MCP_TYPE harbor run \
+                --path "$abs_path" \
+                --agent-import-path "$AGENT_PATH" \
+                --model "$MODEL" \
+                --jobs-dir "$bl_jobs_dir" \
+                -n "$CONCURRENCY" \
+                --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
+                2>&1 | tee -a "${bl_jobs_dir}.log" \
+                || echo "WARNING: $BASELINE_CONFIG failed: $task_id"
+        ) &
+        pair_pids+=("$!")
+        _PIDS+=("$!")
+        echo "  [$BASELINE_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots)"
+        # Stagger launches by 2s to avoid Harbor timestamp-based job directory collisions
+        sleep 2
+    fi
+
+    # Launch full/MCP config
+    if [ "$RUN_FULL" = true ]; then
+        _wait_for_slot
+        (
+            BASELINE_MCP_TYPE=$FULL_MCP_TYPE harbor run \
+                --path "$abs_path" \
+                --agent-import-path "$AGENT_PATH" \
+                --model "$MODEL" \
+                --jobs-dir "$full_jobs_dir" \
+                -n "$CONCURRENCY" \
+                --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
+                2>&1 | tee -a "${full_jobs_dir}.log" \
+                || echo "WARNING: $FULL_CONFIG failed: $task_id"
+        ) &
+        pair_pids+=("$!")
+        _PIDS+=("$!")
+        echo "  [$FULL_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots)"
+        sleep 2
+    fi
+
+    # Background watcher: restore Dockerfile after BOTH pair configs complete.
+    # Not counted in _PIDS (it's cleanup, not a work slot).
+    if [ "$_df_swapped" = true ] && [ "${#pair_pids[@]}" -gt 0 ]; then
+        (
+            for p in "${pair_pids[@]}"; do
+                wait "$p" 2>/dev/null || true
+            done
+            [ -f "${_df}.run_bak" ] && mv "${_df}.run_bak" "$_df"
+        ) &
+    fi
 }
 
 # ============================================
-# MAIN EXECUTION — submit all tasks across benchmarks into shared pool
+# MAIN EXECUTION — paired task submission across all benchmarks
+# Baseline + MCP launch simultaneously per task (task-paired, not mode-sequential).
+# This matches _common.sh's run_paired_configs pattern.
 # ============================================
 
-# First pass: create all jobs_dirs and collect them for post-processing
+# Create all jobs_dirs upfront for post-processing reference
 declare -A BL_JOBS_DIRS   # bm -> jobs_dir for baseline
 declare -A FULL_JOBS_DIRS # bm -> jobs_dir for full
 
@@ -399,45 +438,34 @@ for bm in $(echo "${!BENCHMARK_COUNTS[@]}" | tr ' ' '\n' | sort); do
     fi
 done
 
-# Submit all tasks: baseline first across all benchmarks, then full
-# This keeps config passes clean while maximizing cross-benchmark parallelism
-for config_pass in baseline full; do
-    if [ "$config_pass" = "baseline" ] && [ "$RUN_BASELINE" != true ]; then
-        continue
-    fi
-    if [ "$config_pass" = "full" ] && [ "$RUN_FULL" != true ]; then
-        continue
-    fi
+echo ""
+echo "=== Submitting paired tasks ($BASELINE_CONFIG + $FULL_CONFIG) ==="
 
-    [ "$config_pass" = "baseline" ] && mcp_mode="$BASELINE_CONFIG" && mcp_type="$BL_MCP_TYPE"
-    [ "$config_pass" = "full" ]     && mcp_mode="$FULL_CONFIG"     && mcp_type="$FULL_MCP_TYPE"
+for bm in $(echo "${!BENCHMARK_COUNTS[@]}" | tr ' ' '\n' | sort); do
+    task_ids=$(echo "${BENCHMARK_TASK_IDS[$bm]}" | grep -v '^$')
+    task_dirs=$(echo "${BENCHMARK_TASK_DIRS[$bm]}" | grep -v '^$')
 
-    echo ""
-    echo "=== Submitting $config_pass tasks (${mcp_mode}) ==="
+    while IFS= read -r task_id && IFS= read -r task_path <&3; do
+        [ -z "$task_id" ] && continue
 
-    for bm in $(echo "${!BENCHMARK_COUNTS[@]}" | tr ' ' '\n' | sort); do
-        [ "$config_pass" = "baseline" ] && jobs_dir="${BL_JOBS_DIRS[$bm]}"
-        [ "$config_pass" = "full" ]     && jobs_dir="${FULL_JOBS_DIRS[$bm]}"
+        # Skip if both configs already completed
+        bl_done=false; full_done=false
+        [ "$RUN_BASELINE" = true ] && is_task_completed "${BL_JOBS_DIRS[$bm]:-}" "$task_id" && bl_done=true
+        [ "$RUN_FULL" = true ]    && is_task_completed "${FULL_JOBS_DIRS[$bm]:-}" "$task_id" && full_done=true
+        if [ "$bl_done" = true ] && [ "$full_done" = true ]; then
+            echo "  SKIP (both completed): $task_id"
+            continue
+        fi
 
-        task_ids=$(echo "${BENCHMARK_TASK_IDS[$bm]}" | grep -v '^$')
-        task_dirs=$(echo "${BENCHMARK_TASK_DIRS[$bm]}" | grep -v '^$')
-
-        while IFS= read -r task_id && IFS= read -r task_path <&3; do
-            [ -z "$task_id" ] && continue
-            if is_task_completed "$jobs_dir" "$task_id"; then
-                echo "  [${mcp_mode}] SKIP (completed): $task_id"
-                continue
-            fi
-            _launch_task "$bm" "$mcp_mode" "$mcp_type" "$task_id" "$task_path" "$jobs_dir"
-        done <<< "$task_ids" 3<<< "$task_dirs"
-    done
-
-    # Wait for all tasks in this config pass to finish before starting the next
-    echo ""
-    echo "=== Waiting for $config_pass tasks to complete... ==="
-    _drain_pool
-    echo "=== $config_pass pass complete ==="
+        _launch_task_pair "$bm" "$task_id" "$task_path" \
+            "${BL_JOBS_DIRS[$bm]:-}" "${FULL_JOBS_DIRS[$bm]:-}"
+    done <<< "$task_ids" 3<<< "$task_dirs"
 done
+
+echo ""
+echo "=== Waiting for all paired tasks to complete... ==="
+_drain_pool
+echo "=== All tasks complete ==="
 
 unset SOURCEGRAPH_REPO_NAME 2>/dev/null || true
 

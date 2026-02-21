@@ -41,7 +41,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "files": [
     {
-      "repo": "org/repo-name",
+      "repo": "sg-benchmarks/kubernetes-api",
       "path": "relative/path/to/file.go",
       "description": "What this file contains and its role in the deployment pattern"
     }
@@ -49,6 +49,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Comprehensive narrative explaining the canonical deployment patterns, citing specific files, types, and functions from each repo. Mention the deploymentsClient pattern, the Deployment struct with its replicas field, and the documented workflow."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects entries for `sg-benchmarks/kubernetes-api` (API type definitions) and `sg-benchmarks/kubernetes-client-go` (client examples and docs). The `repo` field must match these exactly.
 
 The `files` list should include at least 3 files across 2+ repos that together define
 the canonical service deployment pattern.

@@ -12,7 +12,7 @@ and/or Mimir) that register HTTP handlers or routes **without applying
 authentication middleware** such as `middleware.AuthenticateUser`.
 
 For each file found, report:
-- The repository (`org/repo-name`)
+- The repository (e.g., `sg-benchmarks/grafana-loki`)
 - The file path within the repository
 - The specific endpoint path(s) registered without authentication
 
@@ -38,7 +38,7 @@ to surface.
 
 The local `/workspace/` directory contains all repositories:
 - `grafana/grafana` at v11.4.0 → `/workspace/grafana`
-- `grafana/loki` at a3af38d → `/workspace/loki`
+- `grafana/loki` at v3.3.4 → `/workspace/loki`
 
 ## Output Format
 
@@ -48,7 +48,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "files": [
     {
-      "repo": "org/repo-name",
+      "repo": "sg-benchmarks/grafana-loki",
       "path": "relative/path/to/file.go",
       "endpoints": ["/endpoint/path/1", "/endpoint/path/2"]
     }
@@ -56,6 +56,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Narrative citing specific repos, file paths, and endpoint paths registered without authentication."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The MCP-only repos to audit are `sg-benchmarks/grafana-loki` and `sg-benchmarks/grafana-mimir`. Note: the local `/workspace/loki` directory maps to `sg-benchmarks/grafana-loki` in Sourcegraph — use `sg-benchmarks/grafana-loki` as the `repo` value in your answer. The oracle checks for `pkg/dataobj/explorer/service.go` in `sg-benchmarks/grafana-loki`.
 
 Your answer is evaluated against a closed-world oracle — completeness matters.
 

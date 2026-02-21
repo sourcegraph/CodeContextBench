@@ -38,7 +38,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "symbols": [
     {
-      "repo": "org/repo-name",
+      "repo": "kubernetes/kubernetes",
       "path": "relative/path/to/file.go",
       "symbol": "StructName"
     }
@@ -46,6 +46,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Narrative explanation citing which repos and orgs implement storage.Interface and where."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects entries for `kubernetes/kubernetes` and `grafana/grafana`. The `repo` field must match these exactly.
 
 ## Evaluation
 

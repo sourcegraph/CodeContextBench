@@ -36,7 +36,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "chain": [
     {
-      "repo": "org/repo-name",
+      "repo": "sg-benchmarks/kubernetes-client-go",
       "path": "relative/path/to/file.go",
       "symbol": "FunctionOrTypeName",
       "description": "What this step does in the flow"
@@ -45,6 +45,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Comprehensive narrative explaining the end-to-end flow, citing specific files and functions from each repo."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects `repo` values of `sg-benchmarks/kubernetes-client-go` (client layer), `kubernetes/kubernetes` (API server layer), and `etcd-io/etcd` (storage layer). The `repo` field must match these exactly.
 
 The `chain` should contain at least 3 steps representing the 3 layers described above.
 

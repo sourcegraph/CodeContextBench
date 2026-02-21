@@ -22,7 +22,7 @@ that directly imports it (not just subpackages) will be affected by a breaking A
 
 The local `/workspace/` directory contains all repositories:
 - `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `kubernetes/client-go` at 8020fc4 → `/workspace/client-go`
+- `kubernetes/client-go` at v0.32.0 → `/workspace/client-go`
 
 ## Output Format
 
@@ -31,11 +31,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
+    {"repo": "sg-benchmarks/kubernetes-client-go", "path": "relative/path/to/file.go"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
+
+**Important**: Use `"repo": "sg-benchmarks/kubernetes-client-go"` exactly — this is the canonical repo identifier used by the evaluation oracle. The local checkout at `/workspace/client-go` corresponds to this repo.
 
 Include only the `files` field. Your answer is evaluated against a closed-world oracle — completeness matters.
 

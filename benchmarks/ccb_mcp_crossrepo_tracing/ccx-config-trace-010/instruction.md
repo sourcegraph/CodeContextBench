@@ -28,7 +28,7 @@ directories, but the authoritative source lives in separate repositories accessi
 
 The local `/workspace/` directory contains all repositories:
 - `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
-- `kubernetes/client-go` at 8020fc4 → `/workspace/client-go`
+- `kubernetes/client-go` at v0.32.0 → `/workspace/client-go`
 - `kubernetes/api` at fa23dd3 → `/workspace/api`
 - `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
 
@@ -39,11 +39,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "symbols": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+    {"repo": "sg-benchmarks/kubernetes-client-go", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
   ],
   "text": "Explanation of where Config is defined, the package import path, and why this is the authoritative source."
 }
 ```
+
+**Important**: The local `/workspace/client-go` directory contains the `kubernetes/client-go` source, but in Sourcegraph it is indexed as `sg-benchmarks/kubernetes-client-go`. Use `sg-benchmarks/kubernetes-client-go` as the `repo` value in your answer — the oracle checks for this exact identifier.
 
 Your answer is evaluated against a closed-world oracle — the exact repo, path, and symbol name matter.
 

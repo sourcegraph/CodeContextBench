@@ -11,7 +11,7 @@ that declare **`cookie` as a direct runtime dependency** (listed under
 `"dependencies"`, not `"devDependencies"`).
 
 For each match, report:
-- The repository (`org/repo-name`)
+- The repository (e.g., `sg-benchmarks/expressjs-express`)
 - The file path within the repository
 - The version constraint declared for `cookie`
 
@@ -38,7 +38,7 @@ Create a file at `/workspace/answer.json` with your findings:
 {
   "files": [
     {
-      "repo": "org/repo-name",
+      "repo": "sg-benchmarks/expressjs-express",
       "path": "relative/path/to/package.json",
       "version": "the-version-constraint"
     }
@@ -46,6 +46,8 @@ Create a file at `/workspace/answer.json` with your findings:
   "text": "Narrative explanation citing the repos and version constraints found."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in Sourcegraph. The repos to search are `nodejs/node`, `sg-benchmarks/expressjs-express`, `sg-benchmarks/lodash`, and `sg-benchmarks/prisma-prisma`. Note: the local `/workspace/express` directory maps to `sg-benchmarks/expressjs-express` in Sourcegraph — use `sg-benchmarks/expressjs-express` as the `repo` value in your answer.
 
 Include only entries where `cookie` appears under `"dependencies"` (not `"devDependencies"`
 or `"scripts"`). Your answer is evaluated against a closed-world oracle — completeness matters.

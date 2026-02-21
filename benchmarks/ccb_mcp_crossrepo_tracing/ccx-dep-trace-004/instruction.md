@@ -24,7 +24,7 @@ adding observability, or extending the query pipeline.
 
 The local `/workspace/` directory contains all repositories:
 - `grafana/grafana` at v11.4.0 → `/workspace/grafana`
-- `grafana/loki` at a3af38d → `/workspace/loki`
+- `grafana/loki` at v3.3.4 → `/workspace/loki`
 
 ## Output Format
 
@@ -33,11 +33,17 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "chain": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "TypeOrFunctionName"}
+    {"repo": "grafana/grafana", "path": "relative/path/to/file.go", "symbol": "TypeOrFunctionName"}
   ],
   "text": "Narrative explanation of the call chain, citing specific repos and file paths."
 }
 ```
+
+**Important**: Use exact repo identifiers as they appear in the oracle:
+- For Grafana: `"repo": "grafana/grafana"`
+- For Loki: `"repo": "sg-benchmarks/grafana-loki"`
+
+The local checkout at `/workspace/loki` corresponds to `sg-benchmarks/grafana-loki`.
 
 List the chain steps in order from Grafana (caller) to Loki (callee). Your answer is evaluated
 against a closed-world oracle — precision matters.
