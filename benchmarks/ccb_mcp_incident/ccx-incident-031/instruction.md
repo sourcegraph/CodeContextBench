@@ -38,11 +38,9 @@ MCP tools), not the vendored copies or the Kubernetes error-mapping layer.
 
 ## Available Resources
 
-The local `/workspace/kubernetes/` directory contains `kubernetes/kubernetes` v1.32.0.
-
-**Note:** The etcd and Grafana repositories are accessible via Sourcegraph MCP tools:
-- `etcd-io/etcd` (distributed key-value store — this is where the error originates)
-- `grafana/grafana` (observability platform)
+The local `/workspace/` directory contains all repositories:
+- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
+- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd` (this is where the error originates)
 
 ## Output Format
 

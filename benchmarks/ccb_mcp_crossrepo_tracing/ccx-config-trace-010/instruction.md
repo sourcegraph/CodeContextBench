@@ -26,12 +26,11 @@ directories, but the authoritative source lives in separate repositories accessi
 
 ## Available Resources
 
-The local `/workspace/` directory contains: kubernetes/kubernetes.
-
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-benchmarks/kubernetes-client-go` (go-client-library)
-- `sg-benchmarks/kubernetes-api` (api-type-definitions)
-- `etcd-io/etcd` (distributed-kv-store)
+The local `/workspace/` directory contains all repositories:
+- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
+- `kubernetes/client-go` at 8020fc4 → `/workspace/client-go`
+- `kubernetes/api` at fa23dd3 → `/workspace/api`
+- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
 
 ## Output Format
 

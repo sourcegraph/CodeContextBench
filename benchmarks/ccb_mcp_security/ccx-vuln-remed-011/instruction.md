@@ -26,12 +26,9 @@ one cloned locally — to ensure no vulnerable dependency slips through.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: `nodejs/node`.
-
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-benchmarks/expressjs-express` (web-framework)
-- `sg-benchmarks/lodash` (utility-library)
-- `sg-benchmarks/prisma-prisma` (database-orm)
+The local `/workspace/` directory contains all repositories:
+- `nodejs/node` at v22.13.0 → `/workspace/node`
+- `expressjs/express` at 9de5890 → `/workspace/express`
 
 ## Output Format
 

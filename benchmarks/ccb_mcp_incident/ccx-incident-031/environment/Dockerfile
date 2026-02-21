@@ -14,6 +14,7 @@ WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
 RUN git clone --depth 1 --branch v1.32.0 https://github.com/kubernetes/kubernetes /workspace/kubernetes
+RUN git clone --depth 1 --branch v3.5.17 https://github.com/etcd-io/etcd /workspace/etcd
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

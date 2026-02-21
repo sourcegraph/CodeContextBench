@@ -14,14 +14,15 @@
     },
     {
       "host": "github.com",
-      "org": "sg-benchmarks",
-      "repo_name": "grafana-loki",
-      "full_name": "sg-benchmarks/grafana-loki",
+      "org": "grafana",
+      "repo_name": "loki",
+      "full_name": "grafana/loki",
       "revision": "a3af38d4da899032d3ee46a30932d072d37e1b9c",
       "logical_name": "log-aggregation",
-      "access_mode": "mcp_only",
+      "access_mode": "local_checkout",
       "sourcegraph_indexed": true,
-      "sourcegraph_mirror": "sg-benchmarks/grafana-loki"
+      "sourcegraph_mirror": "sg-benchmarks/grafana-loki",
+      "local_path": "/workspace/loki"
     },
     {
       "host": "github.com",
@@ -35,11 +36,8 @@
       "sourcegraph_mirror": "sg-benchmarks/grafana-mimir"
     }
   ],
-  "local_checkout_repos": ["grafana/grafana"],
-  "mcp_only_repos": [
-    "sg-benchmarks/grafana-loki",
-    "sg-benchmarks/grafana-mimir"
-  ],
+  "local_checkout_repos": ["grafana/grafana", "grafana/loki"],
+  "mcp_only_repos": ["sg-benchmarks/grafana-mimir"],
   "cross_org": false,
   "language_mix": ["Go", "TypeScript"],
   "primary_language": "Go"

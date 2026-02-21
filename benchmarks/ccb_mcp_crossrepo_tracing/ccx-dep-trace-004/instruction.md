@@ -22,11 +22,9 @@ adding observability, or extending the query pipeline.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: grafana/grafana.
-
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-benchmarks/grafana-loki` (log-aggregation)
-- `sg-benchmarks/grafana-mimir` (metrics-backend)
+The local `/workspace/` directory contains all repositories:
+- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
+- `grafana/loki` at a3af38d → `/workspace/loki`
 
 ## Output Format
 

@@ -15,6 +15,7 @@ WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
 RUN git clone --depth 1 --branch 1.6.1 https://github.com/scikit-learn/scikit-learn /workspace/scikit-learn
+RUN git clone --depth 1 --branch v2.2.3 https://github.com/pandas-dev/pandas /workspace/pandas
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

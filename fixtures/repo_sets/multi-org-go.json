@@ -19,8 +19,9 @@
       "full_name": "etcd-io/etcd",
       "revision": "v3.5.17",
       "logical_name": "distributed-kv-store",
-      "access_mode": "mcp_only",
-      "sourcegraph_indexed": true
+      "access_mode": "local_checkout",
+      "sourcegraph_indexed": true,
+      "local_path": "/workspace/etcd"
     },
     {
       "host": "github.com",
@@ -29,15 +30,13 @@
       "full_name": "grafana/grafana",
       "revision": "v11.4.0",
       "logical_name": "observability-platform",
-      "access_mode": "mcp_only",
-      "sourcegraph_indexed": true
+      "access_mode": "local_checkout",
+      "sourcegraph_indexed": true,
+      "local_path": "/workspace/grafana"
     }
   ],
-  "local_checkout_repos": ["kubernetes/kubernetes"],
-  "mcp_only_repos": [
-    "etcd-io/etcd",
-    "grafana/grafana"
-  ],
+  "local_checkout_repos": ["kubernetes/kubernetes", "etcd-io/etcd", "grafana/grafana"],
+  "mcp_only_repos": [],
   "cross_org": true,
   "language_mix": ["Go"],
   "primary_language": "Go"

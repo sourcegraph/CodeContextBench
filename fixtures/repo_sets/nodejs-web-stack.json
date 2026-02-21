@@ -14,14 +14,15 @@
     },
     {
       "host": "github.com",
-      "org": "sg-benchmarks",
-      "repo_name": "expressjs-express",
-      "full_name": "sg-benchmarks/expressjs-express",
+      "org": "expressjs",
+      "repo_name": "express",
+      "full_name": "expressjs/express",
       "revision": "9de5890d0dc6128b7f7eb15469d76aa60dacc48f",
       "logical_name": "web-framework",
-      "access_mode": "mcp_only",
+      "access_mode": "local_checkout",
       "sourcegraph_indexed": true,
-      "sourcegraph_mirror": "sg-benchmarks/expressjs-express"
+      "sourcegraph_mirror": "sg-benchmarks/expressjs-express",
+      "local_path": "/workspace/express"
     },
     {
       "host": "github.com",
@@ -46,12 +47,8 @@
       "sourcegraph_mirror": "sg-benchmarks/prisma-prisma"
     }
   ],
-  "local_checkout_repos": ["nodejs/node"],
-  "mcp_only_repos": [
-    "sg-benchmarks/expressjs-express",
-    "sg-benchmarks/lodash",
-    "sg-benchmarks/prisma-prisma"
-  ],
+  "local_checkout_repos": ["nodejs/node", "expressjs/express"],
+  "mcp_only_repos": ["sg-benchmarks/lodash", "sg-benchmarks/prisma-prisma"],
   "cross_org": true,
   "language_mix": ["JavaScript", "TypeScript"],
   "primary_language": "JavaScript"

@@ -25,11 +25,10 @@ by projects from entirely different organizations.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: kubernetes/kubernetes.
-
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `etcd-io/etcd` (distributed-kv-store)
-- `grafana/grafana` (observability-platform)
+The local `/workspace/` directory contains all repositories:
+- `kubernetes/kubernetes` at v1.32.0 → `/workspace/kubernetes`
+- `etcd-io/etcd` at v3.5.17 → `/workspace/etcd`
+- `grafana/grafana` at v11.4.0 → `/workspace/grafana`
 
 ## Output Format
 

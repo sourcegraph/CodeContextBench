@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /workspace
 
-# Clone local checkout repos (baseline config: agent has local access to scikit-learn/scikit-learn)
+# Clone local checkout repos (baseline config: agent has local access to these)
 RUN git clone --depth 1 --branch 1.6.1 https://github.com/scikit-learn/scikit-learn /workspace/scikit-learn
+RUN git clone --depth 1 --branch v2.2.2 https://github.com/numpy/numpy /workspace/numpy
+RUN git clone --depth 1 --branch v2.2.3 https://github.com/pandas-dev/pandas /workspace/pandas
+RUN git clone --depth 1 --branch v1.15.1 https://github.com/scipy/scipy /workspace/scipy
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \
