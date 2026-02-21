@@ -9,6 +9,18 @@ description: Configure and launch CodeContextBench runs with current paired-run 
 
 Use this skill when the user asks to run benchmark suites, rerun failures, or launch official/gap-fill batches in `CodeContextBench`.
 
+## Approval Gate (Required Before Running)
+
+Before executing any benchmark run, ask the user to confirm:
+
+1. **Model** — which model? (e.g. `anthropic/claude-haiku-4-5-20251001` for test runs)
+2. **Suite / selection file** — which benchmark suite or `--selection-file`?
+3. **Config** — paired (default), `--baseline-only`, or `--full-only`? Which `--full-config`?
+4. **Parallel slots** — how many? (default: 1; use 8 for multi-account runs)
+5. **Category** — `staging` (default) or `official`?
+
+Do NOT launch a run until the user has confirmed these five parameters.
+
 ## Canonical Commands (Current)
 
 - Per-suite default: `./configs/<suite>_2config.sh`

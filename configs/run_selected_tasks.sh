@@ -144,7 +144,7 @@ if [ "$RUN_FULL" = true ] && [ -z "$SOURCEGRAPH_ACCESS_TOKEN" ]; then
     RUN_FULL=false
 fi
 
-ensure_fresh_token
+ensure_fresh_token_all  # also populates CLAUDE_HOMES[] via setup_multi_accounts
 
 # Derive baseline config and mcp_type values from FULL_CONFIG
 BASELINE_CONFIG=$(baseline_config_for "$FULL_CONFIG")
@@ -306,6 +306,20 @@ is_task_completed() {
 # PARALLEL JOB POOL
 # ============================================
 declare -a _PIDS=()
+_ACCOUNT_IDX=0  # round-robin index into CLAUDE_HOMES[]
+
+# Pick next account home in round-robin order and advance the index.
+# Prints the chosen home dir; falls back to $HOME if CLAUDE_HOMES is empty.
+_next_account() {
+    local num=${#CLAUDE_HOMES[@]}
+    if [ "$num" -eq 0 ]; then
+        echo "$HOME"
+        return
+    fi
+    local home="${CLAUDE_HOMES[$_ACCOUNT_IDX]}"
+    _ACCOUNT_IDX=$(( (_ACCOUNT_IDX + 1) % num ))
+    echo "$home"
+}
 
 # Block until fewer than PARALLEL_TASKS jobs are running.
 # Uses wait -n to reap zombies (kill -0 sees zombies as alive; without reaping,
@@ -365,7 +379,10 @@ _launch_task_pair() {
     # Launch baseline config
     if [ "$RUN_BASELINE" = true ]; then
         _wait_for_slot
+        local _bl_home
+        _bl_home=$(_next_account)
         (
+            export HOME="$_bl_home"
             BASELINE_MCP_TYPE=$BL_MCP_TYPE harbor run \
                 --path "$abs_path" \
                 --agent-import-path "$AGENT_PATH" \
@@ -378,7 +395,7 @@ _launch_task_pair() {
         ) &
         pair_pids+=("$!")
         _PIDS+=("$!")
-        echo "  [$BASELINE_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots)"
+        echo "  [$BASELINE_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots, HOME=$(basename "$_bl_home"))"
         # Stagger launches by 2s to avoid Harbor timestamp-based job directory collisions
         sleep 2
     fi
@@ -386,7 +403,10 @@ _launch_task_pair() {
     # Launch full/MCP config
     if [ "$RUN_FULL" = true ]; then
         _wait_for_slot
+        local _full_home
+        _full_home=$(_next_account)
         (
+            export HOME="$_full_home"
             BASELINE_MCP_TYPE=$FULL_MCP_TYPE harbor run \
                 --path "$abs_path" \
                 --agent-import-path "$AGENT_PATH" \
@@ -399,7 +419,7 @@ _launch_task_pair() {
         ) &
         pair_pids+=("$!")
         _PIDS+=("$!")
-        echo "  [$FULL_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots)"
+        echo "  [$FULL_CONFIG] Started $task_id (PID ${_PIDS[-1]}, ${#_PIDS[@]}/${PARALLEL_TASKS} slots, HOME=$(basename "$_full_home"))"
         sleep 2
     fi
 
