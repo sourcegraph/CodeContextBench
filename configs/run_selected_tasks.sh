@@ -376,9 +376,11 @@ _launch_task_pair() {
     local _mcp_temp_dir=""
     local _bl_temp_dir=""
 
-    # Determine which Dockerfile variant to use for each config
+    # Determine which Dockerfile variant to use for each config.
+    # Note: cannot rely on VERIFIER_MODE because config_to_mcp_type runs in $()
+    # subshells (lines 151-152), so its side-effect globals don't propagate.
     local _is_artifact=false
-    [[ "$VERIFIER_MODE" == "artifact" ]] && _is_artifact=true
+    [[ "$FULL_CONFIG" == *artifact* ]] && _is_artifact=true
 
     # Launch baseline config
     if [ "$RUN_BASELINE" = true ]; then
