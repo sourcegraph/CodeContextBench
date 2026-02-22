@@ -20,6 +20,8 @@ RUN git clone --filter=blob:none --no-checkout https://github.com/apache/kafka.g
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 # --- artifact_only mode ---
+# Back up full repo so answer_json_verifier_lib.sh can apply diffs to /repo_full
+RUN cp -a /workspace /repo_full
 # Sentinel flag for artifact-based verification.
 # Source stays readable for baseline agent; MCP agent deletes at runtime.
 RUN touch /tmp/.artifact_only_mode
