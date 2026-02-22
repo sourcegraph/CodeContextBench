@@ -16,13 +16,13 @@ fi
 [ -f /tests/artifact_verifier_lib.sh ] && source /tests/artifact_verifier_lib.sh
 VERIFY_REPO="${VERIFY_REPO:-/workspace}"
 
-cd /workspace
+cd "${VERIFY_REPO:-/workspace}"
 
 # Create log directories
 mkdir -p /logs/verifier
 
 # Fix git safe.directory
-git config --global --add safe.directory /workspace 2>/dev/null || true
+git config --global --add safe.directory "${VERIFY_REPO:-/workspace}" 2>/dev/null || true
 git config --global --add safe.directory "${VERIFY_REPO}" 2>/dev/null || true
 
 # Guard: check agent produced output

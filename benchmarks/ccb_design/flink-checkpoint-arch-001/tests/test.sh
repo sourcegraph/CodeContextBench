@@ -11,7 +11,7 @@ if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ];
     source /tests/answer_json_verifier_lib.sh
 fi
 
-cd /workspace
+cd "${VERIFY_REPO:-/workspace}"
 mkdir -p /logs/verifier
 
 # Fix git safe.directory

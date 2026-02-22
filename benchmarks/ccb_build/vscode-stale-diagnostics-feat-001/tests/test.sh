@@ -142,7 +142,7 @@ if [ -f "extensions/typescript-language-features/package.json" ]; then
     # VS Code extensions use npm test or a custom test runner
     cd extensions/typescript-language-features
     npm test 2>/logs/verifier/test_errors.txt && TEST_RC=0 || TEST_RC=$?
-    cd /workspace
+    cd "${VERIFY_REPO:-/workspace}"
     if [ "$TEST_RC" -eq 0 ]; then
         echo "[x] TypeScript language features tests passed"
     else

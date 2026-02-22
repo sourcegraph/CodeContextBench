@@ -14,7 +14,7 @@ fi
 REWARD_FILE="/logs/verifier/reward.txt"
 mkdir -p /logs/verifier
 
-cd /app/repo
+cd "${VERIFY_REPO:-/app/repo}"
 
 python3 << 'EOF'
 import sys
