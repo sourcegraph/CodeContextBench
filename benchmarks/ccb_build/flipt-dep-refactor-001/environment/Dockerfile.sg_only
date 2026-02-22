@@ -4,6 +4,8 @@
 
 FROM ccb-repo-flipt-3d5a345f
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/flipt--3d5a345f
+
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full
 RUN find /workspace -type f \( \

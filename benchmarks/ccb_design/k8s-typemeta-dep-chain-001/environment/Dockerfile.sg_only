@@ -32,6 +32,8 @@ RUN ls -la /workspace/ && \
     test -d /workspace/apimachinery
 
 FROM base AS final
+
+ENV SOURCEGRAPH_REPOS=github.com/kubernetes/kubernetes,github.com/kubernetes/api,github.com/kubernetes/apimachinery
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

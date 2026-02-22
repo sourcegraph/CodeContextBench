@@ -4,6 +4,8 @@
 
 FROM python:3.12-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/django/django
+
 WORKDIR /workspace
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

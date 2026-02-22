@@ -4,6 +4,8 @@
 
 FROM python:3.12-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/scikit-learn--cb7e82dd
+
 # Install system dependencies (including build tools for Cython extensions)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \

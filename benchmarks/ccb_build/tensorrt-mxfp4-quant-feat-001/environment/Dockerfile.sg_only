@@ -4,6 +4,8 @@
 
 FROM python:3.11-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/NVIDIA/TensorRT-LLM
+
 WORKDIR /workspace
 
 # Install dependencies

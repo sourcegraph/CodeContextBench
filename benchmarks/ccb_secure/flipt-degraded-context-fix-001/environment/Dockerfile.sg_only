@@ -4,6 +4,8 @@
 
 FROM golang:1.21-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/flipt--3d5a345f
+
 WORKDIR /workspace
 
 # Install system dependencies

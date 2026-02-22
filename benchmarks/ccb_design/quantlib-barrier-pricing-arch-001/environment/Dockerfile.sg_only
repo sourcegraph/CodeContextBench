@@ -3,6 +3,8 @@
 
 FROM gcc:13
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/lballabio/QuantLib
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

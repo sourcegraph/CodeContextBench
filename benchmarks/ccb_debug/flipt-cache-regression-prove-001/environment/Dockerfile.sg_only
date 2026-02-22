@@ -7,6 +7,8 @@
 
 FROM jefzda/sweap-images:flipt-io.flipt-flipt-io__flipt-6fe76d024ee0c50ddb09c86f4ae0bd4c208fd65f
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/flipt--3d5a345f
+
 # Create required directories for Harbor
 RUN mkdir -p /logs
 

@@ -5,6 +5,8 @@
 # TAC Task Wrapper: sde-find-answer-in-codebase-1
 FROM ghcr.io/theagentcompany/sde-find-answer-in-codebase-1-image:1.0.0
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/llama.cpp--56399714
+
 RUN mkdir -p /logs /workspace
 
 WORKDIR /workspace

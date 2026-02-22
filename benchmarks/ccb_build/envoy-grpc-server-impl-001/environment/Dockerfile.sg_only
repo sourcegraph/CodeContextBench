@@ -4,6 +4,8 @@
 
 FROM ubuntu:22.04
 
+ENV SOURCEGRAPH_REPOS=github.com/envoyproxy/go-control-plane,github.com/istio/istio,github.com/emissary-ingress/emissary
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \

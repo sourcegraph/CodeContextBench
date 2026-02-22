@@ -3,6 +3,8 @@
 
 FROM golang:1.23-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/argoproj/argo-cd
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

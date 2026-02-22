@@ -3,6 +3,8 @@
 # Verifier wrapper restores full repo before running tests.
 
 FROM harbor-ccb_crossrepo:base
+
+ENV SOURCEGRAPH_REPO_NAME=github.com/django/django
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

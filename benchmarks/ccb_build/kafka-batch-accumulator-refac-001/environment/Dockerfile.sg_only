@@ -4,6 +4,8 @@
 
 FROM ccb-repo-kafka-0753c489
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/apache/kafka
+
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full
 RUN find /workspace -type f \( \

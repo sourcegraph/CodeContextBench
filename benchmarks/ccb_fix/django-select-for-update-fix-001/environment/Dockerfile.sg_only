@@ -4,6 +4,8 @@
 
 FROM ccb-repo-django-9e7cc2b6
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/django/django
+
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full
 RUN find /workspace -type f \( \

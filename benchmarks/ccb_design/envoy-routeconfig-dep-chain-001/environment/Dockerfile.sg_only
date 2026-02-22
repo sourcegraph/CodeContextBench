@@ -32,6 +32,8 @@ RUN ls -la /workspace/ && \
     test -d /workspace/data-plane-api
 
 FROM base AS final
+
+ENV SOURCEGRAPH_REPOS=github.com/istio/istio,github.com/envoyproxy/go-control-plane,github.com/envoyproxy/data-plane-api
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

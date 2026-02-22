@@ -5,6 +5,8 @@
 # TAC Task Wrapper: sde-write-a-unit-test-for-search_file-function
 FROM ghcr.io/theagentcompany/sde-write-a-unit-test-for-search_file-function-image:1.0.0
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/OpenHands--latest
+
 RUN mkdir -p /logs /workspace
 
 WORKDIR /workspace

@@ -1,5 +1,7 @@
 FROM golang:1.23-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/prometheus/prometheus
+
 WORKDIR /workspace
 
 # Install dependencies

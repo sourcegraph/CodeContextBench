@@ -4,6 +4,8 @@
 
 FROM ccb-repo-strata-66225ca9
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/OpenGamma/Strata
+
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full
 RUN find /workspace -type f \( \

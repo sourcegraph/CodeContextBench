@@ -4,6 +4,8 @@
 
 FROM gcc:13
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/pytorch/pytorch
+
 WORKDIR /workspace
 
 # Install dependencies including curl for Node.js setup

@@ -5,6 +5,8 @@
 # TAC Task Wrapper: sde-implement-hyperloglog
 FROM ghcr.io/theagentcompany/sde-implement-hyperloglog-image:1.0.0
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/bustub--d5f79431
+
 # Create logs directory for Harbor compatibility
 RUN mkdir -p /logs /workspace
 

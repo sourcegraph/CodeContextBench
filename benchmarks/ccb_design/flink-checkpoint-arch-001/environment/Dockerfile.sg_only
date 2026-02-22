@@ -3,6 +3,8 @@
 
 FROM eclipse-temurin:17-jdk
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/apache/flink
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

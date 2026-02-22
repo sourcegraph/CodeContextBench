@@ -7,6 +7,8 @@
 
 FROM jefzda/sweap-images:tutao.tutanota-tutao__tutanota-f373ac3808deefce8183dad8d16729839cc330c1-v2939aa9f4356f0dc9f523ee5ce19d09e08ab979b
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/tutao/tutanota
+
 # Create required directories for Harbor
 RUN mkdir -p /logs /workspace
 

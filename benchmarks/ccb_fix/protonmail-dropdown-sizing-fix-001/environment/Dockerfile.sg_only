@@ -13,6 +13,8 @@ FROM jefzda/sweap-images:protonmail.webclients-protonmail__webclients-8be4f6cb93
 
 FROM node:18-bullseye
 
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/webclients--8be4f6cb
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git jq python3 curl ca-certificates \
     && rm -rf /var/lib/apt/lists/*

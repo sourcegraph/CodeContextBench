@@ -4,6 +4,8 @@
 
 FROM node:22-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/microsoft/vscode
+
 WORKDIR /workspace
 
 # Install dependencies

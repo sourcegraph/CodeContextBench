@@ -3,6 +3,8 @@
 
 FROM golang:1.23-bookworm
 
+ENV SOURCEGRAPH_REPOS=github.com/fullstorydev/grpcurl,github.com/grpc/grpc-go
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

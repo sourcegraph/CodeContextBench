@@ -4,6 +4,8 @@
 
 FROM rust:1.83-bookworm
 
+ENV SOURCEGRAPH_REPO_NAME=github.com/servo/servo
+
 WORKDIR /workspace
 
 # Install dependencies
