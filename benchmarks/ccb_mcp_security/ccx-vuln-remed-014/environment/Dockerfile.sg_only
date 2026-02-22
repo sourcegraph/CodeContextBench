@@ -37,5 +37,5 @@ RUN find /workspace -type f \( -name "*.py" -o -name "*.pyx" -o -name "*.pyi" -o
 # would bypass truncation by reading from the pre-truncation commit.
 RUN cd /workspace && git add -A && git commit -m "sg_only truncation" --allow-empty --quiet
 RUN touch /tmp/.sg_only_mode && echo '/workspace' > /tmp/.sg_only_workdir
-ENV SOURCEGRAPH_REPOS="sg-benchmarks/grafana,sg-benchmarks/grafana-loki"
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/grafana,sg-benchmarks/grafana-loki,sg-benchmarks/grafana-mimir"
 ENTRYPOINT []

@@ -55,4 +55,4 @@ You must:
 ## Testing
 
 - **Time limit**: 1800 seconds
-- Run `bash /workspace/tests/test.sh` to verify your findings
+- Run `bash /tests/test.sh` to verify your findings

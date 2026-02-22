@@ -132,7 +132,7 @@ A detailed reference for every benchmark task in CodeContextBench. This document
 | camel-fix-protocol-feat-001 | Java | hard | apache/camel | Feature implementation |
 | cgen-deps-install-001 | Python | medium | inducer/cgen | Dependency inference |
 | codecoverage-deps-install-001 | C# | medium | irongut/CodeCoverageSummary | Dependency inference |
-| django-dep-refactor-001 | Go | hard | flipt-io/flipt | Enterprise dependency refactor |
+| flipt-flagexists-refactor-001 | Go | hard | flipt-io/flipt | Enterprise dependency refactor |
 | dotenv-expand-deps-install-001 | JavaScript | medium | motdotla/dotenv-expand | Dependency inference |
 | dotnetkoans-deps-install-001 | C# | medium | DotNetKoans/DotNetKoans | Dependency inference |
 | envoy-grpc-server-impl-001 | Go | hard | envoyproxy/go-control-plane | Interface implementation |
@@ -202,7 +202,7 @@ A detailed reference for every benchmark task in CodeContextBench. This document
 | k8s-apiserver-doc-gen-001 | Go | hard | kubernetes/kubernetes | K8s package documentation |
 | k8s-applyconfig-doc-gen-001 | Go | hard | kubernetes/kubernetes | K8s package documentation |
 | k8s-clientgo-doc-gen-001 | Go | hard | kubernetes/kubernetes | K8s package documentation |
-| k8s-controller-mgr-doc-gen-001 | Go | hard | kubernetes/kubernetes | K8s package documentation |
+| k8s-kubelet-cm-doc-gen-001 | Go | hard | kubernetes/kubernetes | Kubelet container manager documentation |
 | k8s-fairqueuing-doc-gen-001 | Go | hard | kubernetes/kubernetes | K8s package documentation |
 | terraform-migration-doc-gen-001 | Go | hard | hashicorp/terraform | Migration guide |
 | envoy-migration-doc-gen-001 | C++ | hard | envoyproxy/envoy | Migration guide |
@@ -248,10 +248,10 @@ A detailed reference for every benchmark task in CodeContextBench. This document
 
 | Task ID | Lang | Difficulty | Repository | Category |
 |---------|------|-----------|------------|----------|
-| ansible-vault-regression-prove-001 | Python | hard | ansible/ansible | Navigation-verified regression |
+| ansible-galaxy-tar-regression-prove-001 | Python | hard | ansible/ansible | Navigation-verified regression |
 | django-admins-migration-audit-001 | Python | medium | django/django | Migration audit |
 | envoy-duplicate-headers-debug-001 | C++ | hard | envoyproxy/envoy | Deep causal chain |
-| flipt-cache-regression-prove-001 | Go | hard | flipt-io/flipt | Navigation-verified regression |
+| flipt-auth-cookie-regression-prove-001 | Go | hard | flipt-io/flipt | Navigation-verified regression |
 | grafana-table-panel-regression-001 | Go | hard | grafana/grafana | Regression hunt |
 | istio-xds-destrul-debug-001 | Go | hard | istio/istio | Deep causal chain |
 | linux-acpi-backlight-fault-001 | C | expert | torvalds/linux | Kernel fault localization |
@@ -260,9 +260,9 @@ A detailed reference for every benchmark task in CodeContextBench. This document
 | linux-nfs-inode-revalidate-fault-001 | C | expert | torvalds/linux | Kernel fault localization |
 | linux-ssd-trim-timeout-fault-001 | C | expert | torvalds/linux | Kernel fault localization |
 | prometheus-queue-reshard-debug-001 | Go | hard | prometheus/prometheus | Cross-service debug |
-| qutebrowser-bookmark-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
-| qutebrowser-download-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
-| qutebrowser-tab-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
+| qutebrowser-hsv-color-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
+| qutebrowser-adblock-cache-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
+| qutebrowser-darkmode-threshold-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
 | qutebrowser-url-regression-prove-001 | Python | hard | qutebrowser/qutebrowser | Navigation-verified regression |
 | teleport-ssh-regression-prove-001 | Go | hard | gravitational/teleport | Navigation-verified regression |
 | terraform-phantom-update-debug-001 | Go | hard | hashicorp/terraform | Deep causal chain |

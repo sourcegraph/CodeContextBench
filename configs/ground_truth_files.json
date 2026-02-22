@@ -698,8 +698,8 @@
     "source": "ground_truth_json_entries",
     "confidence": "medium"
   },
-  "django-dep-refactor-001": {
-    "task_id": "django-dep-refactor-001",
+  "flipt-flagexists-refactor-001": {
+    "task_id": "flipt-flagexists-refactor-001",
     "benchmark": "ccb_build",
     "files": [
       "internal/storage/storage.go",
@@ -1115,8 +1115,8 @@
     "source": "instruction",
     "confidence": "low"
   },
-  "ansible-vault-regression-prove-001": {
-    "task_id": "ansible-vault-regression-prove-001",
+  "ansible-galaxy-tar-regression-prove-001": {
+    "task_id": "ansible-galaxy-tar-regression-prove-001",
     "benchmark": "ccb_debug",
     "files": [
       ".azure-pipelines/azure-pipelines.yml",
@@ -1175,8 +1175,8 @@
     "source": "ground_truth_json_refs",
     "confidence": "medium"
   },
-  "flipt-cache-regression-prove-001": {
-    "task_id": "flipt-cache-regression-prove-001",
+  "flipt-auth-cookie-regression-prove-001": {
+    "task_id": "flipt-auth-cookie-regression-prove-001",
     "benchmark": "ccb_debug",
     "files": [
       "internal/server/auth/middleware.go"
@@ -1273,8 +1273,8 @@
     "source": "ground_truth_json_refs",
     "confidence": "medium"
   },
-  "qutebrowser-bookmark-regression-prove-001": {
-    "task_id": "qutebrowser-bookmark-regression-prove-001",
+  "qutebrowser-hsv-color-regression-prove-001": {
+    "task_id": "qutebrowser-hsv-color-regression-prove-001",
     "benchmark": "ccb_debug",
     "files": [
       "qutebrowser/config/configtypes.py"
@@ -1282,8 +1282,8 @@
     "source": "patch",
     "confidence": "high"
   },
-  "qutebrowser-download-regression-prove-001": {
-    "task_id": "qutebrowser-download-regression-prove-001",
+  "qutebrowser-adblock-cache-regression-prove-001": {
+    "task_id": "qutebrowser-adblock-cache-regression-prove-001",
     "benchmark": "ccb_debug",
     "files": [
       "qutebrowser/components/braveadblock.py"
@@ -1291,8 +1291,8 @@
     "source": "patch",
     "confidence": "high"
   },
-  "qutebrowser-tab-regression-prove-001": {
-    "task_id": "qutebrowser-tab-regression-prove-001",
+  "qutebrowser-darkmode-threshold-regression-prove-001": {
+    "task_id": "qutebrowser-darkmode-threshold-regression-prove-001",
     "benchmark": "ccb_debug",
     "files": [
       "qutebrowser/browser/webengine/darkmode.py"

@@ -831,7 +831,7 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "django-dep-refactor-001",
+      "task_id": "flipt-flagexists-refactor-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (refactor)",
       "language": "go",
@@ -846,7 +846,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Function signature propagation across 10 call sites \u2014 find_references gives instant complete list.",
-      "task_dir": "ccb_build/django-dep-refactor-001",
+      "task_dir": "ccb_build/flipt-flagexists-refactor-001",
       "context_length": 850000,
       "context_length_source": "task_metrics_run",
       "files_count": 19,
@@ -1073,15 +1073,15 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "k8s-controller-mgr-doc-gen-001",
+      "task_id": "k8s-kubelet-cm-doc-gen-001",
       "benchmark": "ccb_document",
       "sdlc_phase": "Documentation",
       "language": "go",
       "difficulty": "hard",
       "category": "architecture_doc",
       "repo": "kubernetes/kubernetes",
-      "task_dir": "ccb_document/k8s-controller-mgr-doc-gen-001",
-      "selection_rationale": "Kubernetes controller-manager package documentation",
+      "task_dir": "ccb_document/k8s-kubelet-cm-doc-gen-001",
+      "selection_rationale": "Kubernetes kubelet container manager package documentation",
       "mcp_benefit_score": 0.87,
       "mcp_breakdown": {
         "context_complexity": 0.9,
@@ -1821,9 +1821,9 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "ansible-vault-regression-prove-001",
+      "task_id": "ansible-galaxy-tar-regression-prove-001",
       "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/ansible-vault-regression-prove-001",
+      "task_dir": "ccb_debug/ansible-galaxy-tar-regression-prove-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "debug",
@@ -1876,9 +1876,9 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "flipt-cache-regression-prove-001",
+      "task_id": "flipt-auth-cookie-regression-prove-001",
       "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/flipt-cache-regression-prove-001",
+      "task_dir": "ccb_debug/flipt-auth-cookie-regression-prove-001",
       "language": "go",
       "difficulty": "hard",
       "sdlc_phase": "debug",
@@ -2008,9 +2008,9 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "qutebrowser-bookmark-regression-prove-001",
+      "task_id": "qutebrowser-hsv-color-regression-prove-001",
       "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/qutebrowser-bookmark-regression-prove-001",
+      "task_dir": "ccb_debug/qutebrowser-hsv-color-regression-prove-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "debug",
@@ -2019,9 +2019,9 @@
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
     {
-      "task_id": "qutebrowser-download-regression-prove-001",
+      "task_id": "qutebrowser-adblock-cache-regression-prove-001",
       "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/qutebrowser-download-regression-prove-001",
+      "task_dir": "ccb_debug/qutebrowser-adblock-cache-regression-prove-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "debug",
@@ -2030,9 +2030,9 @@
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
     {
-      "task_id": "qutebrowser-tab-regression-prove-001",
+      "task_id": "qutebrowser-darkmode-threshold-regression-prove-001",
       "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/qutebrowser-tab-regression-prove-001",
+      "task_dir": "ccb_debug/qutebrowser-darkmode-threshold-regression-prove-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "debug",

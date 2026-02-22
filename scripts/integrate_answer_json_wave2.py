@@ -69,11 +69,11 @@ DEBUG_FAULTLOC = {
 
 # Debug: find-and-prove tasks (lib extracts new-file diffs to /workspace/)
 DEBUG_FINDPROVE = {
-    "ansible-vault-regression-prove-001",
-    "flipt-cache-regression-prove-001",
-    "qutebrowser-bookmark-regression-prove-001",
-    "qutebrowser-download-regression-prove-001",
-    "qutebrowser-tab-regression-prove-001",
+    "ansible-galaxy-tar-regression-prove-001",
+    "flipt-auth-cookie-regression-prove-001",
+    "qutebrowser-hsv-color-regression-prove-001",
+    "qutebrowser-adblock-cache-regression-prove-001",
+    "qutebrowser-darkmode-threshold-regression-prove-001",
     "qutebrowser-url-regression-prove-001",
     "teleport-ssh-regression-prove-001",
     "tutanota-search-regression-prove-001",

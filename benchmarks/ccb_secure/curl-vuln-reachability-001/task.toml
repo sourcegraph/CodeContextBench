@@ -2,7 +2,7 @@ version = "1.0"
 
 [metadata]
 name = "curl-vuln-reachability-001"
-description = "Analyze reachability of a vulnerability in curl's URL parser"
+description = "Analyze reachability of a vulnerability in curl's SOCKS5 proxy handler (do_SOCKS5 in lib/socks.c)"
 
 [task]
 id = "curl-vuln-reachability-001"

@@ -124,7 +124,7 @@ New feature implementation, code refactoring, and dependency management tasks.
 | `camel-fix-protocol-feat-001` | Implement camel-fix component FIX protocol |
 | `cgen-deps-install-001` | Set required package configuration |
 | `codecoverage-deps-install-001` | Configure project dependency versions |
-| `django-dep-refactor-001` | Dependency refactoring (Django) |
+| `flipt-flagexists-refactor-001` | Add FlagExists to ReadOnlyFlagStore (Flipt) |
 | `dotenv-expand-deps-install-001` | Fix build system dependencies |
 | `dotnetkoans-deps-install-001` | Edit build dependencies, tests pass |
 | `envoy-grpc-server-impl-001` | Identify gRPC server implementations |
@@ -184,7 +184,7 @@ API reference generation, architecture documentation, and migration guide creati
 | `k8s-apiserver-doc-gen-001` | K8s API server documentation |
 | `k8s-applyconfig-doc-gen-001` | K8s ApplyConfig documentation |
 | `k8s-clientgo-doc-gen-001` | K8s client-go documentation |
-| `k8s-controller-mgr-doc-gen-001` | K8s controller manager documentation |
+| `k8s-kubelet-cm-doc-gen-001` | Kubelet container manager architecture guide |
 | `k8s-fairqueuing-doc-gen-001` | K8s fair queuing documentation |
 | `kafka-api-doc-gen-001` | Kafka API reference generation |
 | `terraform-arch-doc-gen-001` | Terraform architecture documentation |
@@ -228,10 +228,10 @@ Root cause tracing, fault localization, regression provenance, and deep investig
 
 | Task | Focus |
 |------|-------|
-| `ansible-vault-regression-prove-001` | Find & prove: Ansible vault bug |
+| `ansible-galaxy-tar-regression-prove-001` | Find & prove: Galaxy collection tar extraction |
 | `django-admins-migration-audit-001` | Audit Django ADMINS/MANAGERS migration |
 | `envoy-duplicate-headers-debug-001` | Trace duplicate response headers |
-| `flipt-cache-regression-prove-001` | Find & prove: Flipt cache bug |
+| `flipt-auth-cookie-regression-prove-001` | Find & prove: Flipt cookie auth |
 | `grafana-table-panel-regression-001` | Hunt dashboard table panel regression |
 | `istio-xds-destrul-debug-001` | Diagnose dropped xDS DestinationRule |
 | `linux-acpi-backlight-fault-001` | Locate ACPI backlight brightness bug |
@@ -240,9 +240,9 @@ Root cause tracing, fault localization, regression provenance, and deep investig
 | `linux-nfs-inode-revalidate-fault-001` | Debug NFS mount inode revalidate |
 | `linux-ssd-trim-timeout-fault-001` | Fix Samsung SSD TRIM timeout issue |
 | `prometheus-queue-reshard-debug-001` | Debug remote-write queue resharding |
-| `qutebrowser-bookmark-regression-prove-001` | Find & prove: qutebrowser bookmark |
-| `qutebrowser-download-regression-prove-001` | Find & prove: qutebrowser download |
-| `qutebrowser-tab-regression-prove-001` | Find & prove: qutebrowser tab |
+| `qutebrowser-hsv-color-regression-prove-001` | Find & prove: HSV color hue scaling |
+| `qutebrowser-adblock-cache-regression-prove-001` | Find & prove: ad-blocker cache crash |
+| `qutebrowser-darkmode-threshold-regression-prove-001` | Find & prove: dark mode threshold Qt 6.4 |
 | `qutebrowser-url-regression-prove-001` | Find & prove: qutebrowser URL |
 | `teleport-ssh-regression-prove-001` | Find & prove: Teleport SSH |
 | `terraform-phantom-update-debug-001` | Identify phantom resource update trigger |
