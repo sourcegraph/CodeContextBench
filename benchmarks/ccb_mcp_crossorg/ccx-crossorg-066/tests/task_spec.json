@@ -18,7 +18,9 @@
   "artifacts": {
     "repo_set_id": "multi-org-go",
     "oracle": {
-      "required_files": [],
+      "required_files": [
+        {"repo": "etcd-io/etcd", "path": "client/v3/go.mod"}
+      ],
       "required_symbols": [],
       "required_references": [],
       "dependency_chains": []

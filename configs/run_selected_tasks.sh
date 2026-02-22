@@ -604,11 +604,19 @@ _launch_task_pair() {
             fi
         fi
 
+        # Extract SOURCEGRAPH_REPOS from the active Dockerfile so the agent
+        # preamble can scope MCP queries to version-pinned mirrors.
+        # The container exec fallback in setup() is unreliable (empty trial.log
+        # observed), so we pass the value as a host env var directly.
+        local _sg_repos=""
+        _sg_repos=$(grep -oP '(?<=ENV SOURCEGRAPH_REPOS=")[^"]+' "${_mcp_task_path}/environment/Dockerfile" 2>/dev/null || true)
+
         _wait_for_slot
         _pick_next_account
         local _full_home="$_PICKED_HOME"
         (
             export HOME="$_full_home"
+            SOURCEGRAPH_REPOS="$_sg_repos" \
             BASELINE_MCP_TYPE=$FULL_MCP_TYPE harbor run \
                 --path "$_mcp_task_path" \
                 --agent-import-path "$AGENT_PATH" \

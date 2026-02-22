@@ -153,18 +153,51 @@ def _path_matches(oracle_path: str, candidate_path: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def _tool_base_name(tool_name: str) -> str:
-    """Strip the ``mcp__<server>__`` prefix from an MCP tool name.
+    """Strip the ``mcp__<server>__`` prefix and optional ``sg_`` prefix.
 
+    Real Sourcegraph MCP tools have an ``sg_`` prefix on the base name
+    (e.g. ``mcp__sourcegraph__sg_read_file``).  This function strips both
+    the MCP server prefix and the ``sg_`` prefix so callers can match on
+    the canonical short name (``read_file``).
+
+    >>> _tool_base_name("mcp__sourcegraph__sg_read_file")
+    'read_file'
     >>> _tool_base_name("mcp__sourcegraph__read_file")
     'read_file'
     >>> _tool_base_name("mcp__sg__keyword_search")
     'keyword_search'
+    >>> _tool_base_name("mcp__sourcegraph__sg_find_references")
+    'find_references'
     >>> _tool_base_name("Read")
     'Read'
     """
     if tool_name.startswith("mcp__") and "__" in tool_name[5:]:
-        return tool_name.rsplit("__", 1)[-1]
+        base = tool_name.rsplit("__", 1)[-1]
+        # Strip the sg_ prefix that real Sourcegraph tools carry
+        if base.startswith("sg_"):
+            base = base[3:]
+        return base
     return tool_name
+
+
+def _repo_matches(arg_repo: str, oracle_repo: str) -> bool:
+    """Return True if *arg_repo* refers to the same repo as *oracle_repo*.
+
+    Normalizes both sides by stripping code-host prefixes (``github.com/``,
+    etc.) before comparing, so ``github.com/org/repo`` matches ``org/repo``.
+
+    >>> _repo_matches("github.com/grafana/grafana", "grafana/grafana")
+    True
+    >>> _repo_matches("grafana/grafana", "grafana/grafana")
+    True
+    >>> _repo_matches("github.com/org/a", "org/b")
+    False
+    >>> _repo_matches("", "org/repo")
+    False
+    """
+    if not arg_repo or not oracle_repo:
+        return False
+    return _normalize_repo(arg_repo) == _normalize_repo(oracle_repo)
 
 
 def _check_mcp_tool_hit(tool_name: str, args: dict, oracle_item: dict) -> bool:
@@ -178,14 +211,24 @@ def _check_mcp_tool_hit(tool_name: str, args: dict, oracle_item: dict) -> bool:
     Search tools (keyword_search, nls_search, deepsearch) are excluded
     because they do not guarantee the oracle file was actually read.
 
+    Repo names are normalized (host prefix stripped) so that
+    ``github.com/org/repo`` matches oracle ``org/repo``.
+    Tool names with ``sg_`` prefix are handled (e.g.
+    ``mcp__sourcegraph__sg_read_file``).
+
+    >>> _check_mcp_tool_hit(
+    ...     "mcp__sourcegraph__sg_read_file",
+    ...     {"repo": "github.com/sg-benchmarks/kubernetes-client-go", "path": "dynamic/scheme.go"},
+    ...     {"type": "file", "repo": "sg-benchmarks/kubernetes-client-go", "path": "dynamic/scheme.go"})
+    True
     >>> _check_mcp_tool_hit(
     ...     "mcp__sourcegraph__read_file",
     ...     {"repo": "sg-benchmarks/kubernetes-client-go", "path": "dynamic/scheme.go"},
     ...     {"type": "file", "repo": "sg-benchmarks/kubernetes-client-go", "path": "dynamic/scheme.go"})
     True
     >>> _check_mcp_tool_hit(
-    ...     "mcp__sourcegraph__read_file",
-    ...     {"repo": "sg-benchmarks/kubernetes-client-go", "path": "dynamic/other.go"},
+    ...     "mcp__sourcegraph__sg_read_file",
+    ...     {"repo": "github.com/sg-benchmarks/kubernetes-client-go", "path": "dynamic/other.go"},
     ...     {"type": "file", "repo": "sg-benchmarks/kubernetes-client-go", "path": "dynamic/scheme.go"})
     False
     """
@@ -195,7 +238,7 @@ def _check_mcp_tool_hit(tool_name: str, args: dict, oracle_item: dict) -> bool:
         arg_repo = args.get("repo", "")
         arg_path = args.get("path", "")
         return (
-            arg_repo == oracle_item["repo"]
+            _repo_matches(arg_repo, oracle_item["repo"])
             and _path_matches(oracle_item["path"], arg_path)
         )
 
@@ -204,13 +247,13 @@ def _check_mcp_tool_hit(tool_name: str, args: dict, oracle_item: dict) -> bool:
         arg_path = args.get("path", "")
         arg_symbol = args.get("symbol", "")
         if oracle_item["type"] == "symbol":
-            repo_ok = not arg_repo or arg_repo == oracle_item["repo"]
+            repo_ok = not arg_repo or _repo_matches(arg_repo, oracle_item["repo"])
             path_ok = not arg_path or _path_matches(oracle_item.get("path", ""), arg_path)
             sym_ok = not arg_symbol or arg_symbol == oracle_item.get("symbol", "")
             return repo_ok and path_ok and sym_ok
         if oracle_item["type"] == "file":
             return (
-                arg_repo == oracle_item["repo"]
+                _repo_matches(arg_repo, oracle_item["repo"])
                 and _path_matches(oracle_item["path"], arg_path)
             )
 

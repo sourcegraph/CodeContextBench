@@ -378,6 +378,56 @@ class BaselineClaudeCodeAgent(ClaudeCode):
 
         return "the codebase"
 
+    def _get_repo_list(self) -> list:
+        """Return list of sg-benchmarks repo names from SOURCEGRAPH_REPOS env var.
+
+        Multi-repo MCP-unique tasks set SOURCEGRAPH_REPOS as a comma-separated
+        list of sg-benchmarks mirror names (e.g. "sg-benchmarks/grafana,sg-benchmarks/grafana-loki").
+
+        Resolution order:
+        1. Host env var SOURCEGRAPH_REPOS (set by config script)
+        2. Container env cache (populated by setup() exec into container)
+        3. Dockerfile fallback — parse ENV SOURCEGRAPH_REPOS from the task's
+           Dockerfile (handles cases where container exec fails silently)
+        """
+        cache = getattr(self, '_container_env_cache', {})
+        repos_str = os.environ.get("SOURCEGRAPH_REPOS", "") or cache.get("SOURCEGRAPH_REPOS", "")
+
+        # Fallback: parse from Dockerfile if container exec didn't populate cache
+        if not repos_str:
+            repos_str = self._parse_sourcegraph_repos_from_dockerfile()
+
+        if not repos_str:
+            return []
+        return [r.strip() for r in repos_str.split(",") if r.strip()]
+
+    def _parse_sourcegraph_repos_from_dockerfile(self) -> str:
+        """Parse SOURCEGRAPH_REPOS from the task's Dockerfile as a fallback.
+
+        Checks Dockerfile.artifact_only, Dockerfile.sg_only, and Dockerfile
+        in the task's environment/ directory for an ENV SOURCEGRAPH_REPOS line.
+        """
+        import re
+        task_source_dir = os.environ.get("TASK_SOURCE_DIR", "")
+        if not task_source_dir:
+            return ""
+        env_dir = Path(task_source_dir) / "environment"
+        if not env_dir.is_dir():
+            return ""
+        for df_name in ("Dockerfile.artifact_only", "Dockerfile.sg_only", "Dockerfile"):
+            df_path = env_dir / df_name
+            if not df_path.is_file():
+                continue
+            try:
+                for line in df_path.read_text().splitlines():
+                    m = re.match(r'^ENV\s+SOURCEGRAPH_REPOS\s*=\s*"([^"]+)"', line)
+                    if m:
+                        logger.info(f"Dockerfile fallback: SOURCEGRAPH_REPOS={m.group(1)} from {df_name}")
+                        return m.group(1)
+            except OSError:
+                continue
+        return ""
+
 
     def _get_session_dir(self):
         """Override Harbor's _get_session_dir to handle Claude Code subagent sessions.
@@ -463,7 +513,18 @@ class BaselineClaudeCodeAgent(ClaudeCode):
         if mcp_type in ("sourcegraph_full", "sourcegraph_base", "artifact_full"):
             # --- V5 Preamble ---
             # Leads with "files not present", mandatory workflow, concise tool guidance.
-            if repo_display != "the codebase":
+            repo_list = self._get_repo_list()
+            if repo_list:
+                # Multi-repo MCP-unique task: list all version-pinned mirrors
+                scope_lines = ["**Target Repositories (version-pinned mirrors):**\n"]
+                for repo in repo_list:
+                    sg_full = f"github.com/{repo}"
+                    scope_lines.append(f"- `{sg_full}` — use `repo:^{sg_full}$` filter")
+                scope_lines.append("")
+                scope_lines.append("Scope ALL keyword_search/nls_search queries to these repos.")
+                scope_lines.append("Use the repo name as the `repo` parameter for read_file/go_to_definition/find_references.")
+                repo_scope = "\n".join(scope_lines) + "\n"
+            elif repo_display != "the codebase":
                 sg_repo_full = f"github.com/{repo_display}"
                 repo_scope = (
                     f"**Target Repository:** `{sg_repo_full}`\n"
@@ -646,7 +707,14 @@ before retrying."""
 
         elif mcp_type in ("sourcegraph_full", "sourcegraph_base", "sourcegraph_isolated", "artifact_full"):
             # V5 system prompt: reinforces that local source is absent, not truncated.
-            if repo_display != "the codebase":
+            repo_list = self._get_repo_list()
+            if repo_list:
+                # Multi-repo: list all version-pinned mirrors with filters
+                repo_filter_lines = ["Sourcegraph repositories (version-pinned mirrors):"]
+                for repo in repo_list:
+                    repo_filter_lines.append(f"  - github.com/{repo} (filter: repo:^github.com/{repo}$)")
+                repo_filter_system = "\n".join(repo_filter_lines)
+            elif repo_display != "the codebase":
                 repo_filter_system = f"Sourcegraph repository: github.com/{repo_display}\nFor keyword_search: repo:^github.com/{repo_display}$ YourSearchTerm"
             else:
                 repo_filter_system = "Use list_repos to discover available repositories first."
@@ -1047,7 +1115,7 @@ before retrying."""
         mcp_type_setup = os.environ.get("BASELINE_MCP_TYPE", "none").lower()
         if mcp_type_setup != "none":
             self._container_env_cache = {}
-            for var_name in ("SOURCEGRAPH_REPO_NAME", "LOCOBENCH_PROJECT_ID", "SWEBENCH_REPO_COMMIT"):
+            for var_name in ("SOURCEGRAPH_REPO_NAME", "LOCOBENCH_PROJECT_ID", "SWEBENCH_REPO_COMMIT", "SOURCEGRAPH_REPOS"):
                 if not os.environ.get(var_name):
                     try:
                         result = await environment.exec(f'echo ${{{var_name}:-}}')
