@@ -5,12 +5,12 @@
     "generated_by": "SDLC suite migration from migration_map.json",
     "generated_date": "2026-02-18",
     "total_available": 835,
-    "total_selected": 166,
+    "total_selected": 164,
     "migration_source": "migration_map.json (157 mapped tasks across 8 SDLC suites)",
     "target_total": 170,
     "target_note": "ccb_test and ccb_document target 20 each (see docs/backlog_ccb_test.json, docs/backlog_ccb_document.json)",
-    "last_updated": "2026-02-21",
-    "note": "Updated 4 SDLC suites (debug,design,fix,secure) to use renamed on-disk task directories"
+    "last_updated": "2026-02-22",
+    "note": "Updated all 8 SDLC suites to use renamed on-disk task directories. Removed 2 orphaned ccb_understand tasks."
   },
   "methodology": {
     "description": "Tasks reorganized from 17 legacy suites into 8 SDLC-phase suites. Each task retains its original scoring and metadata; only the suite assignment and task_dir are updated to reflect the new SDLC taxonomy. Tasks with status 'archived' or 'retired' in migration_map.json are excluded.",
@@ -83,7 +83,7 @@
   },
   "tasks": [
     {
-      "task_id": "big-code-camel-feat-001",
+      "task_id": "camel-fix-protocol-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "java",
@@ -98,14 +98,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-camel-feat-001",
+      "task_dir": "ccb_build/camel-fix-protocol-feat-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-flink-feat-001",
+      "task_id": "flink-pricing-window-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "java",
@@ -120,14 +120,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-flink-feat-001",
+      "task_dir": "ccb_build/flink-pricing-window-feat-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-k8s-001",
+      "task_id": "k8s-noschedule-taint-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "go",
@@ -142,14 +142,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-k8s-001",
+      "task_dir": "ccb_build/k8s-noschedule-taint-feat-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-k8s-refac-001",
+      "task_id": "k8s-score-normalizer-refac-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Refactoring",
       "language": "go",
@@ -164,14 +164,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-k8s-refac-001",
+      "task_dir": "ccb_build/k8s-score-normalizer-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-kafka-refac-001",
+      "task_id": "kafka-batch-accumulator-refac-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Refactoring",
       "language": "java",
@@ -186,14 +186,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-kafka-refac-001",
+      "task_dir": "ccb_build/kafka-batch-accumulator-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-rust-refac-001",
+      "task_id": "rust-subtype-relation-refac-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Refactoring",
       "language": "rust",
@@ -208,14 +208,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-rust-refac-001",
+      "task_dir": "ccb_build/rust-subtype-relation-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-servo-001",
+      "task_id": "servo-scrollend-event-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "rust",
@@ -230,14 +230,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-servo-001",
+      "task_dir": "ccb_build/servo-scrollend-event-feat-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 16,
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "big-code-strata-feat-001",
+      "task_id": "strata-cds-tranche-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "java",
@@ -252,14 +252,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-strata-feat-001",
+      "task_dir": "ccb_build/strata-cds-tranche-feat-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-strata-refac-001",
+      "task_id": "strata-fx-european-refac-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Refactoring",
       "language": "java",
@@ -274,14 +274,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-strata-refac-001",
+      "task_dir": "ccb_build/strata-fx-european-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "big-code-trt-001",
+      "task_id": "tensorrt-mxfp4-quant-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "python,cpp",
@@ -296,14 +296,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-trt-001",
+      "task_dir": "ccb_build/tensorrt-mxfp4-quant-feat-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 16,
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "big-code-vsc-001",
+      "task_id": "vscode-stale-diagnostics-feat-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "typescript",
@@ -318,14 +318,14 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/big-code-vsc-001",
+      "task_dir": "ccb_build/vscode-stale-diagnostics-feat-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "bug_localization_01",
+      "task_id": "numpy-dtype-localize-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Implementation (bug fix)",
       "language": "go",
@@ -340,14 +340,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_understand/bug_localization_01",
+      "task_dir": "ccb_understand/numpy-dtype-localize-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 18,
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "ccb_dibench-csharp-dotnetkoans",
+      "task_id": "dotnetkoans-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "csharp",
@@ -362,14 +362,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-csharp-dotnetkoans",
+      "task_dir": "ccb_build/dotnetkoans-deps-install-001",
       "context_length": 505062,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 65,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-csharp-irongut-codecoveragesummary",
+      "task_id": "codecoverage-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "csharp",
@@ -384,14 +384,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-csharp-irongut-codecoveragesummary",
+      "task_dir": "ccb_build/codecoverage-deps-install-001",
       "context_length": 117044,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 35,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-js-eslint-markdown",
+      "task_id": "eslint-markdown-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "javascript",
@@ -406,14 +406,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-js-eslint-markdown",
+      "task_dir": "ccb_build/eslint-markdown-deps-install-001",
       "context_length": 67468,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 82,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-js-motdotla-dotenv-expand",
+      "task_id": "dotenv-expand-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "javascript",
@@ -428,14 +428,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-js-motdotla-dotenv-expand",
+      "task_dir": "ccb_build/dotenv-expand-deps-install-001",
       "context_length": 11836,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 20,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-python-inducer-cgen",
+      "task_id": "cgen-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "python",
@@ -450,14 +450,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-python-inducer-cgen",
+      "task_dir": "ccb_build/cgen-deps-install-001",
       "context_length": 19233,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 24,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-python-rhinosec-iamactionhunter",
+      "task_id": "iamactionhunter-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "python",
@@ -472,14 +472,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-python-rhinosec-iamactionhunter",
+      "task_dir": "ccb_build/iamactionhunter-deps-install-001",
       "context_length": 13872,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 20,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-rust-mitsuhiko-similar-asserts",
+      "task_id": "similar-asserts-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "rust",
@@ -494,14 +494,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-rust-mitsuhiko-similar-asserts",
+      "task_dir": "ccb_build/similar-asserts-deps-install-001",
       "context_length": 29605,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 24,
       "files_count_source": "env_repo_scan"
     },
     {
-      "task_id": "ccb_dibench-rust-rusticata-pcap-parser",
+      "task_id": "pcap-parser-deps-install-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "rust",
@@ -516,7 +516,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "2 per language from DI-Bench regular, moderate patch complexity",
-      "task_dir": "ccb_build/ccb_dibench-rust-rusticata-pcap-parser",
+      "task_dir": "ccb_build/pcap-parser-deps-install-001",
       "context_length": 315042,
       "context_length_source": "env_repo_scan_approx",
       "files_count": 64,
@@ -765,7 +765,7 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "cross_file_reasoning_01",
+      "task_id": "k8s-cri-containerd-reason-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Architecture & Design",
       "language": "go",
@@ -780,21 +780,21 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_understand/cross_file_reasoning_01",
+      "task_dir": "ccb_understand/k8s-cri-containerd-reason-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 19,
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "crossrepo-impl-001",
+      "task_id": "k8s-runtime-object-impl-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "interface_implementation",
       "repo": "kubernetes/kubernetes",
-      "task_dir": "ccb_build/crossrepo-impl-001",
+      "task_dir": "ccb_build/k8s-runtime-object-impl-001",
       "selection_rationale": "Cross-repo interface implementor discovery in K8s",
       "mcp_benefit_score": 0.88,
       "mcp_breakdown": {
@@ -809,14 +809,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "crossrepo-impl-002",
+      "task_id": "envoy-grpc-server-impl-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "interface_implementation",
       "repo": "envoyproxy/go-control-plane",
-      "task_dir": "ccb_build/crossrepo-impl-002",
+      "task_dir": "ccb_build/envoy-grpc-server-impl-001",
       "selection_rationale": "Cross-repo interface implementor discovery in xDS ecosystem",
       "mcp_benefit_score": 0.88,
       "mcp_breakdown": {
@@ -831,7 +831,7 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "dep-refactor-001",
+      "task_id": "django-dep-refactor-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (refactor)",
       "language": "go",
@@ -846,14 +846,14 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Function signature propagation across 10 call sites \u2014 find_references gives instant complete list.",
-      "task_dir": "ccb_build/dep-refactor-001",
+      "task_dir": "ccb_build/django-dep-refactor-001",
       "context_length": 850000,
       "context_length_source": "task_metrics_run",
       "files_count": 19,
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "dep-refactor-002",
+      "task_id": "flipt-dep-refactor-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (refactor)",
       "language": "go",
@@ -868,7 +868,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "All ccb_enterprise tasks selected (enterprise complexity benchmark, 9 tasks). Interface method addition \u2014 find_references locates all concrete implementations instantly.",
-      "task_dir": "ccb_build/dep-refactor-002",
+      "task_dir": "ccb_build/flipt-dep-refactor-001",
       "context_length": 850000,
       "context_length_source": "task_metrics_run",
       "files_count": 19,
@@ -1161,58 +1161,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "institutional-memory-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Implementation (bug fix)",
-      "language": "python",
-      "difficulty": "hard",
-      "category": "enterprise_institutional_memory",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.82,
-      "mcp_breakdown": {
-        "context_complexity": 0.8,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.8
-      },
-      "selection_rationale": "Institutional memory loss: sparse docs, terse commit messages, no onboarding material for template engine internals.",
-      "task_dir": "ccb_understand/institutional-memory-001",
-      "context_length": 800000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "knowledge-fragmentation-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Implementation (feature)",
-      "language": "python",
-      "difficulty": "hard",
-      "category": "enterprise_knowledge_fragmentation",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.88,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.9,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "selection_rationale": "Knowledge fragmentation: conventions scattered across forms, validators, and utils packages.",
-      "task_dir": "ccb_understand/knowledge-fragmentation-001",
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 18,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "nlqa-arch-001",
+      "task_id": "envoy-request-routing-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
       "category": "architecture_qa",
       "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/nlqa-arch-001",
+      "task_dir": "ccb_understand/envoy-request-routing-qa-001",
       "selection_rationale": "Architecture Q&A for large C++ proxy codebase",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1227,14 +1183,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-arch-002",
+      "task_id": "istio-xds-serving-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "architecture_qa",
       "repo": "istio/istio",
-      "task_dir": "ccb_understand/nlqa-arch-002",
+      "task_dir": "ccb_understand/istio-xds-serving-qa-001",
       "selection_rationale": "Architecture Q&A for service mesh control plane",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1249,14 +1205,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-arch-003",
+      "task_id": "terraform-plan-pipeline-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "architecture_qa",
       "repo": "hashicorp/terraform",
-      "task_dir": "ccb_understand/nlqa-arch-003",
+      "task_dir": "ccb_understand/terraform-plan-pipeline-qa-001",
       "selection_rationale": "Architecture Q&A for IaC tool provider system",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1271,14 +1227,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-debug-001",
+      "task_id": "vscode-ext-host-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Debugging",
       "language": "typescript",
       "difficulty": "hard",
       "category": "debug_root_cause",
       "repo": "microsoft/vscode",
-      "task_dir": "ccb_understand/nlqa-debug-001",
+      "task_dir": "ccb_understand/vscode-ext-host-qa-001",
       "selection_rationale": "Debug root cause analysis in large TypeScript codebase",
       "mcp_benefit_score": 0.79,
       "mcp_breakdown": {
@@ -1293,14 +1249,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-debug-002",
+      "task_id": "cilium-ebpf-fault-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Debugging",
       "language": "go",
       "difficulty": "hard",
       "category": "debug_root_cause",
       "repo": "cilium/cilium",
-      "task_dir": "ccb_understand/nlqa-debug-002",
+      "task_dir": "ccb_understand/cilium-ebpf-fault-qa-001",
       "selection_rationale": "Debug root cause analysis in eBPF networking codebase",
       "mcp_benefit_score": 0.79,
       "mcp_breakdown": {
@@ -1315,14 +1271,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-flow-001",
+      "task_id": "kafka-message-lifecycle-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
       "category": "data_flow_explanation",
       "repo": "apache/kafka",
-      "task_dir": "ccb_understand/nlqa-flow-001",
+      "task_dir": "ccb_understand/kafka-message-lifecycle-qa-001",
       "selection_rationale": "Data flow explanation in distributed streaming platform",
       "mcp_benefit_score": 0.85,
       "mcp_breakdown": {
@@ -1337,14 +1293,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-flow-002",
+      "task_id": "envoy-filter-chain-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
       "category": "data_flow_explanation",
       "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/nlqa-flow-002",
+      "task_dir": "ccb_understand/envoy-filter-chain-qa-001",
       "selection_rationale": "Data flow explanation in proxy filter chain",
       "mcp_benefit_score": 0.85,
       "mcp_breakdown": {
@@ -1359,14 +1315,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "nlqa-flow-003",
+      "task_id": "argocd-sync-reconcile-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "data_flow_explanation",
       "repo": "argoproj/argo-cd",
-      "task_dir": "ccb_understand/nlqa-flow-003",
+      "task_dir": "ccb_understand/argocd-sync-reconcile-qa-001",
       "selection_rationale": "Data flow explanation in GitOps CD controller",
       "mcp_benefit_score": 0.85,
       "mcp_breakdown": {
@@ -1381,14 +1337,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-handoff-001",
+      "task_id": "envoy-ext-authz-handoff-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
       "category": "team_handoff",
       "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/onboard-handoff-001",
+      "task_dir": "ccb_understand/envoy-ext-authz-handoff-001",
       "selection_rationale": "Team handoff requiring deep component exploration",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1403,14 +1359,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-handoff-002",
+      "task_id": "terraform-state-backend-handoff-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "team_handoff",
       "repo": "hashicorp/terraform",
-      "task_dir": "ccb_understand/onboard-handoff-002",
+      "task_dir": "ccb_understand/terraform-state-backend-handoff-001",
       "selection_rationale": "Team handoff for IaC provider framework",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1425,14 +1381,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-handoff-003",
+      "task_id": "cilium-ebpf-datapath-handoff-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "team_handoff",
       "repo": "cilium/cilium",
-      "task_dir": "ccb_understand/onboard-handoff-003",
+      "task_dir": "ccb_understand/cilium-ebpf-datapath-handoff-001",
       "selection_rationale": "Team handoff for eBPF datapath subsystem",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
@@ -1447,14 +1403,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-orient-001",
+      "task_id": "cilium-project-orient-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "codebase_orientation",
       "repo": "cilium/cilium",
-      "task_dir": "ccb_understand/onboard-orient-001",
+      "task_dir": "ccb_understand/cilium-project-orient-001",
       "selection_rationale": "Codebase orientation in large networking project",
       "mcp_benefit_score": 0.83,
       "mcp_breakdown": {
@@ -1469,14 +1425,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-orient-002",
+      "task_id": "argocd-arch-orient-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
       "category": "codebase_orientation",
       "repo": "argoproj/argo-cd",
-      "task_dir": "ccb_understand/onboard-orient-002",
+      "task_dir": "ccb_understand/argocd-arch-orient-001",
       "selection_rationale": "Codebase orientation in GitOps controller",
       "mcp_benefit_score": 0.83,
       "mcp_breakdown": {
@@ -1491,14 +1447,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-orient-003",
+      "task_id": "kafka-build-orient-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
       "category": "codebase_orientation",
       "repo": "apache/kafka",
-      "task_dir": "ccb_understand/onboard-orient-003",
+      "task_dir": "ccb_understand/kafka-build-orient-001",
       "selection_rationale": "Codebase orientation in distributed streaming platform",
       "mcp_benefit_score": 0.83,
       "mcp_breakdown": {
@@ -1513,14 +1469,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-workflow-001",
+      "task_id": "envoy-contributor-workflow-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
       "category": "workflow_discovery",
       "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/onboard-workflow-001",
+      "task_dir": "ccb_understand/envoy-contributor-workflow-001",
       "selection_rationale": "Developer workflow discovery in large C++ project",
       "mcp_benefit_score": 0.77,
       "mcp_breakdown": {
@@ -1535,14 +1491,14 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "onboard-workflow-002",
+      "task_id": "kafka-contributor-workflow-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
       "category": "workflow_discovery",
       "repo": "apache/kafka",
-      "task_dir": "ccb_understand/onboard-workflow-002",
+      "task_dir": "ccb_understand/kafka-contributor-workflow-001",
       "selection_rationale": "Developer workflow discovery in Gradle-based Java project",
       "mcp_benefit_score": 0.77,
       "mcp_breakdown": {
@@ -1557,7 +1513,7 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "refactor_rename_01",
+      "task_id": "python-http-class-naming-refac-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (refactoring)",
       "language": "go",
@@ -1572,7 +1528,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/refactor_rename_01",
+      "task_dir": "ccb_build/python-http-class-naming-refac-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 17,
@@ -1623,7 +1579,7 @@
       "files_count_source": "task_metrics_run"
     },
     {
-      "task_id": "tac-implement-hyperloglog",
+      "task_id": "bustub-hyperloglog-impl-001",
       "benchmark": "ccb_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "cpp",
@@ -1638,7 +1594,7 @@
         "task_category_weight": 0.7
       },
       "selection_rationale": "All ccb_tac tasks selected (small benchmark)",
-      "task_dir": "ccb_build/tac-implement-hyperloglog",
+      "task_dir": "ccb_build/bustub-hyperloglog-impl-001",
       "context_length": 500000,
       "context_length_source": "task_metrics_run",
       "files_count": 6,
