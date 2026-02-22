@@ -212,19 +212,17 @@ for line in "${TASK_LINES[@]}"; do
             echo "Launching runtime smoke: $bm ($path)"
         fi
 
-        # Run smoke in a subshell that restores the Dockerfile on exit
+        # Run smoke in a subshell with trap-based restore (survives timeout kills)
         (
+            if [ "$__sg_swapped" = true ]; then
+                trap 'restore_dockerfile "'"$abs_path"'"' EXIT
+            fi
             python3 scripts/validate_tasks_preflight.py \
                 --task "$abs_path" \
                 --smoke-runtime \
                 --smoke-timeout-sec "$TASK_TIMEOUT" \
                 --format json \
                 > "$JOBS_DIR/${bm}.log" 2>&1
-            __rc=$?
-            if [ "$__sg_swapped" = true ]; then
-                restore_dockerfile "$abs_path"
-            fi
-            exit $__rc
         ) &
     else
         echo "Launching harbor smoke: $bm ($path)"
