@@ -4,7 +4,7 @@
 
 FROM ccb-repo-k8s-11602f08
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/kubernetes/kubernetes
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/kubernetes--v1.30.0
 
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full

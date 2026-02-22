@@ -3,7 +3,7 @@
 
 FROM golang:1.22-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/prometheus/prometheus
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/prometheus--v2.52.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 

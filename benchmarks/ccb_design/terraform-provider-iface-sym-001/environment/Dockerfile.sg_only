@@ -4,7 +4,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPOS=github.com/hashicorp/terraform,github.com/hashicorp/terraform-provider-aws
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/terraform--f65c52c8,sg-benchmarks/terraform-provider-aws--e9b4629e"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

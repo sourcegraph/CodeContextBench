@@ -4,7 +4,7 @@
 
 FROM python:3.11-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/NVIDIA/TensorRT-LLM
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/TensorRT-LLM--b98f3fca
 
 WORKDIR /workspace
 

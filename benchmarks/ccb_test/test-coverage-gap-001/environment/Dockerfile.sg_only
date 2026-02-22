@@ -4,7 +4,7 @@
 
 FROM ccb-repo-envoy-1d0ba73a
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/envoyproxy/envoy
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/envoy--1d0ba73a
 
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full

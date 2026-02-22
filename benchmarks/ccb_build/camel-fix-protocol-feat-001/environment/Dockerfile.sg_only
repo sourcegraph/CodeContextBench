@@ -4,7 +4,7 @@
 
 FROM ccb-repo-camel-1006f047
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/apache/camel
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/camel--1006f047
 
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full

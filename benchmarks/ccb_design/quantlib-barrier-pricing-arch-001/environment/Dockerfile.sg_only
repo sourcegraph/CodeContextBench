@@ -3,7 +3,7 @@
 
 FROM gcc:14-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/lballabio/QuantLib
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/QuantLib--dbdcc14e
 
 ENV DEBIAN_FRONTEND=noninteractive
 

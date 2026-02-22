@@ -4,7 +4,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPOS=github.com/envoyproxy/go-control-plane,github.com/istio/istio,github.com/emissary-ingress/emissary
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/go-control-plane--71637ad6,sg-benchmarks/istio--2300e245,sg-benchmarks/emissary--3bbdbe0f"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

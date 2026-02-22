@@ -3,7 +3,7 @@
 
 FROM golang:1.19-bookworm
 
-ENV SOURCEGRAPH_REPOS=github.com/charmbracelet/wish,github.com/gliderlabs/ssh
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/wish--v0.5.0,sg-benchmarks/ssh--v0.3.4"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

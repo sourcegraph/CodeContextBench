@@ -4,7 +4,7 @@
 
 FROM gcc:13
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/pytorch/pytorch
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/pytorch--ca246612
 
 WORKDIR /workspace
 

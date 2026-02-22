@@ -4,7 +4,7 @@
 
 FROM harbor-ccb_crossrepo:base
 
-ENV SOURCEGRAPH_REPOS=github.com/django/django,github.com/pallets/flask,github.com/psf/requests
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/django--674eda1c,sg-benchmarks/flask--798e006f,sg-benchmarks/requests--421b8733"
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

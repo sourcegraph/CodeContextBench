@@ -4,7 +4,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPOS=github.com/envoyproxy/envoy,github.com/grpc/grpc-go
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/envoy--1d0ba73a,sg-benchmarks/grpc-go--3be7e2d0"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

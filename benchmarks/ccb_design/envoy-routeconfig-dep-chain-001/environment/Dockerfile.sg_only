@@ -33,7 +33,7 @@ RUN ls -la /workspace/ && \
 
 FROM base AS final
 
-ENV SOURCEGRAPH_REPOS=github.com/istio/istio,github.com/envoyproxy/go-control-plane,github.com/envoyproxy/data-plane-api
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/istio--4c1f845d,sg-benchmarks/go-control-plane--71637ad6,sg-benchmarks/data-plane-api--84e84367"
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

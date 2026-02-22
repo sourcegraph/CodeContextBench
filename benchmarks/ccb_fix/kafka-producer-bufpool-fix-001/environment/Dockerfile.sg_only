@@ -3,7 +3,7 @@
 
 FROM eclipse-temurin:17-jdk
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/apache/kafka
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/kafka--be816b82
 
 ENV DEBIAN_FRONTEND=noninteractive
 

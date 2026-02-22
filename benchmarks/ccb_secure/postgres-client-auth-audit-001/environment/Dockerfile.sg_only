@@ -4,7 +4,7 @@
 
 FROM ccb-repo-postgres-5a461dc4
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/postgres/postgres
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/postgres--5a461dc4
 
 # --- sg_only_env: back up full repo, then truncate source ---
 RUN cp -a /workspace /repo_full

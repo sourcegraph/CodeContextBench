@@ -3,7 +3,7 @@
 
 FROM golang:1.20-bookworm
 
-ENV SOURCEGRAPH_REPOS=github.com/fullstorydev/grpcurl,github.com/grpc/grpc-go
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/grpcurl--25c896aa,sg-benchmarks/grpc-go--v1.56.2"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

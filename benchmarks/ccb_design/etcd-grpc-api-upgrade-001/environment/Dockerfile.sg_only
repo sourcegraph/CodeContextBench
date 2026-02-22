@@ -4,7 +4,7 @@
 
 FROM harbor-ccb_crossrepo:base
 
-ENV SOURCEGRAPH_REPOS=sg-benchmarks/etcd--d89978e8,github.com/kubernetes/kubernetes,sg-benchmarks/containerd--317286ac
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/etcd--d89978e8,sg-benchmarks/kubernetes--8c9c67c0,sg-benchmarks/containerd--317286ac"
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

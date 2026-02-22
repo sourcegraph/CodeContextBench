@@ -3,7 +3,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/hashicorp/terraform
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/terraform--v1.9.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 

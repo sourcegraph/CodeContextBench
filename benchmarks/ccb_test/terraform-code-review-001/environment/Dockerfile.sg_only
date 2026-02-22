@@ -4,7 +4,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/hashicorp/terraform
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/terraform--v1.10.3
 
 # Install common tools (python3 needed for inject_defects.sh)
 RUN apt-get update && apt-get install -y --no-install-recommends \

@@ -4,7 +4,7 @@
 
 FROM python:3.12-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/django/django
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/django--674eda1c
 
 WORKDIR /workspace
 

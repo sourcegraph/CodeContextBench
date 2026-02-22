@@ -4,7 +4,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/apache/kafka
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/kafka--3.8.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 

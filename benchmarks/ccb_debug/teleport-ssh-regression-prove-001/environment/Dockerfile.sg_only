@@ -7,7 +7,7 @@
 
 FROM jefzda/sweap-images:gravitational.teleport-gravitational__teleport-0415e422f12454db0c22316cf3eaa5088d6b6322
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/gravitational/teleport
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/teleport--0415e422
 
 # Create required directories for Harbor
 RUN mkdir -p /logs

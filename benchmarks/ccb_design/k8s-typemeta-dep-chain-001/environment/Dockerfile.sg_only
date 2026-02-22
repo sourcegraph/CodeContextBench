@@ -33,7 +33,7 @@ RUN ls -la /workspace/ && \
 
 FROM base AS final
 
-ENV SOURCEGRAPH_REPOS=github.com/kubernetes/kubernetes,github.com/kubernetes/api,github.com/kubernetes/apimachinery
+ENV SOURCEGRAPH_REPOS="sg-benchmarks/kubernetes--31bf3ed4,sg-benchmarks/api--f32ed1d6,sg-benchmarks/apimachinery--b2e9f88f"
 WORKDIR /workspace
 
 # --- sg_only_env: back up full repo, then truncate source ---

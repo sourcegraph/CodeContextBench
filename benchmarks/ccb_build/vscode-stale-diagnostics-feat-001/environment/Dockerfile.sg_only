@@ -4,7 +4,7 @@
 
 FROM node:22-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/microsoft/vscode
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/vscode--138f619c
 
 WORKDIR /workspace
 

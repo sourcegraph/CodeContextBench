@@ -3,7 +3,7 @@
 
 FROM golang:1.22-bookworm
 
-ENV SOURCEGRAPH_REPO_NAME=github.com/hashicorp/terraform
+ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/terraform--a3dc5711
 
 ENV DEBIAN_FRONTEND=noninteractive
 
