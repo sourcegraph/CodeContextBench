@@ -227,8 +227,28 @@ def generate_report(
         if matched.get("computable"):
             lines.append("### Matched Comparison")
             lines.append("")
-            lines.append(f"Paired comparison of **{matched['n_matched_tasks']}** matched tasks")
-            lines.append(f"({matched['baseline_config']} vs {matched['mcp_config']}):")
+            n_runs_compared = matched.get("n_runs_compared")
+            if n_runs_compared and n_runs_compared > 1:
+                lines.append(
+                    f"Pooled paired comparison of **{matched['n_matched_tasks']}** matched tasks "
+                    f"across **{n_runs_compared}** runs:"
+                )
+                baseline_cfgs = matched.get("baseline_configs") or []
+                mcp_cfgs = matched.get("mcp_configs") or []
+                if baseline_cfgs or mcp_cfgs:
+                    lines.append("")
+                    lines.append(f"- Baseline config(s): {', '.join(baseline_cfgs) if baseline_cfgs else 'N/A'}")
+                    lines.append(f"- MCP config(s): {', '.join(mcp_cfgs) if mcp_cfgs else 'N/A'}")
+                run_pairs = matched.get("run_pairs", [])
+                if run_pairs:
+                    lines.append("")
+                    lines.append(f"- Runs compared: {len(run_pairs)}")
+                    skipped = matched.get("n_runs_skipped", 0)
+                    if skipped:
+                        lines.append(f"- Runs skipped: {skipped}")
+            else:
+                lines.append(f"Paired comparison of **{matched['n_matched_tasks']}** matched tasks")
+                lines.append(f"({matched.get('baseline_config')} vs {matched.get('mcp_config')}):")
             lines.append("")
             lines.append("| Metric | Mean Δ | Median Δ | IQR | +/−/0 | n |")
             lines.append("|--------|--------|---------|-----|-------|---|")
@@ -248,6 +268,9 @@ def generate_report(
             lines.append("**These are comparative observations, not causal claims.**")
             lines.append(f"**Unmatched tasks**: {matched.get('n_baseline_only', 0)} baseline-only, "
                          f"{matched.get('n_mcp_only', 0)} MCP-only.")
+            if matched.get("skipped_runs"):
+                lines.append(f"**Skipped runs**: {len(matched.get('skipped_runs', []))} "
+                             f"(missing paired configs or insufficient matched tasks).")
             lines.append("")
         else:
             reason = matched.get("reason", "unknown")

@@ -34,8 +34,6 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ccb_metrics.ir_metrics import _normalize
-
 # ---------------------------------------------------------------------------
 # Spearman rank correlation (stdlib only)
 # ---------------------------------------------------------------------------
@@ -66,8 +64,15 @@ def spearman(x: list[float], y: list[float]) -> tuple[float, float]:
     if n < 3:
         return (0.0, 1.0)
     rx, ry = _rank(x), _rank(y)
-    d_sq = sum((a - b) ** 2 for a, b in zip(rx, ry))
-    r = 1.0 - (6.0 * d_sq) / (n * (n * n - 1))
+    mean_x = sum(rx) / n
+    mean_y = sum(ry) / n
+    dx = [v - mean_x for v in rx]
+    dy = [v - mean_y for v in ry]
+    denom_x = math.sqrt(sum(v * v for v in dx))
+    denom_y = math.sqrt(sum(v * v for v in dy))
+    if denom_x == 0 or denom_y == 0:
+        return (0.0, 1.0)
+    r = sum(a * b for a, b in zip(dx, dy)) / (denom_x * denom_y)
     r = max(-1.0, min(1.0, r))
     if abs(r) >= 1.0:
         return (round(r, 6), 0.0)
@@ -93,12 +98,12 @@ def _interpret_correlation(r: float, p: float, n: int, x_name: str, y_name: str)
 # Load run outcome data (result.json / task_metrics.json)
 # ---------------------------------------------------------------------------
 
-def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple[str, str], dict]:
+def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple[str, str, str], dict]:
     """Load outcome data (reward, cost, time) for all tasks.
 
-    Returns dict keyed by (config_name, task_name) -> {reward, cost_usd, wall_clock_seconds, ...}
+    Returns dict keyed by (run_id, config_name, task_name) -> outcome fields.
     """
-    outcomes: dict[tuple[str, str], dict] = {}
+    outcomes: dict[tuple[str, str, str], dict] = {}
 
     dirs_to_walk = [runs_root] if single_run else [
         d for d in sorted(runs_root.iterdir()) if d.is_dir() and d.name not in ("archive", "MANIFEST.json")
@@ -111,6 +116,7 @@ def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple
     for run_dir in dirs_to_walk:
         if any(p in run_dir.name for p in _SKIP):
             continue
+        run_id = run_dir.name
         for config_dir in sorted(run_dir.iterdir()):
             if not config_dir.is_dir():
                 continue
@@ -172,7 +178,7 @@ def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple
                         if isinstance(ar, dict):
                             cost_usd = ar.get("cost_usd")
 
-                    key = (config_name, task_name)
+                    key = (run_id, config_name, task_name)
                     # Dedup: keep latest
                     existing = outcomes.get(key)
                     started_at = rdata.get("started_at", "")
@@ -180,6 +186,7 @@ def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple
                         continue
 
                     outcomes[key] = {
+                        "run_id": run_id,
                         "task_name": task_name,
                         "config_name": config_name,
                         "reward": reward,
@@ -196,20 +203,24 @@ def _load_task_outcomes(runs_root: Path, single_run: bool = False) -> dict[tuple
 # Load retrieval metric artifacts
 # ---------------------------------------------------------------------------
 
-def _load_retrieval_metrics(path: Path) -> dict[tuple[str, str], dict]:
-    """Load retrieval metric artifacts keyed by (config_name, task_name)."""
-    metrics: dict[tuple[str, str], dict] = {}
+def _load_retrieval_metrics(path: Path) -> dict[tuple[str, str, str], dict]:
+    """Load retrieval metric artifacts keyed by (run_id, config_name, task_name)."""
+    metrics: dict[tuple[str, str, str], dict] = {}
     for f in sorted(path.rglob("*.retrieval_metrics.json")):
         try:
             data = json.loads(f.read_text())
         except (json.JSONDecodeError, OSError):
             continue
         prov = data.get("provenance", {})
+        run_id = prov.get("run_id", "unknown_run")
         config = prov.get("config_name", "unknown")
         task = prov.get("task_name", f.stem.replace(".retrieval_metrics", ""))
         fm = data.get("file_level_metrics", {})
         if fm.get("computable"):
-            metrics[(config, task)] = {
+            metrics[(run_id, config, task)] = {
+                "run_id": run_id,
+                "task_name": task,
+                "config_name": config,
                 "file_recall": fm.get("file_recall", 0.0),
                 "mrr": fm.get("mrr", 0.0),
                 "map_score": fm.get("map_score", 0.0),
@@ -226,8 +237,8 @@ def _load_retrieval_metrics(path: Path) -> dict[tuple[str, str], dict]:
 # =========================================================================
 
 def compute_correlations(
-    retrieval_metrics: dict[tuple[str, str], dict],
-    outcomes: dict[tuple[str, str], dict],
+    retrieval_metrics: dict[tuple[str, str, str], dict],
+    outcomes: dict[tuple[str, str, str], dict],
 ) -> dict:
     """Compute Spearman correlations between retrieval metrics and outcomes.
 
@@ -295,8 +306,8 @@ def compute_correlations(
 # =========================================================================
 
 def compute_matched_comparisons(
-    retrieval_metrics: dict[tuple[str, str], dict],
-    outcomes: dict[tuple[str, str], dict],
+    retrieval_metrics: dict[tuple[str, str, str], dict],
+    outcomes: dict[tuple[str, str, str], dict],
 ) -> dict:
     """Compute matched-task comparisons across paired configs.
 
@@ -305,90 +316,132 @@ def compute_matched_comparisons(
 
     Labels distinguish comparative evidence from causal claims.
     """
-    # Identify baseline and MCP config names
-    all_configs = {k[0] for k in retrieval_metrics.keys()} | {k[0] for k in outcomes.keys()}
-    baseline_configs = [c for c in all_configs if c.startswith("baseline")]
-    mcp_configs = [c for c in all_configs if c.startswith("mcp-") or c.startswith("sourcegraph")]
+    # Group by run to avoid cross-run task conflation in --all mode.
+    run_ids = sorted({k[0] for k in retrieval_metrics.keys()} | {k[0] for k in outcomes.keys()})
+    if not run_ids:
+        return {"computable": False, "reason": "no_runs_found"}
 
-    if not baseline_configs or not mcp_configs:
-        return {
-            "computable": False,
-            "reason": "need_both_baseline_and_mcp_configs",
-            "configs_found": sorted(all_configs),
-        }
-
-    bl_config = baseline_configs[0]
-    mcp_config = mcp_configs[0]
-
-    # Find matched tasks (present in both configs with outcomes)
-    bl_tasks = {k[1] for k in outcomes if k[0] == bl_config and outcomes[k].get("reward") is not None}
-    mcp_tasks = {k[1] for k in outcomes if k[0] == mcp_config and outcomes[k].get("reward") is not None}
-    matched_tasks = sorted(bl_tasks & mcp_tasks)
-
-    if len(matched_tasks) < 3:
-        return {
-            "computable": False,
-            "reason": f"insufficient_matched_tasks (n={len(matched_tasks)}, need >= 3)",
-            "baseline_config": bl_config,
-            "mcp_config": mcp_config,
-            "n_baseline": len(bl_tasks),
-            "n_mcp": len(mcp_tasks),
-        }
-
-    # Compute deltas for matched tasks
     per_task: list[dict] = []
     reward_deltas: list[float] = []
     cost_deltas: list[float] = []
     time_deltas: list[float] = []
     file_recall_deltas: list[float] = []
     mrr_deltas: list[float] = []
+    run_pairs: list[dict] = []
+    skipped_runs: list[dict] = []
+    baseline_configs_seen: set[str] = set()
+    mcp_configs_seen: set[str] = set()
+    total_baseline_only = 0
+    total_mcp_only = 0
 
-    for task in matched_tasks:
-        bl_outcome = outcomes.get((bl_config, task), {})
-        mcp_outcome = outcomes.get((mcp_config, task), {})
-        bl_rm = retrieval_metrics.get((bl_config, task), {})
-        mcp_rm = retrieval_metrics.get((mcp_config, task), {})
+    for run_id in run_ids:
+        run_configs = {
+            k[1] for k in outcomes.keys() if k[0] == run_id
+        } | {
+            k[1] for k in retrieval_metrics.keys() if k[0] == run_id
+        }
+        baseline_configs = sorted(c for c in run_configs if c.startswith("baseline"))
+        mcp_configs = sorted(c for c in run_configs if c.startswith("mcp-") or c.startswith("sourcegraph"))
+        if not baseline_configs or not mcp_configs:
+            skipped_runs.append({
+                "run_id": run_id,
+                "reason": "need_both_baseline_and_mcp_configs",
+                "configs_found": sorted(run_configs),
+            })
+            continue
 
-        bl_reward = bl_outcome.get("reward", 0.0)
-        mcp_reward = mcp_outcome.get("reward", 0.0)
-        reward_delta = mcp_reward - bl_reward if bl_reward is not None and mcp_reward is not None else None
-        if reward_delta is not None:
-            reward_deltas.append(reward_delta)
+        bl_config = baseline_configs[0]
+        mcp_config = mcp_configs[0]
+        baseline_configs_seen.add(bl_config)
+        mcp_configs_seen.add(mcp_config)
 
-        bl_cost = bl_outcome.get("cost_usd")
-        mcp_cost = mcp_outcome.get("cost_usd")
-        cost_delta = mcp_cost - bl_cost if bl_cost is not None and mcp_cost is not None else None
-        if cost_delta is not None:
-            cost_deltas.append(cost_delta)
+        bl_tasks = {
+            k[2] for k in outcomes
+            if k[0] == run_id and k[1] == bl_config and outcomes[k].get("reward") is not None
+        }
+        mcp_tasks = {
+            k[2] for k in outcomes
+            if k[0] == run_id and k[1] == mcp_config and outcomes[k].get("reward") is not None
+        }
+        matched_tasks = sorted(bl_tasks & mcp_tasks)
+        n_baseline_only = len(bl_tasks - mcp_tasks)
+        n_mcp_only = len(mcp_tasks - bl_tasks)
+        total_baseline_only += n_baseline_only
+        total_mcp_only += n_mcp_only
 
-        bl_time = bl_outcome.get("wall_clock_seconds")
-        mcp_time = mcp_outcome.get("wall_clock_seconds")
-        time_delta = mcp_time - bl_time if bl_time is not None and mcp_time is not None else None
-        if time_delta is not None:
-            time_deltas.append(time_delta)
+        if len(matched_tasks) < 3:
+            skipped_runs.append({
+                "run_id": run_id,
+                "reason": f"insufficient_matched_tasks (n={len(matched_tasks)}, need >= 3)",
+                "baseline_config": bl_config,
+                "mcp_config": mcp_config,
+                "n_baseline": len(bl_tasks),
+                "n_mcp": len(mcp_tasks),
+            })
+            continue
 
-        bl_fr = bl_rm.get("file_recall", 0.0)
-        mcp_fr = mcp_rm.get("file_recall", 0.0)
-        fr_delta = mcp_fr - bl_fr
-        file_recall_deltas.append(fr_delta)
-
-        bl_mrr = bl_rm.get("mrr", 0.0)
-        mcp_mrr = mcp_rm.get("mrr", 0.0)
-        mrr_delta = mcp_mrr - bl_mrr
-        mrr_deltas.append(mrr_delta)
-
-        per_task.append({
-            "task_name": task,
-            "reward_baseline": bl_reward,
-            "reward_mcp": mcp_reward,
-            "reward_delta": round(reward_delta, 4) if reward_delta is not None else None,
-            "file_recall_baseline": round(bl_fr, 4),
-            "file_recall_mcp": round(mcp_fr, 4),
-            "file_recall_delta": round(fr_delta, 4),
-            "mrr_baseline": round(bl_mrr, 4),
-            "mrr_mcp": round(mcp_mrr, 4),
-            "mrr_delta": round(mrr_delta, 4),
+        run_pairs.append({
+            "run_id": run_id,
+            "baseline_config": bl_config,
+            "mcp_config": mcp_config,
+            "n_matched_tasks": len(matched_tasks),
+            "n_baseline_only": n_baseline_only,
+            "n_mcp_only": n_mcp_only,
         })
+
+        for task in matched_tasks:
+            bl_outcome = outcomes.get((run_id, bl_config, task), {})
+            mcp_outcome = outcomes.get((run_id, mcp_config, task), {})
+            bl_rm = retrieval_metrics.get((run_id, bl_config, task), {})
+            mcp_rm = retrieval_metrics.get((run_id, mcp_config, task), {})
+
+            bl_reward = bl_outcome.get("reward")
+            mcp_reward = mcp_outcome.get("reward")
+            reward_delta = mcp_reward - bl_reward if bl_reward is not None and mcp_reward is not None else None
+            if reward_delta is not None:
+                reward_deltas.append(reward_delta)
+
+            bl_cost = bl_outcome.get("cost_usd")
+            mcp_cost = mcp_outcome.get("cost_usd")
+            cost_delta = mcp_cost - bl_cost if bl_cost is not None and mcp_cost is not None else None
+            if cost_delta is not None:
+                cost_deltas.append(cost_delta)
+
+            bl_time = bl_outcome.get("wall_clock_seconds")
+            mcp_time = mcp_outcome.get("wall_clock_seconds")
+            time_delta = mcp_time - bl_time if bl_time is not None and mcp_time is not None else None
+            if time_delta is not None:
+                time_deltas.append(time_delta)
+
+            bl_fr = bl_rm.get("file_recall")
+            mcp_fr = mcp_rm.get("file_recall")
+            fr_delta = None
+            if bl_fr is not None and mcp_fr is not None:
+                fr_delta = mcp_fr - bl_fr
+                file_recall_deltas.append(fr_delta)
+
+            bl_mrr = bl_rm.get("mrr")
+            mcp_mrr = mcp_rm.get("mrr")
+            mrr_delta = None
+            if bl_mrr is not None and mcp_mrr is not None:
+                mrr_delta = mcp_mrr - bl_mrr
+                mrr_deltas.append(mrr_delta)
+
+            per_task.append({
+                "run_id": run_id,
+                "task_name": task,
+                "baseline_config": bl_config,
+                "mcp_config": mcp_config,
+                "reward_baseline": bl_reward,
+                "reward_mcp": mcp_reward,
+                "reward_delta": round(reward_delta, 4) if reward_delta is not None else None,
+                "file_recall_baseline": round(bl_fr, 4) if bl_fr is not None else None,
+                "file_recall_mcp": round(mcp_fr, 4) if mcp_fr is not None else None,
+                "file_recall_delta": round(fr_delta, 4) if fr_delta is not None else None,
+                "mrr_baseline": round(bl_mrr, 4) if bl_mrr is not None else None,
+                "mrr_mcp": round(mcp_mrr, 4) if mcp_mrr is not None else None,
+                "mrr_delta": round(mrr_delta, 4) if mrr_delta is not None else None,
+            })
 
     # Aggregate deltas with dispersion
     def _delta_summary(deltas: list[float], label: str) -> dict:
@@ -416,13 +469,28 @@ def compute_matched_comparisons(
             ),
         }
 
+    if not per_task:
+        return {
+            "computable": False,
+            "reason": "no_runs_with_sufficient_matched_tasks",
+            "run_pairs": run_pairs,
+            "skipped_runs": skipped_runs,
+        }
+
+    baseline_configs_list = sorted(baseline_configs_seen)
+    mcp_configs_list = sorted(mcp_configs_seen)
+
     return {
         "computable": True,
-        "baseline_config": bl_config,
-        "mcp_config": mcp_config,
-        "n_matched_tasks": len(matched_tasks),
-        "n_baseline_only": len(bl_tasks - mcp_tasks),
-        "n_mcp_only": len(mcp_tasks - bl_tasks),
+        "baseline_config": baseline_configs_list[0] if len(baseline_configs_list) == 1 else None,
+        "mcp_config": mcp_configs_list[0] if len(mcp_configs_list) == 1 else None,
+        "baseline_configs": baseline_configs_list,
+        "mcp_configs": mcp_configs_list,
+        "n_runs_compared": len(run_pairs),
+        "n_runs_skipped": len(skipped_runs),
+        "n_matched_tasks": len(per_task),
+        "n_baseline_only": total_baseline_only,
+        "n_mcp_only": total_mcp_only,
         "deltas": {
             "reward": _delta_summary(reward_deltas, "reward"),
             "cost_usd": _delta_summary(cost_deltas, "cost_usd"),
@@ -430,6 +498,8 @@ def compute_matched_comparisons(
             "file_recall": _delta_summary(file_recall_deltas, "file_recall"),
             "mrr": _delta_summary(mrr_deltas, "mrr"),
         },
+        "run_pairs": run_pairs,
+        "skipped_runs": skipped_runs,
         "per_task": per_task,
     }
 
@@ -477,7 +547,7 @@ def main() -> None:
         retrieval_metrics = _load_retrieval_metrics(args.events_dir)
     else:
         # Discover retrieval_events/ dirs
-        retrieval_metrics: dict[tuple[str, str], dict] = {}
+        retrieval_metrics: dict[tuple[str, str, str], dict] = {}
         if args.all:
             for rd in sorted(run_dir.iterdir()):
                 if rd.is_dir():

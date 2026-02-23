@@ -607,6 +607,29 @@ class BaselineClaudeCodeAgent(ClaudeCode):
                     "before searching.\n"
                 )
 
+            # SCIP ablation: inject branch targeting instructions when
+            # SOURCEGRAPH_SEARCH_BRANCH is set (e.g., "scip-enabled").
+            scip_branch = os.environ.get("SOURCEGRAPH_SEARCH_BRANCH", "")
+            if scip_branch:
+                branch_instructions = (
+                    f"\n**Branch Search Instructions**\n\n"
+                    f"IMPORTANT: You must search the `{scip_branch}` branch for all "
+                    f"repositories in `github.com/sg-benchmarks/`.\n\n"
+                    f"When using search and file tools, always specify the "
+                    f"`{scip_branch}` branch:\n\n"
+                    f"- **keyword_search / nls_search:** Include "
+                    f"`rev:{scip_branch}` in your query alongside the repo filter\n"
+                    f'  Example: `repo:^github\\.com/sg-benchmarks/REPO$ '
+                    f"rev:{scip_branch} YOUR_SEARCH_TERMS`\n"
+                    f"- **read_file / list_files:** Set the `revision` parameter "
+                    f'to `"{scip_branch}"`\n'
+                    f"- **go_to_definition / find_references:** Set the `revision` "
+                    f'parameter to `"{scip_branch}"`\n\n'
+                    f"Do NOT use the default branch. All searches and file "
+                    f"operations must target the `{scip_branch}` branch.\n"
+                )
+                repo_scope += branch_instructions
+
             # Workflow steps 3-4 vary by config: direct configs edit+test
             # locally, artifact configs produce diffs as output artifacts.
             if mcp_type == "artifact_full":

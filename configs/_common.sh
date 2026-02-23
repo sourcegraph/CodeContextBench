@@ -51,18 +51,30 @@ VERIFIER_MODE="direct"
 SOURCE_ACCESS="local"
 
 # Map composite config name → internal mcp_type for Harbor.
-# Side effects: sets VERIFIER_MODE and SOURCE_ACCESS globals.
+# Side effects: sets VERIFIER_MODE, SOURCE_ACCESS, and SOURCEGRAPH_SEARCH_BRANCH globals.
+# SCIP configs set SOURCEGRAPH_SEARCH_BRANCH=scip-enabled so the agent
+# targets the SCIP-indexed branch in all MCP tool calls.
 config_to_mcp_type() {
     local config_name="$1"
+    # Clear branch override unless it's a SCIP config
+    unset SOURCEGRAPH_SEARCH_BRANCH 2>/dev/null || true
     case "$config_name" in
         baseline-local-direct)
             VERIFIER_MODE="direct"; SOURCE_ACCESS="local"; echo "none" ;;
         mcp-remote-direct)
             VERIFIER_MODE="direct"; SOURCE_ACCESS="remote"; echo "sourcegraph_full" ;;
+        mcp-scip-remote-direct)
+            VERIFIER_MODE="direct"; SOURCE_ACCESS="remote"
+            export SOURCEGRAPH_SEARCH_BRANCH="scip-enabled"
+            echo "sourcegraph_full" ;;
         baseline-local-artifact)
             VERIFIER_MODE="artifact"; SOURCE_ACCESS="local"; echo "none" ;;
         mcp-remote-artifact)
             VERIFIER_MODE="artifact"; SOURCE_ACCESS="remote"; echo "artifact_full" ;;
+        mcp-scip-remote-artifact)
+            VERIFIER_MODE="artifact"; SOURCE_ACCESS="remote"
+            export SOURCEGRAPH_SEARCH_BRANCH="scip-enabled"
+            echo "artifact_full" ;;
         # Legacy names
         baseline)
             VERIFIER_MODE="direct"; SOURCE_ACCESS="local"; echo "none" ;;
@@ -88,18 +100,29 @@ baseline_config_for() {
     esac
 }
 
+# Check whether a config uses SCIP precise indexing (requires branch swap).
+config_uses_scip() {
+    local config_name="$1"
+    case "$config_name" in
+        mcp-scip-*) return 0 ;;
+        *)          return 1 ;;
+    esac
+}
+
 # Validate a config name against the known whitelist.
 # Exits 1 with error message if unknown. Call before config_to_mcp_type().
 validate_config_name() {
     local config_name="$1"
     case "$config_name" in
         baseline-local-direct|mcp-remote-direct|\
+        mcp-scip-remote-direct|mcp-scip-remote-artifact|\
         baseline-local-artifact|mcp-remote-artifact|\
         baseline|sourcegraph_full|artifact_full|none)
             return 0 ;;
         *)
             echo "ERROR: Unknown config name: '$config_name'" >&2
-            echo "  Valid: baseline-local-direct, mcp-remote-direct, baseline-local-artifact, mcp-remote-artifact" >&2
+            echo "  Valid: baseline-local-direct, mcp-remote-direct, mcp-scip-remote-direct" >&2
+            echo "         baseline-local-artifact, mcp-remote-artifact, mcp-scip-remote-artifact" >&2
             echo "  Legacy: baseline, sourcegraph_full, artifact_full, none" >&2
             exit 1 ;;
     esac

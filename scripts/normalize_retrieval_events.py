@@ -115,10 +115,11 @@ _LOCAL_TOOL_CATEGORIES: dict[str, str] = {
     "WebSearch": "other",
 }
 
-# Tools that are retrieval-relevant (we emit events for these)
-_RETRIEVAL_TOOLS = (
+# Tools that are tracked by the retrieval evaluation pipeline.
+# Includes retrieval tools plus local write tools for utilization/taxonomy stages.
+_TRACKED_TOOLS = (
     set(_MCP_TOOL_CATEGORIES.keys())
-    | {"Read", "Glob", "Grep"}
+    | {"Read", "Glob", "Grep", "Write", "Edit", "NotebookEdit"}
 )
 
 
@@ -137,8 +138,8 @@ def _is_mcp(name: str) -> bool:
 
 
 def _is_retrieval_tool(name: str) -> bool:
-    """True for tools that access or search for code."""
-    if name in _RETRIEVAL_TOOLS:
+    """True for tools tracked by the retrieval evaluation pipeline."""
+    if name in _TRACKED_TOOLS:
         return True
     if name.startswith("mcp__sourcegraph__"):
         return True
@@ -179,7 +180,7 @@ def _extract_files_from_tool_input(tool_name: str, tool_input: dict) -> list[str
         return files
 
     # Local file tools
-    if tool_name in ("Read", "Glob", "Grep"):
+    if tool_name in ("Read", "Glob", "Grep", "Write", "Edit", "NotebookEdit"):
         fp = tool_input.get("file_path") or tool_input.get("path") or ""
         if fp and _looks_like_file(_normalize(fp)):
             files.append(fp)
@@ -250,6 +251,10 @@ def _salient_arguments(tool_name: str, tool_input: dict) -> dict:
     cat = _tool_category(tool_name)
     if cat == "file_read":
         for k in ("file_path", "path", "repo", "startLine", "endLine"):
+            if k in tool_input:
+                args[k] = tool_input[k]
+    elif cat == "file_write":
+        for k in ("file_path", "path", "old_string", "new_string", "replace_all"):
             if k in tool_input:
                 args[k] = tool_input[k]
     elif cat == "file_search":
@@ -627,7 +632,7 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
 
 def walk_all_runs(runs_root: Path) -> list[dict]:
     """Walk a runs/staging/ or runs/official/ root and yield task info dicts."""
-    all_tasks: dict[tuple[str, str], dict] = {}  # (config, task_name) -> info
+    all_tasks: list[dict] = []
 
     for run_dir in sorted(runs_root.iterdir()):
         if not run_dir.is_dir() or run_dir.name in ("archive", "MANIFEST.json"):
@@ -638,17 +643,9 @@ def walk_all_runs(runs_root: Path) -> list[dict]:
         for info in walk_run_tasks(run_dir):
             info["run_id"] = run_dir.name
             info["benchmark"] = _infer_benchmark(run_dir.name)
-            key = (info["config_name"], info["task_name"])
-            # Dedup: keep latest by started_at
-            existing = all_tasks.get(key)
-            if existing:
-                new_ts = info["result_data"].get("started_at", "")
-                old_ts = existing["result_data"].get("started_at", "")
-                if new_ts <= old_ts:
-                    continue
-            all_tasks[key] = info
+            all_tasks.append(info)
 
-    return list(all_tasks.values())
+    return all_tasks
 
 
 # ---------------------------------------------------------------------------
@@ -852,7 +849,12 @@ def main() -> None:
         sys.exit(0)
 
     # Sort for deterministic output ordering
-    task_infos.sort(key=lambda t: (t.get("config_name", ""), t.get("task_name", "")))
+    task_infos.sort(key=lambda t: (
+        t.get("run_id", ""),
+        t.get("config_name", ""),
+        t.get("task_name", ""),
+        t.get("batch_timestamp", ""),
+    ))
 
     written = 0
     skipped = 0

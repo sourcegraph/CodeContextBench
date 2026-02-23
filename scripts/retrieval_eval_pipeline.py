@@ -621,9 +621,17 @@ def main() -> None:
             skipped_no_gt += 1
 
         # Write task-level artifact
-        out_dir = args.output_dir or ef.parent
-        task_name = doc.get("provenance", {}).get("task_name", ef.stem.replace(".retrieval_events", ""))
-        config_name = doc.get("provenance", {}).get("config_name", "unknown")
+        prov = doc.get("provenance", {})
+        task_name = prov.get("task_name", ef.stem.replace(".retrieval_events", ""))
+        config_name = prov.get("config_name", "unknown")
+        run_id = prov.get("run_id", "unknown_run")
+        if args.output_dir:
+            if args.all:
+                out_dir = args.output_dir / run_id / config_name
+            else:
+                out_dir = args.output_dir / config_name
+        else:
+            out_dir = ef.parent
         out_path = out_dir / f"{task_name}.retrieval_metrics.json"
 
         if args.dry_run:
@@ -641,6 +649,9 @@ def main() -> None:
 
     if args.output_dir:
         summary_path = args.output_dir / "run_retrieval_summary.json"
+    elif args.all and args.run_dir and not args.events_dir:
+        # In --all mode this summary spans multiple runs; keep it out of any single run directory.
+        summary_path = args.run_dir / "retrieval_events_aggregate" / "run_retrieval_summary.json"
     elif events_root:
         summary_path = events_root / "run_retrieval_summary.json"
     else:
