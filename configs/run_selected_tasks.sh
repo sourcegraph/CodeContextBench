@@ -53,7 +53,7 @@ BENCHMARK_FILTER=""
 USE_CASE_CATEGORY_FILTER=""
 MODEL="${MODEL:-anthropic/claude-opus-4-6}"
 CONCURRENCY=1        # harbor -n: trials per task
-PARALLEL_TASKS=1     # number of simultaneous task processes
+PARALLEL_TASKS=0     # 0 = auto-detect from accounts; overridden by --parallel N
 TIMEOUT_MULTIPLIER=10
 RUN_BASELINE=true
 RUN_FULL=true
@@ -145,6 +145,12 @@ if [ "$RUN_FULL" = true ] && [ -z "$SOURCEGRAPH_ACCESS_TOKEN" ]; then
 fi
 
 ensure_fresh_token_all  # also populates CLAUDE_HOMES[] via setup_multi_accounts
+
+# Auto-detect PARALLEL_TASKS from account count when not explicitly set via --parallel
+if [ "$PARALLEL_TASKS" -eq 0 ]; then
+    PARALLEL_TASKS=$PARALLEL_JOBS  # inherits SESSIONS_PER_ACCOUNT * num_accounts from _common.sh
+    echo "Parallel tasks auto-set to $PARALLEL_TASKS (from $SESSIONS_PER_ACCOUNT sessions x ${#CLAUDE_HOMES[@]} accounts)"
+fi
 
 # Derive baseline config and mcp_type values from FULL_CONFIG
 BASELINE_CONFIG=$(baseline_config_for "$FULL_CONFIG")
