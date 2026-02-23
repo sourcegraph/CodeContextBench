@@ -2,7 +2,7 @@ version = "1.0"
 
 [metadata]
 name = "CCX-migration-022"
-description = "Kafka Deprecated Producer Config Migration Inventory"
+description = "Kafka Deprecated Streams/Producer API Migration Inventory"
 license = "Apache-2.0"
 
 [task]
@@ -22,7 +22,7 @@ type = "test"
 command = "bash /tests/eval.sh"
 
 reward_type = "score"
-description = "Kafka Deprecated Producer Config Migration Inventory"
+description = "Kafka Deprecated Streams/Producer API Migration Inventory"
 
 [environment]
 build_timeout_sec = 600.0

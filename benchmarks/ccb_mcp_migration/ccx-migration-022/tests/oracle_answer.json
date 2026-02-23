@@ -1,28 +1,42 @@
 {
-  "files": [],
-  "text": "No Java source files in the pinned kafka (0753c489) or flink (0cc95fcc) mirrors reference the deprecated Kafka producer configuration keys block.on.buffer.full, metadata.fetch.timeout.ms, or timeout.ms (the old producer timeout). These deprecated configs were removed from apache/kafka prior to this 4.x snapshot — ProducerConfig.java contains zero @Deprecated annotations. The block.on.buffer.full config was deprecated in Kafka 0.9.0.0 (replaced by max.block.ms) and removed by Kafka 3.x. The metadata.fetch.timeout.ms config was similarly deprecated and folded into max.block.ms. The standalone timeout.ms producer config does not exist in this version (delivery.timeout.ms, request.timeout.ms, and transaction.timeout.ms are the current timeout configs, none deprecated). The flink mirror (0cc95fcc) references ProducerConfig in only 2 files (SqlClientITCase.java and KafkaStandaloneGenerator.java), both of which use only current, non-deprecated config keys (BOOTSTRAP_SERVERS_CONFIG, ACKS_CONFIG, KEY_SERIALIZER_CLASS_CONFIG, VALUE_SERIALIZER_CLASS_CONFIG). The Flink Kafka connector has been externalized to flink-connector-kafka, so no Kafka producer config references appear in the core Flink repo beyond these test/example utilities.",
+  "files": [
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/ProductionExceptionHandler.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/DefaultProductionExceptionHandler.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/DeserializationExceptionHandler.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/LogAndFailExceptionHandler.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/LogAndContinueExceptionHandler.java"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "clients/src/main/java/org/apache/kafka/common/config/TopicConfig.java"}
+  ],
+  "symbols": [
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java", "symbol": "DUMMY_THREAD_INDEX", "kind": "field"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java", "symbol": "CACHE_MAX_BYTES_BUFFERING_CONFIG", "kind": "field"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java", "symbol": "DEFAULT_DESERIALIZATION_EXCEPTION_HANDLER_CLASS_CONFIG", "kind": "field"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java", "symbol": "DEFAULT_PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG", "kind": "field"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java", "symbol": "DEFAULT_DSL_STORE_CONFIG", "kind": "field"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/ProductionExceptionHandler.java", "symbol": "handle", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/ProductionExceptionHandler.java", "symbol": "handleSerializationException", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/DefaultProductionExceptionHandler.java", "symbol": "handle", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/DeserializationExceptionHandler.java", "symbol": "handle", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/LogAndFailExceptionHandler.java", "symbol": "handle", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "streams/src/main/java/org/apache/kafka/streams/errors/LogAndContinueExceptionHandler.java", "symbol": "handle", "kind": "method"},
+    {"repo": "sg-evals/kafka--0753c489", "path": "clients/src/main/java/org/apache/kafka/common/config/TopicConfig.java", "symbol": "MESSAGE_DOWNCONVERSION_ENABLE_CONFIG", "kind": "field"}
+  ],
+  "text": "Found 7 Java source files in sg-evals/kafka--0753c489 containing @Deprecated annotations on producer/streams configuration or exception handling APIs. (1) StreamsConfig.java contains 5 deprecated config constants: DUMMY_THREAD_INDEX (deprecated, unused internal constant); CACHE_MAX_BYTES_BUFFERING_CONFIG (deprecated since 3.4, replaced by STATESTORE_CACHE_MAX_BYTES_CONFIG); DEFAULT_DESERIALIZATION_EXCEPTION_HANDLER_CLASS_CONFIG (deprecated since 4.0, replaced by DESERIALIZATION_EXCEPTION_HANDLER_CLASS_CONFIG); DEFAULT_PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG (deprecated since 4.0, replaced by PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG); DEFAULT_DSL_STORE_CONFIG (deprecated since 3.7, replaced by DSL_STORE_SUPPLIERS_CLASS_CONFIG). (2) ProductionExceptionHandler.java has 2 deprecated default methods: handle(ProducerRecord, Exception) deprecated since 3.9 in favor of handle(ErrorHandlerContext, ProducerRecord, Exception), and handleSerializationException(ProducerRecord, Exception) deprecated since 3.9 in favor of handleSerializationException(ErrorHandlerContext, ProducerRecord, Exception, SerializationExceptionOrigin). (3) DefaultProductionExceptionHandler.java has 1 deprecated override: handle(ProducerRecord, Exception) deprecated since 3.9. (4) DeserializationExceptionHandler.java has 1 deprecated default method: handle(ProcessorContext, ConsumerRecord, Exception) deprecated since 3.9 in favor of handle(ErrorHandlerContext, ConsumerRecord, Exception). (5) LogAndFailExceptionHandler.java and LogAndContinueExceptionHandler.java each have 1 deprecated override: handle(ProcessorContext, ConsumerRecord, Exception) deprecated since 3.9. (6) TopicConfig.java has 1 deprecated config: MESSAGE_DOWNCONVERSION_ENABLE_CONFIG deprecated since 4.0 as down-conversion is no longer possible in Kafka 4.0+, scheduled for removal in 5.0. Note: ProducerConfig.java contains zero @Deprecated annotations in this Kafka 4.x snapshot -- the old deprecated producer configs (block.on.buffer.full, metadata.fetch.timeout.ms) were fully removed prior to this version.",
   "_metadata": {
     "oracle_type": "file_set_match",
     "discovery_method": "sourcegraph_keyword_search",
     "queries": [
-      "repo:^github.com/sg-evals/kafka--0753c489$ \"block.on.buffer.full\" file:.*.java$",
-      "repo:^github.com/sg-evals/kafka--0753c489$ \"metadata.fetch.timeout\" file:.*.java$",
-      "repo:^github.com/sg-evals/kafka--0753c489$ \"BLOCK_ON_BUFFER_FULL\" file:.*.java$",
-      "repo:^github.com/sg-evals/kafka--0753c489$ \"METADATA_FETCH_TIMEOUT\" file:.*.java$",
-      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:ProducerConfig.java",
-      "repo:^github.com/sg-evals/flink--0cc95fcc$ \"block.on.buffer.full\" file:.*.java$",
-      "repo:^github.com/sg-evals/flink--0cc95fcc$ \"metadata.fetch.timeout\" file:.*.java$",
-      "repo:^github.com/sg-evals/flink--0cc95fcc$ ProducerConfig file:.*.java$"
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:StreamsConfig.java",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:ProductionExceptionHandler.java",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:DeserializationExceptionHandler.java",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:DefaultProductionExceptionHandler.java",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:LogAnd file:streams/",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:TopicConfig.java",
+      "repo:^github.com/sg-evals/kafka--0753c489$ @Deprecated file:ProducerConfig.java"
     ],
     "verified_at": "2026-02-23",
-    "pinned_versions": {
-      "sg-benchmarks/kafka--0753c489": "0753c489 (Kafka 4.x trunk)",
-      "sg-benchmarks/flink--0cc95fcc": "0cc95fcc"
-    },
-    "sourcegraph_repos": {
-      "kafka": "github.com/sg-evals/kafka--0753c489",
-      "flink": "github.com/sg-evals/flink--0cc95fcc"
-    },
-    "notes": "EMPTY ORACLE: The three deprecated producer config keys asked about (block.on.buffer.full, metadata.fetch.timeout.ms, timeout.ms) were fully removed from apache/kafka prior to this 4.x snapshot. ProducerConfig.java has zero @Deprecated annotations. This task's instruction targets configs that no longer exist in the pinned mirror and should be updated to either (a) pin an older Kafka version where these configs still exist, or (b) rewrite the instruction to ask about configs that are actually deprecated in this Kafka 4.x version (e.g., StreamsConfig.DEFAULT_PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG, deprecated since 4.0)."
+    "pinned_version": "0753c489 (Kafka 4.x trunk)",
+    "notes": "REDESIGNED from original task which searched for removed deprecated producer configs (block.on.buffer.full, metadata.fetch.timeout.ms). Those configs were fully removed from Kafka 4.x. This redesigned task instead catalogs @Deprecated annotations that actually exist in the pinned Kafka 4.x snapshot."
   }
 }
