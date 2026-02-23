@@ -24,12 +24,23 @@ Config names encode three independent dimensions:
 |---|---|---|---|---|---|
 | `baseline-local-direct` | No MCP | Full source | Git changes | `none` | Original |
 | `mcp-remote-direct` | MCP | Source deleted | Git changes | `sourcegraph_full` | `Dockerfile.sg_only` |
+| `mcp-scip-remote-direct` | MCP + SCIP | Source deleted | Git changes | `sourcegraph_full` | `Dockerfile.sg_only` |
 | `baseline-local-artifact` | No MCP | Full source | `review.json` | `none` | `Dockerfile.artifact_only` |
 | `mcp-remote-artifact` | MCP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
+| `mcp-scip-remote-artifact` | MCP + SCIP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
 
-**Standard SDLC suites** use `baseline-local-direct` + `mcp-remote-direct`.
-**Artifact evaluation** uses `baseline-local-artifact` + `mcp-remote-artifact`
-(set via `FULL_CONFIG=mcp-remote-artifact`).
+**Standard SDLC suites** (`ccb_build`, `ccb_debug`, etc.) use
+`baseline-local-direct` + `mcp-remote-direct`. The agent produces code changes
+and the verifier checks git diffs / test results.
+
+**MCP-unique suites** (`ccb_mcp_*`) use `baseline-local-artifact` +
+`mcp-remote-artifact`. These are retrieval/analysis tasks — the agent produces
+`/workspace/answer.json` and the verifier scores it against an oracle. Do NOT
+run MCP-unique suites with `-direct` configs; the verifier expects an artifact,
+not code changes.
+
+**SCIP ablation** uses `mcp-scip-remote-direct` or `mcp-scip-remote-artifact`
+(requires branch swap pre-flight; see SCIP Ablation section below).
 
 ### Legacy Names
 
@@ -247,11 +258,116 @@ This flag is only meaningful when used with `--selection-file`.
 
 | Feature | Standard suites | MCP-unique suites |
 |---------|----------------|-------------------|
+| **Config pair** | `baseline-local-direct` + `mcp-remote-direct` | `baseline-local-artifact` + `mcp-remote-artifact` |
 | Selection file | `selected_benchmark_tasks.json` | `selected_mcp_unique_tasks.json` |
 | Suite prefix | `ccb_<phase>` | `ccb_mcp_<category>` |
+| Agent output | Code changes (git diff) | `/workspace/answer.json` |
 | Verifier script | `tests/test.sh` | `tests/eval.sh` |
 | Oracle format | task-specific | `oracle_answer.json` + `oracle_checks.py` |
-| Local repo | full workspace | 1 local_checkout repo only |
-| MCP-Full behavior | truncated source | no source clone |
+| Baseline Dockerfile | `Dockerfile` (full repo clone) | `Dockerfile` (full repo clone) |
+| MCP Dockerfile | `Dockerfile.sg_only` (truncated source) | `Dockerfile.artifact_only` (empty workspace) |
 
 See `docs/MCP_UNIQUE_TASKS.md` for full task authoring and evaluation details.
+
+## SCIP Precise Indexing Ablation
+
+The `mcp-scip-*` configs measure the impact of SCIP precise code intelligence
+on MCP-enabled benchmark runs. SCIP provides compiler-accurate go-to-definition
+and find-references (vs search-based heuristics on the control branch).
+
+### How It Works
+
+At the **agent/Harbor level**, `mcp-scip-remote-direct` is identical to
+`mcp-remote-direct` — same Dockerfile, same MCP tools, same internal
+`mcp_type=sourcegraph_full`. The difference is purely **server-side**: the
+Sourcegraph instance has SCIP auto-indexing enabled for one branch and disabled
+for another.
+
+Two Sourcegraph configuration policies control indexing:
+
+| Policy | Branch | `indexingEnabled` | ID |
+|--------|--------|-------------------|-----|
+| Benchmarks: Main (No SCIP) | `main` | `false` | `...MTA2Ng==` |
+| Benchmarks: SCIP Enabled | `scip-enabled` | `true` | `...MTA2Nw==` |
+
+Both policies target `github.com/sg-benchmarks/*` with `GIT_TREE` type.
+
+### Deep Search Limitation
+
+Deep Search only indexes the **default branch HEAD**. It cannot be pointed at a
+specific branch. To ensure Deep Search uses the SCIP-indexed code, the default
+branch must be swapped before running benchmarks.
+
+### Pre-Flight: Branch Swap
+
+Before running SCIP-enabled benchmarks, swap the default branch on all
+sg-benchmarks repos:
+
+```bash
+# Before SCIP runs (mcp-scip-remote-direct):
+./scripts/swap_default_branch.sh scip-enabled
+# Wait for Sourcegraph to re-index (~30-60 min for full org)
+
+# Before control runs (mcp-remote-direct) or to restore:
+./scripts/swap_default_branch.sh main
+```
+
+The swap script:
+- Patches all 1,592 sg-benchmarks repos via GitHub API (`--parallel 10`)
+- Skips repos already set to the target branch
+- Skips empty repos without the target branch
+- Logs results to `/tmp/scip_branch_swap/`
+- Supports `--dry-run` for previewing
+
+### Running the Ablation
+
+```bash
+# 1. Swap to SCIP-enabled
+./scripts/swap_default_branch.sh scip-enabled
+# 2. Wait for indexing to complete
+# 3. Run SCIP config
+FULL_CONFIG=mcp-scip-remote-direct configs/run_selected_tasks.sh
+
+# 4. Swap back to control
+./scripts/swap_default_branch.sh main
+# 5. Wait for re-index
+# 6. Run standard MCP config
+FULL_CONFIG=mcp-remote-direct configs/run_selected_tasks.sh
+```
+
+### Comparing Results
+
+Use `compare_configs.py` with both config names to see where SCIP helps/hurts:
+
+```bash
+python3 scripts/compare_configs.py --run <run_dir> \
+  --configs mcp-remote-direct mcp-scip-remote-direct
+```
+
+### SCIP Indexing Coverage
+
+Sourcegraph auto-indexing detects languages and runs the appropriate SCIP
+indexer per repo:
+
+| Language | Indexer | Example repos |
+|----------|---------|---------------|
+| Python | `scip-python` | ansible, django, astropy |
+| Go | `scip-go` | cilium, autoscaler, argo-cd |
+| TypeScript/JS | `scip-typescript` | vscode, cal.com, copilot-arena |
+| Java | `scip-java` | camel |
+| C++ | `scip-clang` | bustub, curl, log4cxx |
+| C# | `scip-dotnet` | aspnetcore, CodeCoverageSummary |
+
+Not all repos may successfully index (complex build setups). Check indexing
+status in the Sourcegraph admin UI after swapping branches.
+
+### Branch Creation Script
+
+If new repos are added to sg-benchmarks, create `scip-enabled` branches:
+
+```bash
+./scripts/create_scip_branches.sh [--dry-run] [--parallel N]
+```
+
+This creates a `scip-enabled` branch pointing to the same commit as `main` HEAD
+for all repos in the org. Empty repos are skipped.

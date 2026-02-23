@@ -58,12 +58,17 @@ Use these defaults unless there is a task-specific reason not to.
 
 ## Evaluation Configs
 Config names encode three dimensions: `{agent}-{source}-{verifier}`.
-Standard pairing: **baseline-local-direct** (full local code, no MCP) and
-**mcp-remote-direct** (source deleted, Sourcegraph MCP). Artifact evaluation
-uses **baseline-local-artifact** + **mcp-remote-artifact** (review.json output).
-MCP configs use `Dockerfile.sg_only` or `Dockerfile.artifact_only` so the
-agent must discover code via MCP tools. The verifier clones the mirror repo
-at verification time and overlays agent changes before scoring.
+
+**SDLC suites** (`ccb_build`, `ccb_debug`, etc.): use **baseline-local-direct**
++ **mcp-remote-direct**. Agent produces code changes; verifier checks git diffs.
+
+**MCP-unique suites** (`ccb_mcp_*`): use **baseline-local-artifact** +
+**mcp-remote-artifact**. Agent produces `answer.json`; verifier scores against
+oracle. Never use `-direct` configs for MCP-unique suites.
+
+MCP configs use `Dockerfile.sg_only` (direct) or `Dockerfile.artifact_only`
+(artifact) so the agent must discover code via MCP tools. The verifier clones
+the mirror repo at verification time and overlays agent changes before scoring.
 See `docs/CONFIGS.md` for the full config matrix.
 
 ## Standard Workflow

@@ -270,10 +270,22 @@ Each task has `tests/task_spec.json` with explicit criteria:
 
 ## Running Tasks
 
+### Config Pairing
+
+MCP-unique tasks always use **artifact** configs:
+
+- `baseline-local-artifact` — full repos cloned locally, agent writes `answer.json`
+- `mcp-remote-artifact` — empty workspace, agent uses MCP tools, writes `answer.json`
+
+Do NOT use `-direct` configs for MCP-unique suites. Direct configs expect code
+changes (git diffs); MCP-unique verifiers expect an `answer.json` artifact
+scored against `oracle_answer.json`. The runner script auto-selects artifact
+configs when launched with `--selection-file configs/selected_mcp_unique_tasks.json`.
+
 ### Full Starter Pack
 
 ```bash
-# Both configs (baseline + MCP-Full)
+# Both configs (baseline-local-artifact + mcp-remote-artifact)
 configs/run_selected_tasks.sh \
   --selection-file configs/selected_mcp_unique_tasks.json \
   --parallel 8
