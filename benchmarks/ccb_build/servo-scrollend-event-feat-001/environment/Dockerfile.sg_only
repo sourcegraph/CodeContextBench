@@ -1,45 +1,40 @@
-# servo-scrollend-event-feat-001 — sg_only_env variant
-# Source files truncated so agent must use Sourcegraph MCP for code access.
-# Verifier wrapper restores full repo before running tests.
+# servo-scrollend-event-feat-001 — sg_only_env variant (v2: clone-at-verify)
+# Empty workspace — agent uses Sourcegraph MCP for code access.
+# Verifier clones mirror(s) at verification time via clone manifest.
 
 FROM rust:1.83-bookworm
 
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/servo--be6a2f99
 
-WORKDIR /workspace
-
-# Install dependencies
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
-    curl \
+    ca-certificates \
     python3 \
-    python3-pip \
-    build-essential \
-    autoconf \
-    pkg-config \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone the actual Servo repository at pinned commit
-# This ensures BOTH baseline and MCP agents have identical file access
-# Note: Servo is a large Rust codebase (~1.6GB)
-RUN git clone --filter=blob:none --no-checkout https://github.com/servo/servo.git . && \
-    git checkout be6a2f99a1e80060228f41280fd7d2178983e7ed && \
+WORKDIR /workspace
+
+# Empty git repo so agent can commit work
+RUN git init && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 
-# Task setup complete
-# Note: Both baseline and MCP agents now have access to the real Servo source.
-# Baseline will use local grep/find/rg. MCP will use Sourcegraph semantic search.
+RUN mkdir -p /logs/agent /logs/verifier
 
-# --- sg_only_env: back up full repo, then truncate source ---
-RUN cp -a /workspace /repo_full
-RUN find /workspace -type f \( -name "*.py" -o -name "*.pyx" -o -name "*.pyi" -o -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" -o -name "*.mjs" -o -name "*.cjs" -o -name "*.mts" -o -name "*.cts" -o -name "*.go" -o -name "*.java" -o -name "*.kt" -o -name "*.scala" -o -name "*.groovy" -o -name "*.clj" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp" -o -name "*.cxx" -o -name "*.h" -o -name "*.hh" -o -name "*.hpp" -o -name "*.hxx" -o -name "*.rs" -o -name "*.rb" -o -name "*.cs" -o -name "*.fs" -o -name "*.swift" -o -name "*.m" -o -name "*.mm" -o -name "*.vue" -o -name "*.svelte" -o -name "*.sh" -o -name "*.bash" -o -name "*.zsh" -o -name "*.lua" -o -name "*.proto" -o -name "*.thrift" -o -name "*.avsc" -o -name "*.fbs" -o -name "*.yaml" -o -name "*.yml" -o -name "*.toml" -o -name "*.json" -o -name "*.xml" -o -name "*.ini" -o -name "*.cfg" -o -name "*.md" -o -name "*.rst" -o -name "*.txt" -o -name "*.adoc" -o -name "*.cmake" -o -name "*.bzl" -o -name "*.bazel" -o -name "*.sql" -o -name "*.erl" -o -name "*.ex" -o -name "*.exs" -o -name "*.php" -o -name "*.pl" -o -name "*.pm" -o -name "*.r" -o -name "*.R" \) ! -path "*/.git/*" ! -path "*/node_modules/*" ! -path "*/__pycache__/*" ! -path "*/vendor/*" -exec truncate -s 0 {} \;
-# Recommit truncated state so git history cannot recover full files.
-# Without this, `git show HEAD:<file>` or `git checkout HEAD -- <file>`
-# would bypass truncation by reading from the pre-truncation commit.
-RUN cd /workspace && git add -A && git commit -m "sg_only truncation" --allow-empty --quiet
-RUN touch /tmp/.sg_only_mode && echo '/workspace' > /tmp/.sg_only_workdir
+# Clone manifest for verifier (clone-at-verify strategy)
+RUN echo '{
+  "workdir": "/workspace",
+  "repos": [
+    {
+      "mirror": "sg-benchmarks/servo--be6a2f99",
+      "target_dir": "."
+    }
+  ]
+}' > /tmp/.sg_only_clone_manifest.json
 
-WORKDIR /workspace
+# Mark sg_only mode
+RUN touch /tmp/.sg_only_mode
 
 ENTRYPOINT []

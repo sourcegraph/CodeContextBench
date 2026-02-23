@@ -2,7 +2,8 @@
 """Generate Dockerfile.sg_only for all active tasks that don't have one.
 
 Write-only tasks: minimal image with no repo clone.
-Build-requiring tasks: original Dockerfile + backup/truncate/marker.
+Build-requiring tasks (v2): empty workspace with clone manifest — the verifier
+clones mirrors at verification time instead of shipping /repo_full/ in the image.
 
 Also injects the verifier wrapper guard into test.sh for build-requiring tasks
 and copies sgonly_verifier_wrapper.sh into tests/.
@@ -46,6 +47,176 @@ UPSTREAM_TO_MIRROR = {
     "expressjs/express": "sg-benchmarks/expressjs-express",
     "prometheus/prometheus": "sg-benchmarks/prometheus",
 }
+
+# Mapping from ccb-repo-* image tags to their underlying base image and packages.
+# Derived from base_images/Dockerfile.* files. Used by generate_build_requiring_v2()
+# to emit lightweight Dockerfiles that don't depend on the ccb-repo images.
+CCB_REPO_BASE_MAP = {
+    "ccb-repo-camel-1006f047": {
+        "from": "eclipse-temurin:17-jdk",
+        "packages": ["git", "curl", "python3", "python3-pip"],
+        "mirror": "sg-benchmarks/camel--1006f047",
+    },
+    "ccb-repo-django-674eda1c": {
+        "from": "python:3.11-slim",
+        "packages": ["git", "curl"],
+        "mirror": "sg-benchmarks/django--674eda1c",
+    },
+    "ccb-repo-django-9e7cc2b6": {
+        "from": "python:3.12-bookworm",
+        "packages": ["git", "curl"],
+        "mirror": "sg-benchmarks/django--9e7cc2b6",
+    },
+    "ccb-repo-k8s-8c9c67c0": {
+        "from": "golang:1.23-bookworm",
+        "packages": ["git", "curl", "python3", "python3-pip"],
+        "mirror": "sg-benchmarks/kubernetes--8c9c67c0",
+    },
+    "ccb-repo-k8s-11602f08": {
+        "from": "golang:1.23-bookworm",
+        "packages": ["git", "curl", "python3", "python3-pip"],
+        "mirror": "sg-benchmarks/kubernetes--11602f08",
+    },
+    "ccb-repo-flipt-3d5a345f": {
+        "from": "golang:1.23-bookworm",
+        "packages": ["git", "curl"],
+        "mirror": "sg-benchmarks/flipt--3d5a345f",
+    },
+    "ccb-repo-envoy-1d0ba73a": {
+        "from": "ubuntu:22.04",
+        "packages": ["git", "curl", "python3", "ripgrep"],
+        "mirror": "sg-benchmarks/envoy--1d0ba73a",
+    },
+    "ccb-repo-envoy-d7809ba2": {
+        "from": "ubuntu:22.04",
+        "packages": ["git", "curl", "python3", "python3-pip", "ripgrep"],
+        "mirror": "sg-benchmarks/envoy--d7809ba2",
+    },
+    "ccb-repo-kafka-0753c489": {
+        "from": "eclipse-temurin:17-jdk",
+        "packages": ["git", "curl"],
+        "mirror": "sg-benchmarks/kafka--0753c489",
+    },
+    "ccb-repo-kafka-e678b4b": {
+        "from": "eclipse-temurin:21-jdk",
+        "packages": ["git", "curl", "python3", "ripgrep"],
+        "mirror": "sg-benchmarks/kafka--e678b4b",
+    },
+    "ccb-repo-flink-0cc95fcc": {
+        "from": "eclipse-temurin:17-jdk",
+        "packages": ["git", "curl", "python3", "python3-pip"],
+        "mirror": "sg-benchmarks/flink--0cc95fcc",
+    },
+    "ccb-repo-postgres-5a461dc4": {
+        "from": "gcc:14-bookworm",
+        "packages": ["git", "curl", "python3", "python3-pip", "bison", "flex",
+                      "libreadline-dev", "zlib1g-dev"],
+        "mirror": "sg-benchmarks/postgres--5a461dc4",
+    },
+    "ccb-repo-strata-66225ca9": {
+        "from": "eclipse-temurin:17-jdk",
+        "packages": ["git", "curl", "python3", "python3-pip", "maven"],
+        "mirror": "sg-benchmarks/Strata--66225ca9",
+    },
+    "ccb-repo-curl-09e25b9d": {
+        "from": "debian:bookworm-slim",
+        "packages": ["git", "curl", "python3", "build-essential", "jq", "bc"],
+        "mirror": "sg-benchmarks/curl--09e25b9d",
+    },
+}
+
+
+def extract_clone_layout(dockerfile_text):
+    """Parse a baseline Dockerfile to extract clone URLs, target dirs, and commits.
+
+    Returns a list of dicts: [{"mirror": "sg-benchmarks/...", "target_dir": "." or "subdir"}]
+    Also returns inject_defects path if the Dockerfile uses COPY inject_defects.sh.
+    """
+    repos = []
+    inject_defects = None
+    workdir = detect_workdir(dockerfile_text)
+
+    for line in dockerfile_text.splitlines():
+        stripped = line.strip()
+        # Skip comments and continuation lines
+        if stripped.startswith('#') or not stripped:
+            continue
+
+        # Extract full GitHub URL from git clone commands, then parse it
+        url_match = re.search(r'git clone\b.*?(https://github\.com/\S+)', stripped)
+        if url_match:
+            url = url_match.group(1)
+            # Strip .git suffix
+            if url.endswith('.git'):
+                url = url[:-4]
+            repo_path = url.replace('https://github.com/', '')
+
+            # Look for target directory after the URL (may have .git suffix in original)
+            # Re-search for target: everything after the URL
+            orig_url = url_match.group(1)
+            after_url = stripped[url_match.end():]
+            target_match = re.match(r'\s+(\S+)', after_url)
+            target = target_match.group(1) if target_match else None
+
+            # Determine mirror name
+            if repo_path.startswith("sg-benchmarks/"):
+                mirror = repo_path
+            else:
+                mirror = UPSTREAM_TO_MIRROR.get(repo_path, f"sg-benchmarks/{repo_path}")
+
+            # Determine target_dir relative to workdir
+            if target is None or target == '.' or target == workdir:
+                target_dir = '.'
+            elif target.startswith('/'):
+                # Absolute path — compute relative to workdir
+                if target == workdir or target == workdir + '/':
+                    target_dir = '.'
+                elif target.startswith(workdir + '/'):
+                    target_dir = target[len(workdir) + 1:]
+                else:
+                    target_dir = '.'
+            else:
+                target_dir = target
+
+            # Clean up flags/continuations that might have been captured as target
+            if target_dir.startswith('-') or target_dir.startswith('&&') or target_dir.startswith('\\'):
+                target_dir = '.'
+
+            repos.append({"mirror": mirror, "target_dir": target_dir})
+
+        # Detect inject_defects.sh
+        if 'inject_defects.sh' in stripped and 'COPY' in stripped:
+            inject_defects = '/tmp/inject_defects.sh'
+
+    return repos, inject_defects
+
+
+def _lookup_mirror_for_task(task_id):
+    """Look up the sg-benchmarks mirror for a task from inject_sg_repo_env.py data.
+
+    Falls back to None if the mapping isn't found.
+    """
+    # Try to import from inject_sg_repo_env.py
+    env_script = REPO_ROOT / "scripts" / "inject_sg_repo_env.py"
+    if not env_script.exists():
+        return None
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("inject_sg_repo_env", env_script)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        # Check multi-repo first
+        multi = getattr(mod, 'MULTI_REPO_TASKS', {})
+        if task_id in multi:
+            # Returns comma-separated mirrors
+            return multi[task_id]
+        # Check single-repo
+        single = getattr(mod, 'SINGLE_REPO_TASKS', {})
+        if task_id in single:
+            return single[task_id]
+    except Exception:
+        pass
+    return None
 
 
 def extract_mirror_repos(dockerfile_text: str) -> list:
@@ -198,6 +369,9 @@ def detect_clone_type(dockerfile_text):
     # ccb-linux-base prebuilt images (contain kernel source at /workspace/)
     if re.search(r'^FROM\s+ccb-linux-base:', dockerfile_text, re.MULTILINE):
         return 'ccb_linux_base'
+    # ccb-repo-* prebuilt images (contain cloned repo at /workspace/)
+    if re.search(r'^FROM\s+ccb-repo-', dockerfile_text, re.MULTILINE):
+        return 'ccb_repo'
     # Pre-built base images (FROM harbor-... or FROM ghcr.io/theagentcompany/...)
     if 'harbor-' in dockerfile_text or 'theagentcompany' in dockerfile_text:
         return 'prebuilt'
@@ -224,15 +398,17 @@ def has_sgonly_wrapper(task_dir):
     return (task_dir / "tests" / "sgonly_verifier_wrapper.sh").exists()
 
 
-def is_write_only_verifier(task_dir):
+def is_write_only_verifier(task_dir, ignore_wrapper=False):
     """Check if the verifier just checks text output (no compilation/tests).
 
-    Tasks with inject_defects.sh or sgonly_verifier_wrapper.sh are NEVER
-    write-only — the verifier checks local source files.
+    Tasks with inject_defects.sh are NEVER write-only — the verifier
+    checks local source files. When ignore_wrapper=True (for --force
+    regeneration), the sgonly_verifier_wrapper.sh presence is not used
+    as a signal, since it may be left over from a previous classification.
     """
     if has_defect_injection(task_dir):
         return False
-    if has_sgonly_wrapper(task_dir):
+    if not ignore_wrapper and has_sgonly_wrapper(task_dir):
         return False
     test_sh = task_dir / "tests" / "test.sh"
     if not test_sh.exists():
@@ -358,68 +534,358 @@ ENTRYPOINT []
 """
 
 
+def _make_clone_manifest_json(workdir, repos, inject_defects=None):
+    """Build the JSON string for /tmp/.sg_only_clone_manifest.json."""
+    manifest = {"workdir": workdir, "repos": repos}
+    if inject_defects:
+        manifest["inject_defects"] = inject_defects
+    return json.dumps(manifest, indent=2)
+
+
+def _detect_from_image(dockerfile_text):
+    """Extract the FROM image from a Dockerfile (first non-arg FROM)."""
+    for line in dockerfile_text.splitlines():
+        m = re.match(r'^FROM\s+(\S+)', line.strip())
+        if m:
+            return m.group(1)
+    return 'ubuntu:22.04'
+
+
+def _extra_packages_from_dockerfile(dockerfile_text):
+    """Extract extra tool packages installed in the Dockerfile beyond base set."""
+    extras = set()
+    for line in dockerfile_text.splitlines():
+        if 'nodejs' in line or 'nodesource' in line:
+            extras.add('nodejs_setup')
+        if 'ripgrep' in line:
+            extras.add('ripgrep')
+        if 'jq' in line and ('apt-get' in line or 'apk' in line):
+            extras.add('jq')
+        if 'bc' in line and 'apt-get' in line:
+            extras.add('bc')
+        if 'maven' in line and 'apt-get' in line:
+            extras.add('maven')
+    return extras
+
+
 def generate_build_requiring(task_dir, dockerfile_text):
-    """Generate a build-requiring Dockerfile.sg_only from the original."""
+    """Generate a build-requiring Dockerfile.sg_only (v2: clone-at-verify, no /repo_full/).
+
+    Instead of cloning the repo, backing up to /repo_full/, and truncating, we now
+    generate a lightweight image with an empty workspace + a clone manifest. The
+    verifier wrapper reads the manifest and clones mirrors at verification time.
+
+    Subcategories handled:
+    - ccb-repo-* tasks: use underlying base image from CCB_REPO_BASE_MAP
+    - SWE-bench tasks: keep FROM jefzda/sweap-images, truncate but no backup
+    - Inline-clone tasks: empty workspace with manifest
+    - Code-review tasks: bake inject_defects.sh, reference in manifest
+    - Multi-repo tasks: multiple entries in manifest repos list
+    """
+    task_name = task_dir.name
     workdir = detect_workdir(dockerfile_text)
     clone_type = detect_clone_type(dockerfile_text)
-    lines = dockerfile_text.rstrip().split('\n')
-
-    # Determine extra excludes for truncation
-    extra_excludes = []
-    if 'node_modules' in dockerfile_text or 'npm install' in dockerfile_text:
-        extra_excludes.append('*/node_modules/*')
-
-    # For SWE-bench images, the repo is at /app
-    if clone_type == 'swebench':
-        repo_dir = '/app'
-        workdir = '/app'
-    elif clone_type == 'prebuilt':
-        repo_dir = workdir
-    else:
-        repo_dir = workdir
+    from_image = _detect_from_image(dockerfile_text)
 
     # Extract mirror repos for SOURCEGRAPH_REPOS env var
     mirrors = extract_mirror_repos(dockerfile_text)
-    sg_repos_line = ""
-    if mirrors:
-        sg_repos_line = f'\nENV SOURCEGRAPH_REPOS="{",".join(mirrors)}"'
 
-    # Build the sg_only section to append
-    sg_section = f"""
-# --- sg_only_env: back up full repo, then truncate source ---
-RUN cp -a {repo_dir} /repo_full
-RUN {truncate_find_expr(repo_dir, extra_excludes)}
-# Recommit truncated state so git history cannot recover full files.
-# Without this, `git show HEAD:<file>` or `git checkout HEAD -- <file>`
-# would bypass truncation by reading from the pre-truncation commit.
-RUN cd {repo_dir} && git add -A && git commit -m "sg_only truncation" --allow-empty --quiet
-RUN touch /tmp/.sg_only_mode && echo '{repo_dir}' > /tmp/.sg_only_workdir{sg_repos_line}
+    # --- Determine clone layout from baseline Dockerfile ---
+    repos, inject_defects = extract_clone_layout(dockerfile_text)
+
+    # --- ccb-repo-* tasks: resolve base image from CCB_REPO_BASE_MAP ---
+    if from_image.startswith('ccb-repo-'):
+        info = CCB_REPO_BASE_MAP.get(from_image)
+        if info:
+            base_image = info['from']
+            packages = info['packages']
+            mirror = info['mirror']
+            # Single repo cloned to workspace root
+            if not repos:
+                repos = [{"mirror": mirror, "target_dir": "."}]
+        else:
+            # Unknown ccb-repo image — fall back to ubuntu with clone layout from Dockerfile
+            base_image = 'ubuntu:22.04'
+            packages = ['git', 'ca-certificates', 'python3', 'curl']
+
+        sg_repos_env = ""
+        if mirrors:
+            sg_repos_env = f'ENV SOURCEGRAPH_REPOS="{",".join(mirrors)}"\n'
+
+        manifest_json = _make_clone_manifest_json(workdir, repos, inject_defects)
+        pkg_lines = ' \\\n    '.join(packages)
+        extra_pkgs = _extra_packages_from_dockerfile(dockerfile_text)
+
+        nodejs_block = ""
+        if 'nodejs_setup' in extra_pkgs:
+            nodejs_block = """
+# Install Node.js (needed by verifier)
+RUN if ! command -v node > /dev/null 2>&1; then \\
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \\
+    apt-get install -y --no-install-recommends nodejs; \\
+    fi
+"""
+        extra_apt = ""
+        for pkg in sorted(extra_pkgs - {'nodejs_setup'}):
+            extra_apt += f"    {pkg} \\\n"
+
+        return f"""# {task_name} — sg_only_env variant (v2: clone-at-verify)
+# Empty workspace — agent uses Sourcegraph MCP for code access.
+# Verifier clones mirror at verification time via clone manifest.
+
+FROM {base_image}
+
+ENV DEBIAN_FRONTEND=noninteractive
+{sg_repos_env}
+RUN apt-get update && apt-get install -y --no-install-recommends \\
+    {pkg_lines} \\
+    ca-certificates \\
+{extra_apt}    && rm -rf /var/lib/apt/lists/*
+{nodejs_block}
+WORKDIR {workdir}
+
+# Empty git repo so agent can commit work
+RUN git init && \\
+    git config user.email "agent@example.com" && \\
+    git config user.name "Agent"
+
+RUN mkdir -p /logs/agent /logs/verifier
+
+# Clone manifest for verifier (clone-at-verify strategy)
+RUN echo '{manifest_json}' > /tmp/.sg_only_clone_manifest.json
+
+# Mark sg_only mode
+RUN touch /tmp/.sg_only_mode
+
+ENTRYPOINT []
 """
 
-    # Find insertion point: before the last ENTRYPOINT/CMD or at the end
-    insert_idx = len(lines)
-    for i in range(len(lines) - 1, -1, -1):
-        stripped = lines[i].strip()
-        if stripped.startswith('ENTRYPOINT') or stripped.startswith('CMD'):
-            insert_idx = i
-            break
+    # --- SWE-bench tasks: keep FROM sweap-images, truncate source but no /repo_full/ ---
+    if clone_type == 'swebench':
+        repo_dir = '/app'
+        workdir = '/app'
+        # Parse the rest of the Dockerfile for extra RUN commands
+        extra_run_lines = []
+        for line in dockerfile_text.splitlines():
+            stripped = line.strip()
+            if stripped.startswith('RUN') and 'cp -a' not in stripped:
+                # Keep tool installation commands (uv, mkdir, etc.)
+                if any(kw in stripped for kw in ['curl', 'uv/', 'mkdir', 'pip install', 'apt-get']):
+                    extra_run_lines.append(stripped)
 
-    # Build output
-    task_name = task_dir.name
-    header = f"# {task_name} — sg_only_env variant\n"
-    header += "# Source files truncated so agent must use Sourcegraph MCP for code access.\n"
-    header += "# Verifier wrapper restores full repo before running tests.\n\n"
+        # Determine extra excludes for truncation
+        extra_excludes = []
+        if 'node_modules' in dockerfile_text:
+            extra_excludes.append('*/node_modules/*')
 
-    body_lines = lines[:insert_idx]
-    tail_lines = lines[insert_idx:]
+        # Build mirror info: the mirror is the single-repo mirror from inject_sg_repo_env.py
+        # or extracted from baseline Dockerfile
+        if not repos:
+            # For SWE-bench, look up mirror from inject_sg_repo_env.py mapping
+            fallback_mirror = mirrors[0] if mirrors else _lookup_mirror_for_task(task_name)
+            if fallback_mirror and ',' not in (fallback_mirror or ''):
+                repos = [{"mirror": fallback_mirror, "target_dir": "."}]
+            elif fallback_mirror:
+                # Multi-repo: split comma-separated mirrors
+                repos = [{"mirror": m.strip(), "target_dir": "."} for m in fallback_mirror.split(',')]
+            else:
+                repos = [{"mirror": "MIRROR_NOT_FOUND", "target_dir": "."}]
 
-    result = header + '\n'.join(body_lines) + '\n' + sg_section
-    if tail_lines:
-        result += '\n'.join(tail_lines) + '\n'
+        manifest_json = _make_clone_manifest_json(repo_dir, repos)
+        sg_repos_env = ""
+        if mirrors:
+            sg_repos_env = f'\nENV SOURCEGRAPH_REPOS="{",".join(mirrors)}"'
+
+        extra_run_block = ""
+        if extra_run_lines:
+            extra_run_block = '\n' + '\n'.join(extra_run_lines) + '\n'
+
+        return f"""# {task_name} — sg_only_env variant (v2: clone-at-verify)
+# Source files truncated — agent uses Sourcegraph MCP for code access.
+# Verifier clones mirror at verification time to restore source.
+
+FROM {from_image}
+{sg_repos_env}
+{extra_run_block}
+WORKDIR {repo_dir}
+
+# Truncate source files so agent cannot read them locally.
+# .pyc files and package metadata are left intact to preserve venv.
+RUN {truncate_find_expr(repo_dir, extra_excludes)}
+# Recommit truncated state so git history cannot recover full files.
+RUN cd {repo_dir} && git config user.email "agent@example.com" && \\
+    git config user.name "Agent" && \\
+    git add -A && git commit -m "sg_only truncation" --allow-empty --quiet
+
+# Clone manifest for verifier (clone-at-verify strategy)
+RUN echo '{manifest_json}' > /tmp/.sg_only_clone_manifest.json
+
+# Mark sg_only mode
+RUN touch /tmp/.sg_only_mode && echo '{repo_dir}' > /tmp/.sg_only_workdir
+
+ENTRYPOINT []
+"""
+
+    # --- Code-review tasks (inject_defects.sh): empty workspace + baked defect script ---
+    if has_defect_injection(task_dir):
+        inject_defects = '/tmp/inject_defects.sh'
+        if not repos:
+            fallback_mirror = mirrors[0] if mirrors else _lookup_mirror_for_task(task_name)
+            repos = [{"mirror": fallback_mirror or "MIRROR_NOT_FOUND", "target_dir": "."}]
+        manifest_json = _make_clone_manifest_json(workdir, repos, inject_defects)
+
+        # Detect base image and packages from the Dockerfile
+        base_image = 'ubuntu:22.04'
+        if 'python' in from_image.lower():
+            base_image = from_image
+        elif 'golang' in from_image.lower():
+            base_image = from_image
+
+        sg_repos_env = ""
+        if mirrors:
+            sg_repos_env = f'ENV SOURCEGRAPH_REPOS="{",".join(mirrors)}"\n'
+
+        extra_pkgs = _extra_packages_from_dockerfile(dockerfile_text)
+        nodejs_block = ""
+        if 'nodejs_setup' in extra_pkgs or 'nodesource' in dockerfile_text:
+            nodejs_block = """
+# Install Node.js (needed by verifier)
+RUN if ! command -v node > /dev/null 2>&1; then \\
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \\
+    apt-get install -y --no-install-recommends nodejs; \\
+    fi
+"""
+        extra_apt_list = sorted(extra_pkgs - {'nodejs_setup'})
+        extra_apt = ""
+        for pkg in extra_apt_list:
+            extra_apt += f"    {pkg} \\\n"
+
+        return f"""# {task_name} — sg_only_env variant (v2: clone-at-verify)
+# Empty workspace — agent uses Sourcegraph MCP for code access.
+# Verifier clones mirror, injects defects, then overlays agent changes.
+
+FROM {base_image}
+
+ENV DEBIAN_FRONTEND=noninteractive
+{sg_repos_env}
+RUN apt-get update && apt-get install -y --no-install-recommends \\
+    git \\
+    ca-certificates \\
+    python3 \\
+    curl \\
+{extra_apt}    && rm -rf /var/lib/apt/lists/*
+{nodejs_block}
+WORKDIR {workdir}
+
+# Empty git repo so agent can commit work
+RUN git init && \\
+    git config user.email "agent@example.com" && \\
+    git config user.name "Agent"
+
+# Bake inject_defects.sh into image for verifier to re-run after cloning
+COPY inject_defects.sh /tmp/inject_defects.sh
+RUN chmod +x /tmp/inject_defects.sh
+
+RUN mkdir -p {workdir}/tests /logs/verifier /logs/agent
+
+# Clone manifest for verifier (clone-at-verify strategy)
+RUN echo '{manifest_json}' > /tmp/.sg_only_clone_manifest.json
+
+# Mark sg_only mode
+RUN touch /tmp/.sg_only_mode
+
+ENTRYPOINT []
+"""
+
+    # --- Generic inline-clone / multi-repo tasks: empty workspace + manifest ---
+    if not repos:
+        fallback_mirror = mirrors[0] if mirrors else _lookup_mirror_for_task(task_name)
+        if fallback_mirror and ',' not in (fallback_mirror or ''):
+            repos = [{"mirror": fallback_mirror, "target_dir": "."}]
+        elif fallback_mirror:
+            repos = [{"mirror": m.strip(), "target_dir": "."} for m in fallback_mirror.split(',')]
+        else:
+            repos = [{"mirror": "MIRROR_NOT_FOUND", "target_dir": "."}]
+    manifest_json = _make_clone_manifest_json(workdir, repos, inject_defects)
+
+    # Pick a sensible base image
+    base_image = 'ubuntu:22.04'
+    if 'python' in from_image.lower():
+        base_image = from_image
+    elif 'golang' in from_image.lower() or 'go:' in from_image.lower():
+        base_image = from_image
+    elif 'node' in from_image.lower():
+        base_image = from_image
+    elif 'eclipse-temurin' in from_image.lower() or 'java' in from_image.lower():
+        base_image = from_image
+    elif 'gcc' in from_image.lower():
+        base_image = from_image
+    elif 'rust' in from_image.lower():
+        base_image = from_image
+    elif 'debian' in from_image.lower():
+        base_image = from_image
+
+    sg_repos_env = ""
+    if mirrors:
+        sg_repos_env = f'ENV SOURCEGRAPH_REPOS="{",".join(mirrors)}"\n'
+    extra_pkgs = _extra_packages_from_dockerfile(dockerfile_text)
+    nodejs_block = ""
+    if 'nodejs_setup' in extra_pkgs or 'nodesource' in dockerfile_text:
+        nodejs_block = """
+# Install Node.js (needed by verifier)
+RUN if ! command -v node > /dev/null 2>&1; then \\
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \\
+    apt-get install -y --no-install-recommends nodejs; \\
+    fi
+"""
+    extra_apt_list = sorted(extra_pkgs - {'nodejs_setup'})
+    extra_apt = ""
+    for pkg in extra_apt_list:
+        extra_apt += f"    {pkg} \\\n"
+
+    # Detect if alpine-based (uses apk instead of apt-get)
+    is_alpine = 'alpine' in base_image.lower()
+    if is_alpine:
+        install_block = f"""RUN apk add --no-cache \\
+    git \\
+    python3 \\
+    curl \\
+    bash"""
     else:
-        result += f'\nWORKDIR {workdir}\n\nENTRYPOINT []\n'
+        install_block = f"""RUN apt-get update && apt-get install -y --no-install-recommends \\
+    git \\
+    ca-certificates \\
+    python3 \\
+    curl \\
+{extra_apt}    && rm -rf /var/lib/apt/lists/*"""
 
-    return result
+    return f"""# {task_name} — sg_only_env variant (v2: clone-at-verify)
+# Empty workspace — agent uses Sourcegraph MCP for code access.
+# Verifier clones mirror(s) at verification time via clone manifest.
+
+FROM {base_image}
+
+ENV DEBIAN_FRONTEND=noninteractive
+{sg_repos_env}
+{install_block}
+{nodejs_block}
+WORKDIR {workdir}
+
+# Empty git repo so agent can commit work
+RUN git init && \\
+    git config user.email "agent@example.com" && \\
+    git config user.name "Agent"
+
+RUN mkdir -p /logs/agent /logs/verifier
+
+# Clone manifest for verifier (clone-at-verify strategy)
+RUN echo '{manifest_json}' > /tmp/.sg_only_clone_manifest.json
+
+# Mark sg_only mode
+RUN touch /tmp/.sg_only_mode
+
+ENTRYPOINT []
+"""
 
 
 def generate_artifact_only_mcp(task_dir, dockerfile_text):
@@ -513,14 +979,19 @@ def inject_test_guard(task_dir):
     return True
 
 
-def copy_wrapper(task_dir):
-    """Copy sgonly_verifier_wrapper.sh to the task's tests/ directory."""
+def copy_wrapper(task_dir, force=False):
+    """Copy sgonly_verifier_wrapper.sh to the task's tests/ directory.
+
+    With force=True, overwrites existing wrappers (needed to push v2 wrapper).
+    """
     tests_dir = task_dir / "tests"
     if not tests_dir.exists():
         return False
     dest = tests_dir / "sgonly_verifier_wrapper.sh"
-    if dest.exists():
-        return False
+    if dest.exists() and not force:
+        # Check if content differs — update if so
+        if WRAPPER_SRC.exists() and dest.read_text() == WRAPPER_SRC.read_text():
+            return False
     if WRAPPER_SRC.exists():
         dest.write_text(WRAPPER_SRC.read_text())
         dest.chmod(0o755)
@@ -531,14 +1002,18 @@ def copy_wrapper(task_dir):
 def main():
     dry_run = '--dry-run' in sys.argv
     verbose = '--verbose' in sys.argv or '-v' in sys.argv
+    force = '--force' in sys.argv
 
     active_tasks = get_active_task_ids()
     print(f"Active tasks: {len(active_tasks)}")
+    if force:
+        print("Force mode: regenerating ALL Dockerfile.sg_only files")
 
     generated = 0
     skipped = 0
     guards_added = 0
     wrappers_copied = 0
+    wrappers_updated = 0
     artifact_generated = 0
     errors = []
     write_only_count = 0
@@ -556,7 +1031,7 @@ def main():
         sgonly = env_dir / "Dockerfile.sg_only"
         artifact_only = env_dir / "Dockerfile.artifact_only"
 
-        if sgonly.exists():
+        if sgonly.exists() and not force:
             skipped += 1
             # Even if sg_only exists, check if artifact_only needs generation
             # for MCP-unique suites (ccb_mcp_*)
@@ -573,6 +1048,11 @@ def main():
                         print(f"  {'ARTIFACT-ONLY':>18} {suite:<25} {task_id}")
                 except Exception as e:
                     errors.append((task_id, f"artifact_only: {e}"))
+            else:
+                # In non-force mode, still update wrapper if it exists and differs
+                if has_sgonly_wrapper(task_dir) and WRAPPER_SRC.exists():
+                    if copy_wrapper(task_dir, force=False):
+                        wrappers_updated += 1
             continue
 
         if not dockerfile.exists():
@@ -584,10 +1064,17 @@ def main():
         clone_type = detect_clone_type(dockerfile_text)
         # ccb-linux-base images need special handling: use same base but remove kernel source
         is_linux_base = (clone_type == 'ccb_linux_base')
+        # ccb-repo-* images have repo pre-cloned; never write-only
+        is_ccb_repo = (clone_type == 'ccb_repo')
         # Write-only if: no repo in baseline, OR verifier only checks output
         # (doc-gen, analysis tasks). Write-only gives the agent an empty
         # workspace so it must use MCP — no confusing truncated file trees.
-        write_only = (not is_linux_base) and ((clone_type == 'none') or is_write_only_verifier(task_dir))
+        # ccb-repo-* tasks are never write-only (they have repos in the base image).
+        # With --force, ignore existing wrapper files for classification (they may
+        # be left over from a previous generation with different classification).
+        write_only = (not is_linux_base) and (not is_ccb_repo) and (
+            (clone_type == 'none') or is_write_only_verifier(task_dir, ignore_wrapper=force)
+        )
 
         try:
             if is_linux_base:
@@ -619,7 +1106,7 @@ def main():
                 if not write_only and not is_linux_base:
                     if inject_test_guard(task_dir):
                         guards_added += 1
-                    if copy_wrapper(task_dir):
+                    if copy_wrapper(task_dir, force=force):
                         wrappers_copied += 1
 
             # For MCP-unique suites, also generate Dockerfile.artifact_only
@@ -643,6 +1130,8 @@ def main():
     print(f"  Generated artifact_only: {artifact_generated}")
     print(f"  test.sh guards added: {guards_added}")
     print(f"  Wrappers copied: {wrappers_copied}")
+    if wrappers_updated:
+        print(f"  Wrappers updated (content changed): {wrappers_updated}")
     if errors:
         print(f"  Errors: {len(errors)}")
         for tid, err in errors:

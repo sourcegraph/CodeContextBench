@@ -6,7 +6,6 @@ FROM ubuntu:22.04
 ENV SOURCEGRAPH_REPOS=sg-benchmarks/terraform--7637a921,sg-benchmarks/terraform--24236f4f
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \

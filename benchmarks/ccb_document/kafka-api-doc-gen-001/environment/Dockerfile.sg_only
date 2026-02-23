@@ -1,12 +1,11 @@
 # kafka-api-doc-gen-001 — sg_only_env variant
 # No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
 
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/kafka--e678b4b
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \

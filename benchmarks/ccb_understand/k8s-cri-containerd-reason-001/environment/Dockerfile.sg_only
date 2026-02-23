@@ -3,7 +3,7 @@
 
 FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPOS="sg-benchmarks/containerd--317286ac,sg-benchmarks/kubernetes--8c9c67c0"
+ENV SOURCEGRAPH_REPOS=sg-benchmarks/containerd--317286ac,sg-benchmarks/kubernetes--8c9c67c0
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,6 +23,7 @@ RUN git init && \
 
 RUN mkdir -p /logs/agent /logs/verifier
 
+# Mark sg_only mode so verifiers can skip local-path checks
 RUN touch /tmp/.sg_only_mode
 
 ENTRYPOINT []

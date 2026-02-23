@@ -1,12 +1,11 @@
 # docgen-changelog-002 — sg_only_env variant
 # No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
 
-FROM golang:1.22-bookworm
+FROM golang:1.23-bookworm
 
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/flipt--3d5a345f
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \

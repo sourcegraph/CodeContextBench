@@ -1,12 +1,11 @@
 # django-orm-query-arch-001 — sg_only_env variant
 # No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
 
-FROM python:3.12-bookworm
+FROM python:3.11-slim
 
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/django--6b995cff
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \

@@ -6,7 +6,6 @@ FROM eclipse-temurin:17-jdk
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/kafka--be816b82
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \
@@ -23,6 +22,7 @@ RUN git init && \
 
 RUN mkdir -p /logs/agent /logs/verifier
 
+# Mark sg_only mode so verifiers can skip local-path checks
 RUN touch /tmp/.sg_only_mode
 
 ENTRYPOINT []

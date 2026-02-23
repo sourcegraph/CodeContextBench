@@ -1,12 +1,11 @@
 # quantlib-barrier-pricing-arch-001 — sg_only_env variant
 # No local repo clone — agent uses Sourcegraph MCP exclusively for code access.
 
-FROM gcc:14-bookworm
+FROM gcc:13
 
 ENV SOURCEGRAPH_REPO_NAME=sg-benchmarks/QuantLib--dbdcc14e
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     ca-certificates \
