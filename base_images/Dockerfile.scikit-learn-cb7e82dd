@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+WORKDIR /workspace
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY _clone_cache/scikit-learn-cb7e82dd/ /workspace/
+
+RUN cd /workspace && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"

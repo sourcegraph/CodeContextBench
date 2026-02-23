@@ -57,6 +57,14 @@ IMAGES=(
     "Dockerfile.curl-09e25b9d      ccb-repo-curl-09e25b9d"
     "Dockerfile.envoy-1d0ba73a     ccb-repo-envoy-1d0ba73a"
     "Dockerfile.envoy-d7809ba2     ccb-repo-envoy-d7809ba2"
+    "Dockerfile.flask-798e006f     ccb-repo-flask-798e006f"
+    "Dockerfile.requests-421b8733  ccb-repo-requests-421b8733"
+    "Dockerfile.etcd-d89978e8      ccb-repo-etcd-d89978e8"
+    "Dockerfile.containerd-317286ac ccb-repo-containerd-317286ac"
+    "Dockerfile.numpy-a639fbf5     ccb-repo-numpy-a639fbf5"
+    "Dockerfile.scikit-learn-cb7e82dd ccb-repo-scikit-learn-cb7e82dd"
+    "Dockerfile.pandas-41968da5    ccb-repo-pandas-41968da5"
+    "Dockerfile.rust-01f6ddf7      ccb-repo-rust-01f6ddf7"
 )
 
 TOTAL_START=$SECONDS
