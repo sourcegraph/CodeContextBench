@@ -535,11 +535,16 @@ ENTRYPOINT []
 
 
 def _make_clone_manifest_json(workdir, repos, inject_defects=None):
-    """Build the JSON string for /tmp/.sg_only_clone_manifest.json."""
+    """Build the JSON string for /tmp/.sg_only_clone_manifest.json.
+
+    Returns compact single-line JSON to avoid Docker parser issues — multi-line
+    RUN echo with JSON keys (e.g. "workdir":) on their own line gets
+    misinterpreted as unknown Dockerfile instructions.
+    """
     manifest = {"workdir": workdir, "repos": repos}
     if inject_defects:
         manifest["inject_defects"] = inject_defects
-    return json.dumps(manifest, indent=2)
+    return json.dumps(manifest, separators=(",", ":"))
 
 
 def _detect_from_image(dockerfile_text):

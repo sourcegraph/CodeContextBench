@@ -24,19 +24,7 @@ RUN git init && \
 RUN mkdir -p /logs/agent /logs/verifier
 
 # Clone manifest for verifier (clone-at-verify strategy)
-RUN echo '{
-  "workdir": "/workspace",
-  "repos": [
-    {
-      "mirror": "sg-benchmarks/envoy--1d0ba73a",
-      "target_dir": "envoy"
-    },
-    {
-      "mirror": "sg-benchmarks/grpc-go--3be7e2d0",
-      "target_dir": "grpc-go"
-    }
-  ]
-}' > /tmp/.sg_only_clone_manifest.json
+RUN echo '{"workdir":"/workspace","repos":[{"mirror":"sg-benchmarks/envoy--1d0ba73a","target_dir":"envoy"},{"mirror":"sg-benchmarks/grpc-go--3be7e2d0","target_dir":"grpc-go"}]}' > /tmp/.sg_only_clone_manifest.json
 
 # Mark sg_only mode
 RUN touch /tmp/.sg_only_mode
