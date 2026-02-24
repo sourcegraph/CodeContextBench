@@ -220,6 +220,17 @@ def build_template_vars(
         eval_criteria_lines.append("- **Test ratio**: Does the generated code pass the provided test suite?")
     evaluation_criteria = "\n".join(eval_criteria_lines) or "- Correctness of identified items"
 
+    # Verification modes (dual-mode support)
+    verification_modes = use_case.get("verification_modes", ["artifact"])
+    supports_direct = "direct" in verification_modes
+    if supports_direct and not clone_cmds:
+        raise ValueError(
+            f"Task {use_case.get('use_case_id')} has verification_modes=['artifact','direct'] "
+            f"but fixture has no local_checkout_repos. Direct mode needs a full repo clone."
+        )
+    # TOML array format: ["artifact", "direct"]
+    verification_modes_toml = json.dumps(verification_modes)
+
     # Customer prompt for user_story (PRD format)
     customer_prompt = use_case.get("customer_prompt", "Perform the requested analysis.")
     title = use_case.get("title", task_id)
@@ -268,6 +279,9 @@ def build_template_vars(
         "dependency_chains_json": "[]",
         "evaluation_modes_json": evaluation_modes_json,
         "evaluation_checks_json": evaluation_checks_json,
+        # Dual-mode support
+        "verification_modes_json": verification_modes_toml,
+        "supports_direct": "true" if supports_direct else "false",
     }
 
 
@@ -371,6 +385,22 @@ def generate_task(
         shutil.copy2(oracle_src, oracle_dst)
         if verbose:
             logging.debug("  Copied oracle_checks.py -> %s", oracle_dst)
+
+    # Write direct_verifier.sh placeholder for dual-mode tasks
+    verification_modes = use_case.get("verification_modes", ["artifact"])
+    if "direct" in verification_modes:
+        direct_sh = tests_dir / "direct_verifier.sh"
+        direct_sh.write_text(
+            "#!/bin/bash\n"
+            "# PLACEHOLDER: Adapt from parent SDLC verifier or write task-specific direct verifier.\n"
+            "# This script is called by test.sh when NOT in artifact mode.\n"
+            "echo 'ERROR: direct_verifier.sh is a placeholder — needs manual curation'\n"
+            "echo '0.0' > /logs/verifier/reward.txt\n"
+            "exit 1\n"
+        )
+        direct_sh.chmod(0o755)
+        if verbose:
+            logging.debug("  Wrote direct_verifier.sh placeholder for dual-mode task")
 
     logging.info("Generated task: %s", task_dir)
 

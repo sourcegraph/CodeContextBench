@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-vuln-remed-141"
+description = "ArangoDB Authentication and Authorization Audit"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-vuln-remed-141"
+repo = "org/repo"
+category = "vuln-remediation"
+language = "c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_security"
+use_case_id = 141
+repo_set_id = "arangodb-database"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "ArangoDB Authentication and Authorization Audit"
+
+[environment]
+build_timeout_sec = 600.0

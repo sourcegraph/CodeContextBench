@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-crossorg-121"
+description = "Cross-Org WebIDL to DOM Binding Discovery"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-crossorg-121"
+repo = "org/repo"
+category = "cross-org-discovery"
+language = "c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_crossorg"
+use_case_id = 121
+repo_set_id = "mozilla-firefox"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Cross-Org WebIDL to DOM Binding Discovery"
+
+[environment]
+build_timeout_sec = 600.0

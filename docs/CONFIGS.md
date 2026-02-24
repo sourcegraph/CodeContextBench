@@ -33,11 +33,14 @@ Config names encode three independent dimensions:
 `baseline-local-direct` + `mcp-remote-direct`. The agent produces code changes
 and the verifier checks git diffs / test results.
 
-**MCP-unique suites** (`ccb_mcp_*`) use `baseline-local-artifact` +
-`mcp-remote-artifact`. These are retrieval/analysis tasks — the agent produces
-`/workspace/answer.json` and the verifier scores it against an oracle. Do NOT
-run MCP-unique suites with `-direct` configs; the verifier expects an artifact,
-not code changes.
+**MCP-unique suites** (`ccb_mcp_*`) default to `baseline-local-artifact` +
+`mcp-remote-artifact`. The agent produces `/workspace/answer.json` and the
+verifier scores it against an oracle. Tasks with `"verification_modes":
+["artifact", "direct"]` in `configs/use_case_registry.json` additionally
+support `baseline-local-direct` + `mcp-remote-direct`. The verifier
+auto-dispatches: if the `.artifact_only_mode` sentinel exists, it runs the
+oracle verifier (`eval.sh`); otherwise it runs the direct verifier
+(`direct_verifier.sh`).
 
 **SCIP ablation** uses `mcp-scip-remote-direct` or `mcp-scip-remote-artifact`
 (requires branch swap pre-flight; see SCIP Ablation section below).

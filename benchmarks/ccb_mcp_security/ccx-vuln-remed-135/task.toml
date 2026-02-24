@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-vuln-remed-135"
+description = "Chromium Renderer Process Sandbox Audit"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-vuln-remed-135"
+repo = "org/repo"
+category = "vuln-remediation"
+language = "c++/c/javascript"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_security"
+use_case_id = 135
+repo_set_id = "chromium-browser"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Chromium Renderer Process Sandbox Audit"
+
+[environment]
+build_timeout_sec = 600.0

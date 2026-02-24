@@ -18,11 +18,29 @@ import sys
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# New task IDs to customize (the 20 generated skeletons)
-NEW_TASK_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
+# New task IDs to customize (all generated skeletons)
+NEW_TASK_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112,
+                113, 114, 115, 116, 117, 118, 119, 120,
+                121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132,
+                133, 134, 135, 136, 137, 138, 139, 140, 141]
 
 # Reference task for copying shared files
 REFERENCE_TASK = os.path.join(PROJECT_ROOT, "benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001")
+
+# Tasks that support both artifact and direct verification modes
+DUAL_MODE_TASK_IDS = {81, 82, 83, 113, 114, 115, 116, 117, 118, 119, 120, 122, 127}
+
+# Map adapted task IDs to their parent SDLC task paths (for copying direct verifiers)
+PARENT_TASK_MAP = {
+    113: "ccb_debug/grafana-table-panel-regression-001",
+    114: "ccb_build/kafka-batch-accumulator-refac-001",
+    115: "ccb_secure/django-cross-team-boundary-001",
+    116: "ccb_design/k8s-typemeta-dep-chain-001",
+    117: "ccb_build/k8s-score-normalizer-refac-001",
+    118: "ccb_secure/django-repo-scoped-access-001",
+    119: "ccb_build/flink-pricing-window-feat-001",
+    120: "ccb_build/strata-fx-european-refac-001",
+}
 
 # Repo set definitions: sg_repos (for artifact_only/MCP search), clone_repos (for sg_only manifest)
 REPO_SETS = {
@@ -106,6 +124,90 @@ REPO_SETS = {
         ],
         "language": "C++",
         "file_ext": ".cpp",
+    },
+    "java-platform": {
+        "sg_repos": [
+            "sg-evals/jdk--742e735d",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/jdk--742e735d", "target_dir": "jdk"},
+        ],
+        "language": "Java",
+        "file_ext": ".java",
+    },
+    "chromium-browser": {
+        "sg_repos": [
+            "sg-evals/chromium--2d05e315",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/chromium--2d05e315", "target_dir": "chromium"},
+        ],
+        "language": "C++",
+        "file_ext": ".cpp",
+    },
+    "android-platform": {
+        "sg_repos": [
+            "sg-evals/android-frameworks-base--d41da232",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/android-frameworks-base--d41da232", "target_dir": "frameworks-base"},
+        ],
+        "language": "Java",
+        "file_ext": ".java",
+    },
+    "libreoffice-desktop": {
+        "sg_repos": [
+            "sg-evals/libreoffice-core--9c8b85f3",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/libreoffice-core--9c8b85f3", "target_dir": "core"},
+        ],
+        "language": "C++",
+        "file_ext": ".cpp",
+    },
+    "arangodb-database": {
+        "sg_repos": [
+            "sg-evals/arangodb--a5cca0b8",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/arangodb--a5cca0b8", "target_dir": "arangodb"},
+        ],
+        "language": "C++",
+        "file_ext": ".cpp",
+    },
+    "grafana-observability": {
+        "sg_repos": [
+            "sg-evals/grafana--26d36ec",
+            "sg-evals/grafana-loki",
+            "sg-evals/grafana-mimir",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/grafana--26d36ec", "target_dir": "grafana"},
+            {"mirror": "sg-evals/grafana-loki", "target_dir": "loki"},
+            {"mirror": "sg-evals/grafana-mimir", "target_dir": "mimir"},
+        ],
+        "language": "Go",
+        "file_ext": ".go",
+    },
+    "django-web-framework": {
+        "sg_repos": [
+            "sg-evals/django--674eda1c",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/django--674eda1c", "target_dir": "django"},
+        ],
+        "language": "Python",
+        "file_ext": ".py",
+    },
+    "strata-finance": {
+        "sg_repos": [
+            "sg-evals/Strata--66225ca9",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/Strata--66225ca9", "target_dir": "Strata"},
+        ],
+        "language": "Java",
+        "file_ext": ".java",
     },
 }
 
@@ -235,6 +337,95 @@ exec bash "$(dirname "$0")/eval.sh" "$@"
         f.write(content)
     os.chmod(path, 0o755)
     return path
+
+
+def create_dual_mode_test_sh(task_dir):
+    """Create tests/test.sh that dispatches between artifact and direct mode."""
+    content = """#!/bin/bash
+# test.sh — Dual-mode verifier dispatcher
+# Artifact mode (.artifact_only_mode exists): run eval.sh (oracle scoring)
+# Direct mode  (default / .sg_only_mode):    run direct_verifier.sh
+
+set -e
+
+# sg_only_env: restore full repo before verification (no-op for regular runs)
+[ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+
+if [ -f /tmp/.artifact_only_mode ]; then
+    echo "[test.sh] Artifact mode detected -> running eval.sh (oracle verifier)"
+    exec bash "$(dirname "$0")/eval.sh" "$@"
+else
+    echo "[test.sh] Direct mode -> running direct_verifier.sh"
+    exec bash "$(dirname "$0")/direct_verifier.sh" "$@"
+fi
+"""
+    path = os.path.join(task_dir, "tests", "test.sh")
+    with open(path, "w") as f:
+        f.write(content)
+    os.chmod(path, 0o755)
+    return path
+
+
+def copy_parent_verifier(task_dir, parent_rel_path):
+    """Copy direct verifier files from parent SDLC task.
+
+    Copies the parent's test.sh as direct_verifier.sh (stripping wrapper/artifact
+    lines since the dispatcher handles those), plus ground_truth.json and
+    verifier_lib.sh if they exist.
+    """
+    parent_dir = os.path.join(PROJECT_ROOT, "benchmarks", parent_rel_path)
+    parent_tests = os.path.join(parent_dir, "tests")
+    task_tests = os.path.join(task_dir, "tests")
+    copied = []
+
+    # Copy parent test.sh -> direct_verifier.sh (strip wrapper/artifact lines)
+    parent_test_sh = os.path.join(parent_tests, "test.sh")
+    if os.path.exists(parent_test_sh):
+        with open(parent_test_sh) as f:
+            content = f.read()
+        # Strip the sg_only_wrapper and artifact_only sourcing lines
+        # (the dual-mode test.sh dispatcher handles those before calling us)
+        lines = content.split("\n")
+        filtered = []
+        for line in lines:
+            stripped = line.strip()
+            # Skip wrapper sourcing (handled by dispatcher)
+            if "sgonly_verifier_wrapper.sh" in stripped:
+                continue
+            # Skip artifact_only_mode sourcing (handled by dispatcher)
+            if ".artifact_only_mode" in stripped and "answer_json_verifier_lib" in stripped:
+                continue
+            if stripped == "if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then":
+                continue
+            if stripped == "source /tests/answer_json_verifier_lib.sh":
+                continue
+            if stripped == "fi" and filtered and filtered[-1].strip() == "":
+                # Skip trailing fi from the artifact block (heuristic)
+                # Only skip if the previous non-empty line was the source line
+                prev_content = [l for l in filtered if l.strip()]
+                if prev_content and "answer_json_verifier_lib" in prev_content[-1]:
+                    continue
+            filtered.append(line)
+        direct_content = "\n".join(filtered)
+
+        dst = os.path.join(task_tests, "direct_verifier.sh")
+        with open(dst, "w") as f:
+            f.write(direct_content)
+        os.chmod(dst, 0o755)
+        copied.append("direct_verifier.sh")
+
+    # Copy supporting files if they exist
+    for fname in ["ground_truth.json", "verifier_lib.sh", "answer_json_verifier_lib.sh"]:
+        src = os.path.join(parent_tests, fname)
+        if os.path.exists(src):
+            dst = os.path.join(task_tests, fname)
+            if not os.path.exists(dst):
+                shutil.copy2(src, dst)
+                if fname.endswith(".sh"):
+                    os.chmod(dst, 0o755)
+                copied.append(fname)
+
+    return copied
 
 
 def copy_sgonly_wrapper(task_dir):
@@ -405,11 +596,24 @@ def main():
         update_sg_only_dockerfile(task_dir, sg_repos, clone_repos)
         actions.append("updated Dockerfile.sg_only")
 
-        # 3. Create test.sh
+        # 3. Create test.sh (dual-mode dispatcher or standard wrapper)
+        is_dual_mode = uc_id in DUAL_MODE_TASK_IDS
         test_path = os.path.join(task_dir, "tests", "test.sh")
         if not os.path.exists(test_path):
-            create_test_sh(task_dir)
-            actions.append("created test.sh")
+            if is_dual_mode:
+                create_dual_mode_test_sh(task_dir)
+                actions.append("created dual-mode test.sh")
+            else:
+                create_test_sh(task_dir)
+                actions.append("created test.sh")
+
+        # 3b. Copy parent verifier for dual-mode adapted tasks
+        if is_dual_mode and uc_id in PARENT_TASK_MAP:
+            direct_path = os.path.join(task_dir, "tests", "direct_verifier.sh")
+            if not os.path.exists(direct_path):
+                copied_files = copy_parent_verifier(task_dir, PARENT_TASK_MAP[uc_id])
+                if copied_files:
+                    actions.append(f"copied parent verifier: {', '.join(copied_files)}")
 
         # 4. Copy sgonly_verifier_wrapper.sh
         wrapper_path = os.path.join(task_dir, "tests", "sgonly_verifier_wrapper.sh")

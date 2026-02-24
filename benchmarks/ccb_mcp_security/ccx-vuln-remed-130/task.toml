@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-vuln-remed-130"
+description = "JCE Cryptography Provider Architecture Audit"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-vuln-remed-130"
+repo = "org/repo"
+category = "vuln-remediation"
+language = "java/c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_security"
+use_case_id = 130
+repo_set_id = "java-platform"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "JCE Cryptography Provider Architecture Audit"
+
+[environment]
+build_timeout_sec = 600.0

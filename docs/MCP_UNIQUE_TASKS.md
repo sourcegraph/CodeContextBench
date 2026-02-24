@@ -442,6 +442,52 @@ design uses cross-org (different GitHub orgs) instead. To add cross-host:
 - **Q9**: Separate selection file `configs/selected_mcp_unique_tasks.json`
 - **Q10**: Oracle coverage counts items found via any tool (baseline and MCP comparable)
 
+## Dual-Mode Verification (Artifact + Direct)
+
+Some MCP-unique tasks support both **artifact** and **direct** verification,
+controlled by the `verification_modes` field in `configs/use_case_registry.json`.
+
+### How it works
+
+Each dual-mode task has a dispatcher `test.sh` that checks for the
+`.artifact_only_mode` sentinel (set by `Dockerfile.artifact_only`):
+
+- **Artifact mode** (sentinel present): dispatches to `eval.sh` which runs
+  `oracle_checks.py` against `answer.json`.
+- **Direct mode** (no sentinel): dispatches to `direct_verifier.sh` which
+  checks code changes via git diffs, compilation, or test execution.
+
+### File layout for dual-mode tasks
+
+```
+tests/
+  test.sh                   # Dispatcher (checks sentinel, routes to eval.sh or direct_verifier.sh)
+  eval.sh                   # Artifact verifier (oracle checks)
+  direct_verifier.sh        # Direct verifier (adapted from parent SDLC task)
+  oracle_checks.py          # Oracle library (artifact mode)
+  oracle_answer.json        # Ground truth (artifact mode)
+  ground_truth.json         # Direct mode ground truth (if applicable)
+  verifier_lib.sh           # Shared verifier utilities (if applicable)
+```
+
+### Which tasks support direct mode
+
+Tasks with SDLC lineage (adapted from code-change tasks) and agentic
+code-generation tasks support both modes. Discovery-only tasks remain
+artifact-only since they produce no code changes to verify.
+
+See `configs/use_case_registry.json` — entries with
+`"verification_modes": ["artifact", "direct"]` support both modes.
+
+### Adding direct mode to a new task
+
+1. Set `"verification_modes": ["artifact", "direct"]` in the registry entry.
+2. Ensure the fixture has `local_checkout_repos` (direct mode needs full repo).
+3. Run `generate_mcp_unique_tasks.py` — creates `direct_verifier.sh` placeholder.
+4. Run `customize_mcp_skeletons.py` — generates dual-mode `test.sh` and copies
+   parent verifier if the task has SDLC lineage.
+5. Manually curate `direct_verifier.sh` for task-specific verification logic.
+
 ## See Also
 
 - `docs/MCP_UNIQUE_CALIBRATION.md` — Static oracle analysis + threshold calibration

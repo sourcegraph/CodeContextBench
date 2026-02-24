@@ -1,0 +1,44 @@
+{
+  "id": "CCX-agentic-122",
+  "family": "agentic-correctness",
+  "use_case_id": 122,
+  "category": "I",
+  "mcp_suite": "ccb_mcp_org",
+  "prd": {
+    "user_story": "As a developer, I want to: Write an XPCOM component header and implementation following Firefox's established patterns. Your component must: 1. Use the `NS_DECL_ISUPPORTS` and `NS_DECL_NSIOBSERVERSERVICE` macros as seen in existing components. 2. Implement `QueryInterface`, `AddRef`, `Release` following the reference counting pattern. 3. Register using `NS_GENERIC_FACTORY_CONSTRUCTOR` as found in existing component registrations under `toolkit/components/`. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the Firefox source files you referenced.",
+    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the mozilla-firefox fixture.",
+    "seed_prompt": "Write an XPCOM component header and implementation following Firefox's established patterns. Your component must: 1. Use the `NS_DECL_ISUPPORTS` and `NS_DECL_NSIOBSERVERSERVICE` macros as seen in existing components. 2. Implement `QueryInterface`, `AddRef`, `Release` following the reference counting pattern. 3. Register using `NS_GENERIC_FACTORY_CONSTRUCTOR` as found in existing component registrations under `toolkit/components/`. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the Firefox source files you referenced."
+  },
+  "artifacts": {
+    "repo_set_id": "mozilla-firefox",
+    "oracle": {
+      "required_files": [],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+  {
+    "type": "file_set_match",
+    "params": {
+      "search_pattern": ""
+    }
+  },
+  {
+    "type": "keyword_presence",
+    "params": {
+      "required_keywords": []
+    }
+  }
+],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

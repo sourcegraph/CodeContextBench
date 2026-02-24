@@ -16,10 +16,11 @@ mcp_suite = "$mcp_suite"
 use_case_id = $use_case_id
 repo_set_id = "$repo_set_id"
 mcp_unique = true
+verification_modes = $verification_modes_json
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "$task_description"

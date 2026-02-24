@@ -7,7 +7,10 @@ import sys
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-NEW_USE_CASE_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
+NEW_USE_CASE_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112,
+                    113, 114, 115, 116, 117, 118, 119, 120,
+                    121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132,
+                    133, 134, 135, 136, 137, 138, 139, 140, 141]
 
 # Language map from repo_set_id
 LANG_MAP = {
@@ -17,6 +20,14 @@ LANG_MAP = {
     "kubernetes-ecosystem": "go",
     "compiler-toolchain": "cpp",
     "mozilla-firefox": "cpp",
+    "java-platform": "java",
+    "chromium-browser": "cpp",
+    "android-platform": "java",
+    "libreoffice-desktop": "cpp",
+    "arangodb-database": "cpp",
+    "grafana-observability": "go",
+    "django-web-framework": "python",
+    "strata-finance": "java",
 }
 
 # Primary repo for each repo set (used as "repo" field in selection files)
@@ -27,6 +38,14 @@ PRIMARY_REPO = {
     "kubernetes-ecosystem": "kubernetes/kubernetes",
     "compiler-toolchain": "llvm/llvm-project",
     "mozilla-firefox": "mozilla-firefox/firefox",
+    "java-platform": "openjdk/jdk",
+    "chromium-browser": "chromium/chromium",
+    "android-platform": "aosp-mirror/platform_frameworks_base",
+    "libreoffice-desktop": "LibreOffice/core",
+    "arangodb-database": "arangodb/arangodb",
+    "grafana-observability": "grafana/grafana",
+    "django-web-framework": "django/django",
+    "strata-finance": "OpenGamma/Strata",
 }
 
 
@@ -95,6 +114,7 @@ def main():
             "deepsearch_relevant": "deepsearch" in uc.get("mcp_capabilities_required", []),
             "oracle_check_types": uc["oracle_check_types"],
             "repo_set_id": repo_set,
+            "verification_modes": uc.get("verification_modes", ["artifact"]),
         }
         new_mcp_entries.append(entry)
         print(f"  UC {uc_id}: {task_id} -> {task_dir}")
@@ -136,6 +156,7 @@ def main():
             "mcp_benefit_score": 1.0,
             "context_length": 0,
             "context_length_source": "mcp_unique_artifact",
+            "verification_modes": uc.get("verification_modes", ["artifact"]),
         }
         new_bench_entries.append(entry)
 
@@ -145,13 +166,15 @@ def main():
     total = len(bench_data["tasks"])
     bench_data["metadata"]["total_selected"] = total
     bench_data["metadata"]["target_total"] = total
-    bench_data["metadata"]["last_updated"] = "2026-02-23"
+    bench_data["metadata"]["last_updated"] = "2026-02-24"
     bench_data["metadata"]["target_note"] = (
-        f"All SDLC suites at target + 48 MCP-unique tasks across 10 ccb_mcp_* suites."
+        f"All SDLC suites at target + {len([t for t in bench_data['tasks'] if t.get('mcp_unique')])} "
+        f"MCP-unique tasks across 10 ccb_mcp_* suites."
     )
     bench_data["metadata"]["note"] = (
-        "Added 8 compiler-toolchain tasks (LLVM/GCC mega-repos). "
-        "Expanded from 210 to 218 total. New repo set: compiler-toolchain."
+        "Added 21 mega-repo tasks (Firefox, GCC, OpenJDK, Chromium, AOSP, LibreOffice, ArangoDB, Rust). "
+        f"Expanded to {total} total. New repo sets: java-platform, chromium-browser, "
+        "android-platform, libreoffice-desktop, arangodb-database."
     )
 
     # Update mcp_unique_suites list

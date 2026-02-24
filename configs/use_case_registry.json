@@ -5,17 +5,25 @@
       "use_case_id": 1,
       "category": "A",
       "title": "Blast Radius of a Shared Kubernetes Library",
-      "customer_prompt": "Which Go source files in the `dynamic/` package tree of the `sg-evals/kubernetes-client-go` repository directly import `k8s.io/apimachinery/pkg/runtime` (the exact package — not sub-packages like `pkg/runtime/schema`)?",
+      "customer_prompt": "Which Go source files in the `dynamic/` package tree of the `sg-evals/kubernetes-client-go` repository directly import `k8s.io/apimachinery/pkg/runtime` (the exact package \u2014 not sub-packages like `pkg/runtime/schema`)?",
       "mcp_suite": "ccb_mcp_crossrepo_tracing",
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match"],
+      "oracle_check_types": [
+        "file_set_match"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "medium",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 2,
@@ -26,12 +34,22 @@
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 3,
@@ -42,12 +60,22 @@
       "task_family": "cross-repo-config-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 4,
@@ -58,12 +86,23 @@
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["dependency_chain", "provenance"],
+      "oracle_check_types": [
+        "dependency_chain",
+        "provenance"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "go_to_definition", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "go_to_definition",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 10,
@@ -74,12 +113,21 @@
       "task_family": "cross-repo-config-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["symbol_resolution"],
+      "oracle_check_types": [
+        "symbol_resolution"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "medium",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "go_to_definition", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "go_to_definition",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 11,
@@ -90,12 +138,21 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "nodejs-web-stack",
       "difficulty": "medium",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 12,
@@ -106,12 +163,22 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 13,
@@ -122,12 +189,22 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 14,
@@ -138,12 +215,22 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "provenance"],
+      "oracle_check_types": [
+        "file_set_match",
+        "provenance"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 22,
@@ -154,12 +241,21 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 25,
@@ -170,12 +266,21 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "python-ml-stack",
       "difficulty": "medium",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 26,
@@ -186,12 +291,21 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 27,
@@ -202,12 +316,21 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "nodejs-web-stack",
       "difficulty": "hard",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 31,
@@ -218,12 +341,22 @@
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "multi-org-go",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 32,
@@ -234,12 +367,22 @@
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 33,
@@ -250,76 +393,125 @@
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 34,
       "category": "D",
       "title": "Incident Investigation: Loki Client Retry and Timeout Configuration",
-      "customer_prompt": "Find all Go source files in `grafana/grafana` under `pkg/components/loki/` that define or configure: 1. HTTP client timeout and retry/backoff logic — files containing `StopNow`, `Timeout`, and `backoff` configuration for the HTTP Loki client. 2. gRPC client retry configuration — files containing `grpcretry.WithMax`, `Timeout` for the gRPC Loki client.",
+      "customer_prompt": "Find all Go source files in `grafana/grafana` under `pkg/components/loki/` that define or configure: 1. HTTP client timeout and retry/backoff logic \u2014 files containing `StopNow`, `Timeout`, and `backoff` configuration for the HTTP Loki client. 2. gRPC client retry configuration \u2014 files containing `grpcretry.WithMax`, `Timeout` for the gRPC Loki client.",
       "mcp_suite": "ccb_mcp_incident",
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "medium",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 37,
       "category": "D",
       "title": "Incident Debugging: etcd DialTimeout Configuration Across Kubernetes Ecosystem",
-      "customer_prompt": "Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files — focus on production source code.",
+      "customer_prompt": "Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files \u2014 focus on production source code.",
       "mcp_suite": "ccb_mcp_incident",
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 41,
       "category": "E",
       "title": "Onboarding Audit: scipy.stats API Call Sites in pandas",
-      "customer_prompt": "Which Python source files in `pandas-dev/pandas` contain a `from scipy.stats import` statement (i.e., directly import functions or classes from `scipy.stats` at runtime)? Include files in any part of the codebase — production code and test files.",
+      "customer_prompt": "Which Python source files in `pandas-dev/pandas` contain a `from scipy.stats import` statement (i.e., directly import functions or classes from `scipy.stats` at runtime)? Include files in any part of the codebase \u2014 production code and test files.",
       "mcp_suite": "ccb_mcp_onboarding",
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "provenance"],
+      "oracle_check_types": [
+        "file_set_match",
+        "provenance"
+      ],
       "repo_set_id": "python-ml-stack",
       "difficulty": "medium",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 42,
       "category": "E",
       "title": "Architecture Map: Scientific Computing Data Flow",
-      "customer_prompt": "Map the data flow from raw array creation through scientific computation across these repos. Trace through all three layers: 1. Array computation layer — What function in `numpy/numpy` is the canonical entry point for array-level aggregation on raw ndarray objects? 2. Data structure layer — What class in `pandas-dev/pandas` wraps a NumPy ndarray as a pandas extension array? 3. Scientific computation layer — What function in `scipy/scipy` accepts numpy arrays (or pandas Series) as inputs for statistical analysis?",
+      "customer_prompt": "Map the data flow from raw array creation through scientific computation across these repos. Trace through all three layers: 1. Array computation layer \u2014 What function in `numpy/numpy` is the canonical entry point for array-level aggregation on raw ndarray objects? 2. Data structure layer \u2014 What class in `pandas-dev/pandas` wraps a NumPy ndarray as a pandas extension array? 3. Scientific computation layer \u2014 What function in `scipy/scipy` accepts numpy arrays (or pandas Series) as inputs for statistical analysis?",
       "mcp_suite": "ccb_mcp_onboarding",
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["dependency_chain", "provenance"],
+      "oracle_check_types": [
+        "dependency_chain",
+        "provenance"
+      ],
       "repo_set_id": "python-ml-stack",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "go_to_definition", "read_file", "deepsearch"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "go_to_definition",
+        "read_file",
+        "deepsearch"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 43,
@@ -330,12 +522,22 @@
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "medium",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 44,
@@ -346,28 +548,50 @@
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "rust-systems",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 50,
       "category": "E",
       "title": "End-to-End: How Kubernetes Creates a Deployment",
-      "customer_prompt": "Explain how a Kubernetes client application creates a Deployment from start to finish. Trace through all three layers: 1. Client library — What type/function in `kubernetes-client-go` sends the HTTP request? 2. API server — What function in `kubernetes/kubernetes` receives and validates the create request? 3. Storage — What function in `etcd-io/etcd` persists the Deployment to the key-value store?",
+      "customer_prompt": "Explain how a Kubernetes client application creates a Deployment from start to finish. Trace through all three layers: 1. Client library \u2014 What type/function in `kubernetes-client-go` sends the HTTP request? 2. API server \u2014 What function in `kubernetes/kubernetes` receives and validates the create request? 3. Storage \u2014 What function in `etcd-io/etcd` persists the Deployment to the key-value store?",
       "mcp_suite": "ccb_mcp_onboarding",
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["dependency_chain", "provenance"],
+      "oracle_check_types": [
+        "dependency_chain",
+        "provenance"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 4,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "go_to_definition", "read_file", "deepsearch"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "go_to_definition",
+        "read_file",
+        "deepsearch"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 51,
@@ -378,12 +602,23 @@
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence", "provenance"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence",
+        "provenance"
+      ],
       "repo_set_id": "prometheus-monitoring",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 52,
@@ -394,12 +629,21 @@
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 53,
@@ -410,28 +654,52 @@
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence", "provenance"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence",
+        "provenance"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 57,
       "category": "F",
       "title": "Compliance Evidence Bundle: SSO Settings Feature in Grafana",
-      "customer_prompt": "Find ALL files in `grafana/grafana` that form the SSO settings control across 4 layers: 1. Feature Flag Definition — the registry where `ssoSettingsApi` is defined and generated constants. 2. SSO Settings Infrastructure — Service interface, Reloadable interface, SSOSettings data model, and SSOSettingsStore database layer. 3. API and Authentication Wiring — REST API endpoint registration with access control middleware, SocialService provider, and authentication client registration. 4. Access Control and DI Registration — access control evaluators and the ProvideService dependency injection function.",
+      "customer_prompt": "Find ALL files in `grafana/grafana` that form the SSO settings control across 4 layers: 1. Feature Flag Definition \u2014 the registry where `ssoSettingsApi` is defined and generated constants. 2. SSO Settings Infrastructure \u2014 Service interface, Reloadable interface, SSOSettings data model, and SSOSettingsStore database layer. 3. API and Authentication Wiring \u2014 REST API endpoint registration with access control middleware, SocialService provider, and authentication client registration. 4. Access Control and DI Registration \u2014 access control evaluators and the ProvideService dependency injection function.",
       "mcp_suite": "ccb_mcp_compliance",
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence", "provenance"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence",
+        "provenance"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "find_references", "read_file", "deepsearch"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "find_references",
+        "read_file",
+        "deepsearch"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 61,
@@ -442,12 +710,21 @@
       "task_family": "cross-org-discovery",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["symbol_resolution"],
+      "oracle_check_types": [
+        "symbol_resolution"
+      ],
       "repo_set_id": "multi-org-go",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 62,
@@ -458,12 +735,21 @@
       "task_family": "cross-org-discovery",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 66,
@@ -474,12 +760,21 @@
       "task_family": "cross-org-discovery",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["keyword_presence", "provenance"],
+      "oracle_check_types": [
+        "keyword_presence",
+        "provenance"
+      ],
       "repo_set_id": "multi-org-go",
       "difficulty": "medium",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 71,
@@ -490,12 +785,22 @@
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 72,
@@ -506,12 +811,23 @@
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "go_to_definition", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "go_to_definition",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 73,
@@ -522,12 +838,23 @@
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "go_to_definition", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "go_to_definition",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 74,
@@ -538,12 +865,22 @@
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 81,
@@ -554,12 +891,24 @@
       "task_family": "agentic-correctness",
       "mcp_unique": true,
       "oracle_type": "hybrid",
-      "oracle_check_types": ["test_ratio", "file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "test_ratio",
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 82,
@@ -570,12 +919,25 @@
       "task_family": "agentic-correctness",
       "mcp_unique": true,
       "oracle_type": "hybrid",
-      "oracle_check_types": ["test_ratio", "file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "test_ratio",
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "find_references"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 83,
@@ -586,76 +948,129 @@
       "task_family": "agentic-correctness",
       "mcp_unique": true,
       "oracle_type": "hybrid",
-      "oracle_check_types": ["test_ratio", "file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "test_ratio",
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "envoy-service-mesh",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 91,
       "category": "J",
       "title": "Service Deployment Pattern Discovery",
-      "customer_prompt": "Find the canonical patterns for deploying new services and how they are documented across repos. Specifically: 1. API type definition — Where is the authoritative `Deployment` struct defined in the Kubernetes API types repo? 2. Client-side code pattern — Where is the canonical Go code example showing how to create a Deployment using the client library? 3. Developer documentation — Where is the README or documentation file that explains the deployment workflow?",
+      "customer_prompt": "Find the canonical patterns for deploying new services and how they are documented across repos. Specifically: 1. API type definition \u2014 Where is the authoritative `Deployment` struct defined in the Kubernetes API types repo? 2. Client-side code pattern \u2014 Where is the canonical Go code example showing how to create a Deployment using the client library? 3. Developer documentation \u2014 Where is the README or documentation file that explains the deployment workflow?",
       "mcp_suite": "ccb_mcp_platform",
       "task_family": "platform-knowledge",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "deepsearch"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "deepsearch"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 94,
       "category": "J",
       "title": "Platform Engineering: CODEOWNERS Infrastructure Discovery",
-      "customer_prompt": "Find all files in `grafana/grafana` that form the CODEOWNERS infrastructure: 1. The actual CODEOWNERS file — the GitHub ownership definition. 2. CI workflows that validate CODEOWNERS. 3. Manifest generation scripts (JavaScript) that parse and index CODEOWNERS. 4. Go code that defines the `codeowner` type for feature management. 5. npm scripts that orchestrate manifest generation.",
+      "customer_prompt": "Find all files in `grafana/grafana` that form the CODEOWNERS infrastructure: 1. The actual CODEOWNERS file \u2014 the GitHub ownership definition. 2. CI workflows that validate CODEOWNERS. 3. Manifest generation scripts (JavaScript) that parse and index CODEOWNERS. 4. Go code that defines the `codeowner` type for feature management. 5. npm scripts that orchestrate manifest generation.",
       "mcp_suite": "ccb_mcp_platform",
       "task_family": "platform-knowledge",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "medium",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 100,
       "category": "J",
       "title": "Platform Audit: Deprecated Struct Fields in Kubernetes API Types",
-      "customer_prompt": "Find all Go source files in `kubernetes/kubernetes` that define struct fields or constants with `Deprecated` in the identifier name. Search `staging/src/k8s.io/api/` and `pkg/apis/` directories. Only include files that DEFINE the deprecated identifiers — do not include files that merely reference or use these deprecated fields.",
+      "customer_prompt": "Find all Go source files in `kubernetes/kubernetes` that define struct fields or constants with `Deprecated` in the identifier name. Search `staging/src/k8s.io/api/` and `pkg/apis/` directories. Only include files that DEFINE the deprecated identifiers \u2014 do not include files that merely reference or use these deprecated fields.",
       "mcp_suite": "ccb_mcp_platform",
       "task_family": "platform-knowledge",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "multi-org-go",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 101,
       "category": "H",
       "title": "LLVM Optimization Pass Pipeline Propagation",
-      "customer_prompt": "Trace how an LLVM optimization pass is registered in the pass pipeline and executed. Find all C++ source files in `llvm/llvm-project` that participate in the optimization pipeline lifecycle: 1. The file that defines the `PassBuilder` class and its method for building the default O2 optimization pipeline (look in `llvm/lib/Passes/`). 2. The file that defines the `PassManager` template class — the core pass execution engine (look in `llvm/include/llvm/IR/`). 3. The file that implements `PassBuilderPipelines` which assembles the default module/function simplification pipelines. 4. The file that registers all standard passes via `PassRegistry.def`. 5. For a concrete example, the file implementing `DeadStoreElimination` in `llvm/lib/Transforms/Scalar/`. Report the repo, file path, and key class or function name for each.",
+      "customer_prompt": "Trace how an LLVM optimization pass is registered in the pass pipeline and executed. Find all C++ source files in `llvm/llvm-project` that participate in the optimization pipeline lifecycle: 1. The file that defines the `PassBuilder` class and its method for building the default O2 optimization pipeline (look in `llvm/lib/Passes/`). 2. The file that defines the `PassManager` template class \u2014 the core pass execution engine (look in `llvm/include/llvm/IR/`). 3. The file that implements `PassBuilderPipelines` which assembles the default module/function simplification pipelines. 4. The file that registers all standard passes via `PassRegistry.def`. 5. For a concrete example, the file implementing `DeadStoreElimination` in `llvm/lib/Transforms/Scalar/`. Report the repo, file path, and key class or function name for each.",
       "mcp_suite": "ccb_mcp_domain",
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 102,
@@ -666,12 +1081,22 @@
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 2,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 103,
@@ -682,28 +1107,50 @@
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 104,
       "category": "G",
       "title": "LLVM Loop Vectorization Infrastructure",
-      "customer_prompt": "Identify all C++ source and header files in `llvm/llvm-project` that form the LLVM loop vectorization infrastructure. Find: 1. The main implementation file for the `LoopVectorizePass` (under `llvm/lib/Transforms/Vectorize/`). 2. The header that defines `LoopVectorizeOptions` and the pass interface (under `llvm/include/llvm/Transforms/Vectorize/`). 3. The file that defines `LoopVectorizationLegality` — the legality checker that decides if a loop can be vectorized. 4. The file that defines `LoopVectorizationCostModel` — determines profitable vectorization factors. 5. The file that implements `VPlan` (the Vectorization Plan) data structure representing the vectorized loop body. Report the repo, file path, and key class name for each file.",
+      "customer_prompt": "Identify all C++ source and header files in `llvm/llvm-project` that form the LLVM loop vectorization infrastructure. Find: 1. The main implementation file for the `LoopVectorizePass` (under `llvm/lib/Transforms/Vectorize/`). 2. The header that defines `LoopVectorizeOptions` and the pass interface (under `llvm/include/llvm/Transforms/Vectorize/`). 3. The file that defines `LoopVectorizationLegality` \u2014 the legality checker that decides if a loop can be vectorized. 4. The file that defines `LoopVectorizationCostModel` \u2014 determines profitable vectorization factors. 5. The file that implements `VPlan` (the Vectorization Plan) data structure representing the vectorized loop body. Report the repo, file path, and key class name for each file.",
       "mcp_suite": "ccb_mcp_platform",
       "task_family": "platform-knowledge",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "find_references"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 105,
@@ -714,28 +1161,49 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 106,
       "category": "A",
       "title": "GCC Optimization Pass Registration and Execution Chain",
-      "customer_prompt": "Trace how GCC's optimization passes are registered and executed during compilation. Find all C/C++ source files in `gcc-mirror/gcc` that: 1. Define the pass execution order (`gcc/passes.def` — the master list of all passes). 2. Implement the pass manager that orchestrates pass execution (`gcc/passes.cc`). 3. Define the `opt_pass` base class and pass manager interface (`gcc/pass_manager.h`). 4. Implement a concrete GIMPLE optimization pass — specifically dead code elimination (`gcc/tree-ssa-dce.cc`). 5. Define the tree-SSA pass header (`gcc/tree-pass.h`) that declares pass registration macros. Report the repo, file path, and key struct/function name for each file.",
+      "customer_prompt": "Trace how GCC's optimization passes are registered and executed during compilation. Find all C/C++ source files in `gcc-mirror/gcc` that: 1. Define the pass execution order (`gcc/passes.def` \u2014 the master list of all passes). 2. Implement the pass manager that orchestrates pass execution (`gcc/passes.cc`). 3. Define the `opt_pass` base class and pass manager interface (`gcc/pass_manager.h`). 4. Implement a concrete GIMPLE optimization pass \u2014 specifically dead code elimination (`gcc/tree-ssa-dce.cc`). 5. Define the tree-SSA pass header (`gcc/tree-pass.h`) that declares pass registration macros. Report the repo, file path, and key struct/function name for each file.",
       "mcp_suite": "ccb_mcp_crossrepo",
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 107,
@@ -746,12 +1214,21 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 108,
@@ -762,44 +1239,74 @@
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "compiler-toolchain",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 109,
       "category": "E",
       "title": "SpiderMonkey JIT Compilation Pipeline",
-      "customer_prompt": "A new contributor wants to understand how Firefox's SpiderMonkey JavaScript engine compiles JS to optimized native code. Find all key C++ source files in `mozilla-firefox/firefox` that define the JIT compilation pipeline stages: 1. The file that implements the top-level `IonCompile` function which orchestrates the Ion optimizing compiler (in `js/src/jit/`). 2. The header and source files for `IonCompileTask` — the off-thread compilation task (in `js/src/jit/`). 3. The file that defines `BaselineJIT` — the first-tier JIT compiler (look for `BaselineScript` class in `js/src/jit/`). 4. The header that defines `JitRuntime` — the per-runtime JIT state (in `js/src/jit/`). 5. The file that defines `JitOptions` — JIT configuration (in `js/src/jit/`). Report the repo, file path, and key class or function name for each file.",
+      "customer_prompt": "A new contributor wants to understand how Firefox's SpiderMonkey JavaScript engine compiles JS to optimized native code. Find all key C++ source files in `mozilla-firefox/firefox` that define the JIT compilation pipeline stages: 1. The file that implements the top-level `IonCompile` function which orchestrates the Ion optimizing compiler (in `js/src/jit/`). 2. The header and source files for `IonCompileTask` \u2014 the off-thread compilation task (in `js/src/jit/`). 3. The file that defines `BaselineJIT` \u2014 the first-tier JIT compiler (look for `BaselineScript` class in `js/src/jit/`). 4. The header that defines `JitRuntime` \u2014 the per-runtime JIT state (in `js/src/jit/`). 5. The file that defines `JitOptions` \u2014 JIT configuration (in `js/src/jit/`). Report the repo, file path, and key class or function name for each file.",
       "mcp_suite": "ccb_mcp_onboarding",
       "task_family": "onboarding-comprehension",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "mozilla-firefox",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": true,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 110,
       "category": "C",
       "title": "Firefox Multi-Process Architecture: Content Process Lifecycle",
-      "customer_prompt": "An on-call engineer is debugging a content process crash in Firefox's multi-process (Fission) architecture. Trace the content process lifecycle by finding all C++ source files in `mozilla-firefox/firefox` under `dom/ipc/` that manage process creation, communication, and destruction: 1. The header and source files that define the `ContentParent` class — the parent-side content process manager. 2. The file that defines `ContentProcessManager` — the registry of all content processes. 3. The header file for `BrowserParent` — the parent-side tab representation. 4. The file that defines `PreallocatedProcessManager` — the process preallocation pool. Report the repo, file path, and key class name for each file.",
+      "customer_prompt": "An on-call engineer is debugging a content process crash in Firefox's multi-process (Fission) architecture. Trace the content process lifecycle by finding all C++ source files in `mozilla-firefox/firefox` under `dom/ipc/` that manage process creation, communication, and destruction: 1. The header and source files that define the `ContentParent` class \u2014 the parent-side content process manager. 2. The file that defines `ContentProcessManager` \u2014 the registry of all content processes. 3. The header file for `BrowserParent` \u2014 the parent-side tab representation. 4. The file that defines `PreallocatedProcessManager` \u2014 the process preallocation pool. Report the repo, file path, and key class name for each file.",
       "mcp_suite": "ccb_mcp_incident",
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "mozilla-firefox",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 111,
@@ -810,28 +1317,49 @@
       "task_family": "vuln-remediation",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
       "repo_set_id": "mozilla-firefox",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "read_file"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 112,
       "category": "H",
       "title": "Firefox Servo CSS Style System Integration",
-      "customer_prompt": "Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` — the main entry point for style resolution. 2. The header for `ServoBindings` — the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` — the component that schedules and manages style recalculation. 4. The header for `ServoUtils` — utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file.",
+      "customer_prompt": "Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` \u2014 the main entry point for style resolution. 2. The header for `ServoBindings` \u2014 the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` \u2014 the component that schedules and manages style recalculation. 4. The header for `ServoUtils` \u2014 utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file.",
       "mcp_suite": "ccb_mcp_domain",
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "mozilla-firefox",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "read_file", "list_files"]
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     },
     {
       "use_case_id": 113,
@@ -842,14 +1370,27 @@
       "task_family": "incident-debug",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "keyword_presence"
+      ],
       "repo_set_id": "grafana-observability",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "nls_search", "find_references", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "find_references",
+        "read_file"
+      ],
       "adapted_from": "ccb_debug/grafana-table-panel-regression-001",
-      "adaptation_rationale": "MCP delta +0.30 (BL=0.60, MCP=0.90). Bug investigation in 500K LOC codebase requires tracing migration pipeline across multiple packages."
+      "adaptation_rationale": "MCP delta +0.30 (BL=0.60, MCP=0.90). Bug investigation in 500K LOC codebase requires tracing migration pipeline across multiple packages.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 114,
@@ -860,122 +1401,765 @@
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
       "adapted_from": "ccb_build/kafka-batch-accumulator-refac-001",
-      "adaptation_rationale": "MCP delta +0.36 (BL=0.32, MCP=0.68). Cross-file symbol tracing in 1.2M LOC codebase; find_references excels here."
+      "adaptation_rationale": "MCP delta +0.36 (BL=0.32, MCP=0.68). Cross-file symbol tracing in 1.2M LOC codebase; find_references excels here.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 115,
       "category": "F",
       "title": "Compliance Audit: Django Session Key Rotation Concurrency Safety",
-      "customer_prompt": "Audit Django's session framework for concurrency safety in the session key rotation path. Find: 1. The Python source file in `django/contrib/sessions/` that implements `cycle_key()` — the method called during login to rotate session keys. 2. The session backend base class file that defines `create()` and `_get_new_session_key()` — the methods responsible for generating and persisting new session keys. 3. The database backend file that implements the actual `create()` with a database INSERT. 4. Identify whether `create()` handles key collisions (duplicate session keys) or silently overwrites. Report the repo, file path, class name, and method name for each, plus a brief note on whether collision handling exists.",
+      "customer_prompt": "Audit Django's session framework for concurrency safety in the session key rotation path. Find: 1. The Python source file in `django/contrib/sessions/` that implements `cycle_key()` \u2014 the method called during login to rotate session keys. 2. The session backend base class file that defines `create()` and `_get_new_session_key()` \u2014 the methods responsible for generating and persisting new session keys. 3. The database backend file that implements the actual `create()` with a database INSERT. 4. Identify whether `create()` handles key collisions (duplicate session keys) or silently overwrites. Report the repo, file path, class name, and method name for each, plus a brief note on whether collision handling exists.",
       "mcp_suite": "ccb_mcp_compliance",
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "keyword_presence"
+      ],
       "repo_set_id": "django-web-framework",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "go_to_definition", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "go_to_definition",
+        "read_file"
+      ],
       "adapted_from": "ccb_secure/django-cross-team-boundary-001",
-      "adaptation_rationale": "MCP delta +0.20 (BL=0.30, MCP=0.50). Tracing session lifecycle across Django's 200K LOC contrib packages."
+      "adaptation_rationale": "MCP delta +0.20 (BL=0.30, MCP=0.50). Tracing session lifecycle across Django's 200K LOC contrib packages.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 116,
       "category": "A",
       "title": "Cross-Repo Dep Trace: Kubernetes TypeMeta Re-Export Chain",
-      "customer_prompt": "Trace the `TypeMeta` struct from its usage in the `Pod` type definition to its authoritative definition, following re-exports across Kubernetes repositories. Find: 1. In `kubernetes/kubernetes` staging area: the file `staging/src/k8s.io/api/core/v1/types.go` where `Pod` embeds `metav1.TypeMeta` — report the import alias and import path. 2. In `kubernetes/api` or the api staging module: the file that re-exports `TypeMeta` via the `meta/v1` package. 3. In `kubernetes/apimachinery`: the file `pkg/apis/meta/v1/types.go` where `TypeMeta` is originally defined — report the struct fields (`Kind` and `APIVersion`). For each step, report the repo, file path, line number, and the relevant type/import declaration.",
+      "customer_prompt": "Trace the `TypeMeta` struct from its usage in the `Pod` type definition to its authoritative definition, following re-exports across Kubernetes repositories. Find: 1. In `kubernetes/kubernetes` staging area: the file `staging/src/k8s.io/api/core/v1/types.go` where `Pod` embeds `metav1.TypeMeta` \u2014 report the import alias and import path. 2. In `kubernetes/api` or the api staging module: the file that re-exports `TypeMeta` via the `meta/v1` package. 3. In `kubernetes/apimachinery`: the file `pkg/apis/meta/v1/types.go` where `TypeMeta` is originally defined \u2014 report the struct fields (`Kind` and `APIVersion`). For each step, report the repo, file path, line number, and the relevant type/import declaration.",
       "mcp_suite": "ccb_mcp_crossrepo_tracing",
       "task_family": "cross-repo-dep-trace",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 3,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "go_to_definition", "find_references", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "go_to_definition",
+        "find_references",
+        "read_file"
+      ],
       "adapted_from": "ccb_design/k8s-typemeta-dep-chain-001",
-      "adaptation_rationale": "MCP delta +0.34 (BL=0.33, MCP=0.67). Cross-repo type resolution across 3 K8s repos; go_to_definition directly solves this."
+      "adaptation_rationale": "MCP delta +0.34 (BL=0.33, MCP=0.67). Cross-repo type resolution across 3 K8s repos; go_to_definition directly solves this.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 117,
       "category": "C",
       "title": "Migration Inventory: K8s Scheduler ScoreExtensions Rename Impact",
-      "customer_prompt": "The Kubernetes scheduler team plans to rename the `ScoreExtensions` interface to `ScoreNormalizer` and its accessor method `ScoreExtensions()` to `ScoreNormalizer()`. Inventory all Go source files that would need updating. Find: 1. The interface definition file `pkg/scheduler/framework/interface.go` — report the `ScoreExtensions` interface and the `ScorePlugin` method that returns it. 2. All plugin implementation files under `pkg/scheduler/framework/plugins/` that implement `ScoreExtensions()`. 3. The runtime framework file `pkg/scheduler/framework/runtime/framework.go` that calls `ScoreExtensions()`. 4. The metrics file `pkg/scheduler/metrics/metrics.go` containing the `ScoreExtensionNormalize` constant. 5. All test files referencing `ScoreExtensions`. For each file, report the path and which symbols reference ScoreExtensions.",
+      "customer_prompt": "The Kubernetes scheduler team plans to rename the `ScoreExtensions` interface to `ScoreNormalizer` and its accessor method `ScoreExtensions()` to `ScoreNormalizer()`. Inventory all Go source files that would need updating. Find: 1. The interface definition file `pkg/scheduler/framework/interface.go` \u2014 report the `ScoreExtensions` interface and the `ScorePlugin` method that returns it. 2. All plugin implementation files under `pkg/scheduler/framework/plugins/` that implement `ScoreExtensions()`. 3. The runtime framework file `pkg/scheduler/framework/runtime/framework.go` that calls `ScoreExtensions()`. 4. The metrics file `pkg/scheduler/metrics/metrics.go` containing the `ScoreExtensionNormalize` constant. 5. All test files referencing `ScoreExtensions`. For each file, report the path and which symbols reference ScoreExtensions.",
       "mcp_suite": "ccb_mcp_migration",
       "task_family": "migration-inventory",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
       "repo_set_id": "kubernetes-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file"
+      ],
       "adapted_from": "ccb_build/k8s-score-normalizer-refac-001",
-      "adaptation_rationale": "MCP delta +0.20 (BL=0.58, MCP=0.78). Interface rename in K8s 2.5M LOC scheduler; find_references maps the full impact."
+      "adaptation_rationale": "MCP delta +0.20 (BL=0.58, MCP=0.78). Interface rename in K8s 2.5M LOC scheduler; find_references maps the full impact.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 118,
       "category": "F",
       "title": "Compliance Audit: Django Admin Filter Rendering Pipeline",
-      "customer_prompt": "Audit Django's admin filter rendering pipeline to identify where empty related-field filters are constructed. Find: 1. The Python source file in `django/contrib/admin/` that defines `RelatedFieldListFilter` — the class responsible for rendering ForeignKey filter dropdowns in the admin sidebar. 2. The file that defines the base `ListFilter` class and its `has_output()` method that determines whether a filter should be displayed. 3. The admin `ChangeList` class file that collects and renders filters, calling `has_output()` for each. 4. The template tag or view file that iterates over filters in the sidebar. For each, report the file path, class name, and the specific method that controls filter visibility.",
+      "customer_prompt": "Audit Django's admin filter rendering pipeline to identify where empty related-field filters are constructed. Find: 1. The Python source file in `django/contrib/admin/` that defines `RelatedFieldListFilter` \u2014 the class responsible for rendering ForeignKey filter dropdowns in the admin sidebar. 2. The file that defines the base `ListFilter` class and its `has_output()` method that determines whether a filter should be displayed. 3. The admin `ChangeList` class file that collects and renders filters, calling `has_output()` for each. 4. The template tag or view file that iterates over filters in the sidebar. For each, report the file path, class name, and the specific method that controls filter visibility.",
       "mcp_suite": "ccb_mcp_compliance",
       "task_family": "compliance-audit",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "keyword_presence"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "keyword_presence"
+      ],
       "repo_set_id": "django-web-framework",
       "difficulty": "medium",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "go_to_definition", "read_file"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "go_to_definition",
+        "read_file"
+      ],
       "adapted_from": "ccb_secure/django-repo-scoped-access-001",
-      "adaptation_rationale": "MCP delta +0.20 (BL=0.50, MCP=0.70). Tracing filter rendering chain across Django's admin contrib package."
+      "adaptation_rationale": "MCP delta +0.20 (BL=0.50, MCP=0.70). Tracing filter rendering chain across Django's admin contrib package.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 119,
       "category": "J",
       "title": "Platform Knowledge: Flink Windowing API Extension Points",
-      "customer_prompt": "Map the extension points in Apache Flink's windowing API that a developer would need to implement a custom window assigner. Find: 1. The abstract base class `WindowAssigner` in `flink-streaming-java/src/main/java/org/apache/flink/streaming/api/windowing/assigners/` — report its abstract methods. 2. The `MergingWindowAssigner` subclass that adds `mergeWindows()` for session-style windows. 3. The `Trigger` base class in the triggers package — report the lifecycle methods (`onElement`, `onEventTime`, `onProcessingTime`, `onMerge`). 4. An existing reference implementation: `EventTimeSessionWindows` — report how it implements `assignWindows()` and `mergeWindows()`. 5. The `TimeWindow` class that concrete assigners produce. For each, report the file path, class name, and key method signatures.",
+      "customer_prompt": "Map the extension points in Apache Flink's windowing API that a developer would need to implement a custom window assigner. Find: 1. The abstract base class `WindowAssigner` in `flink-streaming-java/src/main/java/org/apache/flink/streaming/api/windowing/assigners/` \u2014 report its abstract methods. 2. The `MergingWindowAssigner` subclass that adds `mergeWindows()` for session-style windows. 3. The `Trigger` base class in the triggers package \u2014 report the lifecycle methods (`onElement`, `onEventTime`, `onProcessingTime`, `onMerge`). 4. An existing reference implementation: `EventTimeSessionWindows` \u2014 report how it implements `assignWindows()` and `mergeWindows()`. 5. The `TimeWindow` class that concrete assigners produce. For each, report the file path, class name, and key method signatures.",
       "mcp_suite": "ccb_mcp_platform",
       "task_family": "platform-knowledge",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "apache-kafka-ecosystem",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "go_to_definition", "find_references", "read_file", "list_files"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "go_to_definition",
+        "find_references",
+        "read_file",
+        "list_files"
+      ],
       "adapted_from": "ccb_build/flink-pricing-window-feat-001",
-      "adaptation_rationale": "MCP delta +0.39 (BL=0.12, MCP=0.51). Understanding windowing extension points in Flink's 3.5M LOC codebase requires tracing abstract class hierarchies."
+      "adaptation_rationale": "MCP delta +0.39 (BL=0.12, MCP=0.51). Understanding windowing extension points in Flink's 3.5M LOC codebase requires tracing abstract class hierarchies.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
     },
     {
       "use_case_id": 120,
       "category": "H",
       "title": "Domain Lineage: Strata FxVanillaOption Type Family Graph",
-      "customer_prompt": "Trace the complete type family for `FxVanillaOption` across OpenGamma Strata's multi-module Maven project. Find: 1. The 4 core Joda-Beans domain classes: `FxVanillaOption`, `FxVanillaOptionTrade`, `ResolvedFxVanillaOption`, `ResolvedFxVanillaOptionTrade` — report each file path under `modules/product/`. 2. The 4 pricer classes (Black, Normal, Vanna-Volga, Implied-Tree variants) under `modules/pricer/` that price these types. 3. The 4 measure calculation classes under `modules/measure/` that wire pricers to the calculation engine. 4. The `FxVanillaOptionTradeCsvPlugin` loader under `modules/loader/`. 5. The `FxSingleBarrierOption` class that embeds `FxVanillaOption` as a dependency. For each file, report the module, path, and class name.",
+      "customer_prompt": "Trace the complete type family for `FxVanillaOption` across OpenGamma Strata's multi-module Maven project. Find: 1. The 4 core Joda-Beans domain classes: `FxVanillaOption`, `FxVanillaOptionTrade`, `ResolvedFxVanillaOption`, `ResolvedFxVanillaOptionTrade` \u2014 report each file path under `modules/product/`. 2. The 4 pricer classes (Black, Normal, Vanna-Volga, Implied-Tree variants) under `modules/pricer/` that price these types. 3. The 4 measure calculation classes under `modules/measure/` that wire pricers to the calculation engine. 4. The `FxVanillaOptionTradeCsvPlugin` loader under `modules/loader/`. 5. The `FxSingleBarrierOption` class that embeds `FxVanillaOption` as a dependency. For each file, report the module, path, and class name.",
       "mcp_suite": "ccb_mcp_domain",
       "task_family": "domain-lineage",
       "mcp_unique": true,
       "oracle_type": "deterministic_json",
-      "oracle_check_types": ["file_set_match", "symbol_resolution", "dependency_chain"],
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
       "repo_set_id": "strata-finance",
       "difficulty": "hard",
       "estimated_repos_needed": 1,
       "deepsearch_relevant": false,
-      "mcp_capabilities_required": ["keyword_search", "find_references", "read_file", "list_files"],
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "find_references",
+        "read_file",
+        "list_files"
+      ],
       "adapted_from": "ccb_build/strata-fx-european-refac-001",
-      "adaptation_rationale": "MCP delta +0.48 (BL=0.32, MCP=0.80). Tracing a domain type across 4 Maven modules in a 500K LOC financial library."
+      "adaptation_rationale": "MCP delta +0.48 (BL=0.32, MCP=0.80). Tracing a domain type across 4 Maven modules in a 500K LOC financial library.",
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
+    },
+    {
+      "use_case_id": 121,
+      "category": "G",
+      "title": "Cross-Org WebIDL to DOM Binding Discovery",
+      "customer_prompt": "Find all WebIDL interface files in `mozilla-firefox/firefox` under `dom/webidl/` that define DOM interfaces for the Fetch API (Request, Response, Headers, FetchEvent). Then find the corresponding C++ binding implementation files under `dom/fetch/` that implement these WebIDL interfaces. Report the WebIDL file, the C++ header, and the C++ implementation file for each Fetch API type.",
+      "mcp_suite": "ccb_mcp_crossorg",
+      "task_family": "cross-org-discovery",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "mozilla-firefox",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "list_files",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 122,
+      "category": "I",
+      "title": "Agentic Correctness: Implement Firefox XPCOM Component",
+      "customer_prompt": "Write an XPCOM component header and implementation following Firefox's established patterns. Your component must: 1. Use the `NS_DECL_ISUPPORTS` and `NS_DECL_NSIOBSERVERSERVICE` macros as seen in existing components. 2. Implement `QueryInterface`, `AddRef`, `Release` following the reference counting pattern. 3. Register using `NS_GENERIC_FACTORY_CONSTRUCTOR` as found in existing component registrations under `toolkit/components/`. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the Firefox source files you referenced.",
+      "mcp_suite": "ccb_mcp_org",
+      "task_family": "agentic-correctness",
+      "mcp_unique": true,
+      "oracle_type": "hybrid",
+      "oracle_check_types": [
+        "test_ratio",
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "mozilla-firefox",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
+    },
+    {
+      "use_case_id": 123,
+      "category": "A",
+      "title": "Firefox Necko Networking to NSS TLS Handshake Chain",
+      "customer_prompt": "Trace how Firefox initiates a TLS connection from the networking layer to the crypto layer. Find: 1. The C++ source file in `netwerk/protocol/http/` that creates an SSL transport for HTTPS connections (look for `nsHttpConnection` or `TLSFilterTransaction`). 2. The file in `netwerk/socket/` that defines the `nsSSLIOLayerHelpers` class which bridges Necko to NSS. 3. The file in `security/manager/ssl/` that implements `nsNSSIOLayer` \u2014 the NSS I/O layer integration. 4. The file in `security/nss/lib/ssl/` that performs the actual TLS handshake (`sslsecur.c` or `ssl3con.c`). Report the file path and key class/function for each hop.",
+      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "task_family": "cross-repo-dep-trace",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
+      "repo_set_id": "mozilla-firefox",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 124,
+      "category": "F",
+      "title": "Firefox Content Security Policy Enforcement Audit",
+      "customer_prompt": "Audit the Content Security Policy (CSP) enforcement infrastructure in Firefox. Find all C++ source files in `mozilla-firefox/firefox` under `dom/security/` that implement CSP parsing, evaluation, and violation reporting. Specifically: 1. The file that defines `nsCSPParser` \u2014 the CSP directive parser. 2. The file that implements `nsCSPContext` \u2014 the main CSP context that holds policies. 3. The file that implements CSP violation reporting (`nsCSPUtils` or similar). 4. The header file that declares the `nsIContentSecurityPolicy` XPCOM interface. 5. The file under `dom/security/` that performs script-src evaluation for inline scripts. Report each file path and its primary class or function.",
+      "mcp_suite": "ccb_mcp_compliance",
+      "task_family": "compliance-audit",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "mozilla-firefox",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 125,
+      "category": "D",
+      "title": "GCC Internal Compiler Error Diagnosis: GIMPLE Verification Failure",
+      "customer_prompt": "A GCC user reports an Internal Compiler Error (ICE) with the message 'verify_gimple failed'. Trace this error to its source in `gcc-mirror/gcc`. Find: 1. The C++ source file that implements `verify_gimple_in_seq` \u2014 the GIMPLE verification pass (`gcc/tree-cfg.cc`). 2. The file that defines the `verify_gimple_stmt` function which checks individual GIMPLE statements. 3. The file where the ICE handler `internal_error` is defined (`gcc/diagnostic.cc` or similar). 4. The `passes.def` file entry where GIMPLE verification is scheduled in the pass pipeline. Report the file path and key function name for each.",
+      "mcp_suite": "ccb_mcp_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 126,
+      "category": "B",
+      "title": "GCC Stack Clash Protection Implementation Audit",
+      "customer_prompt": "Audit the stack clash protection implementation in GCC. Find all C/C++ source files in `gcc-mirror/gcc` that implement stack clash mitigation. Specifically: 1. The file that implements stack clash probing for x86_64 targets (`gcc/config/i386/i386.cc` \u2014 look for `stack_clash_protection`). 2. The file that implements the generic stack clash expansion (`gcc/explow.cc` \u2014 look for `anti_adjust_stack_and_probe`). 3. The header where `TARGET_STACK_CLASH_PROTECTION` is declared or defined. 4. The test file under `gcc/testsuite/gcc.target/i386/` that validates stack clash protection (look for `stack-clash-*`). 5. The common options file where `-fstack-clash-protection` is defined (`gcc/common.opt`). Report each file path and the key function or definition.",
+      "mcp_suite": "ccb_mcp_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 127,
+      "category": "I",
+      "title": "Agentic Correctness: Implement Minimal GCC GIMPLE Pass",
+      "customer_prompt": "Write C/C++ source files implementing a minimal GCC GIMPLE optimization pass that counts basic blocks per function. Your implementation must follow GCC's established patterns: 1. Define a `pass_data` struct and inherit from `gimple_opt_pass` as seen in existing passes. 2. Implement `gate()` and `execute()` virtual methods following the pattern in `gcc/tree-ssa-dce.cc`. 3. Register the pass using `make_pass_*()` factory function as defined in `gcc/tree-pass.h`. 4. Use `dump_file` for debug output following existing patterns. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the GCC source files you referenced.",
+      "mcp_suite": "ccb_mcp_org",
+      "task_family": "agentic-correctness",
+      "mcp_unique": true,
+      "oracle_type": "hybrid",
+      "oracle_check_types": [
+        "test_ratio",
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact",
+        "direct"
+      ]
+    },
+    {
+      "use_case_id": 128,
+      "category": "E",
+      "title": "HotSpot JIT Compilation Pipeline Architecture",
+      "customer_prompt": "A new contributor wants to understand how OpenJDK's HotSpot JVM compiles Java bytecode to native machine code. Find the key C++ source files in `openjdk/jdk` under `src/hotspot/share/` that define the JIT compilation pipeline: 1. The header file for `CompileBroker` \u2014 the broker that manages all compilation requests (`compiler/compileBroker.hpp`). 2. The header file for `CompilerThread` \u2014 the thread type that runs compilation (`compiler/compilerThread.hpp`). 3. The C1 compiler header (`c1/c1_Compiler.hpp`) that defines the first-tier JIT. 4. The C2 compiler header (`opto/c2compiler.hpp`) that defines the optimizing JIT. 5. The file that defines `AbstractCompiler` \u2014 the base class for C1 and C2 (`compiler/abstractCompiler.hpp`). Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "task_family": "onboarding-comprehension",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "java-platform",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "list_files",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 129,
+      "category": "H",
+      "title": "Java ClassLoader Delegation Chain",
+      "customer_prompt": "Trace the Java class loading delegation chain in OpenJDK. Find: 1. The Java source file `src/java.base/share/classes/java/lang/ClassLoader.java` that defines the `loadClass(String, boolean)` method implementing parent-first delegation. 2. The file that defines `BuiltinClassLoader` \u2014 the base for the three built-in loaders (`src/java.base/share/classes/jdk/internal/loader/BuiltinClassLoader.java`). 3. The file defining `ClassLoaders` that creates the bootstrap, platform, and application class loaders. 4. The HotSpot C++ file that implements native class loading (`src/hotspot/share/classfile/classLoader.cpp`). 5. The file that defines `SystemDictionary` which caches loaded classes. Report each file path and key class/method.",
+      "mcp_suite": "ccb_mcp_domain",
+      "task_family": "domain-lineage",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
+      "repo_set_id": "java-platform",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "list_files",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 130,
+      "category": "B",
+      "title": "JCE Cryptography Provider Architecture Audit",
+      "customer_prompt": "Audit the Java Cryptography Extension (JCE) provider architecture in OpenJDK. Find: 1. The file `src/java.base/share/classes/java/security/Provider.java` that defines the abstract `Provider` class and its inner `Service` class. 2. The file that defines `Security` class which manages registered providers (`src/java.base/share/classes/java/security/Security.java`). 3. The SunJCE provider implementation file (`src/java.crypto/share/classes/com/sun/crypto/provider/SunJCE.java` or under `java.base`). 4. The file that implements `Cipher.getInstance()` \u2014 the factory method that resolves providers (`src/java.base/share/classes/javax/crypto/Cipher.java`). 5. The `java.security` configuration file that lists default providers. Report each file path and key class/method.",
+      "mcp_suite": "ccb_mcp_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "java-platform",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "list_files",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 131,
+      "category": "D",
+      "title": "Rust Borrow Checker Error Origin Trace",
+      "customer_prompt": "A Rust user reports `error[E0505]: cannot move out of `x` because it is borrowed`. Trace how this error is generated in the Rust compiler. Find: 1. The Rust source file under `compiler/rustc_borrowck/` that implements the MIR borrow checker and detects move-while-borrowed violations. 2. The file that defines the `BorrowckErrors` or error reporting functions for borrow check diagnostics. 3. The file under `compiler/rustc_borrowck/src/diagnostics/` that formats the E0505 error message. 4. The file under `compiler/rustc_error_codes/src/error_codes/` that defines the `E0505` error code explanation. Report each file path and key function/struct.",
+      "mcp_suite": "ccb_mcp_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "rust-systems",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 132,
+      "category": "G",
+      "title": "Rust-Servo Shared Style System Discovery",
+      "customer_prompt": "The Rust compiler and Servo browser engine share code via common Rust crates. Find: 1. In `servo/servo`: the Cargo.toml files under `components/style/` and `components/selectors/` that define the `style` and `selectors` crates \u2014 report each crate's declared dependencies. 2. In `servo/servo`: the main entry point file for the style system (`components/style/lib.rs`). 3. In `rust-lang/rust`: find if any crate under `compiler/` or `library/` depends on or shares code with Servo's `selectors` crate (search for `selectors` in Cargo.toml files). 4. In `rust-lang/rust`: the file that defines the `proc_macro` bridge which Servo build scripts use. Report each file path and the key dependency or symbol.",
+      "mcp_suite": "ccb_mcp_crossorg",
+      "task_family": "cross-org-discovery",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "rust-systems",
+      "difficulty": "hard",
+      "estimated_repos_needed": 2,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 133,
+      "category": "A",
+      "title": "Chromium Blink Rendering Pipeline: Style to Paint",
+      "customer_prompt": "Trace how a CSS style change propagates through Chromium's Blink rendering engine. Find the key C++ source files in `chromium/chromium` that implement the rendering pipeline stages: 1. The file under `third_party/blink/renderer/core/css/resolver/` that implements `StyleResolver` \u2014 the class that resolves computed styles for DOM elements. 2. The file under `third_party/blink/renderer/core/layout/` that defines `LayoutObject` \u2014 the base class for the layout tree. 3. The file that implements `PaintLayer` \u2014 the painting layer abstraction under `third_party/blink/renderer/core/paint/`. 4. The file that defines `DisplayItemList` or `PaintController` \u2014 the display list that records paint operations. Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "task_family": "cross-repo-dep-trace",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 134,
+      "category": "E",
+      "title": "Chromium Multi-Process Architecture Overview",
+      "customer_prompt": "A new contributor wants to understand Chromium's multi-process architecture. Find the key C++ source files in `chromium/chromium` that define the process model: 1. The file under `content/browser/` that defines `RenderProcessHostImpl` \u2014 the browser-side representation of a renderer process. 2. The file that defines `BrowserMainLoop` \u2014 the main browser process event loop (`content/browser/browser_main_loop.cc`). 3. The file under `content/renderer/` that defines `RenderThreadImpl` \u2014 the main thread of a renderer process. 4. The file that defines `ChildProcessLauncher` \u2014 responsible for spawning child processes. 5. The IPC/Mojo file that declares the `content.mojom.Renderer` interface for browser-to-renderer communication. Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "task_family": "onboarding-comprehension",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": true,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 135,
+      "category": "B",
+      "title": "Chromium Renderer Process Sandbox Audit",
+      "customer_prompt": "Audit the security sandbox implementation for Chromium's renderer processes. Find all C++ source files in `chromium/chromium` that implement the sandbox: 1. The file under `sandbox/linux/` that implements `BPFBasePolicy` \u2014 the seccomp-BPF base policy for Linux sandboxing. 2. The file under `sandbox/win/src/` that defines `TargetPolicy` \u2014 the Windows sandbox policy configuration. 3. The file under `content/browser/` that configures sandbox parameters for renderer process launch (look for `SetRendererSandboxPolicy` or `GetRendererSandboxType`). 4. The file under `sandbox/policy/` that defines `SandboxType` enum and sandbox profile mappings. Report each file path and key class/function.",
+      "mcp_suite": "ccb_mcp_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 136,
+      "category": "E",
+      "title": "Android Activity Lifecycle Implementation",
+      "customer_prompt": "A new Android framework contributor wants to understand how the Activity lifecycle is implemented. Find the key Java source files in `aosp-mirror/platform_frameworks_base` that implement the Activity lifecycle: 1. The file under `core/java/android/app/` that defines `Activity.java` \u2014 the base Activity class with `onCreate`, `onStart`, `onResume` lifecycle methods. 2. The file that implements `ActivityThread.java` \u2014 the main thread of an Android application that drives lifecycle transitions. 3. The file under `services/core/java/com/android/server/wm/` that defines `ActivityRecord` \u2014 the server-side representation of an Activity. 4. The file that implements `ActivityTaskManagerService` \u2014 the system service managing activity stacks and tasks. Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "task_family": "onboarding-comprehension",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "android-platform",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 137,
+      "category": "H",
+      "title": "Android View Rendering Pipeline",
+      "customer_prompt": "Trace how an Android View is measured, laid out, and drawn. Find the key Java source files in `aosp-mirror/platform_frameworks_base` that implement the rendering pipeline: 1. The file that defines `View.java` under `core/java/android/view/` \u2014 specifically the `measure()`, `layout()`, and `draw()` methods. 2. The file that defines `ViewRootImpl.java` \u2014 the connection between the window manager and the view hierarchy that schedules traversals. 3. The file that implements `Choreographer.java` \u2014 the VSYNC-driven frame scheduling. 4. The file that defines `ThreadedRenderer` or `HardwareRenderer` \u2014 the hardware-accelerated rendering bridge to the GPU. 5. The file that implements `DisplayListCanvas` or `RecordingCanvas` \u2014 the canvas that records draw operations for GPU replay. Report each file path and key class/method.",
+      "mcp_suite": "ccb_mcp_domain",
+      "task_family": "domain-lineage",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
+      "repo_set_id": "android-platform",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 138,
+      "category": "E",
+      "title": "LibreOffice Document Model Architecture",
+      "customer_prompt": "A new contributor wants to understand the core document model architecture in LibreOffice. Find the key C++ source files in `LibreOffice/core` that define the document framework: 1. The header file that defines `SfxObjectShell` \u2014 the base document shell class that all document types inherit from (look under `include/sfx2/`). 2. The file that defines `SwDoc` \u2014 the Writer (word processor) document class (look under `sw/inc/` or `sw/source/core/doc/`). 3. The file that defines `ScDocument` \u2014 the Calc (spreadsheet) document class (look under `sc/inc/` or `sc/source/core/data/`). 4. The file that defines `SdDrawDocument` \u2014 the Impress/Draw document class (look under `sd/inc/` or `sd/source/core/`). 5. The file that defines `SfxApplication` \u2014 the LibreOffice application framework entry point. Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "task_family": "onboarding-comprehension",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "libreoffice-desktop",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 139,
+      "category": "D",
+      "title": "LibreOffice Calc Formula Evaluation Chain",
+      "customer_prompt": "An on-call developer is investigating incorrect formula evaluation in LibreOffice Calc. Trace how a cell formula like `=SUM(A1:A10)` is parsed and evaluated. Find the key C++ source files in `LibreOffice/core` under `sc/` that implement the formula engine: 1. The file that implements the formula tokenizer/compiler (`sc/source/core/tool/compiler.cxx` or similar). 2. The file that implements `ScInterpreter` \u2014 the formula bytecode interpreter that evaluates formulas. 3. The file that defines `ScFormulaCell` \u2014 the cell type that holds a formula and its result. 4. The file that implements `ScRecalcMode` or recalculation scheduling \u2014 how Calc determines which cells need recalculation. Report each file path and key class/function.",
+      "mcp_suite": "ccb_mcp_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "libreoffice-desktop",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 140,
+      "category": "H",
+      "title": "ArangoDB AQL Query Execution Pipeline",
+      "customer_prompt": "Trace how an AQL query is executed in ArangoDB from parsing to data retrieval. Find the key C++ source files in `arangodb/arangodb` that implement the query pipeline: 1. The file under `arangod/Aql/` that implements the AQL parser (look for `Parser.cpp` or `AqlParser`). 2. The file that implements the query optimizer (`Optimizer.cpp`) which transforms the AST into an execution plan. 3. The file that defines `ExecutionEngine` or `ExecutionBlock` \u2014 the execution engine that runs the query plan. 4. The file that defines `RocksDBCollection` \u2014 the storage engine interface for data retrieval (under `arangod/RocksDBEngine/`). 5. The file that implements `Transaction` management for queries (under `arangod/Transaction/`). Report each file path and key class name.",
+      "mcp_suite": "ccb_mcp_domain",
+      "task_family": "domain-lineage",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "dependency_chain"
+      ],
+      "repo_set_id": "arangodb-database",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "nls_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
+    },
+    {
+      "use_case_id": 141,
+      "category": "B",
+      "title": "ArangoDB Authentication and Authorization Audit",
+      "customer_prompt": "Audit the authentication and authorization infrastructure in ArangoDB. Find all C++ source files in `arangodb/arangodb` that implement auth: 1. The file under `arangod/Auth/` or `arangod/RestHandler/` that implements user authentication (look for `AuthenticationHandler` or `UserManager`). 2. The file that implements JWT token validation for the REST API. 3. The file that defines `ExecContext` or the authorization context that checks permissions for database operations. 4. The file under `arangod/RestHandler/` that implements the `/_api/user` REST endpoint for user management. 5. The configuration file or source that defines default authentication settings (`arangosh` or `arangod` startup options). Report each file path and key class/function.",
+      "mcp_suite": "ccb_mcp_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "arangodb-database",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "list_files"
+      ],
+      "verification_modes": [
+        "artifact"
+      ]
     }
   ]
 }

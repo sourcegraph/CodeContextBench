@@ -1,0 +1,39 @@
+{
+  "id": "CCX-vuln-remed-126",
+  "family": "vuln-remediation",
+  "use_case_id": 126,
+  "category": "B",
+  "mcp_suite": "ccb_mcp_security",
+  "prd": {
+    "user_story": "As a developer, I want to: Audit the stack clash protection implementation in GCC. Find all C/C++ source files in `gcc-mirror/gcc` that implement stack clash mitigation. Specifically: 1. The file that implements stack clash probing for x86_64 targets (`gcc/config/i386/i386.cc` — look for `stack_clash_protection`). 2. The file that implements the generic stack clash expansion (`gcc/explow.cc` — look for `anti_adjust_stack_and_probe`). 3. The header where `TARGET_STACK_CLASH_PROTECTION` is declared or defined. 4. The test file under `gcc/testsuite/gcc.target/i386/` that validates stack clash protection (look for `stack-clash-*`). 5. The common options file where `-fstack-clash-protection` is defined (`gcc/common.opt`). Report each file path and the key function or definition.",
+    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
+    "seed_prompt": "Audit the stack clash protection implementation in GCC. Find all C/C++ source files in `gcc-mirror/gcc` that implement stack clash mitigation. Specifically: 1. The file that implements stack clash probing for x86_64 targets (`gcc/config/i386/i386.cc` — look for `stack_clash_protection`). 2. The file that implements the generic stack clash expansion (`gcc/explow.cc` — look for `anti_adjust_stack_and_probe`). 3. The header where `TARGET_STACK_CLASH_PROTECTION` is declared or defined. 4. The test file under `gcc/testsuite/gcc.target/i386/` that validates stack clash protection (look for `stack-clash-*`). 5. The common options file where `-fstack-clash-protection` is defined (`gcc/common.opt`). Report each file path and the key function or definition."
+  },
+  "artifacts": {
+    "repo_set_id": "compiler-toolchain",
+    "oracle": {
+      "required_files": [],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+  {
+    "type": "file_set_match",
+    "params": {
+      "search_pattern": "",
+      "file_filter": ""
+    }
+  }
+],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

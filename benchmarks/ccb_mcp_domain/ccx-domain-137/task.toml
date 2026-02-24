@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-domain-137"
+description = "Android View Rendering Pipeline"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-domain-137"
+repo = "org/repo"
+category = "domain-lineage"
+language = "java/c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_domain"
+use_case_id = 137
+repo_set_id = "android-platform"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Android View Rendering Pipeline"
+
+[environment]
+build_timeout_sec = 600.0

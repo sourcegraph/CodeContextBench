@@ -1,0 +1,39 @@
+{
+  "id": "CCX-compliance-124",
+  "family": "compliance-audit",
+  "use_case_id": 124,
+  "category": "F",
+  "mcp_suite": "ccb_mcp_compliance",
+  "prd": {
+    "user_story": "As a developer, I want to: Audit the Content Security Policy (CSP) enforcement infrastructure in Firefox. Find all C++ source files in `mozilla-firefox/firefox` under `dom/security/` that implement CSP parsing, evaluation, and violation reporting. Specifically: 1. The file that defines `nsCSPParser` — the CSP directive parser. 2. The file that implements `nsCSPContext` — the main CSP context that holds policies. 3. The file that implements CSP violation reporting (`nsCSPUtils` or similar). 4. The header file that declares the `nsIContentSecurityPolicy` XPCOM interface. 5. The file under `dom/security/` that performs script-src evaluation for inline scripts. Report each file path and its primary class or function.",
+    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the mozilla-firefox fixture.",
+    "seed_prompt": "Audit the Content Security Policy (CSP) enforcement infrastructure in Firefox. Find all C++ source files in `mozilla-firefox/firefox` under `dom/security/` that implement CSP parsing, evaluation, and violation reporting. Specifically: 1. The file that defines `nsCSPParser` — the CSP directive parser. 2. The file that implements `nsCSPContext` — the main CSP context that holds policies. 3. The file that implements CSP violation reporting (`nsCSPUtils` or similar). 4. The header file that declares the `nsIContentSecurityPolicy` XPCOM interface. 5. The file under `dom/security/` that performs script-src evaluation for inline scripts. Report each file path and its primary class or function."
+  },
+  "artifacts": {
+    "repo_set_id": "mozilla-firefox",
+    "oracle": {
+      "required_files": [],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+  {
+    "type": "file_set_match",
+    "params": {
+      "search_pattern": "",
+      "file_filter": ""
+    }
+  }
+],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

@@ -137,8 +137,9 @@ if [ ! -f "$SELECTION_FILE" ]; then
 fi
 
 # Auto-detect artifact config for MCP-unique selection files
-# MCP-unique tasks use mcp_suite (not benchmark) and REQUIRE artifact configs.
-# Only triggers when ALL filtered tasks are MCP-unique (have mcp_suite, not benchmark).
+# MCP-unique tasks use mcp_suite (not benchmark) and default to artifact configs.
+# Only triggers when ALL filtered tasks are MCP-unique AND all are artifact-only
+# (no task has "direct" in its verification_modes).
 if [ "$_FULL_CONFIG_EXPLICIT" = false ]; then
     if python3 -c "
 import json, sys
@@ -160,10 +161,15 @@ for t in tasks:
 if not filtered:
     sys.exit(1)
 all_mcp = all('mcp_suite' in t and 'benchmark' not in t for t in filtered)
-sys.exit(0 if all_mcp else 1)
+all_artifact_only = all(
+    'direct' not in t.get('verification_modes', ['artifact'])
+    for t in filtered
+)
+# Only auto-force artifact if ALL tasks are MCP-unique AND none support direct
+sys.exit(0 if (all_mcp and all_artifact_only) else 1)
 " 2>/dev/null; then
         FULL_CONFIG="mcp-remote-artifact"
-        echo "Auto-detected MCP-unique tasks → using artifact configs ($FULL_CONFIG)"
+        echo "Auto-detected MCP-unique tasks (artifact-only) → using artifact configs ($FULL_CONFIG)"
     fi
 fi
 

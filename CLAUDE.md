@@ -64,9 +64,11 @@ Config names encode three dimensions: `{agent}-{source}-{verifier}`.
 **SDLC suites** (`ccb_build`, `ccb_debug`, etc.): use **baseline-local-direct**
 + **mcp-remote-direct**. Agent produces code changes; verifier checks git diffs.
 
-**MCP-unique suites** (`ccb_mcp_*`): use **baseline-local-artifact** +
+**MCP-unique suites** (`ccb_mcp_*`): default to **baseline-local-artifact** +
 **mcp-remote-artifact**. Agent produces `answer.json`; verifier scores against
-oracle. Never use `-direct` configs for MCP-unique suites.
+oracle. Tasks with `"verification_modes": ["artifact", "direct"]` in the use
+case registry also support `-direct` configs; the verifier dispatches
+automatically based on the `.artifact_only_mode` sentinel in test.sh.
 
 MCP configs use `Dockerfile.sg_only` (direct) or `Dockerfile.artifact_only`
 (artifact) so the agent must discover code via MCP tools. The verifier clones
