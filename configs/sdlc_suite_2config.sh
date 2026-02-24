@@ -276,6 +276,15 @@ _sdlc_run_single() {
     job_name="${job_name//[^[:alnum:]_.-]/-}"
     job_name=$(echo "$job_name" | tr '[:upper:]' '[:lower:]')
 
+    local instruction_variant="default"
+    if [[ "$config" == *mcp-scip* ]]; then
+        instruction_variant="mcp_scip"
+    elif [[ "$mcp_type" != "none" ]]; then
+        instruction_variant="mcp"
+    fi
+
+    TASK_SOURCE_DIR="$task_path" \
+    INSTRUCTION_VARIANT="$instruction_variant" \
     BASELINE_MCP_TYPE=$mcp_type harbor run \
         --job-name "$job_name" \
         --path "$run_task_path" \

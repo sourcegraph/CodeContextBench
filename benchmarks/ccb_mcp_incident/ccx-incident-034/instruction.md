@@ -41,7 +41,7 @@ Create a file at `/workspace/answer.json` with your findings:
 ```
 
 **Important**: Use `grafana/grafana` as the exact `repo` identifier. Strip the
-`github.com/` prefix that Sourcegraph MCP tools return.
+`github.com/` prefix that tool output may return.
 
 ## Evaluation
 

@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "notes": "Curated overrides for high-use scripts. Leave most scripts auto-classified; add entries only when category/summary quality matters.",
+  "overrides": [
+    {
+      "name": "check_infra.py",
+      "summary": "Pre-run infrastructure readiness checker (tokens, Docker, disk, Harbor CLI)."
+    },
+    {
+      "name": "validate_tasks_preflight.py",
+      "summary": "Pre-flight task validator (static checks plus optional no-agent runtime smoke)."
+    },
+    {
+      "name": "aggregate_status.py",
+      "summary": "Scans run directories, classifies task status, and supports watch mode for active runs."
+    },
+    {
+      "name": "validate_task_run.py",
+      "summary": "Post-run validation for a run/task output directory (`result.json`, scoring, anomalies)."
+    },
+    {
+      "name": "status_fingerprints.py",
+      "summary": "Known failure regex fingerprints used by status/triage tooling."
+    },
+    {
+      "name": "repo_health.py",
+      "summary": "Repo health gate that runs required pre-commit/push checks (docs drift, selection file, task preflight)."
+    },
+    {
+      "name": "docs_consistency_check.py",
+      "summary": "Validates documentation references, agent-guide sync/size budgets, and generated navigation artifacts."
+    },
+    {
+      "name": "compare_configs.py",
+      "summary": "Compares benchmark outcomes across configs on matched task sets."
+    },
+    {
+      "name": "mcp_audit.py",
+      "summary": "Audits MCP tool usage patterns and reward/time deltas across runs."
+    },
+    {
+      "name": "ir_analysis.py",
+      "summary": "Runs retrieval/IR analysis over normalized events and evaluation outputs."
+    },
+    {
+      "name": "cost_report.py",
+      "summary": "Aggregates token and cost metrics per run, suite, and config."
+    },
+    {
+      "name": "generate_manifest.py",
+      "summary": "Rebuilds `MANIFEST.json` from on-disk run results."
+    },
+    {
+      "name": "generate_eval_report.py",
+      "summary": "Builds the deterministic aggregate evaluation report for completed runs."
+    },
+    {
+      "name": "sync_task_metadata.py",
+      "summary": "Reconciles `task.toml` metadata with the canonical task selection registry (`--fix` to apply changes)."
+    },
+    {
+      "name": "promote_run.py",
+      "summary": "Promotes a staged run into the official results flow with integrity checks."
+    },
+    {
+      "name": "rerun_failed.py",
+      "status": "maintained",
+      "summary": "Generates targeted rerun commands for failed tasks (despite `rerun_` prefix, this is part of normal ops)."
+    },
+    {
+      "name": "generate_script_registry.py",
+      "category": "core_operations",
+      "summary": "Generates `scripts/registry.json`, the machine-readable script inventory used for agent navigation."
+    },
+    {
+      "name": "generate_script_index.py",
+      "category": "core_operations",
+      "summary": "Generates `docs/ops/SCRIPT_INDEX.md` from `scripts/registry.json`."
+    },
+    {
+      "name": "sync_agent_guides.py",
+      "category": "core_operations",
+      "summary": "Syncs generated root/local `AGENTS.md` and `CLAUDE.md` files from canonical sources in `docs/ops/`."
+    },
+    {
+      "name": "refresh_agent_navigation.py",
+      "category": "core_operations",
+      "summary": "One-command refresh/check for generated agent-navigation artifacts (guides + script registry/index)."
+    }
+  ]
+}

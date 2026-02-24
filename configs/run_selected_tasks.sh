@@ -604,6 +604,8 @@ _launch_task_pair() {
         local _bl_home="$_PICKED_HOME"
         (
             export HOME="$_bl_home"
+            TASK_SOURCE_DIR="$abs_path" \
+            INSTRUCTION_VARIANT="default" \
             BASELINE_MCP_TYPE=$BL_MCP_TYPE harbor run \
                 --path "$_bl_task_path" \
                 --agent-import-path "$AGENT_PATH" \
@@ -661,8 +663,15 @@ _launch_task_pair() {
         _wait_for_slot
         _pick_next_account
         local _full_home="$_PICKED_HOME"
+        local _instruction_variant="mcp"
+        if [[ "$FULL_CONFIG" == *scip* ]]; then
+            _instruction_variant="mcp_scip"
+        fi
+
         (
             export HOME="$_full_home"
+            TASK_SOURCE_DIR="$abs_path" \
+            INSTRUCTION_VARIANT="$_instruction_variant" \
             SOURCEGRAPH_REPOS="$_sg_repos" \
             BASELINE_MCP_TYPE=$FULL_MCP_TYPE harbor run \
                 --path "$_mcp_task_path" \

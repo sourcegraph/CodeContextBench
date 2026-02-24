@@ -47,8 +47,8 @@ Create a file at `/workspace/answer.json` with your findings:
 }
 ```
 
-**Important**: Use exact repo identifiers as they appear in Sourcegraph. The repos to search are `nodejs/node`, `sg-evals/expressjs-express`, `sg-evals/lodash`, and `sg-evals/prisma-prisma`. Note: the `expressjs/express` repository corresponds to `sg-evals/expressjs-express` in Sourcegraph — use `sg-evals/expressjs-express` as the `repo` value in your answer.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: Use the exact repo identifiers specified for this task. The repos to search are `nodejs/node`, `sg-evals/expressjs-express`, `sg-evals/lodash`, and `sg-evals/prisma-prisma`. Note: the `expressjs/express` repository corresponds to `sg-evals/expressjs-express` for this task — use `sg-evals/expressjs-express` as the `repo` value in your answer.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 Include only entries where `cookie` appears under `"dependencies"` (not `"devDependencies"`
 or `"scripts"`). Your answer is evaluated against a closed-world oracle — completeness matters.

@@ -35,7 +35,7 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```
 
 **Important**: Use `"kubernetes/kubernetes"` for the repo name. Strip `github.com/` prefix.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/kubernetes/kubernetes`). Strip this prefix in your answer.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/kubernetes/kubernetes`). Strip this prefix in your answer.
 
 Include only the `files` field. Your answer is evaluated against a closed-world oracle — completeness matters.
 

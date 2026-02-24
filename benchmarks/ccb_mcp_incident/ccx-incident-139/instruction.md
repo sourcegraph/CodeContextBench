@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the incident domain.
 
 No local repositories are pre-checked out.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+**Note:** Additional repositories may be relevant to this task:
 - `sg-evals/libreoffice-core--9c8b85f3` (LibreOffice/core)
 
 ## Output Format

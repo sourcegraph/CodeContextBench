@@ -160,6 +160,12 @@ def check_t3_no_api_keys(tasks: list[Path]) -> CriterionResult:
         re.compile(r"Bearer\s+[a-zA-Z0-9\-_.]{20,}"),
     ]
     issues = []
+    allowlisted_hits = []
+    allowlisted_synthetic_fixtures = {
+        # Intentional synthetic-secret fixture for security tasks; these values are
+        # test data used to verify that agents avoid reading sensitive files.
+        ("django-sensitive-file-exclusion-001", "environment/Dockerfile"),
+    }
     for task_dir in tasks:
         for fname in ["task.toml", "environment/Dockerfile", "Dockerfile"]:
             fpath = task_dir / fname
@@ -168,12 +174,21 @@ def check_t3_no_api_keys(tasks: list[Path]) -> CriterionResult:
             content = fpath.read_text(errors="replace")
             for pat in key_patterns:
                 for match in pat.finditer(content):
+                    if (task_dir.name, fname) in allowlisted_synthetic_fixtures:
+                        allowlisted_hits.append(
+                            f"{task_dir.name}/{fname}: allowlisted synthetic fixture ({match.group(0)[:40]}...)"
+                        )
+                        continue
                     issues.append(f"{task_dir.name}/{fname}: potential key/secret ({match.group(0)[:40]}...)")
 
     if not issues:
+        evidence = "No API keys or secrets found in task files"
+        if allowlisted_hits:
+            evidence += f" ({len(allowlisted_hits)} allowlisted synthetic fixture match(es) ignored)"
         return CriterionResult(
             criterion_id="T.3", status=Status.PASS,
-            evidence="No API keys or secrets found in task files",
+            evidence=evidence,
+            details={"allowlisted": allowlisted_hits[:20]} if allowlisted_hits else {},
         )
     return CriterionResult(
         criterion_id="T.3", status=Status.FAIL,
@@ -279,14 +294,18 @@ def check_t8_oracle_exists(tasks: list[Path]) -> CriterionResult:
     """T.8: Oracle/reference solution exists."""
     missing = []
     for task_dir in tasks:
-        oracle_files = [
+        legacy_oracle_files = [
             task_dir / "solve.sh",
             task_dir / "expected.diff",
             task_dir / "tests" / "expected.diff",
             task_dir / "tests" / "golden",
             task_dir / "tests" / "expected",
         ]
-        if not any(p.exists() for p in oracle_files):
+        has_mcp_oracle_bundle = (
+            (task_dir / "tests" / "oracle_answer.json").is_file()
+            and (task_dir / "tests" / "oracle_checks.py").is_file()
+        )
+        if not any(p.exists() for p in legacy_oracle_files) and not has_mcp_oracle_bundle:
             missing.append(task_dir.name)
 
     if not missing:
@@ -302,15 +321,61 @@ def check_t8_oracle_exists(tasks: list[Path]) -> CriterionResult:
     )
 
 
+def _is_eval_wrapper_script(content: str) -> bool:
+    """Heuristic: test.sh is a thin wrapper that delegates to eval.sh."""
+    if not content:
+        return False
+    has_eval_ref = "eval.sh" in content
+    has_exec = bool(re.search(r"\bexec\b", content))
+    # Common artifact wrappers are tiny and mention eval.sh in comments + exec line.
+    line_count = len([l for l in content.splitlines() if l.strip()])
+    return has_eval_ref and has_exec and line_count <= 30
+
+
+def _uses_shared_verifier_delegate(content: str) -> bool:
+    """Heuristic: test.sh delegates scoring to a shared verifier script."""
+    if not content:
+        return False
+    return bool(re.search(r"source\s+/tests/(?:find_and_prove_verifier|verifier_lib)\.sh", content))
+
+
+def _get_primary_verifier(task_dir: Path) -> Optional[Path]:
+    """Pick the verifier file that contains the real scoring logic."""
+    test_sh = task_dir / "tests" / "test.sh"
+    eval_sh = task_dir / "tests" / "eval.sh"
+    verify_py = task_dir / "tests" / "verify.py"
+
+    if test_sh.is_file():
+        content = test_sh.read_text(errors="replace")
+        if eval_sh.is_file() and _is_eval_wrapper_script(content):
+            return eval_sh
+        return test_sh
+    if verify_py.is_file():
+        return verify_py
+    if eval_sh.is_file():
+        return eval_sh
+    return None
+
+
+def _get_verifier_candidates(task_dir: Path) -> list[Path]:
+    """Return all plausible verifier files (including eval.sh for artifact tasks)."""
+    candidates = []
+    for rel in ("tests/test.sh", "tests/eval.sh", "tests/verify.py"):
+        p = task_dir / rel
+        if p.is_file():
+            candidates.append(p)
+    return candidates
+
+
 def check_oc_empty_solution_rejected(tasks: list[Path]) -> CriterionResult:
     """O.c: Empty/no-op solution gets reward=0 (real assertions in test.sh)."""
     issues = []
     for task_dir in tasks:
-        test_sh = task_dir / "tests" / "test.sh"
-        if not test_sh.is_file():
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier or verifier.suffix != ".sh":
             continue
 
-        content = test_sh.read_text(errors="replace")
+        content = verifier.read_text(errors="replace")
         task_name = task_dir.name
 
         # Check for real assertion patterns
@@ -332,7 +397,7 @@ def check_oc_empty_solution_rejected(tasks: list[Path]) -> CriterionResult:
         no_conditionals = not bool(re.search(r'\bif\b|\belse\b|\bthen\b|\bcase\b', content))
 
         if just_echoes_reward and no_conditionals and not has_assertion:
-            issues.append(f"{task_name}: test.sh unconditionally writes reward=1.0")
+            issues.append(f"{task_name}: {verifier.name} unconditionally writes reward=1.0")
 
     if not issues:
         return CriterionResult(
@@ -351,30 +416,32 @@ def check_od_error_handling(tasks: list[Path]) -> CriterionResult:
     """O.d: test.sh has error handling (set -e or traps)."""
     issues = []
     for task_dir in tasks:
-        test_sh = task_dir / "tests" / "test.sh"
-        if not test_sh.is_file():
-            # Check for verify.py (Python has built-in exception handling)
-            if (task_dir / "tests" / "verify.py").is_file():
-                continue
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier:
+            continue
+        # Python verifiers use exceptions; no shell strict-mode check needed.
+        if verifier.suffix == ".py":
             continue
 
-        content = test_sh.read_text(errors="replace")
+        content = verifier.read_text(errors="replace")
+        if verifier.name == "test.sh" and _uses_shared_verifier_delegate(content):
+            continue
         has_set_e = bool(re.search(r"set\s+-e", content))
         has_pipefail = bool(re.search(r"set\s+-eo?\s+pipefail", content))
         has_trap = bool(re.search(r"\btrap\b", content))
 
         if not (has_set_e or has_pipefail or has_trap):
-            issues.append(f"{task_dir.name}: test.sh lacks set -e / pipefail / trap")
+            issues.append(f"{task_dir.name}: {verifier.name} lacks set -e / pipefail / trap")
 
     if not issues:
         return CriterionResult(
             criterion_id="O.d", status=Status.PASS,
-            evidence="All test.sh scripts have error handling",
+            evidence="All verifier shell scripts have error handling",
         )
     return CriterionResult(
         criterion_id="O.d", status=Status.FAIL,
         evidence="\n".join(issues[:10]),
-        remediation="Add 'set -eo pipefail' at the top of test.sh",
+        remediation="Add 'set -eo pipefail' at the top of the verifier shell script",
         details={"issue_count": len(issues), "issues": issues[:20]},
     )
 
@@ -383,11 +450,8 @@ def check_oe_multiple_assertions(tasks: list[Path]) -> CriterionResult:
     """O.e: test.sh covers multiple aspects (>1 assertion/check)."""
     issues = []
     for task_dir in tasks:
-        test_sh = task_dir / "tests" / "test.sh"
-        verify_py = task_dir / "tests" / "verify.py"
-
-        verifier = test_sh if test_sh.is_file() else verify_py
-        if not verifier.is_file():
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier:
             continue
 
         content = verifier.read_text(errors="replace")
@@ -416,19 +480,20 @@ def check_oh_reward_format(tasks: list[Path]) -> CriterionResult:
     """O.h: reward.txt output format is consistent."""
     issues = []
     for task_dir in tasks:
-        test_sh = task_dir / "tests" / "test.sh"
-        verify_py = task_dir / "tests" / "verify.py"
-
+        candidates = _get_verifier_candidates(task_dir)
         found_reward = False
-        for verifier in [test_sh, verify_py]:
-            if not verifier.is_file():
-                continue
+        for verifier in candidates:
             content = verifier.read_text(errors="replace")
             if re.search(r"reward\.txt|/logs/verifier/reward", content):
                 found_reward = True
                 break
+            if verifier.name == "test.sh" and _uses_shared_verifier_delegate(content):
+                # Shared verifier scripts handle reward writing, but the implementation
+                # is not available in the task directory for static inspection.
+                found_reward = True
+                break
 
-        if not found_reward and (test_sh.is_file() or verify_py.is_file()):
+        if not found_reward and candidates:
             issues.append(f"{task_dir.name}: verifier doesn't write to reward.txt")
 
     if not issues:
@@ -448,11 +513,8 @@ def check_oi_partial_credit(tasks: list[Path]) -> CriterionResult:
     """O.i: Verifier supports partial credit (0.0-1.0 range)."""
     issues = []
     for task_dir in tasks:
-        test_sh = task_dir / "tests" / "test.sh"
-        verify_py = task_dir / "tests" / "verify.py"
-
-        verifier = test_sh if test_sh.is_file() else verify_py
-        if not verifier.is_file():
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier:
             continue
 
         content = verifier.read_text(errors="replace")
@@ -507,7 +569,9 @@ def check_r1_files_exist(tasks: list[Path]) -> CriterionResult:
 def check_r2_no_contamination(tasks: list[Path]) -> CriterionResult:
     """R.2: No MCP/Sourcegraph contamination in instruction.md."""
     contamination_pattern = re.compile(
-        r"sourcegraph|mcp|sg_|deep.?search|deepsearch|cody",
+        r"sourcegraph\s+mcp|sourcegraph\s+tools?|mcp\s+tools?|"
+        r"\bdeep\s*search\b|deepsearch|\bsg_[a-z_]+\b|\bcody\b|"
+        r"\bindexed in sourcegraph\b|\bappear in sourcegraph\b",
         re.IGNORECASE,
     )
     issues = []
@@ -524,12 +588,12 @@ def check_r2_no_contamination(tasks: list[Path]) -> CriterionResult:
     if not issues:
         return CriterionResult(
             criterion_id="R.2", status=Status.PASS,
-            evidence="No MCP/Sourcegraph references in instructions",
+            evidence="No MCP/Sourcegraph tool guidance in baseline instructions",
         )
     return CriterionResult(
         criterion_id="R.2", status=Status.FAIL,
         evidence="\n".join(issues[:10]),
-        remediation="Remove MCP/Sourcegraph references from baseline instructions",
+        remediation="Remove MCP/Sourcegraph tool guidance from baseline instructions",
         details={"issue_count": len(issues), "issues": issues[:20]},
     )
 

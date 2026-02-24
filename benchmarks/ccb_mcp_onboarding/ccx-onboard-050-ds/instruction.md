@@ -45,8 +45,8 @@ Create a file at `/workspace/answer.json` with your findings:
 }
 ```
 
-**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects `repo` values of `sg-evals/kubernetes-client-go` (client layer), `kubernetes/kubernetes` (API server layer), and `etcd-io/etcd` (storage layer). The `repo` field must match these exactly.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: Use the exact repo identifiers specified for this task. The oracle expects `repo` values of `sg-evals/kubernetes-client-go` (client layer), `kubernetes/kubernetes` (API server layer), and `etcd-io/etcd` (storage layer). The `repo` field must match these exactly.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 The `chain` should contain at least 3 steps representing the 3 layers described above.
 

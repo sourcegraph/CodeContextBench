@@ -42,9 +42,9 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 **Important**: Use exact repo identifiers as they appear in the oracle:
 - For Grafana: `"repo": "grafana/grafana"`
 - For Loki: `"repo": "sg-evals/grafana-loki"`
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
-The `grafana/loki` repository corresponds to `sg-evals/grafana-loki` in Sourcegraph.
+The `grafana/loki` repository corresponds to `sg-evals/grafana-loki` for this task.
 
 List the chain steps in order from Grafana (caller) to Loki (callee). Your answer is evaluated
 against a closed-world oracle — precision matters.

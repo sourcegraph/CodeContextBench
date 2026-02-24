@@ -37,8 +37,8 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 }
 ```
 
-**Important**: Use `"repo": "sg-evals/kubernetes-client-go"` exactly — this is the canonical repo identifier used by the evaluation oracle. The `kubernetes/client-go` repository corresponds to `sg-evals/kubernetes-client-go` in Sourcegraph.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: Use `"repo": "sg-evals/kubernetes-client-go"` exactly — this is the canonical repo identifier used by the evaluation oracle. The `kubernetes/client-go` repository corresponds to `sg-evals/kubernetes-client-go` for this task.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 Include only the `files` field. Your answer is evaluated against a closed-world oracle — completeness matters.
 

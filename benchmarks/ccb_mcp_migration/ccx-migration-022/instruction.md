@@ -18,7 +18,7 @@ You are working on a migration inventory task to catalog deprecated APIs that mu
 
 The local `/workspace/` directory contains: sg-evals/kafka--0753c489.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+**Note:** Additional repositories may be relevant to this task:
 - `sg-evals/kafka--0753c489` (apache/kafka)
 
 ## Output Format

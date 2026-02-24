@@ -1,5 +1,10 @@
 # CodeContextBench Quality Assurance Process
 
+## Agent Navigation
+- `docs/ops/README.md` is the ops index for agent navigation.
+- `docs/ops/QA_PROCESS.md` is a stable alias entrypoint that points here.
+- If you need only script discovery, use `docs/ops/SCRIPT_INDEX.md` first.
+
 End-to-end quality assurance and validation infrastructure for CodeContextBench benchmark runs. This document describes each pipeline stage, the scripts involved, and the audit methodology.
 
 ---

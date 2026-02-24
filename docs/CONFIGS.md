@@ -1,5 +1,10 @@
 # Agent Configuration Matrix
 
+## Agent Navigation
+- `docs/reference/README.md` is the reference index for agent navigation.
+- `docs/reference/CONFIGS.md` is a stable alias entrypoint that points here.
+- If you are launching or triaging runs, start with `docs/START_HERE_BY_TASK.md` before reading this full spec.
+
 This document describes the agent configurations used in the CodeContextBench
 evaluation. Each configuration controls tools, source access, and verification
 mode.

@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the crossrepo domain.
 
 No local repositories are pre-checked out.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+**Note:** Additional repositories may be relevant to this task:
 - `github.com/llvm/llvm-project` (llvm/llvm-project)
 - `github.com/gcc-mirror/gcc` (gcc-mirror/gcc)
 

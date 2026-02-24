@@ -1,0 +1,195 @@
+# Script Index
+
+Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
+
+## When To Read This
+- You need to find the right script without opening many files.
+- You need to identify maintained vs one-off scripts.
+
+## Do Not Read First If
+- You already know the workflow: use `docs/START_HERE_BY_TASK.md` first.
+- You are working in a single script and only need that file.
+
+## Usage
+- Filter by category first, then open the specific script.
+- Treat `one_off` scripts as historical unless explicitly needed.
+
+## Core Operations
+
+- `scripts/aggregate_status.py` - Scans run directories, classifies task status, and supports watch mode for active runs.
+- `scripts/check_infra.py` - Pre-run infrastructure readiness checker (tokens, Docker, disk, Harbor CLI).
+- `scripts/docs_consistency_check.py` - Validates documentation references, agent-guide sync/size budgets, and generated navigation artifacts.
+- `scripts/generate_eval_report.py` - Builds the deterministic aggregate evaluation report for completed runs.
+- `scripts/generate_manifest.py` - Rebuilds `MANIFEST.json` from on-disk run results.
+- `scripts/generate_script_index.py` - Generates `docs/ops/SCRIPT_INDEX.md` from `scripts/registry.json`.
+- `scripts/generate_script_registry.py` - Generates `scripts/registry.json`, the machine-readable script inventory used for agent navigation.
+- `scripts/refresh_agent_navigation.py` - One-command refresh/check for generated agent-navigation artifacts (guides + script registry/index).
+- `scripts/repo_health.py` - Repo health gate that runs required pre-commit/push checks (docs drift, selection file, task preflight).
+- `scripts/status_fingerprints.py` - Known failure regex fingerprints used by status/triage tooling.
+- `scripts/sync_agent_guides.py` - Syncs generated root/local `AGENTS.md` and `CLAUDE.md` files from canonical sources in `docs/ops/`.
+- `scripts/validate_task_run.py` - Post-run validation for a run/task output directory (`result.json`, scoring, anomalies).
+- `scripts/validate_tasks_preflight.py` - Pre-flight task validator (static checks plus optional no-agent runtime smoke).
+
+## Analysis & Comparison
+
+- `scripts/analyze_mcp_unique_haiku.py` - Analysis/comparison script for analyze mcp unique haiku.
+- `scripts/analyze_run_coverage.py` - Analysis/comparison script for analyze run coverage.
+- `scripts/audit_traces.py` - Analysis/comparison script for audit traces.
+- `scripts/compare_configs.py` - Compares benchmark outcomes across configs on matched task sets.
+- `scripts/compute_retrieval_metrics.py` - Analysis/comparison script for compute retrieval metrics.
+- `scripts/cost_breakdown_analysis.py` - Analysis/comparison script for cost breakdown analysis.
+- `scripts/cost_report.py` - Aggregates token and cost metrics per run, suite, and config.
+- `scripts/ds_audit.py` - Analysis/comparison script for ds audit.
+- `scripts/economic_analysis.py` - Analysis/comparison script for economic analysis.
+- `scripts/failure_analysis.py` - Analysis/comparison script for failure analysis.
+- `scripts/ir_analysis.py` - Runs retrieval/IR analysis over normalized events and evaluation outputs.
+- `scripts/mcp_audit.py` - Audits MCP tool usage patterns and reward/time deltas across runs.
+- `scripts/mcp_cost_analysis.py` - Analysis/comparison script for mcp cost analysis.
+- `scripts/normalize_retrieval_events.py` - Analysis/comparison script for normalize retrieval events.
+- `scripts/oracle_ir_analysis.py` - Analysis/comparison script for oracle ir analysis.
+- `scripts/oracle_retrieval_analysis.py` - Analysis/comparison script for oracle retrieval analysis.
+- `scripts/reliability_analysis.py` - Analysis/comparison script for reliability analysis.
+- `scripts/retrieval_eval_pipeline.py` - Analysis/comparison script for retrieval eval pipeline.
+- `scripts/retrieval_impact_analysis.py` - Analysis/comparison script for retrieval impact analysis.
+
+## QA & Quality
+
+- `scripts/abc_audit.py` - QA/validation script for abc audit.
+- `scripts/abc_criteria.py` - QA/validation script for abc criteria.
+- `scripts/abc_score_task.py` - QA/validation script for abc score task.
+- `scripts/governance_evaluator.py` - QA/validation script for governance evaluator.
+- `scripts/official_integrity.py` - QA/validation script for official integrity.
+- `scripts/official_runs.py` - QA/validation script for official runs.
+- `scripts/quarantine_invalid_tasks.py` - QA/validation script for quarantine invalid tasks.
+- `scripts/validate_artifact_golden.py` - QA/validation script for validate artifact golden.
+- `scripts/validate_mcp_task_instance.py` - QA/validation script for validate mcp task instance.
+- `scripts/validate_official_integrity.py` - QA/validation script for validate official integrity.
+
+## Data Management
+
+- `scripts/archive_non_manifest_runs.py` - Data/run management script for archive non manifest runs.
+- `scripts/archive_run.py` - Data/run management script for archive run.
+- `scripts/consolidate_staging.py` - Data/run management script for consolidate staging.
+- `scripts/extract_task_metrics.py` - Data/run management script for extract task metrics.
+- `scripts/migrate_results.py` - Data/run management script for migrate results.
+- `scripts/organize_staging_to_official.py` - Data/run management script for organize staging to official.
+- `scripts/promote_run.py` - Promotes a staged run into the official results flow with integrity checks.
+- `scripts/reextract_all_metrics.py` - Data/run management script for reextract all metrics.
+- `scripts/rerun_failed.py` - Generates targeted rerun commands for failed tasks (despite `rerun_` prefix, this is part of normal ops).
+- `scripts/sync_task_metadata.py` - Reconciles `task.toml` metadata with the canonical task selection registry (`--fix` to apply changes).
+
+## Submission & Reporting
+
+- `scripts/generate_comprehensive_report.py` - Submission/reporting script for generate comprehensive report.
+- `scripts/generate_enterprise_report.py` - Submission/reporting script for generate enterprise report.
+- `scripts/generate_leaderboard.py` - Submission/reporting script for generate leaderboard.
+- `scripts/generate_retrieval_report.py` - Submission/reporting script for generate retrieval report.
+- `scripts/ingest_judge_results.py` - Submission/reporting script for ingest judge results.
+- `scripts/package_submission.py` - Submission/reporting script for package submission.
+- `scripts/validate_submission.py` - Submission/reporting script for validate submission.
+
+## Task Creation & Selection
+
+- `scripts/curate_oracle.py` - Task creation/selection script for curate oracle.
+- `scripts/customize_mcp_skeletons.py` - Task creation/selection script for customize mcp skeletons.
+- `scripts/generate_dependeval_tasks.py` - Task creation/selection script for generate dependeval tasks.
+- `scripts/generate_mcp_unique_tasks.py` - Task creation/selection script for generate mcp unique tasks.
+- `scripts/generate_pytorch_expected_diffs.py` - Task creation/selection script for generate pytorch expected diffs.
+- `scripts/materialize_dependeval_repos.py` - Task creation/selection script for materialize dependeval repos.
+- `scripts/materialize_sdlc_suites.py` - Task creation/selection script for materialize sdlc suites.
+- `scripts/mine_bug_tasks.py` - Task creation/selection script for mine bug tasks.
+- `scripts/register_new_mcp_tasks.py` - Task creation/selection script for register new mcp tasks.
+- `scripts/rename_tasks.py` - Task creation/selection script for rename tasks.
+- `scripts/select_benchmark_tasks.py` - Task creation/selection script for select benchmark tasks.
+- `scripts/select_dependeval_tasks.py` - Task creation/selection script for select dependeval tasks.
+
+## Infra & Mirrors
+
+- `scripts/build_linux_base_images.sh` - Infrastructure or mirror management script for build linux base images.
+- `scripts/create_mcp_expansion_mirrors.sh` - Infrastructure or mirror management script for create mcp expansion mirrors.
+- `scripts/create_missing_mcp_mirrors.sh` - Infrastructure or mirror management script for create missing mcp mirrors.
+- `scripts/create_scip_branches.sh` - Infrastructure or mirror management script for create scip branches.
+- `scripts/create_sg_benchmark_repos.sh` - Infrastructure or mirror management script for create sg benchmark repos.
+- `scripts/create_sg_mirrors.py` - Infrastructure or mirror management script for create sg mirrors.
+- `scripts/create_sg_tac_repos.sh` - Infrastructure or mirror management script for create sg tac repos.
+- `scripts/headless_login.py` - Infrastructure or mirror management script for headless login.
+- `scripts/inject_sg_repo_env.py` - Infrastructure or mirror management script for inject sg repo env.
+- `scripts/monitor_and_queue.sh` - Infrastructure or mirror management script for monitor and queue.
+- `scripts/prebuild_images.sh` - Infrastructure or mirror management script for prebuild images.
+- `scripts/prebuild_with_credentials.sh` - Infrastructure or mirror management script for prebuild with credentials.
+- `scripts/stop_task.sh` - Infrastructure or mirror management script for stop task.
+- `scripts/swap_default_branch.sh` - Infrastructure or mirror management script for swap default branch.
+- `scripts/sync_pytorch_verifiers.sh` - Infrastructure or mirror management script for sync pytorch verifiers.
+- `scripts/update_sg_only_mirrors.py` - Infrastructure or mirror management script for update sg only mirrors.
+
+## Library / Helpers
+
+- `scripts/answer_json_verifier_lib.sh` - Helper library/wrapper used by other scripts (answer json verifier lib).
+- `scripts/artifact_verifier_lib.sh` - Helper library/wrapper used by other scripts (artifact verifier lib).
+- `scripts/config_utils.py` - Helper library/wrapper used by other scripts (config utils).
+- `scripts/eval_matrix.py` - Helper library/wrapper used by other scripts (eval matrix).
+- `scripts/sgonly_verifier_wrapper.sh` - Helper library/wrapper used by other scripts (sgonly verifier wrapper).
+- `scripts/workflow_metrics.py` - Helper library/wrapper used by other scripts (workflow metrics).
+- `scripts/workflow_taxonomy.py` - Helper library/wrapper used by other scripts (workflow taxonomy).
+
+## Validation
+
+- `scripts/validate_enterprise_readiness.py` - Validation script for validate enterprise readiness.
+
+## Generation
+
+- `scripts/generate_artifact_dockerfiles.py` - Generation script for generate artifact dockerfiles.
+- `scripts/generate_artifact_only_dockerfiles.py` - Generation script for generate artifact only dockerfiles.
+- `scripts/generate_instruction_mcp.py` - Generation script for generate instruction mcp.
+- `scripts/generate_sgonly_dockerfiles.py` - Generation script for generate sgonly dockerfiles.
+
+## Migration
+
+- `scripts/migrate_dockerfiles_to_mirrors.py` - Migration script for migrate dockerfiles to mirrors.
+- `scripts/migrate_to_sg_evals.sh` - Migration script for migrate to sg evals.
+- `scripts/migrate_to_sg_evals_batch2.sh` - Migration script for migrate to sg evals batch2.
+
+## Misc
+
+- `scripts/AGENTS.md` - Utility script for AGENTS.
+- `scripts/CLAUDE.md` - Utility script for CLAUDE.
+- `scripts/add_verification_metadata.py` - Utility script for add verification metadata.
+- `scripts/audit_unpinned_repos.py` - Utility script for audit unpinned repos.
+- `scripts/backfill_instruction_artifacts.py` [one_off] - Historical one-off script: backfill instruction artifacts.
+- `scripts/backfill_size_metadata.py` [one_off] - Historical one-off script: backfill size metadata.
+- `scripts/backfill_triage_from_manifest.py` [one_off] - Historical one-off script: backfill triage from manifest.
+- `scripts/check_harness_readiness.py` - Utility script for check harness readiness.
+- `scripts/control_plane.py` - Utility script for control plane.
+- `scripts/dependeval_eval_dr.py` - Utility script for dependeval eval dr.
+- `scripts/dependeval_eval_me.py` - Utility script for dependeval eval me.
+- `scripts/docgen_quality_sweep.py` - Utility script for docgen quality sweep.
+- `scripts/extract_analysis_metrics.py` - Utility script for extract analysis metrics.
+- `scripts/find_mcp_distracted.py` - Utility script for find mcp distracted.
+- `scripts/fix_h3_tokens.py` [one_off] - Historical one-off script: fix h3 tokens.
+- `scripts/icp_profiles.py` - Utility script for icp profiles.
+- `scripts/integrate_answer_json_wave1.py` - Utility script for integrate answer json wave1.
+- `scripts/integrate_answer_json_wave2.py` - Utility script for integrate answer json wave2.
+- `scripts/integrate_answer_json_wave3.py` - Utility script for integrate answer json wave3.
+- `scripts/judge_demo.py` - Utility script for judge demo.
+- `scripts/list_gemini_models.py` - Utility script for list gemini models.
+- `scripts/mirror_largerepo_expansion.sh` - Utility script for mirror largerepo expansion.
+- `scripts/regenerate_artifact_dockerfiles.py` - Utility script for regenerate artifact dockerfiles.
+- `scripts/registry_overrides.json` - Utility script for registry overrides.
+- `scripts/remirror_mcp_unique_repos.sh` - Utility script for remirror mcp unique repos.
+- `scripts/repair_h3_trajectories.py` [one_off] - Historical one-off script: repair h3 trajectories.
+- `scripts/rerun_crossrepo_2tasks.sh` [one_off] - Historical one-off script: rerun crossrepo 2tasks.
+- `scripts/rerun_crossrepo_all4.sh` [one_off] - Historical one-off script: rerun crossrepo all4.
+- `scripts/rerun_crossrepo_fixed.sh` [one_off] - Historical one-off script: rerun crossrepo fixed.
+- `scripts/rerun_errored_tasks.sh` [one_off] - Historical one-off script: rerun errored tasks.
+- `scripts/rerun_fixed_tasks.sh` [one_off] - Historical one-off script: rerun fixed tasks.
+- `scripts/rerun_zero_mcp_tasks.sh` [one_off] - Historical one-off script: rerun zero mcp tasks.
+- `scripts/run_judge.py` - Utility script for run judge.
+- `scripts/scan_swebench_errors.py` - Utility script for scan swebench errors.
+- `scripts/smoke_artifact_verifier.py` - Utility script for smoke artifact verifier.
+- `scripts/verify_retrieval_eval_smoke.py` - Utility script for verify retrieval eval smoke.
+
+## Regeneration
+```bash
+python3 scripts/generate_script_registry.py
+python3 scripts/generate_script_index.py
+```

@@ -52,11 +52,11 @@ Create a file at `/workspace/answer.json` with your findings:
 ```
 
 **Important**: Use `grafana/grafana` as the exact `repo` identifier. Strip the
-`github.com/` prefix that Sourcegraph MCP tools return.
+`github.com/` prefix that tool output may return.
 
-**Deep Search hint**: This task requires synthesizing across feature management,
+**Hint**: This task requires synthesizing across feature management,
 SSO settings infrastructure, OAuth connectors, and authentication registration
-layers. Deep Search is particularly well-suited for tracing these cross-cutting
+layers. A cross-repo search workflow is particularly well-suited for tracing these cross-cutting
 concerns.
 
 ## Evaluation

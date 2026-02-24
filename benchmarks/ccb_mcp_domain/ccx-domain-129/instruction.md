@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the domain domain.
 
 No local repositories are pre-checked out.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+**Note:** Additional repositories may be relevant to this task:
 - `sg-evals/jdk--742e735d` (openjdk/jdk)
 
 ## Output Format

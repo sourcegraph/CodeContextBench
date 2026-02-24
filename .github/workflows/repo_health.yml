@@ -21,3 +21,6 @@ jobs:
 
       - name: Repo health gate (full)
         run: python3 scripts/repo_health.py
+
+      - name: Verify generated agent navigation artifacts are fresh
+        run: python3 scripts/refresh_agent_navigation.py --check

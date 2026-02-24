@@ -568,12 +568,26 @@ class BaselineClaudeCodeAgent(ClaudeCode):
         instruction_variant = os.environ.get("INSTRUCTION_VARIANT", "default").lower()
         task_source_dir = os.environ.get("TASK_SOURCE_DIR", "")
         if instruction_variant != "default" and task_source_dir:
-            variant_path = Path(task_source_dir) / f"instruction_{instruction_variant}.md"
-            if variant_path.exists():
-                logger.info(f"Using instruction variant: {instruction_variant} from {variant_path}")
-                instruction = variant_path.read_text()
+            task_source_path = Path(task_source_dir)
+            variant_candidates = [instruction_variant]
+            if "_" in instruction_variant:
+                base_variant = instruction_variant.split("_", 1)[0]
+                if base_variant and base_variant not in variant_candidates:
+                    variant_candidates.append(base_variant)
+
+            for candidate in variant_candidates:
+                variant_path = task_source_path / f"instruction_{candidate}.md"
+                if variant_path.exists():
+                    logger.info(f"Using instruction variant: {candidate} from {variant_path}")
+                    instruction = variant_path.read_text()
+                    break
             else:
-                logger.warning(f"Instruction variant '{instruction_variant}' not found at {variant_path}, using default")
+                logger.warning(
+                    "Instruction variant '%s' not found in %s (tried: %s), using default",
+                    instruction_variant,
+                    task_source_dir,
+                    ", ".join(variant_candidates),
+                )
 
         # Get repo display name for MCP prompts (centralized resolution)
         repo_display = self._get_repo_display()

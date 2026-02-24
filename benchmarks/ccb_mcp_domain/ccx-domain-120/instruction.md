@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the domain domain.
 
 The local `/workspace/` directory contains: sg-evals/Strata--66225ca9.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+**Note:** Additional repositories may be relevant to this task:
 - `sg-evals/Strata--66225ca9` (OpenGamma/Strata)
 
 ## Output Format

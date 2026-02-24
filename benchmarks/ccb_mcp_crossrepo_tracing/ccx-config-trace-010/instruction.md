@@ -22,7 +22,7 @@ exact Go package import path?
 
 You are working on a codebase task involving symbol resolution across Kubernetes ecosystem repos.
 The `kubernetes/kubernetes` repository vendors many dependencies in its `staging/` or `vendor/`
-directories, but the authoritative source lives in separate repositories accessible via MCP tools.
+directories, but the authoritative source lives in separate repositories that are part of this task.
 
 ## Available Resources
 
@@ -45,8 +45,8 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 }
 ```
 
-**Important**: The `kubernetes/client-go` repository is indexed in Sourcegraph as `sg-evals/kubernetes-client-go`. Use `sg-evals/kubernetes-client-go` as the `repo` value in your answer — the oracle checks for this exact identifier.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: The `kubernetes/client-go` repository uses the canonical identifier `sg-evals/kubernetes-client-go`. Use `sg-evals/kubernetes-client-go` as the `repo` value in your answer — the oracle checks for this exact identifier.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 Your answer is evaluated against a closed-world oracle — the exact repo, path, and symbol name matter.
 

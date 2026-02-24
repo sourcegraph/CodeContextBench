@@ -50,7 +50,7 @@ Create a file at `/workspace/answer.json` with your findings:
 ```
 
 **Important**: Use canonical repo names (e.g., `numpy/numpy`, `scipy/scipy`).
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix. Strip this prefix in your answer.
+**Note**: Tool output may return repo names with a `github.com/` prefix. Strip this prefix in your answer.
 
 Include only the `files` field with `.py` source files. Your answer is evaluated against a closed-world oracle — completeness matters.
 

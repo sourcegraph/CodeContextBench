@@ -49,8 +49,8 @@ Create a file at `/workspace/answer.json` with your findings:
 }
 ```
 
-**Important**: Use exact repo identifiers as they appear in Sourcegraph. The oracle expects entries for `sg-evals/kubernetes-api` (API type definitions) and `sg-evals/kubernetes-client-go` (client examples and docs). The `repo` field must match these exactly.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: Use the exact repo identifiers specified for this task. The oracle expects entries for `sg-evals/kubernetes-api` (API type definitions) and `sg-evals/kubernetes-client-go` (client examples and docs). The `repo` field must match these exactly.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 The `files` list should include at least 3 files across 2+ repos that together define
 the canonical service deployment pattern.

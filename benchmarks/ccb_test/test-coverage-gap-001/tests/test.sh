@@ -1,6 +1,6 @@
 #!/bin/bash
 # Reward: checklist (0.0-1.0) — coverage gap analysis quality score
-set -uo pipefail
+set -euo pipefail
 
 [ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
 # Artifact mode: parse answer.json, extract analysis text, apply diffs

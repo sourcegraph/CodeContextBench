@@ -4,7 +4,7 @@
 
 For a security audit, prove that TLS is enforced on all external interfaces of the Prometheus monitoring stack. Find all Go source files in `prometheus/prometheus` that define, load, validate, or apply TLS configuration for: scrape targets, remote write/read endpoints, the web server, tracing exporters, and service discovery plugins.
 
-**NOTE**: The canonical TLS config struct is defined in the `prometheus-common` library (available on Sourcegraph as `sourcegraph-testing/prometheus-common`). Include this definition file in your answer.
+**NOTE**: The canonical TLS config struct is defined in the `prometheus-common` library (available in this task as `sourcegraph-testing/prometheus-common`). Include this definition file in your answer.
 
 ## Specific Files to Find
 
@@ -38,7 +38,7 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```
 
 **Important**: Use `"prometheus/prometheus"` or `"sourcegraph-testing/prometheus-common"` for repo names. Strip `github.com/` prefix.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/prometheus/prometheus`). Strip this prefix in your answer.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/prometheus/prometheus`). Strip this prefix in your answer.
 
 Include only the `files` field. Your answer is evaluated against a closed-world oracle — completeness matters.
 

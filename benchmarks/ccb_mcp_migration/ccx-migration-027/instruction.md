@@ -46,7 +46,7 @@ Create a file at `/workspace/answer.json` with your findings:
 ```
 
 **Important**: Use repo name `sg-evals/expressjs-express` or `expressjs/express`.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix. Strip this prefix in your answer.
+**Note**: Tool output may return repo names with a `github.com/` prefix. Strip this prefix in your answer.
 
 Include only files that specifically reference the deprecated `req.host` property. Your answer is evaluated against a closed-world oracle — both completeness and precision matter.
 

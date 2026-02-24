@@ -52,8 +52,8 @@ Create a file at `/workspace/answer.json` with your findings:
 ```
 
 **Important**: Use canonical repo names (`kubernetes/kubernetes`, `etcd-io/etcd`).
-For Sourcegraph searches, the etcd mirror is `sg-evals/etcd-io-etcd` — both names
-are accepted. Sourcegraph MCP tools return repo names with a `github.com/` prefix —
+For this task, the etcd mirror is `sg-evals/etcd-io-etcd` — both names
+are accepted. Tool output may return repo names with a `github.com/` prefix —
 strip this prefix in your answer.
 
 ## Evaluation

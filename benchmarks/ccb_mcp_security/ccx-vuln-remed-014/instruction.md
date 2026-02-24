@@ -56,8 +56,8 @@ Create a file at `/workspace/answer.json` with your findings:
 }
 ```
 
-**Important**: Use exact repo identifiers as they appear in Sourcegraph. The repos to audit are `sg-evals/grafana-loki` and `sg-evals/grafana-mimir`. Note: the `grafana/loki` repository corresponds to `sg-evals/grafana-loki` in Sourcegraph — use `sg-evals/grafana-loki` as the `repo` value in your answer. The oracle checks for `pkg/loki/modules.go` in `sg-evals/grafana-loki`.
-**Note**: Sourcegraph MCP tools return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+**Important**: Use the exact repo identifiers specified for this task. The repos to audit are `sg-evals/grafana-loki` and `sg-evals/grafana-mimir`. Note: the `grafana/loki` repository corresponds to `sg-evals/grafana-loki` for this task — use `sg-evals/grafana-loki` as the `repo` value in your answer. The oracle checks for `pkg/loki/modules.go` in `sg-evals/grafana-loki`.
+**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
 
 Your answer is evaluated against a closed-world oracle — completeness matters.
 

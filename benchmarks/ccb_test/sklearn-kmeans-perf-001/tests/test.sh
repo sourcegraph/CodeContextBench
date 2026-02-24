@@ -16,7 +16,7 @@ fi
 [ -f /tests/artifact_verifier_lib.sh ] && source /tests/artifact_verifier_lib.sh
 VERIFY_REPO="${VERIFY_REPO:-/workspace}"
 
-set -uo pipefail
+set -euo pipefail
 
 echo "=== SWE-Perf Verifier ==="
 echo "Task ID: ccb_sweperf-002"
