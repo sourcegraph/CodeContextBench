@@ -138,22 +138,37 @@ def generate_report(
     if summary and summary.get("utilization_aggregates", {}).get("n_tasks_with_probes", 0) > 0:
         ua = summary["utilization_aggregates"]
         n_probes = ua["n_tasks_with_probes"]
+        n_expected_edit = ua.get("n_tasks_with_expected_edit_probe", 0)
 
-        lines.append(f"Utilization probes available for **{n_probes}** tasks (tasks with file write events):")
+        lines.append(f"Utilization probes available for **{n_probes}** tasks (tasks with file-level ground truth):")
         lines.append("")
         lines.append("| Probe | Mean | Median | n |")
         lines.append("|-------|------|--------|---|")
 
-        rfc = ua.get("util_referenced_file_correctness", {})
-        if rfc.get("n", 0) > 0:
-            lines.append(f"| Referenced file correctness | {_fmt(rfc.get('mean'))} | {_fmt(rfc.get('median'))} | {rfc.get('n')} |")
+        read_ov = ua.get("util_read_overlap_with_relevant_files", {})
+        if read_ov.get("n", 0) > 0:
+            lines.append(f"| Read overlap with relevant files | {_fmt(read_ov.get('mean'))} | {_fmt(read_ov.get('median'))} | {read_ov.get('n')} |")
+
+        write_rel = ua.get("util_write_overlap_with_relevant_files_proxy", {})
+        if write_rel.get("n", 0) > 0:
+            lines.append(f"| Write overlap with relevant files (proxy) | {_fmt(write_rel.get('mean'))} | {_fmt(write_rel.get('median'))} | {write_rel.get('n')} |")
+
+        write_edit = ua.get("util_write_overlap_with_expected_edit_files", {})
+        if write_edit.get("n", 0) > 0:
+            lines.append(f"| Write overlap with expected edit files | {_fmt(write_edit.get('mean'))} | {_fmt(write_edit.get('median'))} | {write_edit.get('n')} |")
 
         rbw = ua.get("util_read_before_write_ratio", {})
         if rbw.get("n", 0) > 0:
             lines.append(f"| Read-before-write ratio | {_fmt(rbw.get('mean'))} | {_fmt(rbw.get('median'))} | {rbw.get('n')} |")
 
         lines.append("")
-        lines.append("**Referenced file correctness** measures whether the agent wrote to ground-truth files.")
+        lines.append("**Read overlap with relevant files** is the primary cross-task utilization proxy.")
+        lines.append("It measures whether the agent actually read relevant files (including MCP read-file calls).")
+        lines.append("**Write overlap with relevant files (proxy)** is a weaker, task-dependent proxy and")
+        lines.append("should not be interpreted as a universal utilization-quality metric.")
+        if n_expected_edit:
+            lines.append(f"**Write overlap with expected edit files** is reported for **{n_expected_edit}** tasks")
+            lines.append("where edit-target files could be inferred from high-confidence sources (e.g., patches).")
         lines.append("**Read-before-write ratio** measures whether the agent read files before modifying them.")
         lines.append("")
     else:

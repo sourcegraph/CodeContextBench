@@ -515,6 +515,34 @@ def _annotate_ground_truth(
         evt["hits_ground_truth"] = len(matched) > 0
 
 
+def _infer_expected_edit_files(
+    gt: TaskGroundTruth | None,
+) -> tuple[list[str], str | None, str | None]:
+    """Conservatively infer expected edit-target files from ground-truth provenance.
+
+    `TaskGroundTruth.files` is often a relevant-file set, not strictly an edit-target set.
+    We only expose `expected_edit_files` when the source strongly implies edit targets.
+    """
+    if not gt or not gt.files:
+        return ([], None, None)
+
+    source = (gt.source or "").strip()
+
+    # High-confidence edit-target sources.
+    if source == "expected_changes_json":
+        return (list(gt.files), "expected_changes_json", "high")
+    if source == "patch":
+        return (list(gt.files), "patch", "high")
+
+    # Some ground_truth.json schemas use a "buggy" file field, which is usually
+    # a true edit target for fix-style tasks.
+    if source == "ground_truth_json_buggy":
+        return (list(gt.files), "ground_truth_json_buggy", gt.confidence or "high")
+
+    # Otherwise, treat files as relevant evidence only.
+    return ([], None, None)
+
+
 # ---------------------------------------------------------------------------
 # Event summary
 # ---------------------------------------------------------------------------
@@ -600,7 +628,12 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
             continue
 
         for batch_dir in sorted(config_dir.iterdir()):
-            if not batch_dir.is_dir() or not _BATCH_TS_RE.match(batch_dir.name):
+            if not batch_dir.is_dir():
+                continue
+            is_batch_ts = bool(_BATCH_TS_RE.match(batch_dir.name))
+            is_job_dir = batch_dir.name.startswith("ccb_")
+
+            if not is_batch_ts and not is_job_dir:
                 continue
 
             for task_dir in sorted(batch_dir.iterdir()):
@@ -623,7 +656,7 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
                     "task_name": task_name,
                     "config_name": config_name,
                     "task_dir": task_dir,
-                    "batch_timestamp": batch_dir.name,
+                    "batch_timestamp": batch_dir.name if is_batch_ts else "",
                     "result_data": rdata,
                 })
 
@@ -744,9 +777,15 @@ def normalize_task(
     # Build document
     now = datetime.now(timezone.utc).isoformat()
 
+    expected_edit_files, expected_edit_source, expected_edit_conf = _infer_expected_edit_files(gt)
+
     ground_truth_section: dict = {"files": gt_files}
     if gt_chunks:
         ground_truth_section["chunks"] = gt_chunks
+    if expected_edit_files:
+        ground_truth_section["expected_edit_files"] = expected_edit_files
+        ground_truth_section["expected_edit_files_source"] = expected_edit_source
+        ground_truth_section["expected_edit_files_confidence"] = expected_edit_conf
 
     doc = {
         "schema_version": SCHEMA_VERSION,

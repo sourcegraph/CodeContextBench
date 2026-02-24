@@ -684,6 +684,213 @@
         "keyword_presence"
       ],
       "repo_set_id": "envoy-service-mesh"
+    },
+    {
+      "task_id": "CCX-domain-101",
+      "mcp_suite": "ccb_mcp_domain",
+      "use_case_category": "H",
+      "use_case_id": 101,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_domain/ccx-domain-101",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-dep-trace-102",
+      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "use_case_category": "F",
+      "use_case_id": 102,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-102",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-onboard-103",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "use_case_category": "E",
+      "use_case_id": 103,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_onboarding/ccx-onboard-103",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-platform-104",
+      "mcp_suite": "ccb_mcp_platform",
+      "use_case_category": "G",
+      "use_case_id": 104,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_platform/ccx-platform-104",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-vuln-remed-105",
+      "mcp_suite": "ccb_mcp_security",
+      "use_case_category": "J",
+      "use_case_id": 105,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-105",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-dep-trace-106",
+      "mcp_suite": "ccb_mcp_crossrepo",
+      "use_case_category": "A",
+      "use_case_id": 106,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-106",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-migration-107",
+      "mcp_suite": "ccb_mcp_migration",
+      "use_case_category": "D",
+      "use_case_id": 107,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_migration/ccx-migration-107",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-incident-108",
+      "mcp_suite": "ccb_mcp_incident",
+      "use_case_category": "C",
+      "use_case_id": 108,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_incident/ccx-incident-108",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "compiler-toolchain"
+    },
+    {
+      "task_id": "CCX-onboard-109",
+      "mcp_suite": "ccb_mcp_onboarding",
+      "use_case_category": "E",
+      "use_case_id": 109,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "mozilla-firefox/firefox",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_onboarding/ccx-onboard-109",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "mozilla-firefox"
+    },
+    {
+      "task_id": "CCX-incident-110",
+      "mcp_suite": "ccb_mcp_incident",
+      "use_case_category": "C",
+      "use_case_id": 110,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "mozilla-firefox/firefox",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_incident/ccx-incident-110",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution"
+      ],
+      "repo_set_id": "mozilla-firefox"
+    },
+    {
+      "task_id": "CCX-vuln-remed-111",
+      "mcp_suite": "ccb_mcp_security",
+      "use_case_category": "J",
+      "use_case_id": 111,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "mozilla-firefox/firefox",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-111",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "keyword_presence"
+      ],
+      "repo_set_id": "mozilla-firefox"
+    },
+    {
+      "task_id": "CCX-domain-112",
+      "mcp_suite": "ccb_mcp_domain",
+      "use_case_category": "H",
+      "use_case_id": 112,
+      "language": "cpp",
+      "difficulty": "hard",
+      "repo": "mozilla-firefox/firefox",
+      "mcp_benefit_score": 0.85,
+      "task_dir": "ccb_mcp_domain/ccx-domain-112",
+      "deepsearch_relevant": false,
+      "oracle_check_types": [
+        "file_set_match",
+        "symbol_resolution",
+        "dependency_chain"
+      ],
+      "repo_set_id": "mozilla-firefox"
     }
   ]
 }

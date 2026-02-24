@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-onboard-103"
+description = "LLVM IR-to-Machine-Code Generation Pipeline"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-onboard-103"
+repo = "org/repo"
+category = "onboarding-comprehension"
+language = "c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_onboarding"
+use_case_id = 103
+repo_set_id = "compiler-toolchain"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "LLVM IR-to-Machine-Code Generation Pipeline"
+
+[environment]
+build_timeout_sec = 600.0

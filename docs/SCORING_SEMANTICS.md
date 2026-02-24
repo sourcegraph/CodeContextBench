@@ -17,7 +17,7 @@ How each benchmark is scored, what the numbers mean, and known limitations.
 ## Per-Verifier Scoring (Active Suites)
 
 Tasks are organized into 8 SDLC-phase suites (`ccb_understand` through `ccb_debug`)
-and 6 MCP-unique suites (`ccb_mcp_*`). Within each suite, individual tasks use
+and 10 MCP-unique suites (`ccb_mcp_*`). Within each suite, individual tasks use
 one of the verifier types below, inherited from their source benchmark. See
 `docs/TASK_CATALOG.md` for which verifier each task uses and
 `docs/TASK_SELECTION.md` for the SDLC suite structure.

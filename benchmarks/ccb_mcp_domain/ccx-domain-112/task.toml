@@ -1,0 +1,28 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-domain-112"
+description = "Firefox Servo CSS Style System Integration"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-domain-112"
+repo = "org/repo"
+category = "domain-lineage"
+language = "c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "ccb_mcp_domain"
+use_case_id = 112
+repo_set_id = "mozilla-firefox"
+mcp_unique = true
+
+[verification]
+type = "test"
+command = "bash /tests/eval.sh"
+
+reward_type = "score"
+description = "Firefox Servo CSS Style System Integration"
+
+[environment]
+build_timeout_sec = 600.0

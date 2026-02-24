@@ -1,0 +1,54 @@
+{
+  "id": "CCX-migration-107",
+  "family": "migration-inventory",
+  "use_case_id": 107,
+  "category": "D",
+  "mcp_suite": "ccb_mcp_migration",
+  "prd": {
+    "user_story": "As a developer, I want to: LLVM has been migrating from the legacy pass manager to the new pass manager. Find C++ source files in `llvm/llvm-project` under `llvm/lib/Transforms/Scalar/` and `llvm/lib/Transforms/IPO/` that still contain references to legacy pass manager infrastructure. Specifically, find files that: 1. Use `INITIALIZE_PASS` or `INITIALIZE_PASS_BEGIN`/`INITIALIZE_PASS_END` macros. 2. Inherit from `FunctionPass` or `ModulePass` (legacy base classes). 3. Define `create*Pass()` factory functions (legacy registration pattern). Report each file path and which legacy patterns it uses.",
+    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
+    "seed_prompt": "LLVM has been migrating from the legacy pass manager to the new pass manager. Find C++ source files in `llvm/llvm-project` under `llvm/lib/Transforms/Scalar/` and `llvm/lib/Transforms/IPO/` that still contain references to legacy pass manager infrastructure. Specifically, find files that: 1. Use `INITIALIZE_PASS` or `INITIALIZE_PASS_BEGIN`/`INITIALIZE_PASS_END` macros. 2. Inherit from `FunctionPass` or `ModulePass` (legacy base classes). 3. Define `create*Pass()` factory functions (legacy registration pattern). Report each file path and which legacy patterns it uses."
+  },
+  "artifacts": {
+    "repo_set_id": "compiler-toolchain",
+    "oracle": {
+      "required_files": [
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/Transforms/Scalar/LICM.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/Transforms/IPO/GlobalDCE.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/Transforms/Scalar/GVN.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/include/llvm/IR/LegacyPassManager.h"}
+      ],
+      "required_symbols": [
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/include/llvm/IR/LegacyPassManager.h", "symbol": "PassManager", "kind": "class"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/include/llvm/IR/LegacyPassManager.h", "symbol": "FunctionPassManager", "kind": "class"}
+      ],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "INITIALIZE_PASS OR FunctionPass OR LegacyPassManager",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": ["INITIALIZE_PASS", "FunctionPass", "ModulePass", "createGVNPass", "LegacyPassManager"]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

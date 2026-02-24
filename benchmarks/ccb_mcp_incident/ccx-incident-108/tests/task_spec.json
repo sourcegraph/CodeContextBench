@@ -1,0 +1,53 @@
+{
+  "id": "CCX-incident-108",
+  "family": "incident-debug",
+  "use_case_id": 108,
+  "category": "C",
+  "mcp_suite": "ccb_mcp_incident",
+  "prd": {
+    "user_story": "As a developer, I want to: A production build system using LLVM is crashing with the error: 'Cannot expand this type; LLVM lacks the right hooks'. Trace this assertion to its source in `llvm/llvm-project`. Find: 1. The C++ source file in `llvm/lib/CodeGen/SelectionDAG/` that contains this error message or assertion. 2. The function in that file where the assertion fires (look for type legalization expansion logic). 3. The header file that defines the `EVT` (Extended Value Type) class and its `isSimple()` method (look in `llvm/include/llvm/CodeGen/`). 4. The file that defines the `LegalizeDAG` class which orchestrates type legalization and may call the expand function. Report the repo, file path, and function or class name for each.",
+    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
+    "seed_prompt": "A production build system using LLVM is crashing with the error: 'Cannot expand this type; LLVM lacks the right hooks'. Trace this assertion to its source in `llvm/llvm-project`. Find: 1. The C++ source file in `llvm/lib/CodeGen/SelectionDAG/` that contains this error message or assertion. 2. The function in that file where the assertion fires (look for type legalization expansion logic). 3. The header file that defines the `EVT` (Extended Value Type) class and its `isSimple()` method (look in `llvm/include/llvm/CodeGen/`). 4. The file that defines the `LegalizeDAG` class which orchestrates type legalization and may call the expand function. Report the repo, file path, and function or class name for each."
+  },
+  "artifacts": {
+    "repo_set_id": "compiler-toolchain",
+    "oracle": {
+      "required_files": [
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/CodeGen/SelectionDAG/LegalizeDAG.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/include/llvm/CodeGen/ValueTypes.h"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/CodeGen/SelectionDAG/LegalizeTypes.cpp"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/CodeGen/SelectionDAG/SelectionDAGISel.cpp"}
+      ],
+      "required_symbols": [
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/include/llvm/CodeGen/ValueTypes.h", "symbol": "EVT", "kind": "class"},
+        {"repo": "sg-evals/llvm-project--a8f3c97d", "path": "llvm/lib/CodeGen/SelectionDAG/LegalizeDAG.cpp", "symbol": "SelectionDAGLegalize", "kind": "class"}
+      ],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": ["deterministic"],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "LegalizeDAG OR EVT OR ValueTypes",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": ["EVT", "isSimple", "LegalizeDAG", "SelectionDAGLegalize", "Cannot expand"]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+  }
+}

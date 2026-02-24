@@ -9,7 +9,7 @@
 ## Overview
 
 CodeContextBench measures AI coding agent performance across 8 SDLC-phase
-suites and 6 MCP-unique suites (14 active suites total). To translate raw
+suites and 10 MCP-unique suites (18 active suites total). To translate raw
 benchmark metrics (tokens, tool calls, task time) into business-relevant
 productivity estimates, we map each suite to an **engineering workflow
 category** and apply conservative token-to-time conversion multipliers.

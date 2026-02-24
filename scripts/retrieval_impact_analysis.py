@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import statistics
 import sys
 from pathlib import Path
@@ -305,6 +306,21 @@ def compute_correlations(
 # US-009: Matched comparison analysis
 # =========================================================================
 
+_MCP_TASK_RE = re.compile(r"^mcp_(.+?)(?:_[A-Za-z0-9]{4,8})?$")
+
+
+def _canonical_task_name(task_name: str) -> str:
+    """Normalize task names so baseline and MCP variants can be matched.
+
+    MCP tasks are commonly renamed as `mcp_<base>_<randomsuffix>`.
+    """
+    if not isinstance(task_name, str):
+        return str(task_name)
+    m = _MCP_TASK_RE.match(task_name)
+    if m:
+        return m.group(1)
+    return task_name
+
 def compute_matched_comparisons(
     retrieval_metrics: dict[tuple[str, str, str], dict],
     outcomes: dict[tuple[str, str, str], dict],
@@ -355,14 +371,19 @@ def compute_matched_comparisons(
         baseline_configs_seen.add(bl_config)
         mcp_configs_seen.add(mcp_config)
 
-        bl_tasks = {
-            k[2] for k in outcomes
-            if k[0] == run_id and k[1] == bl_config and outcomes[k].get("reward") is not None
-        }
-        mcp_tasks = {
-            k[2] for k in outcomes
-            if k[0] == run_id and k[1] == mcp_config and outcomes[k].get("reward") is not None
-        }
+        bl_outcomes_by_canon: dict[str, tuple[str, str, str]] = {}
+        mcp_outcomes_by_canon: dict[str, tuple[str, str, str]] = {}
+        for k in outcomes:
+            if k[0] != run_id or outcomes[k].get("reward") is None:
+                continue
+            canon = _canonical_task_name(k[2])
+            if k[1] == bl_config and canon not in bl_outcomes_by_canon:
+                bl_outcomes_by_canon[canon] = k
+            if k[1] == mcp_config and canon not in mcp_outcomes_by_canon:
+                mcp_outcomes_by_canon[canon] = k
+
+        bl_tasks = set(bl_outcomes_by_canon)
+        mcp_tasks = set(mcp_outcomes_by_canon)
         matched_tasks = sorted(bl_tasks & mcp_tasks)
         n_baseline_only = len(bl_tasks - mcp_tasks)
         n_mcp_only = len(mcp_tasks - bl_tasks)
@@ -389,11 +410,22 @@ def compute_matched_comparisons(
             "n_mcp_only": n_mcp_only,
         })
 
-        for task in matched_tasks:
-            bl_outcome = outcomes.get((run_id, bl_config, task), {})
-            mcp_outcome = outcomes.get((run_id, mcp_config, task), {})
-            bl_rm = retrieval_metrics.get((run_id, bl_config, task), {})
-            mcp_rm = retrieval_metrics.get((run_id, mcp_config, task), {})
+        for canon_task in matched_tasks:
+            bl_outcome_key = bl_outcomes_by_canon[canon_task]
+            mcp_outcome_key = mcp_outcomes_by_canon[canon_task]
+            bl_outcome = outcomes.get(bl_outcome_key, {})
+            mcp_outcome = outcomes.get(mcp_outcome_key, {})
+
+            # Retrieval metrics are only present for computable tasks; match using canonical task names.
+            bl_rm = {}
+            mcp_rm = {}
+            for k, v in retrieval_metrics.items():
+                if k[0] != run_id:
+                    continue
+                if k[1] == bl_config and _canonical_task_name(k[2]) == canon_task:
+                    bl_rm = v
+                elif k[1] == mcp_config and _canonical_task_name(k[2]) == canon_task:
+                    mcp_rm = v
 
             bl_reward = bl_outcome.get("reward")
             mcp_reward = mcp_outcome.get("reward")
@@ -429,7 +461,9 @@ def compute_matched_comparisons(
 
             per_task.append({
                 "run_id": run_id,
-                "task_name": task,
+                "task_name": canon_task,
+                "task_name_baseline": bl_outcome_key[2],
+                "task_name_mcp": mcp_outcome_key[2],
                 "baseline_config": bl_config,
                 "mcp_config": mcp_config,
                 "reward_baseline": bl_reward,

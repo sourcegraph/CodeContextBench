@@ -4,7 +4,7 @@ This file is the operational quick-reference for benchmark maintenance.
 `CLAUDE.md` mirrors this file.
 
 ## Benchmark Overview
-8 SDLC phase suites + 6 MCP-unique suites. SDLC tasks measure code quality
+8 SDLC phase suites + 10 MCP-unique suites. SDLC tasks measure code quality
 across phases: build, debug, design, document, fix, secure, test, understand.
 MCP-unique tasks measure org-scale cross-repo discovery and retrieval.
 See `README.md` for the full suite table and `docs/TASK_CATALOG.md` for

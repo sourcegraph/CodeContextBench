@@ -534,7 +534,12 @@
       "tasks": [
         "ccb_design/etcd-grpc-api-upgrade-001",
         "ccb_test/test-unitgen-go-001",
-        "ccb_understand/k8s-cri-containerd-reason-001"
+        "ccb_understand/k8s-cri-containerd-reason-001",
+        "ccb_document/k8s-apiserver-doc-gen-001",
+        "ccb_document/k8s-applyconfig-doc-gen-001",
+        "ccb_document/k8s-clientgo-doc-gen-001",
+        "ccb_document/k8s-fairqueuing-doc-gen-001",
+        "ccb_document/k8s-kubelet-cm-doc-gen-001"
       ]
     },
     {
@@ -967,13 +972,51 @@
       "tasks": [
         "ccb_secure/kafka-vuln-reachability-001"
       ]
+    },
+    {
+      "upstream": "github.com/llvm/llvm-project",
+      "commit": "a8f3c97d3aa4943d03f657c8b086dbca4b6b50dd",
+      "mirror": "sg-evals/llvm-project--a8f3c97d",
+      "pin_source": "HEAD pinned 2026-02-24 (compiler-toolchain fixture)",
+      "tasks": [
+        "ccb_mcp_domain/ccx-domain-101",
+        "ccb_mcp_crossrepo_tracing/ccx-dep-trace-102",
+        "ccb_mcp_onboarding/ccx-onboard-103",
+        "ccb_mcp_platform/ccx-platform-104",
+        "ccb_mcp_security/ccx-vuln-remed-105",
+        "ccb_mcp_crossrepo/ccx-dep-trace-106",
+        "ccb_mcp_migration/ccx-migration-107",
+        "ccb_mcp_incident/ccx-incident-108"
+      ]
+    },
+    {
+      "upstream": "github.com/gcc-mirror/gcc",
+      "commit": "96dfb33390d0cd8b2cf35be83f0859930980e4b4",
+      "mirror": "sg-evals/gcc--96dfb333",
+      "pin_source": "HEAD pinned 2026-02-24 (compiler-toolchain fixture)",
+      "tasks": [
+        "ccb_mcp_crossrepo_tracing/ccx-dep-trace-102",
+        "ccb_mcp_crossrepo/ccx-dep-trace-106"
+      ]
+    },
+    {
+      "upstream": "github.com/mozilla-firefox/firefox",
+      "commit": "871325b8460362073cb2069874bef7dde3170cb2",
+      "mirror": "sg-evals/firefox--871325b8",
+      "pin_source": "HEAD pinned 2026-02-24 (mozilla-firefox fixture)",
+      "tasks": [
+        "ccb_mcp_onboarding/ccx-onboard-109",
+        "ccb_mcp_incident/ccx-incident-110",
+        "ccb_mcp_security/ccx-vuln-remed-111",
+        "ccb_mcp_domain/ccx-domain-112"
+      ]
     }
   ],
   "unresolved": [],
   "summary": {
-    "total_mirrors_needed": 98,
-    "unique_upstream_repos": 48,
-    "tasks_affected": 132,
+    "total_mirrors_needed": 101,
+    "unique_upstream_repos": 51,
+    "tasks_affected": 146,
     "unresolved_count": 0
   }
 }

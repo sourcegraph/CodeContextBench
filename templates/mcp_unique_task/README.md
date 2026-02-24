@@ -40,7 +40,7 @@ Literal `$` signs in bash code are escaped as `$$`.
 | `$customer_prompt` | string | `Find all repos that import...` | Customer-framed task prompt |
 | `$context_description` | string | `You are a platform engineer...` | Background/role context |
 | `$local_repo_description` | string | `The local /workspace contains kubernetes/kubernetes` | What's available locally |
-| `$mcp_repos_description` | string | `- sg-benchmarks/kubernetes-client-go...` | MCP-only repos bullet list |
+| `$mcp_repos_description` | string | `- sg-evals/kubernetes-client-go...` | MCP-only repos bullet list |
 | `$evaluation_criteria` | string | `- Recall of affected repos...` | What scoring checks |
 
 ### eval.sh.j2

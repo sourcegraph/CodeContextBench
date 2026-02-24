@@ -19,7 +19,7 @@ import sys
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # New task IDs to customize (the 20 generated skeletons)
-NEW_TASK_IDS = [2, 3, 12, 13, 22, 26, 32, 33, 43, 44, 52, 53, 62, 71, 72, 73, 74, 81, 82, 83]
+NEW_TASK_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
 
 # Reference task for copying shared files
 REFERENCE_TASK = os.path.join(PROJECT_ROOT, "benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001")
@@ -84,6 +84,28 @@ REPO_SETS = {
         ],
         "language": "Go",
         "file_ext": ".go",
+    },
+    "compiler-toolchain": {
+        "sg_repos": [
+            "sg-evals/llvm-project--a8f3c97d",
+            "sg-evals/gcc--96dfb333",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/llvm-project--a8f3c97d", "target_dir": "llvm-project"},
+            {"mirror": "sg-evals/gcc--96dfb333", "target_dir": "gcc"},
+        ],
+        "language": "C++",
+        "file_ext": ".cpp",
+    },
+    "mozilla-firefox": {
+        "sg_repos": [
+            "sg-evals/firefox--871325b8",
+        ],
+        "clone_repos": [
+            {"mirror": "sg-evals/firefox--871325b8", "target_dir": "firefox"},
+        ],
+        "language": "C++",
+        "file_ext": ".cpp",
     },
 }
 

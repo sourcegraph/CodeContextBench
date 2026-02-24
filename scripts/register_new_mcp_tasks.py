@@ -7,7 +7,7 @@ import sys
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-NEW_USE_CASE_IDS = [2, 3, 12, 13, 22, 26, 32, 33, 43, 44, 52, 53, 62, 71, 72, 73, 74, 81, 82, 83]
+NEW_USE_CASE_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
 
 # Language map from repo_set_id
 LANG_MAP = {
@@ -15,6 +15,8 @@ LANG_MAP = {
     "envoy-service-mesh": "cpp",
     "rust-systems": "rust",
     "kubernetes-ecosystem": "go",
+    "compiler-toolchain": "cpp",
+    "mozilla-firefox": "cpp",
 }
 
 # Primary repo for each repo set (used as "repo" field in selection files)
@@ -23,6 +25,8 @@ PRIMARY_REPO = {
     "envoy-service-mesh": "envoyproxy/envoy",
     "rust-systems": "rust-lang/rust",
     "kubernetes-ecosystem": "kubernetes/kubernetes",
+    "compiler-toolchain": "llvm/llvm-project",
+    "mozilla-firefox": "mozilla-firefox/firefox",
 }
 
 
@@ -143,12 +147,11 @@ def main():
     bench_data["metadata"]["target_total"] = total
     bench_data["metadata"]["last_updated"] = "2026-02-23"
     bench_data["metadata"]["target_note"] = (
-        f"All SDLC suites at target + 40 MCP-unique tasks across 10 ccb_mcp_* suites."
+        f"All SDLC suites at target + 48 MCP-unique tasks across 10 ccb_mcp_* suites."
     )
     bench_data["metadata"]["note"] = (
-        "Added 20 new MCP-unique tasks (categories H: domain, I: agentic). "
-        "Expanded from 190 to 210 total. New repo sets: apache-kafka-ecosystem, "
-        "envoy-service-mesh, rust-systems."
+        "Added 8 compiler-toolchain tasks (LLVM/GCC mega-repos). "
+        "Expanded from 210 to 218 total. New repo set: compiler-toolchain."
     )
 
     # Update mcp_unique_suites list

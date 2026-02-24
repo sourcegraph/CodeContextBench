@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "k8s-clientgo-doc-gen-001"
-repo = "sg-evals/kubernetes--stripped"
+repo = "sg-evals/kubernetes--8c9c67c0"
 category = "architecture_doc"
 language = "go"
 difficulty = "hard"

@@ -150,6 +150,22 @@
             "$ref": "#/$defs/ground_truth_symbol"
           }
         },
+        "expected_edit_files": {
+          "type": "array",
+          "description": "Optional edit-target file set (subset or equal to relevant files) when inferable from high-confidence sources such as patches or expected_changes.json.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_edit_files_source": {
+          "type": ["string", "null"],
+          "description": "Provenance of expected_edit_files inference (e.g. 'patch', 'expected_changes_json')."
+        },
+        "expected_edit_files_confidence": {
+          "type": ["string", "null"],
+          "enum": ["high", "medium", "low", null],
+          "description": "Confidence of expected_edit_files inference."
+        },
         "chunks": {
           "type": "array",
           "description": "Optional line-range annotations within ground-truth files. Present only when coverage.has_chunk_ground_truth is true.",

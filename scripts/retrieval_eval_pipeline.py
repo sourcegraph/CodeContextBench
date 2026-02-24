@@ -183,8 +183,11 @@ def compute_utilization_probes(doc: dict) -> dict:
     whether files the agent wrote to (file_write events) overlap with
     ground-truth files — indicating the agent acted on the right evidence.
 
-    Probe: referenced_file_correctness
-        = |files_written ∩ ground_truth| / |ground_truth|
+    Probe (primary): read_overlap_with_relevant_files
+        = |files_read ∩ relevant_files| / |relevant_files|
+
+    Probe (proxy): write_overlap_with_relevant_files_proxy
+        = |files_written ∩ relevant_files| / |relevant_files|
 
     Coverage flag: `probe_available` is false when no write events exist
     or no ground truth exists.
@@ -192,19 +195,38 @@ def compute_utilization_probes(doc: dict) -> dict:
     coverage = doc.get("coverage", {})
     gt = doc.get("ground_truth", {})
     gt_files = gt.get("files", [])
+    expected_edit_files = gt.get("expected_edit_files", []) or []
     events = doc.get("events", [])
 
     if not coverage.get("has_ground_truth", False) or not gt_files:
         return {
             "probe_available": False,
             "reason": "no_ground_truth",
-            "util_referenced_file_correctness": None,
+            "util_read_overlap_with_relevant_files": None,
+            "util_write_overlap_with_relevant_files_proxy": None,
+            "util_write_overlap_with_expected_edit_files": None,
             "util_read_before_write_ratio": None,
+            "expected_edit_probe_available": False,
+            "expected_edit_probe_reason": "no_ground_truth",
+            "files_read": 0,
+            "files_read_relevant": 0,
             "files_written": 0,
-            "files_written_correct": 0,
+            "files_written_relevant": 0,
+            "files_written_expected_edit": 0,
         }
 
     gt_normalized = {_normalize(f) for f in gt_files}
+    expected_edit_normalized = {_normalize(f) for f in expected_edit_files if _normalize(f)}
+
+    # Files read by agent (explicit file reads only; MCP read_file is normalized to file_read)
+    read_files: set[str] = set()
+    for evt in events:
+        if evt.get("tool_category") == "file_read":
+            for tf in evt.get("target_files", []):
+                read_files.add(_normalize(tf))
+
+    relevant_reads = read_files & gt_normalized
+    read_overlap = round(len(relevant_reads) / len(gt_normalized), 4)
 
     # Files written by agent
     written_files: set[str] = set()
@@ -213,19 +235,20 @@ def compute_utilization_probes(doc: dict) -> dict:
             for tf in evt.get("target_files", []):
                 written_files.add(_normalize(tf))
 
-    if not written_files:
-        return {
-            "probe_available": False,
-            "reason": "no_write_events",
-            "util_referenced_file_correctness": None,
-            "util_read_before_write_ratio": None,
-            "files_written": 0,
-            "files_written_correct": 0,
-        }
+    # Proxy write-overlap metric against relevant files.
+    relevant_writes = written_files & gt_normalized
+    write_overlap_relevant = (
+        round(len(relevant_writes) / len(gt_normalized), 4) if gt_normalized else None
+    )
 
-    # Probe 1: referenced file correctness
-    correct_writes = written_files & gt_normalized
-    ref_correctness = round(len(correct_writes) / len(gt_normalized), 4)
+    # Optional stronger write-overlap metric against expected edit targets.
+    expected_edit_probe_available = bool(expected_edit_normalized)
+    expected_edit_probe_reason = None if expected_edit_probe_available else "no_expected_edit_files"
+    expected_edit_write_overlap = None
+    if expected_edit_probe_available:
+        expected_edit_write_overlap = round(
+            len(written_files & expected_edit_normalized) / len(expected_edit_normalized), 4
+        )
 
     # Probe 2: read-before-write ratio
     # For each written file, check if it was read first (in an earlier step)
@@ -254,10 +277,20 @@ def compute_utilization_probes(doc: dict) -> dict:
 
     return {
         "probe_available": True,
-        "util_referenced_file_correctness": ref_correctness,
+        "reason": None,
+        "util_read_overlap_with_relevant_files": read_overlap,
+        "util_write_overlap_with_relevant_files_proxy": write_overlap_relevant,
+        # Back-compat alias (deprecated): previously misinterpreted as generic utilization quality.
+        "util_referenced_file_correctness": write_overlap_relevant,
+        "util_write_overlap_with_expected_edit_files": expected_edit_write_overlap,
         "util_read_before_write_ratio": rbw_ratio,
+        "expected_edit_probe_available": expected_edit_probe_available,
+        "expected_edit_probe_reason": expected_edit_probe_reason,
+        "files_read": len(read_files),
+        "files_read_relevant": len(relevant_reads),
         "files_written": len(written_files),
-        "files_written_correct": len(correct_writes),
+        "files_written_relevant": len(relevant_writes),
+        "files_written_expected_edit": len(written_files & expected_edit_normalized) if expected_edit_probe_available else 0,
     }
 
 
@@ -411,17 +444,38 @@ def assemble_run_summary(
     util_available = [a for a in computable if a["utilization_probes"].get("probe_available")]
     util_agg = {}
     if util_available:
+        read_overlap = [a["utilization_probes"]["util_read_overlap_with_relevant_files"]
+                        for a in util_available
+                        if a["utilization_probes"].get("util_read_overlap_with_relevant_files") is not None]
+        if read_overlap:
+            util_agg["util_read_overlap_with_relevant_files"] = _stat_summary(read_overlap)
+
+        write_overlap_rel = [a["utilization_probes"]["util_write_overlap_with_relevant_files_proxy"]
+                             for a in util_available
+                             if a["utilization_probes"].get("util_write_overlap_with_relevant_files_proxy") is not None]
+        if write_overlap_rel:
+            util_agg["util_write_overlap_with_relevant_files_proxy"] = _stat_summary(write_overlap_rel)
+            # Back-compat alias
+            util_agg["util_referenced_file_correctness"] = util_agg["util_write_overlap_with_relevant_files_proxy"]
+
+        write_overlap_edit = [a["utilization_probes"]["util_write_overlap_with_expected_edit_files"]
+                              for a in util_available
+                              if a["utilization_probes"].get("util_write_overlap_with_expected_edit_files") is not None]
+        if write_overlap_edit:
+            util_agg["util_write_overlap_with_expected_edit_files"] = _stat_summary(write_overlap_edit)
+
         ref_corr = [a["utilization_probes"]["util_referenced_file_correctness"]
                      for a in util_available
                      if a["utilization_probes"].get("util_referenced_file_correctness") is not None]
-        if ref_corr:
-            util_agg["util_referenced_file_correctness"] = _stat_summary(ref_corr)
         rbw = [a["utilization_probes"]["util_read_before_write_ratio"]
                for a in util_available
                if a["utilization_probes"].get("util_read_before_write_ratio") is not None]
         if rbw:
             util_agg["util_read_before_write_ratio"] = _stat_summary(rbw)
         util_agg["n_tasks_with_probes"] = len(util_available)
+        util_agg["n_tasks_with_expected_edit_probe"] = len([
+            a for a in util_available if a["utilization_probes"].get("expected_edit_probe_available")
+        ])
 
     # Aggregate error taxonomy
     tax_computable = [a for a in computable if a["error_taxonomy"].get("computable")]
@@ -675,7 +729,7 @@ def main() -> None:
         print(f"  MRR: {fa.get('mrr', {}).get('mean', 'N/A')}", file=sys.stderr)
         ua = run_summary.get("utilization_aggregates", {})
         if ua.get("n_tasks_with_probes"):
-            print(f"  util_ref_correctness: {ua.get('util_referenced_file_correctness', {}).get('mean', 'N/A')}", file=sys.stderr)
+            print(f"  util_read_overlap_relevant: {ua.get('util_read_overlap_with_relevant_files', {}).get('mean', 'N/A')}", file=sys.stderr)
 
     # Also print summary JSON to stdout
     print(json.dumps(run_summary, indent=2))

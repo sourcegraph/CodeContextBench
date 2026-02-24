@@ -4,7 +4,7 @@ This file is the operational quick-reference for benchmark maintenance.
 `AGENTS.md` mirrors this file.
 
 ## Benchmark Overview
-8 SDLC phase suites + 8 MCP-unique suites (6 active, 2 deferred). SDLC tasks
+8 SDLC phase suites + 10 MCP-unique suites. SDLC tasks
 measure code quality across phases: build, debug, design, document, fix,
 secure, test, understand. MCP-unique tasks measure org-scale cross-repo
 discovery and retrieval.
