@@ -28,6 +28,7 @@ RUN find /app -type f \( -name "*.py" -o -name "*.pyx" -o -name "*.pyi" -o -name
 # Recommit truncated state so git history cannot recover full files.
 RUN cd /app && git config user.email "agent@example.com" && \
     git config user.name "Agent" && \
+    rm -rf /app/.husky /app/.git/hooks/* && \
     git add -A && git commit -m "sg_only truncation" --allow-empty --quiet
 
 # Clone manifest for verifier (clone-at-verify strategy)
