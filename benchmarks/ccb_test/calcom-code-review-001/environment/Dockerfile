@@ -17,6 +17,7 @@ RUN if ! command -v node &> /dev/null; then \
 
 # Clone calcom/cal.com at pinned commit (PR #26801 merge commit)
 RUN git clone --depth 1 https://github.com/sg-evals/cal.com--4b99072b.git /workspace && \
+    cd /workspace && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 
