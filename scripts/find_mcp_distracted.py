@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-STAGING_DIR = Path("/home/stephanie_jarmak/CodeContextBench/runs/staging")
+STAGING_DIR = Path(__file__).resolve().parent.parent / "runs" / "staging"
 
 SDLC_SUITES = {"build", "debug", "design", "document", "fix", "secure", "test", "understand"}
 

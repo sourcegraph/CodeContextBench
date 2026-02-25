@@ -21,8 +21,9 @@ import shutil
 import sys
 from pathlib import Path
 
-STAGING = Path("/home/stephanie_jarmak/CodeContextBench/runs/staging")
-OFFICIAL = Path("/home/stephanie_jarmak/CodeContextBench/runs/official")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+STAGING = REPO_ROOT / "runs" / "staging"
+OFFICIAL = REPO_ROOT / "runs" / "official"
 
 # Runs to skip
 SKIP_PREFIXES = ("__archived_", "__broken_verifier_")

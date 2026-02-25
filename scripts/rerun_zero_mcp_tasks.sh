@@ -14,7 +14,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/.."
 
-BENCH_DIR="/home/stephanie_jarmak/CodeContextBench/benchmarks"
+BENCH_DIR="$(pwd)/benchmarks"
 
 # Agent code lives in-repo under agents/
 export PYTHONPATH="$(pwd):${PYTHONPATH:-}"

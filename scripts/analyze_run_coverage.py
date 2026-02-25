@@ -12,7 +12,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-BASE_DIR = Path("/home/stephanie_jarmak/CodeContextBench")
+BASE_DIR = Path(__file__).resolve().parent.parent
 SELECTED_TASKS_FILE = BASE_DIR / "configs" / "selected_benchmark_tasks.json"
 RUNS_DIR = BASE_DIR / "runs" / "official"
 

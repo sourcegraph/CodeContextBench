@@ -5,7 +5,8 @@ set -euo pipefail
 # then automatically start SF runs when each finishes.
 
 POLL_INTERVAL=60
-WORKDIR="/home/stephanie_jarmak/CodeContextBench"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKDIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 PYTORCH_SB_SESSION="pytorch"
 SWEBENCH_SB_SESSION="swebench-base"

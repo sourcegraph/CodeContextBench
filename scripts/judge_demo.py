@@ -53,17 +53,19 @@ from run_judge import (
 # Config
 # ──────────────────────────────────────────────────────────────────────
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
 BL_TASK_DIR = Path(
-    "/home/stephanie_jarmak/CodeContextBench/runs/staging/"
-    "test_sonnet_20260219_015458_to_20260219_213932/"
-    "baseline/ccb_test_test-unitgen-go-001_baseline/"
+    REPO_ROOT / "runs" / "staging" /
+    "test_sonnet_20260219_015458_to_20260219_213932" /
+    "baseline" / "ccb_test_test-unitgen-go-001_baseline" /
     "test-unitgen-go-001__7SxXhsF"
 )
 
 SG_TASK_DIR = Path(
-    "/home/stephanie_jarmak/CodeContextBench/runs/staging/"
-    "test_sonnet_20260219_015458_to_20260219_213932/"
-    "sourcegraph_full/ccb_test_test-unitgen-go-001_sourcegraph_full/"
+    REPO_ROOT / "runs" / "staging" /
+    "test_sonnet_20260219_015458_to_20260219_213932" /
+    "sourcegraph_full" / "ccb_test_test-unitgen-go-001_sourcegraph_full" /
     "sdlc_test_test-unitgen-go-001_TJ__VwAEJTL"
 )
 

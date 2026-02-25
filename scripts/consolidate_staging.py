@@ -22,14 +22,15 @@ import subprocess
 from collections import defaultdict
 from pathlib import Path
 
-STAGING = Path("/home/stephanie_jarmak/CodeContextBench/runs/staging")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+STAGING = REPO_ROOT / "runs" / "staging"
 
 
 def get_aggregate_data():
     result = subprocess.run(
         ["python3", "scripts/aggregate_status.py", "--staging"],
         capture_output=True, text=True,
-        cwd="/home/stephanie_jarmak/CodeContextBench",
+        cwd=str(REPO_ROOT),
     )
     return json.loads(result.stdout)
 

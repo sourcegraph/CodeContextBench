@@ -178,9 +178,10 @@ def find_instruction(task_path: str, trial_dir: str) -> str:
 def main():
     dry_run = "--dry-run" in sys.argv
 
+    repo_root = Path(__file__).resolve().parent.parent
     search_roots = [
-        Path(__file__).resolve().parent.parent / "runs" / "official",
-        Path("/home/stephanie_jarmak/CodeContextBench/runs/validation"),
+        repo_root / "runs" / "official",
+        repo_root / "runs" / "validation",
     ]
 
     trial_count = 0

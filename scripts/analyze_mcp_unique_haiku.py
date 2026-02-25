@@ -24,7 +24,7 @@ from statistics import mean, median, stdev
 
 # -- Configuration --
 
-STAGING_DIR = Path("/home/stephanie_jarmak/CodeContextBench/runs/staging")
+STAGING_DIR = Path(__file__).resolve().parent.parent / "runs" / "staging"
 RUN_SUFFIX = "_haiku_20260221_140913"
 BASELINE_CONFIG = "baseline-local-artifact"
 MCP_CONFIG = "mcp-remote-artifact"

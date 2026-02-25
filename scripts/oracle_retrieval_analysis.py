@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 # ── Configuration ──────────────────────────────────────────────────────────
 
-BASE_DIR = Path("/home/stephanie_jarmak/CodeContextBench")
+BASE_DIR = Path(__file__).resolve().parent.parent
 STAGING_DIR = BASE_DIR / "runs" / "staging"
 BENCHMARKS_DIR = BASE_DIR / "benchmarks"
 RUN_TIMESTAMP = "20260221_140913"
