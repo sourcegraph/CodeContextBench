@@ -57,7 +57,7 @@ bash configs/run_selected_tasks.sh --dry-run
 ### First places to read
 
 - `docs/START_HERE_BY_TASK.md` for task-oriented navigation
-- `docs/CONFIGS.md` for the 2-config evaluation matrix
+- `docs/reference/CONFIGS.md` for the 2-config evaluation matrix
 - `docs/EVALUATION_PIPELINE.md` for scoring and reporting outputs
 - `docs/REPO_HEALTH.md` for the pre-push health gate
 
@@ -103,14 +103,21 @@ See [docs/MCP_UNIQUE_TASKS.md](docs/MCP_UNIQUE_TASKS.md) for the full task syste
 
 ## 2-Config Evaluation Matrix
 
-All benchmarks are evaluated across two agent configurations that vary the external context tools available via MCP:
+All benchmarks are evaluated across two paper-level configurations (Baseline vs MCP-Full). The concrete run config names differ by task type:
 
-| Paper Config Name | `BASELINE_MCP_TYPE` | MCP Tools Available |
+- **SDLC suites** (`ccb_build`, `ccb_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
+- **MCP-unique suites** (`ccb_mcp_*`): `baseline-local-artifact` + `mcp-remote-artifact`
+
+Legacy run directory names (`baseline`, `sourcegraph_full`, `artifact_full`) may still appear in historical outputs and are handled by analysis scripts.
+
+At the paper level, the distinction is still:
+
+| Paper Config Name | Internal MCP mode | MCP Tools Available |
 |-------------------|---------------------|---------------------|
 | Baseline | `none` | None (agent uses only built-in tools) |
-| MCP-Full | `sourcegraph_full` | All 13 Sourcegraph MCP tools including `sg_deepsearch`, `sg_deepsearch_read` |
+| MCP-Full | `sourcegraph_full` / `artifact_full` (task-dependent) | All 13 Sourcegraph MCP tools including `sg_deepsearch`, `sg_deepsearch_read` |
 
-See [docs/CONFIGS.md](docs/CONFIGS.md) for the full tool-by-tool breakdown.
+See [docs/reference/CONFIGS.md](docs/reference/CONFIGS.md) for the canonical configuration matrix and tool-by-tool breakdown. (`docs/CONFIGS.md` is a compatibility stub.)
 
 ---
 
