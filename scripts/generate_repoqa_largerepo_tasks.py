@@ -404,7 +404,12 @@ def _dockerfile_baseline_understand(task: RepoQATask) -> str:
     mirror = task.mirror
     if task.base_image:
         # Use pre-built base image that already contains the repo
-        return f"FROM {task.base_image}\n"
+        # Must create /app and /logs dirs for verifier (base images only have /workspace)
+        return textwrap.dedent(f"""\
+            FROM {task.base_image}
+            RUN mkdir -p /app /logs/agent /logs/verifier
+            ENTRYPOINT []
+        """)
     else:
         # No base image: clone from mirror as claude user
         return textwrap.dedent(f"""\
