@@ -1,5 +1,12 @@
 #!/bin/bash
+set -eo pipefail
 # RepoQA SR-QA Verification Script
+
+# Source the sg_only wrapper (no-op if not in sg_only mode)
+if [ -f /tests/sgonly_verifier_wrapper.sh ]; then
+    source /tests/sgonly_verifier_wrapper.sh
+fi
+
 echo "Starting RepoQA verifier..." 1>&2
 cd /app || { echo "ERROR: Cannot cd to /app"; exit 1; }
 mkdir -p /logs/verifier

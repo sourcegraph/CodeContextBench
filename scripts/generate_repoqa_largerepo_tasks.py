@@ -16,14 +16,57 @@ Usage:
 import argparse
 import json
 import os
+import shutil
 import textwrap
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 ROOT = Path(__file__).resolve().parent.parent
 UNDERSTAND_DIR = ROOT / "benchmarks" / "ccb_understand"
 ONBOARDING_DIR = ROOT / "benchmarks" / "ccb_mcp_onboarding"
+
+# ---------------------------------------------------------------------------
+# Infrastructure mapping: upstream repo -> base image + sg-evals mirror
+# ---------------------------------------------------------------------------
+REPO_INFRA: Dict[str, dict] = {
+    "kubernetes/kubernetes": {
+        "base_image": "ccb-repo-k8s-8c9c67c0",
+        "mirror": "sg-evals/kubernetes--8c9c67c0",
+    },
+    "apache/kafka": {
+        "base_image": "ccb-repo-kafka-0753c489",
+        "mirror": "sg-evals/kafka--0753c489",
+    },
+    "rust-lang/rust": {
+        "base_image": "ccb-repo-rust-01f6ddf7",
+        "mirror": "sg-evals/rust--01f6ddf7",
+    },
+    "mozilla/gecko-dev": {
+        "base_image": None,  # no pre-built base image
+        "mirror": "sg-evals/firefox--871325b8",
+    },
+    "envoyproxy/envoy": {
+        "base_image": "ccb-repo-envoy-d7809ba2",
+        "mirror": "sg-evals/envoy--d7809ba2",
+    },
+    "scikit-learn/scikit-learn": {
+        "base_image": "ccb-repo-scikit-learn-cb7e82dd",
+        "mirror": "sg-evals/scikit-learn--cb7e82dd",
+    },
+    "pandas-dev/pandas": {
+        "base_image": "ccb-repo-pandas-41968da5",
+        "mirror": "sg-evals/pandas--41968da5",
+    },
+    "microsoft/vscode": {
+        "base_image": None,  # no pre-built base image
+        "mirror": "sg-evals/vscode--17baf841",
+    },
+    "grafana/grafana": {
+        "base_image": None,  # no pre-built base image
+        "mirror": "sg-evals/grafana--26d36ec",
+    },
+}
 
 
 @dataclass
@@ -32,13 +75,24 @@ class RepoQATask:
     task_id_understand: str      # e.g. k8s-scheduler-filter-search-001
     task_id_onboarding: str      # e.g. ccx-onboard-search-201
     repo: str                    # e.g. kubernetes/kubernetes
-    mirror: str                  # e.g. sg-evals/kubernetes--v1.32.0
     language: str                # e.g. go
     function_name: str
     function_path: str
     nl_description: str          # 4-part behavioral description
     difficulty: str = "hard"
     loc_estimate: int = 0
+
+    @property
+    def infra(self) -> dict:
+        return REPO_INFRA[self.repo]
+
+    @property
+    def mirror(self) -> str:
+        return self.infra["mirror"]
+
+    @property
+    def base_image(self) -> Optional[str]:
+        return self.infra.get("base_image")
 
 
 TASKS: List[RepoQATask] = [
@@ -47,7 +101,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="k8s-scheduler-filter-search-001",
         task_id_onboarding="ccx-onboard-search-201",
         repo="kubernetes/kubernetes",
-        mirror="sg-evals/kubernetes--v1.32.0",
         language="go",
         function_name="findNodesThatPassFilters",
         function_path="pkg/scheduler/schedule_one.go",
@@ -68,7 +121,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="k8s-eviction-sync-search-001",
         task_id_onboarding="ccx-onboard-search-202",
         repo="kubernetes/kubernetes",
-        mirror="sg-evals/kubernetes--v1.32.0",
         language="go",
         function_name="synchronize",
         function_path="pkg/kubelet/eviction/eviction_manager.go",
@@ -91,7 +143,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="kafka-batch-drain-search-001",
         task_id_onboarding="ccx-onboard-search-203",
         repo="apache/kafka",
-        mirror="sg-evals/kafka--0753c489",
         language="java",
         function_name="drainBatchesForOneNode",
         function_path="clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
@@ -112,7 +163,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="kafka-assign-handler-search-001",
         task_id_onboarding="ccx-onboard-search-204",
         repo="apache/kafka",
-        mirror="sg-evals/kafka--0753c489",
         language="java",
         function_name="handleAssignment",
         function_path="streams/src/main/java/org/apache/kafka/streams/processor/internals/TaskManager.java",
@@ -133,7 +183,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="rust-type-tests-search-001",
         task_id_onboarding="ccx-onboard-search-205",
         repo="rust-lang/rust",
-        mirror="sg-evals/rust--01f6ddf7",
         language="rust",
         function_name="check_type_tests",
         function_path="compiler/rustc_borrowck/src/region_infer/mod.rs",
@@ -153,7 +202,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="rust-liveness-gen-search-001",
         task_id_onboarding="ccx-onboard-search-206",
         repo="rust-lang/rust",
-        mirror="sg-evals/rust--01f6ddf7",
         language="rust",
         function_name="generate",
         function_path="compiler/rustc_borrowck/src/type_check/liveness/mod.rs",
@@ -174,7 +222,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="firefox-http-response-search-001",
         task_id_onboarding="ccx-onboard-search-207",
         repo="mozilla/gecko-dev",
-        mirror="sg-evals/firefox--871325b8",
         language="cpp",
         function_name="ContinueProcessResponse1",
         function_path="netwerk/protocol/http/nsHttpChannel.cpp",
@@ -198,7 +245,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="firefox-cache-race-search-001",
         task_id_onboarding="ccx-onboard-search-208",
         repo="mozilla/gecko-dev",
-        mirror="sg-evals/firefox--871325b8",
         language="cpp",
         function_name="MaybeRaceCacheWithNetwork",
         function_path="netwerk/protocol/http/nsHttpChannel.cpp",
@@ -220,7 +266,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="envoy-retry-eval-search-001",
         task_id_onboarding="ccx-onboard-search-209",
         repo="envoyproxy/envoy",
-        mirror="sg-evals/envoy--v1.31.2",
         language="cpp",
         function_name="wouldRetryFromHeaders",
         function_path="source/common/router/retry_state_impl.cc",
@@ -241,7 +286,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="envoy-pool-ready-search-001",
         task_id_onboarding="ccx-onboard-search-210",
         repo="envoyproxy/envoy",
-        mirror="sg-evals/envoy--v1.31.2",
         language="cpp",
         function_name="onPoolReady",
         function_path="source/common/router/upstream_request.cc",
@@ -268,7 +312,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="sklearn-fastica-fit-search-001",
         task_id_onboarding="ccx-onboard-search-211",
         repo="scikit-learn/scikit-learn",
-        mirror="",  # public repo, no custom mirror needed
         language="python",
         function_name="_fit_transform",
         function_path="sklearn/decomposition/_fastica.py",
@@ -290,7 +333,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="pandas-pivot-internal-search-001",
         task_id_onboarding="ccx-onboard-search-212",
         repo="pandas-dev/pandas",
-        mirror="",  # public repo
         language="python",
         function_name="__internal_pivot_table",
         function_path="pandas/core/reshape/pivot.py",
@@ -314,7 +356,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="vscode-keybinding-merge-search-001",
         task_id_onboarding="ccx-onboard-search-213",
         repo="microsoft/vscode",
-        mirror="",  # public repo
         language="typescript",
         function_name="computeMergeResult",
         function_path="src/vs/platform/userDataSync/common/keybindingsMerge.ts",
@@ -336,7 +377,6 @@ TASKS: List[RepoQATask] = [
         task_id_understand="grafana-field-calcs-search-001",
         task_id_onboarding="ccx-onboard-search-214",
         repo="grafana/grafana",
-        mirror="",  # public repo
         language="typescript",
         function_name="doStandardCalcs",
         function_path="packages/grafana-data/src/transformations/fieldReducer.ts",
@@ -354,6 +394,279 @@ TASKS: List[RepoQATask] = [
     ),
 ]
 
+
+# ---------------------------------------------------------------------------
+# Dockerfile generation
+# ---------------------------------------------------------------------------
+
+def _dockerfile_baseline_understand(task: RepoQATask) -> str:
+    """Baseline Dockerfile for ccb_understand: full repo available locally."""
+    mirror = task.mirror
+    if task.base_image:
+        # Use pre-built base image that already contains the repo
+        return f"FROM {task.base_image}\n"
+    else:
+        # No base image: clone from mirror as claude user
+        return textwrap.dedent(f"""\
+            FROM ubuntu:22.04
+            ENV DEBIAN_FRONTEND=noninteractive
+            RUN apt-get update && apt-get install -y --no-install-recommends \\
+                git ca-certificates curl python3 python3-pip ripgrep && \\
+                rm -rf /var/lib/apt/lists/*
+            RUN pip install --no-cache-dir numpy
+            RUN adduser --disabled-password --gecos '' claude 2>/dev/null || true
+            RUN mkdir -p /workspace /app /logs/agent /logs/verifier && \\
+                chown -R claude:claude /workspace /app /logs
+            USER claude
+            WORKDIR /workspace
+            RUN git config --global user.email "agent@example.com" && \\
+                git config --global user.name "Agent" && \\
+                git config --global safe.directory '*'
+            RUN git clone --depth 1 https://github.com/{mirror}.git /workspace/repo && \\
+                mv /workspace/repo/* /workspace/repo/.* /workspace/ 2>/dev/null; \\
+                rm -rf /workspace/repo
+            USER root
+            ENTRYPOINT []
+        """)
+
+
+def _dockerfile_sg_only(task: RepoQATask) -> str:
+    """Dockerfile.sg_only: empty workspace, agent must use Sourcegraph MCP."""
+    mirror = task.mirror
+    manifest = json.dumps({"workdir": "/workspace", "repos": [{"mirror": mirror, "target_dir": "."}]})
+    return textwrap.dedent(f"""\
+        FROM ubuntu:22.04
+        ENV SOURCEGRAPH_REPO_NAME={mirror}
+        ENV DEBIAN_FRONTEND=noninteractive
+        RUN apt-get update && apt-get install -y --no-install-recommends \\
+            git curl python3 python3-pip ripgrep ca-certificates && \\
+            rm -rf /var/lib/apt/lists/*
+        RUN pip install --no-cache-dir numpy
+        WORKDIR /workspace
+        RUN git init && git config user.email "agent@example.com" && git config user.name "Agent"
+        RUN mkdir -p /app /logs/agent /logs/verifier
+        RUN echo '{manifest}' > /tmp/.sg_only_clone_manifest.json
+        RUN touch /tmp/.sg_only_mode
+        RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \\
+            for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+        ENTRYPOINT []
+    """)
+
+
+def _dockerfile_baseline_onboarding(task: RepoQATask) -> str:
+    """Baseline Dockerfile for ccb_mcp_onboarding: clone mirror as claude."""
+    mirror = task.mirror
+    return textwrap.dedent(f"""\
+        FROM ubuntu:22.04
+        ENV DEBIAN_FRONTEND=noninteractive
+        RUN apt-get update && apt-get install -y --no-install-recommends \\
+            git ca-certificates curl python3 python3-pip ripgrep && \\
+            rm -rf /var/lib/apt/lists/*
+        RUN pip install --no-cache-dir numpy
+        RUN adduser --disabled-password --gecos '' claude 2>/dev/null || true
+        RUN mkdir -p /workspace /app /logs/agent /logs/verifier && \\
+            chown -R claude:claude /workspace /app /logs
+        USER claude
+        WORKDIR /workspace
+        RUN git config --global user.email "agent@example.com" && \\
+            git config --global user.name "Agent" && \\
+            git config --global safe.directory '*'
+        RUN git clone --depth 1 https://github.com/{mirror}.git /workspace/repo && \\
+            mv /workspace/repo/* /workspace/repo/.* /workspace/ 2>/dev/null; \\
+            rm -rf /workspace/repo
+        USER root
+        ENTRYPOINT []
+    """)
+
+
+def _dockerfile_artifact_only(task: RepoQATask) -> str:
+    """Dockerfile.artifact_only: empty workspace, MCP search only, artifact scoring."""
+    mirror = task.mirror
+    return textwrap.dedent(f"""\
+        FROM ubuntu:22.04
+        ENV SOURCEGRAPH_REPO_NAME={mirror}
+        ENV DEBIAN_FRONTEND=noninteractive
+        RUN apt-get update && apt-get install -y --no-install-recommends \\
+            git curl python3 python3-pip ca-certificates && \\
+            rm -rf /var/lib/apt/lists/*
+        RUN pip install --no-cache-dir numpy
+        WORKDIR /workspace
+        RUN git init && git config user.email "agent@example.com" && git config user.name "Agent"
+        RUN mkdir -p /app /logs/agent /logs/verifier
+        RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir
+        RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \\
+            for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+        ENTRYPOINT []
+    """)
+
+
+def _dockerfile_artifact_baseline(task: RepoQATask) -> str:
+    """Dockerfile.artifact_baseline: baseline clone + artifact_only_mode sentinel."""
+    base = _dockerfile_baseline_onboarding(task)
+    # Insert artifact_only_mode sentinel before ENTRYPOINT
+    return base.replace(
+        "ENTRYPOINT []",
+        "RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir\nENTRYPOINT []",
+    )
+
+
+# ---------------------------------------------------------------------------
+# test.sh and verifier templates
+# ---------------------------------------------------------------------------
+
+_TEST_SH = '''\
+#!/bin/bash
+set -eo pipefail
+# RepoQA SR-QA Verification Script
+
+# Source the sg_only wrapper (no-op if not in sg_only mode)
+if [ -f /tests/sgonly_verifier_wrapper.sh ]; then
+    source /tests/sgonly_verifier_wrapper.sh
+fi
+
+echo "Starting RepoQA verifier..." 1>&2
+cd /app || { echo "ERROR: Cannot cd to /app"; exit 1; }
+mkdir -p /logs/verifier
+
+if [ ! -f /tests/ground_truth.json ]; then
+    echo "ERROR: No ground_truth.json found at /tests/ground_truth.json"
+    echo \'{"score": 0.0}\' > /logs/verifier/reward.json
+    echo "0.0" > /logs/verifier/reward.txt
+    exit 0
+fi
+
+SOLUTION_FILE="/app/solution.json"
+if [ ! -f "$SOLUTION_FILE" ]; then
+    echo "ERROR: Agent did not create solution.json in /app/"
+    echo \'{"score": 0.0}\' > /logs/verifier/reward.json
+    echo "0.0" > /logs/verifier/reward.txt
+    exit 0
+fi
+
+cat > /tmp/verify.py << \'PYEOF\'
+import json, sys, re
+sys.path.insert(0, "/tests")
+from verifiers import SemanticRetrievalQAVerifier
+
+try:
+    with open("/tests/ground_truth.json") as f:
+        ground_truth = json.load(f)
+    with open("/app/solution.json") as f:
+        raw = f.read()
+    matches = re.findall(r"```(?:json)?\\s*\\n(.*?)```", raw, re.DOTALL)
+    if matches:
+        raw = matches[-1].strip()
+    agent_output = json.loads(raw)
+
+    verifier = SemanticRetrievalQAVerifier(ground_truth)
+    result = verifier.verify(agent_output)
+    reward = {"score": float(result.correct_function)}
+
+    print(f"Correct Function: {result.correct_function:.2f}")
+    print(f"Correct Path: {result.correct_path:.2f}")
+    print(f"Justification: {result.justification_score:.2f}")
+    print(f"Details: {result.reasoning}")
+
+    with open("/logs/verifier/reward.json", "w") as f:
+        json.dump(reward, f, indent=2)
+    with open("/logs/verifier/reward.txt", "w") as f:
+        f.write(str(reward["score"]))
+except Exception as e:
+    import traceback
+    print(f"ERROR: {e}")
+    traceback.print_exc()
+    with open("/logs/verifier/reward.json", "w") as f:
+        json.dump({"score": 0.0}, f)
+    with open("/logs/verifier/reward.txt", "w") as f:
+        f.write("0.0")
+PYEOF
+
+python3 /tmp/verify.py 2>&1 | tee /logs/verifier/verify-debug.log
+exit 0
+'''
+
+_VERIFIERS_PY = '''\
+"""Verifiers for RepoQA SR-QA tasks. Scores agent function retrieval."""
+
+import json
+import re
+from dataclasses import dataclass
+from difflib import SequenceMatcher
+from pathlib import Path
+from typing import Any, Dict
+
+
+@dataclass
+class VerificationResult:
+    correct_function: float
+    correct_path: float
+    justification_score: float
+    reasoning: str = ""
+
+
+class SemanticRetrievalQAVerifier:
+    def __init__(self, ground_truth: Dict[str, Any]):
+        self.ground_truth = ground_truth
+
+    def verify(self, agent_output: Dict[str, Any]) -> VerificationResult:
+        try:
+            path = agent_output.get("function_path", "")
+            name = agent_output.get("function_name", "")
+            justification = agent_output.get("justification", "")
+        except (KeyError, TypeError) as e:
+            return VerificationResult(0.0, 0.0, 0.0, f"Invalid output: {e}")
+
+        canonical_path = self.ground_truth.get("canonical_path", "")
+        canonical_name = self.ground_truth.get("canonical_name", "")
+        nl_description = self.ground_truth.get("nl_description", "")
+
+        path_score = self._path_similarity(path, canonical_path)
+        name_score = self._name_similarity(name, canonical_name)
+
+        if path_score == 1.0 and name_score == 1.0:
+            function_score = 1.0
+        elif path_score == 1.0 and name_score > 0.7:
+            function_score = 0.8
+        elif path_score > 0.8 and name_score == 1.0:
+            function_score = 0.8
+        elif path_score > 0.5 and name_score > 0.5:
+            function_score = 0.3
+        else:
+            function_score = 0.0
+
+        justification_score = self._keyword_overlap(justification, nl_description)
+
+        reasoning = (
+            f"Path match: {path_score:.2f} (expected {canonical_path})\\n"
+            f"Name match: {name_score:.2f} (expected {canonical_name})\\n"
+            f"Justification keywords: {justification_score:.2f}"
+        )
+        return VerificationResult(function_score, path_score, justification_score, reasoning)
+
+    @staticmethod
+    def _path_similarity(p1: str, p2: str) -> float:
+        p1, p2 = Path(p1).as_posix(), Path(p2).as_posix()
+        return 1.0 if p1 == p2 else SequenceMatcher(None, p1, p2).ratio()
+
+    @staticmethod
+    def _name_similarity(n1: str, n2: str) -> float:
+        return 1.0 if n1 == n2 else SequenceMatcher(None, n1.lower(), n2.lower()).ratio()
+
+    @staticmethod
+    def _keyword_overlap(text1: str, text2: str) -> float:
+        if not text1 or not text2:
+            return 0.0
+        w1 = set(re.findall(r"\\w+", text1.lower()))
+        w2 = set(re.findall(r"\\w+", text2.lower()))
+        if not w1 or not w2:
+            return 0.0
+        return len(w1 & w2) / len(w1 | w2)
+'''
+
+
+# ---------------------------------------------------------------------------
+# Ground truth, instruction, task.toml generation
+# ---------------------------------------------------------------------------
 
 def generate_ground_truth(task: RepoQATask) -> dict:
     """Generate ground_truth.json content."""
@@ -498,6 +811,10 @@ def generate_task_toml(task_id: str, task: RepoQATask, category: str) -> str:
     """)
 
 
+# ---------------------------------------------------------------------------
+# Task directory generation
+# ---------------------------------------------------------------------------
+
 def generate_task_dir(
     base_dir: Path,
     task_id: str,
@@ -505,7 +822,7 @@ def generate_task_dir(
     category: str,
     dry_run: bool = True,
 ) -> None:
-    """Generate a complete task directory."""
+    """Generate a complete task directory with all Dockerfile variants."""
     task_dir = base_dir / task_id
     tests_dir = task_dir / "tests"
     env_dir = task_dir / "environment"
@@ -528,174 +845,32 @@ def generate_task_dir(
     gt = generate_ground_truth(task)
     (tests_dir / "ground_truth.json").write_text(json.dumps(gt, indent=2) + "\n")
 
-    # Copy verifiers.py from archived template
-    verifiers_src = ROOT / "benchmarks" / "archive" / "ccb_repoqa" / "tasks"
-    # Find any existing verifiers.py in git or write inline
-    verifiers_path = tests_dir / "verifiers.py"
-    if not verifiers_path.exists():
-        # Use the standard RepoQA verifier
-        verifiers_path.write_text(_VERIFIERS_PY)
+    # Write verifiers.py
+    (tests_dir / "verifiers.py").write_text(_VERIFIERS_PY)
 
-    # Copy test.sh from archived template
+    # Write test.sh
     test_sh_path = tests_dir / "test.sh"
-    if not test_sh_path.exists():
-        test_sh_path.write_text(_TEST_SH)
+    test_sh_path.write_text(_TEST_SH)
     os.chmod(test_sh_path, 0o755)
 
-    # Write minimal Dockerfile
-    (env_dir / "Dockerfile").write_text(textwrap.dedent(f"""\
-        FROM python:3.11-slim
-        RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
-        RUN pip install --no-cache-dir numpy
-        WORKDIR /app
-        RUN mkdir -p /logs/agent /logs/verifier
-    """))
+    # Copy sgonly_verifier_wrapper.sh from canonical source
+    wrapper_src = ROOT / "scripts" / "sgonly_verifier_wrapper.sh"
+    wrapper_dst = tests_dir / "sgonly_verifier_wrapper.sh"
+    if wrapper_src.exists():
+        shutil.copy2(wrapper_src, wrapper_dst)
+    os.chmod(wrapper_dst, 0o755)
+
+    # Write Dockerfiles based on category
+    if category == "ccb_understand":
+        (env_dir / "Dockerfile").write_text(_dockerfile_baseline_understand(task))
+        (env_dir / "Dockerfile.sg_only").write_text(_dockerfile_sg_only(task))
+    elif category == "ccb_mcp_onboarding":
+        (env_dir / "Dockerfile").write_text(_dockerfile_baseline_onboarding(task))
+        (env_dir / "Dockerfile.sg_only").write_text(_dockerfile_sg_only(task))
+        (env_dir / "Dockerfile.artifact_only").write_text(_dockerfile_artifact_only(task))
+        (env_dir / "Dockerfile.artifact_baseline").write_text(_dockerfile_artifact_baseline(task))
 
     print(f"  Created: {task_dir}/")
-
-
-# Inline copies of the standard RepoQA verifier and test script
-_VERIFIERS_PY = '''\
-"""Verifiers for RepoQA SR-QA tasks. Scores agent function retrieval."""
-
-import json
-import re
-from dataclasses import dataclass
-from difflib import SequenceMatcher
-from pathlib import Path
-from typing import Any, Dict
-
-
-@dataclass
-class VerificationResult:
-    correct_function: float
-    correct_path: float
-    justification_score: float
-    reasoning: str = ""
-
-
-class SemanticRetrievalQAVerifier:
-    def __init__(self, ground_truth: Dict[str, Any]):
-        self.ground_truth = ground_truth
-
-    def verify(self, agent_output: Dict[str, Any]) -> VerificationResult:
-        try:
-            path = agent_output.get("function_path", "")
-            name = agent_output.get("function_name", "")
-            justification = agent_output.get("justification", "")
-        except (KeyError, TypeError) as e:
-            return VerificationResult(0.0, 0.0, 0.0, f"Invalid output: {e}")
-
-        canonical_path = self.ground_truth.get("canonical_path", "")
-        canonical_name = self.ground_truth.get("canonical_name", "")
-        nl_description = self.ground_truth.get("nl_description", "")
-
-        path_score = self._path_similarity(path, canonical_path)
-        name_score = self._name_similarity(name, canonical_name)
-
-        if path_score == 1.0 and name_score == 1.0:
-            function_score = 1.0
-        elif path_score == 1.0 and name_score > 0.7:
-            function_score = 0.8
-        elif path_score > 0.8 and name_score == 1.0:
-            function_score = 0.8
-        elif path_score > 0.5 and name_score > 0.5:
-            function_score = 0.3
-        else:
-            function_score = 0.0
-
-        justification_score = self._keyword_overlap(justification, nl_description)
-
-        reasoning = (
-            f"Path match: {path_score:.2f} (expected {canonical_path})\\n"
-            f"Name match: {name_score:.2f} (expected {canonical_name})\\n"
-            f"Justification keywords: {justification_score:.2f}"
-        )
-        return VerificationResult(function_score, path_score, justification_score, reasoning)
-
-    @staticmethod
-    def _path_similarity(p1: str, p2: str) -> float:
-        p1, p2 = Path(p1).as_posix(), Path(p2).as_posix()
-        return 1.0 if p1 == p2 else SequenceMatcher(None, p1, p2).ratio()
-
-    @staticmethod
-    def _name_similarity(n1: str, n2: str) -> float:
-        return 1.0 if n1 == n2 else SequenceMatcher(None, n1.lower(), n2.lower()).ratio()
-
-    @staticmethod
-    def _keyword_overlap(text1: str, text2: str) -> float:
-        if not text1 or not text2:
-            return 0.0
-        w1 = set(re.findall(r"\\w+", text1.lower()))
-        w2 = set(re.findall(r"\\w+", text2.lower()))
-        if not w1 or not w2:
-            return 0.0
-        return len(w1 & w2) / len(w1 | w2)
-'''
-
-_TEST_SH = '''\
-#!/bin/bash
-# RepoQA SR-QA Verification Script
-echo "Starting RepoQA verifier..." 1>&2
-cd /app || { echo "ERROR: Cannot cd to /app"; exit 1; }
-mkdir -p /logs/verifier
-
-if [ ! -f /tests/ground_truth.json ]; then
-    echo "ERROR: No ground_truth.json found at /tests/ground_truth.json"
-    echo \'{"score": 0.0}\' > /logs/verifier/reward.json
-    echo "0.0" > /logs/verifier/reward.txt
-    exit 0
-fi
-
-SOLUTION_FILE="/app/solution.json"
-if [ ! -f "$SOLUTION_FILE" ]; then
-    echo "ERROR: Agent did not create solution.json in /app/"
-    echo \'{"score": 0.0}\' > /logs/verifier/reward.json
-    echo "0.0" > /logs/verifier/reward.txt
-    exit 0
-fi
-
-cat > /tmp/verify.py << \'PYEOF\'
-import json, sys, re
-sys.path.insert(0, "/tests")
-from verifiers import SemanticRetrievalQAVerifier
-
-try:
-    with open("/tests/ground_truth.json") as f:
-        ground_truth = json.load(f)
-    with open("/app/solution.json") as f:
-        raw = f.read()
-    matches = re.findall(r"```(?:json)?\\s*\\n(.*?)```", raw, re.DOTALL)
-    if matches:
-        raw = matches[-1].strip()
-    agent_output = json.loads(raw)
-
-    verifier = SemanticRetrievalQAVerifier(ground_truth)
-    result = verifier.verify(agent_output)
-    reward = {"score": float(result.correct_function)}
-
-    print(f"Correct Function: {result.correct_function:.2f}")
-    print(f"Correct Path: {result.correct_path:.2f}")
-    print(f"Justification: {result.justification_score:.2f}")
-    print(f"Details: {result.reasoning}")
-
-    with open("/logs/verifier/reward.json", "w") as f:
-        json.dump(reward, f, indent=2)
-    with open("/logs/verifier/reward.txt", "w") as f:
-        f.write(str(reward["score"]))
-except Exception as e:
-    import traceback
-    print(f"ERROR: {e}")
-    traceback.print_exc()
-    with open("/logs/verifier/reward.json", "w") as f:
-        json.dump({"score": 0.0}, f)
-    with open("/logs/verifier/reward.txt", "w") as f:
-        f.write("0.0")
-PYEOF
-
-python3 /tmp/verify.py 2>&1 | tee /logs/verifier/verify-debug.log
-exit 0
-'''
 
 
 def main():
@@ -709,12 +884,12 @@ def main():
     print(f"Tasks: {len(TASKS)}")
     print()
 
-    print(f"--- ccb_understand (SDLC paired) ---")
+    print("--- ccb_understand (SDLC paired) ---")
     for task in TASKS:
         generate_task_dir(UNDERSTAND_DIR, task.task_id_understand, task, "ccb_understand", dry_run)
 
     print()
-    print(f"--- ccb_mcp_onboarding (MCP-unique) ---")
+    print("--- ccb_mcp_onboarding (MCP-unique) ---")
     for task in TASKS:
         generate_task_dir(ONBOARDING_DIR, task.task_id_onboarding, task, "ccb_mcp_onboarding", dry_run)
 
