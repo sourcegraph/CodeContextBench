@@ -19,7 +19,7 @@ from pathlib import Path
 LEGACY_CONFIGS = {
     "baseline", "sourcegraph_full", "sourcegraph_base",
     "sourcegraph_isolated", "sg_only_env",
-    "sourcegraph", "deepsearch", "artifact_full",
+    "sourcegraph", "deepsearch", "artifact_full", "mcp",
 }
 
 # New three-dimensional config names

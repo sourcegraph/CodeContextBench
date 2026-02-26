@@ -6,34 +6,114 @@
   "mcp_suite": "ccb_mcp_compliance",
   "prd": {
     "user_story": "As a developer, I want to: Find all Java source files in `apache/kafka` that produce audit log entries for authorization decisions. Search `core/src/main/scala/` and `clients/src/main/java/` for files that log `ALLOWED` or `DENIED` authorization events, reference `AuditLogger`, or implement audit trail functionality for ACL decisions. Report the file path and the class name producing audit events.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the apache-kafka-ecosystem fixture.",
     "seed_prompt": "Find all Java source files in `apache/kafka` that produce audit log entries for authorization decisions. Search `core/src/main/scala/` and `clients/src/main/java/` for files that log `ALLOWED` or `DENIED` authorization events, reference `AuditLogger`, or implement audit trail functionality for ACL decisions. Report the file path and the class name producing audit events."
   },
   "artifacts": {
     "repo_set_id": "apache-kafka-ecosystem",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizer.java"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "clients/src/main/java/org/apache/kafka/server/authorizer/Action.java"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "clients/src/main/java/org/apache/kafka/server/authorizer/Authorizer.java"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java",
+          "symbol": "StandardAuthorizerData"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java",
+          "symbol": "logAuditMessage"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java",
+          "symbol": "buildAuditMessage"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java",
+          "symbol": "auditLog"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizer.java",
+          "symbol": "StandardAuthorizer"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "clients/src/main/java/org/apache/kafka/server/authorizer/Action.java",
+          "symbol": "logIfAllowed"
+        },
+        {
+          "repo": "sg-evals/kafka--0753c489",
+          "path": "clients/src/main/java/org/apache/kafka/server/authorizer/Action.java",
+          "symbol": "logIfDenied"
+        }
+      ],
       "required_references": [],
       "dependency_chains": []
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "StandardAuthorizerData",
+            "logAuditMessage",
+            "buildAuditMessage",
+            "auditLog",
+            "StandardAuthorizer",
+            "logIfAllowed",
+            "logIfDenied"
+          ]
+        }
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

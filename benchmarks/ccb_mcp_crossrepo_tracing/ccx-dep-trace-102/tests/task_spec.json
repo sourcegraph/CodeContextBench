@@ -6,34 +6,106 @@
   "mcp_suite": "ccb_mcp_crossrepo_tracing",
   "prd": {
     "user_story": "As a developer, I want to: AddressSanitizer (ASan) is implemented in both LLVM and GCC. Find the key source files that implement ASan instrumentation in each compiler. In `llvm/llvm-project`: 1. The C++ source file under `compiler-rt/lib/asan/` that implements ASan interceptors for standard library functions. 2. The C++ source file under `compiler-rt/lib/asan/` that implements the ASan runtime initialization. 3. The LLVM pass that inserts ASan instrumentation at the IR level (look for `AddressSanitizer` in `llvm/lib/Transforms/Instrumentation/`). In `gcc-mirror/gcc`: 4. The C++ source file that implements ASan instrumentation in GCC (`gcc/asan.cc`). 5. The header file for ASan in GCC (`gcc/asan.h`). Report the repo, file path, and primary class or function name for each file.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
     "seed_prompt": "AddressSanitizer (ASan) is implemented in both LLVM and GCC. Find the key source files that implement ASan instrumentation in each compiler. In `llvm/llvm-project`: 1. The C++ source file under `compiler-rt/lib/asan/` that implements ASan interceptors for standard library functions. 2. The C++ source file under `compiler-rt/lib/asan/` that implements the ASan runtime initialization. 3. The LLVM pass that inserts ASan instrumentation at the IR level (look for `AddressSanitizer` in `llvm/lib/Transforms/Instrumentation/`). In `gcc-mirror/gcc`: 4. The C++ source file that implements ASan instrumentation in GCC (`gcc/asan.cc`). 5. The header file for ASan in GCC (`gcc/asan.h`). Report the repo, file path, and primary class or function name for each file."
   },
   "artifacts": {
     "repo_set_id": "compiler-toolchain",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "compiler-rt/lib/asan/asan_interceptors.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "compiler-rt/lib/asan/asan_rtl.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp"
+        },
+        {
+          "repo": "sg-evals/gcc--96dfb333",
+          "path": "gcc/asan.cc"
+        },
+        {
+          "repo": "sg-evals/gcc--96dfb333",
+          "path": "gcc/asan.h"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp",
+          "symbol": "AddressSanitizer"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp",
+          "symbol": "ModuleAddressSanitizer"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp",
+          "symbol": "AddressSanitizerPass"
+        },
+        {
+          "repo": "sg-evals/gcc--96dfb333",
+          "path": "gcc/asan.cc",
+          "symbol": "pass_asan"
+        },
+        {
+          "repo": "sg-evals/gcc--96dfb333",
+          "path": "gcc/asan.cc",
+          "symbol": "asan_redzone_buffer"
+        }
+      ],
       "required_references": [],
       "dependency_chains": []
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "AddressSanitizer",
+            "ModuleAddressSanitizer",
+            "AddressSanitizerPass",
+            "pass_asan",
+            "asan_redzone_buffer"
+          ]
+        }
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

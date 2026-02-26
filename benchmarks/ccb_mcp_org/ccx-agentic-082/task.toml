@@ -7,19 +7,20 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-agentic-082"
-repo = "org/repo"
+repo = "sg-evals/kubernetes--v1.32.0"
 category = "agentic-correctness"
-language = "unknown"
+language = "go"
 difficulty = "hard"
 time_limit_sec = 900
 mcp_suite = "ccb_mcp_org"
 use_case_id = 82
 repo_set_id = "kubernetes-ecosystem"
 mcp_unique = true
+verification_modes = ["artifact", "direct"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Agentic Correctness: Implement Kubernetes Custom Resource Client"

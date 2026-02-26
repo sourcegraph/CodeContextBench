@@ -23,7 +23,7 @@ reward_type = "ir_checklist"
 description = "IR metrics (file recall/precision) + keyword overlap for cross-repo architectural analysis"
 
 [environment]
-build_timeout_sec = 2400.0
+build_timeout_sec = 3600.0
 
 [environment.setup_scripts]
 mcp_config = """#!/bin/bash

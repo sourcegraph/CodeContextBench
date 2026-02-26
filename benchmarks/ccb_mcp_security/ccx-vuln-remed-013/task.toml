@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_security"
 use_case_id = 13
 repo_set_id = "apache-kafka-ecosystem"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Kafka ACL Authorization Code Audit"

@@ -19,7 +19,7 @@
 #   --full-only                     Run only MCP-Full (mcp-remote-direct)
 #   --full-config CONFIG            Full config name (default: mcp-remote-direct)
 #                                   Use mcp-remote-artifact for artifact-based evaluation
-#   --model MODEL                   Override model (default: claude-opus-4-6)
+#   --model MODEL                   Override model (default: claude-haiku-4-5-20251001)
 #   --concurrency N                 Trials per task via harbor -n (default: 1)
 #   --parallel N                    Parallel task slots (default: 1). Set to 8 for multi-account runs.
 #   --category CATEGORY             Run category (default: staging)
@@ -51,7 +51,7 @@ SELECTION_FILE="$REPO_ROOT/configs/selected_benchmark_tasks.json"
 # ============================================
 BENCHMARK_FILTER=""
 USE_CASE_CATEGORY_FILTER=""
-MODEL="${MODEL:-anthropic/claude-opus-4-6}"
+MODEL="${MODEL:-anthropic/claude-haiku-4-5-20251001}"
 CONCURRENCY=1        # harbor -n: trials per task
 PARALLEL_TASKS=0     # 0 = auto-detect from accounts; overridden by --parallel N
 TIMEOUT_MULTIPLIER=10

@@ -2,27 +2,28 @@ version = "1.0"
 
 [metadata]
 name = "CCX-crossorg-066"
-description = "Authoritative repo identification for go.etcd.io/etcd/client/v3"
+description = "Authoritative Repo Identification for a Cross-Org Dependency"
 license = "Apache-2.0"
 
 [task]
 id = "CCX-crossorg-066"
-repo = "kubernetes/kubernetes"
+repo = "org/repo"
 category = "cross-org-discovery"
-language = "go"
+language = "unknown"
 difficulty = "medium"
 time_limit_sec = 900
 mcp_suite = "ccb_mcp_crossorg"
 use_case_id = 66
 repo_set_id = "multi-org-go"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
-description = "Authoritative repo identification for cross-org dependency"
+description = "Authoritative Repo Identification for a Cross-Org Dependency"
 
 [environment]
 build_timeout_sec = 600.0

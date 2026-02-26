@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-domain-140"
-repo = "org/repo"
+repo = "sg-evals/arangodb--a5cca0b8"
 category = "domain-lineage"
 language = "c++"
 difficulty = "hard"
@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_domain"
 use_case_id = 140
 repo_set_id = "arangodb-database"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "ArangoDB AQL Query Execution Pipeline"

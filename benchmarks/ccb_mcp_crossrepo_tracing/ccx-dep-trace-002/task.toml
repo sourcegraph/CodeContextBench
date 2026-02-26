@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_crossrepo_tracing"
 use_case_id = 2
 repo_set_id = "apache-kafka-ecosystem"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Kafka Consumer Group Rebalance Call Chain"

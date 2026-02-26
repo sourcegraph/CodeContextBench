@@ -2,50 +2,41 @@
 
 ## Your Task
 
-You are a new engineer joining the pandas-dev team. As part of onboarding, you've been asked
-to audit which pandas source files have runtime dependencies on `scipy.stats`. These call sites
-are important to document because they determine where pandas degrades gracefully when scipy
-is not installed.
-
-**Specific question**: Which Python source files in `pandas-dev/pandas` contain a
-`from scipy.stats import` statement (i.e., directly import functions or classes from
-`scipy.stats` at runtime)?
-
-Include files in any part of the `pandas-dev/pandas` codebase — production code **and** test
-files. Do not include files that only mention `scipy.stats` in docstrings or comments.
+Which Python source files in `pandas-dev/pandas` contain a `from scipy.stats import` statement (i.e., directly import functions or classes from `scipy.stats` at runtime)? Include files in any part of the codebase — production code and test files.
 
 ## Context
 
-You are onboarding to a polyrepo Python scientific stack. Your ecosystem includes
-`scikit-learn/scikit-learn` as a reference implementation of a well-maintained scipy consumer.
+You are working on a codebase task involving repos from the onboarding domain.
 
-Your ecosystem includes the following repositories:
-- `scikit-learn/scikit-learn` (ML algorithms)
-- `pandas-dev/pandas` (dataframe-library)
-- `numpy/numpy` (array-computing)
-- `scipy/scipy` (scientific-computing)
+## Available Resources
+
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
 
 ## Output Format
 
-Create a file at `/workspace/answer.json` with your findings:
+Create a file at `/workspace/answer.json` with your findings in the following structure:
 
 ```json
 {
   "files": [
-    {"repo": "pandas-dev/pandas", "path": "relative/path/to/file.py"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
-  "text": "Narrative summary of your findings, citing the repos and file paths."
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+  ],
+  "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
 
-List all files that contain `from scipy.stats import`. Your answer is evaluated against
-a closed-world oracle — completeness matters.
-
-**Important**: Use the exact repo identifiers specified for this task. The oracle expects `repo` values of `pandas-dev/pandas`. The `repo` field must match exactly.
-**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
 
 ## Evaluation
 
 Your answer will be scored on:
-- **File recall and precision**: Did you find all pandas files that `from scipy.stats import`?
-- **Provenance**: Does your narrative cite the repo and file paths found?
+- **File recall and precision**: Did you find all relevant files?

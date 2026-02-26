@@ -6,34 +6,187 @@
   "mcp_suite": "ccb_mcp_domain",
   "prd": {
     "user_story": "As a developer, I want to: Trace how a Kubernetes watch event is generated and delivered from etcd to a client application. Find: 1. In `etcd-io/etcd`: the Go file that defines the `watchStream` or `serverWatchStream` that sends events from the etcd MVCC store. 2. In `kubernetes/kubernetes`: the Go files under `staging/src/k8s.io/apiserver/` that implement the watch cache and event distribution (look for `Cacher` and `watchCache`). 3. In the kubernetes client-go ecosystem: the Go file that defines the `Reflector` that receives watch events on the client side. Report the repo, file path, and struct/type name for each hop.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the kubernetes-ecosystem fixture.",
     "seed_prompt": "Trace how a Kubernetes watch event is generated and delivered from etcd to a client application. Find: 1. In `etcd-io/etcd`: the Go file that defines the `watchStream` or `serverWatchStream` that sends events from the etcd MVCC store. 2. In `kubernetes/kubernetes`: the Go files under `staging/src/k8s.io/apiserver/` that implement the watch cache and event distribution (look for `Cacher` and `watchCache`). 3. In the kubernetes client-go ecosystem: the Go file that defines the `Reflector` that receives watch events on the client side. Report the repo, file path, and struct/type name for each hop."
   },
   "artifacts": {
     "repo_set_id": "kubernetes-ecosystem",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/mvcc/watchable_store.go"
+        },
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/mvcc/watcher.go"
+        },
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/etcdserver/api/v3rpc/watch.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/cacher.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/watch_cache.go"
+        },
+        {
+          "repo": "sg-evals/client-go--v0.32.0",
+          "path": "tools/cache/reflector.go"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/mvcc/watchable_store.go",
+          "symbol": "watchableStore",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/mvcc/watcher.go",
+          "symbol": "WatchStream",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/mvcc/watcher.go",
+          "symbol": "watchStream",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/etcd-io-etcd",
+          "path": "server/etcdserver/api/v3rpc/watch.go",
+          "symbol": "serverWatchStream",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/cacher.go",
+          "symbol": "Cacher",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/watch_cache.go",
+          "symbol": "watchCache",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/client-go--v0.32.0",
+          "path": "tools/cache/reflector.go",
+          "symbol": "Reflector",
+          "kind": "class"
+        }
+      ],
       "required_references": [],
-      "dependency_chains": []
+      "dependency_chains": [
+        {
+          "steps": [
+            {
+              "step": 1,
+              "repo": "sg-evals/etcd-io-etcd",
+              "path": "server/mvcc/watchable_store.go",
+              "symbol": "watchableStore.notify",
+              "description": "MVCC write triggers notification to synced watchers via watcher.send()"
+            },
+            {
+              "step": 2,
+              "repo": "sg-evals/etcd-io-etcd",
+              "path": "server/mvcc/watcher.go",
+              "symbol": "watchStream.Chan",
+              "description": "Events delivered via watchStream.ch channel to consumers"
+            },
+            {
+              "step": 3,
+              "repo": "sg-evals/etcd-io-etcd",
+              "path": "server/etcdserver/api/v3rpc/watch.go",
+              "symbol": "serverWatchStream.sendLoop",
+              "description": "gRPC bridge reads from watchStream.Chan() and sends via gRPCStream.Send()"
+            },
+            {
+              "step": 4,
+              "repo": "sg-evals/kubernetes--v1.32.0",
+              "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/cacher.go",
+              "symbol": "Cacher.startCaching",
+              "description": "Apiserver Cacher starts reflector.ListAndWatch against etcd"
+            },
+            {
+              "step": 5,
+              "repo": "sg-evals/kubernetes--v1.32.0",
+              "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/watch_cache.go",
+              "symbol": "watchCache.processEvent",
+              "description": "Watch cache buffers events in cyclic buffer, calls eventHandler (wired to Cacher.processEvent)"
+            },
+            {
+              "step": 6,
+              "repo": "sg-evals/kubernetes--v1.32.0",
+              "path": "staging/src/k8s.io/apiserver/pkg/storage/cacher/cacher.go",
+              "symbol": "Cacher.dispatchEvents",
+              "description": "Reads from incoming channel, fans out to cacheWatcher instances for client delivery"
+            },
+            {
+              "step": 7,
+              "repo": "sg-evals/client-go--v0.32.0",
+              "path": "tools/cache/reflector.go",
+              "symbol": "Reflector.handleAnyWatch",
+              "description": "Client-side Reflector receives events and applies Add/Update/Delete to local Store"
+            }
+          ]
+        }
+      ]
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "watchableStore",
+            "WatchStream",
+            "watchStream",
+            "serverWatchStream",
+            "Cacher",
+            "watchCache",
+            "Reflector"
+          ]
+        }
+      },
+      {
+        "type": "dependency_chain",
+        "params": {}
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

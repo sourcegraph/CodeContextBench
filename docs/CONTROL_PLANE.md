@@ -97,7 +97,7 @@ The manifest JSON looks like:
 
 **Option B – Manifest as input to a thin Python runner**
 
-- A small script (e.g. `scripts/run_from_manifest.py`) that reads the manifest and for each run calls Harbor (or shells out to the same `harbor run` logic), so all execution is manifest-driven.
+- A small manifest runner script (not yet present in this repo) that reads the manifest and for each run calls Harbor (or shells out to the same `harbor run` logic), so all execution is manifest-driven.
 
 Either way, the **control plane** is the spec + manifest; the runner is a consumer of the manifest.
 
@@ -115,7 +115,7 @@ The **control plane layer** described here is complementary:
 1. Ensure `configs/selected_benchmark_tasks.json` (or your task source) is up to date.
 2. Create or edit a control plane spec (e.g. `configs/control_plane_ccb.yaml`).
 3. Run `python3 scripts/control_plane.py generate --spec ... --output ...` to produce the manifest.
-4. Run the benchmark using that manifest (e.g. `run_selected_tasks.sh --manifest runs/staging/<exp_id>/manifest.json` or `scripts/run_from_manifest.py ...`).
+4. Run the benchmark using that manifest (e.g. `run_selected_tasks.sh --manifest runs/staging/<exp_id>/manifest.json`).
 5. Post-run: `generate_manifest.py`, `generate_eval_report.py`, etc. can key off `experiment_id` and run IDs from the control plane manifest for consistent reporting.
 
 ## Files

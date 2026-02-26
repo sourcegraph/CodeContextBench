@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_incident"
 use_case_id = 131
 repo_set_id = "rust-systems"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Rust Borrow Checker Error Origin Trace"

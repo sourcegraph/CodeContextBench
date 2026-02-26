@@ -1,60 +1,42 @@
-# CVE Remediation: Vulnerable `cookie` Package Dependency
+# CVE Remediation: Vulnerable cookie Package Dependency
 
 ## Your Task
 
-Your security team has raised an alert about **CVE-2024-47764**, which affects the
-`cookie` npm package in versions prior to `0.7.0`. An attacker can exploit this
-vulnerability to send a crafted HTTP request that bypasses cookie security controls.
-
-You need to identify all `package.json` files across your Node.js web stack repos
-that declare **`cookie` as a direct runtime dependency** (listed under
-`"dependencies"`, not `"devDependencies"`).
-
-For each match, report:
-- The repository (e.g., `sg-evals/expressjs-express`)
-- The file path within the repository
-- The version constraint declared for `cookie`
+Identify all `package.json` files across your Node.js web stack repos that declare `cookie` as a direct runtime dependency (listed under `dependencies`, not `devDependencies`).
 
 ## Context
 
-You are doing a security audit of your Node.js web stack, which spans multiple repos
-across different organizations. The stack includes the runtime, the web framework, a
-utility library, and a database ORM.
-
-This is a cross-org audit: you need to check all repos in the stack to ensure no
-vulnerable dependency slips through.
+You are working on a codebase task involving repos from the security domain.
 
 ## Available Resources
 
-Your ecosystem includes the following repositories:
-- `nodejs/node` at v22.13.0
-- `expressjs/express` at 4.21.1
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
 
 ## Output Format
 
-Create a file at `/workspace/answer.json` with your findings:
+Create a file at `/workspace/answer.json` with your findings in the following structure:
 
 ```json
 {
   "files": [
-    {
-      "repo": "sg-evals/expressjs-express",
-      "path": "relative/path/to/package.json",
-      "version": "the-version-constraint"
-    }
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
-  "text": "Narrative explanation citing the repos and version constraints found."
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+  ],
+  "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
 
-**Important**: Use the exact repo identifiers specified for this task. The repos to search are `nodejs/node`, `sg-evals/expressjs-express`, `sg-evals/lodash`, and `sg-evals/prisma-prisma`. Note: the `expressjs/express` repository corresponds to `sg-evals/expressjs-express` for this task — use `sg-evals/expressjs-express` as the `repo` value in your answer.
-**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
-
-Include only entries where `cookie` appears under `"dependencies"` (not `"devDependencies"`
-or `"scripts"`). Your answer is evaluated against a closed-world oracle — completeness matters.
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
 
 ## Evaluation
 
 Your answer will be scored on:
-- **File recall and precision**: Did you find all package.json files that declare `cookie` as a runtime dependency?
-- **Keyword presence**: Does your answer include the exact version constraint found?
+- **File recall and precision**: Did you find all relevant files?

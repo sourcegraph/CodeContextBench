@@ -2,56 +2,41 @@
 
 ## Your Task
 
-Your platform team is conducting a cross-organization audit to find all implementations
-of a core Kubernetes storage abstraction. The `k8s.io/apiserver/pkg/storage.Interface`
-is the standard backend abstraction used by the Kubernetes API server — any project that
-embeds a Kubernetes-compatible API layer must implement it.
-
-**Specific question**: Find all Go source files across the repos in this ecosystem that
-contain an explicit interface compliance check for `storage.Interface` using the
-Go pattern `var _ storage.Interface = (*StructName)(nil)`. For each match, report
-the repo, file path, and the struct name that implements the interface.
+Find all Go source files across the repos in this ecosystem that contain an explicit interface compliance check for `storage.Interface` using the Go pattern `var _ storage.Interface = (*StructName)(nil)`. For each match, report the repo, file path, and the struct name that implements the interface.
 
 ## Context
 
-This pattern (`var _ InterfaceName = (*TypeName)(nil)`) is used in Go to verify at
-compile time that a type implements an interface. Finding all such declarations across
-repos from different organizations reveals who has independently implemented the same
-storage abstraction — a key signal for platform compatibility audits.
-
-The search should be **exhaustive across all repos in the ecosystem**, not just a
-single repo. The interface is defined in the Kubernetes ecosystem but can be implemented
-by projects from entirely different organizations.
+You are working on a codebase task involving repos from the crossorg domain.
 
 ## Available Resources
 
-Your ecosystem includes the following repositories:
-- `kubernetes/kubernetes` at v1.32.0
-- `etcd-io/etcd` at v3.5.17
-- `grafana/grafana` at v11.4.0
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
 
 ## Output Format
 
-Create a file at `/workspace/answer.json` with your findings:
+Create a file at `/workspace/answer.json` with your findings in the following structure:
 
 ```json
 {
-  "symbols": [
-    {
-      "repo": "kubernetes/kubernetes",
-      "path": "relative/path/to/file.go",
-      "symbol": "StructName"
-    }
+  "files": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
-  "text": "Narrative explanation citing which repos and orgs implement storage.Interface and where."
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+  ],
+  "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
 
-**Important**: Use the exact repo identifiers specified for this task. The oracle expects entries for `kubernetes/kubernetes` and `grafana/grafana`. The `repo` field must match these exactly.
-**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
 
 ## Evaluation
 
-Your answer is evaluated on:
-- **Symbol recall and precision**: Did you find all structs that explicitly implement `storage.Interface` via the `var _` pattern?
-- The oracle expects implementations from at least 2 different GitHub organizations.
+Your answer will be scored on:
+- **File recall and precision**: Did you find all relevant files?

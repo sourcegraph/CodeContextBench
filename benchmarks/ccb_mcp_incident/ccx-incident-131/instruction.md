@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the incident domain.
 
 The local `/workspace/` directory contains: sg-evals/rust--01f6ddf7, sg-evals/servo--be6a2f99.
 
-**Note:** Additional repositories may be relevant to this task:
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
 - `sg-evals/rust--01f6ddf7` (rust-lang/rust)
 - `sg-evals/servo--be6a2f99` (servo/servo)
 
@@ -23,13 +23,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.rs"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
   "symbols": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.rs", "symbol": "SymbolName"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
   ],
   "chain": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.rs", "symbol": "FunctionName"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }

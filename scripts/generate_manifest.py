@@ -9,6 +9,7 @@ a canonical MANIFEST.json.
 
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -27,6 +28,15 @@ SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__v1_hinted
 
 # Map on-disk dir prefixes to MANIFEST suite names
 DIR_PREFIX_TO_SUITE = {
+    # Current SDLC official run prefixes (e.g. ccb_document_haiku_20260224_174311)
+    "ccb_build_": "ccb_build",
+    "ccb_debug_": "ccb_debug",
+    "ccb_design_": "ccb_design",
+    "ccb_document_": "ccb_document",
+    "ccb_fix_": "ccb_fix",
+    "ccb_secure_": "ccb_secure",
+    "ccb_test_": "ccb_test",
+    "ccb_understand_": "ccb_understand",
     # SDLC phase suite prefixes (new naming: {phase}_{model}_{timestamp})
     "build_": "ccb_build",
     "debug_": "ccb_debug",
@@ -113,13 +123,23 @@ def _parse_started_at(data: dict) -> str:
 def _has_agent_output(data: dict) -> bool:
     """Check if the agent actually produced output (non-zero tokens).
 
-    Zero-token results indicate infrastructure failures (auth errors,
-    Docker crashes) where the agent never ran. These should not overwrite
-    valid results during dedup.
+    Zero-token results (explicitly 0) indicate infrastructure failures
+    (auth errors, Docker crashes) where the agent never ran. These should
+    not overwrite valid results during dedup.
+
+    None tokens are treated as unknown (could be timeout or H3 token-logging
+    bug), NOT as zero. This prevents discarding timed-out tasks where the
+    agent ran but Harbor didn't record token counts.
     """
     agent_result = data.get("agent_result") or {}
-    n_input = agent_result.get("n_input_tokens") or 0
-    n_output = agent_result.get("n_output_tokens") or 0
+    n_input = agent_result.get("n_input_tokens")
+    n_output = agent_result.get("n_output_tokens")
+    # None tokens = unknown, not zero. Treat as "possibly ran".
+    if n_input is None and n_output is None:
+        return True
+    # Explicit zeros = infra failure (agent never ran)
+    n_input = n_input or 0
+    n_output = n_output or 0
     return n_input > 0 or n_output > 0
 
 
@@ -250,6 +270,28 @@ def scan_config_dir_all_runs(config_path: Path) -> dict[str, list[dict]]:
     return dict(tasks)
 
 
+def _extract_timeout_seconds(exception_info: dict) -> float | None:
+    """Extract timeout duration from exception_message if available.
+
+    Looks for pattern like "timed out after X seconds" in the message.
+    Returns the timeout duration as a float, or None if not found.
+    """
+    msg = exception_info.get("exception_message", "") or ""
+    m = re.search(r"timed out after\s+([\d.]+)\s+seconds", msg, re.IGNORECASE)
+    if m:
+        try:
+            return float(m.group(1))
+        except ValueError:
+            pass
+    return None
+
+
+def _is_timeout_exception(exception_info: dict) -> bool:
+    """Check if an exception_info dict represents a timeout."""
+    exc_type = exception_info.get("exception_type", "") or ""
+    return "Timeout" in exc_type or "timeout" in exc_type
+
+
 def extract_task_info(task_entry: dict) -> dict:
     """Extract MANIFEST-format task info from a result.json."""
     data = task_entry["data"]
@@ -292,9 +334,28 @@ def extract_task_info(task_entry: dict) -> dict:
                 cc_lines = i
         crash_failure = cc_lines <= 5
 
+    # Determine timed_out flag and timeout metadata
+    timed_out = False
+    timeout_seconds = None
     if exception is not None:
-        status = "errored"
-        reward_val = 0.0
+        timed_out = _is_timeout_exception(exception)
+        if timed_out:
+            timeout_seconds = _extract_timeout_seconds(exception)
+
+    # Recover valid verifier scores from timed-out (or other exception) tasks.
+    # If the verifier still produced a positive reward, the agent's work counts.
+    if exception is not None:
+        if reward is not None and reward > 0:
+            # Verifier ran and scored positively despite the exception
+            status = "passed"
+            reward_val = float(reward)
+        elif reward is not None and reward == 0:
+            status = "failed"
+            reward_val = 0.0
+        else:
+            # No valid verifier reward — treat as errored
+            status = "errored"
+            reward_val = 0.0
     elif zero_token or crash_failure:
         status = "errored"
         reward_val = 0.0
@@ -315,6 +376,12 @@ def extract_task_info(task_entry: dict) -> dict:
         "judge_dimensions": None,
         "judge_confidence": None,
     }
+
+    # Add timeout metadata when applicable
+    if timed_out:
+        info["timed_out"] = True
+        if timeout_seconds is not None:
+            info["timeout_seconds"] = timeout_seconds
 
     # LLM Judge fields from judge_result.json alongside result.json
     judge_path = trial_dir / "judge_result.json"
@@ -351,6 +418,17 @@ def _normalize_task_name(name: str) -> str:
     Strategy: for 'instance_ORG__REPO-HASH' pattern, normalize ORG__REPO to ORG__REPO
     by replacing the first single-dash separator after 'instance_' with '__'.
     """
+    # MCP config runs are often wrapped with an "mcp_" or "sgonly_" prefix in
+    # result/task_metrics task IDs and trial dirs. Canonical selected task IDs do
+    # not include these prefixes.
+    if name.startswith("mcp_"):
+        name = name[4:]
+        # Harbor's MCP wrapper often appends a random 6-char suffix to tmp task IDs
+        # (e.g. django-role-based-access-001_2ERzmK). Strip it for canonical matching.
+        name = re.sub(r"_[A-Za-z0-9]{6}$", "", name)
+    elif name.startswith("sgonly_"):
+        name = name[7:]
+
     if not name.startswith("instance_"):
         return name
     # Already uses __ separator — canonical form
@@ -403,10 +481,20 @@ def load_selected_tasks(path: Path) -> dict[str, set[str]]:
 
 
 def _is_valid_run(entry: dict) -> bool:
-    """Check if a run entry represents a valid (non-errored) execution."""
+    """Check if a run entry represents a valid (non-errored) execution.
+
+    Timed-out tasks where the verifier still produced a valid reward are
+    treated as valid runs (the agent did meaningful work before timing out).
+    """
     data = entry["data"]
     exception = data.get("exception_info")
     if exception is not None:
+        # If the verifier still scored the task, treat as valid
+        verifier = data.get("verifier_result") or {}
+        rewards = verifier.get("rewards") or {}
+        reward = rewards.get("reward")
+        if reward is not None and reward > 0:
+            return True
         return False
     if not _has_agent_output(data):
         return False

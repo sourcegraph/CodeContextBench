@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-vuln-remed-111"
-repo = "org/repo"
+repo = "sg-evals/firefox--871325b8"
 category = "vuln-remediation"
 language = "c++"
 difficulty = "hard"
@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_security"
 use_case_id = 111
 repo_set_id = "mozilla-firefox"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Firefox NSS TLS Implementation Audit"

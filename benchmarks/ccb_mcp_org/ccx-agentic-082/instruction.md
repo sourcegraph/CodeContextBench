@@ -10,10 +10,10 @@ You are working on a codebase task involving repos from the org domain.
 
 ## Available Resources
 
-No local repositories are pre-checked out.
+The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/client-go--v0.32.0, sg-evals/api--v0.32.0, sg-evals/etcd-io-etcd.
 
-**Note:** Additional repositories may be relevant to this task:
-*(none — all repos available locally)*
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+- `sg-evals/etcd-io-etcd` (etcd-io/etcd)
 
 ## Output Format
 

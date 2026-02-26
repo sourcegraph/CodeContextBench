@@ -6,34 +6,90 @@
   "mcp_suite": "ccb_mcp_security",
   "prd": {
     "user_story": "As a developer, I want to: Find all C++ source files in `llvm/llvm-project` that implement stack protection mechanisms against buffer overflow attacks. Specifically identify: 1. The LLVM pass that inserts stack protector checks (look for `StackProtector` in `llvm/lib/CodeGen/`). 2. The file that defines the `SafeStack` pass that separates safe and unsafe stack allocations (under `llvm/lib/CodeGen/`). 3. The header file that declares the stack protection pass interface. 4. The compiler-rt runtime file that provides the `__stack_chk_fail` implementation (look under `compiler-rt/lib/builtins/`). 5. Any file in `llvm/lib/Transforms/Instrumentation/` that implements memory safety instrumentation related to stack frame protection. Report the repo, file path, and the primary function or class handling stack protection for each.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
     "seed_prompt": "Find all C++ source files in `llvm/llvm-project` that implement stack protection mechanisms against buffer overflow attacks. Specifically identify: 1. The LLVM pass that inserts stack protector checks (look for `StackProtector` in `llvm/lib/CodeGen/`). 2. The file that defines the `SafeStack` pass that separates safe and unsafe stack allocations (under `llvm/lib/CodeGen/`). 3. The header file that declares the stack protection pass interface. 4. The compiler-rt runtime file that provides the `__stack_chk_fail` implementation (look under `compiler-rt/lib/builtins/`). 5. Any file in `llvm/lib/Transforms/Instrumentation/` that implements memory safety instrumentation related to stack frame protection. Report the repo, file path, and the primary function or class handling stack protection for each."
   },
   "artifacts": {
     "repo_set_id": "compiler-toolchain",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/StackProtector.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/CodeGen/StackProtector.h"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SafeStack.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/TargetPassConfig.cpp"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/StackProtector.cpp",
+          "symbol": "StackProtector"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/StackProtector.cpp",
+          "symbol": "SSPLayoutAnalysis"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SafeStack.cpp",
+          "symbol": "SafeStack"
+        }
+      ],
       "required_references": [],
       "dependency_chains": []
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "StackProtector",
+            "SSPLayoutAnalysis",
+            "SafeStack"
+          ]
+        }
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

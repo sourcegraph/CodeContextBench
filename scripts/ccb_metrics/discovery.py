@@ -44,6 +44,31 @@ from .extractors import (
     classify_search_strategy,
 )
 
+# Canonical CCB suite prefixes to strip model/timestamp suffixes from run dir names.
+# Keep longer prefixes first to avoid partial matches (e.g. crossrepo_tracing vs crossrepo).
+_CCB_SUITE_PREFIXES = [
+    # MCP-unique suites
+    "ccb_mcp_crossrepo_tracing",
+    "ccb_mcp_security",
+    "ccb_mcp_migration",
+    "ccb_mcp_incident",
+    "ccb_mcp_onboarding",
+    "ccb_mcp_compliance",
+    "ccb_mcp_crossorg",
+    "ccb_mcp_domain",
+    "ccb_mcp_org",
+    "ccb_mcp_platform",
+    # SDLC suites
+    "ccb_build",
+    "ccb_debug",
+    "ccb_design",
+    "ccb_document",
+    "ccb_fix",
+    "ccb_secure",
+    "ccb_test",
+    "ccb_understand",
+]
+
 
 def resolve_task_transcript_path(task_dir: Path) -> Path:
     """Resolve transcript path by trying multiple harness artifact names."""
@@ -69,6 +94,10 @@ def _infer_benchmark(run_name: str) -> str:
         k8s_docs_opus_20260203_160607 -> k8s_docs
     """
     name = run_name.lower()
+    for prefix in _CCB_SUITE_PREFIXES:
+        if name == prefix or name.startswith(prefix + "_"):
+            return prefix
+
     # Explicit prefixes (order matters — check longer prefixes first)
     prefixes = [
         ("locobench", "locobench"),

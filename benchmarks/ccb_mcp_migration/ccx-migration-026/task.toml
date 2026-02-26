@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_migration"
 use_case_id = 26
 repo_set_id = "envoy-service-mesh"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Envoy Deprecated v2 API References Migration"

@@ -61,6 +61,15 @@ _TOOL_EXEC_RE = re.compile(r"Executed (\S+) (toolu_\S+)")
 # Regex for "path": "some/file.ext" in JSON-like text
 _PATH_JSON_RE = re.compile(r'"path"\s*:\s*"([^"]+)"')
 
+
+def _normalize_task_name(task_name: str) -> str:
+    """Normalize MCP wrapper task names for GT lookup and artifact naming."""
+    name = task_name or ""
+    if name.startswith("mcp_"):
+        name = name[4:]
+        name = re.sub(r"_[A-Za-z0-9]{6}$", "", name)
+    return name
+
 # ---------------------------------------------------------------------------
 # Tool category mapping
 # ---------------------------------------------------------------------------
@@ -624,7 +633,7 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
             continue
         config_name = config_dir.name
         # Skip non-config directories
-        if not any(config_name.startswith(p) for p in ("baseline", "mcp-", "sourcegraph")):
+        if not (config_name == "mcp" or any(config_name.startswith(p) for p in ("baseline", "mcp-", "sourcegraph"))):
             continue
 
         for batch_dir in sorted(config_dir.iterdir()):
@@ -651,6 +660,7 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
                         task_name = rdata["task_name"]
                 except (json.JSONDecodeError, OSError):
                     rdata = {}
+                task_name = _normalize_task_name(task_name)
 
                 tasks.append({
                     "task_name": task_name,
@@ -691,7 +701,7 @@ def normalize_task(
 ) -> dict:
     """Produce a normalized retrieval events document for one task."""
     task_dir: Path = info["task_dir"]
-    task_name: str = info["task_name"]
+    task_name: str = _normalize_task_name(info["task_name"])
     config_name: str = info["config_name"]
     run_id: str = info.get("run_id", task_dir.parent.parent.parent.name)
     benchmark: str = info.get("benchmark", "unknown")

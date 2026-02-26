@@ -3,7 +3,7 @@
 Stable specifications and policy/reference documents.
 
 ## Config / Runtime
-- `docs/reference/CONFIGS.md` - alias entrypoint to canonical configs doc
+- `docs/reference/CONFIGS.md` - canonical config matrix spec (`docs/CONFIGS.md` is a compatibility stub)
 - `docs/CONFIGS.md`
 - `docs/AGENT_INTERFACE.md`
 - `docs/WORKFLOW_METRICS.md`

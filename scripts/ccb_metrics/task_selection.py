@@ -12,10 +12,24 @@ Stdlib only — no external dependencies. Python 3.10+.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Optional
 
 from .models import TaskMetrics, RunMetrics
+
+
+def _normalize_task_id(task_id: str) -> str:
+    """Normalize discovered/selected task IDs for robust matching.
+
+    Handles MCP wrapper task names emitted by Harbor temp task paths, e.g.:
+    - mcp_django-role-based-access-001_2ERzmK -> django-role-based-access-001
+    """
+    tid = task_id
+    if tid.startswith("mcp_"):
+        tid = tid[4:]
+        tid = re.sub(r"_[A-Za-z0-9]{6}$", "", tid)
+    return tid
 
 
 def load_selected_tasks(path: str | Path) -> dict:
@@ -50,7 +64,7 @@ def build_task_index(selection: dict) -> dict[str, dict]:
     """
     index: dict[str, dict] = {}
     for t in selection.get("tasks", []):
-        tid = t["task_id"]
+        tid = _normalize_task_id(t["task_id"])
         index[tid] = t
         # Also index without 'ccb_' prefix for matching result.json task_name
         if tid.startswith("ccb_"):
@@ -73,7 +87,7 @@ def enrich_task_metrics(
         tm: The TaskMetrics to enrich.
         task_index: The task_id → metadata lookup from build_task_index().
     """
-    meta = task_index.get(tm.task_id)
+    meta = task_index.get(_normalize_task_id(tm.task_id))
     if meta is None:
         return
     tm.sdlc_phase = meta.get("sdlc_phase")
@@ -120,7 +134,7 @@ def filter_runs_to_selected(
     """
     filtered: list[RunMetrics] = []
     for run in runs:
-        matching = [t for t in run.tasks if t.task_id in task_index]
+        matching = [t for t in run.tasks if _normalize_task_id(t.task_id) in task_index]
         if not matching:
             continue
         filtered_run = RunMetrics(

@@ -24,7 +24,7 @@ reward_type = "test_ratio"
 description = "Fraction of repository tests passing after agent changes"
 
 [environment]
-build_timeout_sec = 1800.0
+build_timeout_sec = 3600.0
 cpus = 2
 memory = '8G'
 storage = '20G'

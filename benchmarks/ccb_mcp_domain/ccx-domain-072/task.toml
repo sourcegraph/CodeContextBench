@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_domain"
 use_case_id = 72
 repo_set_id = "apache-kafka-ecosystem"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Domain Lineage: Kafka-to-Flink Serialization Boundary"

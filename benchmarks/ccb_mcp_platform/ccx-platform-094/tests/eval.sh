@@ -16,7 +16,7 @@ REWARD_PATH="/logs/verifier/reward.txt"
 
 mkdir -p /logs/verifier
 
-echo "=== $TASK_ID evaluator ==="
+echo "=== CCX-platform-094 evaluator ==="
 echo "Task spec: $TASK_SPEC_PATH"
 echo "Answer:    $ANSWER_PATH"
 echo ""

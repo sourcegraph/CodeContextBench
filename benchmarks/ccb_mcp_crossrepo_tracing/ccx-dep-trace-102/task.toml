@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-dep-trace-102"
-repo = "org/repo"
+repo = "sg-evals/llvm-project--a8f3c97d"
 category = "cross-repo-dep-trace"
 language = "c++"
 difficulty = "hard"
@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_crossrepo_tracing"
 use_case_id = 102
 repo_set_id = "compiler-toolchain"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Cross-Compiler Sanitizer Tracing: ASan in LLVM vs GCC"

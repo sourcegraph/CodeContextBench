@@ -2,27 +2,18 @@
 
 ## Your Task
 
-Your team is planning a breaking change to the `k8s.io/apimachinery/pkg/runtime` package interface.
-Before making the change, you need to assess the blast radius within the `kubernetes-client-go` library.
-
-**Specific question**: Which Go source files in the `dynamic/` package tree of the
-`sg-evals/kubernetes-client-go` repository directly import `k8s.io/apimachinery/pkg/runtime`
-(the exact package — not sub-packages like `pkg/runtime/schema`)?
-
-Find every file (including tests) in the `dynamic/` directory and its subdirectories that has an
-import line for `"k8s.io/apimachinery/pkg/runtime"`.
+Which Go source files in the `dynamic/` package tree of the `sg-evals/kubernetes-client-go` repository directly import `k8s.io/apimachinery/pkg/runtime` (the exact package — not sub-packages like `pkg/runtime/schema`)?
 
 ## Context
 
-You are working on a codebase task involving dependency tracing across Kubernetes ecosystem repos.
-The `k8s.io/apimachinery/pkg/runtime` package provides core serialization interfaces. Any file
-that directly imports it (not just subpackages) will be affected by a breaking API change.
+You are working on a codebase task involving repos from the crossrepo tracing domain.
 
 ## Available Resources
 
-Your ecosystem includes the following repositories:
-- `kubernetes/kubernetes` at v1.32.0
-- `kubernetes/client-go` at v0.32.0
+The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/client-go--v0.32.0, sg-evals/api--v0.32.0, sg-evals/etcd-io-etcd.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+- `sg-evals/etcd-io-etcd` (etcd-io/etcd)
 
 ## Output Format
 
@@ -31,18 +22,21 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "sg-evals/kubernetes-client-go", "path": "relative/path/to/file.go"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
+  ],
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
 
-**Important**: Use `"repo": "sg-evals/kubernetes-client-go"` exactly — this is the canonical repo identifier used by the evaluation oracle. The `kubernetes/client-go` repository corresponds to `sg-evals/kubernetes-client-go` for this task.
-**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
-
-Include only the `files` field. Your answer is evaluated against a closed-world oracle — completeness matters.
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
 
 ## Evaluation
 
 Your answer will be scored on:
-- **File recall and precision**: Did you find all relevant files in the `dynamic/` tree that import `k8s.io/apimachinery/pkg/runtime`?
+- **File recall and precision**: Did you find all relevant files?

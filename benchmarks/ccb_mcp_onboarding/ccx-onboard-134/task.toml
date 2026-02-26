@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-onboard-134"
-repo = "org/repo"
+repo = "sg-evals/chromium--2d05e315"
 category = "onboarding-comprehension"
 language = "c++/c/javascript"
 difficulty = "hard"
@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_onboarding"
 use_case_id = 134
 repo_set_id = "chromium-browser"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Chromium Multi-Process Architecture Overview"

@@ -1,69 +1,42 @@
 # Incident Debugging: Trace Production Error to Authoritative Source
 
-## Incident Report
-
-Your on-call pager just fired. Your Kubernetes cluster's watch stream is failing
-with the following error appearing in the kube-apiserver logs:
-
-```
-rpc error: code = OutOfRange desc = etcdserver: mvcc: required revision has been compacted
-```
-
-The SRE team needs to file a bug report against the correct upstream component
-and link to the exact source functions that generate this error.
-
 ## Your Task
 
-Identify the **authoritative** Go source files in the **distributed etcd service**
-that define and return the error string `"mvcc: required revision has been compacted"`.
+Identify the authoritative Go source files in the distributed etcd service that define and return the error string `mvcc: required revision has been compacted`. Find: 1. The file where the `ErrCompacted` error variable is defined (not a vendor copy). 2. The file containing the core function `rangeKeys` that returns this error when a client requests a revision that has been garbage-collected by compaction.
 
-Specifically, find:
-1. The file where the `ErrCompacted` error variable is defined (not a vendor copy)
-2. The file containing the core function `rangeKeys` that returns this error when
-   a client requests a revision that has been garbage-collected by compaction
+## Context
 
-## Important: Avoiding Decoys
-
-The `kubernetes/kubernetes` repository contains
-vendored copies of etcd code under `vendor/go.etcd.io/etcd/`. These vendored
-files look identical to the real source but are **not** the authoritative location.
-
-The Kubernetes apiserver also has its own error-mapping layer at
-`staging/src/k8s.io/apiserver/pkg/storage/etcd3/errors.go` that translates
-the etcd error into Kubernetes error types — this is also **not** the authoritative
-source of the original error.
-
-Your answer must cite the **upstream etcd repository**, not the vendored copies
-or the Kubernetes error-mapping layer.
+You are working on a codebase task involving repos from the incident domain.
 
 ## Available Resources
 
-Your ecosystem includes the following repositories:
-- `kubernetes/kubernetes` at v1.32.0
-- `etcd-io/etcd` at v3.5.17 (this is where the error originates)
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
 
 ## Output Format
 
-Create a file at `/workspace/answer.json` with your findings:
+Create a file at `/workspace/answer.json` with your findings in the following structure:
 
 ```json
 {
   "files": [
-    {
-      "repo": "etcd-io/etcd",
-      "path": "relative/path/to/file.go",
-      "function": "FunctionName"
-    }
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
-  "text": "Narrative explaining: which repo and files contain the authoritative error definition and the function that returns it, and why the kubernetes/kubernetes vendored copies are NOT the correct answer."
+  "symbols": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+  ],
+  "chain": [
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+  ],
+  "text": "Narrative explanation of your findings, citing repos and file paths."
 }
 ```
 
-**Important**: Use `etcd-io/etcd` as the exact `repo` identifier in your answer. The oracle checks for files `server/mvcc/kvstore.go` and `server/mvcc/kvstore_txn.go` in `etcd-io/etcd`. Do not cite vendored copies in `kubernetes/kubernetes`.
-**Note**: Tool output may return repo names with a `github.com/` prefix (e.g., `github.com/sg-evals/kubernetes-client-go`). Strip this prefix in your answer — use `sg-evals/kubernetes-client-go`, NOT `github.com/sg-evals/kubernetes-client-go`.
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
 
 ## Evaluation
 
 Your answer will be scored on:
-- **File recall and precision**: Did you find the two Go files in etcd-io/etcd that are the authoritative source (not vendor copies)?
-- **Keyword coverage**: Does your answer mention the specific error constant (`ErrCompacted`) and function name (`rangeKeys`) by name?
+- **File recall and precision**: Did you find all relevant files?

@@ -12,7 +12,7 @@ You are working on a codebase task involving repos from the incident domain.
 
 The local `/workspace/` directory contains: sg-evals/grafana--26d36ec.
 
-**Note:** Additional repositories may be relevant to this task:
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
 - `sg-evals/grafana--26d36ec` (grafana/grafana)
 - `sg-evals/grafana-loki` (grafana/loki)
 - `sg-evals/grafana-mimir` (grafana/mimir)

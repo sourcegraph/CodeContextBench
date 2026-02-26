@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [task]
 id = "CCX-agentic-122"
-repo = "org/repo"
+repo = "sg-evals/firefox--871325b8"
 category = "agentic-correctness"
 language = "c++"
 difficulty = "hard"
@@ -16,10 +16,11 @@ mcp_suite = "ccb_mcp_org"
 use_case_id = 122
 repo_set_id = "mozilla-firefox"
 mcp_unique = true
+verification_modes = ["artifact", "direct"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
 description = "Agentic Correctness: Implement Firefox XPCOM Component"

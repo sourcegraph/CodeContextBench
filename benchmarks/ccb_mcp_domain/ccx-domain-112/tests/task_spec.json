@@ -5,35 +5,129 @@
   "category": "H",
   "mcp_suite": "ccb_mcp_domain",
   "prd": {
-    "user_story": "As a developer, I want to: Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` — the main entry point for style resolution. 2. The header for `ServoBindings` — the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` — the component that schedules and manages style recalculation. 4. The header for `ServoUtils` — utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "user_story": "As a developer, I want to: Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` \u2014 the main entry point for style resolution. 2. The header for `ServoBindings` \u2014 the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` \u2014 the component that schedules and manages style recalculation. 4. The header for `ServoUtils` \u2014 utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the mozilla-firefox fixture.",
-    "seed_prompt": "Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` — the main entry point for style resolution. 2. The header for `ServoBindings` — the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` — the component that schedules and manages style recalculation. 4. The header for `ServoUtils` — utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file."
+    "seed_prompt": "Trace how Firefox's Servo-based CSS style system resolves and applies styles to DOM elements. Find all C++ source files in `mozilla-firefox/firefox` under `layout/style/` that form the core style resolution pipeline: 1. The header and source files for `ServoStyleSet` \u2014 the main entry point for style resolution. 2. The header for `ServoBindings` \u2014 the Gecko-to-Servo FFI declarations. 3. The header for `RestyleManager` \u2014 the component that schedules and manages style recalculation. 4. The header for `ServoUtils` \u2014 utility functions for Servo traversal state. 5. The `moz.build` file for `layout/style/` that lists all the style system source files. Report the repo, file path, and key class or FFI function name for each file."
   },
   "artifacts": {
     "repo_set_id": "mozilla-firefox",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoStyleSet.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoStyleSet.cpp"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoBindings.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/RestyleManager.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoUtils.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/moz.build"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoStyleSet.h",
+          "symbol": "ServoStyleSet"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoBindings.h",
+          "symbol": "Servo_ResolveStyle"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/RestyleManager.h",
+          "symbol": "RestyleManager"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "layout/style/ServoUtils.h",
+          "symbol": "IsInServoTraversal"
+        }
+      ],
       "required_references": [],
-      "dependency_chains": []
+      "dependency_chains": [
+        {
+          "steps": [
+            {
+              "repo": "sg-evals/firefox--871325b8",
+              "path": "layout/style/RestyleManager.h",
+              "symbol": "RestyleManager"
+            },
+            {
+              "repo": "sg-evals/firefox--871325b8",
+              "path": "layout/style/ServoStyleSet.cpp",
+              "symbol": "ServoStyleSet"
+            },
+            {
+              "repo": "sg-evals/firefox--871325b8",
+              "path": "layout/style/ServoBindings.h",
+              "symbol": "Servo_ResolveStyle"
+            }
+          ]
+        }
+      ]
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "ServoStyleSet",
+            "Servo_ResolveStyle",
+            "RestyleManager",
+            "IsInServoTraversal"
+          ]
+        }
+      },
+      {
+        "type": "dependency_chain",
+        "params": {}
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

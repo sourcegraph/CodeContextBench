@@ -21,7 +21,7 @@ command = "bash /tests/test.sh"
 reward_type = "checklist"
 description = "Weighted checklist of required code structure and patterns"
 [environment]
-build_timeout_sec = 2400.0
+build_timeout_sec = 3600.0
 
 [environment.setup_scripts]
 mcp_config = """#!/bin/bash

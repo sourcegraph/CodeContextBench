@@ -117,7 +117,10 @@ def _check_script_registry(errors: list[str], warnings: list[str]) -> None:
     actual = {
         p.name
         for p in (ROOT / "scripts").iterdir()
-        if p.is_file() and p.name != "registry.json" and not p.name.endswith(".pyc")
+        if p.is_file()
+        and p.suffix in {".py", ".sh"}
+        and p.name != "registry.json"
+        and not p.name.endswith(".pyc")
     }
     missing = sorted(actual - listed)
     extra = sorted(listed - actual)
@@ -146,6 +149,26 @@ def _check_generated_agent_nav(errors: list[str]) -> None:
     for line in (result.stdout or "").strip().splitlines()[:6]:
         if line:
             errors.append(f"generated_agent_navigation_detail:{line}")
+
+
+def _scan_all_docs_refs(errors: list[str], warnings: list[str]) -> None:
+    seen: set[tuple[str, str]] = set()
+    for p in sorted((ROOT / "docs").rglob("*.md")):
+        rel = p.relative_to(ROOT).as_posix()
+        refs = _extract_refs(p.read_text(errors="replace"))
+        for ref in sorted(refs):
+            key = (rel, ref)
+            if key in seen:
+                continue
+            seen.add(key)
+            if (ROOT / ref).exists():
+                continue
+            # Archive docs are scanned to detect drift but only warn to avoid
+            # blocking merges on historical materials.
+            if rel.startswith("docs/archive/"):
+                warnings.append(f"missing_ref_archive:{rel}:{ref}")
+            else:
+                errors.append(f"missing_ref_all_docs:{rel}:{ref}")
 
 
 def main() -> int:
@@ -194,6 +217,7 @@ def main() -> int:
     _check_agent_guides(errors, warnings)
     _check_script_registry(errors, warnings)
     _check_generated_agent_nav(errors)
+    _scan_all_docs_refs(errors, warnings)
 
     if errors:
         print("Docs consistency: FAILED")

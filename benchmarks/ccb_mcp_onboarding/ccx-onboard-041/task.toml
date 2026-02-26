@@ -2,27 +2,28 @@ version = "1.0"
 
 [metadata]
 name = "CCX-onboard-041"
-description = "Audit scipy.stats API call sites in pandas"
+description = "Onboarding Audit: scipy.stats API Call Sites in pandas"
 license = "Apache-2.0"
 
 [task]
 id = "CCX-onboard-041"
-repo = "scikit-learn/scikit-learn"
+repo = "org/repo"
 category = "onboarding-comprehension"
-language = "python"
+language = "unknown"
 difficulty = "medium"
 time_limit_sec = 900
 mcp_suite = "ccb_mcp_onboarding"
 use_case_id = 41
 repo_set_id = "python-ml-stack"
 mcp_unique = true
+verification_modes = ["artifact"]
 
 [verification]
 type = "test"
-command = "bash /tests/eval.sh"
+command = "bash /tests/test.sh"
 
 reward_type = "score"
-description = "Audit scipy.stats API call sites in pandas"
+description = "Onboarding Audit: scipy.stats API Call Sites in pandas"
 
 [environment]
 build_timeout_sec = 600.0

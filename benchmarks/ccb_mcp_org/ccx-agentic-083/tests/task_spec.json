@@ -6,39 +6,137 @@
   "mcp_suite": "ccb_mcp_org",
   "prd": {
     "user_story": "As a developer, I want to: Write a C++ header file `pass_through_filter.h` and implementation file `pass_through_filter.cc` that implement a minimal Envoy HTTP filter following the established extension patterns. Your implementation must: 1. Inherit from `Http::StreamDecoderFilter` as defined in the Envoy source. 2. Implement `decodeHeaders`, `decodeData`, and `decodeTrailers` methods following the same signature conventions as existing filters in `source/extensions/filters/http/`. 3. Register the filter using the `REGISTER_FACTORY` macro pattern. 4. Include a `config.cc` factory file following the `NamedHttpFilterConfigFactory` pattern. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the Envoy source files you referenced for the filter patterns.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the envoy-service-mesh fixture.",
     "seed_prompt": "Write a C++ header file `pass_through_filter.h` and implementation file `pass_through_filter.cc` that implement a minimal Envoy HTTP filter following the established extension patterns. Your implementation must: 1. Inherit from `Http::StreamDecoderFilter` as defined in the Envoy source. 2. Implement `decodeHeaders`, `decodeData`, and `decodeTrailers` methods following the same signature conventions as existing filters in `source/extensions/filters/http/`. 3. Register the filter using the `REGISTER_FACTORY` macro pattern. 4. Include a `config.cc` factory file following the `NamedHttpFilterConfigFactory` pattern. Write your files to `/workspace/`. Also write `/workspace/answer.json` listing the Envoy source files you referenced for the filter patterns."
   },
   "artifacts": {
     "repo_set_id": "envoy-service-mesh",
     "oracle": {
-      "required_files": [],
-      "required_symbols": [],
+      "required_files": [
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/http/filter.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/server/filter_config.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/registry/registry.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/common/factory_base.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/buffer_filter.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/buffer_filter.cc"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/config.h"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/config.cc"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/http/filter.h",
+          "symbol": "StreamDecoderFilter",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/http/filter.h",
+          "symbol": "StreamFilter",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/server/filter_config.h",
+          "symbol": "NamedHttpFilterConfigFactory",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/registry/registry.h",
+          "symbol": "REGISTER_FACTORY",
+          "kind": "field"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/common/factory_base.h",
+          "symbol": "FactoryBase",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/buffer_filter.h",
+          "symbol": "BufferFilter",
+          "kind": "class"
+        },
+        {
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/extensions/filters/http/buffer/config.h",
+          "symbol": "BufferFilterFactory",
+          "kind": "class"
+        }
+      ],
       "required_references": [],
       "dependency_chains": []
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": ""
-    }
-  },
-  {
-    "type": "keyword_presence",
-    "params": {
-      "required_keywords": []
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "StreamDecoderFilter",
+            "StreamFilter",
+            "NamedHttpFilterConfigFactory",
+            "REGISTER_FACTORY",
+            "FactoryBase",
+            "BufferFilter",
+            "BufferFilterFactory"
+          ]
+        }
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

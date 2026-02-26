@@ -5,35 +5,105 @@
   "category": "D",
   "mcp_suite": "ccb_mcp_incident",
   "prd": {
-    "user_story": "As a developer, I want to: Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files — focus on production source code.",
-    "constraints": ["Provide specific file paths and repository names in your answer.", "Write your findings to /workspace/answer.json."],
+    "user_story": "As a developer, I want to: Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files \u2014 focus on production source code.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
     "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the kubernetes-ecosystem fixture.",
-    "seed_prompt": "Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files — focus on production source code."
+    "seed_prompt": "Find all Go source files in: 1. `kubernetes/kubernetes` under `staging/src/k8s.io/apiserver/` that configure `DialTimeout`. 2. `etcd-io/etcd` under `client/` and `server/` that define or use `DialTimeout`. Exclude vendored files and test files \u2014 focus on production source code."
   },
   "artifacts": {
     "repo_set_id": "kubernetes-ecosystem",
     "oracle": {
-      "required_files": [],
+      "required_files": [
+        {
+          "repo": "kubernetes/kubernetes",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/storagebackend/factory/etcd3.go"
+        },
+        {
+          "repo": "kubernetes/kubernetes",
+          "path": "staging/src/k8s.io/apiserver/pkg/storage/etcd3/preflight/checks.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/v3/config.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/v3/client.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/v3/lease.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/v3/maintenance.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/pkg/transport/transport.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "client/pkg/transport/timeout_transport.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/config/config.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdserver/server.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdserver/api/rafthttp/transport.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdserver/api/rafthttp/util.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdmain/config.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdmain/etcd.go"
+        },
+        {
+          "repo": "etcd-io/etcd",
+          "path": "server/etcdmain/grpc_proxy.go"
+        }
+      ],
       "required_symbols": [],
       "required_references": [],
       "dependency_chains": []
     }
   },
   "evaluation": {
-    "modes": ["deterministic"],
+    "modes": [
+      "deterministic"
+    ],
     "checks": [
-  {
-    "type": "file_set_match",
-    "params": {
-      "search_pattern": "",
-      "file_filter": ""
-    }
-  }
-],
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      }
+    ],
     "eval_script": "/tests/eval.sh",
     "pass_exit_code": 0
   },
   "logging": {
-    "required_metrics": ["oracle_coverage", "time_to_first_oracle_hit_ms", "unique_repos_touched"]
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
   }
 }

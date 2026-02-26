@@ -23,7 +23,7 @@ reward_type = "ir_checklist"
 description = "Compilation check + IR metrics (file coverage) + keyword scoring for feature implementation"
 
 [environment]
-build_timeout_sec = 1800.0
+build_timeout_sec = 3600.0
 
 [environment.setup_scripts]
 mcp_config = """#!/bin/bash

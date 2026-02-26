@@ -21,7 +21,7 @@ reward_type = "checklist"
 description = "Weighted checklist scoring investigation report against ground-truth findings"
 
 [environment]
-build_timeout_sec = 1800.0
+build_timeout_sec = 3600.0
 
 [environment.setup_scripts]
 mcp_config = """#!/bin/bash

@@ -10,11 +10,11 @@ You are working on a codebase task involving repos from the security domain.
 
 ## Available Resources
 
-No local repositories are pre-checked out.
+The local `/workspace/` directory contains: sg-evals/llvm-project--a8f3c97d, sg-evals/gcc--96dfb333.
 
-**Note:** Additional repositories may be relevant to this task:
-- `github.com/llvm/llvm-project` (llvm/llvm-project)
-- `github.com/gcc-mirror/gcc` (gcc-mirror/gcc)
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+- `sg-evals/llvm-project--a8f3c97d` (llvm/llvm-project)
+- `sg-evals/gcc--96dfb333` (gcc-mirror/gcc)
 
 ## Output Format
 
@@ -23,13 +23,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.cpp"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
   ],
   "symbols": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.cpp", "symbol": "SymbolName"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
   ],
   "chain": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.cpp", "symbol": "FunctionName"}
+    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }

@@ -77,7 +77,7 @@
       "Testing & QA": 18,
       "debug": 14,
       "design": 11,
-      "fix": 22,
+      "fix": 19,
       "secure": 14
     },
     "tasks_per_benchmark": {
@@ -85,7 +85,7 @@
       "ccb_debug": 20,
       "ccb_design": 20,
       "ccb_document": 20,
-      "ccb_fix": 25,
+      "ccb_fix": 22,
       "ccb_mcp_compliance": 7,
       "ccb_mcp_crossorg": 5,
       "ccb_mcp_crossrepo": 1,
@@ -114,9 +114,9 @@
       "python": 38,
       "python,cpp": 1,
       "rust": 4,
-      "typescript": 9
+      "typescript": 6
     },
-    "avg_mcp_benefit_score": 0.8098
+    "avg_mcp_benefit_score": 0.8623
   },
   "tasks": [
     {
@@ -2657,39 +2657,6 @@
       "difficulty": "hard",
       "sdlc_phase": "fix",
       "repo": "internetarchive/openlibrary",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "protonmail-conv-testhooks-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/protonmail-conv-testhooks-fix-001",
-      "language": "typescript",
-      "difficulty": "hard",
-      "sdlc_phase": "fix",
-      "repo": "protonmail/webclients",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "protonmail-dropdown-sizing-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/protonmail-dropdown-sizing-fix-001",
-      "language": "typescript",
-      "difficulty": "hard",
-      "sdlc_phase": "fix",
-      "repo": "protonmail/webclients",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "protonmail-holiday-calendar-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/protonmail-holiday-calendar-fix-001",
-      "language": "typescript",
-      "difficulty": "hard",
-      "sdlc_phase": "fix",
-      "repo": "protonmail/webclients",
       "mcp_benefit_score": 0.75,
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
