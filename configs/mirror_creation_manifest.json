@@ -1,7 +1,7 @@
 {
   "_description": "Mirrors needed for reproducible Sourcegraph indexing",
   "_generated": "2026-02-22",
-  "_status": "UPDATED 2026-02-22 \u2014 98 mirrors (79 original + 19 new)",
+  "_status": "UPDATED 2026-02-26 \u2014 109 mirrors (106 prior + 3 new ccb_fix)",
   "mirrors": [
     {
       "upstream": "github.com/NVIDIA/TensorRT-LLM",
@@ -1046,13 +1046,40 @@
       "mirror": "sg-evals/arangodb--a5cca0b8",
       "pin_source": "tag v3.12.8 pinned 2026-02-24 (arangodb-database fixture)",
       "tasks": []
+    },
+    {
+      "upstream": "github.com/envoyproxy/envoy",
+      "commit": "1ae957c1f92b8e0b0322ab702c67612aa618d214",
+      "mirror": "sg-evals/envoy--1ae957c1",
+      "pin_source": "pre_fix_rev for envoy-udp-proxy-cds-fix-001 (parent of 8d1ab63)",
+      "tasks": [
+        "ccb_fix/envoy-udp-proxy-cds-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/envoyproxy/envoy",
+      "commit": "5160151e14837c6f352b9d0b3a9f55119a9317e8",
+      "mirror": "sg-evals/envoy--5160151e",
+      "pin_source": "pre_fix_rev for envoy-dfp-host-leak-fix-001 (parent of f20b6ca)",
+      "tasks": [
+        "ccb_fix/envoy-dfp-host-leak-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/hashicorp/terraform",
+      "commit": "abd6b9ef1ba5e98ed273f59f667d3b9f2077a87b",
+      "mirror": "sg-evals/terraform--abd6b9ef",
+      "pin_source": "pre_fix_rev for terraform-plan-null-unknown-fix-001 (parent of 332757894d)",
+      "tasks": [
+        "ccb_fix/terraform-plan-null-unknown-fix-001"
+      ]
     }
   ],
   "unresolved": [],
   "summary": {
-    "total_mirrors_needed": 106,
-    "unique_upstream_repos": 56,
-    "tasks_affected": 146,
+    "total_mirrors_needed": 109,
+    "unique_upstream_repos": 57,
+    "tasks_affected": 149,
     "unresolved_count": 0
   }
 }
