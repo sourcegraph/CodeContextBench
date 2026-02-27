@@ -36,7 +36,7 @@ except ModuleNotFoundError:  # pragma: no cover
     tomllib = None
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO_BLOB_BASE = "https://github.com/sjarmak/CodeContextBench/blob/main"
+DEFAULT_REPO_BLOB_BASE = "https://github.com/sourcegraph/CodeContextBench/blob/main"
 if str(PROJECT_ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 

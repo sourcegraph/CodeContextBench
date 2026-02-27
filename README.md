@@ -19,7 +19,7 @@ This repository contains **benchmark task definitions**, **evaluation configs**,
 You can inspect task definitions, run validation and analysis scripts, and use the metrics/report pipeline on existing Harbor run outputs.
 
 ```bash
-git clone https://github.com/sjarmak/CodeContextBench.git
+git clone https://github.com/sourcegraph/CodeContextBench.git
 cd CodeContextBench
 
 # Fast repo sanity check (docs/config refs)
