@@ -38,13 +38,21 @@ BENCHMARKS_DIR = PROJECT_ROOT / "benchmarks"
 SELECTION_FILE = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 sys.path.insert(0, str(SCRIPT_DIR))
-from config_utils import is_mcp_config, is_baseline_config
+from config_utils import discover_configs
+from official_runs import load_prefix_map, detect_suite, top_level_run_dirs, tracked_run_dirs_from_manifest
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 MCP_SUITE_PREFIX = "ccb_mcp_"
+SKIP_DIR_PARTS = {"retrieval_events", "archive", "__archived", "__broken_verifier", "validation_test"}
+TRANSCRIPT_CANDIDATES = (
+    "claude-code.txt",
+    "gemini-code.txt",
+    "openhands-code.txt",
+    "transcript.jsonl",
+)
 
 # Cache for case-insensitive directory lookups within benchmark suite dirs.
 # Maps (suite, task_name_lower) -> actual_dirname on disk.
@@ -88,6 +96,185 @@ def _resolve_task_dir_name(suite: str, task_name: str) -> str:
 def _is_mcp_suite(suite: str) -> bool:
     """Check if a suite is an MCP-unique suite."""
     return suite.startswith(MCP_SUITE_PREFIX)
+
+
+def _is_baseline_side_config(config: str) -> bool:
+    return config.lower().startswith("baseline")
+
+
+def _is_mcp_side_config(config: str) -> bool:
+    return config.lower().startswith("mcp")
+
+
+def _suite_from_run_dir(run_dir_name: str, prefix_map: dict[str, str]) -> str:
+    suite = detect_suite(run_dir_name, prefix_map)
+    if suite:
+        return suite
+
+    if run_dir_name.startswith("ccb_"):
+        parts = run_dir_name.split("_")
+        if len(parts) >= 3 and parts[1] == "mcp":
+            return "_".join(parts[:3])
+        if len(parts) >= 2:
+            return "_".join(parts[:2])
+    return "unknown"
+
+
+def _safe_float(value: Any) -> float | None:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
+def _normalize_task_name(name: str) -> str:
+    """Normalize task IDs across wrapper prefixes and naming drift."""
+    if name.startswith("mcp_"):
+        name = name[4:]
+        name = re.sub(r"_[A-Za-z0-9]{6}$", "", name)
+    elif name.startswith("bl_"):
+        name = name[3:]
+        name = re.sub(r"_[A-Za-z0-9]{6}$", "", name)
+    elif name.startswith("sgonly_"):
+        name = name[7:]
+    if name.startswith("ccx-"):
+        name = "CCX-" + name[4:]
+    return name
+
+
+def _parse_iso_timestamp(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value
+
+
+def _is_task_result_payload(data: dict[str, Any]) -> bool:
+    if not isinstance(data, dict):
+        return False
+    if "task_name" in data or "trial_name" in data:
+        return True
+    if "verifier_result" in data and "agent_result" in data:
+        return True
+    return False
+
+
+def _task_name_from_dir(task_dir: Path) -> str:
+    name = task_dir.name
+    if "__" in name:
+        return name.rsplit("__", 1)[0]
+    return name
+
+
+def _extract_reward_and_status(result_payload: dict[str, Any]) -> tuple[float | None, str | None]:
+    exception_info = result_payload.get("exception_info")
+    verifier = result_payload.get("verifier_result") or {}
+    rewards = verifier.get("rewards") if isinstance(verifier, dict) else {}
+    rewards = rewards if isinstance(rewards, dict) else {}
+    reward = _safe_float(rewards.get("reward"))
+    if reward is None:
+        reward = _safe_float(rewards.get("score"))
+
+    if exception_info is not None:
+        return reward, "errored"
+
+    raw_status = result_payload.get("status")
+    if raw_status in {"passed", "failed"}:
+        if reward is not None:
+            return reward, str(raw_status)
+        reward_raw = _safe_float(result_payload.get("reward"))
+        if reward_raw is not None:
+            return reward_raw, str(raw_status)
+        return None, str(raw_status)
+
+    if reward is not None:
+        return reward, ("passed" if reward > 0 else "failed")
+
+    reward_raw = _safe_float(result_payload.get("reward"))
+    if reward_raw is not None:
+        return reward_raw, ("passed" if reward_raw > 0 else "failed")
+
+    return None, None
+
+
+def load_selected_tasks_by_suite(path: Path) -> dict[str, set[str]]:
+    """Load selected_benchmark_tasks.json and return {suite: {task_name}}."""
+    if not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+    tasks_list = data.get("tasks", []) if isinstance(data, dict) else []
+    selected: dict[str, set[str]] = defaultdict(set)
+    for task in tasks_list:
+        suite = str(task.get("benchmark", task.get("suite", "")))
+        task_name = str(task.get("task_name", task.get("task_id", "")))
+        if not suite or not task_name:
+            continue
+        if not suite.startswith("ccb_"):
+            suite = f"ccb_{suite}"
+        selected[suite].add(_normalize_task_name(task_name))
+    return dict(selected)
+
+
+def collect_task_results_from_disk(
+    runs_dir: Path,
+    manifest: dict,
+) -> dict[tuple[str, str, str], dict[str, Any]]:
+    """Collect latest task-level outcomes from trial result.json files.
+
+    Returns keyed by (suite, config, task_name).
+    """
+    prefix_map = load_prefix_map(PROJECT_ROOT)
+    tracked = tracked_run_dirs_from_manifest(manifest)
+    by_key: dict[tuple[str, str, str], dict[str, Any]] = {}
+
+    for run_dir in top_level_run_dirs(runs_dir):
+        if tracked and run_dir.name not in tracked:
+            continue
+        suite = _suite_from_run_dir(run_dir.name, prefix_map)
+        for config in discover_configs(run_dir):
+            config_dir = run_dir / config
+            for result_path in sorted(config_dir.rglob("result.json")):
+                if any(part in SKIP_DIR_PARTS for part in result_path.parts):
+                    continue
+                try:
+                    payload = json.loads(result_path.read_text())
+                except (json.JSONDecodeError, OSError):
+                    continue
+                if not _is_task_result_payload(payload):
+                    continue
+
+                task_dir = result_path.parent
+                task_name = str(payload.get("task_name") or _task_name_from_dir(task_dir))
+                task_name = _normalize_task_name(task_name)
+                reward, status = _extract_reward_and_status(payload)
+                has_trajectory = (task_dir / "agent" / "trajectory.json").is_file()
+                has_transcript = any((task_dir / "agent" / c).is_file() for c in TRANSCRIPT_CANDIDATES)
+                started_at = _parse_iso_timestamp(payload.get("started_at"))
+                key = (suite, config, task_name)
+                candidate = {
+                    "suite": suite,
+                    "config": config,
+                    "task_name": task_name,
+                    "status": status,
+                    "reward": reward,
+                    "has_trajectory": has_trajectory,
+                    "has_transcript": has_transcript,
+                    "started_at": started_at,
+                    "result_path": str(result_path),
+                }
+                prev = by_key.get(key)
+                if prev is None:
+                    by_key[key] = candidate
+                else:
+                    prev_key = (prev.get("started_at", ""), prev.get("result_path", ""))
+                    cand_key = (candidate.get("started_at", ""), candidate.get("result_path", ""))
+                    if cand_key > prev_key:
+                        by_key[key] = candidate
+    return by_key
 
 
 def _parse_toml_simple(path: Path) -> dict[str, Any]:
@@ -512,10 +699,10 @@ def check_config_fairness(
     for (suite, task_name), configs in task_configs.items():
         # Find baseline and MCP configs
         baseline_configs = {
-            c: d for c, d in configs.items() if is_baseline_config(c)
+            c: d for c, d in configs.items() if _is_baseline_side_config(c)
         }
         mcp_configs = {
-            c: d for c, d in configs.items() if is_mcp_config(c)
+            c: d for c, d in configs.items() if _is_mcp_side_config(c)
         }
 
         # Skip tasks with only one config type
@@ -599,6 +786,174 @@ def check_config_fairness(
     }
 
     return flags, paired_comparison
+
+
+def check_manifest_vs_trial_results(
+    manifest_runs: dict[str, dict],
+    trial_index: dict[tuple[str, str, str], dict[str, Any]],
+) -> list[dict]:
+    """Reconcile MANIFEST task outcomes against task-level trial results."""
+    flags: list[dict] = []
+    for run_key, run_data in manifest_runs.items():
+        parts = run_key.split("/")
+        suite = parts[0]
+        config = parts[1] if len(parts) > 1 else "unknown"
+        for task_name, task_data in run_data.get("tasks", {}).items():
+            normalized_task = _normalize_task_name(task_name)
+            trial = trial_index.get((suite, config, normalized_task))
+            if trial is None:
+                flags.append({
+                    "type": "manifest_consistency",
+                    "subtype": "trial_result_missing",
+                    "run_key": run_key,
+                    "task": task_name,
+                    "config": config,
+                    "detail": "Task exists in MANIFEST but no task-level trial result was found on disk",
+                })
+                continue
+
+            manifest_status = task_data.get("status")
+            manifest_reward = _safe_float(task_data.get("reward"))
+            trial_status = trial.get("status")
+            trial_reward = _safe_float(trial.get("reward"))
+            manifest_has_traj = bool(task_data.get("has_trajectory", False))
+            trial_has_traj = bool(trial.get("has_trajectory", False))
+
+            if trial_status not in {"passed", "failed"} or trial_reward is None:
+                flags.append({
+                    "type": "manifest_consistency",
+                    "subtype": "unscored_trial_mapped_as_scored",
+                    "run_key": run_key,
+                    "task": task_name,
+                    "config": config,
+                    "detail": (
+                        f"MANIFEST status={manifest_status} reward={manifest_reward}, "
+                        f"but trial result is unscored (status={trial_status}, reward={trial_reward})"
+                    ),
+                    "result_path": trial.get("result_path", ""),
+                })
+                continue
+
+            if manifest_status != trial_status:
+                flags.append({
+                    "type": "manifest_consistency",
+                    "subtype": "status_mismatch",
+                    "run_key": run_key,
+                    "task": task_name,
+                    "config": config,
+                    "detail": f"MANIFEST status={manifest_status}, trial status={trial_status}",
+                    "result_path": trial.get("result_path", ""),
+                })
+
+            if manifest_reward is None or abs(manifest_reward - trial_reward) > 1e-3:
+                flags.append({
+                    "type": "manifest_consistency",
+                    "subtype": "reward_mismatch",
+                    "run_key": run_key,
+                    "task": task_name,
+                    "config": config,
+                    "detail": f"MANIFEST reward={manifest_reward}, trial reward={trial_reward}",
+                    "result_path": trial.get("result_path", ""),
+                })
+
+            if manifest_has_traj != trial_has_traj:
+                flags.append({
+                    "type": "manifest_consistency",
+                    "subtype": "trajectory_mismatch",
+                    "run_key": run_key,
+                    "task": task_name,
+                    "config": config,
+                    "detail": f"MANIFEST has_trajectory={manifest_has_traj}, trial has_trajectory={trial_has_traj}",
+                    "result_path": trial.get("result_path", ""),
+                })
+
+    return flags
+
+
+def check_paired_coverage_from_trials(
+    manifest_runs: dict[str, dict],
+    trial_index: dict[tuple[str, str, str], dict[str, Any]],
+    selected_by_suite: dict[str, set[str]],
+) -> list[dict]:
+    """Ensure paired SDLC coverage is present and scored on task-level results."""
+    flags: list[dict] = []
+
+    # Collect manifest tasks by suite and side as expected universe.
+    expected_by_suite: dict[str, set[str]] = defaultdict(set)
+    for run_key, run_data in manifest_runs.items():
+        suite = run_key.split("/")[0]
+        for task_name in run_data.get("tasks", {}).keys():
+            expected_by_suite[suite].add(_normalize_task_name(task_name))
+
+    # Also include selected tasks for suites already present in MANIFEST.
+    for suite, tasks in selected_by_suite.items():
+        if suite in expected_by_suite:
+            expected_by_suite[suite].update(tasks)
+
+    for suite, expected_tasks in sorted(expected_by_suite.items()):
+        if _is_mcp_suite(suite):
+            continue
+
+        baseline_configs = {
+            run_key.split("/")[1]
+            for run_key in manifest_runs.keys()
+            if run_key.startswith(f"{suite}/") and _is_baseline_side_config(run_key.split("/", 1)[1])
+        }
+        mcp_configs = {
+            run_key.split("/")[1]
+            for run_key in manifest_runs.keys()
+            if run_key.startswith(f"{suite}/") and _is_mcp_side_config(run_key.split("/", 1)[1])
+        }
+        if not baseline_configs or not mcp_configs:
+            continue
+
+        for task_name in sorted(expected_tasks):
+            baseline_trials = [
+                trial_index.get((suite, config, task_name))
+                for config in baseline_configs
+                if (suite, config, task_name) in trial_index
+            ]
+            mcp_trials = [
+                trial_index.get((suite, config, task_name))
+                for config in mcp_configs
+                if (suite, config, task_name) in trial_index
+            ]
+            baseline_scored = any(
+                t and t.get("status") in {"passed", "failed"} and _safe_float(t.get("reward")) is not None
+                for t in baseline_trials
+            )
+            mcp_scored = any(
+                t and t.get("status") in {"passed", "failed"} and _safe_float(t.get("reward")) is not None
+                for t in mcp_trials
+            )
+
+            if not baseline_scored and mcp_scored:
+                flags.append({
+                    "type": "coverage_gap",
+                    "subtype": "missing_scored_baseline",
+                    "suite": suite,
+                    "task": task_name,
+                    "config": "baseline",
+                    "detail": (
+                        "MCP side has scored trial result, baseline side has no scored "
+                        "task-level result (passed/failed + numeric reward)"
+                    ),
+                })
+
+            if baseline_scored and not mcp_scored:
+                flags.append({
+                    "type": "coverage_gap",
+                    "subtype": "missing_scored_mcp",
+                    "suite": suite,
+                    "task": task_name,
+                    "config": "mcp",
+                    "detail": (
+                        "Baseline side has scored trial result, MCP side has no scored "
+                        "task-level result (passed/failed + numeric reward)"
+                    ),
+                })
+
+    return flags
 
 
 def check_verifier_consistency(
@@ -689,29 +1044,35 @@ def run_audit(
     print()
 
     # Load all data sources
-    print("[1/6] Loading MANIFEST.json ...")
+    print("[1/7] Loading MANIFEST.json ...")
     manifest = load_manifest(manifest_path)
     manifest_runs = manifest.get("runs", {})
     print(f"       {len(manifest_runs)} run entries, "
           f"{manifest.get('total_tasks', 0)} total tasks")
 
-    print("[2/6] Indexing task_metrics.json files ...")
+    print("[2/7] Indexing task_metrics.json files ...")
     task_metrics_index = find_task_metrics(RUNS_DIR)
     total_metrics = sum(len(v) for v in task_metrics_index.values())
     print(f"       {total_metrics} metrics files across "
           f"{len(task_metrics_index)} unique task IDs")
 
-    print("[3/6] Indexing retrieval_metrics.json files ...")
+    print("[3/7] Indexing retrieval_metrics.json files ...")
     retrieval_metrics_index = find_retrieval_metrics(RUNS_DIR)
     total_retrieval = sum(len(v) for v in retrieval_metrics_index.values())
     print(f"       {total_retrieval} retrieval metrics files across "
           f"{len(retrieval_metrics_index)} unique task names")
 
-    print("[4/6] Loading selected_benchmark_tasks.json ...")
+    print("[4/7] Loading selected_benchmark_tasks.json ...")
     selected_tasks = load_selected_tasks(SELECTION_FILE)
+    selected_by_suite = load_selected_tasks_by_suite(SELECTION_FILE)
     print(f"       {len(selected_tasks)} selected tasks")
+    print(f"       {len(selected_by_suite)} suites with selected-task entries")
 
-    print("[5/6] Running audit checks ...")
+    print("[5/7] Loading task-level trial outcomes ...")
+    trial_index = collect_task_results_from_disk(RUNS_DIR, manifest)
+    print(f"       {len(trial_index)} suite/config/task trial outcomes indexed")
+
+    print("[6/7] Running audit checks ...")
     print()
 
     # Collect all flags
@@ -720,6 +1081,8 @@ def run_audit(
     all_score_flags: list[dict] = []
     all_fairness_flags: list[dict] = []
     all_verifier_flags: list[dict] = []
+    all_manifest_consistency_flags: list[dict] = []
+    all_coverage_gap_flags: list[dict] = []
 
     total_tasks_audited = 0
     errored_tasks = 0
@@ -804,7 +1167,22 @@ def run_audit(
         task = f.get("task", "")
         flagged_task_set.add(f"{suite}/{task}")
 
-    print("[6/6] Building report ...")
+    # E. Trial-grounded MANIFEST consistency
+    all_manifest_consistency_flags.extend(
+        check_manifest_vs_trial_results(manifest_runs, trial_index)
+    )
+
+    # F. Paired scored-coverage validation from trial outcomes
+    all_coverage_gap_flags.extend(
+        check_paired_coverage_from_trials(manifest_runs, trial_index, selected_by_suite)
+    )
+
+    for f in all_manifest_consistency_flags:
+        flagged_task_set.add(f"{f.get('run_key', '?')}/{f.get('task', '?')}")
+    for f in all_coverage_gap_flags:
+        flagged_task_set.add(f"{f.get('suite', '?')}/{f.get('task', '?')}")
+
+    print("[7/7] Building report ...")
     print()
 
     # Build category breakdown
@@ -821,12 +1199,16 @@ def run_audit(
             "score_anomalies": all_score_flags,
             "config_fairness_issues": all_fairness_flags,
             "verifier_issues": all_verifier_flags,
+            "manifest_consistency": all_manifest_consistency_flags,
+            "coverage_gaps": all_coverage_gap_flags,
         },
         "summary": {
             "clean_tasks": clean_tasks,
             "flagged_tasks": len(flagged_task_set),
             "errored_tasks": errored_tasks,
             "by_category": dict(by_category),
+            "manifest_consistency_issues": len(all_manifest_consistency_flags),
+            "coverage_gap_issues": len(all_coverage_gap_flags),
         },
         "paired_comparison": paired_comparison,
     }
@@ -867,6 +1249,8 @@ def _print_summary(report: dict, verbose: bool = False) -> None:
     print(f"    Score anomalies:           {len(flags['score_anomalies'])}")
     print(f"    Config fairness issues:    {len(flags['config_fairness_issues'])}")
     print(f"    Verifier issues:           {len(flags['verifier_issues'])}")
+    print(f"    Manifest consistency:      {len(flags.get('manifest_consistency', []))}")
+    print(f"    Coverage gaps:             {len(flags.get('coverage_gaps', []))}")
     print()
 
     # Paired comparison

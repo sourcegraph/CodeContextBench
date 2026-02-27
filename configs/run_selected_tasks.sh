@@ -54,7 +54,7 @@ USE_CASE_CATEGORY_FILTER=""
 MODEL="${MODEL:-anthropic/claude-haiku-4-5-20251001}"
 CONCURRENCY=1        # harbor -n: trials per task
 PARALLEL_TASKS=0     # 0 = auto-detect from accounts; overridden by --parallel N
-TIMEOUT_MULTIPLIER=10
+TIMEOUT_MULTIPLIER="${TIMEOUT_MULTIPLIER:-10}"
 RUN_BASELINE=true
 RUN_FULL=true
 CATEGORY="${CATEGORY:-staging}"
