@@ -33,7 +33,13 @@ if str(PROJECT_ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from config_utils import discover_configs, is_mcp_config
-from official_runs import top_level_run_dirs, load_manifest, tracked_run_dirs_from_manifest
+from official_runs import (
+    top_level_run_dirs,
+    load_manifest,
+    tracked_run_dirs_from_manifest,
+    load_prefix_map,
+    detect_suite,
+)
 
 SKIP_DIR_PARTS = {"retrieval_events", "archive", "__archived", "__broken_verifier", "validation_test"}
 TRANSCRIPT_CANDIDATES = (
@@ -47,6 +53,7 @@ AUDIT_EVENT_LIMIT = 200
 
 @dataclass
 class TaskRecord:
+    suite: str
     run_dir: str
     config: str
     task_name: str
@@ -325,6 +332,7 @@ def _parse_trajectory(trajectory_path: Path) -> dict[str, Any]:
 
 
 def _extract_task_record(
+    suite: str,
     run_dir_name: str,
     config_name: str,
     task_dir: Path,
@@ -425,6 +433,7 @@ def _extract_task_record(
     tx_sha = _sha256_file(transcript_path) if transcript_path else None
 
     record = TaskRecord(
+        suite=suite,
         run_dir=run_dir_name,
         config=config_name,
         task_name=task_name,
@@ -461,6 +470,7 @@ def _extract_task_record(
 
     audit_payload = {
         "provenance": {
+            "suite": suite,
             "run_dir": run_dir_name,
             "config": config_name,
             "task_name": task_name,
@@ -515,8 +525,24 @@ def _fmt_int(value: int | None) -> str:
     return f"{value:,}"
 
 
+def _suite_from_run_dir(run_dir_name: str, prefix_map: dict[str, str]) -> str:
+    suite = detect_suite(run_dir_name, prefix_map)
+    if suite:
+        return suite
+
+    if run_dir_name.startswith("ccb_"):
+        parts = run_dir_name.split("_")
+        if len(parts) >= 3 and parts[1] == "mcp":
+            return "_".join(parts[:3])
+        if len(parts) >= 2:
+            return "_".join(parts[:2])
+
+    return "unknown"
+
+
 def _to_task_dict(record: TaskRecord, task_page: str) -> dict[str, Any]:
     return {
+        "suite": record.suite,
         "run_dir": record.run_dir,
         "config": record.config,
         "task_name": record.task_name,
@@ -655,7 +681,43 @@ def _build_run_page(run_dir: str, config_tasks: dict[str, list[dict[str, Any]]])
     return "\n".join(lines)
 
 
-def _build_root_readme(run_summaries: list[dict[str, Any]]) -> str:
+def _build_suite_page(suite: str, run_config_tasks: dict[tuple[str, str], list[dict[str, Any]]]) -> str:
+    lines: list[str] = []
+    lines.append(f"# {suite}")
+    lines.append("")
+    lines.append("| Run | Config | Valid Tasks | Mean Reward | Pass Rate |")
+    lines.append("|---|---|---:|---:|---:|")
+    for (run_dir, config), tasks in sorted(run_config_tasks.items(), key=lambda kv: (kv[0][0], kv[0][1])):
+        rewards = [t["reward"] for t in tasks]
+        passes = sum(1 for t in tasks if t["status"] == "passed")
+        mean_reward = statistics.mean(rewards) if rewards else 0.0
+        pass_rate = (passes / len(tasks)) if tasks else 0.0
+        lines.append(
+            f"| [{run_dir}](../runs/{_slug(run_dir)}.md) | `{config}` | {len(tasks)} | {mean_reward:.3f} | {pass_rate:.3f} |"
+        )
+    lines.append("")
+    lines.append("## Tasks")
+    lines.append("")
+    lines.append("| Run | Config | Task | Status | Reward | MCP Ratio |")
+    lines.append("|---|---|---|---|---:|---:|")
+    rows: list[dict[str, Any]] = []
+    for (_run_config, tasks) in run_config_tasks.items():
+        rows.extend(tasks)
+    for task in sorted(rows, key=lambda t: (t["run_dir"], t["config"], t["task_name"])):
+        lines.append(
+            "| "
+            f"`{task['run_dir']}` | "
+            f"`{task['config']}` | "
+            f"[{task['task_name']}](../{task['task_page']}) | "
+            f"`{task['status']}` | "
+            f"{task['reward']:.3f} | "
+            f"{_fmt_float(task['mcp_ratio'])} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_root_readme(suite_summaries: list[dict[str, Any]], run_summaries: list[dict[str, Any]]) -> str:
     lines: list[str] = []
     generated = datetime.now(timezone.utc).isoformat()
     lines.append("# Official Results Browser")
@@ -670,15 +732,29 @@ def _build_root_readme(run_summaries: list[dict[str, Any]]) -> str:
     lines.append("python3 scripts/export_official_results.py --serve")
     lines.append("```")
     lines.append("")
-    lines.append("## Run/Config Summary")
+    lines.append("## Suite/Config Summary")
     lines.append("")
-    lines.append("| Run | Config | Valid Tasks | Mean Reward | Pass Rate |")
+    lines.append("| Suite | Config | Valid Tasks | Mean Reward | Pass Rate |")
     lines.append("|---|---|---:|---:|---:|")
-    for row in run_summaries:
+    for row in suite_summaries:
         lines.append(
-            f"| [{row['run_dir']}](runs/{row['run_page']}) | `{row['config']}` | "
+            f"| [{row['suite']}](suites/{row['suite']}.md) | `{row['config']}` | "
             f"{row['task_count']} | {row['mean_reward']:.3f} | {row['pass_rate']:.3f} |"
         )
+    lines.append("")
+    lines.append("<details>")
+    lines.append("<summary>Run/Config Summary</summary>")
+    lines.append("")
+    lines.append("")
+    lines.append("| Run | Suite | Config | Valid Tasks | Mean Reward | Pass Rate |")
+    lines.append("|---|---|---|---:|---:|---:|")
+    for row in run_summaries:
+        lines.append(
+            f"| [{row['run_dir']}](runs/{row['run_page']}) | `{row['suite']}` | `{row['config']}` | "
+            f"{row['task_count']} | {row['mean_reward']:.3f} | {row['pass_rate']:.3f} |"
+        )
+    lines.append("")
+    lines.append("</details>")
     lines.append("")
     lines.append("`index.html`, `data/official_results.json`, and `audits/*.json` provide GitHub-auditable artifacts.")
     return "\n".join(lines)
@@ -711,18 +787,20 @@ def _build_index_html() -> str:
   <div class=\"wrap\">
     <h1>Official Results Browser</h1>
     <div class=\"controls\">
+      <select id=\"suiteFilter\"><option value=\"\">All suites</option></select>
       <select id=\"runFilter\"><option value=\"\">All runs</option></select>
       <select id=\"configFilter\"><option value=\"\">All configs</option></select>
       <select id=\"statusFilter\"><option value=\"\">All statuses</option><option>passed</option><option>failed</option></select>
       <input id=\"taskSearch\" placeholder=\"Search task\" />
     </div>
     <table>
-      <thead><tr><th>Run</th><th>Config</th><th>Task</th><th>Status</th><th>Reward</th><th>MCP ratio</th><th>Tools</th><th>Trace</th></tr></thead>
+      <thead><tr><th>Suite</th><th>Run</th><th>Config</th><th>Task</th><th>Status</th><th>Reward</th><th>MCP ratio</th><th>Tools</th><th>Trace</th></tr></thead>
       <tbody id=\"rows\"></tbody>
     </table>
   </div>
   <script>
     const rowsEl = document.getElementById('rows');
+    const suiteFilter = document.getElementById('suiteFilter');
     const runFilter = document.getElementById('runFilter');
     const configFilter = document.getElementById('configFilter');
     const statusFilter = document.getElementById('statusFilter');
@@ -732,12 +810,15 @@ def _build_index_html() -> str:
 
     fetch('data/official_results.json').then(r => r.json()).then(data => {
       const tasks = data.tasks || [];
+      const suites = [...new Set(tasks.map(t => t.suite || 'unknown'))].sort();
       const runs = [...new Set(tasks.map(t => t.run_dir))].sort();
       const configs = [...new Set(tasks.map(t => t.config))].sort();
+      suites.forEach(s => suiteFilter.add(new Option(s, s)));
       runs.forEach(r => runFilter.add(new Option(r, r)));
       configs.forEach(c => configFilter.add(new Option(c, c)));
 
       const render = () => {
+        const sfu = suiteFilter.value;
         const rf = runFilter.value;
         const cf = configFilter.value;
         const sf = statusFilter.value;
@@ -745,12 +826,13 @@ def _build_index_html() -> str:
 
         rowsEl.innerHTML = '';
         tasks
-          .filter(t => (!rf || t.run_dir === rf) && (!cf || t.config === cf) && (!sf || t.status === sf) && (!q || t.task_name.toLowerCase().includes(q)))
+          .filter(t => (!sfu || (t.suite || 'unknown') === sfu) && (!rf || t.run_dir === rf) && (!cf || t.config === cf) && (!sf || t.status === sf) && (!q || t.task_name.toLowerCase().includes(q)))
           .slice(0, 1200)
           .forEach(t => {
             const tr = document.createElement('tr');
             const trace = `${t.trace_available.trajectory ? 'traj ' : ''}${t.trace_available.transcript ? 'tx' : ''}`.trim() || '-';
             tr.innerHTML = `
+              <td class=\"mono\">${t.suite || 'unknown'}</td>
               <td class=\"mono\">${t.run_dir}</td>
               <td class=\"mono\">${t.config}</td>
               <td><a href=\"${t.task_page}\">${t.task_name}</a></td>
@@ -764,6 +846,7 @@ def _build_index_html() -> str:
           });
       };
 
+      suiteFilter.addEventListener('change', render);
       runFilter.addEventListener('change', render);
       configFilter.addEventListener('change', render);
       statusFilter.addEventListener('change', render);
@@ -792,6 +875,7 @@ def build_export(
     run_filter: set[str] | None,
     max_examples: int,
 ) -> dict[str, Any]:
+    prefix_map = load_prefix_map(PROJECT_ROOT)
     manifest_path = runs_dir / "MANIFEST.json"
     tracked: set[str] | None = None
     if manifest_path.is_file():
@@ -808,15 +892,17 @@ def build_export(
 
     tasks_dir = output_dir / "tasks"
     runs_pages_dir = output_dir / "runs"
+    suite_pages_dir = output_dir / "suites"
     audits_dir = output_dir / "audits"
     traces_dir = output_dir / "traces"
 
     for run_dir in run_dirs:
+        suite = _suite_from_run_dir(run_dir.name, prefix_map)
         configs = discover_configs(run_dir)
         for config in configs:
             config_dir = run_dir / config
             for task_dir in _iter_task_dirs(config_dir):
-                extracted = _extract_task_record(run_dir.name, config, task_dir, max_examples)
+                extracted = _extract_task_record(suite, run_dir.name, config, task_dir, max_examples)
                 if extracted is None:
                     continue
                 record, audit_payload = extracted
@@ -844,6 +930,7 @@ def build_export(
                 tasks_out.append(task_dict)
 
     run_summaries: list[dict[str, Any]] = []
+    suite_summaries: list[dict[str, Any]] = []
     run_page_map: dict[str, str] = {}
 
     by_run: dict[str, dict[str, list[dict[str, Any]]]] = defaultdict(lambda: defaultdict(list))
@@ -854,6 +941,7 @@ def build_export(
         run_page_name = f"{_slug(run_dir_name)}.md"
         run_page_map[run_dir_name] = run_page_name
         run_page_path = runs_pages_dir / run_page_name
+        run_suite = next((tasks[0]["suite"] for tasks in config_map.values() if tasks), "unknown")
 
         # Adjust task links in page scope.
         page_config_map: dict[str, list[dict[str, Any]]] = {}
@@ -875,6 +963,7 @@ def build_export(
             run_summaries.append(
                 {
                     "run_dir": run_dir_name,
+                    "suite": run_suite,
                     "run_page": run_page_name,
                     "config": config,
                     "task_count": len(tasks),
@@ -886,18 +975,45 @@ def build_export(
 
     run_summaries.sort(key=lambda x: (x["run_dir"], x["config"]))
 
+    by_suite: dict[str, dict[tuple[str, str], list[dict[str, Any]]]] = defaultdict(lambda: defaultdict(list))
+    for task in tasks_out:
+        by_suite[task["suite"]][(task["run_dir"], task["config"])].append(task)
+
+    for suite, run_config_tasks in sorted(by_suite.items()):
+        _write_text(suite_pages_dir / f"{suite}.md", _build_suite_page(suite, run_config_tasks))
+
+        config_buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for (_run_dir, config), tasks in run_config_tasks.items():
+            config_buckets[config].extend(tasks)
+        for config, tasks in sorted(config_buckets.items()):
+            rewards = [t["reward"] for t in tasks]
+            passes = sum(1 for t in tasks if t["status"] == "passed")
+            suite_summaries.append(
+                {
+                    "suite": suite,
+                    "config": config,
+                    "task_count": len(tasks),
+                    "mean_reward": statistics.mean(rewards) if rewards else 0.0,
+                    "pass_rate": (passes / len(tasks)) if tasks else 0.0,
+                    "is_mcp_config": is_mcp_config(config),
+                }
+            )
+    suite_summaries.sort(key=lambda x: (x["suite"], x["config"]))
+
     data = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "runs_dir": str(runs_dir),
+        "suite_count": len(by_suite),
         "run_count": len({r["run_dir"] for r in run_summaries}),
         "task_count": len(tasks_out),
+        "suite_summaries": suite_summaries,
         "run_summaries": run_summaries,
         "tasks": sorted(tasks_out, key=lambda t: (t["run_dir"], t["config"], t["task_name"])),
     }
 
     (output_dir / "data").mkdir(parents=True, exist_ok=True)
     _write_text(output_dir / "data" / "official_results.json", json.dumps(data, indent=2, sort_keys=True))
-    _write_text(output_dir / "README.md", _build_root_readme(run_summaries))
+    _write_text(output_dir / "README.md", _build_root_readme(suite_summaries, run_summaries))
     _write_text(output_dir / "index.html", _build_index_html())
 
     return data

@@ -24,18 +24,20 @@
   <div class="wrap">
     <h1>Official Results Browser</h1>
     <div class="controls">
+      <select id="suiteFilter"><option value="">All suites</option></select>
       <select id="runFilter"><option value="">All runs</option></select>
       <select id="configFilter"><option value="">All configs</option></select>
       <select id="statusFilter"><option value="">All statuses</option><option>passed</option><option>failed</option></select>
       <input id="taskSearch" placeholder="Search task" />
     </div>
     <table>
-      <thead><tr><th>Run</th><th>Config</th><th>Task</th><th>Status</th><th>Reward</th><th>MCP ratio</th><th>Tools</th><th>Trace</th></tr></thead>
+      <thead><tr><th>Suite</th><th>Run</th><th>Config</th><th>Task</th><th>Status</th><th>Reward</th><th>MCP ratio</th><th>Tools</th><th>Trace</th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
   </div>
   <script>
     const rowsEl = document.getElementById('rows');
+    const suiteFilter = document.getElementById('suiteFilter');
     const runFilter = document.getElementById('runFilter');
     const configFilter = document.getElementById('configFilter');
     const statusFilter = document.getElementById('statusFilter');
@@ -45,12 +47,15 @@
 
     fetch('data/official_results.json').then(r => r.json()).then(data => {
       const tasks = data.tasks || [];
+      const suites = [...new Set(tasks.map(t => t.suite || 'unknown'))].sort();
       const runs = [...new Set(tasks.map(t => t.run_dir))].sort();
       const configs = [...new Set(tasks.map(t => t.config))].sort();
+      suites.forEach(s => suiteFilter.add(new Option(s, s)));
       runs.forEach(r => runFilter.add(new Option(r, r)));
       configs.forEach(c => configFilter.add(new Option(c, c)));
 
       const render = () => {
+        const sfu = suiteFilter.value;
         const rf = runFilter.value;
         const cf = configFilter.value;
         const sf = statusFilter.value;
@@ -58,12 +63,13 @@
 
         rowsEl.innerHTML = '';
         tasks
-          .filter(t => (!rf || t.run_dir === rf) && (!cf || t.config === cf) && (!sf || t.status === sf) && (!q || t.task_name.toLowerCase().includes(q)))
+          .filter(t => (!sfu || (t.suite || 'unknown') === sfu) && (!rf || t.run_dir === rf) && (!cf || t.config === cf) && (!sf || t.status === sf) && (!q || t.task_name.toLowerCase().includes(q)))
           .slice(0, 1200)
           .forEach(t => {
             const tr = document.createElement('tr');
             const trace = `${t.trace_available.trajectory ? 'traj ' : ''}${t.trace_available.transcript ? 'tx' : ''}`.trim() || '-';
             tr.innerHTML = `
+              <td class="mono">${t.suite || 'unknown'}</td>
               <td class="mono">${t.run_dir}</td>
               <td class="mono">${t.config}</td>
               <td><a href="${t.task_page}">${t.task_name}</a></td>
@@ -77,6 +83,7 @@
           });
       };
 
+      suiteFilter.addEventListener('change', render);
       runFilter.addEventListener('change', render);
       configFilter.addEventListener('change', render);
       statusFilter.addEventListener('change', render);
