@@ -1,4 +1,4 @@
-# k8s-typemeta-dep-chain-001 (baseline)
+# k8s-typemeta-dep-chain-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

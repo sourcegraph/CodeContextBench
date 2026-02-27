@@ -1,4 +1,4 @@
-# sgonly_bustub-hyperloglog-impl-001 (mcp)
+# sgonly_bustub-hyperloglog-impl-001 (mcp-remote-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `failed`

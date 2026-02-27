@@ -1,4 +1,4 @@
-# kafka-security-review-001 (baseline)
+# kafka-security-review-001 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

@@ -2,8 +2,6 @@
 
 | Run | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
-| [ccb_test_haiku_022326](../runs/ccb_test_haiku_022326.md) | `baseline` | 9 | 0.472 | 0.778 |
-| [ccb_test_haiku_022326](../runs/ccb_test_haiku_022326.md) | `mcp` | 8 | 0.555 | 0.625 |
 | [ccb_test_haiku_20260224_180149](../runs/ccb_test_haiku_20260224_180149.md) | `baseline-local-direct` | 11 | 0.486 | 0.727 |
 | [ccb_test_haiku_20260224_180149](../runs/ccb_test_haiku_20260224_180149.md) | `mcp-remote-direct` | 11 | 0.387 | 0.727 |
 | [test_haiku_20260223_235732](../runs/test_haiku_20260223_235732.md) | `baseline-local-direct` | 9 | 0.472 | 0.778 |
@@ -14,23 +12,6 @@
 
 | Run | Config | Task | Status | Reward | MCP Ratio |
 |---|---|---|---|---:|---:|
-| `ccb_test_haiku_022326` | `baseline` | [kafka-security-review-001](../tasks/ccb_test_haiku_022326--baseline--kafka-security-review-001.md) | `passed` | 0.440 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [llamacpp-context-window-search-001](../tasks/ccb_test_haiku_022326--baseline--llamacpp-context-window-search-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [llamacpp-file-modify-search-001](../tasks/ccb_test_haiku_022326--baseline--llamacpp-file-modify-search-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [openhands-search-file-test-001](../tasks/ccb_test_haiku_022326--baseline--openhands-search-file-test-001.md) | `passed` | 0.400 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [test-coverage-gap-002](../tasks/ccb_test_haiku_022326--baseline--test-coverage-gap-002.md) | `passed` | 0.940 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [test-integration-001](../tasks/ccb_test_haiku_022326--baseline--test-integration-001.md) | `passed` | 1.000 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [test-integration-002](../tasks/ccb_test_haiku_022326--baseline--test-integration-002.md) | `passed` | 0.370 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [test-unitgen-go-001](../tasks/ccb_test_haiku_022326--baseline--test-unitgen-go-001.md) | `passed` | 0.620 | 0.000 |
-| `ccb_test_haiku_022326` | `baseline` | [test-unitgen-py-001](../tasks/ccb_test_haiku_022326--baseline--test-unitgen-py-001.md) | `passed` | 0.480 | 0.000 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_kafka-security-review-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_kafka-security-review-001.md) | `passed` | 0.440 | 0.857 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_llamacpp-context-window-search-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_llamacpp-context-window-search-001.md) | `failed` | 0.000 | 1.000 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_llamacpp-file-modify-search-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_llamacpp-file-modify-search-001.md) | `failed` | 0.000 | 0.036 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_openhands-search-file-test-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_openhands-search-file-test-001.md) | `failed` | 0.000 | 0.119 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_test-coverage-gap-002](../tasks/ccb_test_haiku_022326--mcp--sgonly_test-coverage-gap-002.md) | `passed` | 1.000 | 0.964 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_test-integration-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_test-integration-001.md) | `passed` | 1.000 | 0.567 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_test-unitgen-go-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_test-unitgen-go-001.md) | `passed` | 1.000 | 0.312 |
-| `ccb_test_haiku_022326` | `mcp` | [sgonly_test-unitgen-py-001](../tasks/ccb_test_haiku_022326--mcp--sgonly_test-unitgen-py-001.md) | `passed` | 1.000 | 0.333 |
 | `ccb_test_haiku_20260224_180149` | `baseline-local-direct` | [aspnetcore-code-review-001](../tasks/ccb_test_haiku_20260224_180149--baseline-local-direct--aspnetcore-code-review-001.md) | `passed` | 0.550 | 0.000 |
 | `ccb_test_haiku_20260224_180149` | `baseline-local-direct` | [calcom-code-review-001](../tasks/ccb_test_haiku_20260224_180149--baseline-local-direct--calcom-code-review-001.md) | `passed` | 0.650 | 0.000 |
 | `ccb_test_haiku_20260224_180149` | `baseline-local-direct` | [curl-security-review-001](../tasks/ccb_test_haiku_20260224_180149--baseline-local-direct--curl-security-review-001.md) | `passed` | 0.670 | 0.000 |

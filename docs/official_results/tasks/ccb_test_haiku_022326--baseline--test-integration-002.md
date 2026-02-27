@@ -1,4 +1,4 @@
-# test-integration-002 (baseline)
+# test-integration-002 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

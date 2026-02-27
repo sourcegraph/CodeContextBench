@@ -1,4 +1,4 @@
-# sgonly_test-integration-001 (mcp)
+# sgonly_test-integration-001 (mcp-remote-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

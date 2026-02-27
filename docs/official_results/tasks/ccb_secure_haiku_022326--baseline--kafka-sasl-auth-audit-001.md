@@ -1,4 +1,4 @@
-# kafka-sasl-auth-audit-001 (baseline)
+# kafka-sasl-auth-audit-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# sgonly_django-modeladmin-impact-001 (mcp)
+# sgonly_django-modeladmin-impact-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

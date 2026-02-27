@@ -1,4 +1,4 @@
-# django-cross-team-boundary-001 (baseline)
+# django-cross-team-boundary-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

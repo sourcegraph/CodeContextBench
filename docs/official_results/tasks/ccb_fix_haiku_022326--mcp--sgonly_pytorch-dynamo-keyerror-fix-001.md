@@ -1,4 +1,4 @@
-# sgonly_pytorch-dynamo-keyerror-fix-001 (mcp)
+# sgonly_pytorch-dynamo-keyerror-fix-001 (mcp-remote-direct)
 
 - Run: `ccb_fix_haiku_022326`
 - Status: `failed`

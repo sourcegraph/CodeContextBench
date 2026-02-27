@@ -1,4 +1,4 @@
-# sgonly_prometheus-queue-reshard-debug-001 (mcp)
+# sgonly_prometheus-queue-reshard-debug-001 (mcp-remote-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

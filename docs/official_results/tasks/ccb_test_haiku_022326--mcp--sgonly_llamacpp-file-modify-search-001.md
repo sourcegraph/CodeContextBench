@@ -1,4 +1,4 @@
-# sgonly_llamacpp-file-modify-search-001 (mcp)
+# sgonly_llamacpp-file-modify-search-001 (mcp-remote-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `failed`

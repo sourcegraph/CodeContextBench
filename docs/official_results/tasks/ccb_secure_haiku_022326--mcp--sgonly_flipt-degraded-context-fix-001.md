@@ -1,4 +1,4 @@
-# sgonly_flipt-degraded-context-fix-001 (mcp)
+# sgonly_flipt-degraded-context-fix-001 (mcp-remote-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

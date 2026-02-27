@@ -1,4 +1,4 @@
-# terraform-migration-doc-gen-001 (baseline)
+# terraform-migration-doc-gen-001 (baseline-local-direct)
 
 - Run: `ccb_document_haiku_022326`
 - Status: `passed`

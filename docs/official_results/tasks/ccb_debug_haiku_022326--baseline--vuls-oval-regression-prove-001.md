@@ -1,4 +1,4 @@
-# vuls-oval-regression-prove-001 (baseline)
+# vuls-oval-regression-prove-001 (baseline-local-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

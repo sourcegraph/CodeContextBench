@@ -2,8 +2,6 @@
 
 | Run | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
-| [ccb_understand_haiku_022426](../runs/ccb_understand_haiku_022426.md) | `baseline` | 13 | 0.592 | 0.692 |
-| [ccb_understand_haiku_022426](../runs/ccb_understand_haiku_022426.md) | `mcp` | 13 | 0.841 | 1.000 |
 | [understand_haiku_20260224_001815](../runs/understand_haiku_20260224_001815.md) | `baseline-local-direct` | 13 | 0.592 | 0.692 |
 | [understand_haiku_20260224_001815](../runs/understand_haiku_20260224_001815.md) | `mcp-remote-direct` | 13 | 0.841 | 1.000 |
 | [understand_haiku_20260225_211346](../runs/understand_haiku_20260225_211346.md) | `baseline-local-direct` | 7 | 0.789 | 1.000 |
@@ -13,32 +11,6 @@
 
 | Run | Config | Task | Status | Reward | MCP Ratio |
 |---|---|---|---|---:|---:|
-| `ccb_understand_haiku_022426` | `baseline` | [argocd-arch-orient-001](../tasks/ccb_understand_haiku_022426--baseline--argocd-arch-orient-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [argocd-sync-reconcile-qa-001](../tasks/ccb_understand_haiku_022426--baseline--argocd-sync-reconcile-qa-001.md) | `passed` | 0.920 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [cilium-ebpf-datapath-handoff-001](../tasks/ccb_understand_haiku_022426--baseline--cilium-ebpf-datapath-handoff-001.md) | `passed` | 1.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [cilium-ebpf-fault-qa-001](../tasks/ccb_understand_haiku_022426--baseline--cilium-ebpf-fault-qa-001.md) | `passed` | 0.770 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [cilium-project-orient-001](../tasks/ccb_understand_haiku_022426--baseline--cilium-project-orient-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [django-template-inherit-recall-001](../tasks/ccb_understand_haiku_022426--baseline--django-template-inherit-recall-001.md) | `passed` | 0.250 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [envoy-contributor-workflow-001](../tasks/ccb_understand_haiku_022426--baseline--envoy-contributor-workflow-001.md) | `passed` | 0.970 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [envoy-filter-chain-qa-001](../tasks/ccb_understand_haiku_022426--baseline--envoy-filter-chain-qa-001.md) | `passed` | 0.970 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [envoy-request-routing-qa-001](../tasks/ccb_understand_haiku_022426--baseline--envoy-request-routing-qa-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [istio-xds-serving-qa-001](../tasks/ccb_understand_haiku_022426--baseline--istio-xds-serving-qa-001.md) | `passed` | 1.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [kafka-contributor-workflow-001](../tasks/ccb_understand_haiku_022426--baseline--kafka-contributor-workflow-001.md) | `passed` | 0.950 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [kafka-message-lifecycle-qa-001](../tasks/ccb_understand_haiku_022426--baseline--kafka-message-lifecycle-qa-001.md) | `passed` | 0.860 | 0.000 |
-| `ccb_understand_haiku_022426` | `baseline` | [terraform-plan-pipeline-qa-001](../tasks/ccb_understand_haiku_022426--baseline--terraform-plan-pipeline-qa-001.md) | `failed` | 0.000 | 0.000 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_argocd-arch-orient-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_argocd-arch-orient-001.md) | `passed` | 0.810 | 0.977 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_argocd-sync-reconcile-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_argocd-sync-reconcile-qa-001.md) | `passed` | 0.830 | 0.970 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_cilium-ebpf-datapath-handoff-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_cilium-ebpf-datapath-handoff-001.md) | `passed` | 0.830 | 0.968 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_cilium-ebpf-fault-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_cilium-ebpf-fault-qa-001.md) | `passed` | 0.820 | 0.973 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_cilium-project-orient-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_cilium-project-orient-001.md) | `passed` | 0.960 | 0.974 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_django-template-inherit-recall-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_django-template-inherit-recall-001.md) | `passed` | 0.250 | 0.143 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_envoy-contributor-workflow-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_envoy-contributor-workflow-001.md) | `passed` | 0.910 | 0.955 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_envoy-filter-chain-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_envoy-filter-chain-qa-001.md) | `passed` | 0.880 | 0.967 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_envoy-request-routing-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_envoy-request-routing-qa-001.md) | `passed` | 0.870 | 0.971 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_istio-xds-serving-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_istio-xds-serving-qa-001.md) | `passed` | 1.000 | 0.971 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_kafka-contributor-workflow-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_kafka-contributor-workflow-001.md) | `passed` | 0.820 | 0.955 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_kafka-message-lifecycle-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_kafka-message-lifecycle-qa-001.md) | `passed` | 1.000 | 0.972 |
-| `ccb_understand_haiku_022426` | `mcp` | [sgonly_terraform-plan-pipeline-qa-001](../tasks/ccb_understand_haiku_022426--mcp--sgonly_terraform-plan-pipeline-qa-001.md) | `passed` | 0.950 | 0.971 |
 | `understand_haiku_20260224_001815` | `baseline-local-direct` | [argocd-arch-orient-001](../tasks/understand_haiku_20260224_001815--baseline-local-direct--argocd-arch-orient-001.md) | `failed` | 0.000 | 0.000 |
 | `understand_haiku_20260224_001815` | `baseline-local-direct` | [argocd-sync-reconcile-qa-001](../tasks/understand_haiku_20260224_001815--baseline-local-direct--argocd-sync-reconcile-qa-001.md) | `passed` | 0.920 | 0.000 |
 | `understand_haiku_20260224_001815` | `baseline-local-direct` | [cilium-ebpf-datapath-handoff-001](../tasks/understand_haiku_20260224_001815--baseline-local-direct--cilium-ebpf-datapath-handoff-001.md) | `passed` | 1.000 | 0.000 |

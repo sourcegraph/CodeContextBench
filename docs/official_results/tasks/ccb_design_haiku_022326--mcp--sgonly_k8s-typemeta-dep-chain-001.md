@@ -1,4 +1,4 @@
-# sgonly_k8s-typemeta-dep-chain-001 (mcp)
+# sgonly_k8s-typemeta-dep-chain-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

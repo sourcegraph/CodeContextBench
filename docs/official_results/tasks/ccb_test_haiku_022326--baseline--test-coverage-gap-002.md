@@ -1,4 +1,4 @@
-# test-coverage-gap-002 (baseline)
+# test-coverage-gap-002 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

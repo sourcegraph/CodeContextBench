@@ -1,4 +1,4 @@
-# sgonly_linux-acpi-backlight-fault-001 (mcp)
+# sgonly_linux-acpi-backlight-fault-001 (mcp-remote-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

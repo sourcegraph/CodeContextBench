@@ -1,4 +1,4 @@
-# linux-iwlwifi-subdevice-fault-001 (baseline)
+# linux-iwlwifi-subdevice-fault-001 (baseline-local-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

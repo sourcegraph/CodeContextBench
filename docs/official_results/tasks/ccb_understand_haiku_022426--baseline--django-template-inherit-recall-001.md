@@ -1,4 +1,4 @@
-# django-template-inherit-recall-001 (baseline)
+# django-template-inherit-recall-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

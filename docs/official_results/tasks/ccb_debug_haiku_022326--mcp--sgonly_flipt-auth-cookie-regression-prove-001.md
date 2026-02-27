@@ -1,4 +1,4 @@
-# sgonly_flipt-auth-cookie-regression-prove-001 (mcp)
+# sgonly_flipt-auth-cookie-regression-prove-001 (mcp-remote-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `failed`

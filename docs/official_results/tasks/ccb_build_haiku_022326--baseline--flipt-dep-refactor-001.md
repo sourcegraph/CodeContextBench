@@ -1,4 +1,4 @@
-# flipt-dep-refactor-001 (baseline)
+# flipt-dep-refactor-001 (baseline-local-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

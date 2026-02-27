@@ -1,4 +1,4 @@
-# envoy-arch-doc-gen-001 (baseline)
+# envoy-arch-doc-gen-001 (baseline-local-direct)
 
 - Run: `ccb_document_haiku_022326`
 - Status: `passed`

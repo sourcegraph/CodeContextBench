@@ -1,4 +1,4 @@
-# sgonly_django-admins-migration-audit-001 (mcp)
+# sgonly_django-admins-migration-audit-001 (mcp-remote-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

@@ -1,6 +1,6 @@
 # ccb_document_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `14`
 - Mean reward: `0.904`
@@ -23,7 +23,7 @@
 | [terraform-migration-doc-gen-001](../tasks/ccb_document_haiku_022326--baseline--terraform-migration-doc-gen-001.md) | `passed` | 1.000 | 0.000 | 161 | traj, tx |
 | [vscode-api-doc-gen-001](../tasks/ccb_document_haiku_022326--baseline--vscode-api-doc-gen-001.md) | `passed` | 0.980 | 0.000 | 69 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `15`
 - Mean reward: `0.953`

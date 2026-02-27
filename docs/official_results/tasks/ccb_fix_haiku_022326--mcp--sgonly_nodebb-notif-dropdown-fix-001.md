@@ -1,4 +1,4 @@
-# sgonly_nodebb-notif-dropdown-fix-001 (mcp)
+# sgonly_nodebb-notif-dropdown-fix-001 (mcp-remote-direct)
 
 - Run: `ccb_fix_haiku_022326`
 - Status: `failed`

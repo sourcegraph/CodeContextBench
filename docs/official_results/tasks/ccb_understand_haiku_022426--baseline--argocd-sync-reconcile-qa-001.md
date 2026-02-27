@@ -1,4 +1,4 @@
-# argocd-sync-reconcile-qa-001 (baseline)
+# argocd-sync-reconcile-qa-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# sgonly_openhands-search-file-test-001 (mcp)
+# sgonly_openhands-search-file-test-001 (mcp-remote-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `failed`

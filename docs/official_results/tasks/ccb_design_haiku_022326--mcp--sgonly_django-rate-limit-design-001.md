@@ -1,4 +1,4 @@
-# sgonly_django-rate-limit-design-001 (mcp)
+# sgonly_django-rate-limit-design-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

@@ -2,7 +2,7 @@
 
 This bundle is generated from `runs/official/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).
 
-Generated: `2026-02-27T02:23:03.814992+00:00`
+Generated: `2026-02-27T02:26:00.850511+00:00`
 
 ## Local Browse
 
@@ -17,25 +17,15 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 
 | Suite | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
-| [ccb_build](suites/ccb_build.md) | `baseline` | 19 | 0.511 | 0.789 |
 | [ccb_build](suites/ccb_build.md) | `baseline-local-direct` | 20 | 0.527 | 0.800 |
-| [ccb_build](suites/ccb_build.md) | `mcp` | 25 | 0.372 | 0.640 |
 | [ccb_build](suites/ccb_build.md) | `mcp-remote-direct` | 25 | 0.372 | 0.640 |
-| [ccb_debug](suites/ccb_debug.md) | `baseline` | 20 | 0.670 | 1.000 |
 | [ccb_debug](suites/ccb_debug.md) | `baseline-local-direct` | 20 | 0.670 | 1.000 |
-| [ccb_debug](suites/ccb_debug.md) | `mcp` | 20 | 0.487 | 0.600 |
 | [ccb_debug](suites/ccb_debug.md) | `mcp-remote-direct` | 20 | 0.487 | 0.600 |
-| [ccb_design](suites/ccb_design.md) | `baseline` | 13 | 0.770 | 1.000 |
 | [ccb_design](suites/ccb_design.md) | `baseline-local-direct` | 20 | 0.753 | 0.950 |
-| [ccb_design](suites/ccb_design.md) | `mcp` | 20 | 0.718 | 1.000 |
 | [ccb_design](suites/ccb_design.md) | `mcp-remote-direct` | 20 | 0.718 | 1.000 |
-| [ccb_document](suites/ccb_document.md) | `baseline` | 14 | 0.904 | 1.000 |
 | [ccb_document](suites/ccb_document.md) | `baseline-local-direct` | 20 | 0.847 | 1.000 |
-| [ccb_document](suites/ccb_document.md) | `mcp` | 15 | 0.953 | 1.000 |
 | [ccb_document](suites/ccb_document.md) | `mcp-remote-direct` | 25 | 0.802 | 1.000 |
-| [ccb_fix](suites/ccb_fix.md) | `baseline` | 17 | 0.535 | 0.706 |
 | [ccb_fix](suites/ccb_fix.md) | `baseline-local-direct` | 28 | 0.428 | 0.571 |
-| [ccb_fix](suites/ccb_fix.md) | `mcp` | 17 | 0.538 | 0.647 |
 | [ccb_fix](suites/ccb_fix.md) | `mcp-remote-direct` | 28 | 0.467 | 0.571 |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `baseline-local-artifact` | 1 | 0.375 | 1.000 |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `baseline-local-direct` | 6 | 0.668 | 1.000 |
@@ -85,17 +75,11 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_mcp_security](suites/ccb_mcp_security.md) | `mcp` | 2 | 0.821 | 1.000 |
 | [ccb_mcp_security](suites/ccb_mcp_security.md) | `mcp-remote-artifact` | 4 | 0.777 | 1.000 |
 | [ccb_mcp_security](suites/ccb_mcp_security.md) | `mcp-remote-direct` | 16 | 0.705 | 1.000 |
-| [ccb_secure](suites/ccb_secure.md) | `baseline` | 18 | 0.688 | 0.944 |
 | [ccb_secure](suites/ccb_secure.md) | `baseline-local-direct` | 20 | 0.669 | 0.950 |
-| [ccb_secure](suites/ccb_secure.md) | `mcp` | 18 | 0.705 | 1.000 |
 | [ccb_secure](suites/ccb_secure.md) | `mcp-remote-direct` | 22 | 0.645 | 0.909 |
-| [ccb_test](suites/ccb_test.md) | `baseline` | 9 | 0.472 | 0.778 |
 | [ccb_test](suites/ccb_test.md) | `baseline-local-direct` | 20 | 0.480 | 0.750 |
-| [ccb_test](suites/ccb_test.md) | `mcp` | 8 | 0.555 | 0.625 |
 | [ccb_test](suites/ccb_test.md) | `mcp-remote-direct` | 31 | 0.403 | 0.613 |
-| [ccb_understand](suites/ccb_understand.md) | `baseline` | 13 | 0.592 | 0.692 |
 | [ccb_understand](suites/ccb_understand.md) | `baseline-local-direct` | 20 | 0.660 | 0.800 |
-| [ccb_understand](suites/ccb_understand.md) | `mcp` | 13 | 0.841 | 1.000 |
 | [ccb_understand](suites/ccb_understand.md) | `mcp-remote-direct` | 20 | 0.851 | 1.000 |
 
 <details>
@@ -106,23 +90,23 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 |---|---|---|---:|---:|---:|
 | [build_haiku_20260223_124805](runs/build_haiku_20260223_124805.md) | `ccb_build` | `baseline-local-direct` | 19 | 0.511 | 0.789 |
 | [build_haiku_20260223_124805](runs/build_haiku_20260223_124805.md) | `ccb_build` | `mcp-remote-direct` | 25 | 0.372 | 0.640 |
-| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `baseline` | 19 | 0.511 | 0.789 |
-| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `mcp` | 25 | 0.372 | 0.640 |
+| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `baseline-local-direct` | 19 | 0.511 | 0.789 |
+| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `mcp-remote-direct` | 25 | 0.372 | 0.640 |
 | [ccb_build_haiku_20260225_234223](runs/ccb_build_haiku_20260225_234223.md) | `ccb_build` | `baseline-local-direct` | 1 | 0.820 | 1.000 |
 | [ccb_build_haiku_20260226_015500_backfill](runs/ccb_build_haiku_20260226_015500_backfill.md) | `ccb_build` | `baseline-local-direct` | 1 | 0.820 | 1.000 |
-| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `baseline` | 20 | 0.670 | 1.000 |
-| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `mcp` | 20 | 0.487 | 0.600 |
-| [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `baseline` | 13 | 0.770 | 1.000 |
-| [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `mcp` | 20 | 0.718 | 1.000 |
+| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `baseline-local-direct` | 20 | 0.670 | 1.000 |
+| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `mcp-remote-direct` | 20 | 0.487 | 0.600 |
+| [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `baseline-local-direct` | 13 | 0.770 | 1.000 |
+| [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `mcp-remote-direct` | 20 | 0.718 | 1.000 |
 | [ccb_design_haiku_20260225_234223](runs/ccb_design_haiku_20260225_234223.md) | `ccb_design` | `baseline-local-direct` | 7 | 0.723 | 0.857 |
 | [ccb_design_haiku_20260226_015500_backfill](runs/ccb_design_haiku_20260226_015500_backfill.md) | `ccb_design` | `baseline-local-direct` | 7 | 0.723 | 0.857 |
-| [ccb_document_haiku_022326](runs/ccb_document_haiku_022326.md) | `ccb_document` | `baseline` | 14 | 0.904 | 1.000 |
-| [ccb_document_haiku_022326](runs/ccb_document_haiku_022326.md) | `ccb_document` | `mcp` | 15 | 0.953 | 1.000 |
+| [ccb_document_haiku_022326](runs/ccb_document_haiku_022326.md) | `ccb_document` | `baseline-local-direct` | 14 | 0.904 | 1.000 |
+| [ccb_document_haiku_022326](runs/ccb_document_haiku_022326.md) | `ccb_document` | `mcp-remote-direct` | 15 | 0.953 | 1.000 |
 | [ccb_document_haiku_20260224_174311](runs/ccb_document_haiku_20260224_174311.md) | `ccb_document` | `baseline-local-direct` | 5 | 0.658 | 1.000 |
 | [ccb_document_haiku_20260224_174311](runs/ccb_document_haiku_20260224_174311.md) | `ccb_document` | `mcp-remote-direct` | 5 | 0.720 | 1.000 |
 | [ccb_document_haiku_20260226_015500_backfill](runs/ccb_document_haiku_20260226_015500_backfill.md) | `ccb_document` | `baseline-local-direct` | 1 | 1.000 | 1.000 |
-| [ccb_fix_haiku_022326](runs/ccb_fix_haiku_022326.md) | `ccb_fix` | `baseline` | 17 | 0.535 | 0.706 |
-| [ccb_fix_haiku_022326](runs/ccb_fix_haiku_022326.md) | `ccb_fix` | `mcp` | 17 | 0.538 | 0.647 |
+| [ccb_fix_haiku_022326](runs/ccb_fix_haiku_022326.md) | `ccb_fix` | `baseline-local-direct` | 17 | 0.535 | 0.706 |
+| [ccb_fix_haiku_022326](runs/ccb_fix_haiku_022326.md) | `ccb_fix` | `mcp-remote-direct` | 17 | 0.538 | 0.647 |
 | [ccb_fix_haiku_20260224_203138](runs/ccb_fix_haiku_20260224_203138.md) | `ccb_fix` | `baseline-local-direct` | 1 | 0.710 | 1.000 |
 | [ccb_fix_haiku_20260224_203138](runs/ccb_fix_haiku_20260224_203138.md) | `ccb_fix` | `mcp-remote-direct` | 1 | 0.740 | 1.000 |
 | [ccb_fix_haiku_20260226_015500_backfill](runs/ccb_fix_haiku_20260226_015500_backfill.md) | `ccb_fix` | `baseline-local-direct` | 2 | 0.235 | 0.500 |
@@ -254,18 +238,18 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_mcp_security_haiku_20260226_035633_variance](runs/ccb_mcp_security_haiku_20260226_035633_variance.md) | `ccb_mcp_security` | `baseline-local-direct` | 1 | 0.586 | 1.000 |
 | [ccb_mcp_security_haiku_20260226_035633_variance](runs/ccb_mcp_security_haiku_20260226_035633_variance.md) | `ccb_mcp_security` | `mcp-remote-direct` | 4 | 0.731 | 1.000 |
 | [ccb_mcp_security_haiku_20260226_205845](runs/ccb_mcp_security_haiku_20260226_205845.md) | `ccb_mcp_security` | `baseline-local-direct` | 3 | 0.682 | 1.000 |
-| [ccb_secure_haiku_022326](runs/ccb_secure_haiku_022326.md) | `ccb_secure` | `baseline` | 18 | 0.688 | 0.944 |
-| [ccb_secure_haiku_022326](runs/ccb_secure_haiku_022326.md) | `ccb_secure` | `mcp` | 18 | 0.705 | 1.000 |
+| [ccb_secure_haiku_022326](runs/ccb_secure_haiku_022326.md) | `ccb_secure` | `baseline-local-direct` | 18 | 0.688 | 0.944 |
+| [ccb_secure_haiku_022326](runs/ccb_secure_haiku_022326.md) | `ccb_secure` | `mcp-remote-direct` | 18 | 0.705 | 1.000 |
 | [ccb_secure_haiku_20260224_213146](runs/ccb_secure_haiku_20260224_213146.md) | `ccb_secure` | `baseline-local-direct` | 2 | 0.500 | 1.000 |
 | [ccb_secure_haiku_20260224_213146](runs/ccb_secure_haiku_20260224_213146.md) | `ccb_secure` | `mcp-remote-direct` | 2 | 0.250 | 0.500 |
-| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `baseline` | 9 | 0.472 | 0.778 |
-| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `mcp` | 8 | 0.555 | 0.625 |
+| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `baseline-local-direct` | 9 | 0.472 | 0.778 |
+| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `mcp-remote-direct` | 8 | 0.555 | 0.625 |
 | [ccb_test_haiku_20260224_180149](runs/ccb_test_haiku_20260224_180149.md) | `ccb_test` | `baseline-local-direct` | 11 | 0.486 | 0.727 |
 | [ccb_test_haiku_20260224_180149](runs/ccb_test_haiku_20260224_180149.md) | `ccb_test` | `mcp-remote-direct` | 11 | 0.387 | 0.727 |
 | [ccb_test_haiku_20260226_015500_backfill](runs/ccb_test_haiku_20260226_015500_backfill.md) | `ccb_test` | `baseline-local-direct` | 1 | 0.370 | 1.000 |
 | [ccb_test_haiku_20260226_015500_backfill](runs/ccb_test_haiku_20260226_015500_backfill.md) | `ccb_test` | `mcp-remote-direct` | 1 | 0.900 | 1.000 |
-| [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `baseline` | 13 | 0.592 | 0.692 |
-| [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `mcp` | 13 | 0.841 | 1.000 |
+| [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `baseline-local-direct` | 13 | 0.592 | 0.692 |
+| [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `mcp-remote-direct` | 13 | 0.841 | 1.000 |
 | [debug_haiku_20260223_154724](runs/debug_haiku_20260223_154724.md) | `ccb_debug` | `baseline-local-direct` | 20 | 0.670 | 1.000 |
 | [debug_haiku_20260223_154724](runs/debug_haiku_20260223_154724.md) | `ccb_debug` | `mcp-remote-direct` | 20 | 0.487 | 0.600 |
 | [design_haiku_20260223_124652](runs/design_haiku_20260223_124652.md) | `ccb_design` | `baseline-local-direct` | 13 | 0.770 | 1.000 |

@@ -1,4 +1,4 @@
-# terraform-provider-iface-sym-001 (baseline)
+# terraform-provider-iface-sym-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

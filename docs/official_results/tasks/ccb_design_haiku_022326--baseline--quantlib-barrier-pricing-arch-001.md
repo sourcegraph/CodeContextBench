@@ -1,4 +1,4 @@
-# quantlib-barrier-pricing-arch-001 (baseline)
+# quantlib-barrier-pricing-arch-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

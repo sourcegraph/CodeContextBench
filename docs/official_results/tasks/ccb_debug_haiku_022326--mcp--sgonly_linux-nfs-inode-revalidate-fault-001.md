@@ -1,4 +1,4 @@
-# sgonly_linux-nfs-inode-revalidate-fault-001 (mcp)
+# sgonly_linux-nfs-inode-revalidate-fault-001 (mcp-remote-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

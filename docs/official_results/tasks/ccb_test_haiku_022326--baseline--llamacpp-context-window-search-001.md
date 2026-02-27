@@ -1,4 +1,4 @@
-# llamacpp-context-window-search-001 (baseline)
+# llamacpp-context-window-search-001 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `failed`

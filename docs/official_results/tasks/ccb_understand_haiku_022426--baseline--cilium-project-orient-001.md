@@ -1,4 +1,4 @@
-# cilium-project-orient-001 (baseline)
+# cilium-project-orient-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `failed`

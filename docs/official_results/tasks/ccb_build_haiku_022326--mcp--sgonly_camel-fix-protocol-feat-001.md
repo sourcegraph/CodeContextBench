@@ -1,4 +1,4 @@
-# sgonly_camel-fix-protocol-feat-001 (mcp)
+# sgonly_camel-fix-protocol-feat-001 (mcp-remote-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

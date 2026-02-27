@@ -1,6 +1,6 @@
 # ccb_build_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `19`
 - Mean reward: `0.511`
@@ -28,7 +28,7 @@
 | [strata-fx-european-refac-001](../tasks/ccb_build_haiku_022326--baseline--strata-fx-european-refac-001.md) | `passed` | 0.320 | 0.000 | 29 | traj, tx |
 | [tensorrt-mxfp4-quant-feat-001](../tasks/ccb_build_haiku_022326--baseline--tensorrt-mxfp4-quant-feat-001.md) | `passed` | 1.000 | 0.000 | 97 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `25`
 - Mean reward: `0.372`

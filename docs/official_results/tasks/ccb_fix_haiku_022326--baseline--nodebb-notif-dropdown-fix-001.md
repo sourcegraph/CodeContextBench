@@ -1,4 +1,4 @@
-# nodebb-notif-dropdown-fix-001 (baseline)
+# nodebb-notif-dropdown-fix-001 (baseline-local-direct)
 
 - Run: `ccb_fix_haiku_022326`
 - Status: `failed`

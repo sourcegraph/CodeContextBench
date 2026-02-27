@@ -1,4 +1,4 @@
-# openhands-search-file-test-001 (baseline)
+# openhands-search-file-test-001 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

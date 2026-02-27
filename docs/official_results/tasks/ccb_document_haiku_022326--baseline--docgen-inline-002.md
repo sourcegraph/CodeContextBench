@@ -1,4 +1,4 @@
-# docgen-inline-002 (baseline)
+# docgen-inline-002 (baseline-local-direct)
 
 - Run: `ccb_document_haiku_022326`
 - Status: `passed`

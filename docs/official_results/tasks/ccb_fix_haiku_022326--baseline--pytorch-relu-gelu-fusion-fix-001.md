@@ -1,4 +1,4 @@
-# pytorch-relu-gelu-fusion-fix-001 (baseline)
+# pytorch-relu-gelu-fusion-fix-001 (baseline-local-direct)
 
 - Run: `ccb_fix_haiku_022326`
 - Status: `passed`

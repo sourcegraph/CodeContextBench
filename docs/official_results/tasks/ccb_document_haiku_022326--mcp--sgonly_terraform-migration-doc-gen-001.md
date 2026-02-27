@@ -1,4 +1,4 @@
-# sgonly_terraform-migration-doc-gen-001 (mcp)
+# sgonly_terraform-migration-doc-gen-001 (mcp-remote-direct)
 
 - Run: `ccb_document_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# sgonly_kafka-contributor-workflow-001 (mcp)
+# sgonly_kafka-contributor-workflow-001 (mcp-remote-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

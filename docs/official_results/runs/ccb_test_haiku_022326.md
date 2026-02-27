@@ -1,6 +1,6 @@
 # ccb_test_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `9`
 - Mean reward: `0.472`
@@ -18,7 +18,7 @@
 | [test-unitgen-go-001](../tasks/ccb_test_haiku_022326--baseline--test-unitgen-go-001.md) | `passed` | 0.620 | 0.000 | 21 | traj, tx |
 | [test-unitgen-py-001](../tasks/ccb_test_haiku_022326--baseline--test-unitgen-py-001.md) | `passed` | 0.480 | 0.000 | 10 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `8`
 - Mean reward: `0.555`

@@ -1,4 +1,4 @@
-# django-pre-validate-signal-design-001 (baseline)
+# django-pre-validate-signal-design-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# sgonly_kafka-flink-streaming-arch-001 (mcp)
+# sgonly_kafka-flink-streaming-arch-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

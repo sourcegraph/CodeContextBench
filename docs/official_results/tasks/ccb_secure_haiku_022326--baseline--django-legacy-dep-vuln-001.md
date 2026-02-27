@@ -1,4 +1,4 @@
-# django-legacy-dep-vuln-001 (baseline)
+# django-legacy-dep-vuln-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

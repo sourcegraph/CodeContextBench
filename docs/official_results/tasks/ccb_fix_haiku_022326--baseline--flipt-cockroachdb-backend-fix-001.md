@@ -1,4 +1,4 @@
-# flipt-cockroachdb-backend-fix-001 (baseline)
+# flipt-cockroachdb-backend-fix-001 (baseline-local-direct)
 
 - Run: `ccb_fix_haiku_022326`
 - Status: `passed`

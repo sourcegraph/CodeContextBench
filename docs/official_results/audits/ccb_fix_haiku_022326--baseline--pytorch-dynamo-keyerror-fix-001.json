@@ -520,7 +520,7 @@
       "trajectory_sha256": "a8bfc51cf5093505ef8bb4f25c3f7802c70297c2e85efbb321222d93b3c9daae",
       "transcript_sha256": "e89f0497f1cf8dc17bc938404fcc9961e4c685a5b67e7d0fd1ac44f59f9bb628"
     },
-    "config": "baseline",
+    "config": "baseline-local-direct",
     "result_path": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/result.json",
     "run_dir": "ccb_fix_haiku_022326",
     "suite": "ccb_fix",

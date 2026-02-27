@@ -1,4 +1,4 @@
-# sgonly_flipt-transitive-deps-001 (mcp)
+# sgonly_flipt-transitive-deps-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

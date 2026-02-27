@@ -18,6 +18,12 @@ Suite-level views and top-level summaries are deduplicated to one canonical row
 per `suite + config + task_name` (latest by task `started_at`). Full historical
 rows are preserved in `data/official_results.json` as `all_tasks`.
 
+For SDLC suites (`ccb_build`, `ccb_debug`, `ccb_design`, `ccb_document`,
+`ccb_fix`, `ccb_secure`, `ccb_test`, `ccb_understand`), legacy config labels
+are normalized during export:
+- `baseline` -> `baseline-local-direct`
+- `mcp` -> `mcp-remote-direct`
+
 ## Usage
 
 ```bash

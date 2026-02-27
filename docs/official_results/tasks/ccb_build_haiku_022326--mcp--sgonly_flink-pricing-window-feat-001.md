@@ -1,4 +1,4 @@
-# sgonly_flink-pricing-window-feat-001 (mcp)
+# sgonly_flink-pricing-window-feat-001 (mcp-remote-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

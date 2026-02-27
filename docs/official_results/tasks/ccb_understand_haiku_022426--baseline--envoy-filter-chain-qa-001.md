@@ -1,4 +1,4 @@
-# envoy-filter-chain-qa-001 (baseline)
+# envoy-filter-chain-qa-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

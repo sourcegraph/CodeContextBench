@@ -1,4 +1,4 @@
-# istio-xds-serving-qa-001 (baseline)
+# istio-xds-serving-qa-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

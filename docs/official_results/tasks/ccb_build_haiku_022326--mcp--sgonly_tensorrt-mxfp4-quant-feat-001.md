@@ -1,4 +1,4 @@
-# sgonly_tensorrt-mxfp4-quant-feat-001 (mcp)
+# sgonly_tensorrt-mxfp4-quant-feat-001 (mcp-remote-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

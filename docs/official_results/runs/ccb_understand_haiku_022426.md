@@ -1,6 +1,6 @@
 # ccb_understand_haiku_022426
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `13`
 - Mean reward: `0.592`
@@ -22,7 +22,7 @@
 | [kafka-contributor-workflow-001](../tasks/ccb_understand_haiku_022426--baseline--kafka-contributor-workflow-001.md) | `passed` | 0.950 | 0.000 | 23 | traj, tx |
 | [kafka-message-lifecycle-qa-001](../tasks/ccb_understand_haiku_022426--baseline--kafka-message-lifecycle-qa-001.md) | `passed` | 0.860 | 0.000 | 78 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `13`
 - Mean reward: `0.841`

@@ -1,6 +1,6 @@
 # ccb_secure_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `18`
 - Mean reward: `0.688`
@@ -27,7 +27,7 @@
 | [postgres-client-auth-audit-001](../tasks/ccb_secure_haiku_022326--baseline--postgres-client-auth-audit-001.md) | `passed` | 0.740 | 0.000 | 38 | traj, tx |
 | [wish-transitive-vuln-001](../tasks/ccb_secure_haiku_022326--baseline--wish-transitive-vuln-001.md) | `passed` | 0.760 | 0.000 | 24 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `18`
 - Mean reward: `0.705`

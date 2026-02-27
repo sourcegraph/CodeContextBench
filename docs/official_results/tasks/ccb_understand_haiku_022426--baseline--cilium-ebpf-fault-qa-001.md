@@ -1,4 +1,4 @@
-# cilium-ebpf-fault-qa-001 (baseline)
+# cilium-ebpf-fault-qa-001 (baseline-local-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

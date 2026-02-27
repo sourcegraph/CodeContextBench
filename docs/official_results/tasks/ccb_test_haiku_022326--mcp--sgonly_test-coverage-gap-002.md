@@ -1,4 +1,4 @@
-# sgonly_test-coverage-gap-002 (mcp)
+# sgonly_test-coverage-gap-002 (mcp-remote-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

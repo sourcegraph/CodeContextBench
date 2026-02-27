@@ -1,6 +1,6 @@
 # ccb_design_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `13`
 - Mean reward: `0.770`
@@ -22,7 +22,7 @@
 | [quantlib-barrier-pricing-arch-001](../tasks/ccb_design_haiku_022326--baseline--quantlib-barrier-pricing-arch-001.md) | `passed` | 0.850 | 0.000 | 37 | traj, tx |
 | [terraform-provider-iface-sym-001](../tasks/ccb_design_haiku_022326--baseline--terraform-provider-iface-sym-001.md) | `passed` | 0.120 | 0.000 | 91 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `20`
 - Mean reward: `0.718`

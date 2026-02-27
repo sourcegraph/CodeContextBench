@@ -1,4 +1,4 @@
-# llamacpp-file-modify-search-001 (baseline)
+# llamacpp-file-modify-search-001 (baseline-local-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `failed`

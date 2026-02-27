@@ -1,4 +1,4 @@
-# postgres-query-exec-arch-001 (baseline)
+# postgres-query-exec-arch-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

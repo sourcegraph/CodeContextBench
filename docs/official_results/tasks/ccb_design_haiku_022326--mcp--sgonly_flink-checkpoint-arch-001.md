@@ -1,4 +1,4 @@
-# sgonly_flink-checkpoint-arch-001 (mcp)
+# sgonly_flink-checkpoint-arch-001 (mcp-remote-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

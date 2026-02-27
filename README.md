@@ -261,6 +261,8 @@ This writes:
 Suite summaries are deduplicated to the latest result per
 `suite + config + task_name`; full historical rows remain in
 `official_results.json` under `all_tasks`.
+For SDLC suites, export normalizes legacy config labels:
+`baseline` -> `baseline-local-direct`, `mcp` -> `mcp-remote-direct`.
 
 Serve locally:
 

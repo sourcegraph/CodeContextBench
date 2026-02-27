@@ -1,4 +1,4 @@
-# django-orm-query-arch-001 (baseline)
+# django-orm-query-arch-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# grpcurl-transitive-vuln-001 (baseline)
+# grpcurl-transitive-vuln-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `failed`

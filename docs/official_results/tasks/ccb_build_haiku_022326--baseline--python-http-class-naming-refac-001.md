@@ -1,4 +1,4 @@
-# python-http-class-naming-refac-001 (baseline)
+# python-http-class-naming-refac-001 (baseline-local-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

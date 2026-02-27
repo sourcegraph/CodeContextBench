@@ -1,4 +1,4 @@
-# wish-transitive-vuln-001 (baseline)
+# wish-transitive-vuln-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

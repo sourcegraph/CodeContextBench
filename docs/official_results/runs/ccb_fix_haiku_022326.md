@@ -1,6 +1,6 @@
 # ccb_fix_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `17`
 - Mean reward: `0.535`
@@ -26,7 +26,7 @@
 | [openlibrary-fntocli-adapter-fix-001](../tasks/ccb_fix_haiku_022326--baseline--openlibrary-fntocli-adapter-fix-001.md) | `passed` | 0.667 | 0.000 | 36 | traj, tx |
 | [pytorch-relu-gelu-fusion-fix-001](../tasks/ccb_fix_haiku_022326--baseline--pytorch-relu-gelu-fusion-fix-001.md) | `passed` | 0.739 | 0.000 | 50 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `17`
 - Mean reward: `0.538`

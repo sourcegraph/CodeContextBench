@@ -1,4 +1,4 @@
-# tensorrt-mxfp4-quant-feat-001 (baseline)
+# tensorrt-mxfp4-quant-feat-001 (baseline-local-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# strata-fx-european-refac-001 (baseline)
+# strata-fx-european-refac-001 (baseline-local-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

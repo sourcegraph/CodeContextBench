@@ -1,4 +1,4 @@
-# envoy-stream-aggregated-sym-001 (baseline)
+# envoy-stream-aggregated-sym-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

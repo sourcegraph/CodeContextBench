@@ -1,6 +1,6 @@
 # ccb_debug_haiku_022326
 
-## baseline
+## baseline-local-direct
 
 - Valid tasks: `20`
 - Mean reward: `0.670`
@@ -29,7 +29,7 @@
 | [tutanota-search-regression-prove-001](../tasks/ccb_debug_haiku_022326--baseline--tutanota-search-regression-prove-001.md) | `passed` | 0.500 | 0.000 | 100 | traj, tx |
 | [vuls-oval-regression-prove-001](../tasks/ccb_debug_haiku_022326--baseline--vuls-oval-regression-prove-001.md) | `passed` | 0.500 | 0.000 | 40 | traj, tx |
 
-## mcp
+## mcp-remote-direct
 
 - Valid tasks: `20`
 - Mean reward: `0.487`

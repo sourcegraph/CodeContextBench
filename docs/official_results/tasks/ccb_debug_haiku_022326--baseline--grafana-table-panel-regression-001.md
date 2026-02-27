@@ -1,4 +1,4 @@
-# grafana-table-panel-regression-001 (baseline)
+# grafana-table-panel-regression-001 (baseline-local-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# sgonly_kafka-security-review-001 (mcp)
+# sgonly_kafka-security-review-001 (mcp-remote-direct)
 
 - Run: `ccb_test_haiku_022326`
 - Status: `passed`

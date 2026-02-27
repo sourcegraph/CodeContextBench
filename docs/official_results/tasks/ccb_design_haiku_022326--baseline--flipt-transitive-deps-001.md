@@ -1,4 +1,4 @@
-# flipt-transitive-deps-001 (baseline)
+# flipt-transitive-deps-001 (baseline-local-direct)
 
 - Run: `ccb_design_haiku_022326`
 - Status: `passed`

@@ -1,4 +1,4 @@
-# envoy-duplicate-headers-debug-001 (baseline)
+# envoy-duplicate-headers-debug-001 (baseline-local-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

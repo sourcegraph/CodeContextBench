@@ -1,4 +1,4 @@
-# sgonly_envoy-filter-chain-qa-001 (mcp)
+# sgonly_envoy-filter-chain-qa-001 (mcp-remote-direct)
 
 - Run: `ccb_understand_haiku_022426`
 - Status: `passed`

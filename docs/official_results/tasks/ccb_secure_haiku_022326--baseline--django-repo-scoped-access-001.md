@@ -1,4 +1,4 @@
-# django-repo-scoped-access-001 (baseline)
+# django-repo-scoped-access-001 (baseline-local-direct)
 
 - Run: `ccb_secure_haiku_022326`
 - Status: `passed`

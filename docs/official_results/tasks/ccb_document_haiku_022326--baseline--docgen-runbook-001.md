@@ -1,4 +1,4 @@
-# docgen-runbook-001 (baseline)
+# docgen-runbook-001 (baseline-local-direct)
 
 - Run: `ccb_document_haiku_022326`
 - Status: `passed`

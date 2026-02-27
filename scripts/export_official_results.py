@@ -49,6 +49,16 @@ TRANSCRIPT_CANDIDATES = (
     "transcript.jsonl",
 )
 AUDIT_EVENT_LIMIT = 200
+SDLC_SUITES = {
+    "ccb_build",
+    "ccb_debug",
+    "ccb_design",
+    "ccb_document",
+    "ccb_fix",
+    "ccb_secure",
+    "ccb_test",
+    "ccb_understand",
+}
 
 
 @dataclass
@@ -517,6 +527,15 @@ def _slug(text: str) -> str:
     return normalized or "item"
 
 
+def _normalize_config_for_suite(suite: str, config: str) -> str:
+    if suite in SDLC_SUITES:
+        if config == "baseline":
+            return "baseline-local-direct"
+        if config == "mcp":
+            return "mcp-remote-direct"
+    return config
+
+
 def _fmt_float(value: float | None, digits: int = 3) -> str:
     if value is None:
         return "-"
@@ -927,9 +946,10 @@ def build_export(
         suite = _suite_from_run_dir(run_dir.name, prefix_map)
         configs = discover_configs(run_dir)
         for config in configs:
+            normalized_config = _normalize_config_for_suite(suite, config)
             config_dir = run_dir / config
             for task_dir in _iter_task_dirs(config_dir):
-                extracted = _extract_task_record(suite, run_dir.name, config, task_dir, max_examples)
+                extracted = _extract_task_record(suite, run_dir.name, normalized_config, task_dir, max_examples)
                 if extracted is None:
                     continue
                 record, audit_payload = extracted

@@ -1,4 +1,4 @@
-# sgonly_k8s-noschedule-taint-feat-001 (mcp)
+# sgonly_k8s-noschedule-taint-feat-001 (mcp-remote-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`

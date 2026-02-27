@@ -1,4 +1,4 @@
-# django-admins-migration-audit-001 (baseline)
+# django-admins-migration-audit-001 (baseline-local-direct)
 
 - Run: `ccb_debug_haiku_022326`
 - Status: `passed`

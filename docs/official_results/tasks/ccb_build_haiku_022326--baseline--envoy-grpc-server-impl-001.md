@@ -1,4 +1,4 @@
-# envoy-grpc-server-impl-001 (baseline)
+# envoy-grpc-server-impl-001 (baseline-local-direct)
 
 - Run: `ccb_build_haiku_022326`
 - Status: `passed`
