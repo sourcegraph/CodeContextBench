@@ -7,7 +7,7 @@
 
 ## Abstract
 
-CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across 250 valid paired task evaluations using Claude Haiku 4.5 (1 baseline infrastructure error excluded from 251 registered tasks), the overall MCP effect is +0.047 (95% bootstrap CI: [+0.007, +0.085]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.019 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
+CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.019 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
 
 ---
 
@@ -857,11 +857,11 @@ Major verifier bugs discovered through QA audit (Feb 6):
 
 ### 11.1 Data Availability
 
-All 251 registered tasks have both baseline and MCP results. One SDLC task (`openlibrary-solr-boolean-fix-001`) errored on the baseline side due to an infrastructure failure (agent never executed), leaving **250 valid paired evaluations**: **169 SDLC** tasks across 8 suites and **81 MCP-unique** tasks across 11 suites. All results use the Claude Haiku 4.5 model. The SDLC tasks use `baseline-local-direct` (full source, no MCP) versus `mcp-remote-direct` (truncated source, Sourcegraph MCP enabled). MCP-unique tasks use the corresponding artifact or direct config variant depending on verifier requirements. All confidence intervals reported below use the percentile bootstrap method (10,000 resamples, seed=42) on paired deltas (see Appendix A).
+All 251 registered tasks have both baseline and MCP results, yielding **251 valid paired evaluations**: **170 SDLC** tasks across 8 suites and **81 MCP-unique** tasks across 11 suites. (One SDLC task, `openlibrary-solr-boolean-fix-001`, required a Dockerfile fix to pre-install Node.js and Claude Code due to a broken NodeSource GPG key in the SWE-bench Pro base image; the rerun produced a legitimate baseline result.) All results use the Claude Haiku 4.5 model. The SDLC tasks use `baseline-local-direct` (full source, no MCP) versus `mcp-remote-direct` (truncated source, Sourcegraph MCP enabled). MCP-unique tasks use the corresponding artifact or direct config variant depending on verifier requirements. All confidence intervals reported below use the percentile bootstrap method (10,000 resamples, seed=42) on paired deltas (see Appendix A).
 
 ### 11.2 SDLC Suite Results (Paired Comparison)
 
-Paired baseline vs. MCP results across all 8 SDLC suites (169 valid paired tasks):
+Paired baseline vs. MCP results across all 8 SDLC suites (170 paired tasks):
 
 | Suite | n | Baseline Mean | MCP Mean | Delta | 95% Bootstrap CI |
 |-------|---|--------------|----------|-------|--------|
@@ -869,12 +869,12 @@ Paired baseline vs. MCP results across all 8 SDLC suites (169 valid paired tasks
 | document | 20 | 0.847 | 0.895 | **+0.048** | [+0.015, +0.088] |
 | test | 20 | 0.480 | 0.480 | +0.000 | [-0.098, +0.104] |
 | secure | 20 | 0.669 | 0.659 | -0.010 | [-0.096, +0.091] |
-| fix | 24 | 0.499 | 0.484 | -0.015 | [-0.092, +0.051] |
+| fix | 25 | 0.479 | 0.491 | +0.012 | [-0.073, +0.097] |
 | design | 20 | 0.753 | 0.718 | -0.036 | [-0.157, +0.086] |
 | build | 25 | 0.494 | 0.372 | **-0.121** | [-0.288, +0.025] |
 | debug | 20 | 0.670 | 0.487 | **-0.183** | [-0.301, -0.067] |
 
-**SDLC total**: Baseline mean 0.627 (n=169), MCP mean 0.608 (n=169), delta **-0.019** (95% CI: [-0.064, +0.025]). The CI spans zero, indicating no statistically significant MCP effect on SDLC tasks with full local source code.
+**SDLC total**: Baseline mean 0.623 (n=170), MCP mean 0.608 (n=170), delta **-0.015** (95% CI: [-0.059, +0.029]). The CI spans zero, indicating no statistically significant MCP effect on SDLC tasks with full local source code.
 
 MCP-unique tasks (81 paired, cross-repository discovery):
 
@@ -894,9 +894,9 @@ MCP-unique tasks (81 paired, cross-repository discovery):
 
 **MCP-unique total**: Baseline mean 0.525 (n=81), MCP mean 0.708 (n=81), delta **+0.183** (95% CI: [+0.116, +0.255]). MCP wins on 47 of 81 tasks.
 
-**Overall**: Baseline mean 0.594 (n=250), MCP mean 0.640 (n=250), delta **+0.047** (95% CI: [+0.007, +0.085]). The overall confidence interval excludes zero, indicating a statistically significant positive MCP effect across the full benchmark.
+**Overall**: Baseline mean 0.591 (n=251), MCP mean 0.640 (n=251), delta **+0.049** (95% CI: [+0.010, +0.088]). The overall confidence interval excludes zero, indicating a statistically significant positive MCP effect across the full benchmark.
 
-The results show a clear bifurcation by task category. For **SDLC tasks** where the agent already has full local source code, MCP provides marginal or negative value (SDLC delta -0.019, CI spans zero). The strongest SDLC gains are on retrieval-heavy tasks: **understand** (+0.190, CI excludes zero) and **document** (+0.048, CI excludes zero). The clearest SDLC negative is **debug** (-0.183, CI excludes zero), where MCP adds overhead without compensating retrieval benefit. **Build** (-0.121) also shows a meaningful negative, though the CI narrowly includes zero. For **MCP-unique tasks** requiring cross-repository discovery across 3-20 repos, MCP provides substantial value (+0.183, CI excludes zero), with the strongest effects on **security** (+0.440), **onboarding** (+0.337), and **org** (+0.197) tasks — all with CIs excluding zero. **Domain** (+0.163) also shows a significant positive effect under bootstrap.
+The results show a clear bifurcation by task category. For **SDLC tasks** where the agent already has full local source code, MCP provides marginal or negative value (SDLC delta -0.015, CI spans zero). The strongest SDLC gains are on retrieval-heavy tasks: **understand** (+0.190, CI excludes zero) and **document** (+0.048, CI excludes zero). The clearest SDLC negative is **debug** (-0.183, CI excludes zero), where MCP adds overhead without compensating retrieval benefit. **Build** (-0.121) also shows a meaningful negative, though the CI narrowly includes zero. For **MCP-unique tasks** requiring cross-repository discovery across 3-20 repos, MCP provides substantial value (+0.183, CI excludes zero), with the strongest effects on **security** (+0.440), **onboarding** (+0.337), and **org** (+0.197) tasks — all with CIs excluding zero. **Domain** (+0.163) also shows a significant positive effect under bootstrap.
 
 ### 11.3 Reward by Language
 
