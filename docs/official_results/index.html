@@ -9,6 +9,8 @@
     body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--text); }
     .wrap { max-width: 1180px; margin: 0 auto; padding: 20px; }
     .controls { display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 14px; }
+    .meta { color: var(--muted); font-size: 12px; margin: 4px 0 10px; }
+    button { background: transparent; color: var(--text); border:1px solid #2e3d4a; border-radius:8px; padding:8px 10px; cursor:pointer; }
     select,input { background:var(--panel); color:var(--text); border:1px solid #2e3d4a; border-radius:8px; padding:8px; }
     table { width:100%; border-collapse: collapse; background:var(--panel); border-radius:10px; overflow:hidden; }
     th,td { border-bottom: 1px solid #2d3a45; padding: 8px 10px; text-align:left; font-size: 13px; }
@@ -33,7 +35,9 @@
       <select id="configFilter"><option value="">All configs</option></select>
       <select id="statusFilter"><option value="">All statuses</option><option>passed</option><option>failed</option></select>
       <input id="taskSearch" placeholder="Search task" />
+      <button id="clearFilters" type="button">Clear filters</button>
     </div>
+    <div id="stats" class="meta"></div>
     <table>
       <thead><tr><th>Suite</th><th>Run</th><th>Config</th><th>Task</th><th>Status</th><th>Reward</th><th>MCP ratio</th><th>Tools</th><th>Trace</th></tr></thead>
       <tbody id="rows"></tbody>
@@ -47,33 +51,64 @@
     const configFilter = document.getElementById('configFilter');
     const statusFilter = document.getElementById('statusFilter');
     const taskSearch = document.getElementById('taskSearch');
+    const clearFilters = document.getElementById('clearFilters');
+    const statsEl = document.getElementById('stats');
 
     function fmt(v, d=3) { return (v===null || v===undefined) ? '-' : Number(v).toFixed(d); }
+    function uniqueSorted(values) { return [...new Set(values)].sort(); }
+    function resetOptions(selectEl, allLabel, values) {
+      const previous = selectEl.value;
+      selectEl.innerHTML = '';
+      selectEl.add(new Option(allLabel, ''));
+      values.forEach(v => selectEl.add(new Option(v, v)));
+      if (previous && values.includes(previous)) {
+        selectEl.value = previous;
+      } else {
+        selectEl.value = '';
+      }
+    }
 
     fetch('data/official_results.json').then(r => r.json()).then(data => {
       const allTasks = data.all_tasks || data.tasks || [];
       const dedupedTasks = data.tasks || [];
-      const suites = [...new Set(allTasks.map(t => t.suite || 'unknown'))].sort();
-      const runs = [...new Set(allTasks.map(t => t.run_dir))].sort();
-      const configs = [...new Set(allTasks.map(t => t.config))].sort();
+      const suites = uniqueSorted(allTasks.map(t => t.suite || 'unknown'));
       suites.forEach(s => suiteFilter.add(new Option(s, s)));
-      runs.forEach(r => runFilter.add(new Option(r, r)));
-      configs.forEach(c => configFilter.add(new Option(c, c)));
+      resetOptions(runFilter, 'All runs', uniqueSorted(allTasks.map(t => t.run_dir)));
+      resetOptions(configFilter, 'All configs', uniqueSorted(allTasks.map(t => t.config)));
 
       const render = () => {
         const dataset = datasetFilter.value || 'all';
         const tasks = dataset === 'latest' ? dedupedTasks : allTasks;
+        const suiteScoped = suiteFilter.value
+          ? tasks.filter(t => (t.suite || 'unknown') === suiteFilter.value)
+          : tasks;
+        resetOptions(runFilter, 'All runs', uniqueSorted(suiteScoped.map(t => t.run_dir)));
+        const runScoped = runFilter.value
+          ? suiteScoped.filter(t => t.run_dir === runFilter.value)
+          : suiteScoped;
+        resetOptions(configFilter, 'All configs', uniqueSorted(runScoped.map(t => t.config)));
         const sfu = suiteFilter.value;
         const rf = runFilter.value;
         const cf = configFilter.value;
         const sf = statusFilter.value;
         const q = taskSearch.value.trim().toLowerCase();
+        const filtered = tasks.filter(t =>
+          (!sfu || (t.suite || 'unknown') === sfu) &&
+          (!rf || t.run_dir === rf) &&
+          (!cf || t.config === cf) &&
+          (!sf || t.status === sf) &&
+          (!q || t.task_name.toLowerCase().includes(q))
+        );
+        const limited = filtered.slice(0, 1200);
+        const active = [];
+        if (sfu) active.push(`suite=${sfu}`);
+        if (rf) active.push(`run=${rf}`);
+        if (cf) active.push(`config=${cf}`);
+        if (sf) active.push(`status=${sf}`);
+        if (q) active.push(`search=${q}`);
 
         rowsEl.innerHTML = '';
-        tasks
-          .filter(t => (!sfu || (t.suite || 'unknown') === sfu) && (!rf || t.run_dir === rf) && (!cf || t.config === cf) && (!sf || t.status === sf) && (!q || t.task_name.toLowerCase().includes(q)))
-          .slice(0, 1200)
-          .forEach(t => {
+        limited.forEach(t => {
             const tr = document.createElement('tr');
             const trace = `${t.trace_available.trajectory ? 'traj ' : ''}${t.trace_available.transcript ? 'tx' : ''}`.trim() || '-';
             const repoLink = t.task_page_github ? `<a href="${t.task_page_github}" target="_blank" rel="noopener">repo</a>` : '';
@@ -94,6 +129,10 @@
             `;
             rowsEl.appendChild(tr);
           });
+        const modeLabel = dataset === 'latest' ? 'Latest per suite+config+task' : 'All task runs';
+        const capNote = filtered.length > limited.length ? ` (capped to ${limited.length})` : '';
+        const activeLabel = active.length ? ` | Active: ${active.join(', ')}` : '';
+        statsEl.textContent = `Dataset: ${modeLabel} | Showing ${filtered.length} of ${tasks.length}${capNote}${activeLabel}`;
       };
 
       suiteFilter.addEventListener('change', render);
@@ -102,6 +141,15 @@
       configFilter.addEventListener('change', render);
       statusFilter.addEventListener('change', render);
       taskSearch.addEventListener('input', render);
+      clearFilters.addEventListener('click', () => {
+        suiteFilter.value = '';
+        datasetFilter.value = 'all';
+        runFilter.value = '';
+        configFilter.value = '';
+        statusFilter.value = '';
+        taskSearch.value = '';
+        render();
+      });
       render();
     });
   </script>
