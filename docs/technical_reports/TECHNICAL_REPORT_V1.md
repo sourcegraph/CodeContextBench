@@ -1053,7 +1053,30 @@ Costs below are recomputed on the same **251 paired tasks** used in Section 11.2
 
 On this paired slice, MCP is **~3.8% higher cost** on average (+$0.013/task), not lower. Cost impact is suite-dependent: MCP is cheaper in `design`, `document`, `understand`, and `mcp_unique`, and more expensive in `build`, `debug`, `fix`, `secure`, and `test`.
 
-### 11.9 Correlation Analysis
+### 11.9 Timing Analysis
+
+Timing below uses the same **251 paired tasks** and compares both end-to-end wall clock and agent execution time from `task_metrics.json`.
+
+| Suite | n | Baseline Wall (s) | MCP Wall (s) | Wall Delta | MCP Faster/Slower |
+|-------|---|-------------------|--------------|------------|-------------------|
+| build | 25 | 2555.9 | 1547.4 | -39.5% | 18 / 7 |
+| debug | 20 | 1115.4 | 409.6 | -63.3% | 16 / 4 |
+| design | 20 | 3478.4 | 615.6 | -82.3% | 20 / 0 |
+| document | 20 | 503.6 | 235.9 | -53.2% | 17 / 3 |
+| fix | 25 | 2143.5 | 1249.8 | -41.7% | 19 / 6 |
+| secure | 20 | 386.2 | 337.2 | -12.7% | 14 / 6 |
+| test | 20 | 402.2 | 315.2 | -21.6% | 15 / 5 |
+| understand | 20 | 805.0 | 295.3 | -63.3% | 16 / 4 |
+| mcp_unique | 81 | 1241.6 | 614.8 | -50.5% | 40 / 41 |
+
+| Metric | n | Baseline Mean (s) | MCP Mean (s) | Delta | MCP Faster/Slower |
+|--------|---|-------------------|--------------|-------|-------------------|
+| Wall clock | 251 | 1401.9 | 653.0 | -53.4% | 175 / 76 |
+| Agent execution | 251 | 1058.3 | 299.3 | -71.7% | 195 / 56 |
+
+MCP is substantially faster overall in both wall-clock and agent-execution time. The one caveat is `mcp_unique`: mean wall-clock is much lower under MCP, but the task-level faster/slower split is nearly even (40/41), indicating a high-variance timing distribution.
+
+### 11.10 Correlation Analysis
 
 | Correlation (Spearman rho) | Value | n | Interpretation |
 |---------------------------|-------|---|---------------|

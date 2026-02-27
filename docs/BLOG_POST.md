@@ -86,14 +86,14 @@ One finding from the refreshed IR pipeline: the Spearman correlation between ret
 
 ## The Cost Surprise
 
-One finding I didn't expect: MCP runs are cheaper.
+One finding I didn't expect after recomputing the cost section on a strict paired slice: MCP is not cheaper overall.
 
 | Config | Mean Cost/Task | Total Cost |
 |--------|---------------|------------|
-| Baseline | $0.75 | $175.68 |
-| MCP | $0.47 | $97.01 |
+| Baseline | $0.339 | $85.12 |
+| MCP | $0.352 | $88.35 |
 
-MCP-augmented runs cost less on average. The mechanism is straightforward: the truncated-source environment has less local code to read, so the agent processes fewer input tokens. MCP is also consistently faster across every suite, with time reductions ranging from about 29% (test) to 94% (design) in the current paired table.
+Using one consistent method (`task_metrics.cost_usd`, cache-inclusive, same n=251 pairs), MCP is about 3.8% more expensive on average (+$0.013/task). The cost story is suite-dependent: MCP is cheaper in design/document/understand/mcp_unique, and more expensive in build/debug/fix/secure/test. MCP is still much faster overall: wall-clock drops from 1401.9s to 653.0s on average (-53.4%), and agent execution time drops from 1058.3s to 299.3s (-71.7%).
 
 This reframes the value question a bit. On the suites where MCP improves reward (especially MCP-unique and, in the cleaned paired set, Understand), you're getting better results at lower cost and lower latency. On the suites where reward is flat (fix, test), you're getting similar results faster. The clearly bad trade-offs remain debug and build, where the agent is faster but less effective.
 
