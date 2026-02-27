@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/test_haiku_20260223_235732--baseline-local-direct--test-coverage-gap-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/test_haiku_20260223_235732--baseline-local-direct--test-coverage-gap-002/trajectory.json)
 
 ## Metrics
 

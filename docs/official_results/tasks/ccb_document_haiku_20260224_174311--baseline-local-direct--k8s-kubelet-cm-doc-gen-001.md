@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_document_haiku_20260224_174311--baseline-local-direct--k8s-kubelet-cm-doc-gen-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_document_haiku_20260224_174311--baseline-local-direct--k8s-kubelet-cm-doc-gen-001/trajectory.json)
 
 ## Metrics
 

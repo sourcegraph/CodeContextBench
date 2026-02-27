@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/secure_haiku_20260223_232545--baseline-local-direct--kafka-sasl-auth-audit-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/secure_haiku_20260223_232545--baseline-local-direct--kafka-sasl-auth-audit-001/trajectory.json)
 
 ## Metrics
 

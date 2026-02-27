@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_fix_haiku_20260226_015500_backfill--baseline-local-direct--ansible-module-respawn-fix-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_fix_haiku_20260226_015500_backfill--baseline-local-direct--ansible-module-respawn-fix-001/trajectory.json)
 
 ## Metrics
 

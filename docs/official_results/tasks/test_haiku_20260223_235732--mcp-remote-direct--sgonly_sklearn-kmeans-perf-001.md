@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/test_haiku_20260223_235732--mcp-remote-direct--sgonly_sklearn-kmeans-perf-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/test_haiku_20260223_235732--mcp-remote-direct--sgonly_sklearn-kmeans-perf-001/trajectory.json)
 
 ## Metrics
 

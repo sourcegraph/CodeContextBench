@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/understand_haiku_20260225_211346--baseline-local-direct--django-composite-field-recover-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/understand_haiku_20260225_211346--baseline-local-direct--django-composite-field-recover-001/trajectory.json)
 
 ## Metrics
 

@@ -11,6 +11,7 @@ Use this workflow to publish valid official scores with easy-to-view parsed trac
 - `docs/official_results/tasks/*.md` - per-task metrics and parsed trace/tool summaries
 - `docs/official_results/data/official_results.json` - machine-readable data
 - `docs/official_results/audits/*.json` - per-task audit payloads with trace parsing and SHA256 checksums
+- `docs/official_results/traces/*/trajectory.json` - bundled raw trajectory traces
 - `docs/official_results/index.html` - local interactive browser
 
 ## Usage

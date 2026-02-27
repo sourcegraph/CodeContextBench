@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001/trajectory.json)
 
 ## Metrics
 

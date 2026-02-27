@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/build_haiku_20260223_124805--mcp-remote-direct--sgonly_flipt-dep-refactor-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/build_haiku_20260223_124805--mcp-remote-direct--sgonly_flipt-dep-refactor-001/trajectory.json)
 
 ## Metrics
 

@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv/trajectory.json)
 
 ## Metrics
 

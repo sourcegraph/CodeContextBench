@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/secure_haiku_20260224_011825--mcp-remote-direct--sgonly_django-sensitive-file-exclusion-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/secure_haiku_20260224_011825--mcp-remote-direct--sgonly_django-sensitive-file-exclusion-001/trajectory.json)
 
 ## Metrics
 

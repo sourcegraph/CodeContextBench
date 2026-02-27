@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-compliance-053_fgVrO8.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-compliance-053_fgVrO8/trajectory.json)
 
 ## Metrics
 

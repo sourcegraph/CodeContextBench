@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_mcp_incident_haiku_20260225_011700--baseline-local-artifact--bl_CCX-incident-125_iYg2nb.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_20260225_011700--baseline-local-artifact--bl_CCX-incident-125_iYg2nb/trajectory.json)
 
 ## Metrics
 

@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-117.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-117/trajectory.json)
 
 ## Metrics
 

@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK/trajectory.json)
 
 ## Metrics
 

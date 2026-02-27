@@ -2,7 +2,7 @@
 
 This bundle is generated from `runs/official/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).
 
-Generated: `2026-02-27T01:56:50.289905+00:00`
+Generated: `2026-02-27T02:07:33.656348+00:00`
 
 ## Local Browse
 

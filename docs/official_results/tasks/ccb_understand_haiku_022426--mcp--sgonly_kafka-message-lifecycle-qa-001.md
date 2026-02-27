@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_understand_haiku_022426--mcp--sgonly_kafka-message-lifecycle-qa-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_understand_haiku_022426--mcp--sgonly_kafka-message-lifecycle-qa-001/trajectory.json)
 
 ## Metrics
 

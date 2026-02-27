@@ -18,6 +18,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import statistics
 import sys
 from collections import Counter, defaultdict
@@ -69,6 +70,7 @@ class TaskRecord:
     sample_tool_calls: list[dict[str, str]]
     trace_available: dict[str, bool]
     trace_paths: dict[str, str | None]
+    bundled_trace_paths: dict[str, str | None]
     checksums: dict[str, str | None]
     audit_page: str | None = None
 
@@ -449,6 +451,7 @@ def _extract_task_record(
             "transcript": trace_paths["transcript"] is not None,
         },
         trace_paths=trace_paths,
+        bundled_trace_paths={"trajectory": None, "transcript": None},
         checksums={
             "result_json_sha256": result_sha,
             "trajectory_sha256": traj_sha,
@@ -537,6 +540,7 @@ def _to_task_dict(record: TaskRecord, task_page: str) -> dict[str, Any]:
         "sample_tool_calls": record.sample_tool_calls,
         "trace_available": record.trace_available,
         "trace_paths": record.trace_paths,
+        "bundled_trace_paths": record.bundled_trace_paths,
         "checksums": record.checksums,
         "audit_page": record.audit_page,
         "task_page": task_page,
@@ -559,6 +563,10 @@ def _build_task_page(record: TaskRecord) -> str:
         lines.append(f"- Audit JSON: [link](../{record.audit_page})")
     lines.append(f"- Trajectory available: `{record.trace_available['trajectory']}`")
     lines.append(f"- Transcript available: `{record.trace_available['transcript']}`")
+    if record.bundled_trace_paths.get("trajectory"):
+        lines.append(f"- Bundled trajectory: [link](../{record.bundled_trace_paths['trajectory']})")
+    if record.bundled_trace_paths.get("transcript"):
+        lines.append(f"- Bundled transcript: [link](../{record.bundled_trace_paths['transcript']})")
     lines.append("")
 
     lines.append("## Metrics")
@@ -801,6 +809,7 @@ def build_export(
     tasks_dir = output_dir / "tasks"
     runs_pages_dir = output_dir / "runs"
     audits_dir = output_dir / "audits"
+    traces_dir = output_dir / "traces"
 
     for run_dir in run_dirs:
         configs = discover_configs(run_dir)
@@ -813,6 +822,17 @@ def build_export(
                 record, audit_payload = extracted
 
                 task_slug = _slug(f"{run_dir.name}--{config}--{record.task_name}")
+                bundled_trace_paths: dict[str, str | None] = {"trajectory": None, "transcript": None}
+                if record.trace_paths.get("trajectory"):
+                    src = PROJECT_ROOT / record.trace_paths["trajectory"]
+                    if src.is_file():
+                        rel = f"traces/{task_slug}/trajectory.json"
+                        dst = traces_dir / task_slug / "trajectory.json"
+                        dst.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copy2(src, dst)
+                        bundled_trace_paths["trajectory"] = rel
+                record.bundled_trace_paths = bundled_trace_paths
+
                 audit_page_rel = f"audits/{task_slug}.json"
                 record.audit_page = audit_page_rel
                 _write_text(audits_dir / f"{task_slug}.json", json.dumps(audit_payload, indent=2, sort_keys=True))

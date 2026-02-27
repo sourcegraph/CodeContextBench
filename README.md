@@ -255,6 +255,7 @@ This writes:
 - `docs/official_results/tasks/*.md` -- per-task metrics + parsed tool/trace view
 - `docs/official_results/data/official_results.json` -- machine-readable dataset
 - `docs/official_results/audits/*.json` -- per-task audit artifacts (checksums + parsed trace events)
+- `docs/official_results/traces/*/trajectory.json` -- bundled raw trajectory traces for GitHub audit
 - `docs/official_results/index.html` -- interactive local browser
 
 Serve locally:

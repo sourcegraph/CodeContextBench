@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_build_haiku_022326--mcp--sgonly_bustub-hyperloglog-impl-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_build_haiku_022326--mcp--sgonly_bustub-hyperloglog-impl-001/trajectory.json)
 
 ## Metrics
 

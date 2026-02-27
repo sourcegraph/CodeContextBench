@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/document_haiku_20260226_013910--baseline-local-direct--docgen-inline-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/document_haiku_20260226_013910--baseline-local-direct--docgen-inline-001/trajectory.json)
 
 ## Metrics
 

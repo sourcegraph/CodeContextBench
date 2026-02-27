@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_build_haiku_20260226_015500_backfill--baseline-local-direct--rust-subtype-relation-refac-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_build_haiku_20260226_015500_backfill--baseline-local-direct--rust-subtype-relation-refac-001/trajectory.json)
 
 ## Metrics
 

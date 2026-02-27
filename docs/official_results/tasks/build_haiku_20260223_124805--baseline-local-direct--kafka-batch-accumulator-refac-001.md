@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/build_haiku_20260223_124805--baseline-local-direct--kafka-batch-accumulator-refac-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/build_haiku_20260223_124805--baseline-local-direct--kafka-batch-accumulator-refac-001/trajectory.json)
 
 ## Metrics
 

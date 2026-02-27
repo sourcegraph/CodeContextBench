@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/understand_haiku_20260224_001815--mcp-remote-direct--sgonly_numpy-dtype-localize-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/understand_haiku_20260224_001815--mcp-remote-direct--sgonly_numpy-dtype-localize-001/trajectory.json)
 
 ## Metrics
 

@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/design_haiku_20260223_124652--mcp-remote-direct--sgonly_django-rate-limit-design-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/design_haiku_20260223_124652--mcp-remote-direct--sgonly_django-rate-limit-design-001/trajectory.json)
 
 ## Metrics
 

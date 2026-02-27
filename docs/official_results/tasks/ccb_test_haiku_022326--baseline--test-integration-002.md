@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_test_haiku_022326--baseline--test-integration-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_test_haiku_022326--baseline--test-integration-002/trajectory.json)
 
 ## Metrics
 

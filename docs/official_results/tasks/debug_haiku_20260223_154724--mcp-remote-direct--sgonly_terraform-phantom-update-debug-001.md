@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/debug_haiku_20260223_154724--mcp-remote-direct--sgonly_terraform-phantom-update-debug-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/debug_haiku_20260223_154724--mcp-remote-direct--sgonly_terraform-phantom-update-debug-001/trajectory.json)
 
 ## Metrics
 

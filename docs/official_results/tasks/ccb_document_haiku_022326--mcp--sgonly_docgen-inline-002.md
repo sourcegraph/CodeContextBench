@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/ccb_document_haiku_022326--mcp--sgonly_docgen-inline-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/ccb_document_haiku_022326--mcp--sgonly_docgen-inline-002/trajectory.json)
 
 ## Metrics
 

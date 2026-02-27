@@ -6,6 +6,7 @@
 - Audit JSON: [link](../audits/document_haiku_20260223_164240--mcp-remote-direct--sgonly_docgen-runbook-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
+- Bundled trajectory: [link](../traces/document_haiku_20260223_164240--mcp-remote-direct--sgonly_docgen-runbook-002/trajectory.json)
 
 ## Metrics
 
