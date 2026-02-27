@@ -943,19 +943,19 @@ The strongest pattern in this paired slice is by `context_length`: the larger pr
 
 ### 11.6 Information Retrieval Metrics
 
-The IR evaluation pipeline (Section 8) produces file-level recall, MRR, MAP, nDCG, context efficiency, and utilization probes for tasks with ground truth file sets. Results from the full pipeline run (n=594 computable tasks out of 1,005 event files):
+The IR evaluation pipeline (Section 8) produces file-level recall, MRR, MAP, nDCG, context efficiency, and utilization probes for tasks with ground truth file sets. Results from the full pipeline run (n=618 computable tasks out of 1,084 event files):
 
 **Aggregate File-Level IR Metrics:**
 
 | Metric | Mean | Median | Std | n |
 |--------|------|--------|-----|---|
-| File Recall | 0.375 | 0.111 | 0.424 | 594 |
-| MRR | 0.347 | 0.007 | 0.443 | 594 |
-| MAP | 0.232 | 0.008 | 0.340 | 594 |
-| Context Efficiency | 0.190 | 0.013 | 0.280 | 594 |
-| Precision@1 | 0.298 | 0.000 | 0.458 | 594 |
-| Recall@5 | 0.223 | 0.000 | 0.345 | 594 |
-| nDCG@10 | 0.275 | 0.000 | 0.371 | 594 |
+| File Recall | 0.374 | 0.125 | 0.421 | 618 |
+| MRR | 0.351 | 0.009 | 0.444 | 618 |
+| MAP | 0.230 | 0.010 | 0.337 | 618 |
+| Context Efficiency | 0.192 | 0.019 | 0.279 | 618 |
+| Precision@1 | 0.301 | 0.000 | 0.459 | 618 |
+| Recall@5 | 0.220 | 0.000 | 0.342 | 618 |
+| nDCG@10 | 0.274 | 0.000 | 0.369 | 618 |
 
 **High-Confidence Subset** (medium/high-confidence ground truth, n=26):
 
@@ -967,25 +967,25 @@ The IR evaluation pipeline (Section 8) produces file-level recall, MRR, MAP, nDC
 | Context Efficiency | 0.432 | 0.287 |
 | TTFR | 24.9s | 11.1s |
 
-**Utilization Probes** (n=594):
+**Utilization Probes** (n=618):
 
 | Probe | Mean | Median |
 |-------|------|--------|
-| Read Overlap with Relevant Files | 0.337 | 0.093 |
-| Write Overlap with Relevant Files | 0.056 | 0.000 |
-| Read-Before-Write Ratio | 0.195 | 0.000 |
+| Read Overlap with Relevant Files | 0.335 | 0.111 |
+| Write Overlap with Relevant Files | 0.055 | 0.000 |
+| Read-Before-Write Ratio | 0.194 | 0.000 |
 
-**Error Taxonomy** (n=594):
+**Error Taxonomy** (n=618):
 
 | Error Type | Mean Count | Median |
 |------------|-----------|--------|
-| Irrelevant Retrieval | 39.7 | 7.0 |
+| Irrelevant Retrieval | 39.1 | 8.0 |
 | Missed Key Evidence | 5.8 | 3.0 |
 | Wrong Evidence Used | 2.2 | 1.0 |
 | Unused Correct Retrieval | 2.2 | 0.0 |
-| Ambiguity Near Miss | 17.2 | 0.0 |
+| Ambiguity Near Miss | 16.9 | 0.0 |
 
-**Retrieval-Outcome Correlation:** Spearman rho = 0.078 (p=0.737, n=26 high-confidence tasks), indicating negligible correlation between retrieval quality (MRR) and task outcome (reward) in the current sample. The wide median-mean gaps across all IR metrics reflect a bimodal distribution: agents either find the right files early (high MRR) or miss them entirely (MRR=0). The dominant retrieval strategy is file reads (364 tasks), followed by code search (115 tasks), with MCP-based retrieval accounting for 229 of 594 evidence traces.
+**Retrieval-Outcome Correlation:** Spearman rho = 0.078 (p=0.737, n=26 high-confidence tasks), indicating negligible correlation between retrieval quality (MRR) and task outcome (reward) in the current sample. The wide median-mean gaps across all IR metrics reflect a bimodal distribution: agents either find the right files early (high MRR) or miss them entirely (MRR=0). The dominant retrieval strategy is file reads (376 tasks), followed by code search (125 tasks), with MCP-based retrieval accounting for 243 of 618 evidence traces.
 
 ### 11.7 MCP Tool Usage Patterns
 
