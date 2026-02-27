@@ -164,10 +164,10 @@ def _canonical_task_name(name: str) -> str:
 
 
 def _benchmark_link(suite: str, canonical_name: str) -> str | None:
-    """Return a relative path to the benchmark task folder if it exists."""
+    """Return a relative path from docs/official_results/suites/ to the benchmark task folder."""
     candidate = PROJECT_ROOT / "benchmarks" / suite / canonical_name
     if candidate.is_dir():
-        return f"benchmarks/{suite}/{canonical_name}"
+        return f"../../../benchmarks/{suite}/{canonical_name}"
     return None
 
 
@@ -785,7 +785,7 @@ def _build_suite_page(
     for task in sorted(deduped_rows, key=lambda t: (_canonical_task_name(t["task_name"]), t["config"])):
         cn = _canonical_task_name(task["task_name"])
         bm_link = _benchmark_link(suite, cn)
-        bm_cell = f"[source](../../{bm_link})" if bm_link else "—"
+        bm_cell = f"[source]({bm_link})" if bm_link else "—"
         n_runs = run_counts.get((cn, task["config"]), 1)
         runs_cell = str(n_runs) if n_runs > 1 else "1"
 
@@ -838,7 +838,7 @@ def _build_suite_page(
         lines.append("| Task | Benchmark | Config | Runs | Mean | Std | Individual Rewards |")
         lines.append("|---|---|---|---:|---:|---:|---|")
         for vr in variance_rows:
-            bm_cell = f"[source](../../{vr['bm_link']})" if vr["bm_link"] else "—"
+            bm_cell = f"[source]({vr['bm_link']})" if vr["bm_link"] else "—"
             rewards_str = ", ".join(f"{r:.3f}" for r in vr["rewards"])
             lines.append(
                 f"| {vr['task_name']} | "

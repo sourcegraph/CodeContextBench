@@ -46,11 +46,11 @@
 | [mcp_CCX-dep-trace-102_6nybzq](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-dep-trace-102_6nybzq.md) | — | `mcp-remote-direct` | `passed` | 0.533 | 4 | 0.882 |
 | [mcp_CCX-dep-trace-102_xB3mHY](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-dep-trace-102_xB3mHY.md) | — | `mcp-remote-direct` | `passed` | 0.467 | 4 | 0.909 |
 | [mcp_CCX-dep-trace-102_93NryZ](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-dep-trace-102_93NryZ.md) | — | `mcp-remote-direct` | `passed` | 0.800 | 4 | 0.952 |
-| [ccx-dep-trace-106](../tasks/ccb_mcp_crossrepo_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-106.md) | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `baseline-local-direct` | `passed` | 0.867 | 1 | 0.000 |
-| [mcp_CCX-dep-trace-106_UE5RZ8](../tasks/ccb_mcp_crossrepo_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_UE5RZ8.md) | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.644 | 4 | 0.926 |
-| [mcp_CCX-dep-trace-106_nCV7RO](../tasks/ccb_mcp_crossrepo_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_nCV7RO.md) | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.850 | 4 | 0.960 |
-| [mcp_CCX-dep-trace-106_pKe0DJ](../tasks/ccb_mcp_crossrepo_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-dep-trace-106_pKe0DJ.md) | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.767 | 4 | 0.957 |
-| [mcp_CCX-dep-trace-106_zMwdbQ](../tasks/ccb_mcp_crossrepo_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_zMwdbQ.md) | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.767 | 4 | 0.929 |
+| [ccx-dep-trace-106](../tasks/ccb_mcp_crossrepo_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-106.md) | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `baseline-local-direct` | `passed` | 0.867 | 1 | 0.000 |
+| [mcp_CCX-dep-trace-106_UE5RZ8](../tasks/ccb_mcp_crossrepo_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_UE5RZ8.md) | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.644 | 4 | 0.926 |
+| [mcp_CCX-dep-trace-106_nCV7RO](../tasks/ccb_mcp_crossrepo_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_nCV7RO.md) | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.850 | 4 | 0.960 |
+| [mcp_CCX-dep-trace-106_pKe0DJ](../tasks/ccb_mcp_crossrepo_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-dep-trace-106_pKe0DJ.md) | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.767 | 4 | 0.957 |
+| [mcp_CCX-dep-trace-106_zMwdbQ](../tasks/ccb_mcp_crossrepo_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-dep-trace-106_zMwdbQ.md) | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | `passed` | 0.767 | 4 | 0.929 |
 | [ccx-dep-trace-116](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_214446--baseline-local-direct--ccx-dep-trace-116.md) | — | `baseline-local-direct` | `passed` | 0.571 | 1 | 0.000 |
 | [mcp_CCX-dep-trace-116_hutEUF](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-dep-trace-116_hutEUF.md) | — | `mcp-remote-direct` | `passed` | 0.800 | 1 | 0.950 |
 | [bl_CCX-dep-trace-123_2Fw9jl](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260225_011700--baseline-local-artifact--bl_CCX-dep-trace-123_2Fw9jl.md) | — | `baseline-local-artifact` | `failed` | 0.000 | 1 | 0.000 |
@@ -64,4 +64,4 @@ Tasks with multiple valid runs (1 task/config pairs).
 
 | Task | Benchmark | Config | Runs | Mean | Std | Individual Rewards |
 |---|---|---|---:|---:|---:|---|
-| CCX-dep-trace-106 | [source](../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | 4 | 0.757 | 0.085 | 0.644, 0.850, 0.767, 0.767 |
+| CCX-dep-trace-106 | [source](../../../benchmarks/ccb_mcp_crossrepo/ccx-dep-trace-106) | `mcp-remote-direct` | 4 | 0.757 | 0.085 | 0.644, 0.850, 0.767, 0.767 |
