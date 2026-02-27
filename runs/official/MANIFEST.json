@@ -1,6 +1,6 @@
 {
   "description": "Canonical run manifest for CodeContextBench evaluation",
-  "generated": "2026-02-27T13:45:04.194332+00:00",
+  "generated": "2026-02-27T17:19:28.739563+00:00",
   "total_tasks": 765,
   "total_runs": 82,
   "runs": {
@@ -3592,9 +3592,9 @@
       "timestamp": "2026-02-24 20-41-47",
       "task_count": 25,
       "passed": 16,
-      "failed": 8,
-      "errored": 1,
-      "mean_reward": 0.499,
+      "failed": 9,
+      "errored": 0,
+      "mean_reward": 0.479,
       "tasks": {
         "ansible-abc-imports-fix-001": {
           "status": "passed",
@@ -3777,10 +3777,10 @@
           "judge_confidence": null
         },
         "openlibrary-solr-boolean-fix-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
@@ -13843,7 +13843,7 @@
         ]
       },
       "openlibrary-solr-boolean-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -13860,6 +13860,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "fix_haiku_20260223_171232"
+          },
+          {
+            "started_at": "2026-02-27T15:18:42.341451",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260227_151833"
           }
         ]
       },

@@ -1,13 +1,18 @@
 # CodeContextBench: A Systematic Evaluation Framework for Assessing the Impact of Enhanced Code Intelligence on AI Coding Agent Performance
 
-**White Paper Technical Report**
+**Canonical Technical Report (Source of Truth)**
 **Date:** February 27, 2026
+
+> Canonical source policy: This document (`docs/technical_reports/TECHNICAL_REPORT_V1.md`)
+> is the authoritative source for technical report updates. Any white-paper or
+> presentation variants (including `docs/WHITE_PAPER_REPORT_V2.md`) should be
+> treated as derived artifacts synchronized from this report.
 
 ---
 
 ## Abstract
 
-CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.019 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
+CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.015 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
 
 ---
 
@@ -918,11 +923,11 @@ C tasks have the highest mean reward (0.801), driven by the Linux kernel fault l
 
 ### 11.4 Reward by Difficulty
 
-| Difficulty | n | Baseline Mean | Pass Rate |
-|-----------|---|--------------|-----------|
-| Medium | 26 | 0.592 | 69.2% |
-| Hard | 145 | 0.628 | 86.9% |
-| Expert | 5 | 0.800 | 100.0% |
+| Difficulty | n | Baseline Mean | MCP Mean | Pass Rate |
+|-----------|---|--------------|----------|-----------|
+| Medium | 26 | 0.592 | 0.667 | 69.2% |
+| Hard | 145 | 0.628 | 0.687 | 86.9% |
+| Expert | 5 | 0.800 | 0.800 | 100.0% |
 
 The counterintuitive result that "hard" tasks outperform "medium" tasks reflects that difficulty ratings were assigned based on expected human effort, not agent capability. Difficulty is a task-authoring metadata field (`task.toml` / selection registry `difficulty`) set from the anticipated human effort and coordination complexity of the scenario, rather than calibrated to current model behavior. Expert tasks (all Linux kernel fault localization) score highest because they are well-structured pattern-matching problems that agents handle effectively despite the large codebase scale.
 
@@ -1018,7 +1023,7 @@ Analysis of tool call patterns across 213 MCP task runs:
 | understand | 21 | 25.7 | 8.6 | 0.718 | 6.9 | 0.1 |
 | mcp_unique | 37 | 20.7 | 1.6 | 0.918 | 9.2 | 1.0 |
 
-The **fix** suite has the lowest MCP ratio (0.350) and highest local call count (39.8), reflecting that bug-fixing tasks require extensive local code editing after initial search. **Document** and **mcp_unique** suites have the highest MCP ratios (0.839 and 0.918 respectively), as these tasks are primarily about information retrieval rather than code modification. The near-total absence of Deep Search calls across all suites confirms that agents default to keyword search and rarely invoke the more expensive semantic analysis tools without explicit preamble guidance. Note: MCP tool usage statistics are drawn from the subset of MCP runs with extractable transcripts (n=213) and may not cover all 250 valid paired tasks.
+The **fix** suite has the lowest MCP ratio (0.350) and highest local call count (39.8), reflecting that bug-fixing tasks require extensive local code editing after initial search. **Document** and **mcp_unique** suites have the highest MCP ratios (0.839 and 0.918 respectively), as these tasks are primarily about information retrieval rather than code modification. The near-total absence of Deep Search calls across all suites confirms that agents default to keyword search and rarely invoke the more expensive semantic analysis tools without explicit preamble guidance. Note: MCP tool usage statistics are drawn from the subset of MCP runs with extractable transcripts (n=213) and may not cover all 251 valid paired tasks.
 
 **Reward--MCP correlation:** Spearman rho between MCP ratio and reward is **+0.293** in the analyzed paired slice, indicating a weak positive correlation — higher MCP tool usage is modestly associated with better outcomes, but the relationship is not strong enough to imply causation.
 
