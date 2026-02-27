@@ -1,0 +1,23 @@
+# ccb_mcp_compliance_haiku_20260226_035515_variance
+
+## baseline-local-direct
+
+- Valid tasks: `1`
+- Mean reward: `0.386`
+- Pass rate: `1.000`
+
+| Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
+|---|---|---:|---:|---:|---|
+| [ccx-compliance-051](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--baseline-local-direct--ccx-compliance-051.md) | `passed` | 0.386 | 0.000 | 50 | traj, tx |
+
+## mcp-remote-direct
+
+- Valid tasks: `3`
+- Mean reward: `0.489`
+- Pass rate: `1.000`
+
+| Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
+|---|---|---:|---:|---:|---|
+| [mcp_CCX-compliance-052_mF59tH](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH.md) | `passed` | 0.263 | 0.985 | 66 | traj, tx |
+| [mcp_ccx-compliance-051_rSkovg](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-051_rSkovg.md) | `passed` | 0.462 | 0.971 | 35 | traj, tx |
+| [mcp_ccx-compliance-057-ds_re3utI](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-057-ds_re3utI.md) | `passed` | 0.741 | 0.962 | 26 | traj, tx |

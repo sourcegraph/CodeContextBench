@@ -1,0 +1,56 @@
+# mcp_CCX-migration-117_Iw0OWn (mcp-remote-direct)
+
+- Run: `ccb_mcp_migration_haiku_20260226_221038`
+- Status: `passed`
+- Reward: `0.8421`
+- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn.json)
+- Trajectory available: `True`
+- Transcript available: `True`
+
+## Metrics
+
+| Field | Value |
+|---|---:|
+| Wall clock seconds | 430.9 |
+| Agent execution seconds | 109.5 |
+| Input tokens | 2,152,363 |
+| Output tokens | 9,574 |
+| Cache tokens | 2,151,884 |
+| Tool calls (total) | 18 |
+| Tool calls (MCP) | 16 |
+| Tool calls (local) | 2 |
+| MCP ratio | 0.889 |
+| keyword_search calls | 9 |
+| nls_search calls | 1 |
+| deepsearch calls | 0 |
+| `result.json` SHA256 | `83bd8a2e96f242d4491b14b5fa20d0a64d9509f53fa179b384294faff142a1ba` |
+| `trajectory.json` SHA256 | `36042b3f325584034877e3d6528c0d6de24956a70fb3e4ca8bef9a4b265a8a0b` |
+| transcript SHA256 | `16eacb70b432a14d82ca15946c518adb18efa0fe854a70e7fc16473c42b2f1a3` |
+
+## Tool Breakdown
+
+| Tool | Calls |
+|---|---:|
+| `mcp__sourcegraph__sg_keyword_search` | 9 |
+| `mcp__sourcegraph__sg_read_file` | 4 |
+| `mcp__sourcegraph__sg_list_files` | 2 |
+| `Bash` | 1 |
+| `Write` | 1 |
+| `mcp__sourcegraph__sg_nls_search` | 1 |
+
+## Parsed Trace Samples
+
+| Tool |
+|---|
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_read_file` |
+| `mcp__sourcegraph__sg_read_file` |
+| `mcp__sourcegraph__sg_read_file` |
+| `mcp__sourcegraph__sg_nls_search` |
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_keyword_search` |
+| `mcp__sourcegraph__sg_list_files` |
+| `mcp__sourcegraph__sg_list_files` |

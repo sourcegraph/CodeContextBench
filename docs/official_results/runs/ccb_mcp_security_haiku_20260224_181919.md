@@ -1,0 +1,14 @@
+# ccb_mcp_security_haiku_20260224_181919
+
+## mcp-remote-artifact
+
+- Valid tasks: `4`
+- Mean reward: `0.777`
+- Pass rate: `1.000`
+
+| Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
+|---|---|---:|---:|---:|---|
+| [mcp_CCX-vuln-remed-126_HYpbDr](../tasks/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-126_HYpbDr.md) | `passed` | 0.745 | 0.978 | 45 | traj, tx |
+| [mcp_CCX-vuln-remed-130_0JULg6](../tasks/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-130_0JULg6.md) | `passed` | 1.000 | 0.955 | 22 | traj, tx |
+| [mcp_CCX-vuln-remed-135_Uueqpt](../tasks/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt.md) | `passed` | 0.611 | 0.929 | 14 | traj, tx |
+| [mcp_CCX-vuln-remed-141_y0cxyE](../tasks/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-141_y0cxyE.md) | `passed` | 0.750 | 0.958 | 24 | traj, tx |
