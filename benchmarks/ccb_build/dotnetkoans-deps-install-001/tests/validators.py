@@ -131,10 +131,10 @@ class PythonValidator(DependencyValidator):
     def validate_dependencies(self) -> Tuple[bool, List[str]]:
         """Check that at least some dependencies are declared."""
         errors = []
-
-        req_path = self.repo_path / "requirements.txt"
         has_deps = False
 
+        # Check requirements.txt
+        req_path = self.repo_path / "requirements.txt"
         if req_path.exists():
             try:
                 with open(req_path) as f:
@@ -146,9 +146,45 @@ class PythonValidator(DependencyValidator):
             except Exception:
                 pass
 
+        # Check pyproject.toml [project].dependencies
+        if not has_deps:
+            pyproject_path = self.repo_path / "pyproject.toml"
+            if pyproject_path.exists():
+                try:
+                    with open(pyproject_path) as f:
+                        content = f.read()
+                    # Look for a non-empty dependencies list under [project]
+                    in_project = False
+                    in_deps = False
+                    for line in content.splitlines():
+                        stripped = line.strip()
+                        if stripped == "[project]":
+                            in_project = True
+                            continue
+                        if in_project and stripped.startswith("[") and stripped != "[project]":
+                            in_project = False
+                            in_deps = False
+                            continue
+                        if in_project and stripped.startswith("dependencies"):
+                            in_deps = True
+                            # Handle inline list: dependencies = ["foo"]
+                            if '"' in stripped or "'" in stripped:
+                                has_deps = True
+                                break
+                            continue
+                        if in_deps:
+                            if stripped == "]":
+                                in_deps = False
+                                continue
+                            if stripped and not stripped.startswith("#"):
+                                has_deps = True
+                                break
+                except Exception:
+                    pass
+
         if not has_deps:
             errors.append(
-                "No dependencies found in requirements.txt (expected for most projects)"
+                "No dependencies found in requirements.txt or pyproject.toml (expected for most projects)"
             )
 
         return len(errors) == 0, errors
