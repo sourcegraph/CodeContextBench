@@ -6,16 +6,13 @@
     "total_tasks": 283,
     "total_suites": 19,
     "readiness": {
-      "ready": 274,
-      "needs_custom_build": 9
+      "ready": 283
     },
     "image_classes": {
       "tac": 4,
       "ccb_repo": 70,
-      "standard": 197,
-      "sweap": 21,
-      "ccb_linux": 5,
-      "unknown": 4
+      "standard": 202,
+      "sweap": 21
     },
     "languages": {
       "cpp": 31,
@@ -40,12 +37,10 @@
         "ready": 25
       },
       "ccb_debug": {
-        "ready": 15,
-        "needs_custom_build": 5
+        "ready": 20
       },
       "ccb_design": {
-        "ready": 16,
-        "needs_custom_build": 4
+        "ready": 20
       },
       "ccb_document": {
         "ready": 20
@@ -2746,10 +2741,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v5.6.7"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         },
         "sg_only": {
@@ -2764,18 +2759,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v5.6.7"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "ccb-linux-base:v5.6.7",
+        "gcc:13",
         "ubuntu:22.04"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -2813,10 +2808,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v3.7.6"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         },
         "sg_only": {
@@ -2831,18 +2826,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v3.7.6"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "ccb-linux-base:v3.7.6",
+        "gcc:13",
         "ubuntu:22.04"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -2880,10 +2875,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v5.6-rc2"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         },
         "sg_only": {
@@ -2898,18 +2893,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v5.6-rc2"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "ccb-linux-base:v5.6-rc2",
+        "gcc:13",
         "ubuntu:22.04"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -2947,10 +2942,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v4.1.15"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         },
         "sg_only": {
@@ -2965,18 +2960,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v4.1.15"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "ccb-linux-base:v4.1.15",
+        "gcc:13",
         "ubuntu:22.04"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -3014,10 +3009,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v4.14.114"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         },
         "sg_only": {
@@ -3032,18 +3027,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ccb-linux-base:v4.14.114"
+            "gcc:13"
           ],
           "image_classes": [
-            "ccb_linux"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "ccb-linux-base:v4.14.114",
+        "gcc:13",
         "ubuntu:22.04"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -3876,12 +3871,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
-            "django.dispatch.registry"
+            "ghcr.io/sjarmak/ccb-repo-django-674eda1c"
           ],
           "image_classes": [
-            "ccb_repo",
-            "unknown"
+            "ccb_repo"
           ]
         },
         "sg_only": {
@@ -3896,21 +3889,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
-            "django.dispatch.registry"
+            "ghcr.io/sjarmak/ccb-repo-django-674eda1c"
           ],
           "image_classes": [
-            "ccb_repo",
-            "unknown"
+            "ccb_repo"
           ]
         }
       },
       "unique_base_images": [
-        "django.dispatch.registry",
         "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
         "python:3.11-slim"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -3948,12 +3938,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
-            "django.core.middleware"
+            "ghcr.io/sjarmak/ccb-repo-django-674eda1c"
           ],
           "image_classes": [
-            "ccb_repo",
-            "unknown"
+            "ccb_repo"
           ]
         },
         "sg_only": {
@@ -3968,21 +3956,18 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
-            "django.core.middleware"
+            "ghcr.io/sjarmak/ccb-repo-django-674eda1c"
           ],
           "image_classes": [
-            "ccb_repo",
-            "unknown"
+            "ccb_repo"
           ]
         }
       },
       "unique_base_images": [
-        "django.core.middleware",
         "ghcr.io/sjarmak/ccb-repo-django-674eda1c",
         "python:3.11-slim"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -4028,12 +4013,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "golang:1.23-alpine",
-            "base"
+            "golang:1.23-alpine"
           ],
           "image_classes": [
-            "standard",
-            "unknown"
+            "standard"
           ]
         },
         "sg_only": {
@@ -4048,20 +4031,17 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "golang:1.23-alpine",
-            "base"
+            "golang:1.23-alpine"
           ],
           "image_classes": [
-            "standard",
-            "unknown"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "base",
         "golang:1.23-alpine"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,
@@ -4732,12 +4712,10 @@
         "baseline": {
           "exists": true,
           "from_images": [
-            "golang:1.23-alpine",
-            "base"
+            "golang:1.23-alpine"
           ],
           "image_classes": [
-            "standard",
-            "unknown"
+            "standard"
           ]
         },
         "sg_only": {
@@ -4752,20 +4730,17 @@
         "artifact_only": {
           "exists": true,
           "from_images": [
-            "golang:1.23-alpine",
-            "base"
+            "golang:1.23-alpine"
           ],
           "image_classes": [
-            "standard",
-            "unknown"
+            "standard"
           ]
         }
       },
       "unique_base_images": [
-        "base",
         "golang:1.23-alpine"
       ],
-      "daytona_readiness": "needs_custom_build",
+      "daytona_readiness": "ready",
       "tests": {
         "test_sh": true,
         "eval_sh": false,

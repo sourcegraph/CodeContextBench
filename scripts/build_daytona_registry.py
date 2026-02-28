@@ -119,16 +119,43 @@ def parse_toml_simple(path: Path) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 def extract_from_lines(dockerfile_path: Path) -> List[str]:
-    """Extract all FROM image references from a Dockerfile."""
+    """Extract all FROM image references from a Dockerfile.
+
+    Handles heredocs (skips FROM-like lines inside heredoc blocks) and
+    multi-stage builds (filters out references to earlier stage aliases).
+    """
     from_images = []
+    stage_aliases: set = set()
+    in_heredoc = False
+    heredoc_delim = ""
     try:
         for line in dockerfile_path.read_text().splitlines():
-            line = line.strip()
-            match = re.match(r"^FROM\s+(\S+)", line, re.IGNORECASE)
+            stripped = line.strip()
+
+            # Track heredoc blocks to avoid matching FROM inside them
+            if in_heredoc:
+                if stripped == heredoc_delim:
+                    in_heredoc = False
+                continue
+
+            # Detect heredoc start: << 'DELIM' or << DELIM or <<- DELIM
+            heredoc_match = re.search(r"<<-?\s*'?(\w+)'?", line)
+            if heredoc_match:
+                heredoc_delim = heredoc_match.group(1)
+                in_heredoc = True
+                # Don't skip this line — it may also contain a RUN/etc command
+                # but it won't contain a FROM, so no further action needed
+
+            match = re.match(r"^FROM\s+(\S+)(\s+AS\s+(\S+))?", stripped, re.IGNORECASE)
             if match:
                 image = match.group(1)
-                # Strip AS alias
-                from_images.append(image)
+                alias = match.group(3)
+                # Record stage alias for later filtering
+                if alias:
+                    stage_aliases.add(alias.lower())
+                # Skip references to earlier build stages (e.g. FROM base AS final)
+                if image.lower() not in stage_aliases:
+                    from_images.append(image)
     except Exception:
         pass
     return from_images

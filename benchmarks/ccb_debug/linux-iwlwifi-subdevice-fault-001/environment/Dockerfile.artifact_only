@@ -1,19 +1,21 @@
-# linux-iwlwifi-subdevice-fault-001 — artifact_only variant (write-only)
-# Repos cloned for baseline agent to read locally.
-# MCP agent deletes source files at runtime via agent startup script.
-# Verifier scores agent output only — no repo restore needed.
+FROM gcc:13
 
-# Pre-built base image contains gcc:13, tools, Claude Code CLI, and the
-# Linux kernel source at v5.6-rc2.  Build it first if missing:
-#   ./benchmarks/ccb_linuxflbench/base_images/build_base_images.sh v5.6-rc2
-# See benchmarks/ccb_linuxflbench/README.md for details.
-FROM ccb-linux-base:v5.6-rc2
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip git curl ca-certificates \
+    gawk bc bison flex libssl-dev libelf-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Tests are uploaded at runtime by Harbor verifier to /tests/
-# No additional build steps needed — base image has everything.
-# --- artifact_only mode ---
-# Sentinel flag for artifact-based verification.
-# Source stays readable for baseline agent; MCP agent deletes at runtime.
+WORKDIR /workspace
+
+# Shallow clone Linux kernel at v5.6-rc2.
+# Try stable tree first, fall back to mainline for release candidates.
+RUN (git clone --depth 1 --branch v5.6-rc2 --no-tags \
+        https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git . \
+    || git clone --depth 1 --branch v5.6-rc2 --no-tags \
+        https://github.com/torvalds/linux.git .) && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
+
 RUN touch /tmp/.artifact_only_mode
 
 ENTRYPOINT []

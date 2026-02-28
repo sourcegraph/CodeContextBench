@@ -1,7 +1,17 @@
-# Pre-built base image contains gcc:13, python3, tools, and the
-# Linux kernel source at v4.1.15.  Build it first if missing:
-#   ./scripts/build_linux_base_images.sh v4.1.15
-FROM ccb-linux-base:v4.1.15
+FROM gcc:13
 
-# Tests are uploaded at runtime by Harbor verifier to /tests/
-# No additional build steps needed — base image has everything.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip git curl ca-certificates \
+    gawk bc bison flex libssl-dev libelf-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Shallow clone Linux kernel at v4.1.15.
+# Try stable tree first, fall back to mainline for release candidates.
+RUN (git clone --depth 1 --branch v4.1.15 --no-tags \
+        https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git . \
+    || git clone --depth 1 --branch v4.1.15 --no-tags \
+        https://github.com/torvalds/linux.git .) && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
