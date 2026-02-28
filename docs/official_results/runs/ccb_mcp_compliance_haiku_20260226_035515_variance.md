@@ -8,7 +8,7 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [ccx-compliance-051](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--baseline-local-direct--ccx-compliance-051.md) | `passed` | 0.386 | 0.000 | 50 | traj, tx |
+| [ccx-compliance-051](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--baseline-local-direct--ccx-compliance-051.html) | `passed` | 0.386 | 0.000 | 50 | traj, tx |
 
 ## mcp-remote-direct
 
@@ -18,6 +18,6 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_CCX-compliance-052_mF59tH](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH.md) | `passed` | 0.263 | 0.985 | 66 | traj, tx |
-| [mcp_ccx-compliance-051_rSkovg](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-051_rSkovg.md) | `passed` | 0.462 | 0.971 | 35 | traj, tx |
-| [mcp_ccx-compliance-057-ds_re3utI](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-057-ds_re3utI.md) | `passed` | 0.741 | 0.962 | 26 | traj, tx |
+| [mcp_CCX-compliance-052_mF59tH](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH.html) | `passed` | 0.263 | 0.985 | 66 | traj, tx |
+| [mcp_ccx-compliance-051_rSkovg](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-051_rSkovg.html) | `passed` | 0.462 | 0.971 | 35 | traj, tx |
+| [mcp_ccx-compliance-057-ds_re3utI](../tasks/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_ccx-compliance-057-ds_re3utI.html) | `passed` | 0.741 | 0.962 | 26 | traj, tx |

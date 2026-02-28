@@ -8,4 +8,4 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_CCX-dep-trace-116_hutEUF](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-dep-trace-116_hutEUF.md) | `passed` | 0.800 | 0.950 | 20 | traj, tx |
+| [mcp_CCX-dep-trace-116_hutEUF](../tasks/ccb_mcp_crossrepo_tracing_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-dep-trace-116_hutEUF.html) | `passed` | 0.800 | 0.950 | 20 | traj, tx |

@@ -8,4 +8,4 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [rust-subtype-relation-refac-001](../tasks/ccb_build_haiku_20260226_015500_backfill--baseline-local-direct--rust-subtype-relation-refac-001.md) | `passed` | 0.820 | 0.000 | 87 | traj, tx |
+| [rust-subtype-relation-refac-001](../tasks/ccb_build_haiku_20260226_015500_backfill--baseline-local-direct--rust-subtype-relation-refac-001.html) | `passed` | 0.820 | 0.000 | 87 | traj, tx |

@@ -8,4 +8,4 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_CCX-crossorg-062_Dp7ADh](../tasks/ccb_mcp_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh.md) | `passed` | 0.711 | 0.929 | 28 | traj, tx |
+| [mcp_CCX-crossorg-062_Dp7ADh](../tasks/ccb_mcp_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh.html) | `passed` | 0.711 | 0.929 | 28 | traj, tx |

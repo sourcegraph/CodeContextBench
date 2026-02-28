@@ -2,7 +2,17 @@
   "metrics": {
     "agent_execution_seconds": 1598.81231,
     "cache_tokens": null,
+    "context_metrics": {
+      "context_window_peak_pct": null,
+      "environment_setup_seconds": 1.086345,
+      "files_modified": null,
+      "lines_added": null,
+      "lines_removed": null,
+      "task_context_length": null,
+      "verifier_seconds": 1762.975583
+    },
     "input_tokens": null,
+    "ir_metrics": {},
     "mcp_ratio": null,
     "output_tokens": null,
     "search_calls_deepsearch": null,
@@ -16,6 +26,9 @@
   },
   "parsed_trace": {
     "trajectory": {
+      "bash_commands": [],
+      "code_changes": [],
+      "conversation_events": [],
       "step_count": 0,
       "tool_counts_by_name": {},
       "tool_event_count": 0,

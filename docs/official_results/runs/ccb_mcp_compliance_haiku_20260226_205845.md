@@ -8,6 +8,6 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [ccx-compliance-052](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-052.md) | `passed` | 0.684 | 0.000 | 43 | traj, tx |
-| [ccx-compliance-053](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-053.md) | `passed` | 0.651 | 0.000 | 42 | traj, tx |
-| [ccx-compliance-057-ds](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-057-ds.md) | `passed` | 0.763 | 0.000 | 41 | traj, tx |
+| [ccx-compliance-052](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-052.html) | `passed` | 0.684 | 0.000 | 43 | traj, tx |
+| [ccx-compliance-053](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-053.html) | `passed` | 0.651 | 0.000 | 42 | traj, tx |
+| [ccx-compliance-057-ds](../tasks/ccb_mcp_compliance_haiku_20260226_205845--baseline-local-direct--ccx-compliance-057-ds.html) | `passed` | 0.763 | 0.000 | 41 | traj, tx |

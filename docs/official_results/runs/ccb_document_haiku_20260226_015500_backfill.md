@@ -8,4 +8,4 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [docgen-inline-001](../tasks/ccb_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001.md) | `passed` | 1.000 | 0.000 | 16 | traj, tx |
+| [docgen-inline-001](../tasks/ccb_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001.html) | `passed` | 1.000 | 0.000 | 16 | traj, tx |
