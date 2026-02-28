@@ -30,7 +30,3 @@ CockroachDB uses the same wire protocol as PostgreSQL, allowing it to work with 
 - Existing database backends (PostgreSQL, MySQL, SQLite) are unaffected
 - All existing tests pass
 
----
-
-**Base commit:** `2d0ff0c91a63a1165f5ca528faa1f0785b1f730c`
-**Instance ID:** `instance_flipt-io__flipt-9f8127f225a86245fa35dca4885c2daef824ee55`

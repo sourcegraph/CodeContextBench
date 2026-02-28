@@ -8,30 +8,22 @@
 
 ## Description
 
-cuDNN dispatching heuristics rely on versions checks but currently only that compile-time version is exposed, if we want to allow users to resolve https://github.com/pytorch/pytorch/issues/166643 on their end by updating their cuDNN version locally we need to check the runtime version rather than compile-time version.
-
-Test plan: add test comparing performance with cuDNN 9.15+ when disabling and enabling convolutino explicilty for 3D cases.
-
-Also partially covered by smoke test PR: https://github.com/pytorch/pytorch/pull/165922/files
+cuDNN dispatching heuristics rely on version checks but currently only the compile-time version is exposed. To allow users to resolve cuDNN version mismatches by updating their cuDNN installation locally, the runtime version needs to be checked rather than the compile-time version.
 
 ## Task
 
-Review the PR: [cuDNN][SDPA][Convolution] Expose cuDNN runtime version in CUDA hooks
+Expose the cuDNN runtime version in CUDA hooks so that dispatching heuristics (SDPA, Convolution) can use it instead of the compile-time version.
 
-Description: cuDNN dispatching heuristics rely on versions checks but currently only that compile-time version is exposed, if we want to allow users to resolve https://github.com/pytorch/pytorch/issues/166643 on their end by updating their cuDNN version locally we need to check the runtime version rather than compile-time version.
-
-Test plan: add test comparing performance with cuDNN 9.15+ when disabling and enabling convolutino explicilty for 3D cases.
-
-Also partially covered by smoke test PR: https://github.com/pytorch/pytorch/pull/165922/files
+Description: cuDNN dispatching heuristics rely on version checks but currently only the compile-time version is exposed. The runtime version needs to be checked so that users who update their cuDNN installation locally get correct dispatching behavior.
 
 Changes:
 - 7 files modified
 - 43 additions, 9 deletions
 
 Tasks:
-1. Understand the issue being fixed
-2. Review the solution in the merged PR
-3. Implement the fix to pass all tests
+1. Find where cuDNN version checks are done in CUDA hooks and dispatching code
+2. Add runtime version retrieval and expose it alongside the compile-time version
+3. Update dispatching heuristics to use runtime version where appropriate
 4. Verify your changes compile and match the expected fix
 
 ## Success Criteria

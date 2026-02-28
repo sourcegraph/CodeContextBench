@@ -31,7 +31,3 @@ The current OpenTelemetry instrumentation in Flipt generates all traces with a f
 - Omitted values use sensible defaults
 - All existing tests pass
 
----
-
-**Base commit:** `91cc1b9fc38280a53a36e1e9543d87d7306144b2`
-**Instance ID:** `instance_flipt-io__flipt-3d5a345f94c2adc8a0eaa102c189c08ad4c0f8e8`

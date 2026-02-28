@@ -17,7 +17,7 @@ Changes:
 - 345 additions, 463 deletions
 
 Tasks:
-1. Understand the release branch CI configuration pattern (see PR #162493 for the 2.9 equivalent)
+1. Understand the release branch CI configuration pattern by examining existing workflow files
 2. Update workflow files with correct branch references and Docker image tags
 3. Adjust build matrix entries for CUDA and ROCm versions
 4. Verify your changes compile and match the expected fix

@@ -29,7 +29,3 @@ Modules such as `dnf`, `yum`, `apt`, `apt_repository`, and others rely on system
 - Basic SELinux operations work without `libselinux-python`
 - All existing tests pass
 
----
-
-**Base commit:** `8a175f59c939ca29ad56f3fa9edbc37a8656879a`
-**Instance ID:** `instance_ansible__ansible-4c5ce5a1a9e79a845aff4978cfeb72a0d4ecf7d6-v1055803c3a812189a1133297f7f5468579283f86`

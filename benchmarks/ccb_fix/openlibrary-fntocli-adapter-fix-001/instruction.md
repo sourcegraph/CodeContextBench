@@ -28,7 +28,3 @@ The `FnToCLI` adapter generates a command-line interface from a function signatu
 - The adapter correctly invokes the underlying function and returns its result
 - All existing tests pass
 
----
-
-**Base commit:** `2f590171b1d95cc124c44fb6ec647c85f1ca9581`
-**Instance ID:** `instance_internetarchive__openlibrary-c506c1b0b678892af5cb22c1c1dbc35d96787a0a-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4`

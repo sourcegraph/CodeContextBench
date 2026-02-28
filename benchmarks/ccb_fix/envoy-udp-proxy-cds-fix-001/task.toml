@@ -11,7 +11,7 @@ category = "cross_module_bug_fix"
 language = "cpp"
 pre_fix_rev = "1ae957c1f92b8e0b0322ab702c67612aa618d214"
 ground_truth_rev = "8d1ab6332f86b8010f8662fee233aadf79ad5ee0"
-difficulty = "medium"
+difficulty = "hard"
 time_limit_sec = 600
 
 [verification]

@@ -36,7 +36,3 @@ Navidrome does not format log output correctly for Windows users. Logs use only 
 - Unix behavior is unchanged
 - All existing tests pass
 
----
-
-**Base commit:** `23bebe4e06124becf1000e88472ae71a6ca7de4c`
-**Instance ID:** `instance_navidrome__navidrome-9c3b4561652a15846993d477003e111f0df0c585`

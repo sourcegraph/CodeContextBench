@@ -11,7 +11,7 @@ category = "cross_module_bug_fix"
 language = "go"
 pre_fix_rev = "abd6b9ef1ba5e98ed273f59f667d3b9f2077a87b"
 ground_truth_rev = "332757894ddfcbb9d4b5e93271a466ec56c53915"
-difficulty = "medium"
+difficulty = "hard"
 time_limit_sec = 600
 
 [verification]

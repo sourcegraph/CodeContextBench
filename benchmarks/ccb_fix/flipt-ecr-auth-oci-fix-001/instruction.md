@@ -31,7 +31,3 @@ Flipt configured with OCI storage cannot continuously pull bundles from AWS ECR 
 - Configuration accepts the new authentication type
 - All existing tests pass
 
----
-
-**Base commit:** `47499077ce785f0eee0e3940ef6c074e29a664fc`
-**Instance ID:** `instance_flipt-io__flipt-c188284ff0c094a4ee281afebebd849555ebee59`

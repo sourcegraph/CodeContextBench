@@ -37,7 +37,3 @@ Flipt currently only supports Jaeger and Zipkin as tracing exporters, limiting o
 - Existing Jaeger and Zipkin configurations continue to work
 - All existing tests pass
 
----
-
-**Base commit:** `4e066b8b836ceac716b6f63db41a341fb4df1375`
-**Instance ID:** `instance_flipt-io__flipt-b433bd05ce405837804693bebd5f4b88d87133c8`

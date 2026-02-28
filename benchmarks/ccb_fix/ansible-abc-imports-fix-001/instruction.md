@@ -29,7 +29,3 @@ In various parts of the Ansible codebase (modules, `module_utils`, and controlle
 - Sanity checks are aligned with the updated import policy
 - All existing tests pass
 
----
-
-**Base commit:** `e658995760ac1209cb12df97027a2e282b4536ae`
-**Instance ID:** `instance_ansible__ansible-379058e10f3dbc0fdcaf80394bd09b18927e7d33-v1055803c3a812189a1133297f7f5468579283f86`

@@ -28,7 +28,3 @@ NodeBB's plugin activation system processes malformed plugin identifiers without
 - Administrators receive immediate feedback on invalid input
 - All existing tests pass
 
----
-
-**Base commit:** `a3e1a666b876e0b3ccbb5284dd826c8c90c113b4`
-**Instance ID:** `instance_NodeBB__NodeBB-76c6e30282906ac664f2c9278fc90999b27b1f48-vd59a5728dfc977f44533186ace531248c2917516`

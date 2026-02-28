@@ -8,9 +8,7 @@
 
 ## Description
 
-Fixes #169388
-
-This PR adds a cleanup for graphs from failed dynamo tracer outputs. These graphs hold onto reference cycles:
+This change adds a cleanup for graphs from failed dynamo tracer outputs. These graphs hold onto reference cycles:
 1. The nodes of the graph form a doubly linked list and point back to the graph, which creates a cycle
 2. FakeTensorMode → ShapeEnv → TrackedFake → FakeTensor → FakeTensorMode creates a cycle
 
@@ -38,9 +36,7 @@ The following tests validate the cleanup behavior:
 
 Implement the fix: [Py 3.14] Cleanup graphs for failed tracer outputs
 
-Description: Fixes #169388
-
-This PR adds a cleanup for graphs from failed dynamo tracer outputs. These graphs hold onto reference cycles:
+Description: Add cleanup for graphs from failed dynamo tracer outputs. These graphs hold onto reference cycles:
 1. The nodes of the graph form a doubly linked list and point back to the graph, which creates a cycle
 2. FakeTensorMode → ShapeEnv → TrackedFake → FakeTensor → FakeTensorMode creates a cycle
 
@@ -51,10 +47,9 @@ Changes:
 - 29 additions, 9 deletions
 
 Tasks:
-1. Understand the issue being fixed
-2. Review the solution in the merged PR
-3. Implement the fix to pass all tests
-4. Verify your changes compile and match the expected fix
+1. Understand the reference cycle problem in failed tracer outputs
+2. Implement graph node linked-list cleanup and ShapeEnv reference clearing
+3. Verify your changes compile and match the expected fix
 
 ## Success Criteria
 
