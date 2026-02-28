@@ -65,19 +65,20 @@ bash configs/run_selected_tasks.sh --dry-run
 
 ## Benchmark Suites (SDLC-Aligned)
 
-Eight suites organized by software development lifecycle phase:
+Nine suites organized by software development lifecycle phase:
 
 | Suite | SDLC Phase | Tasks | Description |
 |-------|-----------|------:|-------------|
 | `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
 | `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
 | `ccb_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
-| `ccb_build` | Feature & Refactoring | 25 | New features, refactoring, dependency management |
+| `ccb_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
+| `ccb_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
 | `ccb_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
 | `ccb_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
 | `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
 | `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
-| **Total** | | **170** | |
+| **Total** | | **199** | |
 
 ## MCP-Unique Suites (Org-Scale Context Retrieval)
 
@@ -89,16 +90,16 @@ Eleven additional suites measure cross-repo discovery, symbol resolution, depend
 | `ccb_mcp_security` | B: Vulnerability Remediation | 10 | CVE mapping, missing auth middleware across repos |
 | `ccb_mcp_migration` | C: Framework Migration | 7 | API migrations, breaking changes across repos |
 | `ccb_mcp_incident` | D: Incident Debugging | 11 | Error-to-code-path tracing across microservices |
-| `ccb_mcp_onboarding` | E: Onboarding & Comprehension | 11 | API consumption mapping, end-to-end flow, architecture maps |
+| `ccb_mcp_onboarding` | E: Onboarding & Comprehension | 25 | API consumption mapping, end-to-end flow, architecture maps |
 | `ccb_mcp_compliance` | F: Compliance | 7 | Standards adherence, audit, and provenance workflows |
 | `ccb_mcp_crossorg` | G: Cross-Org Discovery | 5 | Interface implementations and authoritative repo identification across orgs |
 | `ccb_mcp_domain` | H: Domain Lineage | 10 | Config propagation, architecture patterns, domain analysis |
 | `ccb_mcp_org` | I: Organizational Context | 5 | Agentic discovery, org-wide coding correctness |
 | `ccb_mcp_platform` | J: Platform Knowledge | 5 | Service template discovery and tribal knowledge |
 | `ccb_mcp_crossrepo` | Legacy | 1 | Cross-repo discovery (compatibility) |
-| **Total** | | **81** | |
+| **Total** | | **95** | |
 
-**Combined catalog total: 251 tasks** (170 SDLC + 81 MCP-unique). Of these, 212 are fully paired (baseline + MCP results) in official runs; the remaining 39 MCP-unique tasks have MCP results but are missing baselines.
+**Combined catalog total: 294 tasks** (199 SDLC across 9 suites + 95 MCP-unique across 11 suites).
 
 Both baseline and MCP-Full agents have access to **all repos** in each task's fixture. The only difference is the method: baseline reads code locally, MCP-Full uses Sourcegraph MCP tools (local code is truncated). This ensures we measure whether MCP tools help agents work better — not whether MCP can access repos the baseline can't.
 
@@ -110,7 +111,7 @@ See [docs/MCP_UNIQUE_TASKS.md](docs/MCP_UNIQUE_TASKS.md) for the full task syste
 
 All benchmarks are evaluated across two paper-level configurations (Baseline vs MCP-Full). The concrete run config names differ by task type:
 
-- **SDLC suites** (`ccb_build`, `ccb_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
+- **SDLC suites** (`ccb_feature`, `ccb_refactor`, `ccb_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
 - **MCP-unique suites** (`ccb_mcp_*`): `baseline-local-artifact` + `mcp-remote-artifact`
 
 Legacy run directory names (`baseline`, `sourcegraph_full`, `artifact_full`) may still appear in historical outputs and are handled by analysis scripts.
@@ -130,7 +131,8 @@ See [docs/reference/CONFIGS.md](docs/reference/CONFIGS.md) for the canonical con
 
 ```
 benchmarks/              # Task definitions organized by SDLC phase + MCP-unique
-  ccb_build/             #   Feature & Refactoring (25 tasks)
+  ccb_feature/           #   Feature Implementation (20 tasks)
+  ccb_refactor/          #   Cross-File Refactoring (20 tasks)
   ccb_debug/             #   Debugging & Investigation (20 tasks)
   ccb_design/            #   Architecture & Design (20 tasks)
   ccb_document/          #   Documentation (20 tasks)
@@ -152,7 +154,8 @@ benchmarks/              # Task definitions organized by SDLC phase + MCP-unique
 configs/                 # Run configs and task selection
   _common.sh             #   Shared infra: token refresh, parallel execution, multi-account
   sdlc_suite_2config.sh  #   Generic SDLC runner (used by phase wrappers below)
-  build_2config.sh       #   Phase wrapper: Build (25 tasks)
+  feature_2config.sh     #   Phase wrapper: Feature (20 tasks)
+  refactor_2config.sh    #   Phase wrapper: Refactor (20 tasks)
   debug_2config.sh       #   Phase wrapper: Debug (20 tasks)
   design_2config.sh      #   Phase wrapper: Design (20 tasks)
   document_2config.sh    #   Phase wrapper: Document (20 tasks)
@@ -280,10 +283,10 @@ This section assumes Harbor is already installed and configured. If not, start w
 
 ### SDLC Tasks
 
-The unified runner executes all 170 SDLC tasks across the 2-config matrix:
+The unified runner executes all 199 SDLC tasks across the 2-config matrix:
 
 ```bash
-# Run all 170 SDLC tasks across 2 configs
+# Run all 199 SDLC tasks across 2 configs
 bash configs/run_selected_tasks.sh
 
 # Run only the baseline config
@@ -300,7 +303,8 @@ Per-phase runners are also available:
 
 ```bash
 bash configs/fix_2config.sh              # 25 Bug Repair tasks
-bash configs/build_2config.sh            # 25 Feature & Refactoring tasks
+bash configs/feature_2config.sh          # 20 Feature Implementation tasks
+bash configs/refactor_2config.sh         # 20 Cross-File Refactoring tasks
 bash configs/understand_2config.sh       # 20 Requirements & Discovery tasks
 bash configs/design_2config.sh           # 20 Architecture & Design tasks
 bash configs/debug_2config.sh            # 20 Debugging & Investigation tasks

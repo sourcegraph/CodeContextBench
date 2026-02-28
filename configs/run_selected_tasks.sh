@@ -12,7 +12,7 @@
 #   ./configs/run_selected_tasks.sh [OPTIONS]
 #
 # Options:
-#   --benchmark BENCHMARK           Run only this benchmark (e.g., ccb_build, ccb_fix)
+#   --benchmark BENCHMARK           Run only this benchmark (e.g., ccb_feature, ccb_fix)
 #   --selection-file PATH           Use alternate selection file (default: selected_benchmark_tasks.json)
 #   --use-case-category CATEGORY    Filter by MCP-unique use case category (A-J), only valid with --selection-file
 #   --baseline-only                 Run only baseline (no MCP)

@@ -1,7 +1,7 @@
 {
   "camel-fix-protocol-feat-001": {
     "task_id": "camel-fix-protocol-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "components/camel-kafka/src/main/java/org/apache/camel/component/kafka/KafkaComponent.java",
       "components/camel-kafka/src/main/java/org/apache/camel/component/kafka/KafkaEndpoint.java",
@@ -22,7 +22,7 @@
   },
   "flink-pricing-window-feat-001": {
     "task_id": "flink-pricing-window-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/WindowAssigner.java",
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/MergingWindowAssigner.java",
@@ -43,7 +43,7 @@
   },
   "k8s-noschedule-taint-feat-001": {
     "task_id": "k8s-noschedule-taint-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "staging/src/k8s.io/api/core/v1/types.go",
       "staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go",
@@ -62,7 +62,7 @@
   },
   "k8s-score-normalizer-refac-001": {
     "task_id": "k8s-score-normalizer-refac-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "pkg/scheduler/framework/interface.go",
       "pkg/scheduler/metrics/metrics.go",
@@ -86,7 +86,7 @@
   },
   "kafka-batch-accumulator-refac-001": {
     "task_id": "kafka-batch-accumulator-refac-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
@@ -105,7 +105,7 @@
   },
   "rust-subtype-relation-refac-001": {
     "task_id": "rust-subtype-relation-refac-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "compiler/rustc_type_ir/src/predicate.rs",
       "compiler/rustc_type_ir/src/predicate_kind.rs",
@@ -132,7 +132,7 @@
   },
   "servo-scrollend-event-feat-001": {
     "task_id": "servo-scrollend-event-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "components/script/dom/document.rs",
       "components/script/dom/window.rs",
@@ -149,7 +149,7 @@
   },
   "strata-cds-tranche-feat-001": {
     "task_id": "strata-cds-tranche-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndex.java",
       "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndexTrade.java",
@@ -171,7 +171,7 @@
   },
   "strata-fx-european-refac-001": {
     "task_id": "strata-fx-european-refac-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOption.java",
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOptionTrade.java",
@@ -200,7 +200,7 @@
   },
   "tensorrt-mxfp4-quant-feat-001": {
     "task_id": "tensorrt-mxfp4-quant-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "cpp/include/tensorrt_llm/common/quantization.h",
       "tensorrt_llm/quantization/mode.py",
@@ -214,7 +214,7 @@
   },
   "vscode-stale-diagnostics-feat-001": {
     "task_id": "vscode-stale-diagnostics-feat-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "extensions/typescript-language-features/src/languageFeatures/diagnostics.ts",
       "extensions/typescript-language-features/src/typescriptServiceClient.ts",
@@ -740,7 +740,7 @@
   },
   "k8s-runtime-object-impl-001": {
     "task_id": "k8s-runtime-object-impl-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "core/v1/types.go",
       "apps/v1/types.go",
@@ -751,7 +751,7 @@
   },
   "envoy-grpc-server-impl-001": {
     "task_id": "envoy-grpc-server-impl-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "pkg/server/v3/server.go",
       "pilot/pkg/xds/ads.go",
@@ -763,7 +763,7 @@
   },
   "flipt-flagexists-refactor-001": {
     "task_id": "flipt-flagexists-refactor-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "internal/storage/storage.go",
       "internal/storage/fs/store.go",
@@ -775,7 +775,7 @@
   },
   "flipt-dep-refactor-001": {
     "task_id": "flipt-dep-refactor-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "internal/storage/resource.go"
     ],
@@ -1186,7 +1186,7 @@
   },
   "python-http-class-naming-refac-001": {
     "task_id": "python-http-class-naming-refac-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_refactor",
     "files": [
       "src/django/django/http/request.py",
       "src/django/django/http/__init__.py",
@@ -1221,7 +1221,7 @@
   },
   "bustub-hyperloglog-impl-001": {
     "task_id": "bustub-hyperloglog-impl-001",
-    "benchmark": "ccb_build",
+    "benchmark": "ccb_feature",
     "files": [
       "src/include/common/util/hash_util.h",
       "bustub/src/include/primer/hyperloglog.h",

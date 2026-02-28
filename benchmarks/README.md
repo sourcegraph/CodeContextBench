@@ -1,6 +1,6 @@
 # CodeContextBench Benchmarks
 
-This directory contains SDLC-aligned suites plus MCP-unique org-scale retrieval suites. The canonical selected task catalog is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (currently 251 selected tasks across 19 suites).
+This directory contains SDLC-aligned suites plus MCP-unique org-scale retrieval suites. The canonical selected task catalog is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (currently 294 selected tasks across 20 suites).
 
 See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodology.
 
@@ -13,12 +13,13 @@ See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodol
 | `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
 | `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
 | `ccb_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
-| `ccb_build` | Feature & Refactoring | 25 | New features, refactoring, dependency management |
+| `ccb_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
+| `ccb_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
 | `ccb_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
 | `ccb_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
 | `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
 | `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
-| **Total** | | **170** | |
+| **Total** | | **199** | |
 
 ---
 
@@ -137,37 +138,61 @@ Diagnosing and fixing real bugs across production codebases (SWE-bench Pro, PyTo
 
 ---
 
-## ccb_build (25 tasks) — Feature & Refactoring
+## ccb_feature (20 tasks) — Feature Implementation
 
-New feature implementation, code refactoring, and dependency management tasks.
+New feature implementation, interface implementation, and big-code feature tasks.
 
 | Task | Focus |
 |------|-------|
 | `bustub-hyperloglog-impl-001` | Implement HyperLogLog cardinality estimator |
 | `camel-fix-protocol-feat-001` | Implement camel-fix component FIX protocol |
-| `cgen-deps-install-001` | Set required package configuration |
-| `codecoverage-deps-install-001` | Configure project dependency versions |
-| `flipt-flagexists-refactor-001` | Add FlagExists to ReadOnlyFlagStore (Flipt) |
-| `dotenv-expand-deps-install-001` | Fix build system dependencies |
-| `dotnetkoans-deps-install-001` | Edit build dependencies, tests pass |
+| `cilium-policy-audit-logger-feat-001` | Implement Cilium policy audit logger |
+| `cilium-policy-quota-feat-001` | Implement Cilium policy quota enforcement |
+| `curl-http3-priority-feat-001` | Implement curl HTTP/3 priority support |
+| `django-rate-limit-middleware-feat-001` | Implement Django rate limit middleware |
+| `envoy-custom-header-filter-feat-001` | Implement Envoy custom header filter |
 | `envoy-grpc-server-impl-001` | Identify gRPC server implementations |
-| `eslint-markdown-deps-install-001` | Add missing package dependencies |
 | `flink-pricing-window-feat-001` | Implement PricingSessionWindow for trading |
-| `flipt-dep-refactor-001` | Dependency refactoring (Flipt) |
-| `python-http-class-naming-refac-001` | Standardize HTTP class naming |
-| `iamactionhunter-deps-install-001` | Resolve missing dependencies build |
 | `k8s-noschedule-taint-feat-001` | Implement NoScheduleNoTraffic taint effect |
 | `k8s-runtime-object-impl-001` | Find runtime.Object interface implementors |
+| `numpy-rolling-median-feat-001` | Implement NumPy rolling median |
+| `pandas-merge-asof-indicator-feat-001` | Implement pandas merge_asof indicator |
+| `prometheus-silence-bulk-api-feat-001` | Implement Prometheus silence bulk API |
+| `pytorch-gradient-noise-feat-001` | Implement PyTorch gradient noise |
+| `servo-scrollend-event-feat-001` | Add scrollend DOM event support |
+| `strata-cds-tranche-feat-001` | Implement CDS tranche CDO product |
+| `tensorrt-mxfp4-quant-feat-001` | Add W4A8_MXFP4_INT8 quantization mode |
+| `terraform-compact-diff-fmt-feat-001` | Implement Terraform compact diff format |
+| `vscode-stale-diagnostics-feat-001` | Fix stale diagnostics after git branch |
+
+---
+
+## ccb_refactor (20 tasks) — Cross-File Refactoring
+
+Cross-file refactoring, enterprise dependency refactoring, and rename refactoring tasks.
+
+| Task | Focus |
+|------|-------|
+| `cilium-endpoint-manager-refac-001` | Refactor Cilium endpoint manager |
+| `curl-multi-process-refac-001` | Refactor curl multi-process handling |
+| `django-request-factory-refac-001` | Refactor Django request factory |
+| `envoy-listener-manager-refac-001` | Refactor Envoy listener manager |
+| `etcd-raft-storage-refac-001` | Refactor etcd raft storage layer |
+| `flipt-dep-refactor-001` | Dependency refactoring (Flipt) |
+| `flipt-flagexists-refactor-001` | Add FlagExists to ReadOnlyFlagStore (Flipt) |
+| `istio-discovery-server-refac-001` | Refactor Istio discovery server |
 | `k8s-score-normalizer-refac-001` | Rename ScoreExtensions to ScoreNormalizer |
 | `kafka-batch-accumulator-refac-001` | Rename RecordAccumulator to BatchAccumulator |
-| `pcap-parser-deps-install-001` | Setup library dependencies correctly |
+| `kubernetes-scheduler-profile-refac-001` | Refactor Kubernetes scheduler profile |
+| `numpy-array-dispatch-refac-001` | Refactor NumPy array dispatch |
+| `pandas-index-engine-refac-001` | Refactor pandas index engine |
+| `prometheus-query-engine-refac-001` | Refactor Prometheus query engine |
+| `python-http-class-naming-refac-001` | Standardize HTTP class naming |
+| `pytorch-optimizer-foreach-refac-001` | Refactor PyTorch optimizer foreach |
 | `rust-subtype-relation-refac-001` | Rename SubtypePredicate to SubtypeRelation |
-| `servo-scrollend-event-feat-001` | Add scrollend DOM event support |
-| `similar-asserts-deps-install-001` | Configure Cargo dependency resolution |
-| `strata-cds-tranche-feat-001` | Implement CDS tranche CDO product |
+| `scikit-learn-estimator-tags-refac-001` | Refactor scikit-learn estimator tags |
 | `strata-fx-european-refac-001` | Rename FxVanillaOption to FxEuropeanOption |
-| `tensorrt-mxfp4-quant-feat-001` | Add W4A8_MXFP4_INT8 quantization mode |
-| `vscode-stale-diagnostics-feat-001` | Fix stale diagnostics after git branch |
+| `terraform-eval-context-refac-001` | Refactor Terraform eval context |
 
 ---
 
@@ -305,14 +330,14 @@ Each task follows this layout:
 ## Running Benchmarks
 
 ```bash
-# Run all selected tasks across 2 configs (currently 251 entries in selected_benchmark_tasks.json)
+# Run all selected tasks across 2 configs (currently 294 entries in selected_benchmark_tasks.json)
 bash configs/run_selected_tasks.sh
 
 # Run a single SDLC phase
 bash configs/run_selected_tasks.sh --benchmark ccb_fix
 
 # Single task
-harbor run --path benchmarks/ccb_build/servo-scrollend-event-feat-001 \
+harbor run --path benchmarks/ccb_feature/servo-scrollend-event-feat-001 \
   --agent-import-path agents.claude_baseline_agent:BaselineClaudeCodeAgent \
   --model anthropic/claude-haiku-4-5-20251001 \
   -n 1
