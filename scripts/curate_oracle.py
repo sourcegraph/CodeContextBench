@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
 """Oracle curation tool for MCP-unique benchmark tasks.
 
-Uses the Sourcegraph search API to automatically generate exhaustive
-closed-world oracle_answer.json files by searching repos for files,
-symbols, and dependency chains.
+Uses the Sourcegraph search API to generate oracle_answer.json files.
+
+Three curation modes:
+  keyword   Plain keyword search (original, fastest, most gameable)
+  nls       NLS search via patternType:keyword (more semantic, less gameable)
+  deep      Multi-query NLS with rev-pinning and min-hits threshold (default)
+
+In "deep" mode:
+  - Generates N diverse query formulations from the search_pattern and seed_prompt
+  - Pins every query to the fixture's `revision` field via `rev:<ref>`
+  - A file must appear in >= min_hits queries to be included in the oracle
+  - Reduces tool-affinity bias: an agent can't replay a single query to recover
+    the oracle because the oracle requires multi-query intersection
+
+Note: LLM-powered Deep Search (SG Cody deepsearch) is not available over HTTP.
+For that capability use the MCP batch agent approach.
 
 Reads:  task_spec.json + repo-set fixture
 Writes: oracle_answer.json, oracle_curation_log.json
@@ -15,15 +28,16 @@ Environment variables:
     SRC_ACCESS_TOKEN         Fallback for SOURCEGRAPH_ACCESS_TOKEN
 
 Usage:
-    python3 scripts/curate_oracle.py --task-dir benchmarks/ccb_mcp_crossrepo_tracing/dep-trace-001
-    python3 scripts/curate_oracle.py --task-spec task_spec.json --verify --verbose
-    python3 scripts/curate_oracle.py --task-dir <dir> --verify --verbose
+    python3 scripts/curate_oracle.py --task-dir benchmarks/ccb_mcp_incident/ccx-incident-142
+    python3 scripts/curate_oracle.py --task-dir <dir> --mode deep --num-runs 4 --min-hits 2
+    python3 scripts/curate_oracle.py --task-dir <dir> --mode keyword  # legacy behaviour
 """
 
 import argparse
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import time
@@ -68,7 +82,6 @@ class SourcegraphClient:
         }
         req = urllib.request.Request(endpoint, data=payload, headers=headers, method="POST")
 
-        # Polite rate limiting
         if self.queries_made > 0:
             time.sleep(self._rate_limit_delay)
         self.queries_made += 1
@@ -95,7 +108,7 @@ class SourcegraphClient:
             except urllib.error.HTTPError as exc:
                 last_exc = exc
                 if exc.code == 429:
-                    wait = min(2 ** (attempt + 1), 120)  # cap at 120s
+                    wait = min(2 ** (attempt + 1), 120)
                     logging.warning("Rate limited (429), waiting %ds", wait)
                     time.sleep(wait)
                 else:
@@ -111,8 +124,17 @@ class SourcegraphClient:
         self._request_log.append(log_entry)
         return {}
 
-    def search_files(self, sg_query: str, max_results: int = 200) -> List[Dict]:
-        """Return list of {repo, path, line_matches} from a file search."""
+    def search_files(
+        self,
+        sg_query: str,
+        max_results: int = 200,
+        mode: str = "deep",
+    ) -> List[Dict]:
+        """Return list of {repo, path, line_matches} from a file search.
+
+        mode="deep" or "nls" appends patternType:keyword for semantic matching.
+        mode="keyword" uses plain SG keyword search.
+        """
         gql = """
         query CurateFiles($query: String!) {
           search(query: $query, version: V2) {
@@ -129,6 +151,9 @@ class SourcegraphClient:
         }
         """
         full_query = f"{sg_query} count:{max_results}"
+        if mode in ("deep", "nls"):
+            full_query += " patternType:keyword"
+
         resp = self.graphql(gql, {"query": full_query})
         items = []
         for r in (resp.get("search") or {}).get("results", {}).get("results", []):
@@ -191,7 +216,6 @@ class SourcegraphClient:
 # ---------------------------------------------------------------------------
 
 def _find_project_root(start: Path) -> Path:
-    """Walk up from start (and from CWD) to find the project root (contains 'fixtures/' dir)."""
     for root_candidate in [start.resolve(), Path.cwd().resolve()]:
         current = root_candidate
         for _ in range(10):
@@ -202,7 +226,6 @@ def _find_project_root(start: Path) -> Path:
 
 
 def load_fixture(repo_set_id: str, project_root: Path) -> Optional[Dict]:
-    """Load a repo-set fixture by ID."""
     fixture_path = project_root / "fixtures" / "repo_sets" / f"{repo_set_id}.json"
     if not fixture_path.exists():
         logging.error("Fixture not found: %s", fixture_path)
@@ -212,8 +235,22 @@ def load_fixture(repo_set_id: str, project_root: Path) -> Optional[Dict]:
 
 
 def get_repos_from_fixture(fixture: Dict) -> List[str]:
-    """Extract all repo full names from a fixture."""
+    """Extract all repo full names (for metadata / backward compat)."""
     return [r.get("full_name", "") for r in fixture.get("repos", []) if r.get("full_name")]
+
+
+def get_repos_with_revisions(fixture: Dict) -> List[Tuple[str, str]]:
+    """Extract (full_name, revision) pairs for rev-pinned queries.
+
+    revision may be a short hash (e.g. "0753c489"), a tag ("v1.32.0"), or "HEAD".
+    """
+    result = []
+    for r in fixture.get("repos", []):
+        name = r.get("full_name", "")
+        rev = r.get("revision", "HEAD")
+        if name:
+            result.append((name, rev))
+    return result
 
 
 def _repo_sg_name(full_name: str) -> str:
@@ -221,6 +258,53 @@ def _repo_sg_name(full_name: str) -> str:
     if full_name.startswith("github.com/"):
         return full_name
     return f"github.com/{full_name}"
+
+
+# ---------------------------------------------------------------------------
+# Multi-query generation
+# ---------------------------------------------------------------------------
+
+def generate_query_variations(
+    search_pattern: str,
+    seed_prompt: str = "",
+    num_runs: int = 3,
+) -> List[str]:
+    """Generate diverse query formulations for multi-run curation.
+
+    Strategy:
+      1. Always include the original search_pattern.
+      2. Split on OR/AND and add individual terms as additional queries.
+      3. If more runs are needed, extract CamelCase technical terms from
+         seed_prompt that are not already covered.
+
+    The goal is that the oracle (intersection across runs) is harder to
+    reproduce with a single keyword_search call than the original pattern.
+    """
+    variations: List[str] = [search_pattern]
+
+    # Split on boolean operators to get sub-terms
+    raw_terms = re.split(r"\s+OR\s+|\s+AND\s+", search_pattern, flags=re.IGNORECASE)
+    individual = [t.strip().strip('"').strip("'") for t in raw_terms if t.strip()]
+
+    for term in individual:
+        if term and term != search_pattern and term not in variations:
+            variations.append(term)
+        if len(variations) >= num_runs:
+            return variations[:num_runs]
+
+    # If still short, mine CamelCase or snake_case identifiers from seed_prompt
+    if seed_prompt and len(variations) < num_runs:
+        # e.g. "HeartbeatSessionTimeout", "heartbeat_timeout", "sessionTimeout"
+        technical = re.findall(r"\b(?:[A-Z][a-z]+(?:[A-Z][a-z]+)+|[a-z]+(?:[A-Z][a-z]+)+)\b", seed_prompt)
+        seen_lower = {v.lower() for v in variations}
+        for term in technical:
+            if term.lower() not in seen_lower:
+                variations.append(term)
+                seen_lower.add(term.lower())
+            if len(variations) >= num_runs:
+                break
+
+    return variations[:num_runs]
 
 
 # ---------------------------------------------------------------------------
@@ -232,8 +316,22 @@ def curate_file_set_match(
     check_params: Dict,
     repos: List[str],
     log: List[Dict],
+    mode: str = "deep",
+    num_runs: int = 3,
+    min_hits: int = 2,
+    seed_prompt: str = "",
+    repos_with_revisions: Optional[List[Tuple[str, str]]] = None,
 ) -> List[Dict]:
-    """Search repos for files matching a pattern. Returns oracle file list."""
+    """Search repos for files matching a pattern with multi-query aggregation.
+
+    In "deep" mode:
+      - Generates num_runs query variations
+      - Pins each query to the repo's revision via `rev:<ref>`
+      - Returns only files found in >= min_hits independent queries
+
+    In "keyword" mode (legacy):
+      - Single query, no rev-pinning, no aggregation
+    """
     search_pattern = check_params.get("search_pattern", "")
     file_filter = check_params.get("file_filter", "")
 
@@ -241,24 +339,86 @@ def curate_file_set_match(
         logging.warning("file_set_match: no search_pattern in params — skipping")
         return []
 
-    oracle_files = []
-    seen = set()
+    # Build rev-aware repo list
+    rev_map: Dict[str, str] = {}
+    if repos_with_revisions:
+        rev_map = {name: rev for name, rev in repos_with_revisions}
+
+    if mode == "keyword":
+        # Legacy: single query per repo, no rev-pinning
+        oracle_files: List[Dict] = []
+        seen: set = set()
+        for repo in repos:
+            sg_repo = _repo_sg_name(repo)
+            query = f"repo:^{sg_repo}$ {search_pattern}"
+            if file_filter:
+                query += f" file:{file_filter}"
+            log.append({"type": "file_set_match", "repo": repo, "query": query, "mode": mode})
+            results = client.search_files(query, mode=mode)
+            logging.info("  %s: %d file matches", repo, len(results))
+            for r in results:
+                key = (r["repo"], r["path"])
+                if key not in seen:
+                    seen.add(key)
+                    oracle_files.append({"repo": r["repo"], "path": r["path"]})
+        return oracle_files
+
+    # Deep / NLS mode: multi-query with rev-pinning and min-hits threshold
+    variations = generate_query_variations(search_pattern, seed_prompt, num_runs)
+    log.append({
+        "event": "query_variations",
+        "search_pattern": search_pattern,
+        "variations": variations,
+        "num_runs": len(variations),
+        "min_hits": min_hits,
+        "mode": mode,
+    })
+
+    # file_hits[(repo, path)] = number of queries that returned it
+    file_hits: Dict[Tuple[str, str], int] = {}
 
     for repo in repos:
         sg_repo = _repo_sg_name(repo)
-        query = f"repo:^{sg_repo}$ {search_pattern}"
-        if file_filter:
-            query += f" file:{file_filter}"
+        rev = rev_map.get(repo, "HEAD")
+        rev_clause = "" if rev == "HEAD" else f" rev:{rev}"
 
-        log.append({"type": "file_set_match", "repo": repo, "query": query})
-        results = client.search_files(query)
-        logging.info("  %s: %d file matches", repo, len(results))
+        for run_i, variation in enumerate(variations):
+            query = f"repo:^{sg_repo}${rev_clause} {variation}"
+            if file_filter:
+                query += f" file:{file_filter}"
+            log.append({
+                "type": "file_set_match",
+                "repo": repo,
+                "revision": rev,
+                "query": query,
+                "run": run_i,
+                "variation": variation,
+                "mode": mode,
+            })
+            results = client.search_files(query, mode=mode)
+            logging.info(
+                "  %s rev=%s run %d/%d [%s]: %d matches",
+                repo, rev, run_i + 1, len(variations), variation[:50], len(results),
+            )
+            for r in results:
+                key = (r["repo"], r["path"])
+                file_hits[key] = file_hits.get(key, 0) + 1
 
-        for r in results:
-            key = (r["repo"], r["path"])
-            if key not in seen:
-                seen.add(key)
-                oracle_files.append({"repo": r["repo"], "path": r["path"]})
+    # Apply threshold: only files found in >= min_hits queries
+    effective_min = min(min_hits, len(variations))  # can't require more than we ran
+    oracle_files = [
+        {"repo": repo, "path": path}
+        for (repo, path), hits in sorted(file_hits.items())
+        if hits >= effective_min
+    ]
+    log.append({
+        "event": "multiquery_complete",
+        "total_candidates": len(file_hits),
+        "passing_min_hits": len(oracle_files),
+        "min_hits_threshold": effective_min,
+        "num_variations": len(variations),
+        "repos_searched": repos,
+    })
 
     return oracle_files
 
@@ -271,20 +431,20 @@ def curate_symbol_resolution(
 ) -> List[Dict]:
     """Search repos for symbol definitions. Returns oracle symbol list."""
     symbol_pattern = check_params.get("symbol_name", check_params.get("search_pattern", ""))
-    kind_filter = check_params.get("kind_filter", "")  # e.g. "func", "class"
+    kind_filter = check_params.get("kind_filter", "")
 
     if not symbol_pattern:
         logging.warning("symbol_resolution: no symbol_name/search_pattern in params — skipping")
         return []
 
-    oracle_symbols = []
-    seen = set()
+    oracle_symbols: List[Dict] = []
+    seen: set = set()
 
     for repo in repos:
         sg_repo = _repo_sg_name(repo)
         query = f"repo:^{sg_repo}$ {symbol_pattern}"
         if kind_filter:
-            query += f" type:symbol"
+            query += " type:symbol"
 
         log.append({"type": "symbol_resolution", "repo": repo, "query": query})
         results = client.search_symbols(query)
@@ -312,13 +472,12 @@ def curate_dependency_chain(
 ) -> List[Dict]:
     """Trace an import/call chain across repos. Returns ordered chain steps."""
     chain_steps = check_params.get("chain_steps", [])
-    # chain_steps: list of {search_pattern, repo_hint, symbol_hint}
 
     if not chain_steps:
         logging.warning("dependency_chain: no chain_steps in params — skipping")
         return []
 
-    chain = []
+    chain: List[Dict] = []
 
     for step in chain_steps:
         pattern = step.get("search_pattern", "")
@@ -334,13 +493,13 @@ def curate_dependency_chain(
             results = client.search_files(query)
 
             if results:
-                r = results[0]  # take first match per step
+                r = results[0]
                 chain.append({
                     "repo": r["repo"],
                     "path": r["path"],
                     "symbol": symbol_hint or pattern,
                 })
-                break  # found this step
+                break
 
     return chain
 
@@ -350,11 +509,9 @@ def curate_provenance(
     repos: List[str],
     oracle_files: List[Dict],
 ) -> Dict:
-    """Build provenance oracle from must_cite_paths/repos."""
     must_cite_paths = check_params.get("must_cite_paths", [])
     must_cite_repos = check_params.get("must_cite_repos", [])
 
-    # Auto-populate from oracle_files if not specified
     if not must_cite_paths and oracle_files:
         must_cite_paths = [f["path"] for f in oracle_files[:5]]
     if not must_cite_repos and repos:
@@ -366,10 +523,7 @@ def curate_provenance(
     }
 
 
-def curate_keyword_presence(
-    check_params: Dict,
-) -> List[str]:
-    """Return required keywords from params (already the oracle)."""
+def curate_keyword_presence(check_params: Dict) -> List[str]:
     return check_params.get("required_keywords", [])
 
 
@@ -382,35 +536,31 @@ def curate_oracle(
     client: SourcegraphClient,
     fixture: Optional[Dict],
     project_root: Path,
+    mode: str = "deep",
+    num_runs: int = 3,
+    min_hits: int = 2,
     verbose: bool = False,
 ) -> Tuple[Dict, List[Dict]]:
-    """Curate oracle_answer.json content by searching SG for each check type.
-
-    Returns (oracle_answer, curation_log_entries).
-    """
+    """Curate oracle_answer.json content by searching SG for each check type."""
     log: List[Dict] = []
     oracle_answer: Dict[str, Any] = {}
 
     oracle_def = task_spec.get("artifacts", {}).get("oracle", {})
     eval_checks = task_spec.get("evaluation", {}).get("checks", [])
+    seed_prompt = task_spec.get("prd", {}).get("seed_prompt", "")
 
-    # Get repos from fixture
     repos: List[str] = []
+    repos_with_revisions: List[Tuple[str, str]] = []
     if fixture:
         repos = get_repos_from_fixture(fixture)
-        log.append({"event": "repos_from_fixture", "repos": repos})
+        repos_with_revisions = get_repos_with_revisions(fixture)
+        log.append({"event": "repos_from_fixture", "repos": repos, "revisions": dict(repos_with_revisions)})
     else:
         logging.warning("No fixture loaded — using repos from oracle definition if any")
 
-    # If oracle already has required_files, include them as starting point
-    existing_files = oracle_def.get("required_files", [])
-    existing_symbols = oracle_def.get("required_symbols", [])
-    existing_chains = oracle_def.get("dependency_chains", [])
-
-    # Track oracle items across checks (for cross-check reuse)
-    all_oracle_files: List[Dict] = list(existing_files)
-    all_oracle_symbols: List[Dict] = list(existing_symbols)
-    all_chains: List[Dict] = list(existing_chains)
+    all_oracle_files: List[Dict] = list(oracle_def.get("required_files", []))
+    all_oracle_symbols: List[Dict] = list(oracle_def.get("required_symbols", []))
+    all_chains: List[Dict] = list(oracle_def.get("dependency_chains", []))
 
     for check in eval_checks:
         check_type = check.get("type", "")
@@ -419,8 +569,17 @@ def curate_oracle(
         logging.info("Curating check: %s", check_type)
 
         if check_type == "file_set_match" and repos:
-            new_files = curate_file_set_match(client, params, repos, log)
-            # Merge with existing
+            new_files = curate_file_set_match(
+                client=client,
+                check_params=params,
+                repos=repos,
+                log=log,
+                mode=mode,
+                num_runs=num_runs,
+                min_hits=min_hits,
+                seed_prompt=seed_prompt,
+                repos_with_revisions=repos_with_revisions,
+            )
             seen = {(f["repo"], f["path"]) for f in all_oracle_files}
             for f in new_files:
                 key = (f["repo"], f["path"])
@@ -435,12 +594,12 @@ def curate_oracle(
 
         elif check_type == "symbol_resolution" and repos:
             new_syms = curate_symbol_resolution(client, params, repos, log)
-            seen = {(s["repo"], s["path"], s["symbol"]) for s in all_oracle_symbols}
+            seen_sym = {(s["repo"], s["path"], s["symbol"]) for s in all_oracle_symbols}
             for s in new_syms:
                 key = (s["repo"], s["path"], s["symbol"])
-                if key not in seen:
+                if key not in seen_sym:
                     all_oracle_symbols.append(s)
-                    seen.add(key)
+                    seen_sym.add(key)
             log.append({
                 "event": "symbol_resolution_complete",
                 "new_items": len(new_syms),
@@ -468,24 +627,20 @@ def curate_oracle(
             log.append({"event": "keyword_presence_oracle", "keywords": kws})
 
         elif check_type in ("json_schema_match", "test_ratio"):
-            # These checks don't require oracle curation
             log.append({"event": f"{check_type}_no_curation_needed"})
 
         else:
             logging.warning("Unknown or uncuratable check type: %s", check_type)
 
-    # Build oracle_answer structure compatible with oracle_checks.py
     if all_oracle_files:
         oracle_answer["files"] = all_oracle_files
     if all_oracle_symbols:
         oracle_answer["symbols"] = all_oracle_symbols
     if all_chains:
         oracle_answer["chains"] = all_chains
-        # Also flatten to "chain" for compatibility with check_dependency_chain
         if len(all_chains) == 1:
             oracle_answer["chain"] = all_chains[0]["steps"]
 
-    # Build a narrative text for provenance/keyword checks
     text_parts = []
     for f in all_oracle_files[:10]:
         text_parts.append(f"{f['repo']} at {f['path']}")
@@ -494,9 +649,15 @@ def curate_oracle(
     if text_parts:
         oracle_answer["text"] = " | ".join(text_parts)
 
-    # Metadata
+    oracle_answer["repo_set_id"] = task_spec.get("artifacts", {}).get("repo_set_id", "")
+    oracle_answer["symbols"] = oracle_answer.get("symbols", [])
+
+    discovery = "sourcegraph_nls_multiquery" if mode in ("deep", "nls") else "sourcegraph_api"
     oracle_answer["_metadata"] = {
-        "discovery_method": "sourcegraph_api",
+        "discovery_method": discovery,
+        "curation_mode": mode,
+        "num_runs": num_runs if mode != "keyword" else 1,
+        "min_hits": min_hits if mode != "keyword" else 1,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "repos_searched": repos,
         "sg_queries_made": client.queries_made,
@@ -524,7 +685,6 @@ def find_oracle_answer(task_dir: Path) -> Optional[Path]:
 
 
 def oracle_answer_path(task_dir: Path) -> Path:
-    """Return canonical path for writing oracle_answer.json."""
     tests_dir = task_dir / "tests"
     if tests_dir.is_dir():
         return tests_dir / "oracle_answer.json"
@@ -532,7 +692,6 @@ def oracle_answer_path(task_dir: Path) -> Path:
 
 
 def oracle_log_path(task_dir: Path) -> Path:
-    """Return canonical path for writing oracle_curation_log.json."""
     tests_dir = task_dir / "tests"
     if tests_dir.is_dir():
         return tests_dir / "oracle_curation_log.json"
@@ -543,7 +702,6 @@ def merge_oracle_answers(existing: Dict, new: Dict) -> Dict:
     """Merge new oracle findings into existing oracle_answer.json."""
     merged = dict(existing)
 
-    # Merge files (dedup by repo+path)
     existing_files = {(f["repo"], f["path"]) for f in merged.get("files", [])}
     for f in new.get("files", []):
         key = (f["repo"], f["path"])
@@ -551,7 +709,6 @@ def merge_oracle_answers(existing: Dict, new: Dict) -> Dict:
             merged.setdefault("files", []).append(f)
             existing_files.add(key)
 
-    # Merge symbols (dedup by repo+path+symbol)
     existing_syms = {(s["repo"], s["path"], s["symbol"]) for s in merged.get("symbols", [])}
     for s in new.get("symbols", []):
         key = (s["repo"], s["path"], s["symbol"])
@@ -559,22 +716,18 @@ def merge_oracle_answers(existing: Dict, new: Dict) -> Dict:
             merged.setdefault("symbols", []).append(s)
             existing_syms.add(key)
 
-    # Replace chains (new wins)
     if "chains" in new:
         merged["chains"] = new["chains"]
     if "chain" in new:
         merged["chain"] = new["chain"]
 
-    # Merge other fields
     for k in ("provenance", "required_keywords"):
         if k in new:
             merged[k] = new[k]
 
-    # Update text
     if "text" in new:
         merged["text"] = new["text"]
 
-    # Update metadata
     merged["_metadata"] = new.get("_metadata", merged.get("_metadata", {}))
 
     return merged
@@ -585,7 +738,6 @@ def merge_oracle_answers(existing: Dict, new: Dict) -> Dict:
 # ---------------------------------------------------------------------------
 
 def _get_sg_credentials() -> Tuple[str, str]:
-    """Read SG URL and token from environment."""
     url = (
         os.environ.get("SOURCEGRAPH_URL")
         or os.environ.get("SRC_ENDPOINT")
@@ -605,30 +757,36 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
+    parser.add_argument("--task-dir", metavar="DIR",
+                        help="Task directory (contains task_spec.json or tests/task_spec.json).")
+    parser.add_argument("--task-spec", metavar="PATH",
+                        help="Direct path to task_spec.json (overrides --task-dir discovery).")
     parser.add_argument(
-        "--task-dir", metavar="DIR",
-        help="Task directory (contains task_spec.json or tests/task_spec.json).",
+        "--mode", choices=["deep", "nls", "keyword"], default="deep",
+        help=(
+            "Curation mode. "
+            "deep: multi-query NLS with rev-pinning and min-hits threshold (default). "
+            "nls: single NLS query with rev-pinning. "
+            "keyword: legacy plain keyword search (most gameable)."
+        ),
     )
     parser.add_argument(
-        "--task-spec", metavar="PATH",
-        help="Direct path to task_spec.json (overrides --task-dir discovery).",
+        "--num-runs", type=int, default=3,
+        help="Number of distinct query formulations to run in deep/nls mode (default: 3).",
     )
     parser.add_argument(
-        "--verify", action="store_true",
-        help="After curation, run validate_mcp_task_instance.py to confirm validity gate passes.",
+        "--min-hits", type=int, default=2,
+        help="Files must appear in this many queries to be included (default: 2). "
+             "Ignored in keyword mode.",
     )
-    parser.add_argument(
-        "--verbose", action="store_true",
-        help="Print detailed progress.",
-    )
-    parser.add_argument(
-        "--max-results", type=int, default=200,
-        help="Maximum results per SG search query (default: 200).",
-    )
-    parser.add_argument(
-        "--dry-run", action="store_true",
-        help="Parse spec and plan queries without calling SG API.",
-    )
+    parser.add_argument("--verify", action="store_true",
+                        help="After curation, run validate_mcp_task_instance.py.")
+    parser.add_argument("--verbose", action="store_true",
+                        help="Print detailed progress.")
+    parser.add_argument("--max-results", type=int, default=200,
+                        help="Maximum results per SG search query (default: 200).")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Parse spec and plan queries without calling SG API.")
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -636,7 +794,6 @@ def main() -> int:
         format="%(levelname)s: %(message)s",
     )
 
-    # Resolve paths
     if not args.task_dir and not args.task_spec:
         parser.error("One of --task-dir or --task-spec is required.")
 
@@ -654,7 +811,6 @@ def main() -> int:
 
     assert task_dir is not None and spec_path is not None
 
-    # Load task spec
     try:
         with open(spec_path) as f:
             task_spec = json.load(f)
@@ -662,7 +818,6 @@ def main() -> int:
         logging.error("Cannot load task_spec.json: %s", exc)
         return 1
 
-    # Determine project root and load fixture
     project_root = _find_project_root(task_dir)
     logging.info("Project root: %s", project_root)
 
@@ -671,13 +826,13 @@ def main() -> int:
     if repo_set_id:
         fixture = load_fixture(repo_set_id, project_root)
         if fixture:
-            logging.info("Loaded fixture: %s (%d repos)", repo_set_id, len(fixture.get("repos", [])))
+            revisions = {r["full_name"]: r.get("revision", "HEAD") for r in fixture.get("repos", [])}
+            logging.info("Loaded fixture: %s (%d repos, revisions: %s)", repo_set_id, len(fixture.get("repos", [])), revisions)
         else:
-            logging.warning("Fixture '%s' not found — curation will use oracle definition only", repo_set_id)
+            logging.warning("Fixture '%s' not found", repo_set_id)
     else:
-        logging.warning("No repo_set_id in task_spec — curation will search oracle repos only")
+        logging.warning("No repo_set_id in task_spec")
 
-    # Load existing oracle_answer.json for incremental mode
     existing_oracle_path = find_oracle_answer(task_dir)
     existing_oracle: Dict = {}
     if existing_oracle_path:
@@ -689,44 +844,62 @@ def main() -> int:
             logging.warning("Could not load existing oracle_answer.json — starting fresh")
 
     if args.dry_run:
-        logging.info("[DRY RUN] Would curate checks: %s",
-                     [c.get("type") for c in task_spec.get("evaluation", {}).get("checks", [])])
-        logging.info("[DRY RUN] Would search repos: %s",
-                     get_repos_from_fixture(fixture) if fixture else [])
+        checks = task_spec.get("evaluation", {}).get("checks", [])
+        repos_with_revisions = get_repos_with_revisions(fixture) if fixture else []
+        seed_prompt = task_spec.get("prd", {}).get("seed_prompt", "")
+        logging.info("[DRY RUN] mode=%s num_runs=%d min_hits=%d", args.mode, args.num_runs, args.min_hits)
+        logging.info("[DRY RUN] Checks: %s", [c.get("type") for c in checks])
+        for c in checks:
+            if c.get("type") == "file_set_match":
+                pattern = c.get("params", {}).get("search_pattern", "")
+                variations = generate_query_variations(pattern, seed_prompt, args.num_runs)
+                logging.info("[DRY RUN] Variations for %r: %s", pattern, variations)
+        for name, rev in repos_with_revisions:
+            rev_clause = "" if rev == "HEAD" else f" rev:{rev}"
+            logging.info("[DRY RUN] Repo: %s%s", _repo_sg_name(name), rev_clause)
         return 0
 
-    # Set up SG client
     sg_url, sg_token = _get_sg_credentials()
     if not sg_token:
-        logging.warning("No SOURCEGRAPH_ACCESS_TOKEN set — SG API calls may fail or be rate-limited")
+        logging.warning("No SOURCEGRAPH_ACCESS_TOKEN — SG API calls may fail")
 
     client = SourcegraphClient(sg_url, sg_token, verbose=args.verbose)
-    logging.info("Using SG instance: %s", sg_url)
+    logging.info("Using SG instance: %s  mode=%s  num_runs=%d  min_hits=%d",
+                 sg_url, args.mode, args.num_runs, args.min_hits)
 
-    # Curate oracle
     logging.info("Curating oracle for task: %s", task_spec.get("id", spec_path.name))
-    oracle_answer, curation_log = curate_oracle(task_spec, client, fixture, project_root, args.verbose)
+    oracle_answer, curation_log = curate_oracle(
+        task_spec=task_spec,
+        client=client,
+        fixture=fixture,
+        project_root=project_root,
+        mode=args.mode,
+        num_runs=args.num_runs,
+        min_hits=args.min_hits,
+        verbose=args.verbose,
+    )
 
-    # Merge with existing
     if existing_oracle:
         oracle_answer = merge_oracle_answers(existing_oracle, oracle_answer)
         logging.info("Merged with existing oracle: %d files, %d symbols",
                      len(oracle_answer.get("files", [])), len(oracle_answer.get("symbols", [])))
 
-    # Write oracle_answer.json
     out_oracle = oracle_answer_path(task_dir)
     out_oracle.parent.mkdir(parents=True, exist_ok=True)
     with open(out_oracle, "w") as f:
         json.dump(oracle_answer, f, indent=2)
+        f.write("\n")
     logging.info("Wrote oracle_answer.json -> %s (%d files, %d symbols)",
                  out_oracle, len(oracle_answer.get("files", [])), len(oracle_answer.get("symbols", [])))
 
-    # Write oracle_curation_log.json
     log_data = {
         "task_id": task_spec.get("id", ""),
         "task_spec_path": str(spec_path),
         "curated_at": datetime.now(timezone.utc).isoformat(),
         "sg_url": sg_url,
+        "curation_mode": args.mode,
+        "num_runs": args.num_runs,
+        "min_hits": args.min_hits,
         "sg_queries_made": client.queries_made,
         "repos_searched": get_repos_from_fixture(fixture) if fixture else [],
         "curation_entries": curation_log,
@@ -737,7 +910,6 @@ def main() -> int:
         json.dump(log_data, f, indent=2)
     logging.info("Wrote oracle_curation_log.json -> %s", out_log)
 
-    # Verify
     if args.verify:
         validator = project_root / "scripts" / "validate_mcp_task_instance.py"
         if not validator.exists():
@@ -746,8 +918,7 @@ def main() -> int:
             logging.info("Running validity gate...")
             result = subprocess.run(
                 [sys.executable, str(validator), "--task-dir", str(task_dir), "--verbose"],
-                capture_output=True,
-                text=True,
+                capture_output=True, text=True,
             )
             print(result.stdout, end="")
             if result.stderr:
