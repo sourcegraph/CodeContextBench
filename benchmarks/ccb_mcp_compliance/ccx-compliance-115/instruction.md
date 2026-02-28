@@ -22,13 +22,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go"}
+    {"repo": "repo-name", "path": "relative/path/to/file.go"}
   ],
   "symbols": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
+    {"repo": "repo-name", "path": "relative/path/to/file.go", "symbol": "SymbolName"}
   ],
   "chain": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
+    {"repo": "repo-name", "path": "relative/path/to/file.go", "symbol": "FunctionName"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }

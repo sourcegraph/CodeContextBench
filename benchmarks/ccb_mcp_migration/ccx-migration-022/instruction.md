@@ -30,13 +30,13 @@ Create a file at `/workspace/answer.json` with your findings in the following st
 ```json
 {
   "files": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.java"}
+    {"repo": "repo-name", "path": "relative/path/to/file.java"}
   ],
   "symbols": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.java", "symbol": "SymbolName"}
+    {"repo": "repo-name", "path": "relative/path/to/file.java", "symbol": "SymbolName"}
   ],
   "chain": [
-    {"repo": "org/repo-name", "path": "relative/path/to/file.java", "symbol": "FunctionName"}
+    {"repo": "repo-name", "path": "relative/path/to/file.java", "symbol": "FunctionName"}
   ],
   "text": "Narrative explanation of your findings, citing repos and file paths."
 }
