@@ -1,1 +1,1 @@
-FROM ccb-repo-postgres-5a461dc4
+FROM ghcr.io/sjarmak/ccb-repo-postgres-5a461dc4

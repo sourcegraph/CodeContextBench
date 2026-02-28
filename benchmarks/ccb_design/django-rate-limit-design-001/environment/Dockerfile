@@ -1,4 +1,4 @@
-FROM ccb-repo-django-674eda1c
+FROM ghcr.io/sjarmak/ccb-repo-django-674eda1c
 
 # Inject stale architecture document that describes WRONG middleware pattern
 # This simulates enterprise reality: outdated docs that contradict actual code

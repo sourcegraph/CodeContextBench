@@ -213,9 +213,12 @@ def extract_task_specific_lines(lines: list[str], base: dict) -> list[str]:
     return result
 
 
+GHCR_PREFIX = "ghcr.io/sjarmak"
+
+
 def rewrite_dockerfile(path: Path, base: dict, task_lines: list[str], dry_run: bool) -> bool:
-    """Rewrite a task Dockerfile to use a base image."""
-    new_lines = [f"FROM {base['tag']}"]
+    """Rewrite a task Dockerfile to use a base image from GHCR."""
+    new_lines = [f"FROM {GHCR_PREFIX}/{base['tag']}"]
 
     if task_lines:
         new_lines.append("")

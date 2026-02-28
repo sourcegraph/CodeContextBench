@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY _clone_cache/scikit-learn-cb7e82dd/ /workspace/
-
-RUN cd /workspace && \
+RUN git clone --depth 1 https://github.com/sg-evals/scikit-learn--cb7e82dd.git . && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"

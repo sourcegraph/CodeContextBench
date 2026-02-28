@@ -1,3 +1,3 @@
-FROM ccb-repo-kafka-e678b4b
+FROM ghcr.io/sjarmak/ccb-repo-kafka-e678b4b
 
 RUN mkdir -p /app

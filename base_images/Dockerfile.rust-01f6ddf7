@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY _clone_cache/rust-01f6ddf7/ /workspace/
-
-RUN cd /workspace && \
+RUN git clone --depth 1 https://github.com/sg-evals/rust--01f6ddf7.git . && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
