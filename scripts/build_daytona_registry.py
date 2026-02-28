@@ -171,17 +171,18 @@ def daytona_readiness(image_classes: List[str]) -> str:
     """Determine overall Daytona readiness from image classifications.
 
     Returns:
-      - "ready"             : Standard images or ccb-repo-* (pushed to ghcr.io/sjarmak/)
-      - "needs_registry"    : Requires pulling from external registries (SWEAP, TAC, .NET)
+      - "ready"             : All images are publicly pullable (standard, ccb_repo,
+                              sweap on Docker Hub, tac on GHCR)
+      - "needs_registry"    : Requires private registry access (dotnet/mcr)
       - "needs_custom_build": Requires custom kernel/special build steps
     """
     classes = set(image_classes)
-    # ccb_repo images are now on GHCR — treat as ready
-    if classes <= {"standard", "ccb_repo"}:
-        return "ready"
     if "ccb_linux" in classes:
         return "needs_custom_build"
-    if classes & {"sweap", "tac", "dotnet"}:
+    # ccb_repo on GHCR, sweap on Docker Hub, tac on GHCR — all public
+    if classes <= {"standard", "ccb_repo", "sweap", "tac"}:
+        return "ready"
+    if classes & {"dotnet"}:
         return "needs_registry"
     return "needs_custom_build"
 
