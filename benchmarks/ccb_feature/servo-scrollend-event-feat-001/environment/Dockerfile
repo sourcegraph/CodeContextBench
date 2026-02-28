@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     autoconf \
     pkg-config \
+    libclang-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create claude user and writable work dirs before clone.

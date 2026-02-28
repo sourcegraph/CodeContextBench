@@ -68,6 +68,12 @@ fi
 
 echo "Running VS Code test suite..."
 
+# ── Install dependencies if missing (needed after sg_only clone-at-verify) ─
+if [ ! -d "node_modules" ] && [ -f "package.json" ]; then
+    echo "Installing npm dependencies (post-clone)..."
+    npm install --legacy-peer-deps 2>&1 | tail -5 || true
+fi
+
 # ── TypeScript type-check ────────────────────────────────────────────────
 # VS Code uses its own tsconfig files. Run tsc --noEmit to verify the
 # modified TypeScript still type-checks. If it fails, score is 0.

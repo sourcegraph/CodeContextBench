@@ -137,10 +137,45 @@ try:
         write_reward(0.0)
         sys.exit(0)
 
+    # ── Repo name normalization ────────────────────────────────────────────
+    def normalize_repo(name):
+        """Normalize repo names to a canonical short form for matching.
+
+        Handles sg-evals mirror names and upstream org/repo names by
+        extracting just the repo basename (last path segment).
+
+        sg-evals/istio--2300e245       -> istio
+        github.com/sg-evals/istio--h   -> istio
+        istio/istio                    -> istio
+        envoyproxy/go-control-plane    -> go-control-plane
+        emissary-ingress/emissary      -> emissary
+        """
+        n = name.strip()
+        # Strip URL prefixes
+        for prefix in ("github.com/", "https://github.com/"):
+            if n.startswith(prefix):
+                n = n[len(prefix):]
+        # Strip sg-evals/ prefix
+        if n.startswith("sg-evals/"):
+            n = n[len("sg-evals/"):]
+        # Strip --hexhash suffix (8+ hex chars after --)
+        n = re.sub(r'--[0-9a-f]{7,}$', '', n)
+        # Take just the last path segment (repo basename)
+        if "/" in n:
+            n = n.rsplit("/", 1)[-1]
+        return n
+
     # ── Build composite keys ─────────────────────────────────────────────
     def make_key(entry, fields):
-        """Build a composite key tuple from an entry's field values."""
-        return tuple(str(entry.get(f, "")).strip() for f in fields)
+        """Build a composite key tuple from an entry's field values.
+        Normalizes 'repo' field to handle sg-evals mirror names."""
+        parts = []
+        for f in fields:
+            val = str(entry.get(f, "")).strip()
+            if f == "repo":
+                val = normalize_repo(val)
+            parts.append(val)
+        return tuple(parts)
 
     expected_keys = [make_key(e, key_fields) for e in expected]
     reported_keys = [make_key(r, key_fields) for r in reported]
