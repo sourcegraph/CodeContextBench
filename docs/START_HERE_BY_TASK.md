@@ -9,13 +9,22 @@ Use this page first for operational work. Each path is intentionally short to mi
 ### Read Order
 1. `docs/ops/WORKFLOWS.md`
 2. `docs/reference/CONFIGS.md`
-3. `docs/ops/QA_PROCESS.md`
+3. `docs/DAYTONA.md (if using Daytona cloud)`
+4. `docs/ops/QA_PROCESS.md`
 
 ### Key Commands
 ```bash
 python3 scripts/check_infra.py
 python3 scripts/validate_tasks_preflight.py --all
-# then use configs/* runner with interactive confirmation gate
+
+# Local Docker (needs Docker daemon)
+# use configs/* runner with interactive confirmation gate
+
+# Daytona Cloud (no Docker needed, up to 125 concurrent sandboxes)
+harbor run --path benchmarks/<suite>/<task> \
+    --agent-import-path agents/claude_baseline_agent.py \
+    --environment-type daytona \
+    --model claude-haiku-4-5-20251001
 ```
 
 ## Monitor Active Runs

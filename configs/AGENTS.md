@@ -11,6 +11,7 @@ Use this file when working in `configs/` launchers and run orchestration wrapper
 - Start with `configs/_common.sh` for shared run policy and confirmation behavior.
 - Use `configs/run_selected_tasks.sh` for selected-task execution flows.
 - Use `configs/*_2config.sh` wrappers for paired baseline/MCP runs.
+- For Daytona cloud execution, add `--environment-type daytona` to `harbor run` commands. See `docs/DAYTONA.md` for prerequisites and capacity planning.
 
 ## When Editing
 - Preserve `confirm_launch()` gating behavior.

@@ -12,7 +12,6 @@ ROOT_SOURCE = ROOT / "docs" / "ops" / "ROOT_AGENT_GUIDE.md"
 LOCAL_SOURCES = {
     ROOT / "scripts": ROOT / "docs" / "ops" / "local_guides" / "scripts.md",
     ROOT / "configs": ROOT / "docs" / "ops" / "local_guides" / "configs.md",
-    ROOT / "tasks": ROOT / "docs" / "ops" / "local_guides" / "tasks.md",
     ROOT / "docs": ROOT / "docs" / "ops" / "local_guides" / "docs.md",
 }
 
@@ -52,7 +51,8 @@ def main() -> int:
         if not source.is_file():
             raise SystemExit(f"missing local source: {source}")
         if not target_dir.is_dir():
-            raise SystemExit(f"missing target dir: {target_dir}")
+            # Skip directories that don't exist (e.g. tasks/ was removed)
+            continue
         content = source.read_text()
         if args.check:
             _check_pair(target_dir, content, stale)

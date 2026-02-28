@@ -18,6 +18,8 @@ Use this file when working in `scripts/`.
 - `scripts/validate_tasks_preflight.py` - task preflight validation
 - `scripts/aggregate_status.py` - run status scan
 - `scripts/validate_task_run.py` - post-run validation
+- `scripts/daytona_runner.py` - standalone Daytona runner (task listing, dry runs, quick validation)
+- `scripts/build_daytona_registry.py` - regenerate Daytona task registry
 
 ## Editing Rules
 - Preserve backward compatibility for high-use scripts unless the change is intentional.

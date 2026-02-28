@@ -9,12 +9,21 @@
       "read_order": [
         "docs/ops/WORKFLOWS.md",
         "docs/reference/CONFIGS.md",
+        "docs/DAYTONA.md (if using Daytona cloud)",
         "docs/ops/QA_PROCESS.md"
       ],
       "commands": [
         "python3 scripts/check_infra.py",
         "python3 scripts/validate_tasks_preflight.py --all",
-        "# then use configs/* runner with interactive confirmation gate"
+        "",
+        "# Local Docker (needs Docker daemon)",
+        "# use configs/* runner with interactive confirmation gate",
+        "",
+        "# Daytona Cloud (no Docker needed, up to 125 concurrent sandboxes)",
+        "harbor run --path benchmarks/<suite>/<task> \\",
+        "    --agent-import-path agents/claude_baseline_agent.py \\",
+        "    --environment-type daytona \\",
+        "    --model claude-haiku-4-5-20251001"
       ]
     },
     {

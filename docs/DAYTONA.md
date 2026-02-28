@@ -2,20 +2,29 @@
 
 This guide covers running the CodeContextBench benchmark suite on [Daytona](https://daytona.io) cloud sandboxes. Daytona handles Docker image builds and sandbox lifecycle remotely, so you do not need Docker installed locally.
 
+## When To Read This
+- You want to run benchmarks without a local Docker daemon.
+- You want high parallelism (up to 125 concurrent sandboxes on Tier 3).
+- You want fast full-suite or paired runs (~15 min wall clock for all 283 tasks).
+
+## Two Ways to Run on Daytona
+
+| Approach | Use Case | Full Artifacts | Downstream Compatible |
+|----------|----------|---------------|----------------------|
+| **Harbor + Daytona** (recommended) | Production runs, paired comparisons, analysis | Yes (trajectory.json, claude-code.txt, etc.) | Runs explorer, IR pipeline, QA validation |
+| **Standalone runner** | Quick validation, listing tasks/suites, dry runs | No (truncated outputs only) | Manual analysis only |
+
 ## Prerequisites
 
 1. **Daytona account** at [app.daytona.io](https://app.daytona.io)
-2. **Python 3.12+**
-3. **Daytona SDK**:
-   ```bash
-   pip install daytona-sdk
-   ```
+2. **Daytona SDK**: `pip install daytona-sdk`
+3. **Harbor** installed (for the recommended approach)
 4. **Anthropic API key** or **Claude Code OAuth credentials** (for the AI agent)
-5. **Sourcegraph access token** (only for MCP configs that use Sourcegraph search)
+5. **Sourcegraph access token** (only for MCP configs)
 
 ## Credential Setup
 
-The runner loads credentials from environment variables first, falling back to config files.
+Both approaches share the same credentials. The runner loads from environment variables first, falling back to config files.
 
 ### Daytona API Key (required)
 
@@ -25,11 +34,11 @@ Get your key from [Daytona Dashboard > Settings > API Keys](https://app.daytona.
 # Option A: environment variable
 export DAYTONA_API_KEY="your-key-here"
 
-# Option B: config file at ~/.config/daytona/env.sh
+# Option B: config file
 echo 'DAYTONA_API_KEY="your-key-here"' > ~/.config/daytona/env.sh
 ```
 
-### Anthropic API Key (for `--auth api-key` mode, the default)
+### Anthropic API Key
 
 ```bash
 export ANTHROPIC_API_KEY="sk-ant-..."
@@ -40,186 +49,218 @@ Or place it in `~/.claude/credentials.json`:
 {"apiKey": "sk-ant-..."}
 ```
 
-### Claude Code OAuth (for `--auth oauth` mode)
+### Sourcegraph Token (MCP configs only)
 
-OAuth mode uses pre-authenticated Claude Code credentials stored in `~/.claude-homes/accountN/.claude/.credentials.json`. Each account directory represents one authenticated session. Use this when running against Anthropic's Max plan or when API key billing is not preferred.
-
-Set up by running `claude` (the Claude Code CLI) in each account home:
-```bash
-CLAUDE_CONFIG_DIR=~/.claude-homes/account1/.claude claude
-# Complete the OAuth login flow in browser
-```
-
-List configured accounts:
-```bash
-python3 scripts/daytona_runner.py --list-accounts
-```
-
-### Sourcegraph Token (for MCP configs only)
-
-Required only for `mcp-remote-direct` and `mcp-remote-artifact` configs:
 ```bash
 export SRC_ACCESS_TOKEN="sgp_..."
 ```
 
-## Quick Start
+## Recommended: Harbor + Daytona
+
+Harbor has a built-in `DaytonaEnvironment` that plugs into the standard trial runner. Add `--environment-type daytona` to any `harbor run` command to execute on Daytona cloud sandboxes instead of local Docker.
+
+### Quick Start
 
 ```bash
-# 1. Verify setup
-python3 scripts/daytona_runner.py --list-suites
+# Single task on Daytona
+BASELINE_MCP_TYPE=none harbor run \
+    --path benchmarks/ccb_build/cgen-deps-install-001 \
+    --agent-import-path agents/claude_baseline_agent.py \
+    --model claude-haiku-4-5-20251001 \
+    --environment-type daytona
 
-# 2. Dry-run a single task (no sandboxes created)
-python3 scripts/daytona_runner.py --task cgen-deps-install-001 --dry-run
-
-# 3. Run a single task
-python3 scripts/daytona_runner.py --task cgen-deps-install-001
-
-# 4. Run a full suite
-python3 scripts/daytona_runner.py --suite ccb_feature --parallel 4
-
-# 5. Run all 294 tasks
-python3 scripts/daytona_runner.py --all --parallel 8
+# Full suite (60 concurrent sandboxes)
+BASELINE_MCP_TYPE=none harbor run \
+    --path benchmarks/ccb_build \
+    --agent-import-path agents/claude_baseline_agent.py \
+    --model claude-haiku-4-5-20251001 \
+    --jobs-dir runs/staging/build_baseline_$(date +%Y%m%d) \
+    -n 60 \
+    --environment-type daytona
 ```
 
-## Configs
+### Paired Runs (Baseline vs MCP)
 
-Each config determines which Dockerfile and instruction file are used, and whether MCP tools (Sourcegraph) are available to the agent.
+Run both configs concurrently, splitting the Daytona sandbox budget:
 
-| Config | Dockerfile | Instruction | MCP | Description |
-|--------|-----------|-------------|-----|-------------|
-| `baseline-local-direct` | `Dockerfile` | `instruction.md` | No | Agent uses only local repo context |
-| `mcp-remote-direct` | `Dockerfile.sg_only` | `instruction_mcp.md` | Yes | Empty workspace, agent uses Sourcegraph MCP |
-| `baseline-local-artifact` | `Dockerfile.artifact_only` | `instruction.md` | No | Full source + artifact-based verifier |
-| `mcp-remote-artifact` | `Dockerfile.artifact_only` | `instruction_mcp.md` | Yes | Artifact verifier + Sourcegraph MCP |
-
-Select with `--config`:
 ```bash
-python3 scripts/daytona_runner.py --suite ccb_mcp_onboarding --config mcp-remote-direct
+# Terminal 1: Baseline (60 concurrent sandboxes)
+BASELINE_MCP_TYPE=none harbor run \
+    --path benchmarks/ccb_build \
+    --agent-import-path agents/claude_baseline_agent.py \
+    --model claude-haiku-4-5-20251001 \
+    --jobs-dir runs/staging/paired_baseline_$(date +%Y%m%d) \
+    -n 60 \
+    --environment-type daytona &
+
+# Terminal 2: MCP (60 concurrent sandboxes)
+BASELINE_MCP_TYPE=sourcegraph harbor run \
+    --path benchmarks/ccb_build \
+    --agent-import-path agents/claude_baseline_agent.py \
+    --model claude-haiku-4-5-20251001 \
+    --jobs-dir runs/staging/paired_mcp_$(date +%Y%m%d) \
+    -n 60 \
+    --environment-type daytona &
+
+wait
 ```
 
-## Task Selection
+60 + 60 = 120 concurrent sandboxes, within the Tier 3 limit of 125.
 
-The runner supports several ways to select which tasks to run:
+### What Harbor + Daytona Produces
 
-```bash
-# Single task
---task cgen-deps-install-001
+Harbor handles the full artifact lifecycle automatically:
 
-# Multiple tasks
---tasks cgen-deps-install-001,flipt-dep-refactor-001
-
-# Full suite (only Daytona-ready tasks)
---suite ccb_feature
-
-# All ready tasks across all suites
---all
-
-# From a JSON file (array of task ID strings)
---tasks-file my_tasks.json
+```
+runs/staging/{run_name}/
+  {config}/
+    {task_id}_{config}/
+      {trial__hash}/
+        result.json                    # Full Harbor TrialResult
+        task_metrics.json              # Token counts, tool usage, cost
+        agent/
+          trajectory.json              # ATIF v1.2 turn-by-turn trace
+          claude-code.txt              # Full JSONL agent output
+          instruction.txt              # Task instruction text
+        verifier/
+          reward.txt                   # Numeric score (0.0-1.0)
+          test-stdout.txt              # Full test output
 ```
 
-Browse available tasks:
+These artifacts are fully compatible with:
+- **Runs explorer**: `python3 scripts/export_official_results.py`
+- **IR analysis pipeline**: `python3 scripts/normalize_retrieval_events.py`
+- **QA validation**: `python3 scripts/validate_task_run.py`
+- **Metrics extraction**: `python3 scripts/extract_task_metrics.py`
+- **Staging to official promotion**: copy to `runs/official/`, update `MANIFEST.json`
+
+### How It Works
+
+When you add `--environment-type daytona`, Harbor:
+
+1. **Creates a sandbox** from the task's Dockerfile via `Image.from_dockerfile()` (Daytona builds remotely)
+2. **Installs the agent** (Node.js 22, Claude Code CLI) using the standard Harbor install template
+3. **Runs the agent** with `claude --output-format stream-json | tee /logs/agent/claude-code.txt`
+4. **Downloads `/logs/agent/`** from the sandbox to the local trial directory
+5. **Converts JSONL to trajectory.json** (ATIF v1.2) via `populate_context_post_run()`
+6. **Runs the verifier** and downloads `/logs/verifier/`
+7. **Writes result.json** with the full `TrialResult` schema
+8. **Deletes the sandbox** (always, even on failure)
+
+## Capacity Planning
+
+### Daytona Limits (Tier 3)
+
+| Resource | Total | Per Sandbox | Max Concurrent |
+|----------|-------|-------------|----------------|
+| vCPU | 250 | 2 (default) | **125** |
+| Memory | 500 GiB | 4 GiB (default) | **125** |
+| Storage | 2,000 GiB | ~10 GiB | 200 |
+| Sandbox creation | 600/min | - | Not a bottleneck |
+
+### Anthropic API Limits (Sourcegraph org)
+
+| Model | RPM | Safe `--parallel` |
+|-------|-----|-------------------|
+| Haiku | 4,000 | **125** (Daytona-limited) |
+| Sonnet | 20,000 | **125** (Daytona-limited) |
+| Opus | 20,000 | **125** (Daytona-limited) |
+
+With the Sourcegraph org's API limits, Daytona is always the bottleneck, not Anthropic.
+
+### Cost Estimates (283 tasks)
+
+| Model | Cost per full run | Paired run (2 configs) |
+|-------|-------------------|----------------------|
+| Haiku | ~$6-15 | ~$12-30 |
+| Sonnet | ~$30-80 | ~$60-160 |
+| Opus | ~$150-400 | ~$300-800 |
+
+### Wall Clock Estimates
+
+| Parallelism | 283 tasks | Paired (566 tasks) |
+|-------------|-----------|-------------------|
+| `-n 60` | ~15 min | ~15 min (concurrent) |
+| `-n 100` | ~10 min | ~15 min (concurrent) |
+| `-n 125` | ~8 min | ~12 min (sequential) |
+
+## Alternative: Standalone Runner
+
+The standalone runner (`scripts/daytona_runner.py`) is useful for quick validation and task discovery but produces truncated outputs not compatible with the downstream analysis pipeline.
+
+### Quick Start
+
 ```bash
-# List all suites with readiness counts
+# List suites and readiness counts
 python3 scripts/daytona_runner.py --list-suites
 
 # List tasks in a suite
 python3 scripts/daytona_runner.py --list-tasks --suite ccb_feature
 
-# List all tasks
-python3 scripts/daytona_runner.py --list-tasks
+# Dry run (validate task selection, no sandboxes created)
+python3 scripts/daytona_runner.py --suite ccb_build --dry-run
+
+# Run a single task
+python3 scripts/daytona_runner.py --task cgen-deps-install-001
+
+# Run a full suite
+python3 scripts/daytona_runner.py --suite ccb_build --parallel 4
+
+# Run all 283 tasks
+python3 scripts/daytona_runner.py --all --parallel 8
 ```
 
-## Execution Options
+### Standalone Runner Configs
+
+| Config | Dockerfile | Instruction | MCP |
+|--------|-----------|-------------|-----|
+| `baseline-local-direct` | `Dockerfile` | `instruction.md` | No |
+| `mcp-remote-direct` | `Dockerfile.sg_only` | `instruction_mcp.md` | Yes |
+| `baseline-local-artifact` | `Dockerfile.artifact_only` | `instruction.md` | No |
+| `mcp-remote-artifact` | `Dockerfile.artifact_only` | `instruction_mcp.md` | Yes |
+
+### Standalone Runner Options
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--parallel N` | 1 | Max concurrent Daytona sandboxes |
-| `--model NAME` | `claude-haiku-4-5-20251001` | Claude model for the agent |
-| `--max-turns N` | 30 | Max agent conversation turns |
-| `--timeout N` | per-task default | Override agent timeout (seconds) |
-| `--retries N` | 1 | Retry count for errored tasks |
-| `--auth api-key\|oauth` | `api-key` | Authentication mode |
-| `--account N` | 1 | OAuth account number (with `--auth oauth`) |
-| `--run-id ID` | auto-generated | Custom identifier for this run |
-| `--output-dir PATH` | `runs/daytona/{run_id}` | Custom output directory |
-| `--verbose` | off | Debug-level logging |
-| `--dry-run` | off | Validate task selection without creating sandboxes |
+| `--parallel N` | 1 | Max concurrent sandboxes |
+| `--model NAME` | `claude-haiku-4-5-20251001` | Claude model |
+| `--max-turns N` | 30 | Max agent turns |
+| `--timeout N` | per-task | Override timeout (sec) |
+| `--retries N` | 1 | Retry count |
+| `--auth api-key\|oauth` | `api-key` | Auth mode |
+| `--account N` | 1 | OAuth account number |
+| `--config NAME` | `baseline-local-direct` | Config mode |
+| `--run-id ID` | auto | Custom run identifier |
+| `--dry-run` | off | Validate without sandboxes |
 
-## Output Structure
-
-Each run produces results under `runs/daytona/{run_id}/`:
+### Standalone Output Structure
 
 ```
 runs/daytona/{run_id}/
-  manifest.json                           # Run-level summary
+  manifest.json                    # Aggregate statistics
   {task_id}/{config}/
-    result.json                           # Full task result
-    agent_output.txt                      # Claude Code stdout (truncated to 10KB)
-    verification_output.txt               # test.sh output (truncated to 5KB)
+    result.json                    # Minimal task result
+    agent_output.txt               # Claude Code stdout (truncated to 10KB)
+    verification_output.txt        # test.sh output (truncated to 5KB)
 ```
 
-### manifest.json
-
-The manifest includes aggregate statistics:
-
-```json
-{
-  "run_id": "daytona_baseline-local-direct_20260228_143000",
-  "config": "baseline-local-direct",
-  "model": "claude-haiku-4-5-20251001",
-  "platform": "daytona",
-  "total_tasks": 24,
-  "completed": 24,
-  "passed": 18,
-  "failed": 4,
-  "errored": 2,
-  "mean_reward": 0.75,
-  "tasks": { ... }
-}
-```
-
-### result.json (per-task)
-
-```json
-{
-  "task_id": "cgen-deps-install-001",
-  "config": "baseline-local-direct",
-  "status": "success",
-  "reward": 1.0,
-  "agent_elapsed_sec": 45.2,
-  "verify_elapsed_sec": 3.1,
-  "total_elapsed_sec": 180.5,
-  "cost_usd": 0.02,
-  "num_turns": 5
-}
-```
-
-## How It Works
-
-For each task the runner:
-
-1. **Creates a sandbox** from the task's Dockerfile using `Image.from_dockerfile()` (Daytona builds remotely)
-2. **Sets up the environment**: installs Node.js 22, Claude Code CLI, creates a `claude` user
-3. **Configures authentication**: writes API key or OAuth credentials into the sandbox
-4. **Configures MCP** (if applicable): writes Sourcegraph MCP server config
-5. **Uploads test files** from the task's `tests/` directory
-6. **Runs the agent**: executes Claude Code with the task instruction, model, and turn limit
-7. **Verifies results**: runs `bash /tests/test.sh` and reads the reward from `/logs/verifier/reward.txt`
-8. **Collects output**: saves agent output, verification output, and result metadata
-9. **Deletes the sandbox** (always, even on failure)
-
-With `--parallel N`, steps 1-9 run concurrently across N sandboxes using a thread pool.
+**Note:** These outputs lack `trajectory.json`, full `claude-code.txt`, and Harbor-compatible `result.json`. Use Harbor + Daytona for runs that feed the analysis pipeline.
 
 ## Task Readiness
 
 All 294 tasks across 20 suites are Daytona-ready. Base images are sourced from:
 
-- **Standard public images** (197 tasks): `python:*`, `golang:*`, `gcc:*`, `ubuntu:*`, etc. from Docker Hub
-- **Pre-built repo images** (70 tasks): `ghcr.io/sourcegraph/ccb-repo-*` on GitHub Container Registry
+- **Standard public images** (197 tasks): `python:*`, `golang:*`, `gcc:*`, `ubuntu:*`, etc.
+- **Pre-built repo images** (70 tasks): `ghcr.io/sourcegraph/ccb-repo-*` on GHCR
 - **SWEAP images** (21 tasks): `jefzda/sweap-images:*` on Docker Hub
-- **TAC images** (4 tasks): `ghcr.io/theagentcompany/*` on GitHub Container Registry
+- **TAC images** (4 tasks): `ghcr.io/theagentcompany/*` on GHCR
 - **Linux kernel tasks** (5 tasks): Build from `gcc:13` with inline kernel source clone
+
+Regenerate the task registry after adding new tasks:
+```bash
+python3 scripts/build_daytona_registry.py
+```
 
 ## Environment Variable Reference
 
@@ -228,19 +269,19 @@ All 294 tasks across 20 suites are Daytona-ready. Base images are sourced from:
 | `DAYTONA_API_KEY` | Yes | Daytona platform API key |
 | `ANTHROPIC_API_KEY` | For api-key auth | Anthropic API key for Claude |
 | `SRC_ACCESS_TOKEN` | For MCP configs | Sourcegraph access token |
-| `DAYTONA_API_URL` | No | Override Daytona API endpoint (default: `https://app.daytona.io/api`) |
-| `DAYTONA_TARGET` | No | Override Daytona target region (default: `us`) |
-| `CLAUDE_OAUTH_CLIENT_ID` | No | Override OAuth client ID |
-| `CLAUDE_OAUTH_TOKEN_URL` | No | Override OAuth token endpoint |
+| `DAYTONA_API_URL` | No | Override API endpoint (default: `https://app.daytona.io/api`) |
+| `DAYTONA_TARGET` | No | Override target region (default: `us`) |
 
 ## Troubleshooting
 
 **"Missing DAYTONA_API_KEY"**: Set the env var or create `~/.config/daytona/env.sh`.
 
-**Sandbox creation timeout**: Some tasks have large Docker images (multi-GB repo clones). Increase timeout with `--timeout` or retry with `--retries 2`.
+**Sandbox creation timeout**: Large Docker images (multi-GB repo clones) take longer. Retry with `--retries 2` or increase `--timeout`.
 
-**"Missing Dockerfile" or "Missing instruction"**: The task may not have the Dockerfile variant required by your chosen config. Check with `--dry-run` first.
+**"Missing Dockerfile" or "Missing instruction"**: The task may lack the Dockerfile variant for your chosen config. Check with `--dry-run` first.
 
-**OAuth token expired**: Re-run `claude` in the account home directory to refresh credentials, or switch to `--auth api-key`.
+**OAuth token expired**: Re-run `claude` in the account home directory to refresh, or switch to `--auth api-key`.
 
-**MCP config errors**: Verify `SRC_ACCESS_TOKEN` is set and valid. Test with `curl -H "Authorization: token $SRC_ACCESS_TOKEN" https://sourcegraph.com/.api/graphql`.
+**MCP config errors**: Verify `SRC_ACCESS_TOKEN` is valid: `curl -H "Authorization: token $SRC_ACCESS_TOKEN" https://sourcegraph.com/.api/graphql`.
+
+**Harbor + Daytona: sandbox not found**: Ensure `daytona-sdk` is installed in the same Python environment as Harbor. The `DaytonaEnvironment` imports from `daytona`.

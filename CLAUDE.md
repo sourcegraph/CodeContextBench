@@ -16,6 +16,7 @@ full operations manual.
 
 ## Fast Routing By Intent
 - Launch or rerun benchmarks: `docs/START_HERE_BY_TASK.md` -> "Launch / Rerun Benchmarks"
+- Run benchmarks on Daytona (cloud, no Docker needed): `docs/DAYTONA.md`
 - Monitor / status: `docs/START_HERE_BY_TASK.md` -> "Monitor Active Runs"
 - Triage failures: `docs/START_HERE_BY_TASK.md` -> "Triage Failed Tasks"
 - Compare configs / MCP impact / IR: `docs/START_HERE_BY_TASK.md` -> "Analyze Results"
@@ -25,7 +26,6 @@ full operations manual.
 ## Local Guides
 - `scripts/AGENTS.md` - script categories, safe usage, one-off handling
 - `configs/AGENTS.md` - run launcher wrappers and confirmation gate policy
-- `tasks/AGENTS.md` - task metadata and validation workflow
 - `docs/AGENTS.md` - documentation IA and canonical vs archive guidance
 
 ## Compaction / Handoff Checkpoints

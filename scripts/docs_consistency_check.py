@@ -39,7 +39,7 @@ REF_PATTERNS = [
 ROOT_AGENT_SOFT_MAX = 8 * 1024
 ROOT_AGENT_HARD_MAX = 12 * 1024
 LOCAL_AGENT_SOFT_MAX = 6 * 1024
-LOCAL_AGENT_TARGET_DIRS = ["scripts", "configs", "tasks", "docs"]
+LOCAL_AGENT_TARGET_DIRS = ["scripts", "configs", "docs"]
 
 
 def _load_matrix() -> dict:
