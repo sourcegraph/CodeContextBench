@@ -5,7 +5,7 @@
     "generated_by": "SDLC suite migration from migration_map.json",
     "generated_date": "2026-02-18",
     "total_available": 835,
-    "total_selected": 400,
+    "total_selected": 398,
     "migration_source": "migration_map.json (157 mapped tasks across 8 SDLC suites)",
     "target_total": 294,
     "target_note": "178 SDLC tasks (9 suites, ccb_test=18 after TAC task removal) + 220 MCP-unique tasks (11 suites x 20) = 398 active. 2 llamacpp TAC tasks dropped (need external RocketChat server).",
@@ -167,7 +167,7 @@
       "ccb_refactor": 20,
       "ccb_secure": 20,
       "ccb_test": 18,
-      "ccb_understand": 34
+      "ccb_understand": 20
     }
   },
   "tasks": [

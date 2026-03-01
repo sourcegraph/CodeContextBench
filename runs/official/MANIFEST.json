@@ -1,6 +1,6 @@
 {
   "description": "Canonical run manifest for CodeContextBench evaluation",
-  "generated": "2026-03-01T13:31:20.595802+00:00",
+  "generated": "2026-03-01T19:08:51.512304+00:00",
   "total_tasks": 758,
   "total_runs": 76,
   "runs": {
@@ -17016,7 +17016,7 @@
         ]
       },
       "openlibrary-search-query-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -17033,6 +17033,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T19:00:38.789239Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "fix_haiku_20260301_190026"
           }
         ]
       },
@@ -17121,7 +17128,7 @@
         ]
       },
       "pytorch-tracer-graph-cleanup-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -17138,6 +17145,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T19:00:41.666101Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "fix_haiku_20260301_190026"
           }
         ]
       },
@@ -17557,7 +17571,7 @@
         ]
       },
       "openlibrary-search-query-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -17574,6 +17588,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T19:00:38.503563Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "fix_haiku_20260301_190026"
           }
         ]
       },
@@ -17662,7 +17683,7 @@
         ]
       },
       "pytorch-tracer-graph-cleanup-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -17679,6 +17700,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T19:00:43.591933Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "fix_haiku_20260301_190026"
           }
         ]
       },

@@ -5,10 +5,12 @@
 | Run | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
 | [ccb_fix_haiku_20260228_185835](../runs/ccb_fix_haiku_20260228_185835.md) | `mcp-remote-direct` | 25 | 0.592 | 0.720 |
-| [ccb_fix_haiku_20260228_205741](../runs/ccb_fix_haiku_20260228_205741.md) | `baseline-local-direct` | 5 | 0.208 | 0.400 |
+| [ccb_fix_haiku_20260228_205741](../runs/ccb_fix_haiku_20260228_205741.md) | `baseline-local-direct` | 3 | 0.347 | 0.667 |
 | [ccb_fix_haiku_20260228_205741](../runs/ccb_fix_haiku_20260228_205741.md) | `mcp-remote-direct` | 25 | 0.536 | 0.680 |
 | [ccb_fix_haiku_20260228_230722](../runs/ccb_fix_haiku_20260228_230722.md) | `baseline-local-direct` | 20 | 0.510 | 0.650 |
 | [ccb_fix_haiku_20260228_230722](../runs/ccb_fix_haiku_20260228_230722.md) | `mcp-remote-direct` | 20 | 0.593 | 0.750 |
+| [fix_haiku_20260301_190026](../runs/fix_haiku_20260301_190026.md) | `baseline-local-direct` | 2 | 0.000 | 0.000 |
+| [fix_haiku_20260301_190026](../runs/fix_haiku_20260301_190026.md) | `mcp-remote-direct` | 2 | 0.000 | 0.000 |
 
 ## Tasks
 
@@ -81,9 +83,10 @@
 | [openlibrary-fntocli-adapter-fix-001](../tasks/ccb_fix_haiku_20260228_205741--baseline-local-direct--openlibrary-fntocli-adapter-fix-001.html) | — | `baseline-local-direct` | `passed` | 0.667 | 2 | 0.000 |
 | [mcp_openlibrary-fntocli-adapter-fix-001_ODhL8U](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_openlibrary-fntocli-adapter-fix-001_ODhL8U.html) | — | `mcp-remote-direct` | `passed` | 1.000 | 2 | 0.265 |
 | [mcp_openlibrary-fntocli-adapter-fix-001_IMvWES](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-fntocli-adapter-fix-001_IMvWES.html) | — | `mcp-remote-direct` | `passed` | 1.000 | 2 | 0.193 |
-| [openlibrary-search-query-fix-001](../tasks/ccb_fix_haiku_20260228_205741--baseline-local-direct--openlibrary-search-query-fix-001.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 2 | 0.000 |
-| [mcp_openlibrary-search-query-fix-001_HmH4et](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_HmH4et.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.097 |
-| [mcp_openlibrary-search-query-fix-001_wxswww](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_wxswww.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.203 |
+| [openlibrary-search-query-fix-001](../tasks/fix_haiku_20260301_190026--baseline-local-direct--openlibrary-search-query-fix-001.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 3 | 0.000 |
+| [mcp_openlibrary-search-query-fix-001_HmH4et](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_HmH4et.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.097 |
+| [mcp_openlibrary-search-query-fix-001_wxswww](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_wxswww.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.203 |
+| [sgonly_openlibrary-search-query-fix-001](../tasks/fix_haiku_20260301_190026--mcp-remote-direct--sgonly_openlibrary-search-query-fix-001.html) | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.167 |
 | [openlibrary-solr-boolean-fix-001](../tasks/ccb_fix_haiku_20260228_230722--baseline-local-direct--openlibrary-solr-boolean-fix-001.html) | [source](../../../benchmarks/ccb_fix/openlibrary-solr-boolean-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 3 | 0.000 |
 | [mcp_openlibrary-solr-boolean-fix-001_FLeVXK](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_openlibrary-solr-boolean-fix-001_FLeVXK.html) | [source](../../../benchmarks/ccb_fix/openlibrary-solr-boolean-fix-001) | `mcp-remote-direct` | `passed` | 0.667 | 3 | - |
 | [mcp_openlibrary-solr-boolean-fix-001_TeGlod](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-solr-boolean-fix-001_TeGlod.html) | [source](../../../benchmarks/ccb_fix/openlibrary-solr-boolean-fix-001) | `mcp-remote-direct` | `passed` | 0.667 | 3 | - |
@@ -102,9 +105,10 @@
 | [pytorch-relu-gelu-fusion-fix-001](../tasks/ccb_fix_haiku_20260228_205741--baseline-local-direct--pytorch-relu-gelu-fusion-fix-001.html) | — | `baseline-local-direct` | `passed` | 0.376 | 2 | 0.000 |
 | [mcp_pytorch-relu-gelu-fusion-fix-001_he6k9B](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_pytorch-relu-gelu-fusion-fix-001_he6k9B.html) | — | `mcp-remote-direct` | `passed` | 0.654 | 2 | 0.398 |
 | [mcp_pytorch-relu-gelu-fusion-fix-001_FMIUaS](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_pytorch-relu-gelu-fusion-fix-001_FMIUaS.html) | — | `mcp-remote-direct` | `passed` | 0.656 | 2 | 0.448 |
-| [pytorch-tracer-graph-cleanup-fix-001](../tasks/ccb_fix_haiku_20260228_205741--baseline-local-direct--pytorch-tracer-graph-cleanup-fix-001.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 2 | 0.000 |
-| [mcp_pytorch-tracer-graph-cleanup-fix-001_2j86Q8](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_pytorch-tracer-graph-cleanup-fix-001_2j86Q8.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.750 |
-| [mcp_pytorch-tracer-graph-cleanup-fix-001_o7Q3V3](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_pytorch-tracer-graph-cleanup-fix-001_o7Q3V3.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.485 |
+| [pytorch-tracer-graph-cleanup-fix-001](../tasks/fix_haiku_20260301_190026--baseline-local-direct--pytorch-tracer-graph-cleanup-fix-001.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 3 | 0.000 |
+| [mcp_pytorch-tracer-graph-cleanup-fix-001_2j86Q8](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_pytorch-tracer-graph-cleanup-fix-001_2j86Q8.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.750 |
+| [mcp_pytorch-tracer-graph-cleanup-fix-001_o7Q3V3](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_pytorch-tracer-graph-cleanup-fix-001_o7Q3V3.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.485 |
+| [sgonly_pytorch-tracer-graph-cleanup-fix-001](../tasks/fix_haiku_20260301_190026--mcp-remote-direct--sgonly_pytorch-tracer-graph-cleanup-fix-001.html) | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.520 |
 | [terraform-plan-null-unknown-fix-001](../tasks/ccb_fix_haiku_20260228_230722--baseline-local-direct--terraform-plan-null-unknown-fix-001.html) | [source](../../../benchmarks/ccb_fix/terraform-plan-null-unknown-fix-001) | `baseline-local-direct` | `passed` | 0.913 | 3 | 0.000 |
 | [mcp_terraform-plan-null-unknown-fix-001_RIfUuo](../tasks/ccb_fix_haiku_20260228_205741--mcp-remote-direct--mcp_terraform-plan-null-unknown-fix-001_RIfUuo.html) | [source](../../../benchmarks/ccb_fix/terraform-plan-null-unknown-fix-001) | `mcp-remote-direct` | `passed` | 0.576 | 3 | 0.317 |
 | [mcp_terraform-plan-null-unknown-fix-001_A0MbH8](../tasks/ccb_fix_haiku_20260228_185835--mcp-remote-direct--mcp_terraform-plan-null-unknown-fix-001_A0MbH8.html) | [source](../../../benchmarks/ccb_fix/terraform-plan-null-unknown-fix-001) | `mcp-remote-direct` | `passed` | 0.775 | 3 | 0.434 |
@@ -144,15 +148,15 @@ Tasks with multiple valid runs (40 task/config pairs).
 | nodebb-notif-dropdown-fix-001 | [source](../../../benchmarks/ccb_fix/nodebb-notif-dropdown-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | nodebb-plugin-validate-fix-001 | [source](../../../benchmarks/ccb_fix/nodebb-plugin-validate-fix-001) | `baseline-local-direct` | 2 | 0.000 | 0.000 | 0.000, 0.000 |
 | nodebb-plugin-validate-fix-001 | [source](../../../benchmarks/ccb_fix/nodebb-plugin-validate-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
-| openlibrary-search-query-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | 2 | 0.000 | 0.000 | 0.000, 0.000 |
-| openlibrary-search-query-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | 2 | 0.000 | 0.000 | 0.000, 0.000 |
+| openlibrary-search-query-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
+| openlibrary-search-query-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | openlibrary-solr-boolean-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-solr-boolean-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | openlibrary-solr-boolean-fix-001 | [source](../../../benchmarks/ccb_fix/openlibrary-solr-boolean-fix-001) | `mcp-remote-direct` | 3 | 0.667 | 0.000 | 0.667, 0.667, 0.667 |
 | pytorch-cudnn-version-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-cudnn-version-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | pytorch-cudnn-version-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-cudnn-version-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | pytorch-dynamo-keyerror-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-dynamo-keyerror-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | pytorch-dynamo-keyerror-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-dynamo-keyerror-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
-| pytorch-tracer-graph-cleanup-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `baseline-local-direct` | 2 | 0.000 | 0.000 | 0.000, 0.000 |
-| pytorch-tracer-graph-cleanup-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | 2 | 0.000 | 0.000 | 0.000, 0.000 |
+| pytorch-tracer-graph-cleanup-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
+| pytorch-tracer-graph-cleanup-fix-001 | [source](../../../benchmarks/ccb_fix/pytorch-tracer-graph-cleanup-fix-001) | `mcp-remote-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | terraform-plan-null-unknown-fix-001 | [source](../../../benchmarks/ccb_fix/terraform-plan-null-unknown-fix-001) | `baseline-local-direct` | 3 | 0.836 | 0.080 | 0.841, 0.753, 0.913 |
 | terraform-plan-null-unknown-fix-001 | [source](../../../benchmarks/ccb_fix/terraform-plan-null-unknown-fix-001) | `mcp-remote-direct` | 3 | 0.739 | 0.148 | 0.775, 0.576, 0.865 |
