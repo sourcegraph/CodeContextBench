@@ -400,7 +400,7 @@ class SandboxManager:
             resources=Resources(
                 cpu=task.cpus,
                 memory=max(task.memory_mb // 1024, 1),
-                disk=max(task.storage_mb // 1024, 20),
+                disk=max(task.storage_mb // 1024, 10),
             ),
             auto_stop_interval=0,
         )
