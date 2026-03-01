@@ -1,18 +1,25 @@
-FROM ccb-repo-rust-01f6ddf7 AS rust-src
-
 FROM rust:1.82-bookworm
 
-WORKDIR /workspace
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
-    curl \
+    ca-certificates \
     python3 \
+    curl \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=rust-src /workspace /workspace
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 
-RUN git config user.email "agent@example.com" && \
+USER claude
+WORKDIR /workspace
+RUN git clone --depth 1 https://github.com/sg-evals/rust--01f6ddf7.git . && \
+    git config user.email "agent@example.com" && \
     git config user.name "Agent"
+USER root
+
+RUN mkdir -p /logs/agent /logs/verifier && \
+    chown -R claude:claude /logs
+
+ENTRYPOINT []

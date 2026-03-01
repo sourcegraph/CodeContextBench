@@ -10,7 +10,7 @@ RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 
 USER claude
 WORKDIR /workspace
-RUN git clone --depth 1 https://github.com/cilium/cilium.git . || \
+RUN git clone --depth 1 https://github.com/sg-evals/cilium--v1.16.5.git . || \
     (git init && git config user.email "agent@example.com" && git config user.name "Agent")
 USER root
 
