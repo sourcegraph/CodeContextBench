@@ -1251,6 +1251,14 @@
       "summary": "Pre-flight task validator (static checks plus optional no-agent runtime smoke)."
     },
     {
+      "name": "variance_gap_analysis.py",
+      "path": "scripts/variance_gap_analysis.py",
+      "category": "analysis_comparison",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Analysis/comparison script for variance gap analysis."
+    },
+    {
       "name": "verify_retrieval_eval_smoke.py",
       "path": "scripts/verify_retrieval_eval_smoke.py",
       "category": "misc",
@@ -1276,7 +1284,7 @@
     }
   ],
   "category_counts": {
-    "analysis_comparison": 21,
+    "analysis_comparison": 22,
     "core_operations": 13,
     "data_management": 10,
     "generation": 6,

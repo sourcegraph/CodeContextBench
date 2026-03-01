@@ -53,6 +53,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/reliability_analysis.py` - Analysis/comparison script for reliability analysis.
 - `scripts/retrieval_eval_pipeline.py` - Analysis/comparison script for retrieval eval pipeline.
 - `scripts/retrieval_impact_analysis.py` - Analysis/comparison script for retrieval impact analysis.
+- `scripts/variance_gap_analysis.py` - Analysis/comparison script for variance gap analysis.
 
 ## QA & Quality
 
