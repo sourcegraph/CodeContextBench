@@ -10,7 +10,7 @@
     "target_total": 294,
     "target_note": "178 SDLC tasks (9 suites, ccb_test=18 after TAC task removal) + 220 MCP-unique tasks (11 suites x 20) = 398 active. 2 llamacpp TAC tasks dropped (need external RocketChat server).",
     "last_updated": "2026-03-01",
-    "note": "Split ccb_build into ccb_feature/ccb_refactor. Narrowed ccb_understand to 20 (14 RepoQA search tasks moved to backups). Narrowed ccb_fix to 20 (5 over-represented-repo tasks moved to backups). Added 130 new mcp-unique tasks (IDs 142-271). Added 4 missing MCP-unique tasks (057, 042, 050, 091)."
+    "note": "DOE-driven rebalance: 178 SDLC -> 146 SDLC (+ 4 scaffold pending), MCP-unique unchanged. Neyman-optimal allocation based on variance decomposition."
   },
   "methodology": {
     "description": "Tasks reorganized from 17 legacy suites into 9 SDLC-phase suites (ccb_build split into ccb_feature + ccb_refactor). Each task retains its original scoring and metadata; only the suite assignment and task_dir are updated to reflect the new SDLC taxonomy. Tasks with status 'archived' or 'retired' in migration_map.json are excluded.",
@@ -129,45 +129,46 @@
       "ccb_refactor": 20
     },
     "tasks_per_language": {
-      "c": 12,
-      "cpp": 64,
-      "cpp,c,javascript": 3,
-      "csharp": 3,
-      "go": 93,
-      "go,cpp": 1,
-      "go,protobuf": 1,
-      "java": 34,
-      "java,cpp": 5,
-      "javascript": 7,
-      "mixed": 1,
-      "python": 54,
+      "java": 56,
+      "go": 136,
+      "rust": 12,
       "python,cpp": 1,
-      "rust": 11,
-      "typescript": 10
+      "typescript": 4,
+      "python": 51,
+      "csharp": 1,
+      "cpp": 73,
+      "javascript": 6,
+      "c": 9,
+      "go,protobuf": 1,
+      "go,cpp": 1,
+      "mixed": 1,
+      "java,cpp": 5,
+      "cpp,c,javascript": 3,
+      "unknown": 6
     },
     "avg_mcp_benefit_score": 0.868,
-    "total_tasks": 412,
+    "total_tasks": 366,
     "per_suite": {
-      "ccb_debug": 20,
-      "ccb_design": 20,
-      "ccb_document": 20,
       "ccb_feature": 20,
-      "ccb_fix": 20,
+      "ccb_refactor": 16,
+      "ccb_understand": 10,
+      "ccb_test": 18,
+      "ccb_document": 13,
+      "ccb_debug": 18,
+      "ccb_design": 14,
+      "ccb_fix": 25,
+      "ccb_secure": 12,
       "ccb_mcp_compliance": 20,
       "ccb_mcp_crossorg": 20,
-      "ccb_mcp_crossrepo": 20,
       "ccb_mcp_crossrepo_tracing": 20,
-      "ccb_mcp_domain": 20,
       "ccb_mcp_incident": 20,
       "ccb_mcp_migration": 20,
       "ccb_mcp_onboarding": 20,
-      "ccb_mcp_org": 20,
       "ccb_mcp_platform": 20,
       "ccb_mcp_security": 20,
-      "ccb_refactor": 20,
-      "ccb_secure": 20,
-      "ccb_test": 18,
-      "ccb_understand": 20
+      "ccb_mcp_domain": 20,
+      "ccb_mcp_org": 20,
+      "ccb_mcp_crossrepo": 20
     }
   },
   "tasks": [
@@ -276,28 +277,6 @@
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
       "task_dir": "ccb_refactor/kafka-batch-accumulator-refac-001",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "rust-subtype-relation-refac-001",
-      "benchmark": "ccb_refactor",
-      "sdlc_phase": "Refactoring",
-      "language": "rust",
-      "difficulty": "hard",
-      "category": "cross_file_refactoring",
-      "repo": "rust-lang/rust",
-      "mcp_benefit_score": 0.87,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_refactor/rust-subtype-relation-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
@@ -678,28 +657,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "k8s-cri-containerd-reason-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Architecture & Design",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "cross_file_reasoning",
-      "repo": "kubernetes,containerd",
-      "mcp_benefit_score": 0.92,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.95,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_crossrepo tasks selected (small benchmark)",
-      "task_dir": "ccb_understand/k8s-cri-containerd-reason-001",
-      "context_length": 950000,
-      "context_length_source": "task_metrics_run",
-      "files_count": 19,
-      "files_count_source": "task_metrics_run"
-    },
-    {
       "task_id": "k8s-runtime-object-impl-001",
       "benchmark": "ccb_feature",
       "sdlc_phase": "Requirements & Discovery",
@@ -786,50 +743,6 @@
       "context_length_source": "task_metrics_run",
       "files_count": 19,
       "files_count_source": "task_metrics_run"
-    },
-    {
-      "task_id": "vscode-api-doc-gen-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Documentation",
-      "language": "typescript",
-      "difficulty": "hard",
-      "category": "api_reference",
-      "repo": "microsoft/vscode",
-      "task_dir": "ccb_document/vscode-api-doc-gen-001",
-      "selection_rationale": "API reference generation for major TypeScript codebase",
-      "mcp_benefit_score": 0.85,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "cilium-api-doc-gen-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Documentation",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "api_reference",
-      "repo": "cilium/cilium",
-      "task_dir": "ccb_document/cilium-api-doc-gen-001",
-      "selection_rationale": "API reference generation for eBPF networking codebase",
-      "mcp_benefit_score": 0.85,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
     },
     {
       "task_id": "kafka-api-doc-gen-001",
@@ -1052,28 +965,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "terraform-migration-doc-gen-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Documentation",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "migration_guide",
-      "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_document/terraform-migration-doc-gen-001",
-      "selection_rationale": "Migration guide for filter upgrade across two versions",
-      "mcp_benefit_score": 0.8,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.75,
-        "semantic_search_potential": 0.8,
-        "task_category_weight": 0.8
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 15,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "envoy-request-routing-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Requirements & Discovery",
@@ -1083,28 +974,6 @@
       "repo": "envoyproxy/envoy",
       "task_dir": "ccb_understand/envoy-request-routing-qa-001",
       "selection_rationale": "Architecture Q&A for large C++ proxy codebase",
-      "mcp_benefit_score": 0.86,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "istio-xds-serving-qa-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "architecture_qa",
-      "repo": "istio/istio",
-      "task_dir": "ccb_understand/istio-xds-serving-qa-001",
-      "selection_rationale": "Architecture Q&A for service mesh control plane",
       "mcp_benefit_score": 0.86,
       "mcp_breakdown": {
         "context_complexity": 0.85,
@@ -1140,28 +1009,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "vscode-ext-host-qa-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Debugging",
-      "language": "typescript",
-      "difficulty": "hard",
-      "category": "debug_root_cause",
-      "repo": "microsoft/vscode",
-      "task_dir": "ccb_understand/vscode-ext-host-qa-001",
-      "selection_rationale": "Debug root cause analysis in large TypeScript codebase",
-      "mcp_benefit_score": 0.79,
-      "mcp_breakdown": {
-        "context_complexity": 0.8,
-        "cross_file_deps": 0.75,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.8
-      },
-      "context_length": 800000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 15,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "cilium-ebpf-fault-qa-001",
       "benchmark": "ccb_understand",
       "sdlc_phase": "Debugging",
@@ -1181,138 +1028,6 @@
       "context_length": 800000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 15,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "kafka-message-lifecycle-qa-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "java",
-      "difficulty": "hard",
-      "category": "data_flow_explanation",
-      "repo": "apache/kafka",
-      "task_dir": "ccb_understand/kafka-message-lifecycle-qa-001",
-      "selection_rationale": "Data flow explanation in distributed streaming platform",
-      "mcp_benefit_score": 0.85,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "envoy-filter-chain-qa-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "data_flow_explanation",
-      "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/envoy-filter-chain-qa-001",
-      "selection_rationale": "Data flow explanation in proxy filter chain",
-      "mcp_benefit_score": 0.85,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "argocd-sync-reconcile-qa-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "data_flow_explanation",
-      "repo": "argoproj/argo-cd",
-      "task_dir": "ccb_understand/argocd-sync-reconcile-qa-001",
-      "selection_rationale": "Data flow explanation in GitOps CD controller",
-      "mcp_benefit_score": 0.85,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.85
-      },
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "envoy-ext-authz-handoff-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "team_handoff",
-      "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/envoy-ext-authz-handoff-001",
-      "selection_rationale": "Team handoff requiring deep component exploration",
-      "mcp_benefit_score": 0.86,
-      "mcp_breakdown": {
-        "context_complexity": 0.9,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.8
-      },
-      "context_length": 900000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 17,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "terraform-state-backend-handoff-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "team_handoff",
-      "repo": "hashicorp/terraform",
-      "task_dir": "ccb_understand/terraform-state-backend-handoff-001",
-      "selection_rationale": "Team handoff for IaC provider framework",
-      "mcp_benefit_score": 0.86,
-      "mcp_breakdown": {
-        "context_complexity": 0.9,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.8
-      },
-      "context_length": 900000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 17,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "cilium-ebpf-datapath-handoff-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "team_handoff",
-      "repo": "cilium/cilium",
-      "task_dir": "ccb_understand/cilium-ebpf-datapath-handoff-001",
-      "selection_rationale": "Team handoff for eBPF datapath subsystem",
-      "mcp_benefit_score": 0.86,
-      "mcp_breakdown": {
-        "context_complexity": 0.9,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.8
-      },
-      "context_length": 900000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 17,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
@@ -1379,28 +1094,6 @@
       "context_length": 850000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "envoy-contributor-workflow-001",
-      "benchmark": "ccb_understand",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "workflow_discovery",
-      "repo": "envoyproxy/envoy",
-      "task_dir": "ccb_understand/envoy-contributor-workflow-001",
-      "selection_rationale": "Developer workflow discovery in large C++ project",
-      "mcp_benefit_score": 0.77,
-      "mcp_breakdown": {
-        "context_complexity": 0.8,
-        "cross_file_deps": 0.7,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.75
-      },
-      "context_length": 800000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 14,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
@@ -1536,28 +1229,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "docgen-changelog-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "changelog_generation",
-      "repo": "hashicorp/terraform",
-      "mcp_benefit_score": 0.82,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.75,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.85
-      },
-      "selection_rationale": "New SDLC task: changelog generation requiring cross-module change discovery",
-      "task_dir": "ccb_document/docgen-changelog-001",
-      "context_length": 750000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 10,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "docgen-changelog-002",
       "benchmark": "ccb_document",
       "sdlc_phase": "Requirements & Discovery",
@@ -1599,28 +1270,6 @@
       "context_length": 800000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 12,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "docgen-onboard-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "onboarding_guide",
-      "repo": "istio/istio",
-      "mcp_benefit_score": 0.9,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "New SDLC task: onboarding guide requiring cross-package architecture discovery",
-      "task_dir": "ccb_document/docgen-onboard-001",
-      "context_length": 900000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 15,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
@@ -1677,28 +1326,6 @@
       "repo": "ansible/ansible",
       "mcp_benefit_score": 0.75,
       "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "django-admins-migration-audit-001",
-      "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/django-admins-migration-audit-001",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "python",
-      "difficulty": "hard",
-      "category": "migration_audit",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.88,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.85
-      },
-      "selection_rationale": "All ccb_investigation tasks selected (investigation-only benchmark, 4 tasks)",
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 17,
-      "files_count_source": "mcp_breakdown_proxy"
     },
     {
       "task_id": "envoy-duplicate-headers-debug-001",
@@ -1814,17 +1441,6 @@
       "task_id": "linux-nfs-inode-revalidate-fault-001",
       "benchmark": "ccb_debug",
       "task_dir": "ccb_debug/linux-nfs-inode-revalidate-fault-001",
-      "language": "c",
-      "difficulty": "expert",
-      "sdlc_phase": "debug",
-      "repo": "linux",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "linux-ssd-trim-timeout-fault-001",
-      "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/linux-ssd-trim-timeout-fault-001",
       "language": "c",
       "difficulty": "expert",
       "sdlc_phase": "debug",
@@ -1976,17 +1592,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "django-modeladmin-impact-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/django-modeladmin-impact-001",
-      "language": "python",
-      "difficulty": "hard",
-      "sdlc_phase": "design",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
       "task_id": "django-orm-query-arch-001",
       "benchmark": "ccb_design",
       "task_dir": "ccb_design/django-orm-query-arch-001",
@@ -2130,61 +1735,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "k8s-dra-allocation-impact-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-dra-allocation-impact-001",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "go",
-      "difficulty": "expert",
-      "category": "impact_analysis",
-      "repo": "kubernetes/kubernetes",
-      "mcp_benefit_score": 0.92,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.9,
-        "semantic_search_potential": 0.95,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_investigation tasks selected (investigation-only benchmark, 4 tasks)",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 18,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "k8s-scheduler-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-scheduler-arch-001",
-      "sdlc_phase": "Analysis",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "architectural_understanding",
-      "repo": "kubernetes/kubernetes",
-      "mcp_benefit_score": 0.882,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "k8s-sharedinformer-sym-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-sharedinformer-sym-001",
-      "language": "go",
-      "difficulty": "hard",
-      "sdlc_phase": "design",
-      "repo": "kubernetes/kubernetes",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
       "task_id": "k8s-typemeta-dep-chain-001",
       "benchmark": "ccb_design",
       "task_dir": "ccb_design/k8s-typemeta-dep-chain-001",
@@ -2238,39 +1788,6 @@
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
       "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "quantlib-barrier-pricing-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/quantlib-barrier-pricing-arch-001",
-      "sdlc_phase": "Analysis",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "architectural_understanding",
-      "repo": "lballabio/QuantLib",
-      "mcp_benefit_score": 0.882,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "terraform-provider-iface-sym-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/terraform-provider-iface-sym-001",
-      "language": "go",
-      "difficulty": "hard",
-      "sdlc_phase": "design",
-      "repo": "hashicorp/terraform",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
     },
     {
       "task_id": "ansible-abc-imports-fix-001",
@@ -2570,42 +2087,9 @@
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
     {
-      "task_id": "django-csrf-session-audit-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/django-csrf-session-audit-001",
-      "sdlc_phase": "Security review",
-      "language": "python",
-      "difficulty": "hard",
-      "category": "security_analysis",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.882,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "django-legacy-dep-vuln-001",
       "benchmark": "ccb_secure",
       "task_dir": "ccb_secure/django-legacy-dep-vuln-001",
-      "language": "python",
-      "difficulty": "hard",
-      "sdlc_phase": "secure",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "django-policy-enforcement-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/django-policy-enforcement-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "secure",
@@ -2647,39 +2131,6 @@
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
     {
-      "task_id": "envoy-cve-triage-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/envoy-cve-triage-001",
-      "language": "cpp",
-      "difficulty": "hard",
-      "sdlc_phase": "secure",
-      "repo": "envoyproxy/envoy",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "envoy-vuln-reachability-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/envoy-vuln-reachability-001",
-      "sdlc_phase": "Requirements & Discovery",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "reachability",
-      "repo": "envoyproxy/envoy",
-      "mcp_benefit_score": 0.88,
-      "mcp_breakdown": {
-        "context_complexity": 0.85,
-        "cross_file_deps": 0.88,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "UNREACHABLE vulnerability calibration task - agent must identify admin-only endpoint not exposed to external traffic. Requires understanding Envoy's dual-interface architecture (admin vs data plane).",
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 18,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "flipt-degraded-context-fix-001",
       "benchmark": "ccb_secure",
       "task_dir": "ccb_secure/flipt-degraded-context-fix-001",
@@ -2698,17 +2149,6 @@
       "difficulty": "hard",
       "sdlc_phase": "secure",
       "repo": "flipt-io/flipt",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "golang-net-cve-triage-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/golang-net-cve-triage-001",
-      "language": "go",
-      "difficulty": "hard",
-      "sdlc_phase": "secure",
-      "repo": "golang/net",
       "mcp_benefit_score": 0.75,
       "selection_rationale": "SDLC phase task (auto-generated)"
     },
@@ -2746,72 +2186,6 @@
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
-      "task_id": "kafka-vuln-reachability-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/kafka-vuln-reachability-001",
-      "language": "java",
-      "difficulty": "hard",
-      "sdlc_phase": "secure",
-      "repo": "apache/kafka",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "postgres-client-auth-audit-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/postgres-client-auth-audit-001",
-      "sdlc_phase": "Security review",
-      "language": "c",
-      "difficulty": "hard",
-      "category": "security_analysis",
-      "repo": "postgres/postgres",
-      "mcp_benefit_score": 0.882,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.8,
-        "semantic_search_potential": 0.9,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "wish-transitive-vuln-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/wish-transitive-vuln-001",
-      "language": "go",
-      "difficulty": "hard",
-      "sdlc_phase": "secure",
-      "repo": "charmbracelet/wish",
-      "mcp_benefit_score": 0.75,
-      "selection_rationale": "SDLC phase task (auto-generated)"
-    },
-    {
-      "task_id": "docgen-inline-001",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Documentation",
-      "language": "python",
-      "difficulty": "hard",
-      "category": "inline_docstring_generation",
-      "repo": "django/django",
-      "mcp_benefit_score": 0.82,
-      "mcp_breakdown": {
-        "context_complexity": 0.8,
-        "cross_file_deps": 0.7,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.9
-      },
-      "selection_rationale": "Phase 2 backlog promotion: inline docstring generation (Python variant)",
-      "task_dir": "ccb_document/docgen-inline-001",
-      "context_length": 850000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 12,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
       "task_id": "docgen-runbook-001",
       "benchmark": "ccb_document",
       "sdlc_phase": "Documentation",
@@ -2831,28 +2205,6 @@
       "context_length": 900000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 15,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "docgen-runbook-002",
-      "benchmark": "ccb_document",
-      "sdlc_phase": "Documentation",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "runbook_writing",
-      "repo": "envoyproxy/envoy",
-      "mcp_benefit_score": 0.87,
-      "mcp_breakdown": {
-        "context_complexity": 0.9,
-        "cross_file_deps": 0.85,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.85
-      },
-      "selection_rationale": "Phase 2 backlog promotion: troubleshooting runbook for Envoy connection pool",
-      "task_dir": "ccb_document/docgen-runbook-002",
-      "context_length": 900000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 14,
       "files_count_source": "mcp_breakdown_proxy"
     },
     {
@@ -4860,90 +4212,6 @@
       "notes": "New task: cross-file refactoring optimized for MCP value",
       "selection_rationale": "Cross-file refactoring requiring find-all-references across large codebase",
       "task_dir": "ccb_refactor/pandas-index-engine-refac-001",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "scikit-learn-estimator-tags-refac-001",
-      "task_name": "scikit-learn-estimator-tags-refac-001",
-      "benchmark": "ccb_refactor",
-      "original_suite": "ccb_refactor",
-      "sdlc_phase": "Refactoring",
-      "language": "python",
-      "difficulty": "expert",
-      "category": "cross_file_refactoring",
-      "description": "Rename _get_tags to _estimator_tags across scikit-learn estimators",
-      "repo": "sg-evals/scikit-learn--1.6.1",
-      "mcp_benefit_score": 0.9,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.9,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.9
-      },
-      "scoring": "checklist",
-      "status": "active",
-      "notes": "New task: cross-file refactoring optimized for MCP value",
-      "selection_rationale": "Cross-file refactoring requiring find-all-references across large codebase",
-      "task_dir": "ccb_refactor/scikit-learn-estimator-tags-refac-001",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "curl-multi-process-refac-001",
-      "task_name": "curl-multi-process-refac-001",
-      "benchmark": "ccb_refactor",
-      "original_suite": "ccb_refactor",
-      "sdlc_phase": "Refactoring",
-      "language": "c",
-      "difficulty": "hard",
-      "category": "cross_file_refactoring",
-      "description": "Rename process_pending_handles to multi_activate_pending in curl",
-      "repo": "sg-evals/curl--09e25b9d",
-      "mcp_benefit_score": 0.9,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.9,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.9
-      },
-      "scoring": "checklist",
-      "status": "active",
-      "notes": "New task: cross-file refactoring optimized for MCP value",
-      "selection_rationale": "Cross-file refactoring requiring find-all-references across large codebase",
-      "task_dir": "ccb_refactor/curl-multi-process-refac-001",
-      "context_length": 950000,
-      "context_length_source": "mcp_breakdown_proxy",
-      "files_count": 16,
-      "files_count_source": "mcp_breakdown_proxy"
-    },
-    {
-      "task_id": "etcd-raft-storage-refac-001",
-      "task_name": "etcd-raft-storage-refac-001",
-      "benchmark": "ccb_refactor",
-      "original_suite": "ccb_refactor",
-      "sdlc_phase": "Refactoring",
-      "language": "go",
-      "difficulty": "hard",
-      "category": "cross_file_refactoring",
-      "description": "Rename MemoryStorage to InMemoryRaftLog in etcd raft",
-      "repo": "sg-evals/etcd--d89978e8",
-      "mcp_benefit_score": 0.9,
-      "mcp_breakdown": {
-        "context_complexity": 0.95,
-        "cross_file_deps": 0.9,
-        "semantic_search_potential": 0.85,
-        "task_category_weight": 0.9
-      },
-      "scoring": "checklist",
-      "status": "active",
-      "notes": "New task: cross-file refactoring optimized for MCP value",
-      "selection_rationale": "Cross-file refactoring requiring find-all-references across large codebase",
-      "task_dir": "ccb_refactor/etcd-raft-storage-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
@@ -7952,6 +7220,61 @@
       "context_length_source": "not_computed",
       "files_count": 0,
       "files_count_source": "not_computed"
+    },
+    {
+      "task_id": "pytorch-relu-gelu-fusion-fix-001",
+      "benchmark": "ccb_fix",
+      "sdlc_phase": "Implementation (bug fix)",
+      "language": "unknown",
+      "difficulty": "medium",
+      "category": "fix",
+      "repo": "unknown",
+      "mcp_benefit_score": 0.8,
+      "task_dir": "ccb_fix/pytorch-relu-gelu-fusion-fix-001"
+    },
+    {
+      "task_id": "flipt-otlp-exporter-fix-001",
+      "benchmark": "ccb_fix",
+      "sdlc_phase": "Implementation (bug fix)",
+      "language": "unknown",
+      "difficulty": "medium",
+      "category": "fix",
+      "repo": "unknown",
+      "mcp_benefit_score": 0.8,
+      "task_dir": "ccb_fix/flipt-otlp-exporter-fix-001"
+    },
+    {
+      "task_id": "pytorch-release-210-fix-001",
+      "benchmark": "ccb_fix",
+      "sdlc_phase": "Implementation (bug fix)",
+      "language": "unknown",
+      "difficulty": "medium",
+      "category": "fix",
+      "repo": "unknown",
+      "mcp_benefit_score": 0.8,
+      "task_dir": "ccb_fix/pytorch-release-210-fix-001"
+    },
+    {
+      "task_id": "flipt-trace-sampling-fix-001",
+      "benchmark": "ccb_fix",
+      "sdlc_phase": "Implementation (bug fix)",
+      "language": "unknown",
+      "difficulty": "medium",
+      "category": "fix",
+      "repo": "unknown",
+      "mcp_benefit_score": 0.8,
+      "task_dir": "ccb_fix/flipt-trace-sampling-fix-001"
+    },
+    {
+      "task_id": "openlibrary-fntocli-adapter-fix-001",
+      "benchmark": "ccb_fix",
+      "sdlc_phase": "Implementation (bug fix)",
+      "language": "unknown",
+      "difficulty": "medium",
+      "category": "fix",
+      "repo": "unknown",
+      "mcp_benefit_score": 0.8,
+      "task_dir": "ccb_fix/openlibrary-fntocli-adapter-fix-001"
     }
   ]
 }
