@@ -149,6 +149,7 @@ class SourcegraphClient:
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"token {self.token}",
+            "User-Agent": "curate-oracle/1.0",
         }
         req = urllib.request.Request(endpoint, data=payload, headers=headers, method="POST")
 

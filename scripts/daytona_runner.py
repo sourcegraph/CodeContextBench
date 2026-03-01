@@ -173,7 +173,7 @@ def refresh_oauth_token(account_num: int) -> dict:
     }).encode()
     req = urllib.request.Request(
         OAUTH_TOKEN_URL, data=payload,
-        headers={"Content-Type": "application/json"}, method="POST",
+        headers={"Content-Type": "application/json", "User-Agent": "ccb-daytona-runner/1.0"}, method="POST",
     )
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:

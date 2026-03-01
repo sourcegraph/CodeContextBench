@@ -45,7 +45,7 @@ def try_refresh_token(creds_file: Path) -> dict | None:
     req = urllib.request.Request(
         "https://console.anthropic.com/api/oauth/token",
         data=payload,
-        headers={"Content-Type": "application/json"},
+        headers={"Content-Type": "application/json", "User-Agent": "ccb-check-infra/1.0"},
         method="POST"
     )
 
