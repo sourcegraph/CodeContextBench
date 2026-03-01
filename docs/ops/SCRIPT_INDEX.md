@@ -121,6 +121,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/prebuild_with_credentials.sh` - Infrastructure or mirror management script for prebuild with credentials.
 - `scripts/stop_task.sh` - Infrastructure or mirror management script for stop task.
 - `scripts/swap_default_branch.sh` - Infrastructure or mirror management script for swap default branch.
+- `scripts/sync_oracle_files.py` - Infrastructure or mirror management script for sync oracle files.
 - `scripts/sync_pytorch_verifiers.sh` - Infrastructure or mirror management script for sync pytorch verifiers.
 - `scripts/update_sg_only_mirrors.py` - Infrastructure or mirror management script for update sg only mirrors.
 
@@ -149,6 +150,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 
 ## Migration
 
+- `scripts/migrate_dockerfiles_clone_as_claude.py` - Migration script for migrate dockerfiles clone as claude.
 - `scripts/migrate_dockerfiles_to_mirrors.py` - Migration script for migrate dockerfiles to mirrors.
 - `scripts/migrate_to_sg_evals.sh` - Migration script for migrate to sg evals.
 - `scripts/migrate_to_sg_evals_batch2.sh` - Migration script for migrate to sg evals batch2.
@@ -173,6 +175,8 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/extract_analysis_metrics.py` - Utility script for extract analysis metrics.
 - `scripts/find_mcp_distracted.py` - Utility script for find mcp distracted.
 - `scripts/fix_h3_tokens.py` [one_off] - Historical one-off script: fix h3 tokens.
+- `scripts/fix_workspace_perms.py` [one_off] - Historical one-off script: fix workspace perms.
+- `scripts/handoff_monitor_scrollend.sh` - Utility script for handoff monitor scrollend.
 - `scripts/hydrate_task_specs.py` - Utility script for hydrate task specs.
 - `scripts/icp_profiles.py` - Utility script for icp profiles.
 - `scripts/integrate_answer_json_wave1.py` - Utility script for integrate answer json wave1.
@@ -181,6 +185,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/judge_demo.py` - Utility script for judge demo.
 - `scripts/list_gemini_models.py` - Utility script for list gemini models.
 - `scripts/mirror_largerepo_expansion.sh` - Utility script for mirror largerepo expansion.
+- `scripts/plan_variance_runs.py` - Utility script for plan variance runs.
 - `scripts/push_base_images_ghcr.sh` - Utility script for push base images ghcr.
 - `scripts/regenerate_artifact_dockerfiles.py` - Utility script for regenerate artifact dockerfiles.
 - `scripts/remirror_mcp_unique_repos.sh` - Utility script for remirror mcp unique repos.

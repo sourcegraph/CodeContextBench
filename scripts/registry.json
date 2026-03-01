@@ -427,6 +427,14 @@
       "summary": "Historical one-off script: fix h3 tokens."
     },
     {
+      "name": "fix_workspace_perms.py",
+      "path": "scripts/fix_workspace_perms.py",
+      "category": "misc",
+      "status": "one_off",
+      "language": "python",
+      "summary": "Historical one-off script: fix workspace perms."
+    },
+    {
       "name": "generate_artifact_dockerfiles.py",
       "path": "scripts/generate_artifact_dockerfiles.py",
       "category": "generation",
@@ -1235,7 +1243,7 @@
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 45,
+    "misc": 46,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,

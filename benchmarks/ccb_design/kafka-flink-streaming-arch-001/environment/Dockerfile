@@ -14,6 +14,8 @@ RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 
 WORKDIR /workspace
 
+RUN mkdir -p /workspace && chown claude:claude /workspace
+
 USER claude
 RUN git clone --depth 1 https://github.com/sg-evals/kafka--0753c489.git kafka && \
     git clone --depth 1 https://github.com/sg-evals/flink--0cc95fcc.git flink && \

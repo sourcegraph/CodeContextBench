@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 
+RUN mkdir -p /workspace && chown claude:claude /workspace
+
 USER claude
 WORKDIR /workspace
 RUN git clone --depth 1 https://github.com/sg-evals/curl--09e25b9d.git . || \
