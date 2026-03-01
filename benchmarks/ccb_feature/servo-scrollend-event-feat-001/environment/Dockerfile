@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     autoconf \
     pkg-config \
     libclang-dev \
+    clang \
     && rm -rf /var/lib/apt/lists/*
 
 # Create claude user and writable work dirs before clone.

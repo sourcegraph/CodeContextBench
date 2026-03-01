@@ -84,7 +84,7 @@ TYPE_CHECK_OK=1
 # Try the specific tsconfig for typescript-language-features first, then
 # fall back to a broader check on modified files only.
 if [ -f "extensions/typescript-language-features/tsconfig.json" ]; then
-    npx tsc --noEmit -p extensions/typescript-language-features/tsconfig.json 2>/logs/verifier/typecheck_errors.txt && TSC_RC=0 || TSC_RC=$?
+    ./node_modules/.bin/tsc --noEmit -p extensions/typescript-language-features/tsconfig.json 2>/logs/verifier/typecheck_errors.txt && TSC_RC=0 || TSC_RC=$?
     if [ "$TSC_RC" -ne 0 ]; then
         echo "FAIL: TypeScript type-check failed for typescript-language-features"
         TYPE_CHECK_OK=0
@@ -93,7 +93,7 @@ fi
 
 # Also check src/ if a tsconfig exists there
 if [ -f "src/tsconfig.json" ]; then
-    npx tsc --noEmit -p src/tsconfig.json 2>>/logs/verifier/typecheck_errors.txt && TSC_RC=0 || TSC_RC=$?
+    ./node_modules/.bin/tsc --noEmit -p src/tsconfig.json 2>>/logs/verifier/typecheck_errors.txt && TSC_RC=0 || TSC_RC=$?
     if [ "$TSC_RC" -ne 0 ]; then
         echo "FAIL: TypeScript type-check failed for src/"
         TYPE_CHECK_OK=0
@@ -117,7 +117,7 @@ $(git diff --cached --name-only -- '*.ts' 2>/dev/null || true)"
         echo "Checking $(echo "$MODIFIED_TS" | wc -l) modified .ts files..."
         echo "$MODIFIED_TS" | while read -r tsfile; do
             if [ -f "$tsfile" ]; then
-                npx tsc --noEmit --isolatedModules --skipLibCheck "$tsfile" 2>>/logs/verifier/typecheck_errors.txt || {
+                ./node_modules/.bin/tsc --noEmit --isolatedModules --skipLibCheck "$tsfile" 2>>/logs/verifier/typecheck_errors.txt || {
                     echo "FAIL: Type-check failed for $tsfile"
                     # Signal failure via a marker file since we're in a subshell
                     touch /logs/verifier/typecheck_failed

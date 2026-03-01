@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     python3 \
     python3-pip \
+    libxkbfile-dev \
+    libx11-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create claude user and writable work dirs before clone.
