@@ -1,7 +1,7 @@
 {
   "description": "Canonical run manifest for CodeContextBench evaluation",
-  "generated": "2026-02-28T22:04:48.912316+00:00",
-  "total_tasks": 552,
+  "generated": "2026-03-01T00:38:22.469928+00:00",
+  "total_tasks": 551,
   "total_runs": 72,
   "runs": {
     "ccb_design/baseline": {
@@ -1665,12 +1665,12 @@
     "ccb_fix/baseline-local-direct": {
       "run_id": "ccb_fix_baseline-local-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
-      "timestamp": "2026-02-28 19-20-49",
+      "timestamp": "2026-02-28 23-52-37",
       "task_count": 20,
-      "passed": 14,
-      "failed": 6,
+      "passed": 13,
+      "failed": 7,
       "errored": 0,
-      "mean_reward": 0.523,
+      "mean_reward": 0.51,
       "tasks": {
         "ansible-abc-imports-fix-001": {
           "status": "passed",
@@ -1693,8 +1693,8 @@
           "judge_confidence": null
         },
         "django-modelchoice-fk-fix-001": {
-          "status": "passed",
-          "reward": 0.45,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1704,7 +1704,7 @@
         },
         "django-select-for-update-fix-001": {
           "status": "passed",
-          "reward": 0.67,
+          "reward": 0.77,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1714,7 +1714,7 @@
         },
         "envoy-dfp-host-leak-fix-001": {
           "status": "passed",
-          "reward": 0.7909,
+          "reward": 0.7535,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1724,7 +1724,7 @@
         },
         "envoy-udp-proxy-cds-fix-001": {
           "status": "passed",
-          "reward": 0.7397,
+          "reward": 0.7555,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1744,7 +1744,7 @@
         },
         "flipt-ecr-auth-oci-fix-001": {
           "status": "passed",
-          "reward": 0.9866,
+          "reward": 0.9865,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1774,7 +1774,7 @@
         },
         "flipt-trace-sampling-fix-001": {
           "status": "passed",
-          "reward": 0.984,
+          "reward": 0.9872,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1784,7 +1784,7 @@
         },
         "k8s-dra-scheduler-event-fix-001": {
           "status": "passed",
-          "reward": 0.73,
+          "reward": 0.76,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1794,7 +1794,7 @@
         },
         "kafka-producer-bufpool-fix-001": {
           "status": "passed",
-          "reward": 0.65,
+          "reward": 0.66,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -1864,7 +1864,7 @@
         },
         "terraform-plan-null-unknown-fix-001": {
           "status": "passed",
-          "reward": 0.8405,
+          "reward": 0.9133,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2019,12 +2019,12 @@
     "ccb_fix/mcp-remote-direct": {
       "run_id": "ccb_fix_mcp-remote-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
-      "timestamp": "2026-02-28 19-24-46",
+      "timestamp": "2026-02-28 23-52-48",
       "task_count": 20,
       "passed": 15,
       "failed": 5,
       "errored": 0,
-      "mean_reward": 0.618,
+      "mean_reward": 0.593,
       "tasks": {
         "ansible-abc-imports-fix-001": {
           "status": "passed",
@@ -2048,7 +2048,7 @@
         },
         "django-modelchoice-fk-fix-001": {
           "status": "passed",
-          "reward": 0.85,
+          "reward": 0.45,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2058,7 +2058,7 @@
         },
         "django-select-for-update-fix-001": {
           "status": "passed",
-          "reward": 0.82,
+          "reward": 0.78,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2068,7 +2068,7 @@
         },
         "envoy-dfp-host-leak-fix-001": {
           "status": "passed",
-          "reward": 0.5929,
+          "reward": 0.7481,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2078,7 +2078,7 @@
         },
         "envoy-udp-proxy-cds-fix-001": {
           "status": "passed",
-          "reward": 0.6686,
+          "reward": 0.3886,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2138,7 +2138,7 @@
         },
         "k8s-dra-scheduler-event-fix-001": {
           "status": "passed",
-          "reward": 0.81,
+          "reward": 0.75,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2148,7 +2148,7 @@
         },
         "kafka-producer-bufpool-fix-001": {
           "status": "passed",
-          "reward": 0.69,
+          "reward": 0.74,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2218,7 +2218,7 @@
         },
         "terraform-plan-null-unknown-fix-001": {
           "status": "passed",
-          "reward": 0.775,
+          "reward": 0.865,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -2348,11 +2348,11 @@
       "run_id": "ccb_mcp_compliance_mcp-remote-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-02-26 03-56-52",
-      "task_count": 6,
-      "passed": 6,
+      "task_count": 5,
+      "passed": 5,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.703,
+      "mean_reward": 0.675,
       "tasks": {
         "CCX-compliance-051": {
           "status": "passed",
@@ -2377,16 +2377,6 @@
         "CCX-compliance-053": {
           "status": "passed",
           "reward": 0.7262,
-          "has_trajectory": true,
-          "has_cost": true,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null
-        },
-        "CCX-compliance-057-ds": {
-          "status": "passed",
-          "reward": 0.8442,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -8706,7 +8696,7 @@
     },
     "ccb_fix/baseline-local-direct": {
       "ansible-abc-imports-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.9429,
         "std_reward": 0.0,
         "runs": [
@@ -8723,11 +8713,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:57:49.241240",
+            "reward": 0.9429,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:08:29.205417",
+            "reward": 0.9429,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "ansible-module-respawn-fix-001": {
-        "n_runs": 3,
+        "n_runs": 5,
         "mean_reward": 0.4706,
         "std_reward": 0.0,
         "runs": [
@@ -8751,13 +8755,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:57:53.717584",
+            "reward": 0.4706,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:08:47.864378",
+            "reward": 0.4706,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "django-modelchoice-fk-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.45,
-        "std_reward": 0.0,
+        "n_runs": 4,
+        "mean_reward": 0.225,
+        "std_reward": 0.2598,
         "runs": [
           {
             "started_at": "2026-02-23T19:44:33.839722",
@@ -8772,13 +8790,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:57:57.886892",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:08:59.520694",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "django-select-for-update-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.67,
-        "std_reward": 0.0,
+        "n_runs": 4,
+        "mean_reward": 0.69,
+        "std_reward": 0.0542,
         "runs": [
           {
             "started_at": "2026-02-23T19:00:33.461194",
@@ -8793,13 +8825,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:02.553459",
+            "reward": 0.65,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:08:58.843110",
+            "reward": 0.77,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "envoy-dfp-host-leak-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.7589,
-        "std_reward": 0.0453,
+        "n_runs": 4,
+        "mean_reward": 0.757,
+        "std_reward": 0.0263,
         "runs": [
           {
             "started_at": "2026-02-26T17:58:16.021878",
@@ -8814,13 +8860,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:31:59.880075",
+            "reward": 0.7569,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:15:17.548565",
+            "reward": 0.7535,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "envoy-udp-proxy-cds-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.7475,
-        "std_reward": 0.0111,
+        "n_runs": 4,
+        "mean_reward": 0.7308,
+        "std_reward": 0.0395,
         "runs": [
           {
             "started_at": "2026-02-26T17:58:16.021878",
@@ -8835,11 +8895,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:17:55.103440",
+            "reward": 0.6726,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:06:08.281876",
+            "reward": 0.7555,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-cockroachdb-backend-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.973,
         "std_reward": 0.0,
         "runs": [
@@ -8856,11 +8930,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:06.763406",
+            "reward": 0.973,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:20.661753",
+            "reward": 0.973,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-ecr-auth-oci-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.9866,
         "std_reward": 0.0,
         "runs": [
@@ -8877,13 +8965,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:11.512971",
+            "reward": 0.9866,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:19.145244",
+            "reward": 0.9865,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-eval-latency-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.4,
-        "std_reward": 0.2121,
+        "n_runs": 4,
+        "mean_reward": 0.325,
+        "std_reward": 0.15,
         "runs": [
           {
             "started_at": "2026-02-23T19:49:20.066703",
@@ -8898,11 +9000,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:01:00.118615",
+            "reward": 0.25,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:21:53.943560",
+            "reward": 0.25,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-otlp-exporter-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.9776,
         "std_reward": 0.0,
         "runs": [
@@ -8919,13 +9035,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:02:44.011839",
+            "reward": 0.9776,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:22.380644",
+            "reward": 0.9776,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-trace-sampling-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.9855,
-        "std_reward": 0.0022,
+        "n_runs": 4,
+        "mean_reward": 0.9856,
+        "std_reward": 0.0018,
         "runs": [
           {
             "started_at": "2026-02-23T17:58:34.612299",
@@ -8940,13 +9070,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:06:43.269629",
+            "reward": 0.984,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:27.295862",
+            "reward": 0.9872,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "k8s-dra-scheduler-event-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.705,
-        "std_reward": 0.0354,
+        "n_runs": 4,
+        "mean_reward": 0.7425,
+        "std_reward": 0.0506,
         "runs": [
           {
             "started_at": "2026-02-23T19:04:47.322031",
@@ -8961,12 +9105,26 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:06:48.030020",
+            "reward": 0.8,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:31.196155",
+            "reward": 0.76,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "kafka-producer-bufpool-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.68,
+        "n_runs": 4,
+        "mean_reward": 0.69,
         "std_reward": 0.0424,
         "runs": [
           {
@@ -8982,11 +9140,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:07:28.155599",
+            "reward": 0.74,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:52:37.061381",
+            "reward": 0.66,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "navidrome-windows-log-fix-001": {
-        "n_runs": 3,
+        "n_runs": 5,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9010,11 +9182,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:08:34.253686",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:52:49.368956",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "nodebb-notif-dropdown-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9031,11 +9217,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:11:28.027797",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:52:59.129324",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "nodebb-plugin-validate-fix-001": {
-        "n_runs": 3,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9059,11 +9259,18 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T23:53:05.966633",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "openlibrary-solr-boolean-fix-001": {
-        "n_runs": 4,
+        "n_runs": 6,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9094,11 +9301,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:20:21.285804",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:55:47.685771",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "pytorch-cudnn-version-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9115,11 +9336,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:34:49.218895",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:01:26.212654",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "pytorch-dynamo-keyerror-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9136,13 +9371,27 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:41:11.152432",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:03:55.604485",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "terraform-plan-null-unknown-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.77,
-        "std_reward": 0.0998,
+        "n_runs": 4,
+        "mean_reward": 0.8016,
+        "std_reward": 0.0945,
         "runs": [
           {
             "started_at": "2026-02-26T17:58:16.021898",
@@ -9157,6 +9406,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:33:43.116393",
+            "reward": 0.7533,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:19:16.162717",
+            "reward": 0.9133,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       }
@@ -9347,7 +9610,7 @@
     },
     "ccb_fix/mcp-remote-direct": {
       "ansible-abc-imports-fix-001": {
-        "n_runs": 2,
+        "n_runs": 3,
         "mean_reward": 1.0,
         "std_reward": 0.0,
         "runs": [
@@ -9359,18 +9622,25 @@
             "run_dir": "fix_haiku_20260223_171232"
           },
           {
-            "started_at": "2026-02-28T18:58:44.899368",
+            "started_at": "2026-02-28T20:57:51.226948",
             "reward": 1.0,
             "status": "passed",
             "is_paired": false,
-            "run_dir": "ccb_fix_haiku_20260228_185835"
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:08:50.255737",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "ansible-module-respawn-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.5,
-        "std_reward": 0.7071,
+        "n_runs": 4,
+        "mean_reward": 0.75,
+        "std_reward": 0.5,
         "runs": [
           {
             "started_at": "2026-02-23T17:58:20.250030",
@@ -9385,13 +9655,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:57:55.722339",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:01.608596",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "django-modelchoice-fk-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.65,
-        "std_reward": 0.2828,
+        "n_runs": 4,
+        "mean_reward": 0.5875,
+        "std_reward": 0.1887,
         "runs": [
           {
             "started_at": "2026-02-23T19:47:45.909036",
@@ -9406,13 +9690,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:00.087471",
+            "reward": 0.6,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:04.484865",
+            "reward": 0.45,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "django-select-for-update-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.8,
-        "std_reward": 0.0283,
+        "n_runs": 4,
+        "mean_reward": 0.7775,
+        "std_reward": 0.0369,
         "runs": [
           {
             "started_at": "2026-02-23T19:00:53.051779",
@@ -9427,13 +9725,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:04.586516",
+            "reward": 0.73,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:16.703131",
+            "reward": 0.78,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "envoy-dfp-host-leak-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.6288,
-        "std_reward": 0.0508,
+        "n_runs": 4,
+        "mean_reward": 0.6798,
+        "std_reward": 0.0673,
         "runs": [
           {
             "started_at": "2026-02-26T18:26:39.220118",
@@ -9448,13 +9760,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:33:38.960261",
+            "reward": 0.7135,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:17:38.876295",
+            "reward": 0.7481,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "envoy-udp-proxy-cds-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.7262,
-        "std_reward": 0.0815,
+        "n_runs": 4,
+        "mean_reward": 0.6469,
+        "std_reward": 0.1788,
         "runs": [
           {
             "started_at": "2026-02-26T18:26:37.212385",
@@ -9469,11 +9795,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:30:52.288154",
+            "reward": 0.7466,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:10:49.641889",
+            "reward": 0.3886,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-cockroachdb-backend-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.973,
         "std_reward": 0.0,
         "runs": [
@@ -9490,11 +9830,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:09.440571",
+            "reward": 0.973,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:19.799870",
+            "reward": 0.973,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-ecr-auth-oci-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.9948,
         "std_reward": 0.0,
         "runs": [
@@ -9511,13 +9865,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T20:58:13.201410",
+            "reward": 0.9948,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:09:27.602147",
+            "reward": 0.9948,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-eval-latency-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.275,
-        "std_reward": 0.3889,
+        "n_runs": 4,
+        "mean_reward": 0.35,
+        "std_reward": 0.2614,
         "runs": [
           {
             "started_at": "2026-02-23T20:05:45.964887",
@@ -9532,11 +9900,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:01:48.397056",
+            "reward": 0.3,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:20.714801",
+            "reward": 0.55,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-otlp-exporter-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.979,
         "std_reward": 0.0,
         "runs": [
@@ -9553,11 +9935,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:03:28.169376",
+            "reward": 0.979,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:25.484071",
+            "reward": 0.979,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "flipt-trace-sampling-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.9845,
         "std_reward": 0.0,
         "runs": [
@@ -9574,13 +9970,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:06:44.641545",
+            "reward": 0.9845,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:25:30.049455",
+            "reward": 0.9845,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "k8s-dra-scheduler-event-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.78,
-        "std_reward": 0.0424,
+        "n_runs": 4,
+        "mean_reward": 0.7625,
+        "std_reward": 0.032,
         "runs": [
           {
             "started_at": "2026-02-23T19:05:19.248016",
@@ -9595,13 +10005,27 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:07:15.951945",
+            "reward": 0.74,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:26:01.122586",
+            "reward": 0.75,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "kafka-producer-bufpool-fix-001": {
-        "n_runs": 4,
-        "mean_reward": 0.7475,
-        "std_reward": 0.0427,
+        "n_runs": 6,
+        "mean_reward": 0.745,
+        "std_reward": 0.0333,
         "runs": [
           {
             "started_at": "2026-02-23T19:09:55.399765",
@@ -9630,11 +10054,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:07:44.354943",
+            "reward": 0.74,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:52:48.222763",
+            "reward": 0.74,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "navidrome-windows-log-fix-001": {
-        "n_runs": 3,
+        "n_runs": 5,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9658,11 +10096,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:09:17.534802",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:52:57.356075",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "nodebb-notif-dropdown-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9679,11 +10131,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:11:48.058964",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:53:03.345443",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "nodebb-plugin-validate-fix-001": {
-        "n_runs": 3,
+        "n_runs": 5,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9707,11 +10173,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:12:11.125623",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:53:09.384265",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "openlibrary-solr-boolean-fix-001": {
-        "n_runs": 3,
+        "n_runs": 5,
         "mean_reward": 0.6667,
         "std_reward": 0.0,
         "runs": [
@@ -9735,11 +10215,25 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:21:16.721139",
+            "reward": 0.6667,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-02-28T23:59:28.738913",
+            "reward": 0.6667,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "pytorch-cudnn-version-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9756,11 +10250,25 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:41:09.505926",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:02:42.644893",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "pytorch-dynamo-keyerror-fix-001": {
-        "n_runs": 2,
+        "n_runs": 4,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -9777,13 +10285,27 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T21:45:28.835710",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:03:57.795767",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       },
       "terraform-plan-null-unknown-fix-001": {
-        "n_runs": 2,
-        "mean_reward": 0.865,
-        "std_reward": 0.1273,
+        "n_runs": 4,
+        "mean_reward": 0.7927,
+        "std_reward": 0.1622,
         "runs": [
           {
             "started_at": "2026-02-26T17:58:16.021875",
@@ -9798,6 +10320,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_fix_haiku_20260228_185835"
+          },
+          {
+            "started_at": "2026-02-28T22:33:45.860889",
+            "reward": 0.5757,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_205741"
+          },
+          {
+            "started_at": "2026-03-01T00:19:36.806441",
+            "reward": 0.865,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_fix_haiku_20260228_230722"
           }
         ]
       }
@@ -10062,48 +10598,6 @@
           {
             "started_at": "2026-02-26T03:57:05.443021",
             "reward": 0.7262,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "ccb_mcp_compliance_haiku_20260226_035633_variance"
-          }
-        ]
-      },
-      "CCX-compliance-057-ds": {
-        "n_runs": 5,
-        "mean_reward": 0.7959,
-        "std_reward": 0.0738,
-        "runs": [
-          {
-            "started_at": "2026-02-26T03:55:30.311068",
-            "reward": 0.7412,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "ccb_mcp_compliance_haiku_20260226_035515_variance"
-          },
-          {
-            "started_at": "2026-02-26T03:56:32.077288",
-            "reward": 0.7635,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "ccb_mcp_compliance_haiku_20260226_035617"
-          },
-          {
-            "started_at": "2026-02-26T03:56:41.483485",
-            "reward": 0.9008,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "ccb_mcp_compliance_haiku_20260226_035622_variance"
-          },
-          {
-            "started_at": "2026-02-26T03:56:54.097498",
-            "reward": 0.7297,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "ccb_mcp_compliance_haiku_20260226_035628_variance"
-          },
-          {
-            "started_at": "2026-02-26T03:56:57.679868",
-            "reward": 0.8442,
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_compliance_haiku_20260226_035633_variance"

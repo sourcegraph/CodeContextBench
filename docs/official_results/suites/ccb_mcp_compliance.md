@@ -52,7 +52,7 @@
 
 ## Multi-Run Variance
 
-Tasks with multiple valid runs (5 task/config pairs).
+Tasks with multiple valid runs (4 task/config pairs).
 
 | Task | Benchmark | Config | Runs | Mean | Std | Individual Rewards |
 |---|---|---|---:|---:|---:|---|
@@ -60,4 +60,3 @@ Tasks with multiple valid runs (5 task/config pairs).
 | CCX-compliance-051 | [source](../../../benchmarks/ccb_mcp_compliance/ccx-compliance-051) | `mcp-remote-direct` | 5 | 0.574 | 0.172 | 0.462, 0.514, 0.417, 0.629, 0.846 |
 | CCX-compliance-052 | [source](../../../benchmarks/ccb_mcp_compliance/ccx-compliance-052) | `mcp-remote-direct` | 5 | 0.288 | 0.214 | 0.263, 0.197, 0.663, 0.181, 0.137 |
 | CCX-compliance-053 | [source](../../../benchmarks/ccb_mcp_compliance/ccx-compliance-053) | `mcp-remote-direct` | 4 | 0.556 | 0.160 | 0.467, 0.381, 0.651, 0.726 |
-| CCX-compliance-057-ds | [source](../../../benchmarks/ccb_mcp_compliance/ccx-compliance-057-ds) | `mcp-remote-direct` | 5 | 0.796 | 0.074 | 0.741, 0.763, 0.901, 0.730, 0.844 |

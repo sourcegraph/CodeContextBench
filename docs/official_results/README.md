@@ -2,7 +2,7 @@
 
 This bundle is generated from `runs/official/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).
 
-Generated: `2026-02-28T20:57:07.600629+00:00`
+Generated: `2026-03-01T00:38:37.640286+00:00`
 
 ## Local Browse
 
@@ -17,16 +17,12 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 
 | Suite | Config | Valid Tasks | Min Required | Mean Reward | Pass Rate | Coverage |
 |---|---|---:|---:|---:|---:|---|
-| [ccb_build](suites/ccb_build.md) | `baseline-local-direct` | 24 | 25 | 0.534 | 0.833 | FLAG: below minimum |
-| [ccb_build](suites/ccb_build.md) | `mcp-remote-direct` | 24 | 25 | 0.388 | 0.667 | FLAG: below minimum |
-| [ccb_debug](suites/ccb_debug.md) | `baseline-local-direct` | 20 | 20 | 0.670 | 1.000 | ok |
-| [ccb_debug](suites/ccb_debug.md) | `mcp-remote-direct` | 20 | 20 | 0.487 | 0.600 | ok |
 | [ccb_design](suites/ccb_design.md) | `baseline-local-direct` | 20 | 20 | 0.753 | 0.950 | ok |
 | [ccb_design](suites/ccb_design.md) | `mcp-remote-direct` | 20 | 20 | 0.718 | 1.000 | ok |
 | [ccb_document](suites/ccb_document.md) | `baseline-local-direct` | 20 | 20 | 0.847 | 1.000 | ok |
 | [ccb_document](suites/ccb_document.md) | `mcp-remote-direct` | 25 | 20 | 0.802 | 1.000 | ok |
-| [ccb_fix](suites/ccb_fix.md) | `baseline-local-direct` | 28 | 25 | 0.421 | 0.571 | ok |
-| [ccb_fix](suites/ccb_fix.md) | `mcp-remote-direct` | 53 | 25 | 0.526 | 0.642 | ok |
+| [ccb_fix](suites/ccb_fix.md) | `baseline-local-direct` | 28 | 25 | 0.402 | 0.536 | ok |
+| [ccb_fix](suites/ccb_fix.md) | `mcp-remote-direct` | 98 | 25 | 0.542 | 0.673 | ok |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `baseline-local-artifact` | 1 | 21 | 0.375 | 1.000 | FLAG: below minimum |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `baseline-local-direct` | 6 | 21 | 0.668 | 1.000 | FLAG: below minimum |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `mcp-remote-artifact` | 1 | 21 | 0.742 | 1.000 | FLAG: below minimum |
@@ -78,15 +74,6 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 
 | Run | Suite | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---|---:|---:|---:|
-| [build_haiku_20260223_124805](runs/build_haiku_20260223_124805.md) | `ccb_build` | `baseline-local-direct` | 18 | 0.540 | 0.833 |
-| [build_haiku_20260223_124805](runs/build_haiku_20260223_124805.md) | `ccb_build` | `mcp-remote-direct` | 24 | 0.388 | 0.667 |
-| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `baseline-local-direct` | 18 | 0.540 | 0.833 |
-| [ccb_build_haiku_022326](runs/ccb_build_haiku_022326.md) | `ccb_build` | `mcp-remote-direct` | 24 | 0.388 | 0.667 |
-| [ccb_build_haiku_20260225_234223](runs/ccb_build_haiku_20260225_234223.md) | `ccb_build` | `baseline-local-direct` | 1 | 0.820 | 1.000 |
-| [ccb_build_haiku_20260226_015500_backfill](runs/ccb_build_haiku_20260226_015500_backfill.md) | `ccb_build` | `baseline-local-direct` | 1 | 0.820 | 1.000 |
-| [ccb_build_haiku_20260227_baseline_gapfill](runs/ccb_build_haiku_20260227_baseline_gapfill.md) | `ccb_build` | `baseline-local-direct` | 5 | 0.456 | 0.800 |
-| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `baseline-local-direct` | 20 | 0.670 | 1.000 |
-| [ccb_debug_haiku_022326](runs/ccb_debug_haiku_022326.md) | `ccb_debug` | `mcp-remote-direct` | 20 | 0.487 | 0.600 |
 | [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `baseline-local-direct` | 13 | 0.770 | 1.000 |
 | [ccb_design_haiku_022326](runs/ccb_design_haiku_022326.md) | `ccb_design` | `mcp-remote-direct` | 20 | 0.718 | 1.000 |
 | [ccb_design_haiku_20260225_234223](runs/ccb_design_haiku_20260225_234223.md) | `ccb_design` | `baseline-local-direct` | 7 | 0.723 | 0.857 |
@@ -105,6 +92,10 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_fix_haiku_20260227_151833](runs/ccb_fix_haiku_20260227_151833.md) | `ccb_fix` | `baseline-local-direct` | 1 | 0.000 | 0.000 |
 | [ccb_fix_haiku_20260228_185835](runs/ccb_fix_haiku_20260228_185835.md) | `ccb_fix` | `baseline-local-direct` | 25 | 0.471 | 0.640 |
 | [ccb_fix_haiku_20260228_185835](runs/ccb_fix_haiku_20260228_185835.md) | `ccb_fix` | `mcp-remote-direct` | 25 | 0.592 | 0.720 |
+| [ccb_fix_haiku_20260228_205741](runs/ccb_fix_haiku_20260228_205741.md) | `ccb_fix` | `baseline-local-direct` | 25 | 0.440 | 0.600 |
+| [ccb_fix_haiku_20260228_205741](runs/ccb_fix_haiku_20260228_205741.md) | `ccb_fix` | `mcp-remote-direct` | 25 | 0.536 | 0.680 |
+| [ccb_fix_haiku_20260228_230722](runs/ccb_fix_haiku_20260228_230722.md) | `ccb_fix` | `baseline-local-direct` | 20 | 0.510 | 0.650 |
+| [ccb_fix_haiku_20260228_230722](runs/ccb_fix_haiku_20260228_230722.md) | `ccb_fix` | `mcp-remote-direct` | 20 | 0.593 | 0.750 |
 | [ccb_mcp_compliance_haiku_20260224_181919](runs/ccb_mcp_compliance_haiku_20260224_181919.md) | `ccb_mcp_compliance` | `mcp-remote-artifact` | 1 | 0.742 | 1.000 |
 | [ccb_mcp_compliance_haiku_20260225_011700](runs/ccb_mcp_compliance_haiku_20260225_011700.md) | `ccb_mcp_compliance` | `baseline-local-artifact` | 1 | 0.375 | 1.000 |
 | [ccb_mcp_compliance_haiku_20260226_035515_variance](runs/ccb_mcp_compliance_haiku_20260226_035515_variance.md) | `ccb_mcp_compliance` | `baseline-local-direct` | 1 | 0.386 | 1.000 |
@@ -227,16 +218,12 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_secure_haiku_022326](runs/ccb_secure_haiku_022326.md) | `ccb_secure` | `mcp-remote-direct` | 18 | 0.705 | 1.000 |
 | [ccb_secure_haiku_20260224_213146](runs/ccb_secure_haiku_20260224_213146.md) | `ccb_secure` | `baseline-local-direct` | 2 | 0.500 | 1.000 |
 | [ccb_secure_haiku_20260224_213146](runs/ccb_secure_haiku_20260224_213146.md) | `ccb_secure` | `mcp-remote-direct` | 2 | 0.250 | 0.500 |
-| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `baseline-local-direct` | 9 | 0.472 | 0.778 |
-| [ccb_test_haiku_022326](runs/ccb_test_haiku_022326.md) | `ccb_test` | `mcp-remote-direct` | 8 | 0.555 | 0.625 |
 | [ccb_test_haiku_20260224_180149](runs/ccb_test_haiku_20260224_180149.md) | `ccb_test` | `baseline-local-direct` | 11 | 0.486 | 0.727 |
 | [ccb_test_haiku_20260224_180149](runs/ccb_test_haiku_20260224_180149.md) | `ccb_test` | `mcp-remote-direct` | 11 | 0.387 | 0.727 |
 | [ccb_test_haiku_20260226_015500_backfill](runs/ccb_test_haiku_20260226_015500_backfill.md) | `ccb_test` | `baseline-local-direct` | 1 | 0.370 | 1.000 |
 | [ccb_test_haiku_20260226_015500_backfill](runs/ccb_test_haiku_20260226_015500_backfill.md) | `ccb_test` | `mcp-remote-direct` | 1 | 0.900 | 1.000 |
 | [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `baseline-local-direct` | 13 | 0.592 | 0.692 |
 | [ccb_understand_haiku_022426](runs/ccb_understand_haiku_022426.md) | `ccb_understand` | `mcp-remote-direct` | 13 | 0.841 | 1.000 |
-| [debug_haiku_20260223_154724](runs/debug_haiku_20260223_154724.md) | `ccb_debug` | `baseline-local-direct` | 20 | 0.670 | 1.000 |
-| [debug_haiku_20260223_154724](runs/debug_haiku_20260223_154724.md) | `ccb_debug` | `mcp-remote-direct` | 20 | 0.487 | 0.600 |
 | [design_haiku_20260223_124652](runs/design_haiku_20260223_124652.md) | `ccb_design` | `baseline-local-direct` | 13 | 0.770 | 1.000 |
 | [design_haiku_20260223_124652](runs/design_haiku_20260223_124652.md) | `ccb_design` | `mcp-remote-direct` | 20 | 0.718 | 1.000 |
 | [document_haiku_20260223_164240](runs/document_haiku_20260223_164240.md) | `ccb_document` | `baseline-local-direct` | 19 | 0.851 | 1.000 |
