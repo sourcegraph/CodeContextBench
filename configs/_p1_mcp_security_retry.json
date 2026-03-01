@@ -1,0 +1,256 @@
+{
+  "tasks": [
+    {
+      "task_id": "CCX-dep-trace-253",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "LLVM Pass Manager Registration and Execution Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-253",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "CCX-dep-trace-254",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "LLVM IR Type System to Code Generation Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-254",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "CCX-dep-trace-255",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "GCC RTL Intermediate Representation Pass Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-255",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "CCX-dep-trace-256",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "cpp",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "llvm/llvm-project",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "GCC DWARF Debug Info Generation Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-256",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "CCX-dep-trace-257",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "kubernetes/kubernetes",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Kubernetes API Server to etcd Storage Write Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-257",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "CCX-dep-trace-259",
+      "benchmark": "ccb_mcp_crossrepo",
+      "sdlc_phase": "cross-repo-dep-trace",
+      "language": "go",
+      "difficulty": "hard",
+      "category": "MCP-unique",
+      "repo": "kubernetes/kubernetes",
+      "mcp_benefit_score": 0.9,
+      "mcp_breakdown": {
+        "context_complexity": 0.9,
+        "cross_file_deps": 0.9,
+        "semantic_search_potential": 0.9,
+        "task_category_weight": 0.9
+      },
+      "selection_rationale": "Kubernetes Scheduler Binding to kubelet Pod Admission Chain",
+      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-259",
+      "context_length": 0,
+      "context_length_source": "tbd",
+      "files_count": 0,
+      "files_count_source": "tbd"
+    },
+    {
+      "task_id": "ccx-vuln-remed-011",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-011",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-012",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-012",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-013",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-013",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-014",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-014",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-105",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-105",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-111",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-111",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-126",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-126",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-130",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-130",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-135",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-135",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-141",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-141",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-161",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-161",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-162",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-162",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-163",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-163",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-164",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-164",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-165",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-165",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-166",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-166",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-167",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-167",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-168",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-168",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-169",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-169",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    },
+    {
+      "task_id": "ccx-vuln-remed-170",
+      "task_dir": "ccb_mcp_security/ccx-vuln-remed-170",
+      "suite": "ccb_mcp_security",
+      "oracle_check_types": []
+    }
+  ]
+}

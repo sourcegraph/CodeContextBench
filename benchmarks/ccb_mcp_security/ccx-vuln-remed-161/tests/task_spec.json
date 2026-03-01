@@ -18,32 +18,32 @@
     "oracle": {
       "required_files": [
         {
-          "repo": "pkg/registry",
-          "path": "rbac/clusterrole/policybased/storage.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/clusterrole/policybased/storage.go"
         },
         {
-          "repo": "pkg/registry",
-          "path": "rbac/escalation_check.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/escalation_check.go"
         },
         {
-          "repo": "pkg/registry",
-          "path": "rbac/clusterrolebinding/policybased/storage.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/clusterrolebinding/policybased/storage.go"
         },
         {
-          "repo": "pkg/registry",
-          "path": "rbac/validation/rule.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/validation/rule.go"
         },
         {
-          "repo": "pkg/registry",
-          "path": "rbac/clusterrole/registry.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/clusterrole/registry.go"
         },
         {
-          "repo": "pkg/registry",
-          "path": "rbac/clusterrolebinding/registry.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/registry/rbac/clusterrolebinding/registry.go"
         },
         {
-          "repo": "pkg/controller",
-          "path": "clusterroleaggregation/clusterroleaggregation_controller.go"
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "pkg/controller/clusterroleaggregation/clusterroleaggregation_controller.go"
         }
       ],
       "required_symbols": [],

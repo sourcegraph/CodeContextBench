@@ -18,24 +18,24 @@
     "oracle": {
       "required_files": [
         {
-          "repo": "source/common",
-          "path": "http/conn_manager_utility.cc"
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/common/http/conn_manager_utility.cc"
         },
         {
-          "repo": "source/common",
-          "path": "http/headers.h"
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/common/http/headers.h"
         },
         {
-          "repo": "envoy/http",
-          "path": "header_validator.h"
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "envoy/http/header_validator.h"
         },
         {
-          "repo": "source/common",
-          "path": "http/matching/inputs.h"
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/common/http/matching/inputs.h"
         },
         {
-          "repo": "source/common",
-          "path": "http/matching/data_impl.h"
+          "repo": "sg-evals/envoy--v1.31.2",
+          "path": "source/common/http/matching/data_impl.h"
         }
       ],
       "required_symbols": [],

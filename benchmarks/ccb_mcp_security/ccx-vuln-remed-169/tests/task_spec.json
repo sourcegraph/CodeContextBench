@@ -18,16 +18,16 @@
     "oracle": {
       "required_files": [
         {
-          "repo": "lib/internal",
-          "path": "freeze_intrinsics.js"
+          "repo": "sg-evals/node--v22.6.0",
+          "path": "lib/internal/freeze_intrinsics.js"
         },
         {
-          "repo": "lib/internal",
-          "path": "bootstrap/realm.js"
+          "repo": "sg-evals/node--v22.6.0",
+          "path": "lib/internal/bootstrap/realm.js"
         },
         {
-          "repo": "lib/internal",
-          "path": "cli_table.js"
+          "repo": "sg-evals/node--v22.6.0",
+          "path": "lib/internal/cli_table.js"
         }
       ],
       "required_symbols": [],
