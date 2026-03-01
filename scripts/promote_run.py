@@ -48,6 +48,39 @@ SELECTED_TASKS_FILE = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__v1_hinted"]
 
 DIR_PREFIX_TO_SUITE = {
+    # Current SDLC suites (run names: ccb_<suite>_haiku_* or <suite>_haiku_*)
+    "ccb_debug_": "ccb_debug",
+    "ccb_design_": "ccb_design",
+    "ccb_document_": "ccb_document",
+    "ccb_feature_": "ccb_feature",
+    "ccb_fix_": "ccb_fix",
+    "ccb_refactor_": "ccb_refactor",
+    "ccb_secure_": "ccb_secure",
+    "ccb_test_": "ccb_test",
+    "ccb_understand_": "ccb_understand",
+    # Short-form SDLC prefixes (run names: debug_haiku_*, feature_haiku_*, etc.)
+    "debug_": "ccb_debug",
+    "design_": "ccb_design",
+    "document_": "ccb_document",
+    "feature_": "ccb_feature",
+    "fix_": "ccb_fix",
+    "refactor_": "ccb_refactor",
+    "secure_": "ccb_secure",
+    "test_": "ccb_test",
+    "understand_": "ccb_understand",
+    # Current MCP-unique suites (run names: ccb_mcp_<suite>_haiku_*)
+    "ccb_mcp_compliance_": "ccb_mcp_compliance",
+    "ccb_mcp_crossorg_": "ccb_mcp_crossorg",
+    "ccb_mcp_crossrepo_tracing_": "ccb_mcp_crossrepo_tracing",
+    "ccb_mcp_crossrepo_": "ccb_mcp_crossrepo",
+    "ccb_mcp_domain_": "ccb_mcp_domain",
+    "ccb_mcp_incident_": "ccb_mcp_incident",
+    "ccb_mcp_migration_": "ccb_mcp_migration",
+    "ccb_mcp_onboarding_": "ccb_mcp_onboarding",
+    "ccb_mcp_org_": "ccb_mcp_org",
+    "ccb_mcp_platform_": "ccb_mcp_platform",
+    "ccb_mcp_security_": "ccb_mcp_security",
+    # Legacy suites (historical runs)
     "bigcode_mcp_": "ccb_largerepo",
     "bigcode_sgcompare_": "ccb_largerepo",
     "codereview_": "ccb_codereview",
@@ -172,13 +205,50 @@ def suite_from_task_id(task_id: str) -> str | None:
         return "ccb_security"
     if task_id.startswith("ent-") or task_id.startswith("dep-") or task_id.startswith("multi-team-") or task_id.startswith("polyglot-"):
         return "ccb_enterprise"
-    return None
+    # MCP-unique task IDs (ccx-* pattern)
+    if task_id.startswith("ccx-"):
+        return _suite_from_selection_file(task_id)
+    # Fallback: look up in selected_benchmark_tasks.json
+    return _suite_from_selection_file(task_id)
+
+
+# Cache for selection file lookup
+_SELECTION_CACHE: dict[str, str] | None = None
+
+
+def _suite_from_selection_file(task_id: str) -> str | None:
+    """Look up suite from selected_benchmark_tasks.json."""
+    global _SELECTION_CACHE
+    if _SELECTION_CACHE is None:
+        _SELECTION_CACHE = {}
+        if SELECTED_TASKS_FILE.is_file():
+            try:
+                data = json.loads(SELECTED_TASKS_FILE.read_text())
+                for task in data.get("tasks", []):
+                    tid = task.get("task_id", "")
+                    suite = task.get("benchmark") or task.get("mcp_suite", "")
+                    if tid and suite:
+                        _SELECTION_CACHE[tid.lower()] = suite
+                        # Also strip sgonly_/mcp_/bl_ prefixes
+                        for pfx in ("sgonly_", "mcp_", "bl_"):
+                            if tid.lower().startswith(pfx):
+                                _SELECTION_CACHE[tid.lower()[len(pfx):]] = suite
+            except (json.JSONDecodeError, KeyError):
+                pass
+    # Normalize: strip sgonly_/mcp_/bl_ prefixes and Harbor suffix
+    normalized = re.sub(r"_[a-z0-9]{4,8}$", "", task_id.lower())
+    for pfx in ("sgonly_", "mcp_", "bl_"):
+        if normalized.startswith(pfx):
+            normalized = normalized[len(pfx):]
+    return _SELECTION_CACHE.get(normalized) or _SELECTION_CACHE.get(task_id.lower())
 
 
 def suite_from_run_name(run_name: str) -> str | None:
-    for prefix, suite in DIR_PREFIX_TO_SUITE.items():
+    # Check longest prefixes first to avoid partial matches
+    # (e.g. ccb_mcp_crossrepo_tracing_ before ccb_mcp_crossrepo_)
+    for prefix in sorted(DIR_PREFIX_TO_SUITE, key=len, reverse=True):
         if run_name.startswith(prefix):
-            return suite
+            return DIR_PREFIX_TO_SUITE[prefix]
     return None
 
 
