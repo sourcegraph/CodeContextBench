@@ -119,7 +119,7 @@ def parse_transcripts(transcript_dir: str):
                                 fp = inp.get("file_path", "")
                                 if fp:
                                     fp = re.sub(
-                                        r"^/home/stephanie_jarmak/CodeContextBench/",
+                                        r"^/home/stephanie_jarmak/CodeScaleBench/",
                                         "", fp,
                                     )
                                     if name == "Read":
@@ -329,7 +329,7 @@ def main():
     parser.add_argument(
         "--transcript-dir",
         default=os.path.expanduser(
-            "~/.claude/projects/-home-stephanie-jarmak-CodeContextBench/"
+            "~/.claude/projects/-home-stephanie-jarmak-CodeScaleBench/"
         ),
     )
     parser.add_argument("--output-dir", default="data/build_diary")

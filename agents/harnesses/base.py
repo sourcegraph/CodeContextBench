@@ -13,7 +13,7 @@ class BaselineHarnessMixin:
 
     # Path used by the Claude-specific template; remains available for fallback content.
     LOCOBENCH_CLAUDE_MD_TEMPLATE = Path(
-        "/home/stephanie_jarmak/CodeContextBench/benchmarks/locobench_agent/templates/CLAUDE.md"
+        "/home/stephanie_jarmak/CodeScaleBench/benchmarks/locobench_agent/templates/CLAUDE.md"
     )
 
     EVALUATION_CONTEXT_PROMPT = """## EVALUATION CONTEXT

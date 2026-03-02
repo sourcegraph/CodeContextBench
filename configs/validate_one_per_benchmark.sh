@@ -114,7 +114,7 @@ for t in sel['tasks']:
 ")
 
 echo "=============================================="
-echo "CodeContextBench Validation Run (parallel)"
+echo "CodeScaleBench Validation Run (parallel)"
 echo "=============================================="
 if [ "$SG_ONLY" = true ]; then
     echo "Mode:    sg_only_env smoke (Dockerfile.sg_only swap)"
