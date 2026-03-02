@@ -100,7 +100,7 @@ Eleven additional suites measure cross-repo discovery, symbol resolution, depend
 | `csb_org_crossrepo` | K: Cross-Repo Discovery | 20 | Cross-repo search, dependency discovery, impact analysis |
 | **Total** | | **220** | |
 
-**Combined catalog total: 400 tasks** (180 SDLC across 9 suites + 220 MCP-unique across 11 suites). An additional 28 backup tasks are archived in `benchmarks/backups/`.
+**Combined catalog total: 400 tasks** (180 SDLC across 9 suites + 220 Org across 11 suites). An additional 28 backup tasks are archived in `benchmarks/backups/`.
 
 Both baseline and MCP-Full agents have access to **all repos** in each task's fixture. The only difference is the method: baseline reads code locally, MCP-Full uses Sourcegraph MCP tools (local code is truncated). This ensures we measure whether MCP tools help agents work better — not whether MCP can access repos the baseline can't.
 
@@ -113,7 +113,7 @@ See [docs/MCP_UNIQUE_TASKS.md](docs/MCP_UNIQUE_TASKS.md) for the full task syste
 All benchmarks are evaluated across two paper-level configurations (Baseline vs MCP-Full). The concrete run config names differ by task type:
 
 - **SDLC suites** (`csb_sdlc_feature`, `csb_sdlc_refactor`, `csb_sdlc_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
-- **MCP-unique suites** (`csb_org_*`): `baseline-local-artifact` + `mcp-remote-artifact`
+- **Org suites** (`csb_org_*`): `baseline-local-artifact` + `mcp-remote-artifact`
 
 Legacy run directory names (`baseline`, `sourcegraph_full`, `artifact_full`) may still appear in historical outputs and are handled by analysis scripts.
 
@@ -131,7 +131,7 @@ See [docs/reference/CONFIGS.md](docs/reference/CONFIGS.md) for the canonical con
 ## Repository Structure
 
 ```
-benchmarks/              # Task definitions organized by SDLC phase + MCP-unique
+benchmarks/              # Task definitions organized by SDLC phase + Org
   csb_sdlc_feature/      #   Feature Implementation (20 tasks)
   csb_sdlc_refactor/     #   Cross-File Refactoring (20 tasks)
   csb_sdlc_debug/        #   Debugging & Investigation (20 tasks)
@@ -142,17 +142,17 @@ benchmarks/              # Task definitions organized by SDLC phase + MCP-unique
   csb_sdlc_test/         #   Testing & QA (20 tasks)
   csb_sdlc_understand/   #   Requirements & Discovery (20 tasks)
   backups/               #   Archived backup tasks (28 total)
-  csb_org_compliance/    #   MCP-unique: compliance & audit (20 tasks)
-  csb_org_crossorg/      #   MCP-unique: cross-org discovery (20 tasks)
-  csb_org_crossrepo/     #   MCP-unique: cross-repo discovery (20 tasks)
-  csb_org_crossrepo_tracing/  #   MCP-unique: dependency tracing (20 tasks)
-  csb_org_domain/        #   MCP-unique: domain lineage (20 tasks)
-  csb_org_incident/      #   MCP-unique: incident debugging (20 tasks)
-  csb_org_migration/     #   MCP-unique: framework migration (20 tasks)
-  csb_org_onboarding/    #   MCP-unique: onboarding (20 tasks)
-  csb_org_org/           #   MCP-unique: org context (20 tasks)
-  csb_org_platform/      #   MCP-unique: platform knowledge (20 tasks)
-  csb_org_security/      #   MCP-unique: vulnerability remediation (20 tasks)
+  csb_org_compliance/    #   Org: compliance & audit (20 tasks)
+  csb_org_crossorg/      #   Org: cross-org discovery (20 tasks)
+  csb_org_crossrepo/     #   Org: cross-repo discovery (20 tasks)
+  csb_org_crossrepo_tracing/  #   Org: dependency tracing (20 tasks)
+  csb_org_domain/        #   Org: domain lineage (20 tasks)
+  csb_org_incident/      #   Org: incident debugging (20 tasks)
+  csb_org_migration/     #   Org: framework migration (20 tasks)
+  csb_org_onboarding/    #   Org: onboarding (20 tasks)
+  csb_org_org/           #   Org: org context (20 tasks)
+  csb_org_platform/      #   Org: platform knowledge (20 tasks)
+  csb_org_security/      #   Org: vulnerability remediation (20 tasks)
 configs/                 # Run configs and task selection
   _common.sh             #   Shared infra: token refresh, parallel execution, multi-account
   sdlc_suite_2config.sh  #   Generic SDLC runner (used by phase wrappers below)
@@ -167,8 +167,8 @@ configs/                 # Run configs and task selection
   run_selected_tasks.sh  #   Unified runner for all tasks
   validate_one_per_benchmark.sh  # Pre-flight smoke (1 task per suite)
   selected_benchmark_tasks.json  # Canonical SDLC task selection with metadata
-  selected_mcp_unique_tasks.json # MCP-unique task selection with metadata
-  use_case_registry.json #   100 GTM use cases (MCP-unique task source)
+  selected_mcp_unique_tasks.json # Org task selection with metadata
+  use_case_registry.json #   100 GTM use cases (Org task source)
   archive/               #   Pre-SDLC migration scripts (preserved for history)
 scripts/                 # Metrics extraction, evaluation, and operational tooling
   csb_metrics/           #   Python package: models, extractors, discovery, judge context
@@ -201,7 +201,7 @@ docs/                    # Operational documentation
   TASK_CATALOG.md        #   Detailed per-task reference
   TASK_SELECTION.md      #   Selection criteria, difficulty calibration, MCP scoring
   SCORING_SEMANTICS.md   #   Reward and pass interpretation per benchmark
-  MCP_UNIQUE_TASKS.md    #   MCP-unique task system, authoring, oracle evaluation
+  MCP_UNIQUE_TASKS.md    #   Org task system, authoring, oracle evaluation
   MCP_UNIQUE_CALIBRATION.md # Oracle coverage analysis and threshold calibration
   WORKFLOW_METRICS.md    #   Timing/cost metric definitions
   AGENT_INTERFACE.md     #   Runtime I/O contract for agents
@@ -214,7 +214,7 @@ skills/                  # AI agent skill definitions (operational runbooks)
 schemas/                 # JSON schemas for MANIFEST.json, task.toml, etc.
 ```
 
-Each suite directory contains per-task subdirectories with `instruction.md`, `task.toml`, `tests/`, and ground truth (or `solution/`). MCP-unique tasks additionally include `task_spec.json`, `oracle_answer.json`, and Dockerfile variants for baseline/MCP-only execution.
+Each suite directory contains per-task subdirectories with `instruction.md`, `task.toml`, `tests/`, and ground truth (or `solution/`). Org tasks additionally include `task_spec.json`, `oracle_answer.json`, and Dockerfile variants for baseline/MCP-only execution.
 
 ---
 
@@ -315,12 +315,12 @@ bash configs/test_2config.sh             # 20 Testing & QA tasks
 bash configs/document_2config.sh         # 20 Documentation tasks
 ```
 
-### MCP-Unique Tasks
+### CodeScaleBench-Org Tasks
 
-MCP-unique tasks use a separate selection file:
+Org tasks use a separate selection file:
 
 ```bash
-# Run all MCP-unique tasks across 2 configs
+# Run all Org tasks across 2 configs
 bash configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json
 
 # Filter by use-case category

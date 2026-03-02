@@ -1,12 +1,12 @@
-# MCP-Unique / Org-Scale Context Retrieval Tasks
+# CodeScaleBench-Org / Org-Scale Context Retrieval Tasks
 
-This document covers the MCP-unique benchmark extension — tasks that measure how
+This document covers the Org benchmark extension — tasks that measure how
 MCP tools help agents with cross-repo discovery, symbol resolution, dependency
 tracing, and deep-search-driven investigation in polyrepo environments.
 
 ## Overview
 
-MCP-unique tasks exercise **org-scale polyrepo** scenarios where the answer
+Org tasks exercise **org-scale polyrepo** scenarios where the answer
 requires information spread across 3-20 repositories. Both baseline and MCP-Full
 agents have access to all repos — the only difference is the method of access:
 
@@ -34,7 +34,7 @@ cross-repo tasks — not whether MCP can access information the baseline can't.
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│                  MCP-Unique Task System                     │
+│                  CodeScaleBench-Org Task System                     │
 │                                                             │
 │  configs/use_case_registry.json        (100 use cases)     │
 │         │                                                   │
@@ -272,13 +272,13 @@ Each task has `tests/task_spec.json` with explicit criteria:
 
 ### Config Pairing
 
-MCP-unique tasks always use **artifact** configs:
+Org tasks always use **artifact** configs:
 
 - `baseline-local-artifact` — full repos cloned locally, agent writes `answer.json`
 - `mcp-remote-artifact` — empty workspace, agent uses MCP tools, writes `answer.json`
 
-Do NOT use `-direct` configs for MCP-unique suites. Direct configs expect code
-changes (git diffs); MCP-unique verifiers expect an `answer.json` artifact
+Do NOT use `-direct` configs for Org suites. Direct configs expect code
+changes (git diffs); Org verifiers expect an `answer.json` artifact
 scored against `oracle_answer.json`. The runner script auto-selects artifact
 configs when launched with `--selection-file configs/selected_mcp_unique_tasks.json`.
 
@@ -444,7 +444,7 @@ design uses cross-org (different GitHub orgs) instead. To add cross-host:
 
 ## Dual-Mode Verification (Artifact + Direct)
 
-Some MCP-unique tasks support both **artifact** and **direct** verification,
+Some Org tasks support both **artifact** and **direct** verification,
 controlled by the `verification_modes` field in `configs/use_case_registry.json`.
 
 ### How it works

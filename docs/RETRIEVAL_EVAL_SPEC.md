@@ -301,7 +301,7 @@ matched comparisons but included in per-config aggregates.
 
 ### Coverage Caveats
 
-- Tasks without file-level ground truth (MCP-unique discovery tasks,
+- Tasks without file-level ground truth (Org discovery tasks,
   write-only tasks) are excluded from IR metrics.
 - Tasks in degraded mode (no trajectory or transcript) emit empty events
   and are flagged in coverage metadata.
@@ -331,7 +331,7 @@ these should be implemented without explicit policy discussion.**
 
 ### `docs/MCP_UNIQUE_TASKS.md` / `docs/MCP_UNIQUE_CALIBRATION.md`
 
-- **Oracle coverage integration**: MCP-unique task oracle items could be
+- **Oracle coverage integration**: Org task oracle items could be
   mapped to retrieval events for oracle-aware retrieval scoring.
 - **Deep Search effectiveness**: The `deep_search` tool category enables
   future analysis of Deep Search ROI versus keyword/NLS search.
@@ -354,4 +354,4 @@ these should be implemented without explicit policy discussion.**
 - `schemas/retrieval_events_schema.json` — JSON Schema definition
 - `docs/EVALUATION_PIPELINE.md` — primary evaluation pipeline
 - `docs/SCORING_SEMANTICS.md` — reward interpretation
-- `docs/MCP_UNIQUE_TASKS.md` — MCP-unique task system
+- `docs/MCP_UNIQUE_TASKS.md` — Org task system

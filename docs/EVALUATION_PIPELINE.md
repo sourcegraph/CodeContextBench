@@ -5,7 +5,7 @@ run first (every task), then an optional LLM judge adds qualitative scoring,
 and statistical modules provide confidence intervals and correlation analysis.
 
 This document covers the pipeline architecture. For per-benchmark scoring
-details, see [SCORING_SEMANTICS.md](SCORING_SEMANTICS.md). For MCP-unique
+details, see [SCORING_SEMANTICS.md](SCORING_SEMANTICS.md). For Org
 oracle checks, see [MCP_UNIQUE_TASKS.md](MCP_UNIQUE_TASKS.md). For the full
 retrieval/IR evaluation pipeline (normalized retrieval events, file/chunk IR
 metrics, utilization probes, taxonomy, and emitted artifacts), see
@@ -48,7 +48,7 @@ Harbor run output (result.json, transcript)
 
 ## Layer 1: Deterministic Verifiers
 
-Every task ships a `tests/test.sh` (SDLC tasks) or `tests/eval.sh` (MCP-unique
+Every task ships a `tests/test.sh` (SDLC tasks) or `tests/eval.sh` (Org
 tasks) that runs inside the Docker container after the agent finishes. The
 verifier writes a reward (0.0–1.0) to `/logs/verifier/reward.txt` and exits 0
 on success, non-zero on failure.
@@ -153,9 +153,9 @@ python3 scripts/run_judge.py --run runs/official/my_run/ --force
 
 Output: `judge_result.json` written alongside each task's `result.json`.
 
-### Hybrid Scoring (MCP-Unique Tasks)
+### Hybrid Scoring (CodeScaleBench-Org Tasks)
 
-MCP-unique tasks with `tests/criteria.json` support hybrid evaluation:
+Org tasks with `tests/criteria.json` support hybrid evaluation:
 `composite = 0.6 * verifier_reward + 0.4 * rubric_score`. Enable with
 `--hybrid` flag on `run_judge.py`.
 

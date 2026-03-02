@@ -1,6 +1,6 @@
-# MCP-Unique Task Templates
+# CodeScaleBench-Org Task Templates
 
-Templates for generating Harbor-compatible MCP-unique benchmark task directories.
+Templates for generating Harbor-compatible Org benchmark task directories.
 All templates use Python `string.Template` syntax: `$variable` or `${variable}`.
 Literal `$` signs in bash code are escaped as `$$`.
 

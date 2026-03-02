@@ -1,6 +1,6 @@
 # CodeScaleBench Benchmarks
 
-This directory contains SDLC-aligned suites plus MCP-unique org-scale retrieval suites. The canonical selected task catalog is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (currently 294 selected tasks across 20 suites).
+This directory contains SDLC-aligned suites plus Org org-scale retrieval suites. The canonical selected task catalog is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (currently 294 selected tasks across 20 suites).
 
 See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodology.
 
@@ -23,7 +23,7 @@ See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodol
 
 ---
 
-## MCP-Unique Suite Overview (Selected Catalog)
+## CodeScaleBench-Org Suite Overview (Selected Catalog)
 
 These suites measure cross-repo discovery, tracing, and org-scale code intelligence use cases. Counts below reflect the current selected catalog in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (some suite directories may contain additional draft/deferred tasks that are not selected).
 
@@ -40,7 +40,7 @@ These suites measure cross-repo discovery, tracing, and org-scale code intellige
 | `csb_org_org` | 5 | Org-wide coding correctness tasks requiring broad context |
 | `csb_org_platform` | 5 | Platform/devtools and tribal-knowledge discovery |
 | `csb_org_security` | 10 | Vulnerability remediation and security analysis at org scale |
-| **Total MCP-Unique (selected)** | **81** | |
+| **Total CodeScaleBench-Org (selected)** | **81** | |
 
 For suite taxonomy, authoring, and oracle evaluation details, see [`docs/MCP_UNIQUE_TASKS.md`](../docs/MCP_UNIQUE_TASKS.md).
 

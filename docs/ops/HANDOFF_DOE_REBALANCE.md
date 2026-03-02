@@ -144,7 +144,7 @@ python3 scripts/validate_tasks_preflight.py
 1. **Backup task quality**: The 5 csb_sdlc_fix_extra tasks were removed for repo over-representation — need to check if promoting them creates unacceptable repo bias
 2. **New task scaffolding**: 7 new tasks needed (5 csb_sdlc_test, 2 csb_sdlc_feature) — each requires instruction, verifier, Dockerfile, and oracle curation. Budget ~2-3 hours per task.
 3. **Historical comparability**: Changing suite sizes means old runs (n=20) aren't directly comparable to new runs (variable n). Document this in the white paper methods section.
-4. **MCP-unique suites unaddressed**: This rebalance only covers SDLC suites. The 11 MCP-unique suites (220 tasks) don't have enough variance run data yet for the same analysis. Run doe_variance_analysis.py with `--include-mcp-unique` after collecting MCP-unique variance data.
+4. **Org suites unaddressed**: This rebalance only covers SDLC suites. The 11 Org suites (220 tasks) don't have enough variance run data yet for the same analysis. Run doe_variance_analysis.py with `--include-mcp-unique` after collecting Org variance data.
 5. **csb_sdlc_test currently has 18 tasks** (not 20) — growing to 23 means adding 5, not 3
 
 ## Next Best Command

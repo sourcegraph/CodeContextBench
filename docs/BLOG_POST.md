@@ -18,25 +18,25 @@ Here's the core experimental design. The same agent (Claude Code with Haiku 4.5)
 
 This is the part I think matters most: both configurations have access to the same information. The only difference is the access method. We're not giving the MCP agent extra information — we're testing whether a different pipe to the same information changes outcomes. (If anything, it's a conservative test: in real enterprise settings the agent typically wouldn't have full local access to every relevant repo, so the baseline is actually more favorable than reality.)
 
-Tasks are organized by SDLC phase — Understand, Design, Build, Fix, Test, Document, Secure, Debug — plus a set of MCP-unique tasks that specifically require cross-repository discovery across 3-20 repos. The tasks span 40+ open-source repositories and 10 programming languages, from Kubernetes to Django to the Linux kernel. I wrote a [white paper](WHITE_PAPER_REPORT_V2.md) with the full methodology and an explanation of all the evaluation layers, including the information retrieval analysis pipeline.
+Tasks are organized by SDLC phase — Understand, Design, Build, Fix, Test, Document, Secure, Debug — plus a set of Org tasks that specifically require cross-repository discovery across 3-20 repos. The tasks span 40+ open-source repositories and 10 programming languages, from Kubernetes to Django to the Linux kernel. I wrote a [white paper](WHITE_PAPER_REPORT_V2.md) with the full methodology and an explanation of all the evaluation layers, including the information retrieval analysis pipeline.
 
 ## The Headline: Near-Zero Overall, But the Spread Is the Story
 
-After running 250 valid task pairs across all SDLC suites plus 11 MCP-unique suites (169 SDLC + 81 MCP-unique, with 1 baseline infrastructure error excluded from 251 registered tasks), MCP shows a small but statistically significant positive effect: baseline mean reward 0.594, MCP mean reward 0.640, delta **+0.047** (95% bootstrap CI: [+0.007, +0.085]).
+After running 250 valid task pairs across all SDLC suites plus 11 Org suites (169 SDLC + 81 Org, with 1 baseline infrastructure error excluded from 251 registered tasks), MCP shows a small but statistically significant positive effect: baseline mean reward 0.594, MCP mean reward 0.640, delta **+0.047** (95% bootstrap CI: [+0.007, +0.085]).
 
 But that modest average obscures the real story, because the delta swings from **-0.183** to **+0.440** depending on the task type. That spread — from MCP hurting to MCP helping dramatically — is a much more interesting finding than any single number, because it tells you when code intelligence tools matter and when they don't.
 
 ## Where MCP Wins
 
-The strongest SDLC gain is the Understand suite. MCP-unique tasks show a substantial positive delta, with specific sub-suites showing very large gains.
+The strongest SDLC gain is the Understand suite. Org tasks show a substantial positive delta, with specific sub-suites showing very large gains.
 
 | Suite | Tasks | Baseline Mean | MCP Mean | Delta |
 |-------|-------|--------------|----------|-------|
-| MCP-Unique (all) | 81 | 0.525 | 0.708 | **+0.183** |
+| CodeScaleBench-Org (all) | 81 | 0.525 | 0.708 | **+0.183** |
 | Understand | 20 | 0.660 | 0.851 | **+0.190** |
 | Document | 20 | 0.847 | 0.895 | +0.048 |
 
-**MCP-unique tasks** require cross-repository discovery — tracing a vulnerability across an ecosystem of repos, or mapping how a config value propagates through 5 different services. These tasks span 3-20 repositories and specifically measure org-scale information retrieval. The +0.183 delta (95% bootstrap CI: [+0.116, +0.255]) is the strongest effect in the benchmark. The sub-suite variation is striking: security tasks show **+0.440**, onboarding **+0.337**, org-scale **+0.197**, incident response **+0.177**, while migration (+0.051) and platform (-0.049) are near-flat.
+**Org tasks** require cross-repository discovery — tracing a vulnerability across an ecosystem of repos, or mapping how a config value propagates through 5 different services. These tasks span 3-20 repositories and specifically measure org-scale information retrieval. The +0.183 delta (95% bootstrap CI: [+0.116, +0.255]) is the strongest effect in the benchmark. The sub-suite variation is striking: security tasks show **+0.440**, onboarding **+0.337**, org-scale **+0.197**, incident response **+0.177**, while migration (+0.051) and platform (-0.049) are near-flat.
 
 **Understand tasks** show the strongest SDLC gain at +0.190 (0.660 to 0.851, 95% CI: [+0.043, +0.361]). This was the biggest reversal in the dataset — earlier drafts showed Understand as strongly negative, but that signal was coming from invalid/contaminated runs that were removed and rerun.
 
@@ -95,7 +95,7 @@ One finding I didn't expect after recomputing the cost section on a strict paire
 
 Using one consistent method (`task_metrics.cost_usd`, cache-inclusive, same n=251 pairs), MCP is about 3.8% more expensive on average (+$0.013/task). The cost story is suite-dependent: MCP is cheaper in design/document/understand/mcp_unique, and more expensive in build/debug/fix/secure/test. MCP is still much faster overall: wall-clock drops from 1401.9s to 653.0s on average (-53.4%), and agent execution time drops from 1058.3s to 299.3s (-71.7%).
 
-This reframes the value question a bit. On the suites where MCP improves reward (especially MCP-unique and, in the cleaned paired set, Understand), you're getting better results at lower cost and lower latency. On the suites where reward is flat (fix, test), you're getting similar results faster. The clearly bad trade-offs remain debug and build, where the agent is faster but less effective.
+This reframes the value question a bit. On the suites where MCP improves reward (especially Org and, in the cleaned paired set, Understand), you're getting better results at lower cost and lower latency. On the suites where reward is flat (fix, test), you're getting similar results faster. The clearly bad trade-offs remain debug and build, where the agent is faster but less effective.
 
 ## How I Built This (And What Broke)
 
@@ -131,9 +131,9 @@ If you're building or evaluating code intelligence tools and want to run your st
 
 I started this project because I was drowning in noise. Every tool claims to "supercharge" agent performance. Every benchmark result is a press release. I wanted to know what was actually true, with data granular enough to understand why.
 
-Here's what the data says so far: code intelligence tools provide measurable value on tasks that require **comprehension across large codebases** and **cross-repository discovery**. MCP-unique security tasks show +0.440, onboarding +0.337, understand +0.190. When the bottleneck is finding and understanding scattered context, MCP tools help — and the 95% confidence intervals on these effects exclude zero.
+Here's what the data says so far: code intelligence tools provide measurable value on tasks that require **comprehension across large codebases** and **cross-repository discovery**. Org security tasks show +0.440, onboarding +0.337, understand +0.190. When the bottleneck is finding and understanding scattered context, MCP tools help — and the 95% confidence intervals on these effects exclude zero.
 
-They provide mixed value on other SDLC tasks. MCP helps on understand (+0.190) and document (+0.048), is effectively flat on fix (-0.015) and test (+0.000), and hurts on debugging (-0.183) and build (-0.121). When the agent already has full source code and the bottleneck is local execution/editing rather than retrieval, adding a remote search layer can still be overhead. The overall delta across all 250 valid pairs is +0.047 (95% bootstrap CI: [+0.007, +0.085]) — a small but statistically significant positive, driven primarily by the MCP-unique tasks where cross-repo discovery is the core challenge.
+They provide mixed value on other SDLC tasks. MCP helps on understand (+0.190) and document (+0.048), is effectively flat on fix (-0.015) and test (+0.000), and hurts on debugging (-0.183) and build (-0.121). When the agent already has full source code and the bottleneck is local execution/editing rather than retrieval, adding a remote search layer can still be overhead. The overall delta across all 250 valid pairs is +0.047 (95% bootstrap CI: [+0.007, +0.085]) — a small but statistically significant positive, driven primarily by the Org tasks where cross-repo discovery is the core challenge.
 
 And there's a third category — tasks where the retrieval metrics are basically the same but outcomes still differ — that I can't fully explain yet and might be the most important one to understand.
 

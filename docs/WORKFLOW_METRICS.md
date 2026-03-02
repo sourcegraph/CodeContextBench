@@ -9,14 +9,14 @@
 ## Overview
 
 CodeScaleBench measures AI coding agent performance across 9 SDLC-phase
-suites and 11 MCP-unique suites (20 active suites total). To translate raw
+suites and 11 Org suites (20 active suites total). To translate raw
 benchmark metrics (tokens, tool calls, task time) into business-relevant
 productivity estimates, we map each suite to an **engineering workflow
 category** and apply conservative token-to-time conversion multipliers.
 
 ## Workflow Categories
 
-| Category | Description | SDLC Suites | MCP-Unique Suites |
+| Category | Description | SDLC Suites | CodeScaleBench-Org Suites |
 |----------|-------------|-------------|-------------------|
 | Code Comprehension | Reading, understanding, and reviewing unfamiliar code | csb_sdlc_understand, csb_sdlc_test (code review) | csb_org_onboarding |
 | Cross-Repo Navigation | Tracing dependencies across repositories or large monorepos | csb_sdlc_design (dependency analysis) | csb_org_crossrepo_tracing, csb_org_crossorg |

@@ -1,11 +1,11 @@
-# MCP-Unique Benchmark: Calibration Data
+# CodeScaleBench-Org Benchmark: Calibration Data
 
-This document records calibration data for the MCP-unique starter pack (12 tasks).
+This document records calibration data for the Org starter pack (12 tasks).
 It tracks static oracle coverage analysis and actual run results.
 
 ## Purpose
 
-The MCP-unique tasks are designed so that the baseline agent (local code only)
+The Org tasks are designed so that the baseline agent (local code only)
 **cannot** reach the oracle items. This document:
 1. Shows expected coverage gaps derived from static fixture analysis
 2. Records actual run results once benchmark runs complete

@@ -39,7 +39,7 @@ Config names encode three independent dimensions:
 `baseline-local-direct` + `mcp-remote-direct`. The agent produces code changes
 and the verifier checks git diffs / test results.
 
-**MCP-unique suites** (`csb_org_*`) default to `baseline-local-artifact` +
+**Org suites** (`csb_org_*`) default to `baseline-local-artifact` +
 `mcp-remote-artifact`. The agent produces `/workspace/answer.json` and the
 verifier scores it against an oracle. Tasks with `"verification_modes":
 ["artifact", "direct"]` in `configs/use_case_registry.json` additionally
@@ -221,14 +221,14 @@ fail-fast if that model is unavailable in the configured Codex environment.
 For this rollout, Codex MCP policy is sourcegraph_full-only for MCP-enabled
 runs, with baseline comparisons using `none`. No other MCP modes are allowed.
 
-## Running MCP-Unique Tasks
+## Running CodeScaleBench-Org Tasks
 
-MCP-unique tasks use a separate selection file and support category filtering.
+Org tasks use a separate selection file and support category filtering.
 
 ### Selection File
 
 ```bash
-# Run all 12 MCP-unique tasks (both configs)
+# Run all 12 Org tasks (both configs)
 configs/run_selected_tasks.sh \
   --selection-file configs/selected_mcp_unique_tasks.json
 
@@ -263,9 +263,9 @@ The `--use-case-category` flag filters tasks by the `use_case_category` field in
 the selection file (values: A through J, corresponding to the 10 csb_org_* suites).
 This flag is only meaningful when used with `--selection-file`.
 
-### MCP-Unique vs Standard Suites
+### CodeScaleBench-Org vs Standard Suites
 
-| Feature | Standard suites | MCP-unique suites |
+| Feature | Standard suites | Org suites |
 |---------|----------------|-------------------|
 | **Config pair** | `baseline-local-direct` + `mcp-remote-direct` | `baseline-local-artifact` + `mcp-remote-artifact` |
 | Selection file | `selected_benchmark_tasks.json` | `selected_mcp_unique_tasks.json` |

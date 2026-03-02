@@ -283,7 +283,7 @@ Matches `schemas/retrieval_events_schema.json` ground_truth block. Files as plai
 - `chunks` — line-range annotations per file, format: `{file, line_start, line_end, annotation}` (optional but recommended)
 - `dependency_chain` — ordered file list tracing call/import chain (optional)
 
-### 2. `oracle_answer.json` (MCP-unique tasks only — artifact verifier format)
+### 2. `oracle_answer.json` (Org tasks only — artifact verifier format)
 
 Same format as before, consumed by `oracle_checks.py`:
 

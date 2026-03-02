@@ -48,7 +48,7 @@ targeting specific SDLC activities.
 | `csb_sdlc_secure` | Security & Compliance | 20 | medium--hard | C, C++, Go, Java, Python |
 | `csb_sdlc_debug` | Debugging & Investigation | 20 | medium--expert | C, C++, Go, Python, TS |
 
-**MCP-Unique Suites (220 tasks):** Eleven suites measuring org-scale cross-repo
+**CodeScaleBench-Org Suites (220 tasks):** Eleven suites measuring org-scale cross-repo
 discovery tasks where the agent must find information distributed across 3-20
 repositories.
 
@@ -79,7 +79,7 @@ Tasks are curated from multiple sources to ensure diversity:
 | **PyTorch compiler fixes** | 5 | Fix |
 | **Linux kernel faults** | 5 | Debug |
 | **Code review (injected defects)** | 8 | Test |
-| **MCP-unique (GTM use cases)** | 220 | Cross-repo discovery |
+| **Org (GTM use cases)** | 220 | Cross-repo discovery |
 
 ### 2.3 Language and Repository Coverage
 
@@ -123,7 +123,7 @@ grep/glob/read. MCP-Full agents have truncated source and must use
 Sourcegraph MCP tools (keyword search, semantic search, go-to-definition,
 find-references, deep search, etc.).
 
-For MCP-unique tasks, an artifact evaluation variant is also used:
+For Org tasks, an artifact evaluation variant is also used:
 - `baseline-local-artifact`: full local code, structured `answer.json` output
 - `mcp-remote-artifact`: truncated source, MCP tools, structured `answer.json` output
 
@@ -157,13 +157,13 @@ Different task categories use different verifier types:
 | **similarity** | 0.0--1.0 | Cross-repo patches, NL Q&A |
 | **F1-hybrid** | 0.0--1.0 | Code review (detection F1 + fix quality) |
 | **diff-similarity** | 0.0--1.0 | PyTorch compiler fixes |
-| **oracle-checks** | 0.0--1.0 | MCP-unique tasks (composite of file/symbol/chain/keyword checks) |
+| **oracle-checks** | 0.0--1.0 | Org tasks (composite of file/symbol/chain/keyword checks) |
 | **navigation-verified** | 0.0--1.0 | Regression proving (fail-on-buggy + pass-after-patch) |
 | **external** | 0.0--1.0 | TheAgentCompany tasks |
 
-### 3.4 MCP-Unique Oracle Evaluation
+### 3.4 CodeScaleBench-Org Oracle Evaluation
 
-MCP-unique tasks use a closed-world oracle system with 7 deterministic
+Org tasks use a closed-world oracle system with 7 deterministic
 check functions (file set match, symbol resolution, dependency chain,
 provenance, keyword presence, JSON schema, test ratio). The composite
 score is the mean of primary scores across all configured checks.
@@ -208,9 +208,9 @@ version the task targets.
 
 ## 5. Preliminary Results
 
-### 5.1 MCP-Unique Tasks (Official, n=12)
+### 5.1 CodeScaleBench-Org Tasks (Official, n=12)
 
-The first official run covers all 12 MCP-unique tasks using Claude Haiku 4.5.
+The first official run covers all 12 Org tasks using Claude Haiku 4.5.
 
 | Suite | Task | Baseline | MCP-Full | Delta |
 |-------|------|----------|----------|-------|
@@ -326,7 +326,7 @@ between configs.
 
 ### 6.4 Oracle-Based Evaluation for Discovery Tasks
 
-MCP-unique tasks use exhaustive oracle files/symbols auto-curated via
+Org tasks use exhaustive oracle files/symbols auto-curated via
 Sourcegraph queries, enabling deterministic evaluation of cross-repo
 discovery quality without human labeling.
 
@@ -379,7 +379,7 @@ they perform daily.
    + statistical analysis with bootstrap CIs and paired delta tests.
 
 4. **Preliminary evidence**: MCP tools provide measurable benefit on
-   cross-repo discovery tasks (+0.161 mean reward on MCP-unique tasks)
+   cross-repo discovery tasks (+0.161 mean reward on Org tasks)
    and dramatic improvement on kernel-scale debugging (+1.0 on previously
    impossible fault localization tasks). Effect is smaller on tasks where
    local context is sufficient.

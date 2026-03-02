@@ -114,14 +114,14 @@ csb_sdlc_fix has 3 complete passes for baseline but only 2 for MCP on 17 tasks.
 configs/run_selected_tasks.sh --suite csb_sdlc_fix --mcp-only
 ```
 
-#### 3d. MCP-unique gap tasks (211 tasks across 11 suites)
+#### 3d. Org gap tasks (211 tasks across 11 suites)
 Priority split:
 - **77 tasks**: Have baseline results, need MCP runs only
 - **134 tasks**: Need both baseline AND MCP runs
 
 The gap is documented in the run-gap context below. Use `configs/run_selected_tasks.sh` with per-suite filtering.
 
-**Suites with MCP-unique gaps** (task counts — both/mcp-only):
+**Suites with Org gaps** (task counts — both/mcp-only):
 | Suite | Both needed | MCP only needed |
 |-------|------------|----------------|
 | csb_org_compliance | 11 | 9 |

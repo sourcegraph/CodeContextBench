@@ -7,7 +7,7 @@
 
 ## Abstract
 
-CodeScaleBench (CSB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.019 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
+CodeScaleBench (CSB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: Org cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.019 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
 
 ---
 
@@ -63,7 +63,7 @@ CodeScaleBench is built on three core principles:
 | **RQ2** | On which task types does MCP provide the greatest (or least) benefit?                                         | Per-suite and per-phase delta analysis                          |
 | **RQ3** | How does information retrieval quality correlate with task outcomes?                                          | Spearman rank correlation (file recall, MRR, MAP vs. reward)    |
 | **RQ4** | What are the efficiency trade-offs of MCP tool usage?                                                         | Token cost, wall-clock time, TTFR (Time to First Relevant file) |
-| **RQ5** | Can MCP tools enable agents to complete org-scale discovery tasks that are infeasible with local-only access? | MCP-unique task scores, cross-repo coverage                     |
+| **RQ5** | Can MCP tools enable agents to complete org-scale discovery tasks that are infeasible with local-only access? | Org task scores, cross-repo coverage                     |
 
 ---
 
@@ -86,7 +86,7 @@ CodeScaleBench is built on three core principles:
  │  └── csb_sdlc_debug/       (20 tasks)    ├── csb_org_migration/         │
  │       170 SDLC tasks                ├── csb_org_org/               │
  │                                     ├── csb_org_platform/          │
- │                                     └── 81 MCP-unique tasks        │
+ │                                     └── 81 Org tasks        │
  └───────────────────┬─────────────────────────────────────────────────┘
                      │
                      ▼
@@ -132,11 +132,11 @@ benchmarks/<suite>/<task-id>/
 ├── environment/
 │   ├── Dockerfile               # Baseline: full source code
 │   ├── Dockerfile.sg_only       # MCP: truncated source
-│   └── Dockerfile.artifact_only # MCP-unique: minimal image
+│   └── Dockerfile.artifact_only # Org: minimal image
 ├── tests/
 │   ├── test.sh                  # Harbor-compatible entry point
-│   ├── eval.sh                  # Evaluation logic (MCP-unique)
-│   ├── oracle_checks.py         # Oracle scoring (MCP-unique)
+│   ├── eval.sh                  # Evaluation logic (Org)
+│   ├── oracle_checks.py         # Oracle scoring (Org)
 │   ├── task_spec.json           # Oracle specification
 │   └── sgonly_verifier_wrapper.sh # Repo restoration for SG-only
 └── solution/
@@ -150,7 +150,7 @@ benchmarks/<suite>/<task-id>/
 | **Baseline** | `baseline-local-direct` | Full local code | None                 | `Dockerfile`         | Evaluation context only |
 | **MCP**      | `mcp-remote-direct`     | Truncated/empty | 13 Sourcegraph tools | `Dockerfile.sg_only` | V5 MCP-first preamble   |
 
-For MCP-unique tasks, an additional artifact variant is used:
+For Org tasks, an additional artifact variant is used:
 
 - `baseline-local-artifact`: Full local code, structured `answer.json` output
 - `mcp-remote-artifact`: Truncated source, MCP tools, structured `answer.json` output
@@ -174,7 +174,7 @@ Tasks are drawn from established benchmarks and custom-authored challenges, then
 | `csb_sdlc_secure`     | Security & Compliance     |    20 | medium--hard     | C, C++, Go, Java, Python             |
 | `csb_sdlc_debug`      | Debugging & Investigation |    20 | medium--expert   | C, C++, Go, Python, TS               |
 
-### 4.2 MCP-Unique Suites (81 tasks)
+### 4.2 CodeScaleBench-Org Suites (81 tasks)
 
 These tasks specifically measure org-scale cross-repository discovery capabilities. Each task requires the agent to find information distributed across 3-20 repositories:
 
@@ -232,7 +232,7 @@ The 251 tasks in CodeScaleBench fall into two broad provenance categories:
 
 All tasks, regardless of inspiration source, use CSB-authored instructions and CSB-built verifiers running inside the CSB Docker environment.
 
-**MCP-unique tasks (81 tasks):** Derived from a custom **Use Case Registry** (`configs/use_case_registry.json`) for cross-repository code intelligence. Each use case was validated against Sourcegraph's actual search capabilities and curated into a benchmark task with oracle ground truth. These tasks specifically target org-scale scenarios where information is distributed across 3-20 repositories.
+**Org tasks (81 tasks):** Derived from a custom **Use Case Registry** (`configs/use_case_registry.json`) for cross-repository code intelligence. Each use case was validated against Sourcegraph's actual search capabilities and curated into a benchmark task with oracle ground truth. These tasks specifically target org-scale scenarios where information is distributed across 3-20 repositories.
 
 ### 5.2 GitHub Usage for Task Sourcing
 
@@ -242,7 +242,7 @@ All tasks are grounded in real open-source codebases hosted on GitHub. The task 
 
 2. **Scenario identification**: Task scenarios were identified by examining real repository activity -- open issues, merged PRs, documentation gaps, architectural patterns, and known bugs. For example, PyTorch compiler fusion tasks were modeled on real PRs (e.g., PR #167499); code review tasks inject synthetic defects modeled on real-world vulnerability patterns (null-deref, resource-leak, race-condition, injection, etc.).
 
-3. **MCP-unique repo sets**: Cross-repository tasks use curated **repo set fixtures** (`fixtures/repo_sets/*.json`) defining 11 ecosystems (kubernetes-ecosystem, apache-kafka-ecosystem, compiler-toolchain, mozilla-firefox, etc.). Each repo set specifies the repositories, their relationships, and the Sourcegraph mirror names used for MCP access.
+3. **Org repo sets**: Cross-repository tasks use curated **repo set fixtures** (`fixtures/repo_sets/*.json`) defining 11 ecosystems (kubernetes-ecosystem, apache-kafka-ecosystem, compiler-toolchain, mozilla-firefox, etc.). Each repo set specifies the repositories, their relationships, and the Sourcegraph mirror names used for MCP access.
 
 4. **Mirror creation for MCP access**: Repositories not natively indexed in Sourcegraph are mirrored to the `sg-evals` GitHub organization at pinned commits, ensuring the MCP tools search the exact version the task targets (see Section 9.5).
 
@@ -293,7 +293,7 @@ Each task is assigned to one of 8 SDLC phases based on the primary development a
 
 Ground truth serves two distinct purposes in CodeScaleBench, and it is important to distinguish them:
 
-1. **Task scoring (verifiers)**: For MCP-unique artifact tasks, ground truth is used _directly_ in scoring -- `oracle_checks.py` compares the agent's `answer.json` against the oracle to compute file-set F1, symbol recall, chain recall, etc. (see Section 7.4). For SDLC direct tasks, ground truth is embedded in the verifier itself -- the test suite, expected defects, or rubric criteria define what "correct" means, and the verifier scores against those expectations without referencing a separate ground truth registry.
+1. **Task scoring (verifiers)**: For Org artifact tasks, ground truth is used _directly_ in scoring -- `oracle_checks.py` compares the agent's `answer.json` against the oracle to compute file-set F1, symbol recall, chain recall, etc. (see Section 7.4). For SDLC direct tasks, ground truth is embedded in the verifier itself -- the test suite, expected defects, or rubric criteria define what "correct" means, and the verifier scores against those expectations without referencing a separate ground truth registry.
 
 2. **Information retrieval analysis (IR metrics)**: Ground truth file lists are used _post-hoc_ by the IR evaluation pipeline (Section 8) to measure retrieval quality -- did the agent access the files it needed to? This is a diagnostic layer that does not affect task scores. It answers questions like "did the MCP tools help the agent find the right files faster?" by comparing the agent's file-access trace against the known-relevant files.
 
@@ -323,7 +323,7 @@ Ground truth extraction uses task-type-specific strategies that match how each t
 - **Code-review tasks** (csb_sdlc_test): `expected_defects.json` provides structured defect annotations (file, line range, defect type)
 - **Fault-localization tasks** (csb_sdlc_debug): Ground truth file paths extracted from `instruction.md`
 
-**MCP-unique tasks (81 tasks)** use `oracle_answer.json` as the authoritative source, providing structured ground truth with files, symbols, dependency chains, and keywords (see Section 6.5).
+**Org tasks (81 tasks)** use `oracle_answer.json` as the authoritative source, providing structured ground truth with files, symbols, dependency chains, and keywords (see Section 6.5).
 
 ### 6.4 Ground Truth Data Model
 
@@ -347,9 +347,9 @@ class DefectAnnotation:
     defect_type: str  # null-deref | resource-leak | race-condition | ...
 ```
 
-### 6.5 MCP-Unique Oracle System
+### 6.5 CodeScaleBench-Org Oracle System
 
-MCP-unique tasks use a **closed-world oracle** system with 7 deterministic check functions:
+Org tasks use a **closed-world oracle** system with 7 deterministic check functions:
 
 ```
 Oracle Answer Structure (answer.json):
@@ -403,13 +403,13 @@ Oracle answers were auto-curated via Sourcegraph queries and validated with a **
 - Gold answer (all oracle items) must score **1.0**
 - Empty answer (no items) must score **0.0**
 
-All 81 MCP-unique tasks passed this validation before inclusion.
+All 81 Org tasks passed this validation before inclusion.
 
 ### 6.8 Oracle Calibration
 
 Beyond the fail2pass gate (Section 6.7), oracle calibration validates that check functions produce meaningful score discrimination on **partial** answers — a subset of oracle items must produce a score strictly between 0.0 and 1.0, confirming the scoring function rewards incremental progress.
 
-Because both configs have **information parity** — baseline receives all repos cloned locally in `/workspace`, while MCP accesses the same repos via Sourcegraph MCP tools — the oracle measures how effectively the agent discovers and assembles cross-repo information, not whether the information is accessible at all. The 12-task starter pack confirmed that baseline agents can and do achieve non-zero scores (mean 0.722) using local search tools alone, while MCP agents achieve higher scores on average (mean 0.884) — see Section 11.1 for full results. MCP-unique tasks are designed to measure tool-assisted _search quality_ across polyrepo codebases, not information access gaps.
+Because both configs have **information parity** — baseline receives all repos cloned locally in `/workspace`, while MCP accesses the same repos via Sourcegraph MCP tools — the oracle measures how effectively the agent discovers and assembles cross-repo information, not whether the information is accessible at all. The 12-task starter pack confirmed that baseline agents can and do achieve non-zero scores (mean 0.722) using local search tools alone, while MCP agents achieve higher scores on average (mean 0.884) — see Section 11.1 for full results. Org tasks are designed to measure tool-assisted _search quality_ across polyrepo codebases, not information access gaps.
 
 ---
 
@@ -430,7 +430,7 @@ Harbor uploads each task's `tests/` directory to `/tests/` inside the container 
  │          │                                              │
  │          ▼                                              │
  │  /tests/test.sh  (SDLC tasks)                          │
- │  /tests/eval.sh  (MCP-unique tasks)                    │
+ │  /tests/eval.sh  (Org tasks)                    │
  │          │                                              │
  │          ├── sources shared libraries as needed:        │
  │          │   ├── verifier_lib.sh  (IR metrics helpers)  │
@@ -476,12 +476,12 @@ reward = 0.5 × detection_F1 + 0.5 × fix_score
 
 The verifier strips markdown code fences from agent output and handles nested JSON structures (agents sometimes wrap JSON in `{"review": {"defects": [...]}}` instead of flat `{"defects": [...]}`).
 
-### 7.4 MCP-Unique Task Verifiers (eval.sh + oracle_checks.py)
+### 7.4 CodeScaleBench-Org Task Verifiers (eval.sh + oracle_checks.py)
 
-All 81 MCP-unique tasks use an identical `eval.sh` template that delegates scoring to `oracle_checks.py`:
+All 81 Org tasks use an identical `eval.sh` template that delegates scoring to `oracle_checks.py`:
 
 ```bash
-# eval.sh (uniform across all MCP-unique tasks)
+# eval.sh (uniform across all Org tasks)
 1. Restore full repo if sg_only mode (source sgonly_verifier_wrapper.sh)
 2. Validate /workspace/answer.json exists and is valid JSON
 3. Run: python3 oracle_checks.py --answer answer.json --spec task_spec.json
@@ -499,7 +499,7 @@ Four shared libraries handle cross-cutting concerns:
 | `verifier_lib.sh`             | IR metric computation (precision, recall, F1, MRR, dependency-chain accuracy), solution.md parsing, path normalization                    | Build, design, and feature tasks |
 | `answer_json_verifier_lib.sh` | Extracts analysis text and file lists from `answer.json` in artifact mode; applies agent diffs to `/repo_full` for zero-copy verification | Artifact-mode SDLC tasks         |
 | `sgonly_verifier_wrapper.sh`  | Restores full source at verify time by cloning mirrors from `/tmp/.sg_only_clone_manifest.json`, then overlays agent changes              | All MCP (sg_only) runs           |
-| `oracle_checks.py`            | Deterministic oracle scoring (file F1, symbol recall, chain recall, provenance, keyword recall) with 3-pass repo normalization            | All MCP-unique tasks             |
+| `oracle_checks.py`            | Deterministic oracle scoring (file F1, symbol recall, chain recall, provenance, keyword recall) with 3-pass repo normalization            | All Org tasks             |
 
 ### 7.6 SG-Only Verifier Wrapper (Clone-at-Verify)
 
@@ -529,7 +529,7 @@ The clone manifest (`/tmp/.sg_only_clone_manifest.json`) is written at Docker bu
 | **test-ratio**    | 0.0--1.0    | Bug-fix tasks                                 | Fraction of project test cases passing                                      |
 | **F1-hybrid**     | 0.0--1.0    | Code review                                   | 0.5 × detection_F1 + 0.5 × fix_score                                        |
 | **rubric**        | 0.0--1.0    | Fault localization                            | Points-based rubric (e.g., 10-point for Linux kernel)                       |
-| **oracle-checks** | 0.0--1.0    | MCP-unique (artifact)                         | Composite mean of file/symbol/chain/keyword checks                          |
+| **oracle-checks** | 0.0--1.0    | Org (artifact)                         | Composite mean of file/symbol/chain/keyword checks                          |
 | **external**      | 0.0--1.0    | TAC-sourced tasks                             | External evaluator                                                          |
 
 All scoring types produce a single float in [0.0, 1.0] written to `/logs/verifier/reward.txt`. The primary benchmark metric is mean reward across all tasks in a suite.
@@ -848,7 +848,7 @@ Major verifier bugs discovered through QA audit (Feb 6):
 
 ### 11.1 Data Availability
 
-All 251 registered tasks have both baseline and MCP results, yielding **251 valid paired evaluations**: **170 SDLC** tasks across 8 suites and **81 MCP-unique** tasks across 11 suites. (One SDLC task, `openlibrary-solr-boolean-fix-001`, required a Dockerfile fix to pre-install Node.js and Claude Code due to a broken NodeSource GPG key in the SWE-bench Pro base image; the rerun produced a legitimate baseline result.) All results use the Claude Haiku 4.5 model. The SDLC tasks use `baseline-local-direct` (full source, no MCP) versus `mcp-remote-direct` (truncated source, Sourcegraph MCP enabled). MCP-unique tasks use the corresponding artifact or direct config variant depending on verifier requirements. All confidence intervals reported below use the percentile bootstrap method (10,000 resamples, seed=42) on paired deltas (see Appendix A).
+All 251 registered tasks have both baseline and MCP results, yielding **251 valid paired evaluations**: **170 SDLC** tasks across 8 suites and **81 Org** tasks across 11 suites. (One SDLC task, `openlibrary-solr-boolean-fix-001`, required a Dockerfile fix to pre-install Node.js and Claude Code due to a broken NodeSource GPG key in the SWE-bench Pro base image; the rerun produced a legitimate baseline result.) All results use the Claude Haiku 4.5 model. The SDLC tasks use `baseline-local-direct` (full source, no MCP) versus `mcp-remote-direct` (truncated source, Sourcegraph MCP enabled). Org tasks use the corresponding artifact or direct config variant depending on verifier requirements. All confidence intervals reported below use the percentile bootstrap method (10,000 resamples, seed=42) on paired deltas (see Appendix A).
 
 ### 11.2 SDLC Suite Results (Paired Comparison)
 
@@ -867,7 +867,7 @@ Paired baseline vs. MCP results across all 8 SDLC suites (170 paired tasks):
 
 **SDLC total**: Baseline mean 0.623 (n=170), MCP mean 0.608 (n=170), delta **-0.015** (95% CI: [-0.059, +0.029]). The CI spans zero, indicating no statistically significant MCP effect on SDLC tasks with full local source code.
 
-MCP-unique tasks (81 paired, cross-repository discovery):
+Org tasks (81 paired, cross-repository discovery):
 
 | Suite | n | Baseline Mean | MCP Mean | Delta | 95% Bootstrap CI |
 |-------|---|--------------|----------|-------|--------|
@@ -883,11 +883,11 @@ MCP-unique tasks (81 paired, cross-repository discovery):
 | platform | 5 | 0.726 | 0.678 | -0.049 | [-0.133, +0.018] |
 | crossrepo | 1 | 0.867 | 0.767 | -0.100 | — |
 
-**MCP-unique total**: Baseline mean 0.525 (n=81), MCP mean 0.708 (n=81), delta **+0.183** (95% CI: [+0.116, +0.255]). MCP wins on 47 of 81 tasks.
+**Org total**: Baseline mean 0.525 (n=81), MCP mean 0.708 (n=81), delta **+0.183** (95% CI: [+0.116, +0.255]). MCP wins on 47 of 81 tasks.
 
 **Overall**: Baseline mean 0.591 (n=251), MCP mean 0.640 (n=251), delta **+0.049** (95% CI: [+0.010, +0.088]). The overall confidence interval excludes zero, indicating a statistically significant positive MCP effect across the full benchmark.
 
-The results show a clear bifurcation by task category. For **SDLC tasks** where the agent already has full local source code, MCP provides marginal or negative value (SDLC delta -0.015, CI spans zero). The strongest SDLC gains are on retrieval-heavy tasks: **understand** (+0.190, CI excludes zero) and **document** (+0.048, CI excludes zero). The clearest SDLC negative is **debug** (-0.183, CI excludes zero), where MCP adds overhead without compensating retrieval benefit. **Build** (-0.121) also shows a meaningful negative, though the CI narrowly includes zero. For **MCP-unique tasks** requiring cross-repository discovery across 3-20 repos, MCP provides substantial value (+0.183, CI excludes zero), with the strongest effects on **security** (+0.440), **onboarding** (+0.337), and **org** (+0.197) tasks — all with CIs excluding zero. **Domain** (+0.163) also shows a significant positive effect under bootstrap.
+The results show a clear bifurcation by task category. For **SDLC tasks** where the agent already has full local source code, MCP provides marginal or negative value (SDLC delta -0.015, CI spans zero). The strongest SDLC gains are on retrieval-heavy tasks: **understand** (+0.190, CI excludes zero) and **document** (+0.048, CI excludes zero). The clearest SDLC negative is **debug** (-0.183, CI excludes zero), where MCP adds overhead without compensating retrieval benefit. **Build** (-0.121) also shows a meaningful negative, though the CI narrowly includes zero. For **Org tasks** requiring cross-repository discovery across 3-20 repos, MCP provides substantial value (+0.183, CI excludes zero), with the strongest effects on **security** (+0.440), **onboarding** (+0.337), and **org** (+0.197) tasks — all with CIs excluding zero. **Domain** (+0.163) also shows a significant positive effect under bootstrap.
 
 ### 11.3 Reward by Language
 
@@ -1200,7 +1200,7 @@ Major architectural decisions emerged through iterative dialogue:
 
 4. **V5 preamble design** (Feb 20): After discovering the git history bypass bug, Claude Code designed the "truncation constraint" approach that leads with "files not present."
 
-5. **Oracle auto-curation** (Feb 24): Claude Code designed the Sourcegraph-query-based oracle curation pipeline and validated all 81 MCP-unique tasks.
+5. **Oracle auto-curation** (Feb 24): Claude Code designed the Sourcegraph-query-based oracle curation pipeline and validated all 81 Org tasks.
 
 ### 14.6 Lessons Learned
 
@@ -1233,10 +1233,10 @@ Major architectural decisions emerged through iterative dialogue:
 | Suite Type    | Pattern                       | Example                         |
 | ------------- | ----------------------------- | ------------------------------- |
 | SDLC          | `{repo}-{desc}-{phase}-{NNN}` | `kubernetes-scheduler-arch-001` |
-| MCP-unique    | `ccx-{family}-{NNN}`          | `ccx-dep-trace-001`             |
+| Org    | `ccx-{family}-{NNN}`          | `ccx-dep-trace-001`             |
 | SWE-bench Pro | `{org}__{repo}-{issue}`       | `django__django-16820`          |
 
-### Appendix C: MCP-Unique Task ID Registry
+### Appendix C: CodeScaleBench-Org Task ID Registry
 
 | ID Range | Use Case Category                     | Repo Sets                                |
 | -------- | ------------------------------------- | ---------------------------------------- |
@@ -1255,7 +1255,7 @@ Major architectural decisions emerged through iterative dialogue:
 | CrossRepo     | similarity    | `0.4×file_coverage + 0.6×pattern_score`                                     | Cross-repo tasks          |
 | CodeReview    | F1-hybrid     | `0.5×detection_F1 + 0.5×fix_score`                                          | Code review tasks         |
 | LinuxFLBench  | checklist     | 10-point rubric (file 4 + method 3 + reasoning 1 + confidence 1 + fields 1) | Kernel fault localization |
-| Oracle        | oracle-checks | `mean(check_scores)`                                                        | MCP-unique tasks          |
+| Oracle        | oracle-checks | `mean(check_scores)`                                                        | Org tasks          |
 
 ### Appendix E: QA Audit Framework (6 Dimensions)
 
@@ -1308,7 +1308,7 @@ Pre-commit validation via `scripts/repo_health.py`:
 | **nDCG**            | Normalized Discounted Cumulative Gain                                                |
 | **MAP**             | Mean Average Precision                                                               |
 | **TTFR**            | Time to First Relevant file                                                          |
-| **Oracle**          | Exhaustive ground truth specification for MCP-unique tasks                           |
+| **Oracle**          | Exhaustive ground truth specification for Org tasks                           |
 | **sg-evals**        | GitHub organization hosting version-pinned repository mirrors                        |
 | **Preamble**        | Instructions prepended to task description for MCP-augmented agents                  |
 | **Clone-at-verify** | Pattern where full repo is cloned at verification time (not during agent execution)  |

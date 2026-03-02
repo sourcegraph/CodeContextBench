@@ -9,7 +9,7 @@
 | Category | Count | Notes |
 |---|---|---|
 | SDLC tasks | 199 | 9 suites (feature/refactor/debug/design/document/fix/secure/test/understand) |
-| MCP-unique tasks | 95 | 11 suites (csb_org_*) |
+| Org tasks | 95 | 11 suites (csb_org_*) |
 | **Total** | **294** | csb_sdlc_build split into csb_sdlc_feature (20) + csb_sdlc_refactor (20) on 2026-02-28 |
 
 ## Directory Layouts
@@ -54,7 +54,7 @@ runs/official/{suite}_{model}_{timestamp}/
 
 **Config dir names**: `baseline-local-direct`, `mcp-remote-direct`
 
-### Layout 3: MCP-Unique / Artifact Format
+### Layout 3: CodeScaleBench-Org / Artifact Format
 
 ```
 runs/official/{suite}_{model}_{timestamp}/

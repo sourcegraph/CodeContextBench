@@ -1,10 +1,10 @@
-# Handoff: Run 39 Missing MCP-Unique Baselines
+# Handoff: Run 39 Missing CodeScaleBench-Org Baselines
 
 ## Goal
-Run baseline-local-artifact evaluation for 39 MCP-unique tasks that currently only have MCP results. This brings total paired coverage from 212 to 251 (100%).
+Run baseline-local-artifact evaluation for 39 Org tasks that currently only have MCP results. This brings total paired coverage from 212 to 251 (100%).
 
 ## Current Status
-- 81 MCP-unique tasks across 11 csb_org_* suites
+- 81 Org tasks across 11 csb_org_* suites
 - 42 already have paired results (baseline + MCP) in runs/official/
 - **39 need baseline runs** (listed below)
 - A sub-selection file is ready: `configs/mcp_baseline_rerun.json`
@@ -26,7 +26,7 @@ Run baseline-local-artifact evaluation for 39 MCP-unique tasks that currently on
 | csb_org_security | 3 | CCX-vuln-remed-013, 105, 111 |
 
 ## Config Details
-- **Config**: `baseline-local-artifact` (auto-detected by runner for MCP-unique artifact-only tasks)
+- **Config**: `baseline-local-artifact` (auto-detected by runner for Org artifact-only tasks)
 - **Model**: `anthropic/claude-haiku-4-5-20251001` (default)
 - **Dockerfile**: Each task has `environment/Dockerfile.artifact_only` (full local code, agent produces answer.json)
 - **Category**: staging (promotes to official after validation)
@@ -51,7 +51,7 @@ python3 scripts/validate_tasks_preflight.py --selection-file configs/mcp_baselin
 
 You should see:
 - 39 tasks detected
-- Auto-detection message: "Auto-detected MCP-unique tasks (artifact-only) → using artifact configs (mcp-remote-artifact)"
+- Auto-detection message: "Auto-detected Org tasks (artifact-only) → using artifact configs (mcp-remote-artifact)"
 - Config: `baseline-local-artifact`
 - `--baseline-only` means only baselines run (no MCP)
 
@@ -115,7 +115,7 @@ for suite in sorted(mcp_suites):
 "
 ```
 
-Target: all 81 MCP-unique tasks fully paired.
+Target: all 81 Org tasks fully paired.
 
 ## Open Risks / Unknowns
 - Some artifact-mode tasks produce complex answer.json that oracle_checks.py evaluates — check for 0-score tasks

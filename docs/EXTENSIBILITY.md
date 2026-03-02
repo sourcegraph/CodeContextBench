@@ -81,9 +81,9 @@ When adding benchmark environment variants, keep canonical task definitions inta
    (for example under `benchmarks/csb_sdlc_document/`).
 4. Treat variant runs as separate studies in reporting and curation.
 
-## 7) Add MCP-Unique Tasks (csb_org_* suites)
+## 7) Add CodeScaleBench-Org Tasks (csb_org_* suites)
 
-MCP-unique tasks measure org-scale cross-repo discovery — what local-only agents
+Org tasks measure org-scale cross-repo discovery — what local-only agents
 cannot do. See `docs/MCP_UNIQUE_TASKS.md` for the full authoring guide.
 
 **Quick start:**

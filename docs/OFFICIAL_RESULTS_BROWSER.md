@@ -24,7 +24,7 @@ are normalized during export:
 - `baseline` -> `baseline-local-direct`
 - `mcp` -> `mcp-remote-direct`
 
-For MCP-unique suites (`csb_org_*`), legacy config labels are normalized to
+For Org suites (`csb_org_*`), legacy config labels are normalized to
 artifact-mode configs:
 - `baseline` -> `baseline-local-artifact`
 - `mcp` -> `mcp-remote-artifact`

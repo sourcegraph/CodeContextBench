@@ -17,7 +17,7 @@ How each benchmark is scored, what the numbers mean, and known limitations.
 ## Per-Verifier Scoring (Active Suites)
 
 Tasks are organized into 8 SDLC-phase suites (`csb_sdlc_understand` through `csb_sdlc_debug`)
-and 10 MCP-unique suites (`csb_org_*`). Within each suite, individual tasks use
+and 10 Org suites (`csb_org_*`). Within each suite, individual tasks use
 one of the verifier types below, inherited from their source benchmark. See
 `docs/TASK_CATALOG.md` for which verifier each task uses and
 `docs/TASK_SELECTION.md` for the SDLC suite structure.
@@ -199,14 +199,14 @@ Tasks without `defect_type` fields produce an empty annotations list.  The
 serialized registry (`configs/ground_truth_files.json`) includes annotations
 only when non-empty.
 
-## MCP-Unique Suite Scoring (csb_org_* suites)
+## CodeScaleBench-Org Suite Scoring (csb_org_* suites)
 
-MCP-unique tasks use a unified oracle check library for deterministic scoring,
+Org tasks use a unified oracle check library for deterministic scoring,
 with optional rubric judge for Deep Search synthesis tasks.
 
 ### Oracle Checks (scripts/csb_metrics/oracle_checks.py)
 
-All MCP-unique tasks are scored by `oracle_checks.py`, a stdlib-only Python
+All Org tasks are scored by `oracle_checks.py`, a stdlib-only Python
 library invoked by `eval.sh`. There are 7 check types:
 
 | Check Type | Task Spec Field | Primary Score | Description |
