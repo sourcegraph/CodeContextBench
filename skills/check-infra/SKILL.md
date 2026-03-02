@@ -22,7 +22,7 @@ Verify all infrastructure prerequisites before launching a benchmark run.
 ### 1. Run the checker
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/check_infra.py
+cd ~/CodeScaleBench && python3 scripts/check_infra.py
 ```
 
 ### 2. Present results

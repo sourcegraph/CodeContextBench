@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Governance compliance evaluator for CodeContextBench.
+"""Governance compliance evaluator for CodeScaleBench.
 
 Reads governance task metadata from task.toml files and evaluates agent
 trajectories for compliance with permission boundaries. Generates a

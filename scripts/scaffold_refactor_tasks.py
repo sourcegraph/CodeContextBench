@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Scaffold 13 new refactor tasks for ccb_refactor suite."""
+"""Scaffold 13 new refactor tasks for csb_sdlc_refactor suite."""
 
 import json
 import os
 import shutil
 
-BENCHMARK_DIR = os.path.join(os.path.dirname(__file__), '..', 'benchmarks', 'ccb_refactor')
+BENCHMARK_DIR = os.path.join(os.path.dirname(__file__), '..', 'benchmarks', 'csb_sdlc_refactor')
 SGONLY_WRAPPER = os.path.join(os.path.dirname(__file__), 'sgonly_verifier_wrapper.sh')
 
 TASKS = [
@@ -903,7 +903,7 @@ def generate_task_toml(task):
 name = "{task['id']}"
 description = "{task['description']}"
 license = "Apache-2.0"
-author_name = "CodeContextBench"
+author_name = "CodeScaleBench"
 author_email = "ccb@example.com"
 
 [task]

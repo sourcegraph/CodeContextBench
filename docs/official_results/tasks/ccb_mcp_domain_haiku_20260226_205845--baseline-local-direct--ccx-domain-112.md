@@ -1,13 +1,13 @@
 # ccx-domain-112 (baseline-local-direct)
 
-- Run: `ccb_mcp_domain_haiku_20260226_205845`
+- Run: `csb_org_domain_haiku_20260226_205845`
 - Status: `passed`
 - Reward: `0.7083`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_domain_haiku_20260226_205845--baseline-local-direct--ccx-domain-112/claude-code.txt)
 
 ## Metrics
 

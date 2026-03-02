@@ -1,13 +1,13 @@
 # mcp_CCX-vuln-remed-013_LoBHLI (mcp-remote-direct)
 
-- Run: `ccb_mcp_security_haiku_20260226_035628_variance`
+- Run: `csb_org_security_haiku_20260226_035628_variance`
 - Status: `passed`
 - Reward: `0.7486`
-- Audit JSON: [link](../audits/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI.json)
+- Audit JSON: [link](../audits/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-013_LoBHLI/claude-code.txt)
 
 ## Metrics
 

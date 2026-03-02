@@ -2,7 +2,7 @@
 
 ## Overview
 
-Enterprise codebases differ from open-source projects in ways that affect AI agent performance: multi-team ownership, conflicting documentation, stale artifacts, partial context access, legacy dependencies, and polyglot service architectures. This document defines complexity dimensions and templates for simulating these conditions in CCB benchmark tasks.
+Enterprise codebases differ from open-source projects in ways that affect AI agent performance: multi-team ownership, conflicting documentation, stale artifacts, partial context access, legacy dependencies, and polyglot service architectures. This document defines complexity dimensions and templates for simulating these conditions in CSB benchmark tasks.
 
 ## Complexity Dimensions
 
@@ -47,7 +47,7 @@ Enterprise codebases differ from open-source projects in ways that affect AI age
 Each enterprise complexity dimension maps to standard Harbor task structure:
 
 ```
-benchmarks/ccb_governance/{task_name}/
+benchmarks/csb_sdlc_governance/{task_name}/
   task.toml              # Standard + governance_metadata section
   instruction.md         # Role assignment, team context, access scope
   environment/

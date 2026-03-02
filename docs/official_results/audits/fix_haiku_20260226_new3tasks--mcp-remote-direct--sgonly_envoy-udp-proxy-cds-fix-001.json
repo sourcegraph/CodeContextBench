@@ -1598,14 +1598,14 @@
       "transcript_sha256": "1a73d669a398f3be54cacdc5b19da0d6a6d13bc8d0f264ada28df688bdc51012"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/result.json",
+    "result_path": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/result.json",
     "run_dir": "fix_haiku_20260226_new3tasks",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH",
     "task_name": "sgonly_envoy-udp-proxy-cds-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260226_new3tasks/mcp-remote-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_mcp-remote-direct/sgonly_envoy-udp-proxy-cds-fix-0__ppv6NAH/agent/claude-code.txt"
     }
   },
   "score": {

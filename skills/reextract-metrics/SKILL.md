@@ -23,12 +23,12 @@ Runs `scripts/reextract_all_metrics.py` which:
 Always show what will be re-extracted first:
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/reextract_all_metrics.py --dry-run
+cd ~/CodeScaleBench && python3 scripts/reextract_all_metrics.py --dry-run
 ```
 
 If filtering to a specific suite:
 ```bash
-python3 scripts/reextract_all_metrics.py --dry-run --filter ccb_pytorch
+python3 scripts/reextract_all_metrics.py --dry-run --filter csb_sdlc_pytorch
 ```
 
 ### 2. Run the re-extraction
@@ -39,7 +39,7 @@ python3 scripts/reextract_all_metrics.py
 
 Or filtered:
 ```bash
-python3 scripts/reextract_all_metrics.py --filter ccb_swebenchpro
+python3 scripts/reextract_all_metrics.py --filter csb_sdlc_swebenchpro
 ```
 
 ### 3. Review corrections
@@ -84,7 +84,7 @@ python3 scripts/generate_manifest.py
 ```
 
 ### After adding new metric fields
-When new extractors are added to `ccb_metrics/extractors.py`:
+When new extractors are added to `csb_metrics/extractors.py`:
 ```bash
 python3 scripts/reextract_all_metrics.py
 ```
@@ -92,7 +92,7 @@ python3 scripts/reextract_all_metrics.py
 ### After new runs complete
 To extract metrics for newly completed tasks:
 ```bash
-python3 scripts/reextract_all_metrics.py --filter ccb_pytorch
+python3 scripts/reextract_all_metrics.py --filter csb_sdlc_pytorch
 ```
 
 ## Key Technical Notes

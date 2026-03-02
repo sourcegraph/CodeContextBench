@@ -23,7 +23,7 @@ Runs `scripts/ir_analysis.py` which:
 If `configs/ground_truth_files.json` doesn't exist or needs refreshing:
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/ir_analysis.py --build-ground-truth
+cd ~/CodeScaleBench && python3 scripts/ir_analysis.py --build-ground-truth
 ```
 
 This extracts ground truth files from each benchmark's task structure (patches, diffs, ground_truth dirs, test scripts, instructions). Reports per-benchmark counts and confidence levels.
@@ -31,13 +31,13 @@ This extracts ground truth files from each benchmark's task structure (patches, 
 ### 2. Run the IR analysis
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/ir_analysis.py --json 2>/dev/null
+cd ~/CodeScaleBench && python3 scripts/ir_analysis.py --json 2>/dev/null
 ```
 
 Or for human-readable table output:
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/ir_analysis.py 2>/dev/null
+cd ~/CodeScaleBench && python3 scripts/ir_analysis.py 2>/dev/null
 ```
 
 ### 3. Parse and present key findings
@@ -78,7 +78,7 @@ python3 scripts/ir_analysis.py --per-task --json 2>/dev/null
 Filter to a specific benchmark:
 
 ```bash
-python3 scripts/ir_analysis.py --suite ccb_swebenchpro 2>/dev/null
+python3 scripts/ir_analysis.py --suite csb_sdlc_swebenchpro 2>/dev/null
 ```
 
 ## Variants
@@ -95,7 +95,7 @@ python3 scripts/ir_analysis.py --json > /tmp/ir_results.json
 
 ### Filter to one benchmark
 ```bash
-python3 scripts/ir_analysis.py --suite ccb_pytorch
+python3 scripts/ir_analysis.py --suite csb_sdlc_pytorch
 ```
 
 ### Per-task detail
@@ -110,7 +110,7 @@ python3 scripts/ir_analysis.py --per-task
 - **Path normalization**: Strips `/workspace/` prefix, `a/`/`b/` diff notation, lowercases for comparison.
 - **Baseline retrieval**: For runs without MCP, "retrieved files" come from local Read/Grep/Glob calls. This measures manual navigation quality vs MCP search quality.
 - **Deduplication**: When multiple batches exist for the same task+config, the latest (by `started_at` timestamp) wins.
-- **Statistical tests**: Uses pure-stdlib implementations from `ccb_metrics/statistics.py` — Welch's t-test, Cohen's d, bootstrap CI. No scipy dependency.
+- **Statistical tests**: Uses pure-stdlib implementations from `csb_metrics/statistics.py` — Welch's t-test, Cohen's d, bootstrap CI. No scipy dependency.
 
 ## Ground Truth Sources
 

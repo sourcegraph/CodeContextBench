@@ -1865,14 +1865,14 @@
       "transcript_sha256": "6def500618b861983894c8f151c9444b6259066048c6aed8db1fa4952e3c655b"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu",
     "task_name": "envoy-duplicate-headers-debug-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_envoy-duplicate-headers-debug-001_baseline-local-direct/envoy-duplicate-headers-debug-00__xJSPsEu/agent/claude-code.txt"
     }
   },
   "score": {

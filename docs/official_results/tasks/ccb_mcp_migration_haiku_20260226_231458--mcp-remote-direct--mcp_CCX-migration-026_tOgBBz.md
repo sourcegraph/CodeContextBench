@@ -1,13 +1,13 @@
 # mcp_CCX-migration-026_tOgBBz (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_231458`
+- Run: `csb_org_migration_haiku_20260226_231458`
 - Status: `passed`
 - Reward: `0.5925`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-026_tOgBBz/claude-code.txt)
 
 ## Metrics
 

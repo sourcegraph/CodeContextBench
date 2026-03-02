@@ -1759,14 +1759,14 @@
       "transcript_sha256": "8815d6fbfb0fde1591cb4e11faf2f7c0691ac268fa57d1a0c12a6ea047bee4bd"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/result.json",
+    "result_path": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/result.json",
     "run_dir": "test_haiku_20260223_235732",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs",
     "task_name": "sgonly_numpy-array-sum-perf-001",
     "trace_paths": {
-      "trajectory": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/agent/trajectory.json",
-      "transcript": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/agent/claude-code.txt"
+      "trajectory": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/agent/trajectory.json",
+      "transcript": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_numpy-array-sum-perf-001_mcp-remote-direct/sgonly_numpy-array-sum-perf-001__FW9oebs/agent/claude-code.txt"
     }
   },
   "score": {

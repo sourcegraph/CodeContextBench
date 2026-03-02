@@ -22,7 +22,7 @@ Runs `scripts/mcp_audit.py` which:
 ### 1. Run the MCP audit
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/mcp_audit.py --json --verbose 2>/dev/null
+cd ~/CodeScaleBench && python3 scripts/mcp_audit.py --json --verbose 2>/dev/null
 ```
 
 Save the JSON output for analysis. The script prints progress to stderr and results to stdout.

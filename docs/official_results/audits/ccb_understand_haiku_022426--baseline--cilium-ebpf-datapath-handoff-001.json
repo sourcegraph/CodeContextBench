@@ -2228,14 +2228,14 @@
       "transcript_sha256": "752fef46de1c241e09da9873d24ab724b806205b1298c593371aaf9e265dbe89"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K",
     "task_name": "cilium-ebpf-datapath-handoff-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-datapath-handoff-001_baseline-local-direct/cilium-ebpf-datapath-handoff-001__3tE8h2K/agent/claude-code.txt"
     }
   },
   "score": {

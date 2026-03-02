@@ -1330,14 +1330,14 @@
       "transcript_sha256": "a6e01d098192a85e6459d78cdf43b65772c4e88054789621a7faa2de2ef51052"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/result.json",
+    "result_path": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/result.json",
     "run_dir": "test_haiku_20260223_235732",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2",
     "task_name": "sgonly_test-integration-001",
     "trace_paths": {
-      "trajectory": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/agent/trajectory.json",
-      "transcript": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/ccb_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/agent/claude-code.txt"
+      "trajectory": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/agent/trajectory.json",
+      "transcript": "runs/official/test_haiku_20260223_235732/mcp-remote-direct/csb_sdlc_test_test-integration-001_mcp-remote-direct/sgonly_test-integration-001__9uDUEF2/agent/claude-code.txt"
     }
   },
   "score": {

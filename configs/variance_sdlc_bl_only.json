@@ -11,43 +11,43 @@
   "tasks": [
     {
       "task_id": "teleport-ssh-regression-prove-001",
-      "benchmark": "ccb_debug",
-      "task_dir": "ccb_debug/teleport-ssh-regression-prove-001"
+      "benchmark": "csb_sdlc_debug",
+      "task_dir": "csb_sdlc_debug/teleport-ssh-regression-prove-001"
     },
     {
       "task_id": "nodebb-plugin-validate-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/nodebb-plugin-validate-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/nodebb-plugin-validate-fix-001"
     },
     {
       "task_id": "openhands-search-file-test-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/openhands-search-file-test-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/openhands-search-file-test-001"
     },
     {
       "task_id": "sklearn-kmeans-perf-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/sklearn-kmeans-perf-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/sklearn-kmeans-perf-001"
     },
     {
       "task_id": "test-coverage-gap-002",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-coverage-gap-002"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-coverage-gap-002"
     },
     {
       "task_id": "test-integration-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-integration-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-integration-001"
     },
     {
       "task_id": "test-unitgen-go-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-unitgen-go-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-unitgen-go-001"
     },
     {
       "task_id": "test-unitgen-py-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-unitgen-py-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-unitgen-py-001"
     }
   ]
 }

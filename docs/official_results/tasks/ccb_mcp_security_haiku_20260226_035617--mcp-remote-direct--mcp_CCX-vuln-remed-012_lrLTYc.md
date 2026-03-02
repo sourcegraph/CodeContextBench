@@ -1,13 +1,13 @@
 # mcp_CCX-vuln-remed-012_lrLTYc (mcp-remote-direct)
 
-- Run: `ccb_mcp_security_haiku_20260226_035617`
+- Run: `csb_org_security_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.4633`
-- Audit JSON: [link](../audits/ccb_mcp_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc.json)
+- Audit JSON: [link](../audits/csb_org_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_security_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-vuln-remed-012_lrLTYc/claude-code.txt)
 
 ## Metrics
 

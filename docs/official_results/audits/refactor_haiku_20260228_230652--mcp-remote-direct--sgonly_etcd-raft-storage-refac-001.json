@@ -3941,14 +3941,14 @@
       "transcript_sha256": "05aed0b6cf1ff9e6a6526613a0b98ac2ba1497023d9609441e31bfda30bdb29b"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/result.json",
+    "result_path": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/result.json",
     "run_dir": "refactor_haiku_20260228_230652",
-    "suite": "ccb_refactor",
-    "task_dir": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS",
+    "suite": "csb_sdlc_refactor",
+    "task_dir": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS",
     "task_name": "sgonly_etcd-raft-storage-refac-001",
     "trace_paths": {
-      "trajectory": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/agent/trajectory.json",
-      "transcript": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/agent/claude-code.txt"
+      "trajectory": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/agent/trajectory.json",
+      "transcript": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_etcd-raft-storage-refac-001_mcp-remote-direct/sgonly_etcd-raft-storage-refac-0__woPpqHS/agent/claude-code.txt"
     }
   },
   "score": {

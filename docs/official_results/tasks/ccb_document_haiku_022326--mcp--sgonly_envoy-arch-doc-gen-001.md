@@ -1,13 +1,13 @@
 # sgonly_envoy-arch-doc-gen-001 (mcp-remote-direct)
 
-- Run: `ccb_document_haiku_022326`
+- Run: `csb_sdlc_document_haiku_022326`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_document_haiku_022326--mcp--sgonly_envoy-arch-doc-gen-001/claude-code.txt)
 
 ## Metrics
 

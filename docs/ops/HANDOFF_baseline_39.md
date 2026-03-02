@@ -4,7 +4,7 @@
 Run baseline-local-artifact evaluation for 39 MCP-unique tasks that currently only have MCP results. This brings total paired coverage from 212 to 251 (100%).
 
 ## Current Status
-- 81 MCP-unique tasks across 11 ccb_mcp_* suites
+- 81 MCP-unique tasks across 11 csb_org_* suites
 - 42 already have paired results (baseline + MCP) in runs/official/
 - **39 need baseline runs** (listed below)
 - A sub-selection file is ready: `configs/mcp_baseline_rerun.json`
@@ -13,17 +13,17 @@ Run baseline-local-artifact evaluation for 39 MCP-unique tasks that currently on
 
 | Suite | Count | Task IDs |
 |-------|-------|----------|
-| ccb_mcp_compliance | 5 | CCX-compliance-052, 053, 057-ds, 115, 118 |
-| ccb_mcp_crossorg | 1 | CCX-crossorg-062 |
-| ccb_mcp_crossrepo | 1 | CCX-dep-trace-106 |
-| ccb_mcp_crossrepo_tracing | 4 | CCX-config-trace-003, CCX-dep-trace-002, 102, 116 |
-| ccb_mcp_domain | 6 | CCX-domain-071, 072, 073, 074, 101, 112 |
-| ccb_mcp_incident | 6 | CCX-incident-032, 033, 034, 037, 108, 110 |
-| ccb_mcp_migration | 5 | CCX-migration-022, 026, 107, 114, 117 |
-| ccb_mcp_onboarding | 3 | CCX-onboard-043, 103, 109 |
-| ccb_mcp_org | 3 | CCX-agentic-081, 082, 083 |
-| ccb_mcp_platform | 2 | CCX-platform-104, 119 |
-| ccb_mcp_security | 3 | CCX-vuln-remed-013, 105, 111 |
+| csb_org_compliance | 5 | CCX-compliance-052, 053, 057-ds, 115, 118 |
+| csb_org_crossorg | 1 | CCX-crossorg-062 |
+| csb_org_crossrepo | 1 | CCX-dep-trace-106 |
+| csb_org_crossrepo_tracing | 4 | CCX-config-trace-003, CCX-dep-trace-002, 102, 116 |
+| csb_org_domain | 6 | CCX-domain-071, 072, 073, 074, 101, 112 |
+| csb_org_incident | 6 | CCX-incident-032, 033, 034, 037, 108, 110 |
+| csb_org_migration | 5 | CCX-migration-022, 026, 107, 114, 117 |
+| csb_org_onboarding | 3 | CCX-onboard-043, 103, 109 |
+| csb_org_org | 3 | CCX-agentic-081, 082, 083 |
+| csb_org_platform | 2 | CCX-platform-104, 119 |
+| csb_org_security | 3 | CCX-vuln-remed-013, 105, 111 |
 
 ## Config Details
 - **Config**: `baseline-local-artifact` (auto-detected by runner for MCP-unique artifact-only tasks)
@@ -105,7 +105,7 @@ python3 scripts/generate_manifest.py
 python3 -c "
 import json
 m = json.load(open('runs/official/MANIFEST.json'))
-mcp_suites = {k.split('/')[0] for k in m['runs'] if 'ccb_mcp_' in k}
+mcp_suites = {k.split('/')[0] for k in m['runs'] if 'csb_org_' in k}
 for suite in sorted(mcp_suites):
     bl_key = f'{suite}/baseline-local-artifact'
     mcp_key = f'{suite}/mcp-remote-artifact'

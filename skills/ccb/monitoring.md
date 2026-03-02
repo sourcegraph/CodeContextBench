@@ -1,4 +1,4 @@
-# CCB Monitoring Skills
+# CSB Monitoring Skills
 
 Check active run status and watch benchmark progress. Use when checking on running benchmarks or monitoring progress.
 
@@ -17,12 +17,12 @@ Lightweight alternative to watch-benchmarks focused on recent activity.
 #### 1. Check what's active (last 60 minutes)
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --since 60 --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --since 60 --format json
 ```
 
 If nothing recent, widen to last 4 hours:
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --since 240 --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --since 240 --format json
 ```
 
 #### 2. Present a concise summary
@@ -48,7 +48,7 @@ Active run: 8/12 tasks done (7 pass, 1 fail). 4 still running. No errors.
 
 ```bash
 # Specific suite
-python3 scripts/aggregate_status.py --since 120 --suite ccb_pytorch --format json
+python3 scripts/aggregate_status.py --since 120 --suite csb_sdlc_pytorch --format json
 
 # Specific config
 python3 scripts/aggregate_status.py --since 120 --config sourcegraph_full --format json
@@ -61,7 +61,7 @@ python3 scripts/aggregate_status.py --since 120 --format table
 
 ## Watch Benchmarks
 
-Monitor the status of CodeContextBench benchmark runs in `runs/official/`.
+Monitor the status of CodeScaleBench benchmark runs in `runs/official/`.
 
 ### What This Does
 
@@ -75,7 +75,7 @@ Runs `scripts/aggregate_status.py` which:
 
 1. Run the status scanner:
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --format json
 ```
 
 2. Parse the JSON output and present as markdown tables:
@@ -96,13 +96,13 @@ python3 scripts/aggregate_status.py --failures-only --format json
 python3 scripts/aggregate_status.py --since 60 --format json
 
 # Single suite
-python3 scripts/aggregate_status.py --suite ccb_pytorch --format json
+python3 scripts/aggregate_status.py --suite csb_sdlc_pytorch --format json
 
 # Single config
 python3 scripts/aggregate_status.py --config baseline --format json
 
 # Combined filters
-python3 scripts/aggregate_status.py --suite ccb_swebenchpro --config sourcegraph_full --failures-only --format json
+python3 scripts/aggregate_status.py --suite csb_sdlc_swebenchpro --config sourcegraph_full --failures-only --format json
 
 # Table output (compact)
 python3 scripts/aggregate_status.py --format table

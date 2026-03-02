@@ -84,14 +84,15 @@ def parse_run_name(run_dir_name: str) -> tuple[str, str, str] | None:
     # Extract suite: everything before _{model}_{timestamp}
     prefix = re.sub(r"_(haiku|opus|sonnet)_\d{8}_\d{6}$", "", run_dir_name)
 
-    # Normalize: SDLC phases without ccb_ prefix get it added
-    sdlc_phases = {"build", "debug", "design", "document", "fix", "secure", "test", "understand"}
+    # Normalize: SDLC phases without prefix get csb_sdlc_ added
+    sdlc_phases = {"build", "debug", "design", "document", "fix", "secure", "test", "understand",
+                   "feature", "refactor"}
     if prefix in sdlc_phases:
-        suite = f"ccb_{prefix}"
-    elif prefix.startswith("ccb_"):
+        suite = f"csb_sdlc_{prefix}"
+    elif prefix.startswith(("csb_", "ccb_")):
         suite = prefix
     else:
-        suite = f"ccb_{prefix}"
+        suite = f"csb_sdlc_{prefix}"
 
     return suite, model, date_str
 

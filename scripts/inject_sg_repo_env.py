@@ -338,6 +338,16 @@ def inject_env_var(dockerfile_path: Path, task_id: str, dry_run: bool = False,
 def find_all_sg_only_dockerfiles():
     """Find all Dockerfile.sg_only files across SDLC suites."""
     suites = [
+        "csb_sdlc_feature",
+        "csb_sdlc_refactor",
+        "csb_sdlc_debug",
+        "csb_sdlc_design",
+        "csb_sdlc_document",
+        "csb_sdlc_fix",
+        "csb_sdlc_secure",
+        "csb_sdlc_test",
+        "csb_sdlc_understand",
+        # Legacy names (backward compat)
         "ccb_feature",
         "ccb_refactor",
         "ccb_debug",

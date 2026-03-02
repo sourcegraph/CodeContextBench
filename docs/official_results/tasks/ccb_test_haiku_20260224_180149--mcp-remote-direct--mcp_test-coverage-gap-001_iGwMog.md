@@ -1,13 +1,13 @@
 # mcp_test-coverage-gap-001_iGwMog (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `passed`
 - Reward: `0.8800`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_test-coverage-gap-001_iGwMog/claude-code.txt)
 
 ## Metrics
 

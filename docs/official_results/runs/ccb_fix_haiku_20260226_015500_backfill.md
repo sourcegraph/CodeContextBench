@@ -1,4 +1,4 @@
-# ccb_fix_haiku_20260226_015500_backfill
+# csb_sdlc_fix_haiku_20260226_015500_backfill
 
 ## baseline-local-direct
 
@@ -8,8 +8,8 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [openlibrary-solr-boolean-fix-001](../tasks/ccb_fix_haiku_20260226_015500_backfill--baseline-local-direct--openlibrary-solr-boolean-fix-001.html) | `failed` | 0.000 | - | - | tx |
-| [ansible-module-respawn-fix-001](../tasks/ccb_fix_haiku_20260226_015500_backfill--baseline-local-direct--ansible-module-respawn-fix-001.html) | `passed` | 0.471 | 0.000 | 171 | traj, tx |
+| [openlibrary-solr-boolean-fix-001](../tasks/csb_sdlc_fix_haiku_20260226_015500_backfill--baseline-local-direct--openlibrary-solr-boolean-fix-001.html) | `failed` | 0.000 | - | - | tx |
+| [ansible-module-respawn-fix-001](../tasks/csb_sdlc_fix_haiku_20260226_015500_backfill--baseline-local-direct--ansible-module-respawn-fix-001.html) | `passed` | 0.471 | 0.000 | 171 | traj, tx |
 
 ## mcp-remote-direct
 
@@ -19,4 +19,4 @@
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [sgonly_openlibrary-solr-boolean-fix-001](../tasks/ccb_fix_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_openlibrary-solr-boolean-fix-001.html) | `passed` | 0.667 | - | - | tx |
+| [sgonly_openlibrary-solr-boolean-fix-001](../tasks/csb_sdlc_fix_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_openlibrary-solr-boolean-fix-001.html) | `passed` | 0.667 | - | - | tx |

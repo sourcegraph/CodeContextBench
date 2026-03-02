@@ -1382,14 +1382,14 @@
       "transcript_sha256": "21b0d1fe034a4bccca964edcf99d4d8222c21a2f10d1cf369215ec3072ae33d6"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/result.json",
+    "result_path": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/result.json",
     "run_dir": "fix_haiku_20260223_171232",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz",
     "task_name": "flipt-eval-latency-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_baseline-local-direct/flipt-eval-latency-fix-001__dSKQeTz/agent/claude-code.txt"
     }
   },
   "score": {

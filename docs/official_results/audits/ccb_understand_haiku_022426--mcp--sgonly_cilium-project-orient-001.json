@@ -1545,14 +1545,14 @@
       "transcript_sha256": "44c398e0e34c65dbd920fbf875c679b9731e5edde09615f228a5c011215a4cc7"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38",
     "task_name": "sgonly_cilium-project-orient-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-project-orient-001_mcp-remote-direct/sgonly_cilium-project-orient-001__vMg5w38/agent/claude-code.txt"
     }
   },
   "score": {

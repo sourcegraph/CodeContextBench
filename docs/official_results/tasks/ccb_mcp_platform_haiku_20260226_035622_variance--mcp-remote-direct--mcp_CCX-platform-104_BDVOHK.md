@@ -1,13 +1,13 @@
 # mcp_CCX-platform-104_BDVOHK (mcp-remote-direct)
 
-- Run: `ccb_mcp_platform_haiku_20260226_035622_variance`
+- Run: `csb_org_platform_haiku_20260226_035622_variance`
 - Status: `passed`
 - Reward: `0.5833`
-- Audit JSON: [link](../audits/ccb_mcp_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK.json)
+- Audit JSON: [link](../audits/csb_org_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_platform_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-platform-104_BDVOHK/claude-code.txt)
 
 ## Metrics
 

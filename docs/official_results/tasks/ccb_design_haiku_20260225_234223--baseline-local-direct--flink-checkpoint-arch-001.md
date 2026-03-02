@@ -1,13 +1,13 @@
 # flink-checkpoint-arch-001 (baseline-local-direct)
 
-- Run: `ccb_design_haiku_20260225_234223`
+- Run: `csb_sdlc_design_haiku_20260225_234223`
 - Status: `passed`
 - Reward: `0.8000`
-- Audit JSON: [link](../audits/ccb_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_design_haiku_20260225_234223--baseline-local-direct--flink-checkpoint-arch-001/claude-code.txt)
 
 ## Metrics
 

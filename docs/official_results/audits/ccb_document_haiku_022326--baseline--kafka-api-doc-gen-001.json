@@ -674,14 +674,14 @@
       "transcript_sha256": "70cd71d49a8ac42b68386e6aff288db35b6ec594e65b17d29d782ae26ad74fbf"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet",
     "task_name": "kafka-api-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_kafka-api-doc-gen-001_baseline-local-direct/kafka-api-doc-gen-001__L9KTCet/agent/claude-code.txt"
     }
   },
   "score": {

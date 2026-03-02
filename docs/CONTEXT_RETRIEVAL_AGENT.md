@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **context retrieval agent** is an LLM-powered tool that identifies files relevant to understanding and solving software engineering tasks. It is calibrated against human-annotated contexts from ContextBench and generates oracle ground truth files used in CodeContextBench's IR (Information Retrieval) evaluation pipeline.
+The **context retrieval agent** is an LLM-powered tool that identifies files relevant to understanding and solving software engineering tasks. It is calibrated against human-annotated contexts from ContextBench and generates oracle ground truth files used in CodeScaleBench's IR (Information Retrieval) evaluation pipeline.
 
 ### Purpose
 
@@ -88,7 +88,7 @@ The agent uses a **single unified system prompt** (`CURATOR_SYSTEM_PROMPT`) for 
 
 Key elements of the curator prompt:
 
-1. **Role**: "benchmark curator agent for CodeContextBench" — not solving the task, producing ground truth
+1. **Role**: "benchmark curator agent for CodeScaleBench" — not solving the task, producing ground truth
 2. **Calibration**: aligned with ContextBench human-annotated gold context (read + modify files)
 3. **Inclusion rule**: "file if a developer MUST read it to correctly solve the task"
 4. **Classification**: agent must label each file as "edit" (needs modification) or "context" (understanding only)
@@ -165,7 +165,7 @@ Uses `run_agent()` — direct Python API calls:
 
 ```bash
 python3 scripts/context_retrieval_agent.py \
-    --task-dir benchmarks/ccb_fix/task-001 \
+    --task-dir benchmarks/csb_sdlc_fix/task-001 \
     --backend hybrid \
     --model claude-opus-4-6
 ```
@@ -216,11 +216,11 @@ Metrics:
 
 ---
 
-## Integration with CodeContextBench IR Pipeline
+## Integration with CodeScaleBench IR Pipeline
 
 ### How IR Evaluation Uses Oracle Files
 
-CodeContextBench runs a **post-hoc IR analysis** pipeline on SDLC task traces:
+CodeScaleBench runs a **post-hoc IR analysis** pipeline on SDLC task traces:
 
 1. **Normalize retrieval events** from agent transcripts
 2. **Extract retrieved files** (from read/search/grep tool calls)
@@ -233,7 +233,7 @@ CodeContextBench runs a **post-hoc IR analysis** pipeline on SDLC task traces:
 
 ### Ground Truth Priority Chain
 
-For each task, IR evaluation loads ground truth from (`scripts/ccb_metrics/ground_truth.py`):
+For each task, IR evaluation loads ground truth from (`scripts/csb_metrics/ground_truth.py`):
 
 1. `tests/ground_truth.json` (highest confidence)
 2. `tests/expected_defects.json`
@@ -370,7 +370,7 @@ By complexity:
 ### Documentation
 - [ContextBench GitHub](https://github.com/EuniAI/ContextBench)
 - [ContextBench Docs](https://euniai.github.io/ContextBench/)
-- [CodeContextBench Retrieval Eval Spec](./RETRIEVAL_EVAL_SPEC.md)
+- [CodeScaleBench Retrieval Eval Spec](./RETRIEVAL_EVAL_SPEC.md)
 
 ### Scripts
 - `scripts/context_retrieval_agent.py` — agent implementation (run_agent, run_agent_cli)

@@ -195,7 +195,7 @@ def discover_comparison_pairs(
         suites = [suite]
     else:
         for d in sorted(benchmarks.iterdir()):
-            if d.is_dir() and d.name.startswith("ccb_"):
+            if d.is_dir() and d.name.startswith(("csb_", "ccb_")):
                 suites.append(d.name)
 
     for s in suites:

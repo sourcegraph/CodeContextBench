@@ -32,8 +32,8 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from ccb_metrics import discover_runs, collect_retrieval_data, EvalReport, RunMetrics
-from ccb_metrics.task_selection import (
+from csb_metrics import discover_runs, collect_retrieval_data, EvalReport, RunMetrics
+from csb_metrics.task_selection import (
     load_selected_tasks,
     build_task_index,
     enrich_runs,
@@ -868,7 +868,7 @@ def generate_report(
 
     # Write REPORT.md
     md_lines = [
-        "# CodeContextBench Evaluation Report",
+        "# CodeScaleBench Evaluation Report",
         "",
         f"Generated: {report.generated_at}",
         f"Report ID: {report.report_id}",

@@ -4827,14 +4827,14 @@
       "transcript_sha256": "91cb0fadba707d6962241d81f6422f42250dc68686e9c26274a49e0298879756"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/result.json",
+    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/result.json",
     "run_dir": "feature_haiku_20260228_230650",
-    "suite": "ccb_feature",
-    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri",
+    "suite": "csb_sdlc_feature",
+    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri",
     "task_name": "bustub-hyperloglog-impl-001",
     "trace_paths": {
-      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/agent/trajectory.json",
-      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/agent/claude-code.txt"
+      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/agent/trajectory.json",
+      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_bustub-hyperloglog-impl-001_baseline-local-direct/bustub-hyperloglog-impl-001__yz4EPri/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,6 +1,6 @@
 # Workflow Metrics Methodology
 
-> **Important**: All time projections in this document and in CodeContextBench
+> **Important**: All time projections in this document and in CodeScaleBench
 > enterprise reports are **modeled estimates**, not direct measurements.
 > They are derived from agent trace data combined with published developer
 > productivity research. They should be interpreted as directional
@@ -8,7 +8,7 @@
 
 ## Overview
 
-CodeContextBench measures AI coding agent performance across 9 SDLC-phase
+CodeScaleBench measures AI coding agent performance across 9 SDLC-phase
 suites and 11 MCP-unique suites (20 active suites total). To translate raw
 benchmark metrics (tokens, tool calls, task time) into business-relevant
 productivity estimates, we map each suite to an **engineering workflow
@@ -18,13 +18,13 @@ category** and apply conservative token-to-time conversion multipliers.
 
 | Category | Description | SDLC Suites | MCP-Unique Suites |
 |----------|-------------|-------------|-------------------|
-| Code Comprehension | Reading, understanding, and reviewing unfamiliar code | ccb_understand, ccb_test (code review) | ccb_mcp_onboarding |
-| Cross-Repo Navigation | Tracing dependencies across repositories or large monorepos | ccb_design (dependency analysis) | ccb_mcp_crossrepo_tracing, ccb_mcp_crossorg |
-| Bug Localization | Fault localization, root-cause analysis, minimal-fix identification | ccb_debug, ccb_fix | ccb_mcp_incident |
-| Feature Implementation | Implementing features, modifying code based on issue descriptions | ccb_feature | -- |
-| Cross-File Refactoring | Renaming, extracting, and restructuring code across files | ccb_refactor | -- |
-| Documentation | Generating API docs, architecture guides, migration plans | ccb_document | ccb_mcp_platform |
-| Security & Compliance | Security analysis, CVE assessment, policy enforcement | ccb_secure | ccb_mcp_security, ccb_mcp_compliance |
+| Code Comprehension | Reading, understanding, and reviewing unfamiliar code | csb_sdlc_understand, csb_sdlc_test (code review) | csb_org_onboarding |
+| Cross-Repo Navigation | Tracing dependencies across repositories or large monorepos | csb_sdlc_design (dependency analysis) | csb_org_crossrepo_tracing, csb_org_crossorg |
+| Bug Localization | Fault localization, root-cause analysis, minimal-fix identification | csb_sdlc_debug, csb_sdlc_fix | csb_org_incident |
+| Feature Implementation | Implementing features, modifying code based on issue descriptions | csb_sdlc_feature | -- |
+| Cross-File Refactoring | Renaming, extracting, and restructuring code across files | csb_sdlc_refactor | -- |
+| Documentation | Generating API docs, architecture guides, migration plans | csb_sdlc_document | csb_org_platform |
+| Security & Compliance | Security analysis, CVE assessment, policy enforcement | csb_sdlc_secure | csb_org_security, csb_org_compliance |
 
 ## Token-to-Time Conversion
 

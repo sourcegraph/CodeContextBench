@@ -258,14 +258,14 @@
       "transcript_sha256": "c043e03cfda5dccfe57d8b50ddcfbe93506948c84534a2f1c8a874ed24f810ee"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/result.json",
-    "run_dir": "ccb_test_haiku_022326",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD",
+    "result_path": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/result.json",
+    "run_dir": "csb_sdlc_test_haiku_022326",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD",
     "task_name": "sgonly_test-unitgen-py-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/agent/trajectory.json",
-      "transcript": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_test-unitgen-py-001_mcp-remote-direct/sgonly_test-unitgen-py-001__rPx4JwD/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,12 +1,12 @@
 # ccx-dep-trace-116 (baseline-local-direct)
 
-- Run: `ccb_mcp_crossrepo_tracing_haiku_20260226_205845`
+- Run: `csb_org_crossrepo_tracing_haiku_20260226_205845`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-116.json)
+- Audit JSON: [link](../audits/csb_org_crossrepo_tracing_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-116.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-116/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_crossrepo_tracing_haiku_20260226_205845--baseline-local-direct--ccx-dep-trace-116/trajectory.json)
 
 ## Metrics
 

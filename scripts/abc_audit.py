@@ -89,10 +89,10 @@ def discover_tasks(suite: str) -> list[Path]:
 
 
 def discover_all_suites() -> list[str]:
-    """Find all ccb_* benchmark suite directories."""
+    """Find all benchmark suite directories (csb_* and legacy ccb_*)."""
     return sorted(
         d.name for d in BENCHMARKS_DIR.iterdir()
-        if d.is_dir() and d.name.startswith("ccb_")
+        if d.is_dir() and d.name.startswith(("csb_", "ccb_"))
     )
 
 
@@ -957,7 +957,7 @@ def audit_suite(suite: str, dimension: Optional[Dimension] = None) -> AuditRepor
 
         # R.2 doesn't apply to MCP-unique suites: instructions intentionally
         # reference Sourcegraph MCP tools (that's the point of these tasks).
-        if cid == "R.2" and suite.startswith("ccb_mcp_"):
+        if cid == "R.2" and suite.startswith(("csb_org_", "ccb_mcp_")):
             report.results.append(CriterionResult(
                 criterion_id=cid, status=Status.SKIP,
                 evidence="MCP-unique suite: MCP tool references in instructions are by design",

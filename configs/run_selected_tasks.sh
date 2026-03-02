@@ -12,7 +12,7 @@
 #   ./configs/run_selected_tasks.sh [OPTIONS]
 #
 # Options:
-#   --benchmark BENCHMARK           Run only this benchmark (e.g., ccb_feature, ccb_fix)
+#   --benchmark BENCHMARK           Run only this benchmark (e.g., csb_sdlc_feature, csb_sdlc_fix)
 #   --selection-file PATH           Use alternate selection file (default: selected_benchmark_tasks.json)
 #   --use-case-category CATEGORY    Filter by MCP-unique use case category (A-J), only valid with --selection-file
 #   --baseline-only                 Run only baseline (no MCP)
@@ -277,7 +277,7 @@ N_CONFIGS=0
 TOTAL_AGENT_RUNS=$(( TOTAL_TASKS * N_CONFIGS ))
 
 echo "=============================================="
-echo "CodeContextBench Selected Tasks Runner"
+echo "CodeScaleBench Selected Tasks Runner"
 echo "=============================================="
 echo "Source:        $SELECTION_FILE"
 echo "Model:         $MODEL"

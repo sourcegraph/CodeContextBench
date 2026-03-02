@@ -1,12 +1,12 @@
 # mcp_CCX-compliance-118_bHjUIx (mcp-remote-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035617`
+- Run: `csb_org_compliance_haiku_20260226_035617`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-compliance-118_bHjUIx.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-compliance-118_bHjUIx.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-compliance-118_bHjUIx/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-compliance-118_bHjUIx/trajectory.json)
 
 ## Metrics
 

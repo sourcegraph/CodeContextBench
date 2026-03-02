@@ -7,8 +7,8 @@
   "tasks": [
     {
       "task_id": "openlibrary-solr-boolean-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/openlibrary-solr-boolean-fix-001",
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/openlibrary-solr-boolean-fix-001",
       "language": "python",
       "difficulty": "hard",
       "sdlc_phase": "fix",
@@ -18,8 +18,8 @@
     },
     {
       "task_id": "grpcurl-transitive-vuln-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/grpcurl-transitive-vuln-001",
+      "benchmark": "csb_sdlc_secure",
+      "task_dir": "csb_sdlc_secure/grpcurl-transitive-vuln-001",
       "language": "go",
       "difficulty": "hard",
       "sdlc_phase": "secure",
@@ -29,7 +29,7 @@
     },
     {
       "task_id": "docgen-inline-001",
-      "benchmark": "ccb_document",
+      "benchmark": "csb_sdlc_document",
       "sdlc_phase": "Documentation",
       "language": "python",
       "difficulty": "medium",
@@ -43,7 +43,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Phase 2 backlog promotion: inline docstring generation (Python variant)",
-      "task_dir": "ccb_document/docgen-inline-001",
+      "task_dir": "csb_sdlc_document/docgen-inline-001",
       "context_length": 850000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 12,

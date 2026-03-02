@@ -1,13 +1,13 @@
 # ccx-config-trace-010 (mcp-remote-artifact)
 
-- Run: `ccb_mcp_crossrepo_tracing_haiku_022126`
+- Run: `csb_org_crossrepo_tracing_haiku_022126`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010.json)
+- Audit JSON: [link](../audits/csb_org_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossrepo_tracing_haiku_022126--mcp--ccx-config-trace-010/claude-code.txt)
 
 ## Metrics
 

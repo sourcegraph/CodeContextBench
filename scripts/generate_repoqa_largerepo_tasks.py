@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate large-repo RepoQA SR-QA tasks for ccb_understand (SDLC) and ccb_mcp_onboarding (MCP-unique).
+Generate large-repo RepoQA SR-QA tasks for csb_sdlc_understand (SDLC) and csb_org_onboarding (MCP-unique).
 
 Each task creates a needle-in-haystack function search challenge in a large codebase
 (1M-35M LOC) where the agent must find a function from a behavioral description.
 
-SDLC tasks go in benchmarks/ccb_understand/ (paired baseline+MCP).
-MCP-unique tasks go in benchmarks/ccb_mcp_onboarding/ (artifact-only, MCP search required).
+SDLC tasks go in benchmarks/csb_sdlc_understand/ (paired baseline+MCP).
+MCP-unique tasks go in benchmarks/csb_org_onboarding/ (artifact-only, MCP search required).
 
 Usage:
     python3 scripts/generate_repoqa_largerepo_tasks.py           # dry-run
@@ -23,8 +23,8 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 ROOT = Path(__file__).resolve().parent.parent
-UNDERSTAND_DIR = ROOT / "benchmarks" / "ccb_understand"
-ONBOARDING_DIR = ROOT / "benchmarks" / "ccb_mcp_onboarding"
+UNDERSTAND_DIR = ROOT / "benchmarks" / "csb_sdlc_understand"
+ONBOARDING_DIR = ROOT / "benchmarks" / "csb_org_onboarding"
 
 # ---------------------------------------------------------------------------
 # Infrastructure mapping: upstream repo -> base image + sg-evals mirror
@@ -400,7 +400,7 @@ TASKS: List[RepoQATask] = [
 # ---------------------------------------------------------------------------
 
 def _dockerfile_baseline_understand(task: RepoQATask) -> str:
-    """Baseline Dockerfile for ccb_understand: full repo available locally."""
+    """Baseline Dockerfile for csb_sdlc_understand: full repo available locally."""
     mirror = task.mirror
     if task.base_image:
         # Use pre-built base image that already contains the repo
@@ -459,7 +459,7 @@ def _dockerfile_sg_only(task: RepoQATask) -> str:
 
 
 def _dockerfile_baseline_onboarding(task: RepoQATask) -> str:
-    """Baseline Dockerfile for ccb_mcp_onboarding: clone mirror as claude."""
+    """Baseline Dockerfile for csb_org_onboarding: clone mirror as claude."""
     mirror = task.mirror
     return textwrap.dedent(f"""\
         FROM ubuntu:22.04
@@ -866,10 +866,10 @@ def generate_task_dir(
     os.chmod(wrapper_dst, 0o755)
 
     # Write Dockerfiles based on category
-    if category == "ccb_understand":
+    if category in ("csb_sdlc_understand", "ccb_understand"):
         (env_dir / "Dockerfile").write_text(_dockerfile_baseline_understand(task))
         (env_dir / "Dockerfile.sg_only").write_text(_dockerfile_sg_only(task))
-    elif category == "ccb_mcp_onboarding":
+    elif category in ("csb_org_onboarding", "ccb_mcp_onboarding"):
         (env_dir / "Dockerfile").write_text(_dockerfile_baseline_onboarding(task))
         (env_dir / "Dockerfile.sg_only").write_text(_dockerfile_sg_only(task))
         (env_dir / "Dockerfile.artifact_only").write_text(_dockerfile_artifact_only(task))
@@ -889,14 +889,14 @@ def main():
     print(f"Tasks: {len(TASKS)}")
     print()
 
-    print("--- ccb_understand (SDLC paired) ---")
+    print("--- csb_sdlc_understand (SDLC paired) ---")
     for task in TASKS:
-        generate_task_dir(UNDERSTAND_DIR, task.task_id_understand, task, "ccb_understand", dry_run)
+        generate_task_dir(UNDERSTAND_DIR, task.task_id_understand, task, "csb_sdlc_understand", dry_run)
 
     print()
-    print("--- ccb_mcp_onboarding (MCP-unique) ---")
+    print("--- csb_org_onboarding (MCP-unique) ---")
     for task in TASKS:
-        generate_task_dir(ONBOARDING_DIR, task.task_id_onboarding, task, "ccb_mcp_onboarding", dry_run)
+        generate_task_dir(ONBOARDING_DIR, task.task_id_onboarding, task, "csb_org_onboarding", dry_run)
 
     print()
     total = len(TASKS) * 2

@@ -1,6 +1,6 @@
 # Submission Format
 
-This document describes how to package evaluation results for submission to the CodeContextBench leaderboard.
+This document describes how to package evaluation results for submission to the CodeScaleBench leaderboard.
 
 ## Directory Structure
 
@@ -8,7 +8,7 @@ A submission is a directory tree with one subdirectory per task. Each task subdi
 
 ```
 my-submission/
-├── ccb_pytorch/
+├── csb_sdlc_pytorch/
 │   ├── sgt-001/
 │   │   ├── result.json
 │   │   └── trajectory.json
@@ -18,14 +18,14 @@ my-submission/
 │   └── sgt-003/
 │       ├── result.json
 │       └── trajectory.txt
-├── ccb_swebenchpro/
+├── csb_sdlc_swebenchpro/
 │   ├── qutebrowser__qutebrowser-8307/
 │   │   ├── result.json
 │   │   └── trajectory.json
 │   └── NodeBB__NodeBB-11488/
 │       ├── result.json
 │       └── trajectory.json
-└── ccb_k8sdocs/
+└── csb_sdlc_k8sdocs/
     └── apiserver-doc-001/
         ├── result.json
         └── trajectory.json
@@ -149,9 +149,9 @@ python3 scripts/validate_submission.py --submission-dir my-submission/
 This checks every `result.json` against the schema and reports errors per task:
 
 ```
-OK    ccb_pytorch/sgt-001
-OK    ccb_pytorch/sgt-002
-FAIL  ccb_pytorch/sgt-003: missing required field verifier_result.rewards.reward
+OK    csb_sdlc_pytorch/sgt-001
+OK    csb_sdlc_pytorch/sgt-002
+FAIL  csb_sdlc_pytorch/sgt-003: missing required field verifier_result.rewards.reward
 
 3 files checked: 2 valid, 1 invalid
 ```

@@ -1,13 +1,13 @@
 # ccx-migration-114 (baseline-local-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_214446`
+- Run: `csb_org_migration_haiku_20260226_214446`
 - Status: `passed`
 - Reward: `0.9091`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_214446--baseline-local-direct--ccx-migration-114/claude-code.txt)
 
 ## Metrics
 

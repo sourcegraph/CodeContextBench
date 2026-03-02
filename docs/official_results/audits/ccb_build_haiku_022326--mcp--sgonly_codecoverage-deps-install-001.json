@@ -1159,14 +1159,14 @@
       "transcript_sha256": "9e2abc10df4a4264c76e50eaab167c7119deb1f6543c76be948eb190218badfa"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV",
     "task_name": "sgonly_codecoverage-deps-install-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_codecoverage-deps-install-001_mcp-remote-direct/sgonly_codecoverage-deps-install__uDqLvwV/agent/claude-code.txt"
     }
   },
   "score": {

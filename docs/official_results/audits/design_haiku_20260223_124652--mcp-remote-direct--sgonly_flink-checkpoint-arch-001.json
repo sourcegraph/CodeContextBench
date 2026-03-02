@@ -1127,14 +1127,14 @@
       "transcript_sha256": "9f671d7a803dae91aba55ef7564502aac3f5a6494f2a176fe94aa9a2fafb49f1"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/result.json",
+    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/result.json",
     "run_dir": "design_haiku_20260223_124652",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F",
     "task_name": "sgonly_flink-checkpoint-arch-001",
     "trace_paths": {
-      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/agent/trajectory.json",
-      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/agent/claude-code.txt"
+      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/agent/trajectory.json",
+      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_flink-checkpoint-arch-001_mcp-remote-direct/sgonly_flink-checkpoint-arch-001__dQAqu9F/agent/claude-code.txt"
     }
   },
   "score": {

@@ -856,14 +856,14 @@
       "transcript_sha256": "6edd990f30f112e8e270018178ba0c4ce3a946d36f6b9f552960abcffed9690a"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/mcp/ccb_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/mcp/ccb_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/mcp/csb_sdlc_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/mcp/csb_sdlc_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx",
     "task_name": "sgonly_docgen-onboard-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/mcp/ccb_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/mcp/ccb_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/mcp/csb_sdlc_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/mcp/csb_sdlc_document_docgen-onboard-001_mcp-remote-direct/sgonly_docgen-onboard-001__7HYpjbx/agent/claude-code.txt"
     }
   },
   "score": {

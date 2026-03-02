@@ -1,13 +1,13 @@
 # mcp_CCX-agentic-122_NhlzeE (mcp-remote-artifact)
 
-- Run: `ccb_mcp_org_haiku_20260224_181919`
+- Run: `csb_org_org_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.6005`
-- Audit JSON: [link](../audits/ccb_mcp_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE.json)
+- Audit JSON: [link](../audits/csb_org_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE/claude-code.txt)
 
 ## Metrics
 

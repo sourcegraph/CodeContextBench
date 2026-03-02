@@ -657,14 +657,14 @@
       "transcript_sha256": "dec7d5de754c6e12ca08b83b8868b8cf848a25f37fad83a830f69dbefa46e94d"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/result.json",
+    "result_path": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/result.json",
     "run_dir": "test_haiku_20260223_235732",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE",
     "task_name": "curl-security-review-001",
     "trace_paths": {
-      "trajectory": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/agent/trajectory.json",
-      "transcript": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/agent/claude-code.txt"
+      "trajectory": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/agent/trajectory.json",
+      "transcript": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_curl-security-review-001_baseline-local-direct/curl-security-review-001__oK6XbYE/agent/claude-code.txt"
     }
   },
   "score": {

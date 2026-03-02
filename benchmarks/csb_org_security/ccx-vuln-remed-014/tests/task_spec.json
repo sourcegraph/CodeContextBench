@@ -1,0 +1,59 @@
+{
+  "id": "CCX-vuln-remed-014",
+  "family": "vuln-remediation",
+  "use_case_id": 14,
+  "category": "B",
+  "mcp_suite": "csb_org_security",
+  "prd": {
+    "user_story": "As a developer, I want to: Find Go source files in the Loki and Mimir repositories that register HTTP handlers or routes without applying authentication middleware such as `middleware.AuthenticateUser`.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the grafana-observability fixture.",
+    "seed_prompt": "Find Go source files in the Loki and Mimir repositories that register HTTP handlers or routes without applying authentication middleware such as `middleware.AuthenticateUser`."
+  },
+  "artifacts": {
+    "repo_set_id": "grafana-observability",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/grafana-loki",
+          "path": "pkg/loki/modules.go",
+          "endpoints": [
+            "/flush",
+            "/ingester/prepare_shutdown",
+            "/ingester/shutdown",
+            "/ingester/prepare_partition_downscale"
+          ]
+        }
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

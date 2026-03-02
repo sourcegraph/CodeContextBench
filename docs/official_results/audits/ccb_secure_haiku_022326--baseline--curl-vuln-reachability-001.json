@@ -2182,14 +2182,14 @@
       "transcript_sha256": "8179abd0caa89ef6bb3215412dceba575eb01ebeadbc97cf2a4cceed0f5d9c1d"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb",
     "task_name": "curl-vuln-reachability-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_curl-vuln-reachability-001_baseline-local-direct/curl-vuln-reachability-001__PkzHNhb/agent/claude-code.txt"
     }
   },
   "score": {

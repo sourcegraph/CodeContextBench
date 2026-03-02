@@ -1018,14 +1018,14 @@
       "transcript_sha256": "92c8754073f43000c515b5ed823976d49e3177777b6c91248b577b78593e71ec"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE",
     "task_name": "prometheus-queue-reshard-debug-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_prometheus-queue-reshard-debug-001_baseline-local-direct/prometheus-queue-reshard-debug-0__povUjcE/agent/claude-code.txt"
     }
   },
   "score": {

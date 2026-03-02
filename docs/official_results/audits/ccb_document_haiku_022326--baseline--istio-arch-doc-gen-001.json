@@ -1589,14 +1589,14 @@
       "transcript_sha256": "08829bd934c73baadfba1db24d42708c62c5570e1f007aa4f26fb52356654acd"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy",
     "task_name": "istio-arch-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_istio-arch-doc-gen-001_baseline-local-direct/istio-arch-doc-gen-001__RWPchoy/agent/claude-code.txt"
     }
   },
   "score": {

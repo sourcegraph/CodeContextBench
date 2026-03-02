@@ -6,7 +6,7 @@
 - `docs/CONFIGS.md` is a compatibility stub for legacy references.
 - If you are launching or triaging runs, start with `docs/START_HERE_BY_TASK.md` before reading this full spec.
 
-This document describes the agent configurations used in the CodeContextBench
+This document describes the agent configurations used in the CodeScaleBench
 evaluation. Each configuration controls tools, source access, and verification
 mode.
 
@@ -35,11 +35,11 @@ Config names encode three independent dimensions:
 | `mcp-remote-artifact` | MCP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
 | `mcp-scip-remote-artifact` | MCP + SCIP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
 
-**Standard SDLC suites** (`ccb_feature`, `ccb_refactor`, `ccb_debug`, etc.) use
+**Standard SDLC suites** (`csb_sdlc_feature`, `csb_sdlc_refactor`, `csb_sdlc_debug`, etc.) use
 `baseline-local-direct` + `mcp-remote-direct`. The agent produces code changes
 and the verifier checks git diffs / test results.
 
-**MCP-unique suites** (`ccb_mcp_*`) default to `baseline-local-artifact` +
+**MCP-unique suites** (`csb_org_*`) default to `baseline-local-artifact` +
 `mcp-remote-artifact`. The agent produces `/workspace/answer.json` and the
 verifier scores it against an oracle. Tasks with `"verification_modes":
 ["artifact", "direct"]` in `configs/use_case_registry.json` additionally
@@ -203,7 +203,7 @@ Source: `agents/claude_baseline_agent.py` lines 97-480
 OpenHands install and Gemini model setup (including openhands-tools dependency and API key model list): see **docs/OPENHANDS_SETUP.md**.
 
 For non-Anthropic harnesses (Codex, Cursor, Gemini, Copilot, OpenHands), token
-cost extraction depends on `scripts/ccb_metrics/extractors.py` model pricing
+cost extraction depends on `scripts/csb_metrics/extractors.py` model pricing
 keys. Official Codex runs should use `gpt-5.3-codex` so pricing is explicit.
 If a model identifier is unknown to `MODEL_PRICING`, extraction falls back to
 `claude-opus-4-5-20250514` rates and emits a warning.
@@ -260,7 +260,7 @@ configs/run_selected_tasks.sh \
 ```
 
 The `--use-case-category` flag filters tasks by the `use_case_category` field in
-the selection file (values: A through J, corresponding to the 10 ccb_mcp_* suites).
+the selection file (values: A through J, corresponding to the 10 csb_org_* suites).
 This flag is only meaningful when used with `--selection-file`.
 
 ### MCP-Unique vs Standard Suites
@@ -269,7 +269,7 @@ This flag is only meaningful when used with `--selection-file`.
 |---------|----------------|-------------------|
 | **Config pair** | `baseline-local-direct` + `mcp-remote-direct` | `baseline-local-artifact` + `mcp-remote-artifact` |
 | Selection file | `selected_benchmark_tasks.json` | `selected_mcp_unique_tasks.json` |
-| Suite prefix | `ccb_<phase>` | `ccb_mcp_<category>` |
+| Suite prefix | `csb_sdlc_<phase>` | `csb_org_<category>` |
 | Agent output | Code changes (git diff) | `/workspace/answer.json` |
 | Verifier script | `tests/test.sh` | `tests/eval.sh` |
 | Oracle format | task-specific | `oracle_answer.json` + `oracle_checks.py` |

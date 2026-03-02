@@ -1,13 +1,13 @@
 # mcp_CCX-crossorg-062_Dp7ADh (mcp-remote-direct)
 
-- Run: `ccb_mcp_crossorg_haiku_20260226_035633_variance`
+- Run: `csb_org_crossorg_haiku_20260226_035633_variance`
 - Status: `passed`
 - Reward: `0.7111`
-- Audit JSON: [link](../audits/ccb_mcp_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh.json)
+- Audit JSON: [link](../audits/csb_org_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossorg_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-crossorg-062_Dp7ADh/claude-code.txt)
 
 ## Metrics
 

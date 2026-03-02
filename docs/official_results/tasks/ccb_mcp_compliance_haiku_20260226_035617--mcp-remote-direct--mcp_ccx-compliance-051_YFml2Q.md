@@ -1,13 +1,13 @@
 # mcp_ccx-compliance-051_YFml2Q (mcp-remote-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035617`
+- Run: `csb_org_compliance_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.5143`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_compliance_haiku_20260226_035617--mcp-remote-direct--mcp_ccx-compliance-051_YFml2Q/claude-code.txt)
 
 ## Metrics
 

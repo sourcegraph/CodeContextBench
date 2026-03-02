@@ -1624,14 +1624,14 @@
       "transcript_sha256": "3da89751a60be043a489168bb4de85bc751173d49e4010bcbf4374f6aeaed8c0"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/result.json",
+    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/result.json",
     "run_dir": "design_haiku_20260223_124652",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm",
     "task_name": "sgonly_envoy-stream-aggregated-sym-001",
     "trace_paths": {
-      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/agent/trajectory.json",
-      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/agent/claude-code.txt"
+      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/agent/trajectory.json",
+      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_envoy-stream-aggregated-sym-001_mcp-remote-direct/sgonly_envoy-stream-aggregated-s__H2kBJpm/agent/claude-code.txt"
     }
   },
   "score": {

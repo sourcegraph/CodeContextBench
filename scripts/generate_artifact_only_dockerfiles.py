@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Dockerfile.artifact_only for ccb_test tasks.
+"""Generate Dockerfile.artifact_only for csb_sdlc_test tasks.
 
 Artifact-only evaluation: both configs produce a single artifact in one shot.
 Verifier scores only the artifact applied to a clean repo copy.
@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-BENCHMARKS = REPO_ROOT / "benchmarks" / "ccb_test"
+BENCHMARKS = REPO_ROOT / "benchmarks" / "csb_sdlc_test"
 LIB_SRC = REPO_ROOT / "scripts" / "artifact_verifier_lib.sh"
 
 # Task classification — explicit for the 20-task pilot

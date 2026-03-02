@@ -1,12 +1,12 @@
 ---
 name: generate-report
-description: Generate the aggregate CCB evaluation report from completed Harbor runs. Triggers on generate report, eval report, ccb report, benchmark report.
+description: Generate the aggregate CSB evaluation report from completed Harbor runs. Triggers on generate report, eval report, ccb report, benchmark report.
 user-invocable: true
 ---
 
-# Generate CCB Evaluation Report
+# Generate CSB Evaluation Report
 
-Generate the aggregate CodeContextBench evaluation report from completed Harbor runs in `runs/official/`.
+Generate the aggregate CodeScaleBench evaluation report from completed Harbor runs in `runs/official/`.
 
 ## What This Does
 
@@ -50,7 +50,7 @@ done
 2. Generate the report:
 
 ```bash
-cd ~/CodeContextBench && \
+cd ~/CodeScaleBench && \
 python3 scripts/generate_eval_report.py \
     --runs-dir runs/official/ \
     --output-dir ./eval_reports/ \

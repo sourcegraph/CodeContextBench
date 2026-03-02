@@ -1,13 +1,13 @@
 # ccx-incident-031 (mcp-remote-artifact)
 
-- Run: `ccb_mcp_incident_haiku_022126`
+- Run: `csb_org_incident_haiku_022126`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_mcp_incident_haiku_022126--mcp--ccx-incident-031.json)
+- Audit JSON: [link](../audits/csb_org_incident_haiku_022126--mcp--ccx-incident-031.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_022126--mcp--ccx-incident-031/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_incident_haiku_022126--mcp--ccx-incident-031/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_incident_haiku_022126--mcp--ccx-incident-031/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_incident_haiku_022126--mcp--ccx-incident-031/claude-code.txt)
 
 ## Metrics
 

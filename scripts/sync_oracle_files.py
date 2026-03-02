@@ -27,7 +27,7 @@ def main() -> int:
     args = parser.parse_args()
 
     oracle_files = sorted(glob.glob(
-        os.path.join(BENCHMARKS_DIR, "ccb_mcp_*/*/tests/oracle_answer.json")
+        os.path.join(BENCHMARKS_DIR, "csb_org_*/*/tests/oracle_answer.json")
     ))
 
     ok = skip_empty = skip_missing = 0

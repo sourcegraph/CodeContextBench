@@ -16,8 +16,8 @@ How each benchmark is scored, what the numbers mean, and known limitations.
 
 ## Per-Verifier Scoring (Active Suites)
 
-Tasks are organized into 8 SDLC-phase suites (`ccb_understand` through `ccb_debug`)
-and 10 MCP-unique suites (`ccb_mcp_*`). Within each suite, individual tasks use
+Tasks are organized into 8 SDLC-phase suites (`csb_sdlc_understand` through `csb_sdlc_debug`)
+and 10 MCP-unique suites (`csb_org_*`). Within each suite, individual tasks use
 one of the verifier types below, inherited from their source benchmark. See
 `docs/TASK_CATALOG.md` for which verifier each task uses and
 `docs/TASK_SELECTION.md` for the SDLC suite structure.
@@ -148,7 +148,7 @@ one of the verifier types below, inherited from their source benchmark. See
 
 ## Defect Annotation Format
 
-Code review and security review tasks in `ccb_test/` use
+Code review and security review tasks in `csb_sdlc_test/` use
 `tests/expected_defects.json` to define ground truth defects.  Each defect
 entry supports the following optional annotation fields for richer analysis.
 These fields are informational metadata; **scoring logic is unchanged**.
@@ -192,19 +192,19 @@ These fields are informational metadata; **scoring logic is unchanged**.
 ### Ground Truth Registry Integration
 
 When `defect_type` is present in an `expected_defects.json` entry, the ground
-truth extraction in `scripts/ccb_metrics/ground_truth.py` populates
+truth extraction in `scripts/csb_metrics/ground_truth.py` populates
 `TaskGroundTruth.defect_annotations` -- a list of `DefectAnnotation` objects
 carrying `defect_id`, `file`, `defect_type`, `line_start`, and `line_end`.
 Tasks without `defect_type` fields produce an empty annotations list.  The
 serialized registry (`configs/ground_truth_files.json`) includes annotations
 only when non-empty.
 
-## MCP-Unique Suite Scoring (ccb_mcp_* suites)
+## MCP-Unique Suite Scoring (csb_org_* suites)
 
 MCP-unique tasks use a unified oracle check library for deterministic scoring,
 with optional rubric judge for Deep Search synthesis tasks.
 
-### Oracle Checks (scripts/ccb_metrics/oracle_checks.py)
+### Oracle Checks (scripts/csb_metrics/oracle_checks.py)
 
 All MCP-unique tasks are scored by `oracle_checks.py`, a stdlib-only Python
 library invoked by `eval.sh`. There are 7 check types:
@@ -281,7 +281,7 @@ python3 scripts/run_judge.py --hybrid --task CCX-onboard-050-ds
 The `judge_result.json` output includes `criteria_scores`, `rubric_score`, and
 `hybrid_composite` when criteria.json is present.
 
-### Retrieval KPIs (scripts/ccb_metrics/retrieval.py)
+### Retrieval KPIs (scripts/csb_metrics/retrieval.py)
 
 In addition to reward, retrieval metrics are extracted from agent transcripts:
 

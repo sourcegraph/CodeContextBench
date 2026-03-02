@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to CodeContextBench.
+Thanks for contributing to CodeScaleBench.
 
 ## Scope
 

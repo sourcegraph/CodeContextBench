@@ -9,8 +9,8 @@
 | Category | Count | Notes |
 |---|---|---|
 | SDLC tasks | 199 | 9 suites (feature/refactor/debug/design/document/fix/secure/test/understand) |
-| MCP-unique tasks | 95 | 11 suites (ccb_mcp_*) |
-| **Total** | **294** | ccb_build split into ccb_feature (20) + ccb_refactor (20) on 2026-02-28 |
+| MCP-unique tasks | 95 | 11 suites (csb_org_*) |
+| **Total** | **294** | csb_sdlc_build split into csb_sdlc_feature (20) + csb_sdlc_refactor (20) on 2026-02-28 |
 
 ## Directory Layouts
 
@@ -35,7 +35,7 @@ runs/official/{suite}_{model}_{date}/
 
 **Config dir names**: `baseline`, `mcp`
 
-Example (historical, from pre-split `ccb_build` runs): `ccb_build_haiku_022326/mcp/ccb_build_bustub-hyperloglog-impl-001_mcp-remote-direct/sgonly_bustub-hyperloglog-impl-0__2E3pTAv/result.json`
+Example (historical, from pre-split `csb_sdlc_build` runs): `csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_bustub-hyperloglog-impl-001_mcp-remote-direct/sgonly_bustub-hyperloglog-impl-0__2E3pTAv/result.json`
 
 ### Layout 2: Harbor Nested Format (2026-02-24+)
 
@@ -123,7 +123,7 @@ Task IDs appear in multiple fields with various prefixes and suffixes.
 - `sgonly_` — added by sg_only Dockerfile swap
 - `mcp_` — added by MCP artifact runs
 - `bl_` — added by baseline artifact runs
-- `{suite}_` — suite prefix (e.g. `ccb_feature_`, `ccb_refactor_`)
+- `{suite}_` — suite prefix (e.g. `csb_sdlc_feature_`, `csb_sdlc_refactor_`)
 
 ### Suffixes to strip
 - `__AbCdEfG` — Harbor 7-char random hash (after double underscore)
@@ -226,7 +226,7 @@ for rj in Path('runs/official').rglob('result.json'):
 
 ## Protonmail Removal (2026-02-26)
 
-3 tasks removed from `ccb_fix` due to unresolvable `git apply --allow-empty` verifier bug:
+3 tasks removed from `csb_sdlc_fix` due to unresolvable `git apply --allow-empty` verifier bug:
 - `protonmail-conv-testhooks-fix-001`
 - `protonmail-dropdown-sizing-fix-001`
 - `protonmail-holiday-calendar-fix-001`

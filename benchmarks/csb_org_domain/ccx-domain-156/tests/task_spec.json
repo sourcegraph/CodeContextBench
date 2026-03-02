@@ -1,0 +1,81 @@
+{
+  "id": "CCX-domain-156",
+  "family": "domain-lineage",
+  "use_case_id": 156,
+  "category": "E",
+  "mcp_suite": "csb_org_domain",
+  "prd": {
+    "user_story": "As a developer, I want to: Find all Go source files in kubernetes/kubernetes that implement the SharedInformer factory: the informer registration, the list-watch mechanism, and the local cache store sync with the API server.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the kubernetes-ecosystem fixture.",
+    "seed_prompt": "Find all Go source files in kubernetes/kubernetes that implement the SharedInformer factory: the informer registration, the list-watch mechanism, and the local cache store sync with the API server."
+  },
+  "artifacts": {
+    "repo_set_id": "kubernetes-ecosystem",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/client-go/tools/cache/shared_informer.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/client-go/metadata/metadatainformer/interface.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/client-go/informers/internalinterfaces/factory_interfaces.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/kube-aggregator/pkg/client/informers/externalversions/factory.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/code-generator/examples/crd/informers/externalversions/factory.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/sample-apiserver/pkg/generated/informers/externalversions/factory.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/sample-controller/pkg/generated/informers/externalversions/factory.go"
+        },
+        {
+          "repo": "sg-evals/kubernetes--v1.32.0",
+          "path": "staging/src/k8s.io/kube-aggregator/pkg/client/informers/externalversions/internalinterfaces/factory_interfaces.go"
+        }
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

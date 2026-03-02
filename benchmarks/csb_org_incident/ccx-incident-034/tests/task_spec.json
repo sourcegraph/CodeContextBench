@@ -1,0 +1,69 @@
+{
+  "id": "CCX-incident-034",
+  "family": "incident-debug",
+  "use_case_id": 34,
+  "category": "D",
+  "mcp_suite": "csb_org_incident",
+  "prd": {
+    "user_story": "As a developer, I want to: Find all Go source files in `grafana/grafana` under `pkg/components/loki/` that define or configure: 1. HTTP client timeout and retry/backoff logic \u2014 files containing `StopNow`, `Timeout`, and `backoff` configuration for the HTTP Loki client. 2. gRPC client retry configuration \u2014 files containing `grpcretry.WithMax`, `Timeout` for the gRPC Loki client.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the grafana-observability fixture.",
+    "seed_prompt": "Find all Go source files in `grafana/grafana` under `pkg/components/loki/` that define or configure: 1. HTTP client timeout and retry/backoff logic \u2014 files containing `StopNow`, `Timeout`, and `backoff` configuration for the HTTP Loki client. 2. gRPC client retry configuration \u2014 files containing `grpcretry.WithMax`, `Timeout` for the gRPC Loki client."
+  },
+  "artifacts": {
+    "repo_set_id": "grafana-observability",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "grafana/grafana",
+          "path": "pkg/components/loki/lokihttp/client.go"
+        },
+        {
+          "repo": "grafana/grafana",
+          "path": "pkg/components/loki/lokihttp/config.go"
+        },
+        {
+          "repo": "grafana/grafana",
+          "path": "pkg/components/loki/lokihttp/fake.go"
+        },
+        {
+          "repo": "grafana/grafana",
+          "path": "pkg/components/loki/lokigrpc/client.go"
+        },
+        {
+          "repo": "grafana/grafana",
+          "path": "pkg/components/loki/lokigrpc/config.go"
+        }
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

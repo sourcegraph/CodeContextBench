@@ -1,13 +1,13 @@
 # mcp_CCX-agentic-081_vk5N7K (mcp-remote-direct)
 
-- Run: `ccb_mcp_org_haiku_20260226_035617`
+- Run: `csb_org_org_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.5455`
-- Audit JSON: [link](../audits/ccb_mcp_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K.json)
+- Audit JSON: [link](../audits/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K/claude-code.txt)
 
 ## Metrics
 

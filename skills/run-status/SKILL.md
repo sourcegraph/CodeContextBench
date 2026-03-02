@@ -15,12 +15,12 @@ This is a lightweight alternative to `/watch-benchmarks` that focuses on recent 
 ### 1. Check what's active (last 60 minutes)
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --since 60 --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --since 60 --format json
 ```
 
 If nothing recent, widen to last 4 hours:
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --since 240 --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --since 240 --format json
 ```
 
 ### 2. Present a concise summary
@@ -53,7 +53,7 @@ Active run: 5/12 tasks done (3 pass, 2 errored).
 
 ### Specific suite
 ```bash
-python3 scripts/aggregate_status.py --since 120 --suite ccb_pytorch --format json
+python3 scripts/aggregate_status.py --since 120 --suite csb_sdlc_pytorch --format json
 ```
 
 ### Specific config

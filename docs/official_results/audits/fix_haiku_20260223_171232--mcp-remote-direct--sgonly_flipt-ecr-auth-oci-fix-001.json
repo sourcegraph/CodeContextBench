@@ -3321,14 +3321,14 @@
       "transcript_sha256": "d09b059e47b9ad9aa761514e787e40716d69bc359b4bbb867bf25dc2c37cca38"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/result.json",
+    "result_path": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/result.json",
     "run_dir": "fix_haiku_20260223_171232",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc",
     "task_name": "sgonly_flipt-ecr-auth-oci-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-ecr-auth-oci-fix-001_mcp-remote-direct/sgonly_flipt-ecr-auth-oci-fix-00__TDn7qdc/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,6 +1,6 @@
 # Agent Interface Specification
 
-This document describes what an agent receives and must produce when running a CodeContextBench task.
+This document describes what an agent receives and must produce when running a CodeScaleBench task.
 
 ## Input
 
@@ -104,7 +104,7 @@ Harbor writes each task trial under a **task trial directory**. The pipeline exp
 | Artifact | Path | Used by |
 |----------|------|--------|
 | **Trajectory** | `<task_trial_dir>/agent/trajectory.json` | Metrics (tool counts, TTFR/TTAR), audits, failure analysis |
-| **Transcript** | `<task_trial_dir>/agent/<harness>-code.txt` or `agent/transcript.jsonl` | Fallback when `trajectory.json` is missing; see `scripts/ccb_metrics/transcript_paths.py` |
+| **Transcript** | `<task_trial_dir>/agent/<harness>-code.txt` or `agent/transcript.jsonl` | Fallback when `trajectory.json` is missing; see `scripts/csb_metrics/transcript_paths.py` |
 
 Example for one OpenHands trial:
 
@@ -116,7 +116,7 @@ If the run raises before or during the agent loop (e.g. setup or agent init), Ha
 
 ## Agent Configurations
 
-CodeContextBench evaluates agents under two MCP (Model Context Protocol) configurations:
+CodeScaleBench evaluates agents under two MCP (Model Context Protocol) configurations:
 
 ### Baseline (`baseline-local-direct`)
 

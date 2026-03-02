@@ -13,7 +13,7 @@ Compare results between agent configurations to find signal about MCP tool impac
 ### 1. Run the comparison script
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/compare_configs.py --format json
+cd ~/CodeScaleBench && python3 scripts/compare_configs.py --format json
 ```
 
 ### 2. Parse and present the results
@@ -38,7 +38,7 @@ Present the JSON output as markdown tables covering:
 
 | Suite | Task | baseline | SG_full | Signal |
 |-------|------|----------|---------|--------|
-| ccb_pytorch | sgt-005 | PASS | PASS | MCP-Full matches |
+| csb_sdlc_pytorch | sgt-005 | PASS | PASS | MCP-Full matches |
 
 ### 3. Highlight key findings
 
@@ -77,7 +77,7 @@ Present the MCP-conditioned reward delta table:
 
 ### Filter to one suite
 ```bash
-python3 scripts/compare_configs.py --suite ccb_pytorch --format json
+python3 scripts/compare_configs.py --suite csb_sdlc_pytorch --format json
 ```
 
 ### Show only divergent tasks

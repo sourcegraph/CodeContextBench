@@ -209,7 +209,7 @@ def _score(task: dict, repo_root: Path) -> tuple[float, dict[str, float]]:
 def _label(task: dict, score: float) -> str:
     task_id = str(task.get("task_id", "")).lower()
     benchmark = str(task.get("benchmark", "")).lower()
-    if benchmark == "ccb_debug" and task_id.startswith("linux-"):
+    if benchmark in ("csb_sdlc_debug", "ccb_debug") and task_id.startswith("linux-"):
         return "expert"
     if score >= EXPERT_THRESHOLD:
         return "expert"
@@ -228,7 +228,7 @@ def _update_metadata(payload: dict) -> None:
         "dimensions": ["codebase_size", "codebase_complexity", "ground_truth_knowledge_depth"],
         "weights": WEIGHTS,
         "thresholds": {"expert": EXPERT_THRESHOLD, "hard": HARD_THRESHOLD},
-        "rule_override": "ccb_debug linux-* tasks are expert",
+        "rule_override": "csb_sdlc_debug linux-* tasks are expert",
         "description": (
             "Difficulty is computed from size proxies (context/files), complexity proxies "
             "(cross-file + semantic + category), and ground-truth knowledge depth "

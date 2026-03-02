@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""General-purpose Daytona benchmark runner for CodeContextBench.
+"""General-purpose Daytona benchmark runner for CodeScaleBench.
 
 Runs any combination of benchmark tasks using Daytona sandboxes.
 Creates sandboxes dynamically from task Dockerfiles, runs Claude Code,
@@ -825,7 +825,7 @@ class ResultCollector:
 
 def build_cli() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="General-purpose Daytona benchmark runner for CodeContextBench",
+        description="General-purpose Daytona benchmark runner for CodeScaleBench",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

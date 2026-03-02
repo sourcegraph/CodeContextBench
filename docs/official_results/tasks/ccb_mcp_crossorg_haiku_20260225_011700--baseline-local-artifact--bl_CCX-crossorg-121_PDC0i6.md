@@ -1,13 +1,13 @@
 # bl_CCX-crossorg-121_PDC0i6 (baseline-local-artifact)
 
-- Run: `ccb_mcp_crossorg_haiku_20260225_011700`
+- Run: `csb_org_crossorg_haiku_20260225_011700`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6.json)
+- Audit JSON: [link](../audits/csb_org_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossorg_haiku_20260225_011700--baseline-local-artifact--bl_CCX-crossorg-121_PDC0i6/claude-code.txt)
 
 ## Metrics
 

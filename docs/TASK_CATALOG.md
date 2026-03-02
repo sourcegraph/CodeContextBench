@@ -1,6 +1,6 @@
-# CodeContextBench Task Catalog
+# CodeScaleBench Task Catalog
 
-A detailed reference for benchmark tasks in CodeContextBench. This document catalogs the **180 SDLC tasks** organized across **9 SDLC-phase suites** (plus 220 MCP-unique tasks across 11 suites = **400 total**). The selection file (`configs/selected_benchmark_tasks.json`, version 2.0, last updated 2026-03-01) contains all 400 active tasks.
+A detailed reference for benchmark tasks in CodeScaleBench. This document catalogs the **180 SDLC tasks** organized across **9 SDLC-phase suites** (plus 220 MCP-unique tasks across 11 suites = **400 total**). The selection file (`configs/selected_benchmark_tasks.json`, version 2.0, last updated 2026-03-01) contains all 400 active tasks.
 
 **Selection methodology:** Tasks were chosen via stratified sampling across benchmarks, covering all SDLC phases. Each task is scored for MCP benefit using a weighted combination of context complexity (0.25), cross-file dependencies (0.30), semantic search potential (0.20), and tool-chain weight (0.25). See `docs/TASK_SELECTION.md` for full scoring methodology.
 
@@ -8,20 +8,20 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ## Table of Contents
 
-1. [ccb_understand (20 tasks)](#1-ccb_understand--requirements--discovery)
-2. [ccb_design (20 tasks)](#2-ccb_design--architecture--design)
-3. [ccb_fix (20 tasks)](#3-ccb_fix--bug-repair)
-4. [ccb_feature (20 tasks)](#4-ccb_feature--feature-implementation)
-5. [ccb_refactor (20 tasks)](#5-ccb_refactor--cross-file-refactoring)
-6. [ccb_test (20 tasks)](#6-ccb_test--testing--qa)
-7. [ccb_document (20 tasks)](#7-ccb_document--documentation)
-8. [ccb_secure (20 tasks)](#8-ccb_secure--security--compliance)
-9. [ccb_debug (20 tasks)](#9-ccb_debug--debugging--investigation)
+1. [csb_sdlc_understand (20 tasks)](#1-csb_sdlc_understand--requirements--discovery)
+2. [csb_sdlc_design (20 tasks)](#2-csb_sdlc_design--architecture--design)
+3. [csb_sdlc_fix (20 tasks)](#3-csb_sdlc_fix--bug-repair)
+4. [csb_sdlc_feature (20 tasks)](#4-csb_sdlc_feature--feature-implementation)
+5. [csb_sdlc_refactor (20 tasks)](#5-csb_sdlc_refactor--cross-file-refactoring)
+6. [csb_sdlc_test (20 tasks)](#6-csb_sdlc_test--testing--qa)
+7. [csb_sdlc_document (20 tasks)](#7-csb_sdlc_document--documentation)
+8. [csb_sdlc_secure (20 tasks)](#8-csb_sdlc_secure--security--compliance)
+9. [csb_sdlc_debug (20 tasks)](#9-csb_sdlc_debug--debugging--investigation)
 10. [Summary Statistics](#summary-statistics)
 
 ---
 
-## 1. ccb_understand -- Requirements & Discovery
+## 1. csb_sdlc_understand -- Requirements & Discovery
 
 **Focus:** Codebase comprehension, natural-language Q&A, onboarding, knowledge discovery, and institutional memory recovery. Tasks require the agent to explain architecture, trace data flows, orient in unfamiliar projects, and recover fragmented knowledge.
 
@@ -52,7 +52,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 2. ccb_design -- Architecture & Design
+## 2. csb_sdlc_design -- Architecture & Design
 
 **Focus:** Architecture analysis, dependency mapping, cross-repo reasoning, impact analysis, symbol resolution, and design-level decision-making. Tasks require the agent to understand system structure, trace dependency chains, and resolve cross-codebase symbols.
 
@@ -83,7 +83,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 3. ccb_fix -- Bug Repair
+## 3. csb_sdlc_fix -- Bug Repair
 
 **Focus:** Fix real bugs from production open-source repositories. Includes SWE-bench Pro patches, PyTorch compiler/runtime fixes, enterprise multi-team ownership bugs, and large-codebase debugging fixes.
 
@@ -119,7 +119,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 4. ccb_feature -- Feature Implementation
+## 4. csb_sdlc_feature -- Feature Implementation
 
 **Focus:** Feature implementation, interface implementation, and adding new capabilities to large codebases. Tasks range from implementing new API endpoints and middleware to adding features in 1GB+ monorepos.
 
@@ -150,7 +150,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 5. ccb_refactor -- Cross-File Refactoring
+## 5. csb_sdlc_refactor -- Cross-File Refactoring
 
 **Focus:** Symbol renaming, module extraction, and cross-file restructuring. Tasks require identifying all references to a symbol across multiple files and consistently renaming or extracting them while maintaining compilation.
 
@@ -181,7 +181,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 6. ccb_test -- Testing & QA
+## 6. csb_sdlc_test -- Testing & QA
 
 **Focus:** Code review with injected defects, codebase search, performance optimization profiling, and unit test writing. Tasks test the agent's ability to detect bugs, write tests, find code patterns, and optimize performance.
 
@@ -216,7 +216,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 7. ccb_document -- Documentation
+## 7. csb_sdlc_document -- Documentation
 
 **Focus:** Generate accurate API documentation, architecture guides, and migration plans by reading and understanding source code. Tasks require deep codebase comprehension to produce comprehensive documentation.
 
@@ -247,7 +247,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 8. ccb_secure -- Security & Compliance
+## 8. csb_sdlc_secure -- Security & Compliance
 
 **Focus:** Security vulnerability triage (CVE analysis), reachability assessment, transitive dependency analysis, governance compliance (access control, audit trails, policy enforcement), and sensitive file exclusion.
 
@@ -278,7 +278,7 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 ---
 
-## 9. ccb_debug -- Debugging & Investigation
+## 9. csb_sdlc_debug -- Debugging & Investigation
 
 **Focus:** Deep debugging, fault localization, regression hunting, causal chain tracing, and navigation-verified regression proving. Includes Linux kernel fault localization (expert difficulty) and navigation-verified tasks where the agent must both locate a bug and write a regression test.
 
@@ -317,15 +317,15 @@ A detailed reference for benchmark tasks in CodeContextBench. This document cata
 
 | Suite | Tasks | Difficulty Range | Languages | Description |
 |-------|-------|-----------------|-----------|-------------|
-| ccb_understand | 34 | hard | C++, Go, Java, Python, TS | Comprehension, Q&A, onboarding |
-| ccb_design | 20 | hard--very_hard | C, C++, Go, Java, Python | Architecture, dependency mapping |
-| ccb_fix | 25 | medium--hard | C++, Go, Java, JS, Python, TS | Bug fixes, SWE-bench Pro patches |
-| ccb_feature | 20 | hard--expert | C, C++, Go, Java, Python, Python/C++, Rust, TS | Feature implementation, interface impl |
-| ccb_refactor | 20 | hard--expert | C, C++, Go, Java, Python, Rust | Cross-file renaming, module extraction |
-| ccb_test | 20 | medium--hard | C, C#, C++, Go, Java, JS, Python, TS | Code review, testing, perf, coverage analysis |
-| ccb_document | 20 | medium--hard | C++, Go, Java, Python, TS | API docs, arch guides, migration, runbooks |
-| ccb_secure | 20 | medium--hard | C, C++, Go, Java, Python | CVE triage, governance, access |
-| ccb_debug | 20 | medium--expert | C, C++, Go, Python, TS | Fault localization, regression |
+| csb_sdlc_understand | 34 | hard | C++, Go, Java, Python, TS | Comprehension, Q&A, onboarding |
+| csb_sdlc_design | 20 | hard--very_hard | C, C++, Go, Java, Python | Architecture, dependency mapping |
+| csb_sdlc_fix | 25 | medium--hard | C++, Go, Java, JS, Python, TS | Bug fixes, SWE-bench Pro patches |
+| csb_sdlc_feature | 20 | hard--expert | C, C++, Go, Java, Python, Python/C++, Rust, TS | Feature implementation, interface impl |
+| csb_sdlc_refactor | 20 | hard--expert | C, C++, Go, Java, Python, Rust | Cross-file renaming, module extraction |
+| csb_sdlc_test | 20 | medium--hard | C, C#, C++, Go, Java, JS, Python, TS | Code review, testing, perf, coverage analysis |
+| csb_sdlc_document | 20 | medium--hard | C++, Go, Java, Python, TS | API docs, arch guides, migration, runbooks |
+| csb_sdlc_secure | 20 | medium--hard | C, C++, Go, Java, Python | CVE triage, governance, access |
+| csb_sdlc_debug | 20 | medium--expert | C, C++, Go, Python, TS | Fault localization, regression |
 
 **Total active tasks:** 180 (SDLC) + 220 (MCP-unique) = 400
 **Languages covered:** C, C++, C#, Go, Java, JavaScript, Python, Rust, TypeScript

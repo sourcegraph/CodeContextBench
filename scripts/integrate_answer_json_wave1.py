@@ -208,7 +208,8 @@ def integrate_task(task_dir, dry_run=False):
 def main():
     dry_run = "--dry-run" in sys.argv
 
-    suites = ["ccb_design", "ccb_understand", "ccb_document"]
+    suites = ["csb_sdlc_design", "csb_sdlc_understand", "csb_sdlc_document",
+              "ccb_design", "ccb_understand", "ccb_document"]  # legacy fallbacks
     benchmarks_dir = os.path.join(ROOT, "benchmarks")
 
     results = {"ok": 0, "skip": 0, "error": 0}

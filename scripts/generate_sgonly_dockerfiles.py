@@ -51,7 +51,7 @@ UPSTREAM_TO_MIRROR = {
 # Mapping from ccb-repo-* image tags to their underlying base image and packages.
 # Derived from base_images/Dockerfile.* files. Used by generate_build_requiring_v2()
 # to emit lightweight Dockerfiles that don't depend on the ccb-repo images.
-CCB_REPO_BASE_MAP = {
+CSB_REPO_BASE_MAP = {
     "ccb-repo-camel-1006f047": {
         "from": "eclipse-temurin:17-jdk",
         "packages": ["git", "curl", "python3", "python3-pip"],
@@ -334,7 +334,7 @@ def get_active_task_ids():
 
     # Primary: scan benchmarks/ directories on disk (catches newly added tasks)
     for suite_dir in sorted(BENCHMARKS.iterdir()):
-        if not suite_dir.is_dir() or not suite_dir.name.startswith('ccb_'):
+        if not suite_dir.is_dir() or not suite_dir.name.startswith(('csb_', 'ccb_')):
             continue
         suite_name = suite_dir.name
         for task_dir in sorted(suite_dir.iterdir()):
@@ -606,7 +606,7 @@ def generate_build_requiring(task_dir, dockerfile_text):
     verifier wrapper reads the manifest and clones mirrors at verification time.
 
     Subcategories handled:
-    - ccb-repo-* tasks: use underlying base image from CCB_REPO_BASE_MAP
+    - ccb-repo-* tasks: use underlying base image from CSB_REPO_BASE_MAP
     - SWE-bench tasks: keep FROM jefzda/sweap-images, truncate but no backup
     - Inline-clone tasks: empty workspace with manifest
     - Code-review tasks: bake inject_defects.sh, reference in manifest
@@ -623,9 +623,9 @@ def generate_build_requiring(task_dir, dockerfile_text):
     # --- Determine clone layout from baseline Dockerfile ---
     repos, inject_defects = extract_clone_layout(dockerfile_text)
 
-    # --- ccb-repo-* tasks: resolve base image from CCB_REPO_BASE_MAP ---
+    # --- ccb-repo-* tasks: resolve base image from CSB_REPO_BASE_MAP ---
     if from_image.startswith('ccb-repo-'):
-        info = CCB_REPO_BASE_MAP.get(from_image)
+        info = CSB_REPO_BASE_MAP.get(from_image)
         if info:
             base_image = info['from']
             packages = info['packages']
@@ -1110,8 +1110,8 @@ def main():
         if sgonly.exists() and not force:
             skipped += 1
             # Even if sg_only exists, check if artifact variants need generation
-            # for MCP-unique suites (ccb_mcp_*)
-            if suite.startswith("ccb_mcp") and dockerfile.exists():
+            # for MCP-unique suites (csb_org_* / ccb_mcp_*)
+            if suite.startswith(("csb_org", "ccb_mcp")) and dockerfile.exists():
                 try:
                     dockerfile_text = dockerfile.read_text()
                     if not artifact_only.exists():
@@ -1196,7 +1196,7 @@ def main():
                         wrappers_copied += 1
 
             # For MCP-unique suites, also generate Dockerfile.artifact_only + artifact_baseline
-            if suite.startswith("ccb_mcp"):
+            if suite.startswith(("csb_org", "ccb_mcp")):
                 if not artifact_only.exists() or force:
                     art_content = generate_artifact_only_mcp(task_dir, dockerfile_text)
                     if dry_run:

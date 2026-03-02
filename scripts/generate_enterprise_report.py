@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Enterprise report generator for CodeContextBench.
+"""Enterprise report generator for CodeScaleBench.
 
 Orchestrates all enterprise metric sub-scripts and produces:
 - enterprise_report.json  (top-level envelope per enterprise_report_schema.json)
@@ -356,7 +356,7 @@ def _generate_enterprise_report_md(
 ) -> str:
     """Generate ENTERPRISE_REPORT.md with four sections."""
     lines: list[str] = []
-    lines.append("# CodeContextBench Enterprise Report")
+    lines.append("# CodeScaleBench Enterprise Report")
     lines.append("")
     lines.append(f"*Generated: {metadata['generated_at']}*")
     lines.append(f"*Version: {metadata['ccb_version']}*")
@@ -544,7 +544,7 @@ def _generate_executive_summary_md(
 ) -> str:
     """Generate EXECUTIVE_SUMMARY.md (under 500 words)."""
     lines: list[str] = []
-    lines.append("# CodeContextBench Executive Summary")
+    lines.append("# CodeScaleBench Executive Summary")
     lines.append("")
     lines.append(f"*{metadata['generated_at']} | {metadata['ccb_version']} | "
                  f"{metadata['total_tasks']} tasks*")

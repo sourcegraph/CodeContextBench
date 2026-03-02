@@ -1,6 +1,6 @@
 # Deterministic Control Plane
 
-This document describes how to use the **deterministic control plane** in CodeContextBench: a single declarative spec that defines exactly which runs execute, with stable experiment/run/pair IDs and ordering. Same spec + same task source → same manifest every time.
+This document describes how to use the **deterministic control plane** in CodeScaleBench: a single declarative spec that defines exactly which runs execute, with stable experiment/run/pair IDs and ordering. Same spec + same task source → same manifest every time.
 
 ## Rationale
 
@@ -22,17 +22,17 @@ This document describes how to use the **deterministic control plane** in CodeCo
 Example: `configs/control_plane_ccb.yaml`
 
 ```yaml
-# Deterministic control plane for CodeContextBench 2-config runs.
+# Deterministic control plane for CodeScaleBench 2-config runs.
 # Same file + same task source → same experiment_id and run list.
 
-experiment_name: ccb_2config
-description: "CCB 170 tasks × baseline + sourcegraph_full"
+experiment_name: csb_2config
+description: "CSB 170 tasks × baseline + sourcegraph_full"
 run_category: staging
 
 # Where to get tasks (must have .tasks[].benchmark, .tasks[].task_id, .tasks[].task_dir)
 task_source: configs/selected_benchmark_tasks.json
 
-# Optional: limit to one benchmark (e.g. ccb_fix). Omit or empty = all benchmarks.
+# Optional: limit to one benchmark (e.g. csb_sdlc_fix). Omit or empty = all benchmarks.
 benchmark_filter: ""
 
 models:
@@ -69,7 +69,7 @@ The manifest JSON looks like:
 ```json
 {
   "experiment_id": "exp_ccb2config_2026-02-18_abc123",
-  "experiment_name": "ccb_2config",
+  "experiment_name": "csb_2config",
   "run_category": "staging",
   "generated_at": "2026-02-18T12:00:00Z",
   "runs": [
@@ -77,8 +77,8 @@ The manifest JSON looks like:
       "run_id": "run_baseline_opus_..._seed0_xyz",
       "pair_id": "pair_opus_..._seed0_...",
       "task_id": "...",
-      "task_dir": "ccb_design/...",
-      "benchmark": "ccb_design",
+      "task_dir": "csb_sdlc_design/...",
+      "benchmark": "csb_sdlc_design",
       "mcp_mode": "baseline",
       "model": "anthropic/claude-opus-4-6",
       "seed": 0
@@ -107,8 +107,8 @@ The repo already has a **v2 experiment path** (`lib/config`, `lib/matrix/expande
 
 The **control plane layer** described here is complementary:
 
-- For **CCB in-repo tasks** (benchmarks under `benchmarks/ccb_*`), the control plane spec + manifest generator use the same deterministic ID logic (`id_generator`) but drive the **path-based** runner (`harbor run --path`), which does not require a registry.
-- You can later unify by having the manifest generator emit an experiment YAML (or RunSpec list) consumable by the v2 runner if CCB is ever registered in Harbor.
+- For **CSB in-repo tasks** (benchmarks under `benchmarks/csb_*`), the control plane spec + manifest generator use the same deterministic ID logic (`id_generator`) but drive the **path-based** runner (`harbor run --path`), which does not require a registry.
+- You can later unify by having the manifest generator emit an experiment YAML (or RunSpec list) consumable by the v2 runner if CSB is ever registered in Harbor.
 
 ## Checklist for a new deterministic run
 
@@ -123,6 +123,6 @@ The **control plane layer** described here is complementary:
 | File | Purpose |
 |------|---------|
 | `docs/CONTROL_PLANE.md` | This design and usage. |
-| `configs/control_plane_ccb.yaml` | Example control plane spec for CCB 2-config. |
+| `configs/control_plane_ccb.yaml` | Example control plane spec for CSB 2-config. |
 | `scripts/control_plane.py` | Manifest generator: spec + task source → manifest JSON. |
 | `lib/matrix/id_generator.py` | Deterministic experiment_id, run_id, pair_id (unchanged). |

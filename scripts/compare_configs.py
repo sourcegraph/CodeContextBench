@@ -296,7 +296,7 @@ def _compute_statistical_tests(data: dict) -> dict:
 
     Returns dict with welchs_t, cohens_d, mcnemar, bootstrap_ci keys.
     """
-    from ccb_metrics.statistics import (
+    from csb_metrics.statistics import (
         welchs_t_test, cohens_d, mcnemar_test, bootstrap_ci_dict as bootstrap_ci,
     )
 

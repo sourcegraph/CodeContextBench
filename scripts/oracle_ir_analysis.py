@@ -5,8 +5,8 @@ Computes retrieval quality metrics (precision, recall, MRR, nDCG, MAP,
 context efficiency, time-to-context) using oracle ground truth from
 task_spec.json instead of file-change diffs.
 
-Uses ccb_metrics.retrieval for oracle item loading and tool call extraction,
-and ccb_metrics.ir_metrics for pure IR math functions.
+Uses csb_metrics.retrieval for oracle item loading and tool call extraction,
+and csb_metrics.ir_metrics for pure IR math functions.
 
 Usage:
     # Analyze staging MCP-unique runs (default)
@@ -38,10 +38,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-# Ensure scripts/ is on path for ccb_metrics imports
+# Ensure scripts/ is on path for csb_metrics imports
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ccb_metrics.retrieval import (
+from csb_metrics.retrieval import (
     load_oracle_items,
     extract_retrieval_metrics,
 )
@@ -466,7 +466,7 @@ def _extract_task_id(dirname: str) -> str:
 
 def _detect_suite(run_dir_name: str) -> Optional[str]:
     """Detect MCP-unique suite from run directory name."""
-    m = re.match(r"(ccb_mcp_\w+?)_\w+_\d{8}_\d{6}", run_dir_name)
+    m = re.match(r"((?:csb_org|ccb_mcp)_\w+?)_\w+_\d{8}_\d{6}", run_dir_name)
     if m:
         return m.group(1)
     return None
@@ -501,7 +501,7 @@ def walk_mcp_unique_runs(runs_dir: Path, suite_filter: str = "") -> list[dict]:
         if any(pat in run_dir.name for pat in SKIP_PATTERNS):
             continue
         # Only MCP-unique runs
-        if "ccb_mcp_" not in run_dir.name:
+        if "ccb_mcp_" not in run_dir.name and "csb_org_" not in run_dir.name:
             continue
 
         suite = _detect_suite(run_dir.name)
@@ -588,9 +588,9 @@ def walk_mcp_unique_runs(runs_dir: Path, suite_filter: str = "") -> list[dict]:
 
 def _find_task_spec(task_id: str) -> Optional[Path]:
     """Locate task_spec.json in benchmarks/ for a given task_id."""
-    # Search all ccb_mcp_* suites
+    # Search all csb_org_* / ccb_mcp_* suites
     for suite_dir in BENCHMARKS_DIR.iterdir():
-        if not suite_dir.is_dir() or not suite_dir.name.startswith("ccb_mcp_"):
+        if not suite_dir.is_dir() or not suite_dir.name.startswith(("csb_org_", "ccb_mcp_")):
             continue
         task_dir = suite_dir / task_id
         spec = task_dir / "tests" / "task_spec.json"

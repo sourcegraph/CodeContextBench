@@ -1601,14 +1601,14 @@
       "transcript_sha256": "15559d70e3ea816422d0d3f4e298bfab65e7119696d6b4de81060166b473f0db"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh",
     "task_name": "kafka-sasl-auth-audit-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_kafka-sasl-auth-audit-001_baseline-local-direct/kafka-sasl-auth-audit-001__DeDG2Wh/agent/claude-code.txt"
     }
   },
   "score": {

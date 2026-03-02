@@ -1,0 +1,174 @@
+{
+  "files": [
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/EvictingWindowOperator.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/MergingWindowSet.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/MergingWindowAssigner.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorBuilder.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorFactory.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/api/datastream/WindowedStream.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/api/datastream/SingleOutputStreamOperator.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/AbstractStreamOperator.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-tests/src/test/java/org/apache/flink/test/streaming/runtime/SideOutputITCase.java"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "processElement"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "isElementLate"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "isWindowLate"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "sideOutput"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "lateDataOutputTag"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/EvictingWindowOperator.java",
+      "symbol": "processElement"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorBuilder.java",
+      "symbol": "sideOutputLateData"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testSideOutputDueToLatenessSessionZeroLateness"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testSideOutputDueToLatenessSessionZeroLatenessPurgingTrigger"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testSideOutputDueToLatenessTumbling"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testSideOutputDueToLatenessSliding"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testNotSideOutputDueToLatenessSessionWithLateness"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testDropDueToLatenessSessionWithLatenessPurgingTrigger"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testNotSideOutputDueToLatenessSessionWithHugeLatenessPurgingTrigger"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorTest.java",
+      "symbol": "testNotSideOutputDueToLatenessSessionWithHugeLateness"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/api/datastream/WindowedStream.java",
+      "symbol": "sideOutputLateData"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorBuilder.java",
+      "symbol": "sideOutputLateData"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperatorBuilder.java",
+      "symbol": "buildWindowOperator"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "processElement"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "isWindowLate"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "isElementLate"
+    },
+    {
+      "repo": "sg-evals/flink--0cc95fcc",
+      "path": "flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.java",
+      "symbol": "sideOutput"
+    }
+  ],
+  "text": "The bug centers on WindowOperator.processElement() and EvictingWindowOperator.processElement(). For merging windows (e.g., session windows), the code calls mergingWindows.addWindow() which attempts to merge the new element's window into existing windows. When the merged result window is still valid (maxTimestamp + allowedLateness > currentWatermark), isWindowLate() returns false and the element is processed normally (isSkippedElement = false). However, when the element is truly late (element timestamp + allowedLateness <= watermark, meaning the window it creates is immediately considered late), isWindowLate() returns true and the loop continues without processing \u2014 leaving isSkippedElement = true. Then at the end, isSkippedElement && isElementLate(element) is evaluated, which triggers sideOutput(element) if lateDataOutputTag != null.\n\nThe key concern in the bug description is: for merging windows, isElementLate() checks the raw element timestamp, while the actual window lateness is evaluated after merging via isWindowLate(). These two checks can diverge \u2014 an element with timestamp past the watermark (isElementLate=true) might still be merged into an existing window whose maxTimestamp + allowedLateness > watermark (isWindowLate=false), so it would be processed, not side-outputted. The fix area is in WindowOperator.processElement() lines 303-446 and EvictingWindowOperator.processElement() lines 113-274, specifically the late-element side output logic at lines 440-446 and 267-273 respectively. The sideOutput() method at line 587-589 of WindowOperator correctly uses output.collect(lateDataOutputTag, element). The test file already contains session window side output tests (testSideOutputDueToLatenessSessionZeroLateness, testSideOutputDueToLatenessSessionZeroLatenessPurgingTrigger) that cover this scenario and would need to be extended or a new test added for the specific case described in the bug.",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 1280644,
+    "output_tokens": 8237,
+    "tool_calls": 40,
+    "elapsed_sec": 143.0,
+    "cost_usd": 3.9655,
+    "timestamp": "2026-03-02T01:03:57.388365+00:00"
+  }
+}

@@ -1756,14 +1756,14 @@
       "transcript_sha256": "591002bfd7337aa7b54628fbbcf0f3a7eb0ac29a442effd055834d4c02cb10bf"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/result.json",
+    "result_path": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/result.json",
     "run_dir": "fix_haiku_20260226_new3tasks",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248",
     "task_name": "envoy-dfp-host-leak-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-dfp-host-leak-fix-001_baseline-local-direct/envoy-dfp-host-leak-fix-001__6swh248/agent/claude-code.txt"
     }
   },
   "score": {

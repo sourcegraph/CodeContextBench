@@ -846,14 +846,14 @@
       "transcript_sha256": "77b860928d03cbdb86749efea758278d340488d0e5494e33082db93c4f294714"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX",
     "task_name": "sgonly_linux-ssd-trim-timeout-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_mcp-remote-direct/sgonly_linux-ssd-trim-timeout-fa__XHTc7xX/agent/claude-code.txt"
     }
   },
   "score": {

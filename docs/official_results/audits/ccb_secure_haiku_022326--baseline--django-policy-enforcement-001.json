@@ -1484,14 +1484,14 @@
       "transcript_sha256": "fbcc8a467cea6d82fe0bbfd1f6cbc1ccdf4aa81d920ed3beadd9747dbf78d6d9"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD",
     "task_name": "django-policy-enforcement-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-policy-enforcement-001_baseline-local-direct/django-policy-enforcement-001__mPDdgiD/agent/claude-code.txt"
     }
   },
   "score": {

@@ -8,7 +8,7 @@ fixed, what was archived, and what needs to be rerun.
 
 ## Summary of Bugs Found and Fixed
 
-### Bug 1: Missing `/workspace` symlink in ccb_debug prove task sg_only Dockerfiles
+### Bug 1: Missing `/workspace` symlink in csb_sdlc_debug prove task sg_only Dockerfiles
 
 **Root cause:** The baseline Dockerfiles for regression-prove tasks include
 `RUN ln -sf /app /workspace || true` so that the verifier's hardcoded
@@ -20,15 +20,15 @@ checked `/workspace` and reported "file not found" → reward=0.0.
 **Impact:** 9 regression-prove tasks scored MCP=0.00 while baseline scored 0.50.
 
 **Tasks fixed (Dockerfile.sg_only updated):**
-- ccb_debug/ansible-galaxy-tar-regression-prove-001
-- ccb_debug/flipt-auth-cookie-regression-prove-001
-- ccb_debug/qutebrowser-adblock-cache-regression-prove-001
-- ccb_debug/qutebrowser-darkmode-threshold-regression-prove-001
-- ccb_debug/qutebrowser-hsv-color-regression-prove-001
-- ccb_debug/qutebrowser-url-regression-prove-001
-- ccb_debug/teleport-ssh-regression-prove-001
-- ccb_debug/tutanota-search-regression-prove-001
-- ccb_debug/vuls-oval-regression-prove-001
+- csb_sdlc_debug/ansible-galaxy-tar-regression-prove-001
+- csb_sdlc_debug/flipt-auth-cookie-regression-prove-001
+- csb_sdlc_debug/qutebrowser-adblock-cache-regression-prove-001
+- csb_sdlc_debug/qutebrowser-darkmode-threshold-regression-prove-001
+- csb_sdlc_debug/qutebrowser-hsv-color-regression-prove-001
+- csb_sdlc_debug/qutebrowser-url-regression-prove-001
+- csb_sdlc_debug/teleport-ssh-regression-prove-001
+- csb_sdlc_debug/tutanota-search-regression-prove-001
+- csb_sdlc_debug/vuls-oval-regression-prove-001
 
 **Fix:** Added `RUN ln -sf /app /workspace || true` after the sg_only mode markers
 in all 9 Dockerfiles. Committed in `30c785c6e`.
@@ -46,11 +46,11 @@ immediately → reward=0.0.
 **Impact:** Both tasks scored MCP=0.00.
 
 **Tasks fixed (Dockerfile.sg_only completely rewritten):**
-- ccb_feature/bustub-hyperloglog-impl-001 (BL=0.17 → MCP=0.00)
+- csb_sdlc_feature/bustub-hyperloglog-impl-001 (BL=0.17 → MCP=0.00)
   - Now uses: `ghcr.io/theagentcompany/sde-implement-hyperloglog-image:1.0.0`
   - Truncates: C/C++ source files (*.cpp, *.cc, *.h, *.hpp, etc.)
   - Clone manifest: `sg-evals/bustub--d5f79431` → `/workspace/.`
-- ccb_test/openhands-search-file-test-001 (BL=0.40 → MCP=0.00)
+- csb_sdlc_test/openhands-search-file-test-001 (BL=0.40 → MCP=0.00)
   - Now uses: `ghcr.io/theagentcompany/sde-write-a-unit-test-for-search_file-function-image:1.0.0`
   - Truncates: Python files in `/workspace/openhands/`
   - Clone manifest: `sg-evals/OpenHands--latest` → `/workspace/openhands`
@@ -67,14 +67,14 @@ All runs containing data invalidated by the above bugs were archived to
 
 | Run Directory | Reason |
 |---|---|
-| `build_haiku_20260223_124805` | Deprecated suite (ccb_build split → ccb_feature + ccb_refactor) |
-| `ccb_build_haiku_022326` | Deprecated suite |
-| `ccb_build_haiku_20260225_234223` | Deprecated suite |
-| `ccb_build_haiku_20260226_015500_backfill` | Deprecated suite |
-| `ccb_build_haiku_20260227_baseline_gapfill` | Deprecated suite |
-| `ccb_debug_haiku_022326` | Bug 1: prove tasks all scored MCP=0 due to missing /workspace symlink |
+| `build_haiku_20260223_124805` | Deprecated suite (csb_sdlc_build split → csb_sdlc_feature + csb_sdlc_refactor) |
+| `csb_sdlc_build_haiku_022326` | Deprecated suite |
+| `csb_sdlc_build_haiku_20260225_234223` | Deprecated suite |
+| `csb_sdlc_build_haiku_20260226_015500_backfill` | Deprecated suite |
+| `csb_sdlc_build_haiku_20260227_baseline_gapfill` | Deprecated suite |
+| `csb_sdlc_debug_haiku_022326` | Bug 1: prove tasks all scored MCP=0 due to missing /workspace symlink |
 | `debug_haiku_20260223_154724` | Bug 1: same (older format run, same bug) |
-| `ccb_test_haiku_022326` | Bug 2: openhands scored MCP=0 due to wrong base image |
+| `csb_sdlc_test_haiku_022326` | Bug 2: openhands scored MCP=0 due to wrong base image |
 
 ---
 
@@ -85,15 +85,15 @@ infrastructure bugs:
 
 | Task | Suite | BL | MCP | Root Cause |
 |---|---|---|---|---|
-| flipt-eval-latency-fix-001 | ccb_fix | 0.55 | 0.00 | Agent wrote invalid Go (type errors, enum mismatch) |
-| argocd-arch-orient-001 | ccb_understand | 0.00 | 0.81 | BL rate-limited (37+ tool calls on local code) |
-| cilium-project-orient-001 | ccb_understand | 0.00 | 0.96 | BL rate-limited (token exhaustion before writing output) |
-| terraform-plan-pipeline-qa-001 | ccb_understand | 0.00 | 0.95 | BL rate-limited |
-| envoy-request-routing-qa-001 | ccb_understand | 0.00 | 0.87 | BL rate-limited |
-| grpcurl-transitive-vuln-001 | ccb_secure | 0.00 | 0.67 | BL rate-limited (187 tool calls exhausting budget) |
-| pytorch ccb_fix tasks (4) | ccb_fix | 0.00 | 0.00 | Genuine task difficulty (agent changes wrong files, file_recall=0) |
+| flipt-eval-latency-fix-001 | csb_sdlc_fix | 0.55 | 0.00 | Agent wrote invalid Go (type errors, enum mismatch) |
+| argocd-arch-orient-001 | csb_sdlc_understand | 0.00 | 0.81 | BL rate-limited (37+ tool calls on local code) |
+| cilium-project-orient-001 | csb_sdlc_understand | 0.00 | 0.96 | BL rate-limited (token exhaustion before writing output) |
+| terraform-plan-pipeline-qa-001 | csb_sdlc_understand | 0.00 | 0.95 | BL rate-limited |
+| envoy-request-routing-qa-001 | csb_sdlc_understand | 0.00 | 0.87 | BL rate-limited |
+| grpcurl-transitive-vuln-001 | csb_sdlc_secure | 0.00 | 0.67 | BL rate-limited (187 tool calls exhausting budget) |
+| pytorch csb_sdlc_fix tasks (4) | csb_sdlc_fix | 0.00 | 0.00 | Genuine task difficulty (agent changes wrong files, file_recall=0) |
 
-The baseline rate-limit failures in ccb_understand are a token-efficiency issue
+The baseline rate-limit failures in csb_sdlc_understand are a token-efficiency issue
 (agents reading 40-180 local files before writing output). These are not setup
 bugs and would recur without changes to agent behavior or task instructions.
 
@@ -101,9 +101,9 @@ bugs and would recur without changes to agent behavior or task instructions.
 
 ## Rerun Plan
 
-### Priority 1 — Full ccb_debug rerun (BLOCKS reported delta for debug suite)
+### Priority 1 — Full csb_sdlc_debug rerun (BLOCKS reported delta for debug suite)
 
-No valid ccb_debug data exists in official/ after archiving. Both configs need runs.
+No valid csb_sdlc_debug data exists in official/ after archiving. Both configs need runs.
 
 **Action:** Full 20-task paired run (baseline-local-direct + mcp-remote-direct).
 
@@ -128,24 +128,24 @@ for their sg_only variants — they were scoring normally in prior runs.
 
 ---
 
-### Priority 2 — First ccb_feature and ccb_refactor runs (new suites, no data)
+### Priority 2 — First csb_sdlc_feature and csb_sdlc_refactor runs (new suites, no data)
 
-Neither suite has any official run data. These are new suites created when ccb_build
+Neither suite has any official run data. These are new suites created when csb_sdlc_build
 was split on 2026-02-28.
 
 **Action:** Full 20-task paired run for each suite.
 
 **Image rebuild required?**
-- ccb_feature/bustub-hyperloglog-impl-001: YES — sg_only image needs rebuild
+- csb_sdlc_feature/bustub-hyperloglog-impl-001: YES — sg_only image needs rebuild
   (wrong base image was fixed in fe4a52602)
-- All other ccb_feature + ccb_refactor tasks: check if they have prior sg_only images;
-  most inherited from ccb_build so verify before running
+- All other csb_sdlc_feature + csb_sdlc_refactor tasks: check if they have prior sg_only images;
+  most inherited from csb_sdlc_build so verify before running
 
 ---
 
-### Priority 3 — Spot rerun of openhands-search-file-test-001 (ccb_test)
+### Priority 3 — Spot rerun of openhands-search-file-test-001 (csb_sdlc_test)
 
-The existing ccb_test official data (from ccb_test_haiku_20260224_180149) does not
+The existing csb_sdlc_test official data (from csb_sdlc_test_haiku_20260224_180149) does not
 contain the openhands task. The buggy 022326 run was archived. A targeted single-task
 rerun is needed to get valid MCP data for this task.
 
@@ -160,17 +160,17 @@ rerun is needed to get valid MCP data for this task.
 
 | Task | Suite | Rebuild Trigger | Fixed In |
 |---|---|---|---|
-| ansible-galaxy-tar-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| flipt-auth-cookie-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| qutebrowser-adblock-cache-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| qutebrowser-darkmode-threshold-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| qutebrowser-hsv-color-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| qutebrowser-url-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| teleport-ssh-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| tutanota-search-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| vuls-oval-regression-prove-001 | ccb_debug | Added /workspace symlink to sg_only | 30c785c6e |
-| bustub-hyperloglog-impl-001 | ccb_feature | Wrong base image (ubuntu→TAC) in sg_only | fe4a52602 |
-| openhands-search-file-test-001 | ccb_test | Wrong base image (ubuntu→TAC) in sg_only | fe4a52602 |
+| ansible-galaxy-tar-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| flipt-auth-cookie-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| qutebrowser-adblock-cache-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| qutebrowser-darkmode-threshold-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| qutebrowser-hsv-color-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| qutebrowser-url-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| teleport-ssh-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| tutanota-search-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| vuls-oval-regression-prove-001 | csb_sdlc_debug | Added /workspace symlink to sg_only | 30c785c6e |
+| bustub-hyperloglog-impl-001 | csb_sdlc_feature | Wrong base image (ubuntu→TAC) in sg_only | fe4a52602 |
+| openhands-search-file-test-001 | csb_sdlc_test | Wrong base image (ubuntu→TAC) in sg_only | fe4a52602 |
 
 **Only sg_only (mcp-remote-direct) images need rebuilding.** The baseline
 (baseline-local-direct) Dockerfiles were not changed.
@@ -183,17 +183,17 @@ Suites with valid data:
 
 | Suite | BL Mean | MCP Mean | Delta | Notes |
 |---|---|---|---|---|
-| ccb_design | 0.753 | 0.718 | -0.035 | Clean |
-| ccb_document | 0.847 | 0.895 | +0.048 | Clean |
-| ccb_fix | 0.523 | 0.618 | +0.095 | Clean |
-| ccb_secure | 0.669 | 0.659 | -0.010 | Clean |
-| ccb_test | 0.480 | 0.480 | 0.000 | Clean (openhands MCP missing, needs spot rerun) |
-| ccb_understand | 0.660 | 0.851 | +0.191 | Clean (BL=0 tasks are rate-limit, not bugs) |
+| csb_sdlc_design | 0.753 | 0.718 | -0.035 | Clean |
+| csb_sdlc_document | 0.847 | 0.895 | +0.048 | Clean |
+| csb_sdlc_fix | 0.523 | 0.618 | +0.095 | Clean |
+| csb_sdlc_secure | 0.669 | 0.659 | -0.010 | Clean |
+| csb_sdlc_test | 0.480 | 0.480 | 0.000 | Clean (openhands MCP missing, needs spot rerun) |
+| csb_sdlc_understand | 0.660 | 0.851 | +0.191 | Clean (BL=0 tasks are rate-limit, not bugs) |
 
 Suites with no valid official data (need runs):
 
 | Suite | Reason |
 |---|---|
-| ccb_debug | All runs archived (bugs); 9 sg_only images need rebuild first |
-| ccb_feature | New suite (split from ccb_build); bustub sg_only needs rebuild |
-| ccb_refactor | New suite (split from ccb_build) |
+| csb_sdlc_debug | All runs archived (bugs); 9 sg_only images need rebuild first |
+| csb_sdlc_feature | New suite (split from csb_sdlc_build); bustub sg_only needs rebuild |
+| csb_sdlc_refactor | New suite (split from csb_sdlc_build) |

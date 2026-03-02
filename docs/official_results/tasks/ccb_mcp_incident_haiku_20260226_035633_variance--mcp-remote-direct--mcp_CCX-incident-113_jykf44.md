@@ -1,12 +1,12 @@
 # mcp_CCX-incident-113_jykf44 (mcp-remote-direct)
 
-- Run: `ccb_mcp_incident_haiku_20260226_035633_variance`
+- Run: `csb_org_incident_haiku_20260226_035633_variance`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_incident_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-incident-113_jykf44.json)
+- Audit JSON: [link](../audits/csb_org_incident_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-incident-113_jykf44.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-incident-113_jykf44/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_incident_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-incident-113_jykf44/trajectory.json)
 
 ## Metrics
 

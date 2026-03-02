@@ -1,12 +1,12 @@
 # ccx-migration-025 (baseline-local-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_035617`
+- Run: `csb_org_migration_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.8889`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_035617--baseline-local-direct--ccx-migration-025.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_035617--baseline-local-direct--ccx-migration-025.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_035617--baseline-local-direct--ccx-migration-025/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_035617--baseline-local-direct--ccx-migration-025/trajectory.json)
 
 ## Metrics
 

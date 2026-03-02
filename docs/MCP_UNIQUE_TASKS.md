@@ -42,7 +42,7 @@ cross-repo tasks — not whether MCP can access information the baseline can't.
 │  scripts/generate_mcp_unique_tasks.py  (task generator)    │
 │         │                                                   │
 │         ▼                                                   │
-│  benchmarks/ccb_mcp_<suite>/<task>/                        │
+│  benchmarks/csb_org_<suite>/<task>/                        │
 │    ├── task.toml           (Harbor task definition)         │
 │    ├── instruction.md      (customer-framed prompt)         │
 │    ├── environment/                                         │
@@ -55,7 +55,7 @@ cross-repo tasks — not whether MCP can access information the baseline can't.
 │        ├── oracle_checks.py    (stdlib eval library)        │
 │        └── criteria.json   (rubric for DS tasks, optional)  │
 │                                                             │
-│  scripts/ccb_metrics/retrieval.py      (KPI extractor)     │
+│  scripts/csb_metrics/retrieval.py      (KPI extractor)     │
 │  scripts/curate_oracle.py              (oracle auto-curator)│
 │  scripts/validate_mcp_task_instance.py (validity gate)     │
 └────────────────────────────────────────────────────────────┘
@@ -67,16 +67,16 @@ Suites map to use case categories A-J (six active, two deferred):
 
 | Suite | Category | Description | Tasks |
 |-------|----------|-------------|-------|
-| `ccb_mcp_crossrepo_tracing` | A | Cross-repo dependency tracing + symbol resolution | 3 |
-| `ccb_mcp_security` | B | Vulnerability + security remediation at scale | 2 |
-| `ccb_mcp_migration` | C | Framework upgrades across repos | 2 |
-| `ccb_mcp_incident` | D | On-call / incident debugging across microservices | 3 |
-| `ccb_mcp_onboarding` | E | Architecture comprehension + API discovery | 3 |
-| `ccb_mcp_compliance` | F | Compliance / audit / provenance | 2 |
-| `ccb_mcp_crossorg` | G | Cross-org discovery (repos from different GitHub orgs) | 2 |
-| `ccb_mcp_domain` | H | Domain-specific lineage (deferred) | 0 |
-| `ccb_mcp_org` | I | Agentic coding correctness using org-wide context | 0 |
-| `ccb_mcp_platform` | J | Platform / DevTools / tribal knowledge | 3 |
+| `csb_org_crossrepo_tracing` | A | Cross-repo dependency tracing + symbol resolution | 3 |
+| `csb_org_security` | B | Vulnerability + security remediation at scale | 2 |
+| `csb_org_migration` | C | Framework upgrades across repos | 2 |
+| `csb_org_incident` | D | On-call / incident debugging across microservices | 3 |
+| `csb_org_onboarding` | E | Architecture comprehension + API discovery | 3 |
+| `csb_org_compliance` | F | Compliance / audit / provenance | 2 |
+| `csb_org_crossorg` | G | Cross-org discovery (repos from different GitHub orgs) | 2 |
+| `csb_org_domain` | H | Domain-specific lineage (deferred) | 0 |
+| `csb_org_org` | I | Agentic coding correctness using org-wide context | 0 |
+| `csb_org_platform` | J | Platform / DevTools / tribal knowledge | 3 |
 
 **Full catalog: 20 tasks across 8 active suites** (categories H and I are
 deferred). Of these, 12 tasks across 6 suites have been evaluated in official
@@ -144,13 +144,13 @@ python3 scripts/generate_mcp_unique_tasks.py \
   --out benchmarks/ \
   --verbose
 ```
-This creates `benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001/` with all
+This creates `benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001/` with all
 files from the template.
 
 **Step 3: Curate the oracle using Sourcegraph MCP**
 ```bash
 python3 scripts/curate_oracle.py \
-  --task-dir benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001 \
+  --task-dir benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001 \
   --verbose
 ```
 The curator uses `mcp__sourcegraph__keyword_search` and `mcp__sourcegraph__find_references`
@@ -161,7 +161,7 @@ to discover all files matching the task's `seed_prompt`. It writes:
 **Step 4: Validate the oracle (fail2pass gate)**
 ```bash
 python3 scripts/validate_mcp_task_instance.py \
-  --task-dir benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001 \
+  --task-dir benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001 \
   --verbose
 ```
 Expected: `ccx-dep-trace-001: VALID` (gold=1.0, empty=0.0)
@@ -171,7 +171,7 @@ Add an entry to `configs/selected_mcp_unique_tasks.json`.
 
 **Step 6: Run preflight**
 ```bash
-python3 scripts/validate_tasks_preflight.py --suite ccb_mcp_crossrepo_tracing
+python3 scripts/validate_tasks_preflight.py --suite csb_org_crossrepo_tracing
 ```
 
 ### Manual Oracle Authoring
@@ -208,7 +208,7 @@ python3 -c "import sys; sys.exit(0 if float('$SCORE') > 0 else 1)"
 
 ### Oracle Check Types
 
-`scripts/ccb_metrics/oracle_checks.py` provides 7 deterministic check functions:
+`scripts/csb_metrics/oracle_checks.py` provides 7 deterministic check functions:
 
 | Check | Returns | Primary Score |
 |-------|---------|---------------|
@@ -252,7 +252,7 @@ Each task has `tests/task_spec.json` with explicit criteria:
 ```json
 {
   "id": "CCX-dep-trace-001",
-  "mcp_suite": "ccb_mcp_crossrepo_tracing",
+  "mcp_suite": "csb_org_crossrepo_tracing",
   "prd": {
     "user_story": "As an SRE, I need to find...",
     "seed_prompt": "Find all Go files in dynamic/ that import k8s.io/apimachinery/pkg/runtime"
@@ -327,12 +327,12 @@ The report automatically includes an **MCP Retrieval Performance** section when
 
 ## Retrieval Metrics
 
-`scripts/ccb_metrics/retrieval.py` extracts context retrieval KPIs from agent transcripts.
+`scripts/csb_metrics/retrieval.py` extracts context retrieval KPIs from agent transcripts.
 
 **Works for both configs**: counts oracle items found via any tool (local grep OR MCP).
 
 ```python
-from scripts.ccb_metrics.retrieval import extract_retrieval_metrics, load_oracle_items
+from scripts.csb_metrics.retrieval import extract_retrieval_metrics, load_oracle_items
 
 oracle_items = load_oracle_items("tests/task_spec.json")
 metrics = extract_retrieval_metrics(task_dir, oracle_items)
@@ -394,7 +394,7 @@ Hybrid score = 0.6 × verifier_reward + 0.4 × rubric_score.
 1. Create the use case entries in `configs/use_case_registry.json`
    (set `oracle_type` from `"tbd"` to a real type)
 2. Copy an existing task as a template, update Dockerfile with the required repos
-3. The suite directory `benchmarks/ccb_mcp_<suite>/` must be created manually
+3. The suite directory `benchmarks/csb_org_<suite>/` must be created manually
 4. Add the suite prefix to `DIR_PREFIX_TO_SUITE` in:
    - `scripts/aggregate_status.py`
    - `scripts/generate_manifest.py`
@@ -427,7 +427,7 @@ design uses cross-org (different GitHub orgs) instead. To add cross-host:
 
 1. Create tasks with repos from multiple code hosts
 2. Ensure SG instance indexes all hosts
-3. Add `ccb_mcp_crosshost` suite to `DIR_PREFIX_TO_SUITE` mappings
+3. Add `csb_org_crosshost` suite to `DIR_PREFIX_TO_SUITE` mappings
 
 ## Design Decisions
 
@@ -435,7 +435,7 @@ design uses cross-org (different GitHub orgs) instead. To add cross-host:
 - **Q2**: Focus on org-scale quantity (3-20 repos), structured oracle, customer-framed prompts
 - **Q3**: Cross-org instead of cross-host (cross-host deferred until multi-host SG available)
 - **Q4**: Closed-world exhaustive oracles via automated SG queries (no human curation)
-- **Q5**: 10 per-category suites (ccb_mcp_crossrepo_tracing, ccb_mcp_security, etc.)
+- **Q5**: 10 per-category suites (csb_org_crossrepo_tracing, csb_org_security, etc.)
 - **Q6**: Category I uses hybrid: test_ratio + context verification
 - **Q7**: Deep Search-specific tasks as variants within suites (E and J families)
 - **Q8**: No score thresholds initially — calibrate after first runs

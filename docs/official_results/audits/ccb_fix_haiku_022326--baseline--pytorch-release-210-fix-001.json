@@ -3158,14 +3158,14 @@
       "transcript_sha256": "fc05b418b84cf4c4ba1b75545b390c475275cd1071548a1dc34f870e0395fda8"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD",
     "task_name": "pytorch-release-210-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-release-210-fix-001_baseline-local-direct/pytorch-release-210-fix-001__uohSgpD/agent/claude-code.txt"
     }
   },
   "score": {

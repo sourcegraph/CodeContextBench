@@ -1,0 +1,130 @@
+{
+  "id": "CCX-dep-trace-133",
+  "family": "cross-repo-dep-trace",
+  "use_case_id": 133,
+  "category": "A",
+  "mcp_suite": "csb_org_crossrepo_tracing",
+  "prd": {
+    "user_story": "As a developer, I want to: Trace how a CSS style change propagates through Chromium's Blink rendering engine. Find the key C++ source files in `chromium/chromium` that implement the rendering pipeline stages: 1. The file under `third_party/blink/renderer/core/css/resolver/` that implements `StyleResolver` \u2014 the class that resolves computed styles for DOM elements. 2. The file under `third_party/blink/renderer/core/layout/` that defines `LayoutObject` \u2014 the base class for the layout tree. 3. The file that implements `PaintLayer` \u2014 the painting layer abstraction under `third_party/blink/renderer/core/paint/`. 4. The file that defines `DisplayItemList` or `PaintController` \u2014 the display list that records paint operations. Report each file path and key class name.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the chromium-browser fixture.",
+    "seed_prompt": "Trace how a CSS style change propagates through Chromium's Blink rendering engine. Find the key C++ source files in `chromium/chromium` that implement the rendering pipeline stages: 1. The file under `third_party/blink/renderer/core/css/resolver/` that implements `StyleResolver` \u2014 the class that resolves computed styles for DOM elements. 2. The file under `third_party/blink/renderer/core/layout/` that defines `LayoutObject` \u2014 the base class for the layout tree. 3. The file that implements `PaintLayer` \u2014 the painting layer abstraction under `third_party/blink/renderer/core/paint/`. 4. The file that defines `DisplayItemList` or `PaintController` \u2014 the display list that records paint operations. Report each file path and key class name."
+  },
+  "artifacts": {
+    "repo_set_id": "chromium-browser",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/css/resolver/style_resolver.cc"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/layout/layout_object.cc"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/paint/paint_layer.cc"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/platform/graphics/paint/paint_controller.cc"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/css/resolver/style_resolver.cc",
+          "symbol": "StyleResolver"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/layout/layout_object.cc",
+          "symbol": "LayoutObject"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/core/paint/paint_layer.cc",
+          "symbol": "PaintLayer"
+        },
+        {
+          "repo": "sg-evals/chromium--2d05e315",
+          "path": "third_party/blink/renderer/platform/graphics/paint/paint_controller.cc",
+          "symbol": "PaintController"
+        }
+      ],
+      "required_references": [],
+      "dependency_chains": [
+        {
+          "steps": [
+            {
+              "repo": "sg-evals/chromium--2d05e315",
+              "path": "third_party/blink/renderer/core/css/resolver/style_resolver.cc",
+              "symbol": "StyleResolver"
+            },
+            {
+              "repo": "sg-evals/chromium--2d05e315",
+              "path": "third_party/blink/renderer/core/layout/layout_object.cc",
+              "symbol": "LayoutObject"
+            },
+            {
+              "repo": "sg-evals/chromium--2d05e315",
+              "path": "third_party/blink/renderer/core/paint/paint_layer.cc",
+              "symbol": "PaintLayer"
+            },
+            {
+              "repo": "sg-evals/chromium--2d05e315",
+              "path": "third_party/blink/renderer/platform/graphics/paint/paint_controller.cc",
+              "symbol": "PaintController"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "StyleResolver",
+            "LayoutObject",
+            "PaintLayer",
+            "PaintController"
+          ]
+        }
+      },
+      {
+        "type": "dependency_chain",
+        "params": {}
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

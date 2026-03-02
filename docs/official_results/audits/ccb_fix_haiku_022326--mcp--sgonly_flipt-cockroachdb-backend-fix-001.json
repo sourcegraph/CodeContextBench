@@ -2839,14 +2839,14 @@
       "transcript_sha256": "53fee327ee6514273a49707373f280b45aa55a216e3bd7877e80a4d3bf8a5b17"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo",
     "task_name": "sgonly_flipt-cockroachdb-backend-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_mcp-remote-direct/sgonly_flipt-cockroachdb-backend__vcjRDpo/agent/claude-code.txt"
     }
   },
   "score": {

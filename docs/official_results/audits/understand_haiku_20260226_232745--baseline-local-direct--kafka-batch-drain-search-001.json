@@ -361,14 +361,14 @@
       "transcript_sha256": "d42bee68825faeaa4eec90e614c6e514f5444df04697a5b35a1fe1efff088bd7"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/result.json",
+    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/result.json",
     "run_dir": "understand_haiku_20260226_232745",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC",
     "task_name": "kafka-batch-drain-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/agent/trajectory.json",
-      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/agent/claude-code.txt"
+      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/agent/trajectory.json",
+      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-batch-drain-search-001_baseline-local-direct/kafka-batch-drain-search-001__ffjUvRC/agent/claude-code.txt"
     }
   },
   "score": {

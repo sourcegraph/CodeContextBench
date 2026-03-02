@@ -2249,14 +2249,14 @@
       "transcript_sha256": "c33f652d58eb5b4663dbc30b5f6926c0231b478e1ce75f3f9fa6dcdef4c7ebb7"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/result.json",
+    "result_path": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/result.json",
     "run_dir": "feature_haiku_20260228_230650",
-    "suite": "ccb_feature",
-    "task_dir": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV",
+    "suite": "csb_sdlc_feature",
+    "task_dir": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV",
     "task_name": "sgonly_tensorrt-mxfp4-quant-feat-001",
     "trace_paths": {
-      "trajectory": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/agent/trajectory.json",
-      "transcript": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/agent/claude-code.txt"
+      "trajectory": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/agent/trajectory.json",
+      "transcript": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_mcp-remote-direct/sgonly_tensorrt-mxfp4-quant-feat__F4HwhWV/agent/claude-code.txt"
     }
   },
   "score": {

@@ -509,7 +509,7 @@
     ]
   },
   "tac": {
-    "_note": "Commits extracted from TAC GitLab (the-agent-company.com:8929) on 2026-02-05. copilot-arena-server not present in TAC GitLab backup — uses --latest fallback.",
+    "_note": "Commits extracted from TAC GitLab (the-agent-company.com:8929) on 2026-02-05. copilot-arena-server not present in TAC GitLab backup \u2014 uses --latest fallback.",
     "_status": "3_of_4_pinned",
     "repos": [
       {
@@ -517,14 +517,20 @@
         "github_repo": "cmu-db/bustub",
         "commit": "d5f794318567e075349eedfa9438ae4eaab8b52f",
         "_tac_gitlab_path": "root/bustub",
-        "_tasks": ["tac-buffer-pool-manager", "tac-implement-hyperloglog"]
+        "_tasks": [
+          "tac-buffer-pool-manager",
+          "tac-implement-hyperloglog"
+        ]
       },
       {
         "sg_name": "sg-evals/llama.cpp--56399714",
         "github_repo": "ggerganov/llama.cpp",
         "commit": "5639971466ed74386a1811938022f0c333007b55",
         "_tac_gitlab_path": "root/llama.cpp",
-        "_tasks": ["tac-find-in-codebase-1", "tac-find-in-codebase-2"]
+        "_tasks": [
+          "tac-find-in-codebase-1",
+          "tac-find-in-codebase-2"
+        ]
       },
       {
         "sg_name": "sg-evals/OpenHands--latest",
@@ -533,14 +539,20 @@
         "_tac_gitlab_commit": "bfd78f9152968b1f4567143f33ca4b5b5023338a",
         "_note": "TAC GitLab commit not found in upstream GitHub repo (custom/private). Using --latest fallback.",
         "_tac_gitlab_path": "root/openhands",
-        "_tasks": ["tac-write-unit-test", "tac-dependency-change"]
+        "_tasks": [
+          "tac-write-unit-test",
+          "tac-dependency-change"
+        ]
       },
       {
         "sg_name": "sg-evals/copilot-arena--latest",
         "github_repo": "lmarena/copilot-arena",
         "commit": null,
         "_note": "copilot-arena-server not in TAC GitLab backup. Using --latest fallback.",
-        "_tasks": ["tac-copilot-arena-endpoint", "tac-troubleshoot-dev-setup"]
+        "_tasks": [
+          "tac-copilot-arena-endpoint",
+          "tac-troubleshoot-dev-setup"
+        ]
       }
     ]
   }

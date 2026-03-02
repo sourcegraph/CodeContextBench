@@ -4,7 +4,7 @@ In January, I wrote about rethinking coding agent benchmarks — the evaluation 
 
 I went and found out. Kind of. The answer, like most honest answers in this space, is "it depends — but here's exactly what it depends on, and I have data."
 
-Since that post, I built CodeContextBench (CCB): 251 software engineering tasks spanning the full software development lifecycle, designed to measure whether external code intelligence tools — specifically Sourcegraph's MCP tools — improve AI coding agent performance. I built the benchmark framework, the evaluation pipeline, the ground truth system, and the statistical analysis layer primarily using Claude Code, across 580+ conversation sessions over about 26 days. An AI coding agent building a benchmark to evaluate AI coding agents' use of code intelligence tools. It's as meta-recursive as it sounds, and I'll come back to that.
+Since that post, I built CodeScaleBench (CSB): 251 software engineering tasks spanning the full software development lifecycle, designed to measure whether external code intelligence tools — specifically Sourcegraph's MCP tools — improve AI coding agent performance. I built the benchmark framework, the evaluation pipeline, the ground truth system, and the statistical analysis layer primarily using Claude Code, across 580+ conversation sessions over about 26 days. An AI coding agent building a benchmark to evaluate AI coding agents' use of code intelligence tools. It's as meta-recursive as it sounds, and I'll come back to that.
 
 But first: the results.
 
@@ -99,7 +99,7 @@ This reframes the value question a bit. On the suites where MCP improves reward 
 
 ## How I Built This (And What Broke)
 
-I mentioned the meta-recursive thing. CodeContextBench was built almost entirely using Claude Code — the same AI coding agent I'm benchmarking. 580+ conversation sessions spanning January 30 to February 25, producing the task selection pipeline, 190+ Docker environment variants, a 3,500-line IR evaluation pipeline, a 7-function oracle scoring system, and more infrastructure scripts than I want to count.
+I mentioned the meta-recursive thing. CodeScaleBench was built almost entirely using Claude Code — the same AI coding agent I'm benchmarking. 580+ conversation sessions spanning January 30 to February 25, producing the task selection pipeline, 190+ Docker environment variants, a 3,500-line IR evaluation pipeline, a 7-function oracle scoring system, and more infrastructure scripts than I want to count.
 
 The development process was its own lesson in what AI-assisted development is good at and where it falls apart.
 
@@ -125,7 +125,7 @@ The benchmark framework supports six agent harnesses (Claude Code, Codex, Cursor
 
 I'm also planning Deep Search forcing experiments (the semantic analysis layer was almost never invoked organically — agents default to keyword search), SCIP-indexed codebase comparisons (compiler-accurate code navigation vs. text search), and evaluations of alternative MCP providers like the GitHub MCP server. The benchmark is designed to be provider-agnostic; the MCP protocol is standardized, so swapping providers is a config change, not a redesign.
 
-If you're building or evaluating code intelligence tools and want to run your stack against CCB, the repo is public. I'd genuinely love to see comparative results.
+If you're building or evaluating code intelligence tools and want to run your stack against CSB, the repo is public. I'd genuinely love to see comparative results.
 
 ## The Signal
 

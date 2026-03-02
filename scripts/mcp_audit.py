@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Comprehensive MCP Usage Audit for CodeContextBench.
+"""Comprehensive MCP Usage Audit for CodeScaleBench.
 
 Analyzes MCP tool usage, efficiency deltas, reward deltas, and timing
 verification across all benchmark runs. Produces per-task and aggregate
@@ -28,7 +28,17 @@ SELECTION_FILE = Path(__file__).resolve().parent.parent / "configs" / "selected_
 SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__archived"]
 
 DIR_PREFIX_TO_SUITE = {
-    # SDLC phase suite prefixes (new naming: {phase}_{model}_{timestamp})
+    # SDLC phase suite prefixes (new naming: csb_sdlc_{phase})
+    "csb_sdlc_feature_": "csb_sdlc_feature",
+    "csb_sdlc_refactor_": "csb_sdlc_refactor",
+    "csb_sdlc_debug_": "csb_sdlc_debug",
+    "csb_sdlc_design_": "csb_sdlc_design",
+    "csb_sdlc_document_": "csb_sdlc_document",
+    "csb_sdlc_fix_": "csb_sdlc_fix",
+    "csb_sdlc_secure_": "csb_sdlc_secure",
+    "csb_sdlc_test_": "csb_sdlc_test",
+    "csb_sdlc_understand_": "csb_sdlc_understand",
+    # Legacy SDLC prefixes (backward compat for old run dirs)
     "feature_": "ccb_feature",
     "refactor_": "ccb_refactor",
     "build_": "ccb_build",  # legacy run dirs
@@ -736,9 +746,9 @@ def _stat_tests_on_deltas(
     Uses zero as baseline reference (testing whether deltas differ from 0).
     """
     try:
-        from ccb_metrics.statistics import welchs_t_test, cohens_d, bootstrap_ci_dict as bootstrap_ci
+        from csb_metrics.statistics import welchs_t_test, cohens_d, bootstrap_ci_dict as bootstrap_ci
     except ImportError:
-        return {"error": "ccb_metrics.statistics not importable"}
+        return {"error": "csb_metrics.statistics not importable"}
 
     result: dict = {}
     zeros = [0.0] * len(primary_deltas)
@@ -862,7 +872,7 @@ def _reward_analysis(paired: list[dict]) -> dict:
         # Statistical tests on reward deltas when sample size is sufficient
         if len(reward_deltas) >= 5:
             try:
-                from ccb_metrics.statistics import (
+                from csb_metrics.statistics import (
                     welchs_t_test, cohens_d, mcnemar_test, bootstrap_ci_dict as bootstrap_ci,
                 )
                 # Collect paired raw rewards (not deltas) for t-test
@@ -1020,7 +1030,7 @@ def format_report(report: dict) -> str:
     """Format the audit report as human-readable text."""
     lines = []
     lines.append("=" * 80)
-    lines.append("  MCP USAGE AUDIT REPORT — CodeContextBench")
+    lines.append("  MCP USAGE AUDIT REPORT — CodeScaleBench")
     lines.append("=" * 80)
 
     # Summary
@@ -1185,7 +1195,7 @@ def format_report(report: dict) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="MCP Usage Audit for CodeContextBench")
+    parser = argparse.ArgumentParser(description="MCP Usage Audit for CodeScaleBench")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     parser.add_argument("--verbose", action="store_true", help="Include per-task details")
     parser.add_argument("--output", type=str, help="Write report to file")

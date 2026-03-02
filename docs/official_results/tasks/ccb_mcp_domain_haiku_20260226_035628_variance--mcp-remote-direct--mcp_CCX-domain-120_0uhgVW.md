@@ -1,12 +1,12 @@
 # mcp_CCX-domain-120_0uhgVW (mcp-remote-direct)
 
-- Run: `ccb_mcp_domain_haiku_20260226_035628_variance`
+- Run: `csb_org_domain_haiku_20260226_035628_variance`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-domain-120_0uhgVW.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-domain-120_0uhgVW.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-domain-120_0uhgVW/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-domain-120_0uhgVW/trajectory.json)
 
 ## Metrics
 

@@ -1484,14 +1484,14 @@
       "transcript_sha256": "c34d6619a1ef54cef87763897ea619f155538a1ba45261f145064134c0eb1717"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ",
     "task_name": "linux-iwlwifi-subdevice-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_linux-iwlwifi-subdevice-fault-001_baseline-local-direct/linux-iwlwifi-subdevice-fault-00__WXmYbSJ/agent/claude-code.txt"
     }
   },
   "score": {

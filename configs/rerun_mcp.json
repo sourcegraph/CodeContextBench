@@ -7,8 +7,8 @@
   "tasks": [
     {
       "task_id": "flipt-repo-scoped-access-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/flipt-repo-scoped-access-001",
+      "benchmark": "csb_sdlc_secure",
+      "task_dir": "csb_sdlc_secure/flipt-repo-scoped-access-001",
       "language": "go",
       "difficulty": "hard",
       "sdlc_phase": "secure",
@@ -18,7 +18,7 @@
     },
     {
       "task_id": "test-integration-002",
-      "benchmark": "ccb_test",
+      "benchmark": "csb_sdlc_test",
       "sdlc_phase": "Testing & QA",
       "language": "go",
       "difficulty": "hard",
@@ -32,7 +32,7 @@
         "task_category_weight": 0.75
       },
       "selection_rationale": "Phase 2 backlog promotion: integration tests for media scanning pipeline",
-      "task_dir": "ccb_test/test-integration-002",
+      "task_dir": "csb_sdlc_test/test-integration-002",
       "context_length": 600000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 8,

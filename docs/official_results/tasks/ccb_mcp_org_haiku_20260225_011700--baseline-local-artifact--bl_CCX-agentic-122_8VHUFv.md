@@ -1,13 +1,13 @@
 # bl_CCX-agentic-122_8VHUFv (baseline-local-artifact)
 
-- Run: `ccb_mcp_org_haiku_20260225_011700`
+- Run: `csb_org_org_haiku_20260225_011700`
 - Status: `passed`
 - Reward: `0.5000`
-- Audit JSON: [link](../audits/ccb_mcp_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv.json)
+- Audit JSON: [link](../audits/csb_org_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv/claude-code.txt)
 
 ## Metrics
 

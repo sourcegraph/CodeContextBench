@@ -1465,14 +1465,14 @@
       "transcript_sha256": "7813b70ed3f71e744a5ad696369ea7650dd7ad27af855701c227cc8d19f29f12"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa",
     "task_name": "envoy-arch-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-arch-doc-gen-001_baseline-local-direct/envoy-arch-doc-gen-001__VgDxTPa/agent/claude-code.txt"
     }
   },
   "score": {

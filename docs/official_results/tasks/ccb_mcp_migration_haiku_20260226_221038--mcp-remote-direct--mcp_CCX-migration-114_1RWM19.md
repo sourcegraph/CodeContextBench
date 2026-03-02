@@ -1,13 +1,13 @@
 # mcp_CCX-migration-114_1RWM19 (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_221038`
+- Run: `csb_org_migration_haiku_20260226_221038`
 - Status: `passed`
 - Reward: `0.9091`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-114_1RWM19/claude-code.txt)
 
 ## Metrics
 

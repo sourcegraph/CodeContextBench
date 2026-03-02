@@ -1,13 +1,13 @@
 # mcp_CCX-domain-120_CGAloy (mcp-remote-direct)
 
-- Run: `ccb_mcp_domain_haiku_20260226_224414`
+- Run: `csb_org_domain_haiku_20260226_224414`
 - Status: `passed`
 - Reward: `0.8000`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_domain_haiku_20260226_224414--mcp-remote-direct--mcp_CCX-domain-120_CGAloy/claude-code.txt)
 
 ## Metrics
 

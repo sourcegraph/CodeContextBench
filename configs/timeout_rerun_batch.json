@@ -7,7 +7,7 @@
   "tasks": [
     {
       "task_id": "rust-subtype-relation-refac-001",
-      "benchmark": "ccb_build",
+      "benchmark": "csb_sdlc_build",
       "sdlc_phase": "Refactoring",
       "language": "rust",
       "difficulty": "hard",
@@ -21,7 +21,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/rust-subtype-relation-refac-001",
+      "task_dir": "csb_sdlc_build/rust-subtype-relation-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
@@ -29,7 +29,7 @@
     },
     {
       "task_id": "servo-scrollend-event-feat-001",
-      "benchmark": "ccb_build",
+      "benchmark": "csb_sdlc_build",
       "sdlc_phase": "Implementation (feature)",
       "language": "rust",
       "difficulty": "hard",
@@ -43,7 +43,7 @@
         "task_category_weight": 0.95
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/servo-scrollend-event-feat-001",
+      "task_dir": "csb_sdlc_build/servo-scrollend-event-feat-001",
       "context_length": 950000,
       "context_length_source": "task_metrics_run",
       "files_count": 16,
@@ -51,8 +51,8 @@
     },
     {
       "task_id": "camel-routing-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/camel-routing-arch-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/camel-routing-arch-001",
       "sdlc_phase": "Analysis",
       "language": "java",
       "difficulty": "hard",
@@ -73,8 +73,8 @@
     },
     {
       "task_id": "etcd-grpc-api-upgrade-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/etcd-grpc-api-upgrade-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/etcd-grpc-api-upgrade-001",
       "language": "go",
       "difficulty": "hard",
       "sdlc_phase": "design",
@@ -84,8 +84,8 @@
     },
     {
       "task_id": "flink-checkpoint-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/flink-checkpoint-arch-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/flink-checkpoint-arch-001",
       "sdlc_phase": "Analysis",
       "language": "java",
       "difficulty": "hard",
@@ -106,8 +106,8 @@
     },
     {
       "task_id": "k8s-crd-lifecycle-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-crd-lifecycle-arch-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/k8s-crd-lifecycle-arch-001",
       "sdlc_phase": "Analysis",
       "language": "go",
       "difficulty": "hard",
@@ -128,8 +128,8 @@
     },
     {
       "task_id": "k8s-dra-allocation-impact-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-dra-allocation-impact-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/k8s-dra-allocation-impact-001",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
@@ -150,8 +150,8 @@
     },
     {
       "task_id": "k8s-scheduler-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/k8s-scheduler-arch-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/k8s-scheduler-arch-001",
       "sdlc_phase": "Analysis",
       "language": "go",
       "difficulty": "hard",
@@ -172,8 +172,8 @@
     },
     {
       "task_id": "kafka-flink-streaming-arch-001",
-      "benchmark": "ccb_design",
-      "task_dir": "ccb_design/kafka-flink-streaming-arch-001",
+      "benchmark": "csb_sdlc_design",
+      "task_dir": "csb_sdlc_design/kafka-flink-streaming-arch-001",
       "sdlc_phase": "Analysis",
       "language": "java",
       "difficulty": "hard",

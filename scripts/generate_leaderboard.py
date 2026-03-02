@@ -230,7 +230,7 @@ def generate_leaderboard(manifest: dict, benchmark_task_counts: dict) -> dict:
 def generate_markdown(leaderboard: dict, benchmark_task_counts: dict) -> str:
     """Generate LEADERBOARD_RESULTS.md content."""
     lines = [
-        "# CodeContextBench Leaderboard Results",
+        "# CodeScaleBench Leaderboard Results",
         "",
         f"*Generated: {leaderboard['generated']}*",
         "",

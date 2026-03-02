@@ -1,0 +1,111 @@
+{
+  "id": "CCX-onboard-103",
+  "family": "onboarding-comprehension",
+  "use_case_id": 103,
+  "category": "E",
+  "mcp_suite": "csb_org_onboarding",
+  "prd": {
+    "user_story": "As a developer, I want to: A new contributor wants to understand how LLVM lowers IR to machine code. Find the key C++ source files in `llvm/llvm-project` that define the core code generation pipeline stages: 1. The file that defines the `SelectionDAGISel` class which performs instruction selection from LLVM IR to target-specific SelectionDAG nodes (in `llvm/lib/CodeGen/SelectionDAG/`). 2. The file that defines `SelectionDAGBuilder` which translates IR instructions into DAG nodes. 3. The file that implements instruction scheduling (`ScheduleDAGRRList`). 4. The file that implements register allocation (`RegAllocGreedy` in `llvm/lib/CodeGen/`). 5. The file that defines the `MachineFunction` class (the machine-level function representation). Report the repo, file path, and key class name for each.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
+    "seed_prompt": "A new contributor wants to understand how LLVM lowers IR to machine code. Find the key C++ source files in `llvm/llvm-project` that define the core code generation pipeline stages: 1. The file that defines the `SelectionDAGISel` class which performs instruction selection from LLVM IR to target-specific SelectionDAG nodes (in `llvm/lib/CodeGen/SelectionDAG/`). 2. The file that defines `SelectionDAGBuilder` which translates IR instructions into DAG nodes. 3. The file that implements instruction scheduling (`ScheduleDAGRRList`). 4. The file that implements register allocation (`RegAllocGreedy` in `llvm/lib/CodeGen/`). 5. The file that defines the `MachineFunction` class (the machine-level function representation). Report the repo, file path, and key class name for each."
+  },
+  "artifacts": {
+    "repo_set_id": "compiler-toolchain",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/SelectionDAGISel.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/RegAllocGreedy.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/CodeGen/MachineFunction.h"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/SelectionDAGISel.cpp",
+          "symbol": "SelectionDAGISel"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp",
+          "symbol": "SelectionDAGBuilder"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp",
+          "symbol": "createBURRListDAGScheduler"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/CodeGen/RegAllocGreedy.cpp",
+          "symbol": "RAGreedy"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/CodeGen/MachineFunction.h",
+          "symbol": "MachineFunction"
+        }
+      ],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "SelectionDAGISel",
+            "SelectionDAGBuilder",
+            "createBURRListDAGScheduler",
+            "RAGreedy",
+            "MachineFunction"
+          ]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-# CCB Task Authoring Skills
+# CSB Task Authoring Skills
 
 Scaffold new benchmark tasks, score task quality, and audit benchmark suites against ABC criteria. Use when creating new tasks, reviewing task quality, or auditing benchmark integrity.
 
@@ -36,17 +36,17 @@ Interactively scaffold a new Harbor-compatible benchmark task. Generates task.to
 | mixed | `ubuntu:22.04` |
 
 **Generated files:**
-- `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/task.toml`
-- `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/instruction.md`
-- `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`
-- `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/tests/test.sh`
+- `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/task.toml`
+- `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/instruction.md`
+- `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`
+- `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/tests/test.sh`
 
 #### Phase 5: Registration
 Add entry to `configs/selected_benchmark_tasks.json`.
 
 #### Phase 6: Validation
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_{BENCHMARK}/{TASK_ID}
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
 ```
 
 ---
@@ -64,16 +64,16 @@ Score individual benchmark tasks on three weighted quality dimensions.
 
 ```bash
 # Single task
-cd ~/CodeContextBench && python3 scripts/abc_score_task.py --task benchmarks/ccb_pytorch/sgt-005
+cd ~/CodeScaleBench && python3 scripts/abc_score_task.py --task benchmarks/csb_sdlc_pytorch/sgt-005
 
 # All tasks in a suite
-python3 scripts/abc_score_task.py --suite ccb_pytorch --format table
+python3 scripts/abc_score_task.py --suite csb_sdlc_pytorch --format table
 
 # All tasks with threshold
 python3 scripts/abc_score_task.py --all --threshold 0.7 --format table
 
 # JSON output
-python3 scripts/abc_score_task.py --suite ccb_swebenchpro --format json
+python3 scripts/abc_score_task.py --suite csb_sdlc_swebenchpro --format json
 ```
 
 ---
@@ -91,16 +91,16 @@ Audit benchmark suites against the ABC (Agent Benchmark Criteria) framework.
 
 ```bash
 # Specific suite
-cd ~/CodeContextBench && python3 scripts/abc_audit.py --suite ccb_pytorch --format table
+cd ~/CodeScaleBench && python3 scripts/abc_audit.py --suite csb_sdlc_pytorch --format table
 
 # All suites
 python3 scripts/abc_audit.py --all --format table
 
 # Critical only
-python3 scripts/abc_audit.py --suite ccb_swebenchpro --critical-only
+python3 scripts/abc_audit.py --suite csb_sdlc_swebenchpro --critical-only
 
 # Filter by dimension
-python3 scripts/abc_audit.py --suite ccb_pytorch --dimension task_validity
+python3 scripts/abc_audit.py --suite csb_sdlc_pytorch --dimension task_validity
 ```
 
 ### ABC Criteria Reference

@@ -4457,14 +4457,14 @@
       "transcript_sha256": "c9586c12882acea2f8984a05fedc333974dbdec16fcf55410b1946f3bda5e441"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf",
     "task_name": "sgonly_pytorch-release-210-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_pytorch-release-210-fix-001_mcp-remote-direct/sgonly_pytorch-release-210-fix-0__jjBmchf/agent/claude-code.txt"
     }
   },
   "score": {

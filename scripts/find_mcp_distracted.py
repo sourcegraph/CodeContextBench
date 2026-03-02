@@ -17,7 +17,7 @@ from collections import defaultdict
 
 STAGING_DIR = Path(__file__).resolve().parent.parent / "runs" / "staging"
 
-SDLC_SUITES = {"build", "debug", "design", "document", "fix", "secure", "test", "understand"}
+SDLC_SUITES = {"build", "feature", "refactor", "debug", "design", "document", "fix", "secure", "test", "understand"}
 
 
 def extract_suite_from_dir(run_dir_name):
@@ -64,10 +64,14 @@ def get_task_name_from_dir(task_dir_name):
     """Extract canonical task name from dir like ccb_build_bustub-hyperloglog-impl-001_baseline."""
     name = task_dir_name
     for suite in SDLC_SUITES:
-        prefix = f"ccb_{suite}_"
-        if name.startswith(prefix):
-            name = name[len(prefix):]
-            break
+        # Try new naming first, then legacy
+        for fmt in (f"csb_sdlc_{suite}_", f"ccb_{suite}_"):
+            if name.startswith(fmt):
+                name = name[len(fmt):]
+                break
+        else:
+            continue
+        break
 
     for suffix in ("_sourcegraph_full", "_baseline"):
         if name.endswith(suffix):
@@ -137,7 +141,7 @@ def main():
                     continue
                 if task_entry.name == "archive":
                     continue
-                if not task_entry.name.startswith("ccb_"):
+                if not task_entry.name.startswith(("ccb_", "csb_")):
                     continue
 
                 task_name = get_task_name_from_dir(task_entry.name)
@@ -164,7 +168,7 @@ def main():
                     continue
                 if task_entry.name == "archive":
                     continue
-                if not task_entry.name.startswith("ccb_"):
+                if not task_entry.name.startswith(("ccb_", "csb_")):
                     continue
 
                 task_name = get_task_name_from_dir(task_entry.name)

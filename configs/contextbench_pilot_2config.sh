@@ -33,7 +33,7 @@ if [ ! -f "$SELECTION_FILE" ]; then
     exit 1
 fi
 
-TASK_COUNT=$(python3 -c "import json; print(len(json.load(open('$SELECTION_FILE'))))")
+TASK_COUNT=$(python3 -c "import json; print(len(json.load(open('$SELECTION_FILE')).get('tasks', [])))")
 echo "=== ContextBench Cross-Validation Pilot ==="
 echo "Tasks:    $TASK_COUNT"
 echo "Configs:  baseline-local-direct + mcp-remote-direct"

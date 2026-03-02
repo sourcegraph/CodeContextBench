@@ -32,14 +32,14 @@ SELECTION_FILE = REPO_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ccb_metrics.ground_truth import (
+from csb_metrics.ground_truth import (
     TaskGroundTruth,
     load_registry,
     build_ground_truth_registry,
     save_registry,
 )
-from ccb_metrics.transcript_paths import resolve_task_transcript_path
-from ccb_metrics.ir_metrics import _normalize, _looks_like_file
+from csb_metrics.transcript_paths import resolve_task_transcript_path
+from csb_metrics.ir_metrics import _normalize, _looks_like_file
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -640,7 +640,7 @@ def walk_run_tasks(run_dir: Path) -> list[dict]:
             if not batch_dir.is_dir():
                 continue
             is_batch_ts = bool(_BATCH_TS_RE.match(batch_dir.name))
-            is_job_dir = batch_dir.name.startswith("ccb_")
+            is_job_dir = batch_dir.name.startswith(("ccb_", "csb_"))
 
             if not is_batch_ts and not is_job_dir:
                 continue

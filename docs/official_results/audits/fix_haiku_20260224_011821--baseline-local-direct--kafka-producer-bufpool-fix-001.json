@@ -84,14 +84,14 @@
       "transcript_sha256": "cae8c497b02f21d5bfc32d09d92fadb488a2de8b5e874c155e9f5bf9e89cb243"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/ccb_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/result.json",
+    "result_path": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/csb_sdlc_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/result.json",
     "run_dir": "fix_haiku_20260224_011821",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/ccb_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/csb_sdlc_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5",
     "task_name": "kafka-producer-bufpool-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/ccb_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/ccb_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/csb_sdlc_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260224_011821/baseline-local-direct/csb_sdlc_fix_kafka-producer-bufpool-fix-001_baseline-local-direct/kafka-producer-bufpool-fix-001__VyGEQw5/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,4 +1,4 @@
-# CCB Maintenance Skills
+# CSB Maintenance Skills
 
 Sync metadata, re-extract metrics, archive runs, generate reports, and plan next actions. Use when maintaining data hygiene, generating reports, or deciding what to work on next.
 
@@ -30,7 +30,7 @@ Ensure task.toml files match the authoritative `selected_benchmark_tasks.json` r
 
 ### Steps
 ```bash
-cd ~/CodeContextBench && python3 scripts/sync_task_metadata.py
+cd ~/CodeScaleBench && python3 scripts/sync_task_metadata.py
 ```
 
 To fix mismatches:
@@ -40,7 +40,7 @@ python3 scripts/sync_task_metadata.py --fix
 
 ### Variants
 ```bash
-python3 scripts/sync_task_metadata.py --suite ccb_pytorch
+python3 scripts/sync_task_metadata.py --suite csb_sdlc_pytorch
 python3 scripts/sync_task_metadata.py --format json
 ```
 
@@ -54,8 +54,8 @@ Batch re-extract `task_metrics.json` after extraction bug fixes or schema change
 
 #### 1. Preview (dry run)
 ```bash
-cd ~/CodeContextBench && python3 scripts/reextract_all_metrics.py --dry-run
-python3 scripts/reextract_all_metrics.py --dry-run --filter ccb_pytorch
+cd ~/CodeScaleBench && python3 scripts/reextract_all_metrics.py --dry-run
+python3 scripts/reextract_all_metrics.py --dry-run --filter csb_sdlc_pytorch
 ```
 
 #### 2. Run re-extraction
@@ -84,7 +84,7 @@ Move old completed run directories to `runs/official/archive/`.
 
 #### 1. Show candidates
 ```bash
-cd ~/CodeContextBench && python3 scripts/archive_run.py --older-than 7
+cd ~/CodeScaleBench && python3 scripts/archive_run.py --older-than 7
 ```
 
 #### 2. Archive if approved
@@ -104,7 +104,7 @@ python3 scripts/archive_run.py --older-than 7 --format json
 
 ## Generate Report
 
-Generate the aggregate CCB evaluation report from completed Harbor runs.
+Generate the aggregate CSB evaluation report from completed Harbor runs.
 
 ### Output Files (in `./eval_reports/`)
 
@@ -121,7 +121,7 @@ ls runs/official/ 2>/dev/null
 
 2. Generate the report:
 ```bash
-cd ~/CodeContextBench && python3 scripts/generate_eval_report.py \
+cd ~/CodeScaleBench && python3 scripts/generate_eval_report.py \
     --runs-dir runs/official/ \
     --output-dir ./eval_reports/ \
     --selected-tasks ./configs/selected_benchmark_tasks.json
@@ -145,12 +145,12 @@ Analyze current state and recommend highest-value next action.
 
 #### 1. Get status with gap analysis
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --gap-analysis --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --gap-analysis --format json
 ```
 
 #### 2. Get config comparison
 ```bash
-cd ~/CodeContextBench && python3 scripts/compare_configs.py --format json
+cd ~/CodeScaleBench && python3 scripts/compare_configs.py --format json
 ```
 
 #### 3. Categorize and recommend

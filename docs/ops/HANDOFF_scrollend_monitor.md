@@ -1,12 +1,12 @@
-# Handoff: Monitor ccb_build rerun + scrollend=0 triage
+# Handoff: Monitor csb_sdlc_build rerun + scrollend=0 triage
 
 ## Goal
-- Keep watching the active 5-task `ccb_build` baseline rerun.
+- Keep watching the active 5-task `csb_sdlc_build` baseline rerun.
 - Confirm final rewards/artifacts for all 5 tasks.
 - Triage why `servo-scrollend-event-feat-001` got verifier reward `0`.
 
 ## Current Status (2026-02-27)
-- Active run root: `runs/staging/ccb_build_haiku_20260227_025524/baseline-local-direct`
+- Active run root: `runs/staging/csb_sdlc_build_haiku_20260227_025524/baseline-local-direct`
 - 4 tasks done, 1 still running (`flink-pricing-window-feat-001`).
 - `servo-scrollend-event-feat-001` completed with verifier reward `0`.
 - `servo-scrollend` artifacts exist (`trajectory.json` and `claude-code.txt` are present).
@@ -37,7 +37,7 @@ scripts/handoff_monitor_scrollend.sh status
 
 3. Check only running harbor processes:
 ```bash
-ps -ef | rg "harbor run --path .*/benchmarks/ccb_build|run_selected_tasks.sh" | rg -v rg
+ps -ef | rg "harbor run --path .*/benchmarks/csb_sdlc_build|run_selected_tasks.sh" | rg -v rg
 ```
 
 ## `scrollend` Zero-Score Investigation Workflow
@@ -48,7 +48,7 @@ scripts/handoff_monitor_scrollend.sh investigate
 
 2. Re-check verifier rationale directly:
 ```bash
-trial=$(find runs/staging/ccb_build_haiku_20260227_025524/baseline-local-direct -type d -name 'servo-scrollend-event-feat-001__*' | head -n1)
+trial=$(find runs/staging/csb_sdlc_build_haiku_20260227_025524/baseline-local-direct -type d -name 'servo-scrollend-event-feat-001__*' | head -n1)
 tail -n 80 "$trial/verifier/test-stdout.txt"
 jq '{status,reward,exception_info,verifier_reward:(.verifier_result.rewards.reward // null)}' "$trial/result.json"
 ```

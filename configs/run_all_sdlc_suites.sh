@@ -20,14 +20,14 @@ FAILED_SUITES=()
 for suite in "${SUITES[@]}"; do
     echo ""
     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    echo ">>> Starting suite: ccb_${suite}"
+    echo ">>> Starting suite: csb_sdlc_${suite}"
     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     echo ""
 
     if bash "${SCRIPT_DIR}/${suite}_2config.sh"; then
-        echo ">>> Suite ccb_${suite} completed successfully"
+        echo ">>> Suite csb_sdlc_${suite} completed successfully"
     else
-        echo ">>> WARNING: Suite ccb_${suite} had errors (exit code: $?)"
+        echo ">>> WARNING: Suite csb_sdlc_${suite} had errors (exit code: $?)"
         FAILED_SUITES+=("$suite")
     fi
 done

@@ -1978,14 +1978,14 @@
       "transcript_sha256": "b9a34c13a3f6d338080283762da8be210d815372c6654730b58aee6bbad211d1"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/result.json",
-    "run_dir": "ccb_fix_haiku_20260224_203138",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_20260224_203138",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx",
     "task_name": "mcp_kafka-producer-bufpool-fix-001_2pvDVv",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_20260224_203138/mcp-remote-direct/2026-02-24__20-41-49/mcp_kafka-producer-bufpool-fix-0__hGmBeEx/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1200,14 +1200,14 @@
       "transcript_sha256": "d609f28b41b2558a77abb4621fc3e63626dbe75971d6a8f625bd7dd86254cf17"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy",
     "task_name": "envoy-contributor-workflow-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_envoy-contributor-workflow-001_baseline-local-direct/envoy-contributor-workflow-001__MYwNjVy/agent/claude-code.txt"
     }
   },
   "score": {

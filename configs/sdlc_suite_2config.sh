@@ -36,7 +36,7 @@ if [ -z "$SUITE" ]; then
     echo "ERROR: SDLC_SUITE is not set. Use a suite wrapper script in configs/."
     exit 1
 fi
-SUITE_STEM="${SUITE#ccb_}"
+SUITE_STEM="${SUITE#csb_sdlc_}"
 
 # ============================================
 # CONFIGURATION

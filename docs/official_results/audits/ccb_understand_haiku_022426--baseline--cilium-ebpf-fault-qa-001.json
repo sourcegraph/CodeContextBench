@@ -1230,14 +1230,14 @@
       "transcript_sha256": "14311549c274924be3be4e7928bec553e08d05a1bb3a121ed437f1b88c6372c4"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj",
     "task_name": "cilium-ebpf-fault-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_cilium-ebpf-fault-qa-001_baseline-local-direct/cilium-ebpf-fault-qa-001__tnmM4dj/agent/claude-code.txt"
     }
   },
   "score": {

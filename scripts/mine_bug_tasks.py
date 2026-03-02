@@ -45,7 +45,7 @@ def _build_headers() -> dict[str, str]:
     """Build HTTP headers, including auth token if available."""
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "CodeContextBench-mine-bug-tasks/1.0",
+        "User-Agent": "CodeScaleBench-mine-bug-tasks/1.0",
     }
     token = os.environ.get("GITHUB_TOKEN")
     if token:

@@ -863,14 +863,14 @@
       "transcript_sha256": "7c4742f95f1c118b8a2fdf0099e9d18abd628ce464ad5b2aec063e74331b794c"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78",
     "task_name": "sgonly_django-csrf-session-audit-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_django-csrf-session-audit-001_mcp-remote-direct/sgonly_django-csrf-session-audit__9ufpf78/agent/claude-code.txt"
     }
   },
   "score": {

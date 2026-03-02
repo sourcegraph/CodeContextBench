@@ -1,13 +1,13 @@
 # test-coverage-gap-002 (baseline-local-direct)
 
-- Run: `ccb_test_haiku_022326`
+- Run: `csb_sdlc_test_haiku_022326`
 - Status: `passed`
 - Reward: `0.9400`
-- Audit JSON: [link](../audits/ccb_test_haiku_022326--baseline--test-coverage-gap-002.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_022326--baseline--test-coverage-gap-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_022326--baseline--test-coverage-gap-002/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_022326--baseline--test-coverage-gap-002/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_022326--baseline--test-coverage-gap-002/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_022326--baseline--test-coverage-gap-002/claude-code.txt)
 
 ## Metrics
 

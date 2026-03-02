@@ -1,5 +1,5 @@
 #!/bin/bash
-# Artifact-only evaluation: ccb_test suite (baseline-local-artifact + mcp-remote-artifact).
+# Artifact-only evaluation: csb_sdlc_test suite (baseline-local-artifact + mcp-remote-artifact).
 #
 # baseline-local-artifact: full local repo, no MCP. Agent produces review.json artifact.
 # mcp-remote-artifact:     source deleted + Sourcegraph MCP. Agent produces review.json artifact.
@@ -8,7 +8,7 @@
 # Usage:
 #   ./configs/test_artifact_2config.sh [--baseline-only|--full-only] [--task TASK_ID] [--parallel N]
 
-export SDLC_SUITE="ccb_test"
+export SDLC_SUITE="csb_sdlc_test"
 export SDLC_SUITE_LABEL="Test (Artifact-Only)"
 export FULL_CONFIG="mcp-remote-artifact"
 

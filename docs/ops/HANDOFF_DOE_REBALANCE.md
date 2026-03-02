@@ -8,8 +8,8 @@ Rebalance the 9 SDLC benchmark suites from uniform 20 tasks/suite (180 total) to
 
 A Design of Experiments (DOE) variance decomposition showed that uniform n=20/suite is simultaneously over-sampling low-variance suites and under-sampling high-variance ones:
 
-- **ccb_fix** (sigma2_task=0.1518, ICC=0.964): task heterogeneity dominates — the suite mixes trivially-solvable patches with multi-file fixes. Needs MORE tasks.
-- **ccb_understand** (sigma2_task=0.0123, ICC=0.078): agent stochasticity dominates — same task gives different results each run. Needs more REPS, not tasks.
+- **csb_sdlc_fix** (sigma2_task=0.1518, ICC=0.964): task heterogeneity dominates — the suite mixes trivially-solvable patches with multi-file fixes. Needs MORE tasks.
+- **csb_sdlc_understand** (sigma2_task=0.0123, ICC=0.078): agent stochasticity dominates — same task gives different results each run. Needs more REPS, not tasks.
 
 The Neyman-optimal allocation for a 150-task budget (proportional to within-suite SD) is:
 
@@ -53,17 +53,17 @@ The Neyman-optimal allocation for a 150-task budget (proportional to within-suit
 
 ### Suites that GROW (need new/promoted tasks)
 
-**ccb_fix (+5, target 25):**
-- 5 backup tasks available in `benchmarks/backups/ccb_fix_extra/`:
+**csb_sdlc_fix (+5, target 25):**
+- 5 backup tasks available in `benchmarks/backups/csb_sdlc_fix_extra/`:
   - Check quality before promoting — they were removed for "over-represented repo" reason
   - If repo diversity is a concern, create new tasks from under-represented repos instead
 
-**ccb_test (+5, target 23):**
-- 2 backup tasks in `benchmarks/backups/ccb_test_tac/` — but these need external RocketChat server (incompatible)
+**csb_sdlc_test (+5, target 23):**
+- 2 backup tasks in `benchmarks/backups/csb_sdlc_test_tac/` — but these need external RocketChat server (incompatible)
 - Must scaffold 5 new tasks using `/scaffold-task` skill
 - Prioritize high-variance task types (unit test generation, integration testing, code review)
 
-**ccb_feature (+2, target 22):**
+**csb_sdlc_feature (+2, target 22):**
 - No backup tasks available
 - Scaffold 2 new tasks — prioritize languages/repos under-represented in current 20
 
@@ -75,12 +75,12 @@ Selection criteria for which tasks to move OUT:
 3. **Remove low-information tasks** (consistent pass or consistent fail across both configs) — they add no signal
 4. **Maintain language/repo diversity** in the remaining set
 
-**ccb_debug (-2, target 18):** Move 2 lowest-information tasks
-**ccb_refactor (-5, target 15):** Move 5 lowest-information tasks
-**ccb_design (-6, target 14):** Move 6 lowest-information tasks
-**ccb_document (-8, target 12):** Move 8 lowest-information tasks
-**ccb_secure (-9, target 11):** Move 9 lowest-information tasks
-**ccb_understand (-10, target 10):** Move 10 lowest-information tasks
+**csb_sdlc_debug (-2, target 18):** Move 2 lowest-information tasks
+**csb_sdlc_refactor (-5, target 15):** Move 5 lowest-information tasks
+**csb_sdlc_design (-6, target 14):** Move 6 lowest-information tasks
+**csb_sdlc_document (-8, target 12):** Move 8 lowest-information tasks
+**csb_sdlc_secure (-9, target 11):** Move 9 lowest-information tasks
+**csb_sdlc_understand (-10, target 10):** Move 10 lowest-information tasks
 
 ## Implementation Plan
 
@@ -106,18 +106,18 @@ Write a selection script (e.g. `doe_select_tasks.py`) that:
 
 ```bash
 # For each suite that shrinks, move excess tasks to backups
-# Example for ccb_understand (20 → 10):
-mkdir -p benchmarks/backups/ccb_understand_doe_trim/
-mv benchmarks/ccb_understand/<task_to_remove>/ benchmarks/backups/ccb_understand_doe_trim/
+# Example for csb_sdlc_understand (20 → 10):
+mkdir -p benchmarks/backups/csb_sdlc_understand_doe_trim/
+mv benchmarks/csb_sdlc_understand/<task_to_remove>/ benchmarks/backups/csb_sdlc_understand_doe_trim/
 
-# For ccb_fix (20 → 25), promote from backups:
-mv benchmarks/backups/ccb_fix_extra/<task>/ benchmarks/ccb_fix/
+# For csb_sdlc_fix (20 → 25), promote from backups:
+mv benchmarks/backups/csb_sdlc_fix_extra/<task>/ benchmarks/csb_sdlc_fix/
 ```
 
 ### Phase 3: Scaffold new tasks (for suites that grow beyond backup supply)
 
 ```bash
-# ccb_test needs 5 new tasks, ccb_feature needs 2 new tasks
+# csb_sdlc_test needs 5 new tasks, csb_sdlc_feature needs 2 new tasks
 # Use /scaffold-task skill for each
 ```
 
@@ -141,11 +141,11 @@ python3 scripts/validate_tasks_preflight.py
 
 ## Open Risks / Unknowns
 
-1. **Backup task quality**: The 5 ccb_fix_extra tasks were removed for repo over-representation — need to check if promoting them creates unacceptable repo bias
-2. **New task scaffolding**: 7 new tasks needed (5 ccb_test, 2 ccb_feature) — each requires instruction, verifier, Dockerfile, and oracle curation. Budget ~2-3 hours per task.
+1. **Backup task quality**: The 5 csb_sdlc_fix_extra tasks were removed for repo over-representation — need to check if promoting them creates unacceptable repo bias
+2. **New task scaffolding**: 7 new tasks needed (5 csb_sdlc_test, 2 csb_sdlc_feature) — each requires instruction, verifier, Dockerfile, and oracle curation. Budget ~2-3 hours per task.
 3. **Historical comparability**: Changing suite sizes means old runs (n=20) aren't directly comparable to new runs (variable n). Document this in the white paper methods section.
 4. **MCP-unique suites unaddressed**: This rebalance only covers SDLC suites. The 11 MCP-unique suites (220 tasks) don't have enough variance run data yet for the same analysis. Run doe_variance_analysis.py with `--include-mcp-unique` after collecting MCP-unique variance data.
-5. **ccb_test currently has 18 tasks** (not 20) — growing to 23 means adding 5, not 3
+5. **csb_sdlc_test currently has 18 tasks** (not 20) — growing to 23 means adding 5, not 3
 
 ## Next Best Command
 

@@ -20,13 +20,13 @@ Runs `scripts/abc_score_task.py` which scores tasks on:
 ### 1. Score a single task
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/abc_score_task.py --task benchmarks/ccb_pytorch/sgt-005
+cd ~/CodeScaleBench && python3 scripts/abc_score_task.py --task benchmarks/csb_sdlc_pytorch/sgt-005
 ```
 
 ### 2. Score all tasks in a suite
 
 ```bash
-python3 scripts/abc_score_task.py --suite ccb_pytorch --format table
+python3 scripts/abc_score_task.py --suite csb_sdlc_pytorch --format table
 ```
 
 ### 3. Score all tasks with threshold
@@ -39,7 +39,7 @@ python3 scripts/abc_score_task.py --all --threshold 0.7 --format table
 ### 4. JSON output
 
 ```bash
-python3 scripts/abc_score_task.py --suite ccb_swebenchpro --format json
+python3 scripts/abc_score_task.py --suite csb_sdlc_swebenchpro --format json
 ```
 
 ### 5. Present findings

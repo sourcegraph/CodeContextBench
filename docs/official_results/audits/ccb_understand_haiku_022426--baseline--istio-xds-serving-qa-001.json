@@ -1819,14 +1819,14 @@
       "transcript_sha256": "84f02dcb21f082026ef91fba76b4775a1c55e749cec0ef3972c200fc884e2cd2"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY",
     "task_name": "istio-xds-serving-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_istio-xds-serving-qa-001_baseline-local-direct/istio-xds-serving-qa-001__GKveDnY/agent/claude-code.txt"
     }
   },
   "score": {

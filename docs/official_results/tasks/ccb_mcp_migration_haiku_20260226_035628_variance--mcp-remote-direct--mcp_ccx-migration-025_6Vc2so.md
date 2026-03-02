@@ -1,12 +1,12 @@
 # mcp_ccx-migration-025_6Vc2so (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_035628_variance`
+- Run: `csb_org_migration_haiku_20260226_035628_variance`
 - Status: `passed`
 - Reward: `0.4615`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_035628_variance--mcp-remote-direct--mcp_ccx-migration-025_6Vc2so.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_035628_variance--mcp-remote-direct--mcp_ccx-migration-025_6Vc2so.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_035628_variance--mcp-remote-direct--mcp_ccx-migration-025_6Vc2so/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_035628_variance--mcp-remote-direct--mcp_ccx-migration-025_6Vc2so/trajectory.json)
 
 ## Metrics
 

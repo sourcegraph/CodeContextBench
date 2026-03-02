@@ -5,7 +5,7 @@ Builds each task's Dockerfile.artifact_only, injects the known-correct
 solution, runs the verifier, and checks that reward ≈ 1.0.
 
 Handles five solution types:
-  1. solve.sh          — SWE-bench Pro tasks (ccb_fix, ccb_build): apply gold patch
+  1. solve.sh          — SWE-bench Pro tasks (csb_sdlc_fix): apply gold patch
   2. oracle_answer.json — MCP-unique tasks: copy as /workspace/answer.json
   3. ground_truth.json  — SDLC oracle tasks: synthesize perfect report from patterns
   4. expected_defects   — Code review tasks: detection-only review.json
@@ -13,8 +13,8 @@ Handles five solution types:
 
 Usage:
     python3 scripts/validate_artifact_golden.py --all
-    python3 scripts/validate_artifact_golden.py --suite ccb_fix
-    python3 scripts/validate_artifact_golden.py --task benchmarks/ccb_fix/flipt-trace-sampling-fix-001
+    python3 scripts/validate_artifact_golden.py --suite csb_sdlc_fix
+    python3 scripts/validate_artifact_golden.py --task benchmarks/csb_sdlc_fix/flipt-trace-sampling-fix-001
     python3 scripts/validate_artifact_golden.py --all --json --output results.json
 """
 
@@ -44,7 +44,7 @@ def find_tasks(suite: str | None = None, task_path: str | None = None) -> list[P
             p = ROOT / task_path
         return [p] if p.exists() else []
 
-    pattern = f"ccb_{suite}" if suite else "ccb_*"
+    pattern = f"csb_sdlc_{suite}" if suite else "csb_*"
     tasks = []
     for task_dir in sorted(BENCHMARKS.glob(f"{pattern}/*/environment")):
         if task_dir.is_dir() and (task_dir / "Dockerfile.artifact_only").exists():
@@ -418,7 +418,7 @@ def main():
     )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--task", type=str, help="Single task path")
-    group.add_argument("--suite", type=str, help="Suite name (e.g., ccb_fix)")
+    group.add_argument("--suite", type=str, help="Suite name (e.g., csb_sdlc_fix)")
     group.add_argument("--all", action="store_true", help="All tasks")
     parser.add_argument("--build-timeout", type=int, default=600)
     parser.add_argument("--verify-timeout", type=int, default=300)

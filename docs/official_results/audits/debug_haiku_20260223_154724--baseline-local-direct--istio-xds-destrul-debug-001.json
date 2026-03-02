@@ -1307,14 +1307,14 @@
       "transcript_sha256": "fead626d436551e1acf3e4d418249c2f02197e6610e897957bea45325370cab3"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj",
     "task_name": "istio-xds-destrul-debug-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_istio-xds-destrul-debug-001_baseline-local-direct/istio-xds-destrul-debug-001__e4yiQBj/agent/claude-code.txt"
     }
   },
   "score": {

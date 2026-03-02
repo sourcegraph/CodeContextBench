@@ -1,13 +1,13 @@
 # mcp_CCX-compliance-052_mF59tH (mcp-remote-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035515_variance`
+- Run: `csb_org_compliance_haiku_20260226_035515_variance`
 - Status: `passed`
 - Reward: `0.2634`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_compliance_haiku_20260226_035515_variance--mcp-remote-direct--mcp_CCX-compliance-052_mF59tH/claude-code.txt)
 
 ## Metrics
 

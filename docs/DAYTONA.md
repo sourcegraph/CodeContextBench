@@ -1,6 +1,6 @@
-# Running CodeContextBench on Daytona
+# Running CodeScaleBench on Daytona
 
-This guide covers running the CodeContextBench benchmark suite on [Daytona](https://daytona.io) cloud sandboxes. Daytona handles Docker image builds and sandbox lifecycle remotely, so you do not need Docker installed locally.
+This guide covers running the CodeScaleBench benchmark suite on [Daytona](https://daytona.io) cloud sandboxes. Daytona handles Docker image builds and sandbox lifecycle remotely, so you do not need Docker installed locally.
 
 ## When To Read This
 - You want to run benchmarks without a local Docker daemon.
@@ -64,14 +64,14 @@ Harbor has a built-in `DaytonaEnvironment` that plugs into the standard trial ru
 ```bash
 # Single task on Daytona
 BASELINE_MCP_TYPE=none harbor run \
-    --path benchmarks/ccb_build/cgen-deps-install-001 \
+    --path benchmarks/csb_sdlc_build/cgen-deps-install-001 \
     --agent-import-path agents/claude_baseline_agent.py \
     --model claude-haiku-4-5-20251001 \
     --environment-type daytona
 
 # Full suite (60 concurrent sandboxes)
 BASELINE_MCP_TYPE=none harbor run \
-    --path benchmarks/ccb_build \
+    --path benchmarks/csb_sdlc_build \
     --agent-import-path agents/claude_baseline_agent.py \
     --model claude-haiku-4-5-20251001 \
     --jobs-dir runs/staging/build_baseline_$(date +%Y%m%d) \
@@ -86,7 +86,7 @@ Run both configs concurrently, splitting the Daytona sandbox budget:
 ```bash
 # Terminal 1: Baseline (60 concurrent sandboxes)
 BASELINE_MCP_TYPE=none harbor run \
-    --path benchmarks/ccb_build \
+    --path benchmarks/csb_sdlc_build \
     --agent-import-path agents/claude_baseline_agent.py \
     --model claude-haiku-4-5-20251001 \
     --jobs-dir runs/staging/paired_baseline_$(date +%Y%m%d) \
@@ -95,7 +95,7 @@ BASELINE_MCP_TYPE=none harbor run \
 
 # Terminal 2: MCP (60 concurrent sandboxes)
 BASELINE_MCP_TYPE=sourcegraph harbor run \
-    --path benchmarks/ccb_build \
+    --path benchmarks/csb_sdlc_build \
     --agent-import-path agents/claude_baseline_agent.py \
     --model claude-haiku-4-5-20251001 \
     --jobs-dir runs/staging/paired_mcp_$(date +%Y%m%d) \
@@ -195,16 +195,16 @@ The standalone runner (`scripts/daytona_runner.py`) is useful for quick validati
 python3 scripts/daytona_runner.py --list-suites
 
 # List tasks in a suite
-python3 scripts/daytona_runner.py --list-tasks --suite ccb_feature
+python3 scripts/daytona_runner.py --list-tasks --suite csb_sdlc_feature
 
 # Dry run (validate task selection, no sandboxes created)
-python3 scripts/daytona_runner.py --suite ccb_build --dry-run
+python3 scripts/daytona_runner.py --suite csb_sdlc_build --dry-run
 
 # Run a single task
 python3 scripts/daytona_runner.py --task cgen-deps-install-001
 
 # Run a full suite
-python3 scripts/daytona_runner.py --suite ccb_build --parallel 4
+python3 scripts/daytona_runner.py --suite csb_sdlc_build --parallel 4
 
 # Run all 283 tasks
 python3 scripts/daytona_runner.py --all --parallel 8
@@ -256,7 +256,7 @@ runs/daytona/{run_id}/
 - **TAC images** (4 tasks): `ghcr.io/theagentcompany/*` on GHCR
 - **Linux kernel tasks** (5 tasks): Build from `gcc:13` with inline kernel source clone
 
-**Not Daytona-compatible** (21 tasks): Tasks using `jefzda/sweap-images:*` from Docker Hub (9 ccb_debug + 12 ccb_fix) fail because Daytona's remote builder cannot pull from Docker Hub (returns `unauthorized` error even for public images). Run these tasks locally with Docker instead. To re-host them to GHCR, use `scripts/rehost_sweap_images.py` with a GITHUB_TOKEN that has `write:packages` scope.
+**Not Daytona-compatible** (21 tasks): Tasks using `jefzda/sweap-images:*` from Docker Hub (9 csb_sdlc_debug + 12 csb_sdlc_fix) fail because Daytona's remote builder cannot pull from Docker Hub (returns `unauthorized` error even for public images). Run these tasks locally with Docker instead. To re-host them to GHCR, use `scripts/rehost_sweap_images.py` with a GITHUB_TOKEN that has `write:packages` scope.
 
 Regenerate the task registry after adding new tasks:
 ```bash
@@ -288,6 +288,6 @@ python3 scripts/build_daytona_registry.py
 
 **Harbor + Daytona: "Sandbox not found"**: Usually a transient resource-contention error — Daytona could not allocate a sandbox when all slots were occupied. The retry logic in `_common.sh` will automatically re-queue these tasks with exponential backoff (up to 3 attempts). If it persists, check your Daytona tier limits or ensure `daytona-sdk` is installed in the same Python environment as Harbor.
 
-**Docker Hub images fail with "unauthorized"**: Daytona's remote builder cannot pull `jefzda/sweap-images:*` from Docker Hub. This affects 21 SWE-bench Pro tasks (9 ccb_debug + 12 ccb_fix). Run these locally or re-host images to GHCR using `scripts/rehost_sweap_images.py`.
+**Docker Hub images fail with "unauthorized"**: Daytona's remote builder cannot pull `jefzda/sweap-images:*` from Docker Hub. This affects 21 SWE-bench Pro tasks (9 csb_sdlc_debug + 12 csb_sdlc_fix). Run these locally or re-host images to GHCR using `scripts/rehost_sweap_images.py`.
 
 **Sandbox creation fails for tasks with `storage = "20G"` in task.toml**: Daytona has a hard 10GB per-sandbox storage limit. 39 tasks specify `storage = "20G"` and 1 specifies `"15G"`, exceeding this limit. Set `export DAYTONA_OVERRIDE_STORAGE=10240` before launching runs. This passes `--override-storage-mb 10240` to all `harbor run` commands, capping storage at 10GB. The actual Docker images are 1.5-5GB so 10GB is sufficient.

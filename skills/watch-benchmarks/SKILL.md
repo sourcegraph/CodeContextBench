@@ -6,7 +6,7 @@ user-invocable: true
 
 # Watch Benchmarks
 
-Monitor the status of CodeContextBench benchmark runs in `runs/official/`.
+Monitor the status of CodeScaleBench benchmark runs in `runs/official/`.
 
 ## What This Does
 
@@ -21,7 +21,7 @@ Runs `scripts/aggregate_status.py` which:
 1. Run the status scanner:
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --format json
 ```
 
 2. Parse the JSON output and present to the user as markdown tables:
@@ -48,7 +48,7 @@ python3 scripts/aggregate_status.py --since 60 --format json
 
 ### Single suite
 ```bash
-python3 scripts/aggregate_status.py --suite ccb_pytorch --format json
+python3 scripts/aggregate_status.py --suite csb_sdlc_pytorch --format json
 ```
 
 ### Single config
@@ -58,7 +58,7 @@ python3 scripts/aggregate_status.py --config baseline --format json
 
 ### Combined filters
 ```bash
-python3 scripts/aggregate_status.py --suite ccb_swebenchpro --config sourcegraph_full --failures-only --format json
+python3 scripts/aggregate_status.py --suite csb_sdlc_swebenchpro --config sourcegraph_full --failures-only --format json
 ```
 
 ### Table output (compact, for quick glance)

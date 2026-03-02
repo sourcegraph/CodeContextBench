@@ -1,13 +1,13 @@
 # ccx-compliance-051 (baseline-local-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035617`
+- Run: `csb_org_compliance_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.3265`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_compliance_haiku_20260226_035617--baseline-local-direct--ccx-compliance-051/claude-code.txt)
 
 ## Metrics
 

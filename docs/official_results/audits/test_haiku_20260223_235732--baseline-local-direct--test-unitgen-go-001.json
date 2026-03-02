@@ -960,14 +960,14 @@
       "transcript_sha256": "7ded2507d447d6cf0455a3e90c07ceac2840d0f780f2841946b83f2aaf2d3cec"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/result.json",
+    "result_path": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/result.json",
     "run_dir": "test_haiku_20260223_235732",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv",
     "task_name": "test-unitgen-go-001",
     "trace_paths": {
-      "trajectory": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/agent/trajectory.json",
-      "transcript": "runs/official/test_haiku_20260223_235732/baseline-local-direct/ccb_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/agent/claude-code.txt"
+      "trajectory": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/agent/trajectory.json",
+      "transcript": "runs/official/test_haiku_20260223_235732/baseline-local-direct/csb_sdlc_test_test-unitgen-go-001_baseline-local-direct/test-unitgen-go-001__HzoYaLv/agent/claude-code.txt"
     }
   },
   "score": {

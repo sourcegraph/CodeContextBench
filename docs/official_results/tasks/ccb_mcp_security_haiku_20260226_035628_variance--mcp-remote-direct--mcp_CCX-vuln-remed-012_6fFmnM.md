@@ -1,13 +1,13 @@
 # mcp_CCX-vuln-remed-012_6fFmnM (mcp-remote-direct)
 
-- Run: `ccb_mcp_security_haiku_20260226_035628_variance`
+- Run: `csb_org_security_haiku_20260226_035628_variance`
 - Status: `passed`
 - Reward: `0.5333`
-- Audit JSON: [link](../audits/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM.json)
+- Audit JSON: [link](../audits/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_security_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-vuln-remed-012_6fFmnM/claude-code.txt)
 
 ## Metrics
 

@@ -1077,14 +1077,14 @@
       "transcript_sha256": "5ad66cd77d301e2c59340f11c4404ffb4b1e705e0e40f81002e18abffc2a8f93"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t",
     "task_name": "wish-transitive-vuln-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_wish-transitive-vuln-001_baseline-local-direct/wish-transitive-vuln-001__5APCq2t/agent/claude-code.txt"
     }
   },
   "score": {

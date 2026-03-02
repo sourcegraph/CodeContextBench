@@ -5080,14 +5080,14 @@
       "transcript_sha256": "d5d9fa98b9a6376474a3853174726bcde61a6a4cc92bb158d1360216c46881ed"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy",
     "task_name": "sgonly_flipt-trace-sampling-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_flipt-trace-sampling-fix-001_mcp-remote-direct/sgonly_flipt-trace-sampling-fix-__DdD6bxy/agent/claude-code.txt"
     }
   },
   "score": {

@@ -526,14 +526,14 @@
       "transcript_sha256": "6d90a666f1f609cd4f6367448ca3abed428c363b3ae4b337bca4cd66507bcf25"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/result.json",
+    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/result.json",
     "run_dir": "understand_haiku_20260226_232745",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh",
     "task_name": "kafka-assign-handler-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/agent/trajectory.json",
-      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/agent/claude-code.txt"
+      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/agent/trajectory.json",
+      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_kafka-assign-handler-search-001_baseline-local-direct/kafka-assign-handler-search-001__d92xfvh/agent/claude-code.txt"
     }
   },
   "score": {

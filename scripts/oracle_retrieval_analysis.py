@@ -23,18 +23,18 @@ RUN_TIMESTAMP = "20260221_140913"
 
 # Task → suite mapping
 TASK_SUITE = {
-    "ccx-dep-trace-001": "ccb_mcp_crossrepo_tracing",
-    "ccx-dep-trace-004": "ccb_mcp_crossrepo_tracing",
-    "ccx-config-trace-010": "ccb_mcp_crossrepo_tracing",
-    "ccx-vuln-remed-011": "ccb_mcp_security",
-    "ccx-vuln-remed-014": "ccb_mcp_security",
-    "ccx-incident-031": "ccb_mcp_incident",
-    "ccx-onboard-041": "ccb_mcp_onboarding",
-    "ccx-onboard-050-ds": "ccb_mcp_onboarding",
-    "ccx-explore-042-ds": "ccb_mcp_onboarding",
-    "ccx-crossorg-061": "ccb_mcp_crossorg",
-    "ccx-crossorg-066": "ccb_mcp_crossorg",
-    "ccx-explore-091-ds": "ccb_mcp_platform",
+    "ccx-dep-trace-001": "csb_org_crossrepo_tracing",
+    "ccx-dep-trace-004": "csb_org_crossrepo_tracing",
+    "ccx-config-trace-010": "csb_org_crossrepo_tracing",
+    "ccx-vuln-remed-011": "csb_org_security",
+    "ccx-vuln-remed-014": "csb_org_security",
+    "ccx-incident-031": "csb_org_incident",
+    "ccx-onboard-041": "csb_org_onboarding",
+    "ccx-onboard-050-ds": "csb_org_onboarding",
+    "ccx-explore-042-ds": "csb_org_onboarding",
+    "ccx-crossorg-061": "csb_org_crossorg",
+    "ccx-crossorg-066": "csb_org_crossorg",
+    "ccx-explore-091-ds": "csb_org_platform",
 }
 
 CONFIGS = ["baseline-local-artifact", "mcp-remote-artifact"]

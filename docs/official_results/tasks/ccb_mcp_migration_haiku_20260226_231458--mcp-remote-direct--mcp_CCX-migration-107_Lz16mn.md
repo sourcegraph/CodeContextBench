@@ -1,13 +1,13 @@
 # mcp_CCX-migration-107_Lz16mn (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_231458`
+- Run: `csb_org_migration_haiku_20260226_231458`
 - Status: `passed`
 - Reward: `0.9697`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_231458--mcp-remote-direct--mcp_CCX-migration-107_Lz16mn/claude-code.txt)
 
 ## Metrics
 

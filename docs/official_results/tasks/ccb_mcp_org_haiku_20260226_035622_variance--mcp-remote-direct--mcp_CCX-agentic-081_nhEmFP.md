@@ -1,13 +1,13 @@
 # mcp_CCX-agentic-081_nhEmFP (mcp-remote-direct)
 
-- Run: `ccb_mcp_org_haiku_20260226_035622_variance`
+- Run: `csb_org_org_haiku_20260226_035622_variance`
 - Status: `passed`
 - Reward: `0.8333`
-- Audit JSON: [link](../audits/ccb_mcp_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP.json)
+- Audit JSON: [link](../audits/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP/claude-code.txt)
 
 ## Metrics
 

@@ -24,8 +24,8 @@ STAGING_DIR = PROJECT_ROOT / "runs" / "staging"
 SELECTION_FILE = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 SDLC_SUITES = [
-    "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
-    "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
 ]
 
 BL_CONFIGS = {"baseline", "baseline-local-direct", "baseline-local-artifact"}
@@ -108,7 +108,7 @@ def scan_staging_runs(active_tasks: dict) -> tuple:
     for batch_dir in sorted(STAGING_DIR.iterdir()):
         if not batch_dir.is_dir():
             continue
-        m = re.match(r"(ccb_\w+?)_(?:haiku|sonnet|opus)_\d{8}_\d{6}", batch_dir.name)
+        m = re.match(r"((?:csb_|ccb_)\w+?)_(?:haiku|sonnet|opus)_\d{8}_\d{6}", batch_dir.name)
         if not m:
             continue
         suite = m.group(1)

@@ -1,13 +1,13 @@
 # mcp_CCX-onboard-044_5Qx4Vy (mcp-remote-direct)
 
-- Run: `ccb_mcp_onboarding_haiku_20260226_035622_variance`
+- Run: `csb_org_onboarding_haiku_20260226_035622_variance`
 - Status: `passed`
 - Reward: `0.4318`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-onboard-044_5Qx4Vy/claude-code.txt)
 
 ## Metrics
 

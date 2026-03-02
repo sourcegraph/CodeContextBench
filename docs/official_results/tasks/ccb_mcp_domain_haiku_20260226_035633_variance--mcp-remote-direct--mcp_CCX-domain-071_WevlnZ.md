@@ -1,13 +1,13 @@
 # mcp_CCX-domain-071_WevlnZ (mcp-remote-direct)
 
-- Run: `ccb_mcp_domain_haiku_20260226_035633_variance`
+- Run: `csb_org_domain_haiku_20260226_035633_variance`
 - Status: `passed`
 - Reward: `0.6793`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_domain_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-domain-071_WevlnZ/claude-code.txt)
 
 ## Metrics
 

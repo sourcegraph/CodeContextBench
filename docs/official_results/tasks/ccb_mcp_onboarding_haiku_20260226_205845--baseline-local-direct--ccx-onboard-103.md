@@ -1,13 +1,13 @@
 # ccx-onboard-103 (baseline-local-direct)
 
-- Run: `ccb_mcp_onboarding_haiku_20260226_205845`
+- Run: `csb_org_onboarding_haiku_20260226_205845`
 - Status: `passed`
 - Reward: `0.6000`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_20260226_205845--baseline-local-direct--ccx-onboard-103/claude-code.txt)
 
 ## Metrics
 

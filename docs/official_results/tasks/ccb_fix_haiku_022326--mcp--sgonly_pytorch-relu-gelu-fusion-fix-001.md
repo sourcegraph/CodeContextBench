@@ -1,13 +1,13 @@
 # sgonly_pytorch-relu-gelu-fusion-fix-001 (mcp-remote-direct)
 
-- Run: `ccb_fix_haiku_022326`
+- Run: `csb_sdlc_fix_haiku_022326`
 - Status: `passed`
 - Reward: `0.5608`
-- Audit JSON: [link](../audits/ccb_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_fix_haiku_022326--mcp--sgonly_pytorch-relu-gelu-fusion-fix-001/claude-code.txt)
 
 ## Metrics
 

@@ -2749,14 +2749,14 @@
       "transcript_sha256": "684ddd0bd3a360f2f97f41eb12930a206c49a309d818a1d1eefe863a24223dbf"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/result.json",
+    "result_path": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/result.json",
     "run_dir": "refactor_haiku_20260228_230652",
-    "suite": "ccb_refactor",
-    "task_dir": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi",
+    "suite": "csb_sdlc_refactor",
+    "task_dir": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi",
     "task_name": "sgonly_pytorch-optimizer-foreach-refac-001",
     "trace_paths": {
-      "trajectory": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/agent/trajectory.json",
-      "transcript": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/ccb_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/agent/claude-code.txt"
+      "trajectory": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/agent/trajectory.json",
+      "transcript": "runs/official/refactor_haiku_20260228_230652/mcp-remote-direct/csb_sdlc_refactor_pytorch-optimizer-foreach-refac-001_mcp-remote-direct/sgonly_pytorch-optimizer-foreach__vEpDAsi/agent/claude-code.txt"
     }
   },
   "score": {

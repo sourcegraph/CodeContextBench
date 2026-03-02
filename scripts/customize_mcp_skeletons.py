@@ -25,7 +25,7 @@ NEW_TASK_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112,
                 133, 134, 135, 136, 137, 138, 139, 140, 141]
 
 # Reference task for copying shared files
-REFERENCE_TASK = os.path.join(PROJECT_ROOT, "benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001")
+REFERENCE_TASK = os.path.join(PROJECT_ROOT, "benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001")
 
 # Tasks that support both artifact and direct verification modes
 DUAL_MODE_TASK_IDS = {81, 82, 83, 113, 114, 115, 116, 117, 118, 119, 120, 122, 127}

@@ -15,18 +15,18 @@ The MCP-unique tasks are designed so that the baseline agent (local code only)
 
 | Task ID | Suite | Fixture | Difficulty | Deep Search |
 |---------|-------|---------|------------|-------------|
-| CCX-dep-trace-001 | ccb_mcp_crossrepo_tracing | kubernetes-ecosystem | medium | No |
-| CCX-dep-trace-004 | ccb_mcp_crossrepo_tracing | grafana-observability | hard | No |
-| CCX-config-trace-010 | ccb_mcp_crossrepo_tracing | kubernetes-ecosystem | medium | No |
-| CCX-vuln-remed-011 | ccb_mcp_security | nodejs-web-stack | medium | No |
-| CCX-vuln-remed-014 | ccb_mcp_security | grafana-observability | hard | No |
-| CCX-incident-031 | ccb_mcp_incident | multi-org-go | hard | No |
-| CCX-onboard-041 | ccb_mcp_onboarding | python-ml-stack | medium | No |
-| CCX-onboard-050-ds | ccb_mcp_onboarding | kubernetes-ecosystem | hard | Yes |
-| CCX-explore-042-ds | ccb_mcp_onboarding | python-ml-stack | hard | Yes |
-| CCX-crossorg-061 | ccb_mcp_crossorg | multi-org-go | hard | No |
-| CCX-crossorg-066 | ccb_mcp_crossorg | multi-org-go | medium | No |
-| CCX-explore-091-ds | ccb_mcp_platform | kubernetes-ecosystem | hard | Yes |
+| CCX-dep-trace-001 | csb_org_crossrepo_tracing | kubernetes-ecosystem | medium | No |
+| CCX-dep-trace-004 | csb_org_crossrepo_tracing | grafana-observability | hard | No |
+| CCX-config-trace-010 | csb_org_crossrepo_tracing | kubernetes-ecosystem | medium | No |
+| CCX-vuln-remed-011 | csb_org_security | nodejs-web-stack | medium | No |
+| CCX-vuln-remed-014 | csb_org_security | grafana-observability | hard | No |
+| CCX-incident-031 | csb_org_incident | multi-org-go | hard | No |
+| CCX-onboard-041 | csb_org_onboarding | python-ml-stack | medium | No |
+| CCX-onboard-050-ds | csb_org_onboarding | kubernetes-ecosystem | hard | Yes |
+| CCX-explore-042-ds | csb_org_onboarding | python-ml-stack | hard | Yes |
+| CCX-crossorg-061 | csb_org_crossorg | multi-org-go | hard | No |
+| CCX-crossorg-066 | csb_org_crossorg | multi-org-go | medium | No |
+| CCX-explore-091-ds | csb_org_platform | kubernetes-ecosystem | hard | Yes |
 
 ## Static Oracle Coverage Analysis
 
@@ -85,8 +85,8 @@ All 12/12 tasks: VALID
 
 ### Preflight Validation (validate_tasks_preflight.py)
 ```
-ccb_mcp_* tasks: 0 CRITICAL, 0 WARNING
-Note: 3 warnings from pre-existing non-ccb_mcp tasks (not related)
+csb_org_* tasks: 0 CRITICAL, 0 WARNING
+Note: 3 warnings from pre-existing non-csb_org tasks (not related)
 ```
 
 ### Infra Readiness (check_infra.py)
@@ -126,9 +126,9 @@ python3 scripts/aggregate_status.py --staging
 ### Extract retrieval metrics after runs complete
 ```bash
 for task_dir in runs/staging/*/sourcegraph_full/*/; do
-  python3 scripts/ccb_metrics/retrieval.py \
+  python3 scripts/csb_metrics/retrieval.py \
     --task-dir "$task_dir" \
-    --task-spec benchmarks/ccb_mcp_*/${task_dir##*/}/tests/task_spec.json \
+    --task-spec benchmarks/csb_org_*/${task_dir##*/}/tests/task_spec.json \
     --output "$task_dir/retrieval_metrics.json"
 done
 ```

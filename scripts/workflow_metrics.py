@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Workflow metrics extraction engine for CodeContextBench enterprise metrics.
+"""Workflow metrics extraction engine for CodeScaleBench enterprise metrics.
 
 Extracts per-task workflow-level metrics from existing trace data in runs/official/,
 maps tasks to workflow categories, computes time savings and navigation reduction

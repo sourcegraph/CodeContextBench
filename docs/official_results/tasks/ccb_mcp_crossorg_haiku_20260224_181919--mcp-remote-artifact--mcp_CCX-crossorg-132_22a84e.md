@@ -1,13 +1,13 @@
 # mcp_CCX-crossorg-132_22a84e (mcp-remote-artifact)
 
-- Run: `ccb_mcp_crossorg_haiku_20260224_181919`
+- Run: `csb_org_crossorg_haiku_20260224_181919`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e.json)
+- Audit JSON: [link](../audits/csb_org_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossorg_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-crossorg-132_22a84e/claude-code.txt)
 
 ## Metrics
 

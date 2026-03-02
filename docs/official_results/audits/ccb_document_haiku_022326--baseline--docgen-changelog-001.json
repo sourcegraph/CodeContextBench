@@ -1659,14 +1659,14 @@
       "transcript_sha256": "7e96736f7e83927b311ac2e5fa54ea41d6fb3cbb4b596d350fc434c680dcedb7"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt",
     "task_name": "docgen-changelog-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-changelog-001_baseline-local-direct/docgen-changelog-001__t73gikt/agent/claude-code.txt"
     }
   },
   "score": {

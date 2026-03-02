@@ -1,13 +1,13 @@
 # mcp_sklearn-kmeans-perf-001_8vdgQ3 (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_sklearn-kmeans-perf-001_8vdgQ3/claude-code.txt)
 
 ## Metrics
 

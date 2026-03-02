@@ -1122,7 +1122,7 @@ def discover_task_dirs(suite: str | None = None, all_tasks: bool = False) -> lis
 
     if all_tasks:
         for bench_dir in sorted(BENCHMARKS_DIR.iterdir()):
-            if not bench_dir.is_dir() or not bench_dir.name.startswith("ccb_"):
+            if not bench_dir.is_dir() or not bench_dir.name.startswith(("ccb_", "csb_")):
                 continue
             for entry in sorted(bench_dir.iterdir()):
                 if entry.is_dir() and (entry / "task.toml").is_file():

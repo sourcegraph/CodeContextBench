@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Migrate baseline Dockerfiles from clone-as-root to clone-as-claude pattern.
 
-Converts Dockerfiles under benchmarks/ccb_mcp_*/*/environment/Dockerfile from
+Converts Dockerfiles under benchmarks/csb_org_*/*/environment/Dockerfile from
 the old pattern (clone repos as root, then chown) to the new pattern (create
 claude user first, USER claude, then git clone).
 
 The new pattern avoids a massive chown -R layer that doubles image size and
 takes 15-30 min on overlay2 (copy-on-write duplicates every inode).
 
-Reference: benchmarks/ccb_mcp_domain/ccx-domain-071/environment/Dockerfile
+Reference: benchmarks/csb_org_domain/ccx-domain-071/environment/Dockerfile
 
 Usage:
     # Dry run (default) -- show what would change
@@ -31,7 +31,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 REFERENCE_FILE = (
     REPO_ROOT
     / "benchmarks"
-    / "ccb_mcp_domain"
+    / "csb_org_domain"
     / "ccx-domain-071"
     / "environment"
     / "Dockerfile"
@@ -544,8 +544,8 @@ def transform_without_clones(content: str) -> str:
 # ---------------------------------------------------------------------------
 
 def find_dockerfiles() -> list[Path]:
-    """Find all baseline Dockerfiles under benchmarks/ccb_mcp_*."""
-    pattern = str(REPO_ROOT / "benchmarks" / "ccb_mcp_*" / "*" / "environment" / "Dockerfile")
+    """Find all baseline Dockerfiles under benchmarks/csb_org_* (and legacy ccb_mcp_*)."""
+    pattern = str(REPO_ROOT / "benchmarks" / "csb_org_*" / "*" / "environment" / "Dockerfile")
     paths = sorted(glob.glob(pattern))
     # Exclude Dockerfile.sg_only and Dockerfile.artifact_only (those are separate files,
     # but the glob only matches "Dockerfile" exactly, so this is just a safety check).
@@ -554,7 +554,7 @@ def find_dockerfiles() -> list[Path]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Migrate ccb_mcp_* Dockerfiles to clone-as-claude pattern.",
+        description="Migrate csb_org_* Dockerfiles to clone-as-claude pattern.",
     )
     parser.add_argument(
         "--execute",
@@ -583,7 +583,7 @@ def main() -> None:
         )
 
     dockerfiles = find_dockerfiles()
-    print(f"Found {len(dockerfiles)} Dockerfiles under benchmarks/ccb_mcp_*/\n")
+    print(f"Found {len(dockerfiles)} Dockerfiles under benchmarks/csb_org_*/\n")
 
     stats = {
         "converted": 0,

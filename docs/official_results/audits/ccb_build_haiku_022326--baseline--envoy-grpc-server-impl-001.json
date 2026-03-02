@@ -761,14 +761,14 @@
       "transcript_sha256": "7abc87f22a578c868e80a96954a2ce40aa1f6aeab3665675e46f632903c8b015"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq",
     "task_name": "envoy-grpc-server-impl-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_envoy-grpc-server-impl-001_baseline-local-direct/envoy-grpc-server-impl-001__wJGXPrq/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,13 +1,13 @@
 # mcp_CCX-onboard-134_NTB10y (mcp-remote-artifact)
 
-- Run: `ccb_mcp_onboarding_haiku_20260224_181919`
+- Run: `csb_org_onboarding_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.4572`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-onboard-134_NTB10y/claude-code.txt)
 
 ## Metrics
 

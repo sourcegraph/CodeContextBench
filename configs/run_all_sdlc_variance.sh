@@ -2,7 +2,7 @@
 # Launch all SDLC suites on local Docker with 3 variance passes.
 # Usage: bash configs/run_all_sdlc_local.sh [--passes N] [--suites "suite1 suite2 ..."]
 #
-# Defaults: 3 passes, all 8 SDLC suites (excluding ccb_fix which already has 3 runs).
+# Defaults: 3 passes, all 8 SDLC suites (excluding csb_sdlc_fix which already has 3 runs).
 # Runs sequentially — each suite finishes before the next starts.
 
 set -e

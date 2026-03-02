@@ -1,6 +1,6 @@
 # Unified Evaluation Pipeline
 
-CodeContextBench uses a multi-layer evaluation pipeline: deterministic verifiers
+CodeScaleBench uses a multi-layer evaluation pipeline: deterministic verifiers
 run first (every task), then an optional LLM judge adds qualitative scoring,
 and statistical modules provide confidence intervals and correlation analysis.
 
@@ -34,7 +34,7 @@ Harbor run output (result.json, transcript)
 ┌──────────────────────────────┐
 │  Layer 3: Statistical        │  Bootstrap CIs, paired delta tests,
 │  Analysis                    │  Spearman correlation, retrieval metrics.
-│  (scripts/ccb_metrics/)      │  Post-run, deterministic.
+│  (scripts/csb_metrics/)      │  Post-run, deterministic.
 └──────────────────────────────┘
         │
         ▼
@@ -102,12 +102,12 @@ does not affect the deterministic verifier score.
 
 | Module | Path | Purpose |
 |--------|------|---------|
-| Data models | `scripts/ccb_metrics/judge/models.py` | `JudgeInput`, `JudgeResult`, `OracleBundle` dataclasses |
-| Prompt templates | `scripts/ccb_metrics/judge/prompts.py` | Reference correctness, completeness, and direct review prompts |
-| API backend | `scripts/ccb_metrics/judge/backends.py` | Anthropic API wrapper with exponential backoff (3 retries) |
-| Engine | `scripts/ccb_metrics/judge/engine.py` | Core `LLMJudge` class: prompt selection, dimension scoring, multi-round voting |
-| Agreement metrics | `scripts/ccb_metrics/judge/agreement.py` | Cohen's kappa, Fleiss' kappa, Landis-Koch interpretation |
-| Oracle discovery | `scripts/ccb_metrics/judge/oracle.py` | Auto-loads ground truth from task data (6-source priority chain) |
+| Data models | `scripts/csb_metrics/judge/models.py` | `JudgeInput`, `JudgeResult`, `OracleBundle` dataclasses |
+| Prompt templates | `scripts/csb_metrics/judge/prompts.py` | Reference correctness, completeness, and direct review prompts |
+| API backend | `scripts/csb_metrics/judge/backends.py` | Anthropic API wrapper with exponential backoff (3 retries) |
+| Engine | `scripts/csb_metrics/judge/engine.py` | Core `LLMJudge` class: prompt selection, dimension scoring, multi-round voting |
+| Agreement metrics | `scripts/csb_metrics/judge/agreement.py` | Cohen's kappa, Fleiss' kappa, Landis-Koch interpretation |
+| Oracle discovery | `scripts/csb_metrics/judge/oracle.py` | Auto-loads ground truth from task data (6-source priority chain) |
 
 ### Scoring Dimensions
 
@@ -142,7 +142,7 @@ Confidence level flows into the judge result for downstream filtering.
 python3 scripts/run_judge.py --run runs/official/my_run/
 
 # Score a specific suite with 3-round voting
-python3 scripts/run_judge.py --run runs/official/my_run/ --suite ccb_fix --ensemble
+python3 scripts/run_judge.py --run runs/official/my_run/ --suite csb_sdlc_fix --ensemble
 
 # Dry run — show tasks and oracle confidence without calling API
 python3 scripts/run_judge.py --run runs/official/my_run/ --dry-run
@@ -166,7 +166,7 @@ MCP-unique tasks with `tests/criteria.json` support hybrid evaluation:
 ### Bootstrap Confidence Intervals
 
 ```python
-from ccb_metrics.statistics import bootstrap_ci, paired_bootstrap_delta
+from csb_metrics.statistics import bootstrap_ci, paired_bootstrap_delta
 
 # Single-sample CI
 mean, ci_lower, ci_upper = bootstrap_ci(scores, n_bootstrap=1000, ci=0.95)
@@ -191,7 +191,7 @@ python3 scripts/ir_analysis.py --correlate --min-confidence medium
 
 ### Defect Annotation Model
 
-Code review tasks in `ccb_test` support structured defect annotations in
+Code review tasks in `csb_sdlc_test` support structured defect annotations in
 `expected_defects.json`:
 
 ```json
@@ -250,7 +250,7 @@ python3 scripts/generate_eval_report.py \
   --output-dir ./eval_reports/
 
 # Generate LLM judge context files for manual review
-python3 -m scripts.ccb_metrics.judge_context \
+python3 -m scripts.csb_metrics.judge_context \
   --runs-dir runs/official/ \
   --benchmarks-dir ./benchmarks/ \
   --output-dir ./judge_contexts/

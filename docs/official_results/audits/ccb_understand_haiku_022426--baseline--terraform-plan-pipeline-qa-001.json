@@ -292,14 +292,14 @@
       "transcript_sha256": "db1203ae3492e549852b852c5760872b8fd4a66d2f0639e0a36e4c91ebba7261"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ",
     "task_name": "terraform-plan-pipeline-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_terraform-plan-pipeline-qa-001_baseline-local-direct/terraform-plan-pipeline-qa-001__eUD6nwQ/agent/claude-code.txt"
     }
   },
   "score": {

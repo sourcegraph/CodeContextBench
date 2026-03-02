@@ -673,14 +673,14 @@
       "transcript_sha256": "7d15fd05f94a2ba2ed6ec7c9cba708f3ebde93f6fab50a6d0b16524dbbf588dd"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/result.json",
+    "result_path": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/result.json",
     "run_dir": "design_haiku_20260223_124652",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s",
     "task_name": "envoy-routeconfig-dep-chain-001",
     "trace_paths": {
-      "trajectory": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/agent/trajectory.json",
-      "transcript": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/agent/claude-code.txt"
+      "trajectory": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/agent/trajectory.json",
+      "transcript": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_envoy-routeconfig-dep-chain-001_baseline-local-direct/envoy-routeconfig-dep-chain-001__dZBN72s/agent/claude-code.txt"
     }
   },
   "score": {

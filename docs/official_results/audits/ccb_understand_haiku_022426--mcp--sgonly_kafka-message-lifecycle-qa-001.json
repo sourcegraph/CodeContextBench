@@ -1443,14 +1443,14 @@
       "transcript_sha256": "819c8d9f9027a0c98f99c78361c33822c0057e452fbb297f3cec6134a8be298c"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt",
     "task_name": "sgonly_kafka-message-lifecycle-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-message-lifecycle-qa-001_mcp-remote-direct/sgonly_kafka-message-lifecycle-q__YbjEPKt/agent/claude-code.txt"
     }
   },
   "score": {

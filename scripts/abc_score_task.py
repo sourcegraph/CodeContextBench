@@ -337,10 +337,10 @@ def discover_tasks(suite: str) -> list[Path]:
 
 
 def discover_all_suites() -> list[str]:
-    """Find all ccb_* benchmark suite directories."""
+    """Find all benchmark suite directories (csb_* and legacy ccb_*)."""
     return sorted(
         d.name for d in BENCHMARKS_DIR.iterdir()
-        if d.is_dir() and d.name.startswith("ccb_")
+        if d.is_dir() and d.name.startswith(("csb_", "ccb_"))
     )
 
 

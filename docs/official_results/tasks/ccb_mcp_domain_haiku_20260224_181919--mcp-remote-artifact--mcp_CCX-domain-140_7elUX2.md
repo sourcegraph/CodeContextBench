@@ -1,13 +1,13 @@
 # mcp_CCX-domain-140_7elUX2 (mcp-remote-artifact)
 
-- Run: `ccb_mcp_domain_haiku_20260224_181919`
+- Run: `csb_org_domain_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.4167`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_domain_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-domain-140_7elUX2/claude-code.txt)
 
 ## Metrics
 

@@ -3431,14 +3431,14 @@
       "transcript_sha256": "f4e75c4b8340c74a1e13020215e488d5352a5df6a6f4da06bd8979ff731e05a7"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt",
     "task_name": "flipt-flagexists-refactor-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_flipt-flagexists-refactor-001_baseline-local-direct/flipt-flagexists-refactor-001__i2LzMgt/agent/claude-code.txt"
     }
   },
   "score": {

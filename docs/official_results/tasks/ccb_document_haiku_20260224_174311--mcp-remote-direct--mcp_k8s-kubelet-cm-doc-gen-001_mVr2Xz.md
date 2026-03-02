@@ -1,13 +1,13 @@
 # mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz (mcp-remote-direct)
 
-- Run: `ccb_document_haiku_20260224_174311`
+- Run: `csb_sdlc_document_haiku_20260224_174311`
 - Status: `passed`
 - Reward: `0.6500`
-- Audit JSON: [link](../audits/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz.json)
+- Audit JSON: [link](../audits/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_mVr2Xz/claude-code.txt)
 
 ## Metrics
 

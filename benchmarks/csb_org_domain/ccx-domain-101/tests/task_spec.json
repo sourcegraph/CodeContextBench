@@ -1,0 +1,143 @@
+{
+  "id": "CCX-domain-101",
+  "family": "domain-lineage",
+  "use_case_id": 101,
+  "category": "H",
+  "mcp_suite": "csb_org_domain",
+  "prd": {
+    "user_story": "As a developer, I want to: Trace how an LLVM optimization pass is registered in the pass pipeline and executed. Find all C++ source files in `llvm/llvm-project` that participate in the optimization pipeline lifecycle: 1. The file that defines the `PassBuilder` class and its method for building the default O2 optimization pipeline (look in `llvm/lib/Passes/`). 2. The file that defines the `PassManager` template class \u2014 the core pass execution engine (look in `llvm/include/llvm/IR/`). 3. The file that implements `PassBuilderPipelines` which assembles the default module/function simplification pipelines. 4. The file that registers all standard passes via `PassRegistry.def`. 5. For a concrete example, the file implementing `DeadStoreElimination` in `llvm/lib/Transforms/Scalar/`. Report the repo, file path, and key class or function name for each.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the compiler-toolchain fixture.",
+    "seed_prompt": "Trace how an LLVM optimization pass is registered in the pass pipeline and executed. Find all C++ source files in `llvm/llvm-project` that participate in the optimization pipeline lifecycle: 1. The file that defines the `PassBuilder` class and its method for building the default O2 optimization pipeline (look in `llvm/lib/Passes/`). 2. The file that defines the `PassManager` template class \u2014 the core pass execution engine (look in `llvm/include/llvm/IR/`). 3. The file that implements `PassBuilderPipelines` which assembles the default module/function simplification pipelines. 4. The file that registers all standard passes via `PassRegistry.def`. 5. For a concrete example, the file implementing `DeadStoreElimination` in `llvm/lib/Transforms/Scalar/`. Report the repo, file path, and key class or function name for each."
+  },
+  "artifacts": {
+    "repo_set_id": "compiler-toolchain",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Passes/PassBuilder.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/IR/PassManager.h"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Passes/PassBuilderPipelines.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Passes/PassRegistry.def"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/Transforms/Scalar/DeadStoreElimination.h"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Passes/PassBuilder.cpp",
+          "symbol": "PassBuilder"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/include/llvm/IR/PassManager.h",
+          "symbol": "PassManager"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Passes/PassBuilderPipelines.cpp",
+          "symbol": "buildModuleSimplificationPipeline"
+        },
+        {
+          "repo": "sg-evals/llvm-project--a8f3c97d",
+          "path": "llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp",
+          "symbol": "DSEState"
+        }
+      ],
+      "required_references": [],
+      "dependency_chains": [
+        {
+          "steps": [
+            {
+              "repo": "sg-evals/llvm-project--a8f3c97d",
+              "path": "llvm/lib/Passes/PassBuilder.cpp",
+              "symbol": "PassBuilder::buildDefaultAAPipeline"
+            },
+            {
+              "repo": "sg-evals/llvm-project--a8f3c97d",
+              "path": "llvm/lib/Passes/PassBuilderPipelines.cpp",
+              "symbol": "PassBuilder::buildModuleSimplificationPipeline"
+            },
+            {
+              "repo": "sg-evals/llvm-project--a8f3c97d",
+              "path": "llvm/lib/Passes/PassRegistry.def",
+              "symbol": "FUNCTION_PASS"
+            },
+            {
+              "repo": "sg-evals/llvm-project--a8f3c97d",
+              "path": "llvm/include/llvm/IR/PassManager.h",
+              "symbol": "PassManager::run"
+            },
+            {
+              "repo": "sg-evals/llvm-project--a8f3c97d",
+              "path": "llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp",
+              "symbol": "DSEState::run"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "PassBuilder",
+            "PassManager",
+            "buildModuleSimplificationPipeline",
+            "DSEState"
+          ]
+        }
+      },
+      {
+        "type": "dependency_chain",
+        "params": {}
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

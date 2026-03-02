@@ -18,13 +18,13 @@ Suite-level views and top-level summaries are deduplicated to one canonical row
 per `suite + config + task_name` (latest by task `started_at`). Full historical
 rows are preserved in `data/official_results.json` as `all_tasks`.
 
-For SDLC suites (`ccb_feature`, `ccb_refactor`, `ccb_debug`, `ccb_design`, `ccb_document`,
-`ccb_fix`, `ccb_secure`, `ccb_test`, `ccb_understand`), legacy config labels
+For SDLC suites (`csb_sdlc_feature`, `csb_sdlc_refactor`, `csb_sdlc_debug`, `csb_sdlc_design`, `csb_sdlc_document`,
+`csb_sdlc_fix`, `csb_sdlc_secure`, `csb_sdlc_test`, `csb_sdlc_understand`), legacy config labels
 are normalized during export:
 - `baseline` -> `baseline-local-direct`
 - `mcp` -> `mcp-remote-direct`
 
-For MCP-unique suites (`ccb_mcp_*`), legacy config labels are normalized to
+For MCP-unique suites (`csb_org_*`), legacy config labels are normalized to
 artifact-mode configs:
 - `baseline` -> `baseline-local-artifact`
 - `mcp` -> `mcp-remote-artifact`
@@ -51,8 +51,8 @@ Filter to specific run(s):
 
 ```bash
 python3 scripts/export_official_results.py \
-  --run ccb_mcp_compliance_haiku_20260226_205845 \
-  --run ccb_mcp_domain_haiku_20260226_205845
+  --run csb_org_compliance_haiku_20260226_205845 \
+  --run csb_org_domain_haiku_20260226_205845
 ```
 
 Serve locally after export:

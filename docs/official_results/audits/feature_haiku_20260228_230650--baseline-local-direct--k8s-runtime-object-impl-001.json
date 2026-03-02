@@ -1455,14 +1455,14 @@
       "transcript_sha256": "32f4cacd092a6a1b44d23906663452aca728fc5262c121a04f1108b9e3aed181"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/result.json",
+    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/result.json",
     "run_dir": "feature_haiku_20260228_230650",
-    "suite": "ccb_feature",
-    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS",
+    "suite": "csb_sdlc_feature",
+    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS",
     "task_name": "k8s-runtime-object-impl-001",
     "trace_paths": {
-      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/agent/trajectory.json",
-      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/agent/claude-code.txt"
+      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/agent/trajectory.json",
+      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_k8s-runtime-object-impl-001_baseline-local-direct/k8s-runtime-object-impl-001__k7kzDNS/agent/claude-code.txt"
     }
   },
   "score": {

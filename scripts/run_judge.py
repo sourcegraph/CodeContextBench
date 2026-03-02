@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Post-verifier LLM judge runner for CodeContextBench.
+"""Post-verifier LLM judge runner for CodeScaleBench.
 
 Runs the LLM judge on all tasks in a completed Harbor run, writing
 judge_result.json alongside each task's result.json.
@@ -25,14 +25,14 @@ from typing import Optional
 # Ensure scripts/ is on path for sibling imports
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ccb_metrics.judge import LLMJudge, JudgeInput, JudgeResult, OracleBundle
-from ccb_metrics.judge.oracle import discover_oracle
-from ccb_metrics.discovery import (
+from csb_metrics.judge import LLMJudge, JudgeInput, JudgeResult, OracleBundle
+from csb_metrics.judge.oracle import discover_oracle
+from csb_metrics.discovery import (
     resolve_task_transcript_path,
     _is_batch_dir,
     _is_task_dir,
 )
-from ccb_metrics.extractors import (
+from csb_metrics.extractors import (
     extract_tool_usage_from_transcript,
     extract_tool_usage_from_trajectory,
 )
@@ -56,7 +56,17 @@ SKIP_PATTERNS = [
 
 # Map run directory name prefix -> benchmark suite name
 DIR_PREFIX_TO_SUITE: dict[str, str] = {
-    # SDLC phase suites
+    # SDLC phase suites (new naming: csb_sdlc_{phase})
+    "csb_sdlc_feature_": "csb_sdlc_feature",
+    "csb_sdlc_refactor_": "csb_sdlc_refactor",
+    "csb_sdlc_debug_": "csb_sdlc_debug",
+    "csb_sdlc_design_": "csb_sdlc_design",
+    "csb_sdlc_document_": "csb_sdlc_document",
+    "csb_sdlc_fix_": "csb_sdlc_fix",
+    "csb_sdlc_secure_": "csb_sdlc_secure",
+    "csb_sdlc_test_": "csb_sdlc_test",
+    "csb_sdlc_understand_": "csb_sdlc_understand",
+    # Legacy SDLC phase suites
     "feature_": "ccb_feature",
     "refactor_": "ccb_refactor",
     "build_": "ccb_build",  # legacy run dirs
@@ -91,7 +101,19 @@ DIR_PREFIX_TO_SUITE: dict[str, str] = {
     "paired_rerun_dibench_": "ccb_dibench",
     "paired_rerun_crossrepo_": "ccb_crossrepo",
     "paired_rerun_pytorch_": "ccb_pytorch",
-    # MCP-unique suites
+    # MCP-unique suites (new naming: csb_org_{suite})
+    "csb_org_crossrepo_tracing_": "csb_org_crossrepo_tracing",
+    "csb_org_security_": "csb_org_security",
+    "csb_org_migration_": "csb_org_migration",
+    "csb_org_incident_": "csb_org_incident",
+    "csb_org_onboarding_": "csb_org_onboarding",
+    "csb_org_compliance_": "csb_org_compliance",
+    "csb_org_crossorg_": "csb_org_crossorg",
+    "csb_org_domain_": "csb_org_domain",
+    "csb_org_org_": "csb_org_org",
+    "csb_org_platform_": "csb_org_platform",
+    "csb_org_crossrepo_": "csb_org_crossrepo",
+    # Legacy MCP-unique prefixes (backward compat)
     "ccb_mcp_crossrepo_tracing_": "ccb_mcp_crossrepo_tracing",
     "ccb_mcp_security_": "ccb_mcp_security",
     "ccb_mcp_migration_": "ccb_mcp_migration",
@@ -171,7 +193,9 @@ def _infer_benchmark(run_dir_name: str) -> str:
     m = re.match(r"^([a-z_]+?)_(?:baseline|sourcegraph|opus|sonnet|haiku)", name)
     if m:
         candidate = m.group(1)
-        return f"ccb_{candidate}" if not candidate.startswith("ccb_") else candidate
+        if candidate.startswith(("ccb_", "csb_")):
+            return candidate
+        return f"csb_sdlc_{candidate}"
     return "unknown"
 
 

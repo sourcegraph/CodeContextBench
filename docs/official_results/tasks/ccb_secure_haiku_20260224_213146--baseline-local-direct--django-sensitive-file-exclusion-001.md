@@ -1,13 +1,13 @@
 # django-sensitive-file-exclusion-001 (baseline-local-direct)
 
-- Run: `ccb_secure_haiku_20260224_213146`
+- Run: `csb_sdlc_secure_haiku_20260224_213146`
 - Status: `passed`
 - Reward: `0.8000`
-- Audit JSON: [link](../audits/ccb_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--baseline-local-direct--django-sensitive-file-exclusion-001/claude-code.txt)
 
 ## Metrics
 

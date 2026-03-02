@@ -642,14 +642,14 @@
       "transcript_sha256": "2e299c4ecd4c070d477d269ba783887f060353b39137846cfa5ae14e550943fa"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx",
     "task_name": "cilium-api-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_cilium-api-doc-gen-001_baseline-local-direct/cilium-api-doc-gen-001__xftGjUx/agent/claude-code.txt"
     }
   },
   "score": {

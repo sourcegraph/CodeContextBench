@@ -1,13 +1,13 @@
 # mcp_ccx-compliance-051_90WMYT (mcp-remote-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035633_variance`
+- Run: `csb_org_compliance_haiku_20260226_035633_variance`
 - Status: `passed`
 - Reward: `0.8462`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_compliance_haiku_20260226_035633_variance--mcp-remote-direct--mcp_ccx-compliance-051_90WMYT/claude-code.txt)
 
 ## Metrics
 

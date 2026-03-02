@@ -21,13 +21,13 @@ Selected **0 tasks** from 0 available across 7 benchmarks, stratified by SDLC ph
 
 | Benchmark | Available | Selected | Strategy |
 |-----------|-----------|----------|----------|
-| ccb_k8sdocs | — | 0 | All selected (small benchmark) |
-| ccb_largerepo | — | 0 | All selected (small benchmark) |
-| ccb_locobench | — | 0 | Priority: arch > refactoring > bug, by MCP score |
-| ccb_pytorch | — | 0 | Prefer hard difficulty, then most files modified |
-| ccb_swebenchpro | — | 0 | Proportional by repo, prefer most files changed |
-| ccb_sweperf | — | 0 | All selected (small benchmark) |
-| ccb_tac | — | 0 | All selected (small benchmark) |
+| csb_sdlc_k8sdocs | — | 0 | All selected (small benchmark) |
+| csb_sdlc_largerepo | — | 0 | All selected (small benchmark) |
+| csb_sdlc_locobench | — | 0 | Priority: arch > refactoring > bug, by MCP score |
+| csb_sdlc_pytorch | — | 0 | Prefer hard difficulty, then most files modified |
+| csb_sdlc_swebenchpro | — | 0 | Proportional by repo, prefer most files changed |
+| csb_sdlc_sweperf | — | 0 | All selected (small benchmark) |
+| csb_sdlc_tac | — | 0 | All selected (small benchmark) |
 
 ## Language Distribution
 
@@ -51,7 +51,7 @@ score = 0.25 * context_complexity
 
 - **context_complexity**: Derived from codebase token count (LoCoBench `context_length`) or benchmark-level proxy. Normalized: 1M+ tokens = 1.0
 - **cross_file_deps**: From `files_count`, `solution_files_changed`, or parsed from instruction.md. Normalized: 20+ files = 1.0
-- **semantic_search_potential**: High for large repos (ccb_largerepo=0.9), find-in-codebase tasks (0.8), large context (0.7)
+- **semantic_search_potential**: High for large repos (csb_sdlc_largerepo=0.9), find-in-codebase tasks (0.8), large context (0.7)
 - **task_category_weight**: Per-category MCP affinity (architectural_understanding=1.0, cross_file_refactoring=0.9, etc.)
 
 ## Per-Benchmark Selection Strategies
@@ -66,5 +66,5 @@ All bug_investigation tasks (3) selected first, then all cross_file_refactoring 
 All PyTorch cross-module tasks. Selection prioritizes hard difficulty, then tasks with the most files modified in the ground truth PR.
 
 ### Small Benchmarks (all selected)
-ccb_largerepo (4), ccb_k8sdocs (5), ccb_tac (8), ccb_sweperf (3) — all tasks selected due to small size.
+csb_sdlc_largerepo (4), csb_sdlc_k8sdocs (5), csb_sdlc_tac (8), csb_sdlc_sweperf (3) — all tasks selected due to small size.
 

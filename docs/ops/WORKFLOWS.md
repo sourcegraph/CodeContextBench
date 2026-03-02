@@ -23,6 +23,26 @@
 3. Isolate task-level fix or rerun scope.
 4. Avoid blind reruns; document root cause or limitation.
 
+## ContextBench Calibration Workflow
+1. Ensure `claude` CLI is installed, authenticated, and `SOURCEGRAPH_ACCESS_TOKEN` is set.
+2. **Always use CLI mode** (the default). Do NOT pass `--use-sdk`.
+3. Run a pilot calibration:
+```bash
+source .env.local && python3 scripts/validate_on_contextbench.py \
+  --sample 10 --seed 42 --model claude-opus-4-6 --backend hybrid --parallel 10
+```
+4. Check `results/contextbench/calibration_report.json` for composite score (go/no-go >= 0.65).
+5. Scale up when pilot passes:
+```bash
+# Medium (50 tasks)
+source .env.local && python3 scripts/validate_on_contextbench.py \
+  --sample 50 --seed 42 --model claude-opus-4-6 --backend hybrid --parallel 50
+# Full verified subset (500 tasks)
+source .env.local && python3 scripts/validate_on_contextbench.py --verified
+```
+6. Optional: add `--prune` for a haiku pruning pass to reduce false positives.
+7. Review trajectories at `results/contextbench/trajectories.traj.json`.
+
 ## Docs / Agent Navigation Maintenance Workflow
 1. Edit canonical sources under `docs/ops/`.
 2. Regenerate guides and indexes:

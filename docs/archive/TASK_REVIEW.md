@@ -1,4 +1,4 @@
-# CodeContextBench Task Review: Formulation, Difficulty, and Ground Truth Assessment
+# CodeScaleBench Task Review: Formulation, Difficulty, and Ground Truth Assessment
 
 ## Revision History
 
@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-This document reviews all 116 selected benchmark tasks across 10 benchmarks in CodeContextBench. It assesses whether each task is well-formulated, whether difficulty and SDLC phase labels are appropriate, and whether ground truth / evaluation criteria are sound.
+This document reviews all 116 selected benchmark tasks across 10 benchmarks in CodeScaleBench. It assesses whether each task is well-formulated, whether difficulty and SDLC phase labels are appropriate, and whether ground truth / evaluation criteria are sound.
 
 **Status after remediation (US-001 through US-022):**
 - **Crossrepo ground truth fixed**: All three mismatched tasks (api_upgrade_01, bug_localization_01, refactor_rename_01) now have expected_changes.json files aligned with their instruction.md content
@@ -39,7 +39,7 @@ This document reviews all 116 selected benchmark tasks across 10 benchmarks in C
 
 ---
 
-## 1. ccb_largerepo (4 tasks, all "hard")
+## 1. csb_sdlc_largerepo (4 tasks, all "hard")
 
 ### Overview
 Four feature-implementation tasks in massive real-world repositories (Kubernetes, Servo, TensorRT-LLM, VS Code). Each asks the agent to implement a substantial new capability.
@@ -84,7 +84,7 @@ Comment now correctly references "stale diagnostics after git branch switch" ins
 
 ---
 
-## 2. ccb_pytorch (12 tasks, 3 "medium" / 6 "hard" / 1 "very_hard" / 2 "critical")
+## 2. csb_sdlc_pytorch (12 tasks, 3 "medium" / 6 "hard" / 1 "very_hard" / 2 "critical")
 
 ### Overview
 Cross-module bug fixes mined from real PyTorch pull requests. Each task provides a ground-truth commit and uses `make test` for evaluation.
@@ -141,7 +141,7 @@ Classification: <50 LOC = medium, 50-200 LOC = hard, >200 LOC = very_hard, relea
 
 ---
 
-## 3. ccb_k8sdocs (5 tasks, 4 "hard" / 1 "medium")
+## 3. csb_sdlc_k8sdocs (5 tasks, 4 "hard" / 1 "medium")
 
 ### Overview
 Documentation generation tasks: the agent must write `doc.go` files for Kubernetes packages where existing documentation has been stripped.
@@ -183,7 +183,7 @@ All 8 test script keyword checks pass with the expanded ground truth (10/10 scor
 
 ---
 
-## 4. ccb_locobench (25 tasks, 9 "expert" / 16 "hard")
+## 4. csb_sdlc_locobench (25 tasks, 9 "expert" / 16 "hard")
 
 ### Overview
 Tasks on synthetic but realistic codebases with 70+ files and 700K+ tokens of context. Three categories: architectural_understanding (9), cross_file_refactoring (13), bug_investigation (3).
@@ -229,7 +229,7 @@ The `repo` field in selected_benchmark_tasks.json is `""` for all LoCoBench task
 
 ---
 
-## 5. ccb_swebenchpro (36 tasks, 13 "hard" / 23 "very_hard")
+## 5. csb_sdlc_swebenchpro (36 tasks, 13 "hard" / 23 "very_hard")
 
 ### Overview
 Adapted from SWE-bench Pro (ScaleAI). Real bug fixes across 11 repositories in Go, Python, TypeScript, and JavaScript. Uses the standard SWE-bench evaluation framework with fail-to-pass and pass-to-pass test lists.
@@ -283,7 +283,7 @@ All labeled **Implementation (bug fix)** -- correct for SWE-bench tasks, which a
 
 ---
 
-## 6. ccb_sweperf (3 tasks, 1 "hard" / 2 "medium")
+## 6. csb_sdlc_sweperf (3 tasks, 1 "hard" / 2 "medium")
 
 ### Overview
 Performance optimization tasks in numpy, scikit-learn, and pandas. The agent must find and fix performance regressions.
@@ -302,7 +302,7 @@ Uses SWE-bench-style test execution (fail-to-pass / pass-to-pass lists). This is
 
 ---
 
-## 7. ccb_tac (8 tasks, 3 "hard" / 5 "medium")
+## 7. csb_sdlc_tac (8 tasks, 3 "hard" / 5 "medium")
 
 ### Overview
 Diverse task types from the TAC (Tool-Augmented Coding) benchmark: feature implementation, dependency management, codebase search, troubleshooting, and test writing.
@@ -331,7 +331,7 @@ TAC uses its own evaluation framework. The find-in-codebase tasks check whether 
 
 ---
 
-## 8. ccb_repoqa (10 tasks, 8 "hard" / 2 "medium")
+## 8. csb_sdlc_repoqa (10 tasks, 8 "hard" / 2 "medium")
 
 ### Overview
 Semantic code navigation tasks from the RepoQA benchmark. The agent is given a natural-language description of a function and must find it in a repository -- without being told the function name.
@@ -366,7 +366,7 @@ Uses a custom `SemanticRetrievalQAVerifier` that compares the agent's `solution.
 
 ---
 
-## 9. ccb_crossrepo (5 tasks, 4 "hard" / 1 "easy")
+## 9. csb_sdlc_crossrepo (5 tasks, 4 "hard" / 1 "easy")
 
 ### Overview
 Cross-repository tasks requiring understanding of code across multiple codebases.
@@ -407,7 +407,7 @@ The original expected_changes.json files were templated from Kubernetes examples
 
 The original evaluation had three critical bugs discovered during the first rerun (all tasks scored 0.0 despite agents performing well):
 
-1. **Missing `validate_patch.py`**: The test scripts referenced `/ccb_crossrepo/scripts/validate_patch.py` which did not exist in the repository. The Docker base image's bundled validator had a different CLI interface (`--output`, `--timeout`) than what the test scripts expected (`--expected`).
+1. **Missing `validate_patch.py`**: The test scripts referenced `/csb_sdlc_crossrepo/scripts/validate_patch.py` which did not exist in the repository. The Docker base image's bundled validator had a different CLI interface (`--output`, `--timeout`) than what the test scripts expected (`--expected`).
 
 2. **No patch collection**: Instructions told agents to modify files but never mentioned saving output to `/logs/agent/patch.diff`. Agents made correct changes but the verifier couldn't find them.
 
@@ -418,7 +418,7 @@ The original evaluation had three critical bugs discovered during the first reru
 - **Patch tasks** (api_upgrade_01, refactor_rename_01):
   - Instructions updated to explicitly request `/logs/agent/patch.diff` output
   - Test scripts rewritten with two-stage approach: (a) check for explicit patch.diff, (b) fallback auto-collection via `git diff HEAD` across all source repos
-  - Validation uses `validate_patch.py` (newly created in `benchmarks/ccb_crossrepo/scripts/`) checking file coverage (40% weight) + pattern matching (60% weight) against `expected_changes.json`
+  - Validation uses `validate_patch.py` (newly created in `benchmarks/csb_sdlc_crossrepo/scripts/`) checking file coverage (40% weight) + pattern matching (60% weight) against `expected_changes.json`
   - Inline Python fallback validator embedded in test.sh for environments where the standalone script is unavailable
 
 - **Analysis tasks** (bug_localization_01, cross_file_reasoning_01):
@@ -439,7 +439,7 @@ The original evaluation had three critical bugs discovered during the first reru
 
 ---
 
-## 10. ccb_dibench (8 tasks, all "medium")
+## 10. csb_sdlc_dibench (8 tasks, all "medium")
 
 ### Overview
 Dependency inference tasks from DI-Bench: the agent must add missing dependencies to a project's build file so the code compiles/passes validation.
@@ -503,16 +503,16 @@ The formula `0.25*context_complexity + 0.30*cross_file_deps + 0.20*semantic_sear
 
 | Benchmark | Min | Max | Mean | StdDev | Features Used |
 |-----------|-----|-----|------|--------|--------------|
-| ccb_crossrepo | 0.655 | 0.910 | 0.836 | 0.113 | Number of repos, cross-repo complexity |
-| ccb_dibench | 0.534 | 0.847 | 0.643 | 0.125 | Per-repo file counts (20-82) |
-| ccb_k8sdocs | 0.378 | 0.894 | 0.663 | 0.219 | Per-package source file counts (25-450) |
-| ccb_largerepo | 0.730 | 0.876 | 0.793 | 0.064 | Codebase LOC, expected files touched |
-| ccb_locobench | 0.717 | 0.931 | 0.820 | 0.055 | context_length, files_count from task.toml |
-| ccb_pytorch | 0.552 | 0.807 | 0.593 | 0.073 | File counts from ground truth |
-| ccb_repoqa | 0.597 | 0.953 | 0.727 | 0.114 | Source file count, code_ratio |
-| ccb_swebenchpro | 0.547 | 0.757 | 0.651 | 0.065 | Files changed from patch |
-| ccb_sweperf | 0.433 | 0.525 | 0.475 | 0.047 | Baseline runtime for complexity scaling |
-| ccb_tac | 0.350 | 0.603 | 0.491 | 0.103 | Per-category resource scaling |
+| csb_sdlc_crossrepo | 0.655 | 0.910 | 0.836 | 0.113 | Number of repos, cross-repo complexity |
+| csb_sdlc_dibench | 0.534 | 0.847 | 0.643 | 0.125 | Per-repo file counts (20-82) |
+| csb_sdlc_k8sdocs | 0.378 | 0.894 | 0.663 | 0.219 | Per-package source file counts (25-450) |
+| csb_sdlc_largerepo | 0.730 | 0.876 | 0.793 | 0.064 | Codebase LOC, expected files touched |
+| csb_sdlc_locobench | 0.717 | 0.931 | 0.820 | 0.055 | context_length, files_count from task.toml |
+| csb_sdlc_pytorch | 0.552 | 0.807 | 0.593 | 0.073 | File counts from ground truth |
+| csb_sdlc_repoqa | 0.597 | 0.953 | 0.727 | 0.114 | Source file count, code_ratio |
+| csb_sdlc_swebenchpro | 0.547 | 0.757 | 0.651 | 0.065 | Files changed from patch |
+| csb_sdlc_sweperf | 0.433 | 0.525 | 0.475 | 0.047 | Baseline runtime for complexity scaling |
+| csb_sdlc_tac | 0.350 | 0.603 | 0.491 | 0.103 | Per-category resource scaling |
 
 Overall average: 0.6852. All benchmarks with 5+ tasks have stddev > 0.05.
 
@@ -521,16 +521,16 @@ Overall average: 0.6852. All benchmarks with 5+ tasks have stddev > 0.05.
 ### 3. Evaluation Rigor Spectrum
 
 From most to least rigorous:
-1. **ccb_swebenchpro**: Real test suites, fail-to-pass validation (now with partial credit)
-2. **ccb_pytorch**: Real PyTorch test suite (now with partial credit)
-3. **ccb_largerepo**: Compilation gate + keyword scoring (upgraded from keyword-only)
-4. **ccb_k8sdocs**: Keyword checks (10-point deterministic scale)
-5. **ccb_locobench**: Deterministic keyword-based verification (`verify.py`) -- **CORRECTED: previously mischaracterized as LLM judge**
-6. **ccb_repoqa**: Exact-match function name comparison
-7. **ccb_crossrepo**: Pattern-matching on expected changes
-8. **ccb_dibench**: Syntax + dependency presence validation
+1. **csb_sdlc_swebenchpro**: Real test suites, fail-to-pass validation (now with partial credit)
+2. **csb_sdlc_pytorch**: Real PyTorch test suite (now with partial credit)
+3. **csb_sdlc_largerepo**: Compilation gate + keyword scoring (upgraded from keyword-only)
+4. **csb_sdlc_k8sdocs**: Keyword checks (10-point deterministic scale)
+5. **csb_sdlc_locobench**: Deterministic keyword-based verification (`verify.py`) -- **CORRECTED: previously mischaracterized as LLM judge**
+6. **csb_sdlc_repoqa**: Exact-match function name comparison
+7. **csb_sdlc_crossrepo**: Pattern-matching on expected changes
+8. **csb_sdlc_dibench**: Syntax + dependency presence validation
 
-Notable improvements: ccb_largerepo moved from position 8 to position 3 after US-012 through US-015. ccb_locobench moved from position 8 to position 5 after correcting the evaluation method characterization. SWE-bench Pro and PyTorch now support partial credit scoring.
+Notable improvements: csb_sdlc_largerepo moved from position 8 to position 3 after US-012 through US-015. csb_sdlc_locobench moved from position 8 to position 5 after correcting the evaluation method characterization. SWE-bench Pro and PyTorch now support partial credit scoring.
 
 This variation means benchmark-to-benchmark score comparisons are not directly meaningful. A 1.0 in SWE-bench Pro (all tests pass) represents far more verification than a 1.0 in LoCoBench (keyword matching).
 

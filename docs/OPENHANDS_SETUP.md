@@ -31,18 +31,18 @@ cd OpenHands
 poetry install
 ```
 
-Then run the CodeContextBench harness with the agent path pointing at your in-repo agent; the Harbor OpenHands agent expects the `openhands` package to be importable in the same environment where Harbor runs.
+Then run the CodeScaleBench harness with the agent path pointing at your in-repo agent; the Harbor OpenHands agent expects the `openhands` package to be importable in the same environment where Harbor runs.
 
 ### Vendoring openhands-tools
 
-We do not vendor openhands-tools in CodeContextBench. The harness imports `harbor.agents.installed.openhands.OpenHands`; Harbor and OpenHands must be installed in the environment that runs the benchmark (e.g. the host or the image that runs `harbor run`). If you need a fully offline or vendored setup, you would:
+We do not vendor openhands-tools in CodeScaleBench. The harness imports `harbor.agents.installed.openhands.OpenHands`; Harbor and OpenHands must be installed in the environment that runs the benchmark (e.g. the host or the image that runs `harbor run`). If you need a fully offline or vendored setup, you would:
 
 - Clone [OpenHands/software-agent-sdk](https://github.com/OpenHands/software-agent-sdk) (the upstream for openhands-tools on PyPI), check out the tag that corresponds to 1.11.4, and install from that clone, or
 - Use a private PyPI mirror that has openhands-tools 1.11.4.
 
 ## Gemini model availability
 
-OpenHands (via LiteLLM) and the CodeContextBench Gemini harness use **GEMINI_API_KEY** or **GOOGLE_API_KEY** for the Gemini API. Not every key has access to every model; requesting a model your key cannot use yields a 404-style "Model not found" error.
+OpenHands (via LiteLLM) and the CodeScaleBench Gemini harness use **GEMINI_API_KEY** or **GOOGLE_API_KEY** for the Gemini API. Not every key has access to every model; requesting a model your key cannot use yields a 404-style "Model not found" error.
 
 To see which models your key can use and to verify a specific model:
 
@@ -73,7 +73,7 @@ The OpenHands harness supports the Codex model. Harbor’s built-in resolver doe
 
 ```bash
 export CODEX_API_KEY='your-codex-key'   # or OPENAI_API_KEY
-MODEL=gpt-5.3-codex ./configs/openhands_2config.sh --benchmark ccb_test --task openhands-search-file-test-001 --baseline-only
+MODEL=gpt-5.3-codex ./configs/openhands_2config.sh --benchmark csb_sdlc_test --task openhands-search-file-test-001 --baseline-only
 ```
 
 ## References

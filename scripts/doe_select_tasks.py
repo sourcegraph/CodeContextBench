@@ -34,15 +34,15 @@ BACKUPS_DIR = BENCHMARKS_DIR / "backups"
 SELECTION_PATH = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 SDLC_SUITES = [
-    "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
-    "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
 ]
 
 MCP_UNIQUE_SUITES = [
-    "ccb_mcp_compliance", "ccb_mcp_crossorg", "ccb_mcp_crossrepo",
-    "ccb_mcp_crossrepo_tracing", "ccb_mcp_domain", "ccb_mcp_incident",
-    "ccb_mcp_migration", "ccb_mcp_onboarding", "ccb_mcp_org",
-    "ccb_mcp_platform", "ccb_mcp_security",
+    "csb_org_compliance", "csb_org_crossorg", "csb_org_crossrepo",
+    "csb_org_crossrepo_tracing", "csb_org_domain", "csb_org_incident",
+    "csb_org_migration", "csb_org_onboarding", "csb_org_org",
+    "csb_org_platform", "csb_org_security",
 ]
 
 BASELINE_CONFIGS = {"baseline", "baseline-local-direct", "baseline-local-artifact"}
@@ -56,9 +56,9 @@ W_CEILING = 0.2    # weight on ceiling/floor penalty (inverted: non-ceiling task
 # Neyman-optimal targets at budget=150 (from doe_variance_analysis.py)
 # These are recalculated dynamically but kept as reference
 DEFAULT_TARGETS = {
-    "ccb_fix": 25, "ccb_test": 23, "ccb_feature": 22,
-    "ccb_debug": 18, "ccb_refactor": 15, "ccb_design": 14,
-    "ccb_document": 12, "ccb_secure": 11, "ccb_understand": 10,
+    "csb_sdlc_fix": 25, "csb_sdlc_test": 23, "csb_sdlc_feature": 22,
+    "csb_sdlc_debug": 18, "csb_sdlc_refactor": 15, "csb_sdlc_design": 14,
+    "csb_sdlc_document": 12, "csb_sdlc_secure": 11, "csb_sdlc_understand": 10,
 }
 
 
@@ -304,8 +304,9 @@ def get_backup_tasks(suite: str) -> dict:
             continue
         if backup_dir.name in INCOMPATIBLE_BACKUP_DIRS:
             continue
-        # Match backup dirs like ccb_fix_extra, ccb_fix_doe_trim, etc.
-        if backup_dir.name.startswith(suite.replace("ccb_", "") + "_") or \
+        # Match backup dirs like csb_sdlc_fix_extra, ccb_fix_doe_trim, etc.
+        suite_short = suite.replace("csb_sdlc_", "").replace("ccb_", "")
+        if backup_dir.name.startswith(suite_short + "_") or \
            backup_dir.name.startswith(suite + "_"):
             for task_dir in backup_dir.iterdir():
                 if task_dir.is_dir() and not task_dir.name.startswith("."):

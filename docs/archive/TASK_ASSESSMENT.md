@@ -1,21 +1,21 @@
-# CodeContextBench Task Assessment
+# CodeScaleBench Task Assessment
 
 ## Overview
 
-CodeContextBench comprises 116 tasks across 10 benchmarks, designed to evaluate AI coding agents on software engineering tasks that benefit from rich code context (e.g., via MCP-based tools like Sourcegraph). Tasks span 10 programming languages, 8 SDLC phases, and 6 difficulty tiers.
+CodeScaleBench comprises 116 tasks across 10 benchmarks, designed to evaluate AI coding agents on software engineering tasks that benefit from rich code context (e.g., via MCP-based tools like Sourcegraph). Tasks span 10 programming languages, 8 SDLC phases, and 6 difficulty tiers.
 
 | Benchmark | Tasks | Languages | Difficulty Range | Evaluation Method |
 |-----------|-------|-----------|-----------------|-------------------|
-| ccb_swebenchpro | 36 | Python, Go, TypeScript, JavaScript | hard -- very_hard | Real test suites with partial credit |
-| ccb_locobench | 25 | Python (synthetic) | hard -- expert | Deterministic keyword verification |
-| ccb_pytorch | 12 | Python, C++ | medium -- critical | PyTorch CI test suite (with partial credit) |
-| ccb_repoqa | 10 | C++, Java, Python, Rust, TypeScript | medium -- hard | Function name exact match |
-| ccb_dibench | 8 | Python, Rust, JavaScript, C# | medium | Syntax + dependency validation |
-| ccb_tac | 8 | C++, Python, TypeScript | medium -- hard | Framework-specific (compilation, test, search) |
-| ccb_k8sdocs | 5 | Go | medium -- hard | Keyword checks (10-point scale) |
-| ccb_crossrepo | 5 | Go, Python | easy -- hard | Patch pattern matching |
-| ccb_largerepo | 4 | Go, Rust, Python/C++, TypeScript | hard | Compilation gate + keyword scoring |
-| ccb_sweperf | 3 | Python | medium -- hard | SWE-bench-style test execution |
+| csb_sdlc_swebenchpro | 36 | Python, Go, TypeScript, JavaScript | hard -- very_hard | Real test suites with partial credit |
+| csb_sdlc_locobench | 25 | Python (synthetic) | hard -- expert | Deterministic keyword verification |
+| csb_sdlc_pytorch | 12 | Python, C++ | medium -- critical | PyTorch CI test suite (with partial credit) |
+| csb_sdlc_repoqa | 10 | C++, Java, Python, Rust, TypeScript | medium -- hard | Function name exact match |
+| csb_sdlc_dibench | 8 | Python, Rust, JavaScript, C# | medium | Syntax + dependency validation |
+| csb_sdlc_tac | 8 | C++, Python, TypeScript | medium -- hard | Framework-specific (compilation, test, search) |
+| csb_sdlc_k8sdocs | 5 | Go | medium -- hard | Keyword checks (10-point scale) |
+| csb_sdlc_crossrepo | 5 | Go, Python | easy -- hard | Patch pattern matching |
+| csb_sdlc_largerepo | 4 | Go, Rust, Python/C++, TypeScript | hard | Compilation gate + keyword scoring |
+| csb_sdlc_sweperf | 3 | Python | medium -- hard | SWE-bench-style test execution |
 
 ---
 
@@ -78,16 +78,16 @@ Components are derived from per-task features (files changed, context length, re
 
 | Benchmark | Min | Max | Mean | StdDev |
 |-----------|-----|-----|------|--------|
-| ccb_crossrepo | 0.655 | 0.910 | 0.836 | 0.113 |
-| ccb_dibench | 0.534 | 0.847 | 0.643 | 0.125 |
-| ccb_k8sdocs | 0.378 | 0.894 | 0.663 | 0.219 |
-| ccb_largerepo | 0.730 | 0.876 | 0.793 | 0.064 |
-| ccb_locobench | 0.717 | 0.931 | 0.820 | 0.055 |
-| ccb_pytorch | 0.552 | 0.807 | 0.593 | 0.073 |
-| ccb_repoqa | 0.597 | 0.953 | 0.727 | 0.114 |
-| ccb_swebenchpro | 0.547 | 0.757 | 0.651 | 0.065 |
-| ccb_sweperf | 0.433 | 0.525 | 0.475 | 0.047 |
-| ccb_tac | 0.350 | 0.603 | 0.491 | 0.103 |
+| csb_sdlc_crossrepo | 0.655 | 0.910 | 0.836 | 0.113 |
+| csb_sdlc_dibench | 0.534 | 0.847 | 0.643 | 0.125 |
+| csb_sdlc_k8sdocs | 0.378 | 0.894 | 0.663 | 0.219 |
+| csb_sdlc_largerepo | 0.730 | 0.876 | 0.793 | 0.064 |
+| csb_sdlc_locobench | 0.717 | 0.931 | 0.820 | 0.055 |
+| csb_sdlc_pytorch | 0.552 | 0.807 | 0.593 | 0.073 |
+| csb_sdlc_repoqa | 0.597 | 0.953 | 0.727 | 0.114 |
+| csb_sdlc_swebenchpro | 0.547 | 0.757 | 0.651 | 0.065 |
+| csb_sdlc_sweperf | 0.433 | 0.525 | 0.475 | 0.047 |
+| csb_sdlc_tac | 0.350 | 0.603 | 0.491 | 0.103 |
 
 Overall average: 0.6852. Scores are formula-based and have not been empirically validated against actual MCP usage data.
 
@@ -95,7 +95,7 @@ Overall average: 0.6852. Scores are formula-based and have not been empirically 
 
 ## Per-Benchmark Assessment
 
-### 1. ccb_swebenchpro (36 tasks)
+### 1. csb_sdlc_swebenchpro (36 tasks)
 
 **Source:** SWE-bench Pro (ScaleAI). Real bug fixes across 11 repositories.
 
@@ -126,7 +126,7 @@ Overall average: 0.6852. Scores are formula-based and have not been empirically 
 
 ---
 
-### 2. ccb_locobench (25 tasks)
+### 2. csb_sdlc_locobench (25 tasks)
 
 **Source:** Synthetic codebases with 70+ files and 700K-1.16M tokens of context. Three task categories.
 
@@ -151,7 +151,7 @@ Overall average: 0.6852. Scores are formula-based and have not been empirically 
 
 ---
 
-### 3. ccb_pytorch (12 tasks)
+### 3. csb_sdlc_pytorch (12 tasks)
 
 **Source:** Real PyTorch pull requests. Each provides a ground-truth commit.
 
@@ -184,7 +184,7 @@ Overall average: 0.6852. Scores are formula-based and have not been empirically 
 
 ---
 
-### 4. ccb_repoqa (10 tasks)
+### 4. csb_sdlc_repoqa (10 tasks)
 
 **Source:** RepoQA benchmark. Semantic code navigation -- find a function from a natural-language behavioral description without knowing its name.
 
@@ -208,7 +208,7 @@ Overall average: 0.6852. Scores are formula-based and have not been empirically 
 
 ---
 
-### 5. ccb_dibench (8 tasks)
+### 5. csb_sdlc_dibench (8 tasks)
 
 **Source:** DI-Bench. Dependency inference -- add missing dependencies to build files so code compiles.
 
@@ -235,7 +235,7 @@ All tasks are difficulty **medium**, SDLC phase **Maintenance**.
 
 ---
 
-### 6. ccb_tac (8 tasks)
+### 6. csb_sdlc_tac (8 tasks)
 
 **Source:** TAC (Tool-Augmented Coding) benchmark. Diverse task types.
 
@@ -263,7 +263,7 @@ All tasks are difficulty **medium**, SDLC phase **Maintenance**.
 
 ---
 
-### 7. ccb_k8sdocs (5 tasks)
+### 7. csb_sdlc_k8sdocs (5 tasks)
 
 **Source:** Kubernetes documentation generation. The agent writes `doc.go` files for packages where existing documentation has been stripped.
 
@@ -289,7 +289,7 @@ All tasks are difficulty **medium**, SDLC phase **Maintenance**.
 
 ---
 
-### 8. ccb_crossrepo (5 tasks)
+### 8. csb_sdlc_crossrepo (5 tasks)
 
 **Source:** Cross-repository tasks requiring understanding across multiple codebases.
 
@@ -316,7 +316,7 @@ All tasks are difficulty **medium**, SDLC phase **Maintenance**.
 
 ---
 
-### 9. ccb_largerepo (4 tasks)
+### 9. csb_sdlc_largerepo (4 tasks)
 
 **Source:** Feature implementation in massive real-world repositories (1-1.6GB codebases).
 
@@ -348,7 +348,7 @@ All tasks are difficulty **hard**, SDLC phase **Implementation (feature)** (thou
 
 ---
 
-### 10. ccb_sweperf (3 tasks)
+### 10. csb_sdlc_sweperf (3 tasks)
 
 **Source:** Performance optimization tasks from SWE-bench.
 
@@ -380,18 +380,18 @@ Benchmarks vary significantly in how rigorously they verify agent output. From m
 
 | Rank | Benchmark | Method | Key Limitation |
 |------|-----------|--------|---------------|
-| 1 | ccb_swebenchpro | Real test suites, fail-to-pass (with partial credit) | Generic instruction template |
-| 2 | ccb_pytorch | Real PyTorch CI tests (with partial credit) | Inconsistent (sgt-001 differs) |
-| 3 | ccb_largerepo | Compilation gate + keyword scoring | Keywords are weak correctness proxy |
-| 4 | ccb_k8sdocs | Keyword checks (10-point scale) | Single language (Go) |
-| 5 | ccb_locobench | Deterministic keyword verification | Synthetic codebases |
-| 6 | ccb_repoqa | Function name exact match | Partial match scoring is opaque |
-| 7 | ccb_crossrepo | Patch pattern matching | No semantic correctness check |
-| 8 | ccb_dibench | Syntax + dependency presence | No build/import verification |
+| 1 | csb_sdlc_swebenchpro | Real test suites, fail-to-pass (with partial credit) | Generic instruction template |
+| 2 | csb_sdlc_pytorch | Real PyTorch CI tests (with partial credit) | Inconsistent (sgt-001 differs) |
+| 3 | csb_sdlc_largerepo | Compilation gate + keyword scoring | Keywords are weak correctness proxy |
+| 4 | csb_sdlc_k8sdocs | Keyword checks (10-point scale) | Single language (Go) |
+| 5 | csb_sdlc_locobench | Deterministic keyword verification | Synthetic codebases |
+| 6 | csb_sdlc_repoqa | Function name exact match | Partial match scoring is opaque |
+| 7 | csb_sdlc_crossrepo | Patch pattern matching | No semantic correctness check |
+| 8 | csb_sdlc_dibench | Syntax + dependency presence | No build/import verification |
 
 **Note:** LoCoBench evaluation was previously mischaracterized as an LLM judge. It uses deterministic keyword-based verification (`verify.py`), making it reproducible and more rigorous than previously assessed.
 
-A score of 1.0 in ccb_swebenchpro (all tests pass) represents substantially more verification than a score of 1.0 in ccb_locobench (keyword matching). Cross-benchmark score comparisons should account for this gap.
+A score of 1.0 in csb_sdlc_swebenchpro (all tests pass) represents substantially more verification than a score of 1.0 in csb_sdlc_locobench (keyword matching). Cross-benchmark score comparisons should account for this gap.
 
 ---
 

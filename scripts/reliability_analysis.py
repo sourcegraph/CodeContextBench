@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reliability analysis pipeline for CodeContextBench enterprise metrics.
+"""Reliability analysis pipeline for CodeScaleBench enterprise metrics.
 
 Computes performance variance, confidence intervals (via bootstrap resampling),
 cross-suite consistency, reliability floors, and failure clustering.
@@ -79,7 +79,7 @@ def _match_task_to_metadata(task_name: str, metadata: dict[str, dict]) -> Option
         if meta_id.startswith(task_name) or task_name.startswith(meta_id):
             return meta
         # Strip ccb_{benchmark}- prefix
-        if meta_id.startswith("ccb_"):
+        if meta_id.startswith(("ccb_", "csb_")):
             stripped = meta_id[4:]
             if stripped.startswith(task_name) or task_name.startswith(stripped):
                 return meta

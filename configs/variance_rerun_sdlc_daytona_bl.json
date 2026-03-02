@@ -10,28 +10,28 @@
   "tasks": [
     {
       "task_id": "openhands-search-file-test-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/openhands-search-file-test-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/openhands-search-file-test-001"
     },
     {
       "task_id": "servo-css-container-query-feat-001",
-      "benchmark": "ccb_feature",
-      "task_dir": "ccb_feature/servo-css-container-query-feat-001"
+      "benchmark": "csb_sdlc_feature",
+      "task_dir": "csb_sdlc_feature/servo-css-container-query-feat-001"
     },
     {
       "task_id": "test-coverage-gap-002",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-coverage-gap-002"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-coverage-gap-002"
     },
     {
       "task_id": "test-integration-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-integration-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-integration-001"
     },
     {
       "task_id": "test-unitgen-go-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/test-unitgen-go-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/test-unitgen-go-001"
     }
   ]
 }

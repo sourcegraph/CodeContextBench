@@ -2,7 +2,7 @@
 
 > **Status**: v1 — standalone, non-ranking.
 > This framework evaluates retrieval quality and its downstream impact on task
-> outcomes without changing primary CCB scoring or leaderboard semantics.
+> outcomes without changing primary CSB scoring or leaderboard semantics.
 
 ## Purpose
 
@@ -38,7 +38,7 @@ Uniquely identifies the task execution:
 - `task_name` — canonical task identifier (matches `task.toml` name).
 - `config_name` — full config label (e.g. `baseline-local-direct`,
   `mcp-remote-direct`).
-- `benchmark` — suite name (e.g. `ccb_fix`, `ccb_mcp_crossorg`).
+- `benchmark` — suite name (e.g. `csb_sdlc_fix`, `csb_org_crossorg`).
 
 ### Coverage Flags
 
@@ -62,7 +62,7 @@ can filter or flag results:
 ### Ground Truth
 
 Ground truth is loaded from the task definition directory using the existing
-priority chain in `ccb_metrics/ground_truth.py`:
+priority chain in `csb_metrics/ground_truth.py`:
 
 1. `tests/ground_truth.json` (high confidence)
 2. `tests/expected_defects.json` (high confidence)

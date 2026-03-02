@@ -27,16 +27,16 @@ MANIFEST_PATH = PROJECT_ROOT / "runs" / "official" / "MANIFEST.json"
 
 # SDLC suites (170 tasks across 8 suites)
 SDLC_SUITES = [
-    "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
-    "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
 ]
 
 # MCP-unique suites (81 tasks across 11 suites)
 MCP_UNIQUE_SUITES = [
-    "ccb_mcp_compliance", "ccb_mcp_crossorg", "ccb_mcp_crossrepo",
-    "ccb_mcp_crossrepo_tracing", "ccb_mcp_domain", "ccb_mcp_incident",
-    "ccb_mcp_migration", "ccb_mcp_onboarding", "ccb_mcp_org",
-    "ccb_mcp_platform", "ccb_mcp_security",
+    "csb_org_compliance", "csb_org_crossorg", "csb_org_crossrepo",
+    "csb_org_crossrepo_tracing", "csb_org_domain", "csb_org_incident",
+    "csb_org_migration", "csb_org_onboarding", "csb_org_org",
+    "csb_org_platform", "csb_org_security",
 ]
 
 # Baseline config names (both legacy and new)
@@ -350,7 +350,7 @@ def main():
     print("-" * 120)
     for suite in SDLC_SUITES:
         r = latest_results[suite]
-        short = suite.replace("ccb_", "")
+        short = suite.replace("csb_sdlc_", "").replace("ccb_", "")
         sig = "*" if _excludes_zero(r["ci_lower"], r["ci_upper"]) and r["n"] > 1 else ""
         ci = _ci_str(r["ci_lower"], r["ci_upper"]) if r["n"] > 1 else "—"
         print(f"{short:<25} {r['n']:>4} {r['baseline_mean']:>8.3f} {r['mcp_mean']:>9.3f} {r['delta']:>+7.3f} {ci:>20} {sig}")
@@ -361,7 +361,7 @@ def main():
     print("-" * 120)
     for suite in MCP_UNIQUE_SUITES:
         r = latest_results[suite]
-        short = suite.replace("ccb_mcp_", "")
+        short = suite.replace("csb_org_", "").replace("ccb_mcp_", "")
         sig = "*" if _excludes_zero(r["ci_lower"], r["ci_upper"]) and r["n"] > 1 else ""
         ci = _ci_str(r["ci_lower"], r["ci_upper"]) if r["n"] > 1 else "—"
         print(f"{short:<25} {r['n']:>4} {r['baseline_mean']:>8.3f} {r['mcp_mean']:>9.3f} {r['delta']:>+7.3f} {ci:>20} {sig}")
@@ -390,7 +390,7 @@ def main():
     print("-" * 120)
     for suite in SDLC_SUITES:
         r = mean_results[suite]
-        short = suite.replace("ccb_", "")
+        short = suite.replace("csb_sdlc_", "").replace("ccb_", "")
         sig = "*" if _excludes_zero(r["ci_lower"], r["ci_upper"]) and r["n"] > 1 else ""
         ci = _ci_str(r["ci_lower"], r["ci_upper"]) if r["n"] > 1 else "—"
         print(f"{short:<25} {r['n']:>4} {r['baseline_mean']:>8.3f} {r['mcp_mean']:>9.3f} {r['delta']:>+7.3f} {ci:>20} {sig}")
@@ -401,7 +401,7 @@ def main():
     print("-" * 120)
     for suite in MCP_UNIQUE_SUITES:
         r = mean_results[suite]
-        short = suite.replace("ccb_mcp_", "")
+        short = suite.replace("csb_org_", "").replace("ccb_mcp_", "")
         sig = "*" if _excludes_zero(r["ci_lower"], r["ci_upper"]) and r["n"] > 1 else ""
         ci = _ci_str(r["ci_lower"], r["ci_upper"]) if r["n"] > 1 else "—"
         print(f"{short:<25} {r['n']:>4} {r['baseline_mean']:>8.3f} {r['mcp_mean']:>9.3f} {r['delta']:>+7.3f} {ci:>20} {sig}")
@@ -429,7 +429,7 @@ def main():
         for suite in suite_list:
             rl = latest_results[suite]
             rm = mean_results[suite]
-            short = suite.replace("ccb_mcp_", "").replace("ccb_", "")
+            short = suite.replace("csb_org_", "").replace("csb_org_", "").replace("csb_sdlc_", "").replace("ccb_mcp_", "").replace("ccb_", "")
             diff = round(rl["delta"] - rm["delta"], 3)
             if abs(diff) < 0.001:
                 continue  # Skip identical rows
@@ -444,7 +444,7 @@ def main():
         print(f"{'Suite':<30} {'Task':<40} {'D_latest':>10} {'D_mean':>10}")
         print("-" * 120)
         for sf in sorted(sign_flips, key=lambda x: -abs(x["delta_latest"] - x["delta_mean"])):
-            short = sf["suite"].replace("ccb_mcp_", "").replace("ccb_", "")
+            short = sf["suite"].replace("csb_org_", "").replace("csb_sdlc_", "").replace("ccb_mcp_", "").replace("ccb_", "")
             print(f"{short:<30} {sf['task']:<40} {sf['delta_latest']:>+10.4f} {sf['delta_mean']:>+10.4f}")
         print(f"\nTotal sign disagreements: {len(sign_flips)}")
 

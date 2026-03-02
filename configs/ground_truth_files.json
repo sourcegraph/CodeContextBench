@@ -1,7 +1,7 @@
 {
   "camel-fix-protocol-feat-001": {
     "task_id": "camel-fix-protocol-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "components/camel-kafka/src/main/java/org/apache/camel/component/kafka/KafkaComponent.java",
       "components/camel-kafka/src/main/java/org/apache/camel/component/kafka/KafkaEndpoint.java",
@@ -22,7 +22,7 @@
   },
   "flink-pricing-window-feat-001": {
     "task_id": "flink-pricing-window-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/WindowAssigner.java",
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/MergingWindowAssigner.java",
@@ -43,7 +43,7 @@
   },
   "k8s-noschedule-taint-feat-001": {
     "task_id": "k8s-noschedule-taint-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "staging/src/k8s.io/api/core/v1/types.go",
       "staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go",
@@ -62,7 +62,7 @@
   },
   "k8s-score-normalizer-refac-001": {
     "task_id": "k8s-score-normalizer-refac-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "pkg/scheduler/framework/interface.go",
       "pkg/scheduler/metrics/metrics.go",
@@ -86,7 +86,7 @@
   },
   "kafka-batch-accumulator-refac-001": {
     "task_id": "kafka-batch-accumulator-refac-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
@@ -105,7 +105,7 @@
   },
   "rust-subtype-relation-refac-001": {
     "task_id": "rust-subtype-relation-refac-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "compiler/rustc_type_ir/src/predicate.rs",
       "compiler/rustc_type_ir/src/predicate_kind.rs",
@@ -132,7 +132,7 @@
   },
   "servo-scrollend-event-feat-001": {
     "task_id": "servo-scrollend-event-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "components/script/dom/document.rs",
       "components/script/dom/window.rs",
@@ -149,7 +149,7 @@
   },
   "strata-cds-tranche-feat-001": {
     "task_id": "strata-cds-tranche-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndex.java",
       "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndexTrade.java",
@@ -171,7 +171,7 @@
   },
   "strata-fx-european-refac-001": {
     "task_id": "strata-fx-european-refac-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOption.java",
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOptionTrade.java",
@@ -200,7 +200,7 @@
   },
   "tensorrt-mxfp4-quant-feat-001": {
     "task_id": "tensorrt-mxfp4-quant-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "cpp/include/tensorrt_llm/common/quantization.h",
       "tensorrt_llm/quantization/mode.py",
@@ -214,7 +214,7 @@
   },
   "vscode-stale-diagnostics-feat-001": {
     "task_id": "vscode-stale-diagnostics-feat-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "extensions/typescript-language-features/src/languageFeatures/diagnostics.ts",
       "extensions/typescript-language-features/src/typescriptServiceClient.ts",
@@ -230,7 +230,7 @@
   },
   "numpy-dtype-localize-001": {
     "task_id": "numpy-dtype-localize-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "src/scikit-learn/sklearn/preprocessing/_data.py",
       "src/scikit-learn/sklearn/utils/validation.py",
@@ -242,7 +242,7 @@
   },
   "dotnetkoans-deps-install-001": {
     "task_id": "dotnetkoans-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "DotNetKoans.csproj"
     ],
@@ -251,7 +251,7 @@
   },
   "codecoverage-deps-install-001": {
     "task_id": "codecoverage-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "src/CodeCoverageSummary/CodeCoverageSummary.csproj"
     ],
@@ -260,7 +260,7 @@
   },
   "eslint-markdown-deps-install-001": {
     "task_id": "eslint-markdown-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "package.json"
     ],
@@ -269,7 +269,7 @@
   },
   "dotenv-expand-deps-install-001": {
     "task_id": "dotenv-expand-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "package.json"
     ],
@@ -278,7 +278,7 @@
   },
   "cgen-deps-install-001": {
     "task_id": "cgen-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "pyproject.toml"
     ],
@@ -287,7 +287,7 @@
   },
   "iamactionhunter-deps-install-001": {
     "task_id": "iamactionhunter-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "pyproject.toml"
     ],
@@ -296,7 +296,7 @@
   },
   "similar-asserts-deps-install-001": {
     "task_id": "similar-asserts-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "Cargo.toml"
     ],
@@ -305,7 +305,7 @@
   },
   "pcap-parser-deps-install-001": {
     "task_id": "pcap-parser-deps-install-001",
-    "benchmark": "ccb_build",
+    "benchmark": "csb_sdlc_build",
     "files": [
       "Cargo.toml"
     ],
@@ -314,7 +314,7 @@
   },
   "numpy-array-sum-perf-001": {
     "task_id": "numpy-array-sum-perf-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "numpy/core/src/multiarray/calculation.c"
     ],
@@ -323,7 +323,7 @@
   },
   "sklearn-kmeans-perf-001": {
     "task_id": "sklearn-kmeans-perf-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "sklearn/cluster/_k_means_elkan.pyx"
     ],
@@ -332,7 +332,7 @@
   },
   "pandas-groupby-perf-001": {
     "task_id": "pandas-groupby-perf-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "pandas/_libs/groupby.pyx"
     ],
@@ -341,7 +341,7 @@
   },
   "aspnetcore-code-review-001": {
     "task_id": "aspnetcore-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "src/Components/Web/src/Forms/ExpressionMemberAccessor.cs",
       "src/Components/Web/src/Forms/DisplayName.cs"
@@ -381,7 +381,7 @@
   },
   "calcom-code-review-001": {
     "task_id": "calcom-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "packages/features/feature-opt-in/services/FeatureOptInService.ts",
       "packages/features/feature-opt-in/config.ts",
@@ -422,7 +422,7 @@
   },
   "envoy-code-review-001": {
     "task_id": "envoy-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "source/extensions/filters/http/fault/fault_filter.cc",
       "source/common/http/header_utility.cc",
@@ -478,7 +478,7 @@
   },
   "ghost-code-review-001": {
     "task_id": "ghost-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "ghost/core/core/server/services/comments/comments-service.js",
       "ghost/core/core/server/services/comments/comments-controller.js",
@@ -519,7 +519,7 @@
   },
   "curl-security-review-001": {
     "task_id": "curl-security-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "lib/vtls/openssl.c",
       "lib/cookie.c",
@@ -568,7 +568,7 @@
   },
   "kafka-security-review-001": {
     "task_id": "kafka-security-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "clients/src/main/java/org/apache/kafka/common/security/scram/internals/ScramSaslServer.java",
       "clients/src/main/java/org/apache/kafka/common/security/authenticator/SaslServerAuthenticator.java",
@@ -617,7 +617,7 @@
   },
   "terraform-code-review-001": {
     "task_id": "terraform-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "internal/terraform/evaluate.go",
       "internal/terraform/eval_variable.go",
@@ -673,7 +673,7 @@
   },
   "vscode-code-review-001": {
     "task_id": "vscode-code-review-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "src/vs/editor/common/core/range.ts",
       "src/vs/base/common/strings.ts",
@@ -730,7 +730,7 @@
   },
   "k8s-cri-containerd-reason-001": {
     "task_id": "k8s-cri-containerd-reason-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "staging/src/k8s.io/cri-api/pkg/apis/runtime/v1/api.proto",
       "vendor/github.com/containerd/containerd/api/services/containers/v1/containers.proto"
@@ -740,7 +740,7 @@
   },
   "k8s-runtime-object-impl-001": {
     "task_id": "k8s-runtime-object-impl-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "core/v1/types.go",
       "apps/v1/types.go",
@@ -751,7 +751,7 @@
   },
   "envoy-grpc-server-impl-001": {
     "task_id": "envoy-grpc-server-impl-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "pkg/server/v3/server.go",
       "pilot/pkg/xds/ads.go",
@@ -763,7 +763,7 @@
   },
   "flipt-flagexists-refactor-001": {
     "task_id": "flipt-flagexists-refactor-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "internal/storage/storage.go",
       "internal/storage/fs/store.go",
@@ -775,7 +775,7 @@
   },
   "flipt-dep-refactor-001": {
     "task_id": "flipt-dep-refactor-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "internal/storage/resource.go"
     ],
@@ -784,7 +784,7 @@
   },
   "vscode-api-doc-gen-001": {
     "task_id": "vscode-api-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -792,7 +792,7 @@
   },
   "cilium-api-doc-gen-001": {
     "task_id": "cilium-api-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -800,7 +800,7 @@
   },
   "kafka-api-doc-gen-001": {
     "task_id": "kafka-api-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -808,7 +808,7 @@
   },
   "envoy-arch-doc-gen-001": {
     "task_id": "envoy-arch-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "conn_manager_impl.cc|conn_manager_impl.h|source/common/http/conn_manager_impl",
       "filter_manager.cc|filter_manager.h|source/common/http/filter_manager",
@@ -821,7 +821,7 @@
   },
   "istio-arch-doc-gen-001": {
     "task_id": "istio-arch-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "pilot/pkg/xds/discovery.go|xds/discovery.go",
       "pilot/pkg/xds/ads.go|xds/ads.go",
@@ -834,7 +834,7 @@
   },
   "terraform-arch-doc-gen-001": {
     "task_id": "terraform-arch-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -842,7 +842,7 @@
   },
   "k8s-apiserver-doc-gen-001": {
     "task_id": "k8s-apiserver-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "pkg/server/genericapiserver.go",
       "pkg/server",
@@ -858,7 +858,7 @@
   },
   "k8s-applyconfig-doc-gen-001": {
     "task_id": "k8s-applyconfig-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "staging/src/k8s.io/client-go/applyconfigurations",
       "applyconfigurations/",
@@ -870,7 +870,7 @@
   },
   "k8s-clientgo-doc-gen-001": {
     "task_id": "k8s-clientgo-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "kubernetes/clientset.go",
       "kubernetes/typed",
@@ -884,7 +884,7 @@
   },
   "k8s-kubelet-cm-doc-gen-001": {
     "task_id": "k8s-kubelet-cm-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -892,7 +892,7 @@
   },
   "k8s-fairqueuing-doc-gen-001": {
     "task_id": "k8s-fairqueuing-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -900,7 +900,7 @@
   },
   "envoy-migration-doc-gen-001": {
     "task_id": "envoy-migration-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -908,7 +908,7 @@
   },
   "terraform-migration-doc-gen-001": {
     "task_id": "terraform-migration-doc-gen-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_scoring",
     "confidence": "low",
@@ -916,7 +916,7 @@
   },
   "envoy-request-routing-qa-001": {
     "task_id": "envoy-request-routing-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "source/server/listener_impl.(h|cc)|source/common/listener_manager/",
       "source/server/filter_chain_manager",
@@ -929,7 +929,7 @@
   },
   "istio-xds-serving-qa-001": {
     "task_id": "istio-xds-serving-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "pilot/pkg/xds/discovery.go",
       "xds/discovery.go",
@@ -946,7 +946,7 @@
   },
   "terraform-plan-pipeline-qa-001": {
     "task_id": "terraform-plan-pipeline-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "internal/terraform/graph_builder_plan.go",
       "internal/terraform/context_plan.go|internal/terraform/context.go",
@@ -960,7 +960,7 @@
   },
   "vscode-ext-host-qa-001": {
     "task_id": "vscode-ext-host-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "nativeExtensionService.ts|abstractExtensionService.ts|extensions/electron.*nativeExtensionService",
       "extensionHostManager.ts|extensions/common/extensionHostManager",
@@ -973,7 +973,7 @@
   },
   "cilium-ebpf-fault-qa-001": {
     "task_id": "cilium-ebpf-fault-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "pkg/datapath/loader/base.go|pkg/datapath/loader/loader.go|datapath/loader/",
       "pkg/datapath/linux/config/config.go|HeaderfileWriter|WriteNodeConfig",
@@ -986,7 +986,7 @@
   },
   "kafka-message-lifecycle-qa-001": {
     "task_id": "kafka-message-lifecycle-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
@@ -1000,7 +1000,7 @@
   },
   "envoy-filter-chain-qa-001": {
     "task_id": "envoy-filter-chain-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "source/common/http/conn_manager_impl.(h|cc)",
       "source/common/http/filter_manager.(h|cc)",
@@ -1015,7 +1015,7 @@
   },
   "argocd-sync-reconcile-qa-001": {
     "task_id": "argocd-sync-reconcile-qa-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "controller/appcontroller.go",
       "reposerver/repository/repository.go",
@@ -1029,7 +1029,7 @@
   },
   "envoy-ext-authz-handoff-001": {
     "task_id": "envoy-ext-authz-handoff-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "source/extensions/filters/http/ext_authz/ext_authz.h",
       "source/extensions/filters/http/ext_authz/ext_authz.cc",
@@ -1047,7 +1047,7 @@
   },
   "terraform-state-backend-handoff-001": {
     "task_id": "terraform-state-backend-handoff-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "internal/backend/backend.go",
       "backend/backend.go",
@@ -1072,7 +1072,7 @@
   },
   "cilium-ebpf-datapath-handoff-001": {
     "task_id": "cilium-ebpf-datapath-handoff-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "pkg/datapath/loader",
       "bpf/.*.c",
@@ -1089,7 +1089,7 @@
   },
   "cilium-project-orient-001": {
     "task_id": "cilium-project-orient-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "daemon/main.go",
       "daemon/cmd/root.go",
@@ -1118,7 +1118,7 @@
   },
   "argocd-arch-orient-001": {
     "task_id": "argocd-arch-orient-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "cmd/argocd.server/main.go",
       "cmd/argocd.application.controller/main.go",
@@ -1142,7 +1142,7 @@
   },
   "kafka-build-orient-001": {
     "task_id": "kafka-build-orient-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "bin/kafka-server-start",
       "kafka/server/KafkaApis",
@@ -1153,7 +1153,7 @@
   },
   "envoy-contributor-workflow-001": {
     "task_id": "envoy-contributor-workflow-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "bazel/.*.bzl",
       ".github/workflows",
@@ -1173,7 +1173,7 @@
   },
   "kafka-contributor-workflow-001": {
     "task_id": "kafka-contributor-workflow-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "gradle/wrapper",
       ".jenkins/",
@@ -1186,7 +1186,7 @@
   },
   "python-http-class-naming-refac-001": {
     "task_id": "python-http-class-naming-refac-001",
-    "benchmark": "ccb_refactor",
+    "benchmark": "csb_sdlc_refactor",
     "files": [
       "src/django/django/http/request.py",
       "src/django/django/http/__init__.py",
@@ -1204,7 +1204,7 @@
   },
   "llamacpp-context-window-search-001": {
     "task_id": "llamacpp-context-window-search-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [],
     "source": "instruction_manual",
     "confidence": "low",
@@ -1212,7 +1212,7 @@
   },
   "llamacpp-file-modify-search-001": {
     "task_id": "llamacpp-file-modify-search-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "ggml/src/ggml-sycl/dequantize.hpp"
     ],
@@ -1221,7 +1221,7 @@
   },
   "bustub-hyperloglog-impl-001": {
     "task_id": "bustub-hyperloglog-impl-001",
-    "benchmark": "ccb_feature",
+    "benchmark": "csb_sdlc_feature",
     "files": [
       "src/include/common/util/hash_util.h",
       "bustub/src/include/primer/hyperloglog.h",
@@ -1234,7 +1234,7 @@
   },
   "openhands-search-file-test-001": {
     "task_id": "openhands-search-file-test-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "openhands/runtime/plugins/agent_skills/file_ops/file_ops.py"
     ],
@@ -1244,7 +1244,7 @@
   },
   "django-composite-field-recover-001": {
     "task_id": "django-composite-field-recover-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "django/forms/fields.py",
       "django/forms/widgets.py"
@@ -1259,7 +1259,7 @@
   },
   "django-template-inherit-recall-001": {
     "task_id": "django-template-inherit-recall-001",
-    "benchmark": "ccb_understand",
+    "benchmark": "csb_sdlc_understand",
     "files": [
       "django/template/loader_tags.py",
       "django/template/base.py"
@@ -1274,7 +1274,7 @@
   },
   "docgen-changelog-001": {
     "task_id": "docgen-changelog-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -1282,7 +1282,7 @@
   },
   "docgen-changelog-002": {
     "task_id": "docgen-changelog-002",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -1290,7 +1290,7 @@
   },
   "docgen-inline-002": {
     "task_id": "docgen-inline-002",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -1298,7 +1298,7 @@
   },
   "docgen-onboard-001": {
     "task_id": "docgen-onboard-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -1306,7 +1306,7 @@
   },
   "test-integration-001": {
     "task_id": "test-integration-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "internal/server/evaluation/evaluation.go",
       "rpc/flipt/evaluation/evaluation.proto",
@@ -1318,7 +1318,7 @@
   },
   "test-unitgen-go-001": {
     "task_id": "test-unitgen-go-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "staging/src/k8s.io/apiserver/pkg/storage/value/value.go"
     ],
@@ -1328,7 +1328,7 @@
   },
   "ansible-galaxy-tar-regression-prove-001": {
     "task_id": "ansible-galaxy-tar-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       ".azure-pipelines/azure-pipelines.yml",
       "changelogs/fragments/remove-python3.10-controller-support.yml",
@@ -1345,7 +1345,7 @@
   },
   "django-admins-migration-audit-001": {
     "task_id": "django-admins-migration-audit-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "django/core/mail/__init__.py",
       "django/core/mail/",
@@ -1364,7 +1364,7 @@
   },
   "envoy-duplicate-headers-debug-001": {
     "task_id": "envoy-duplicate-headers-debug-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "source/common/router/router.cc",
       "common/router/router.cc",
@@ -1388,7 +1388,7 @@
   },
   "flipt-auth-cookie-regression-prove-001": {
     "task_id": "flipt-auth-cookie-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "internal/server/auth/middleware.go"
     ],
@@ -1397,7 +1397,7 @@
   },
   "grafana-table-panel-regression-001": {
     "task_id": "grafana-table-panel-regression-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "schemaversion/v38",
       "migration/schemaversion"
@@ -1407,7 +1407,7 @@
   },
   "istio-xds-destrul-debug-001": {
     "task_id": "istio-xds-destrul-debug-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "pilot/pkg/model/destination_rule.go",
       "model/destination_rule.go",
@@ -1429,7 +1429,7 @@
   },
   "linux-acpi-backlight-fault-001": {
     "task_id": "linux-acpi-backlight-fault-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "drivers/acpi/video_detect.c"
     ],
@@ -1438,7 +1438,7 @@
   },
   "linux-hda-intel-suspend-fault-001": {
     "task_id": "linux-hda-intel-suspend-fault-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "sound/pci/hda/hda_intel.c"
     ],
@@ -1447,7 +1447,7 @@
   },
   "linux-iwlwifi-subdevice-fault-001": {
     "task_id": "linux-iwlwifi-subdevice-fault-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "drivers/net/wireless/intel/iwlwifi/pcie/drv.c"
     ],
@@ -1456,7 +1456,7 @@
   },
   "linux-nfs-inode-revalidate-fault-001": {
     "task_id": "linux-nfs-inode-revalidate-fault-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "net/sunrpc/xprtsock.c"
     ],
@@ -1465,7 +1465,7 @@
   },
   "linux-ssd-trim-timeout-fault-001": {
     "task_id": "linux-ssd-trim-timeout-fault-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "drivers/ata/libata-core.c"
     ],
@@ -1474,7 +1474,7 @@
   },
   "prometheus-queue-reshard-debug-001": {
     "task_id": "prometheus-queue-reshard-debug-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "storage/remote/queue_manager.go",
       "storage/remote/queue_manager",
@@ -1486,7 +1486,7 @@
   },
   "qutebrowser-hsv-color-regression-prove-001": {
     "task_id": "qutebrowser-hsv-color-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "qutebrowser/config/configtypes.py"
     ],
@@ -1495,7 +1495,7 @@
   },
   "qutebrowser-adblock-cache-regression-prove-001": {
     "task_id": "qutebrowser-adblock-cache-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "qutebrowser/components/braveadblock.py"
     ],
@@ -1504,7 +1504,7 @@
   },
   "qutebrowser-darkmode-threshold-regression-prove-001": {
     "task_id": "qutebrowser-darkmode-threshold-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "qutebrowser/browser/webengine/darkmode.py"
     ],
@@ -1513,7 +1513,7 @@
   },
   "qutebrowser-url-regression-prove-001": {
     "task_id": "qutebrowser-url-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "qutebrowser/utils/urlutils.py"
     ],
@@ -1522,7 +1522,7 @@
   },
   "teleport-ssh-regression-prove-001": {
     "task_id": "teleport-ssh-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "docs/5.0/admin-guide.md",
       "lib/auth/auth.go",
@@ -1539,7 +1539,7 @@
   },
   "terraform-phantom-update-debug-001": {
     "task_id": "terraform-phantom-update-debug-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "internal/terraform/node_resource_abstract_instance.go",
       "terraform/node_resource_abstract_instance.go",
@@ -1558,7 +1558,7 @@
   },
   "tutanota-search-regression-prove-001": {
     "task_id": "tutanota-search-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "doc/HACKING.md",
       "src/api/common/EntityClient.ts",
@@ -1575,7 +1575,7 @@
   },
   "vuls-oval-regression-prove-001": {
     "task_id": "vuls-oval-regression-prove-001",
-    "benchmark": "ccb_debug",
+    "benchmark": "csb_sdlc_debug",
     "files": [
       "GNUmakefile",
       "contrib/trivy/pkg/converter.go",
@@ -1592,7 +1592,7 @@
   },
   "camel-routing-arch-001": {
     "task_id": "camel-routing-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "core/camel-api/src/main/java/org/apache/camel/Component.java",
       "core/camel-api/src/main/java/org/apache/camel/Endpoint.java",
@@ -1615,7 +1615,7 @@
   },
   "django-modeladmin-impact-001": {
     "task_id": "django-modeladmin-impact-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "django/contrib/admin/options.py",
       "tests/admin_changelist/admin.py",
@@ -1628,7 +1628,7 @@
   },
   "django-orm-query-arch-001": {
     "task_id": "django-orm-query-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "django/db/models/manager.py",
       "django/db/models/query.py",
@@ -1646,7 +1646,7 @@
   },
   "django-pre-validate-signal-design-001": {
     "task_id": "django-pre-validate-signal-design-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "docs/signals_architecture.md",
       "django/db/models/signals.py",
@@ -1658,7 +1658,7 @@
   },
   "django-rate-limit-design-001": {
     "task_id": "django-rate-limit-design-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "docs/architecture.md",
       "django/middleware/ratelimit.py"
@@ -1668,7 +1668,7 @@
   },
   "envoy-routeconfig-dep-chain-001": {
     "task_id": "envoy-routeconfig-dep-chain-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "pilot/pkg/xds/rds.go",
       "envoy/config/route/v3/route.pb.go",
@@ -1679,7 +1679,7 @@
   },
   "envoy-stream-aggregated-sym-001": {
     "task_id": "envoy-stream-aggregated-sym-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "source/extensions/config_subscription/grpc/grpc_mux_impl.cc",
       "source/extensions/config_subscription/grpc/xds_mux/grpc_mux_impl.cc",
@@ -1697,7 +1697,7 @@
   },
   "etcd-grpc-api-upgrade-001": {
     "task_id": "etcd-grpc-api-upgrade-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "src/etcd/client/v3/client.go",
       "src/etcd/server/embed/etcd.go",
@@ -1712,7 +1712,7 @@
   },
   "flink-checkpoint-arch-001": {
     "task_id": "flink-checkpoint-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "flink-runtime/src/main/java/org/apache/flink/runtime/checkpoint/CheckpointCoordinator.java",
       "flink-runtime/src/main/java/org/apache/flink/runtime/checkpoint/PendingCheckpoint.java",
@@ -1735,7 +1735,7 @@
   },
   "flipt-protobuf-metadata-design-001": {
     "task_id": "flipt-protobuf-metadata-design-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "internal/server/evaluation/evaluation.go",
       "rpc/flipt/evaluation/evaluation.proto",
@@ -1746,7 +1746,7 @@
   },
   "flipt-transitive-deps-001": {
     "task_id": "flipt-transitive-deps-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "errors",
       "internal/containers",
@@ -1763,7 +1763,7 @@
   },
   "k8s-crd-lifecycle-arch-001": {
     "task_id": "k8s-crd-lifecycle-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "staging/src/k8s.io/apimachinery/pkg/runtime/scheme.go",
       "staging/src/k8s.io/apimachinery/pkg/runtime/schema/group_version.go",
@@ -1787,7 +1787,7 @@
   },
   "k8s-dra-allocation-impact-001": {
     "task_id": "k8s-dra-allocation-impact-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "pkg/scheduler/framework/plugins/dynamicresources",
       "dynamicresources/",
@@ -1802,7 +1802,7 @@
   },
   "k8s-scheduler-arch-001": {
     "task_id": "k8s-scheduler-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "pkg/scheduler/scheduler.go",
       "pkg/scheduler/schedule_one.go",
@@ -1823,7 +1823,7 @@
   },
   "k8s-sharedinformer-sym-001": {
     "task_id": "k8s-sharedinformer-sym-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "cmd/kube-controller-manager/app/apps.go",
       "cmd/kube-controller-manager/app/policy.go",
@@ -1840,7 +1840,7 @@
   },
   "k8s-typemeta-dep-chain-001": {
     "task_id": "k8s-typemeta-dep-chain-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "pkg/apis/meta/v1/types.go",
       "staging/src/k8s.io/api/core/v1/types.go",
@@ -1851,7 +1851,7 @@
   },
   "kafka-flink-streaming-arch-001": {
     "task_id": "kafka-flink-streaming-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "kafka/clients/src/main/java/org/apache/kafka/clients/producer/Producer.java",
       "kafka/clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
@@ -1877,7 +1877,7 @@
   },
   "postgres-query-exec-arch-001": {
     "task_id": "postgres-query-exec-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "src/backend/tcop/postgres.c",
       "src/backend/parser/scan.l",
@@ -1900,7 +1900,7 @@
   },
   "quantlib-barrier-pricing-arch-001": {
     "task_id": "quantlib-barrier-pricing-arch-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "ql/instruments/barrieroption.hpp",
       "ql/instruments/barrieroption.cpp",
@@ -1924,7 +1924,7 @@
   },
   "terraform-provider-iface-sym-001": {
     "task_id": "terraform-provider-iface-sym-001",
-    "benchmark": "ccb_design",
+    "benchmark": "csb_sdlc_design",
     "files": [
       "internal/providers/testing/provider_mock.go",
       "internal/terraform/eval_provider.go",
@@ -1941,7 +1941,7 @@
   },
   "ansible-abc-imports-fix-001": {
     "task_id": "ansible-abc-imports-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "changelogs/fragments/update-collections-abc-imports.yml",
       "lib/ansible/module_utils/basic.py",
@@ -1960,7 +1960,7 @@
   },
   "ansible-module-respawn-fix-001": {
     "task_id": "ansible-module-respawn-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       ".azure-pipelines/azure-pipelines.yml",
       "changelogs/fragments/module_respawn.yml",
@@ -1980,7 +1980,7 @@
   },
   "django-modelchoice-fk-fix-001": {
     "task_id": "django-modelchoice-fk-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "django/forms/models.py"
     ],
@@ -1989,7 +1989,7 @@
   },
   "django-select-for-update-fix-001": {
     "task_id": "django-select-for-update-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "django/db/models/sql/compiler.py",
       "django/db/models/query.py",
@@ -2006,7 +2006,7 @@
   },
   "flipt-cockroachdb-backend-fix-001": {
     "task_id": "flipt-cockroachdb-backend-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       ".gitignore",
       "README.md",
@@ -2031,7 +2031,7 @@
   },
   "flipt-ecr-auth-oci-fix-001": {
     "task_id": "flipt-ecr-auth-oci-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "cmd/flipt/bundle.go",
       "config/flipt.schema.cue",
@@ -2054,7 +2054,7 @@
   },
   "flipt-eval-latency-fix-001": {
     "task_id": "flipt-eval-latency-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "internal/server/evaluation/duration.go",
       "internal/server/evaluation/server.go",
@@ -2065,7 +2065,7 @@
   },
   "flipt-otlp-exporter-fix-001": {
     "task_id": "flipt-otlp-exporter-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "DEPRECATIONS.md",
       "README.md",
@@ -2101,7 +2101,7 @@
   },
   "flipt-trace-sampling-fix-001": {
     "task_id": "flipt-trace-sampling-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "config/flipt.schema.cue",
       "config/flipt.schema.json",
@@ -2125,7 +2125,7 @@
   },
   "k8s-dra-scheduler-event-fix-001": {
     "task_id": "k8s-dra-scheduler-event-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "pkg/scheduler/schedule_one.go",
       "pkg/scheduler/internal/queue/scheduling_queue.go",
@@ -2141,7 +2141,7 @@
   },
   "kafka-producer-bufpool-fix-001": {
     "task_id": "kafka-producer-bufpool-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
@@ -2158,7 +2158,7 @@
   },
   "navidrome-windows-log-fix-001": {
     "task_id": "navidrome-windows-log-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       ".dockerignore",
       ".github/workflows/pipeline.yml",
@@ -2184,7 +2184,7 @@
   },
   "nodebb-notif-dropdown-fix-001": {
     "task_id": "nodebb-notif-dropdown-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "CHANGELOG.md",
       "public/src/client/header/notifications.js",
@@ -2206,7 +2206,7 @@
   },
   "nodebb-plugin-validate-fix-001": {
     "task_id": "nodebb-plugin-validate-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "install/data/defaults.json",
       "install/package.json",
@@ -2320,7 +2320,7 @@
   },
   "openlibrary-fntocli-adapter-fix-001": {
     "task_id": "openlibrary-fntocli-adapter-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "Makefile",
       "conf/solr/conf/managed-schema.xml",
@@ -2342,7 +2342,7 @@
   },
   "openlibrary-search-query-fix-001": {
     "task_id": "openlibrary-search-query-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "openlibrary/core/bookshelves.py",
       "openlibrary/plugins/worksearch/code.py",
@@ -2363,7 +2363,7 @@
   },
   "openlibrary-solr-boolean-fix-001": {
     "task_id": "openlibrary-solr-boolean-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "docker-compose.yml",
       "openlibrary/core/bookshelves.py",
@@ -2382,7 +2382,7 @@
   },
   "pytorch-cudnn-version-fix-001": {
     "task_id": "pytorch-cudnn-version-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "docs/source/pytorch-api.md",
       "docs/source/symmetric_memory.md",
@@ -2393,7 +2393,7 @@
   },
   "pytorch-dynamo-keyerror-fix-001": {
     "task_id": "pytorch-dynamo-keyerror-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "test/inductor/test_max_autotune.py",
       "torch/_inductor/kernel/bmm.py"
@@ -2403,7 +2403,7 @@
   },
   "pytorch-release-210-fix-001": {
     "task_id": "pytorch-release-210-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       ".ci/docker/common/install_inductor_benchmark_deps.sh",
       ".ci/manywheel/build_common.sh",
@@ -2419,7 +2419,7 @@
   },
   "pytorch-relu-gelu-fusion-fix-001": {
     "task_id": "pytorch-relu-gelu-fusion-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "test/inductor/test_pattern_matcher.py",
       "torch/_inductor/fx_passes/post_grad.py",
@@ -2432,7 +2432,7 @@
   },
   "pytorch-tracer-graph-cleanup-fix-001": {
     "task_id": "pytorch-tracer-graph-cleanup-fix-001",
-    "benchmark": "ccb_fix",
+    "benchmark": "csb_sdlc_fix",
     "files": [
       "test/distributed/checkpoint/_experimental/test_builder.py",
       "test/distributed/checkpoint/_experimental/test_checkpoint_writer.py",
@@ -2446,7 +2446,7 @@
   },
   "curl-cve-triage-001": {
     "task_id": "curl-cve-triage-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "lib/socks.c",
       "lib/socks.h",
@@ -2457,7 +2457,7 @@
   },
   "curl-vuln-reachability-001": {
     "task_id": "curl-vuln-reachability-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "lib/socks.c",
       "lib/url.c",
@@ -2468,7 +2468,7 @@
   },
   "django-audit-trail-implement-001": {
     "task_id": "django-audit-trail-implement-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/template/loader_tags.py"
     ],
@@ -2477,7 +2477,7 @@
   },
   "django-cross-team-boundary-001": {
     "task_id": "django-cross-team-boundary-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/contrib/sessions/backends/base.py"
     ],
@@ -2486,7 +2486,7 @@
   },
   "django-csrf-session-audit-001": {
     "task_id": "django-csrf-session-audit-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/middleware/csrf.py",
       "django/contrib/sessions/middleware.py",
@@ -2509,7 +2509,7 @@
   },
   "django-legacy-dep-vuln-001": {
     "task_id": "django-legacy-dep-vuln-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/utils/html.py"
     ],
@@ -2518,7 +2518,7 @@
   },
   "django-policy-enforcement-001": {
     "task_id": "django-policy-enforcement-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/db/models/manager.py",
       "django/db/models/query.py"
@@ -2533,7 +2533,7 @@
   },
   "django-repo-scoped-access-001": {
     "task_id": "django-repo-scoped-access-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/contrib/admin/filters.py"
     ],
@@ -2542,7 +2542,7 @@
   },
   "django-role-based-access-001": {
     "task_id": "django-role-based-access-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/contrib/auth/models.py",
       "django/contrib/auth/backends.py"
@@ -2557,7 +2557,7 @@
   },
   "django-sensitive-file-exclusion-001": {
     "task_id": "django-sensitive-file-exclusion-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "django/db/backends/base/base.py"
     ],
@@ -2566,7 +2566,7 @@
   },
   "envoy-cve-triage-001": {
     "task_id": "envoy-cve-triage-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "source/common/http/async_client",
       "source/common/router",
@@ -2577,7 +2577,7 @@
   },
   "envoy-vuln-reachability-001": {
     "task_id": "envoy-vuln-reachability-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "source/server/admin/admin.(cc|h)",
       "source/server/server.(cc|h)",
@@ -2588,7 +2588,7 @@
   },
   "flipt-degraded-context-fix-001": {
     "task_id": "flipt-degraded-context-fix-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "internal/server/evaluation/errors.go",
       "internal/server/evaluation/evaluation.go",
@@ -2601,7 +2601,7 @@
   },
   "flipt-repo-scoped-access-001": {
     "task_id": "flipt-repo-scoped-access-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "internal/server/evaluation/metrics.go",
       "internal/server/evaluation/server.go"
@@ -2611,7 +2611,7 @@
   },
   "golang-net-cve-triage-001": {
     "task_id": "golang-net-cve-triage-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "http2/server.go",
       "http2/frame.go",
@@ -2622,7 +2622,7 @@
   },
   "grpcurl-transitive-vuln-001": {
     "task_id": "grpcurl-transitive-vuln-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "cmd/grpcurl",
       "internal/transport",
@@ -2634,7 +2634,7 @@
   },
   "kafka-sasl-auth-audit-001": {
     "task_id": "kafka-sasl-auth-audit-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "clients/src/main/java/org/apache/kafka/common/network/ChannelBuilders.java",
       "clients/src/main/java/org/apache/kafka/common/network/SaslChannelBuilder.java",
@@ -2657,7 +2657,7 @@
   },
   "kafka-vuln-reachability-001": {
     "task_id": "kafka-vuln-reachability-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "clients/src/main/java/org/apache/kafka/common/security/scram/internals/ScramSaslServer.java"
     ],
@@ -2666,7 +2666,7 @@
   },
   "postgres-client-auth-audit-001": {
     "task_id": "postgres-client-auth-audit-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "src/backend/postmaster/postmaster.c",
       "src/backend/tcop/backend_startup.c",
@@ -2690,7 +2690,7 @@
   },
   "wish-transitive-vuln-001": {
     "task_id": "wish-transitive-vuln-001",
-    "benchmark": "ccb_secure",
+    "benchmark": "csb_sdlc_secure",
     "files": [
       "wish/options.go",
       "wish/go.mod",
@@ -2702,7 +2702,7 @@
   },
   "docgen-inline-001": {
     "task_id": "docgen-inline-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [],
     "source": "ground_truth_json_topics",
     "confidence": "low",
@@ -2710,7 +2710,7 @@
   },
   "docgen-runbook-001": {
     "task_id": "docgen-runbook-001",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "tsdb/compact.go",
       "tsdb/head_read.go",
@@ -2722,7 +2722,7 @@
   },
   "docgen-runbook-002": {
     "task_id": "docgen-runbook-002",
-    "benchmark": "ccb_document",
+    "benchmark": "csb_sdlc_document",
     "files": [
       "source/common/http/conn_pool_base.cc",
       "source/common/http/conn_pool_base.h",
@@ -2734,7 +2734,7 @@
   },
   "test-coverage-gap-001": {
     "task_id": "test-coverage-gap-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "test/common/http/conn_manager_impl_test.cc",
       "source/common/http/conn_manager_impl.cc",
@@ -2746,7 +2746,7 @@
   },
   "test-coverage-gap-002": {
     "task_id": "test-coverage-gap-002",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "core/src/main/scala/kafka/coordinator/group/GroupCoordinator.scala",
       "core/src/test/scala/unit/kafka/coordinator/group/GroupCoordinatorTest.scala",
@@ -2757,7 +2757,7 @@
   },
   "test-integration-002": {
     "task_id": "test-integration-002",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "scanner/scanner.go"
     ],
@@ -2766,7 +2766,7 @@
   },
   "test-unitgen-py-001": {
     "task_id": "test-unitgen-py-001",
-    "benchmark": "ccb_test",
+    "benchmark": "csb_sdlc_test",
     "files": [
       "django/middleware/cache.py"
     ],
@@ -2775,7 +2775,7 @@
   },
   "ccx-compliance-051": {
     "task_id": "ccx-compliance-051",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "sourcegraph-testing/prometheus-common::config/http_config.go",
       "prometheus/prometheus::config/config.go",
@@ -2810,7 +2810,7 @@
   },
   "ccx-compliance-057-ds": {
     "task_id": "ccx-compliance-057-ds",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "pkg/services/featuremgmt/registry.go",
       "pkg/services/featuremgmt/toggles_gen.go",
@@ -2841,7 +2841,7 @@
   },
   "ccx-crossorg-061": {
     "task_id": "ccx-crossorg-061",
-    "benchmark": "ccb_mcp_crossorg",
+    "benchmark": "csb_org_crossorg",
     "files": [
       "kubernetes/kubernetes::staging/src/k8s.io/apiserver/pkg/storage/etcd3/store.go",
       "grafana/grafana::pkg/storage/unified/apistore/store.go"
@@ -2856,7 +2856,7 @@
   },
   "ccx-crossorg-066": {
     "task_id": "ccx-crossorg-066",
-    "benchmark": "ccb_mcp_crossorg",
+    "benchmark": "csb_org_crossorg",
     "files": [
       "tests/test.sh"
     ],
@@ -2865,7 +2865,7 @@
   },
   "ccx-config-trace-010": {
     "task_id": "ccx-config-trace-010",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "rest/config.go"
     ],
@@ -2878,7 +2878,7 @@
   },
   "ccx-dep-trace-001": {
     "task_id": "ccx-dep-trace-001",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "dynamic/client_test.go",
       "dynamic/dynamicinformer/informer.go",
@@ -2907,7 +2907,7 @@
   },
   "ccx-dep-trace-004": {
     "task_id": "ccx-dep-trace-004",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "grafana/grafana::pkg/tsdb/loki/api.go",
       "sg-evals/grafana-loki::pkg/loghttp/query.go"
@@ -2922,7 +2922,7 @@
   },
   "ccx-incident-031": {
     "task_id": "ccx-incident-031",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "server/mvcc/kvstore.go",
       "server/mvcc/kvstore_txn.go"
@@ -2937,7 +2937,7 @@
   },
   "ccx-incident-034": {
     "task_id": "ccx-incident-034",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "pkg/components/loki/lokihttp/client.go",
       "pkg/components/loki/lokihttp/config.go",
@@ -2958,7 +2958,7 @@
   },
   "ccx-incident-037": {
     "task_id": "ccx-incident-037",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "kubernetes/kubernetes::staging/src/k8s.io/apiserver/pkg/storage/storagebackend/factory/etcd3.go",
       "kubernetes/kubernetes::staging/src/k8s.io/apiserver/pkg/storage/etcd3/preflight/checks.go",
@@ -2999,7 +2999,7 @@
   },
   "ccx-migration-025": {
     "task_id": "ccx-migration-025",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "numpy/numpy::numpy/f2py/_src_pyf.py",
       "numpy/numpy::numpy/f2py/f2py2e.py",
@@ -3018,7 +3018,7 @@
   },
   "ccx-migration-027": {
     "task_id": "ccx-migration-027",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "lib/request.js",
       "test/req.host.js",
@@ -3035,7 +3035,7 @@
   },
   "ccx-explore-042-ds": {
     "task_id": "ccx-explore-042-ds",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "numpy/numpy::numpy/_core/fromnumeric.py",
       "pandas-dev/pandas::pandas/core/arrays/numpy_.py",
@@ -3052,7 +3052,7 @@
   },
   "ccx-onboard-041": {
     "task_id": "ccx-onboard-041",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "pandas/core/nanops.py",
       "pandas/plotting/_matplotlib/misc.py",
@@ -3071,7 +3071,7 @@
   },
   "ccx-onboard-050-ds": {
     "task_id": "ccx-onboard-050-ds",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "sg-evals/kubernetes-client-go::kubernetes/typed/apps/v1/deployment.go",
       "kubernetes/kubernetes::pkg/registry/apps/deployment/strategy.go",
@@ -3088,7 +3088,7 @@
   },
   "ccx-explore-091-ds": {
     "task_id": "ccx-explore-091-ds",
-    "benchmark": "ccb_mcp_platform",
+    "benchmark": "csb_org_platform",
     "files": [
       "sg-evals/kubernetes-api::apps/v1/types.go",
       "sg-evals/kubernetes-client-go::examples/create-update-delete-deployment/main.go",
@@ -3105,7 +3105,7 @@
   },
   "ccx-platform-094": {
     "task_id": "ccx-platform-094",
-    "benchmark": "ccb_mcp_platform",
+    "benchmark": "csb_org_platform",
     "files": [
       ".github/CODEOWNERS",
       ".github/workflows/codeowners-validator.yml",
@@ -3136,7 +3136,7 @@
   },
   "ccx-platform-100": {
     "task_id": "ccx-platform-100",
-    "benchmark": "ccb_mcp_platform",
+    "benchmark": "csb_org_platform",
     "files": [
       "staging/src/k8s.io/api/core/v1/types.go",
       "staging/src/k8s.io/apiserver/pkg/apis/example/v1/types.go",
@@ -3163,7 +3163,7 @@
   },
   "ccx-vuln-remed-011": {
     "task_id": "ccx-vuln-remed-011",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "package.json"
     ],
@@ -3176,7 +3176,7 @@
   },
   "ccx-vuln-remed-014": {
     "task_id": "ccx-vuln-remed-014",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "pkg/loki/modules.go"
     ],
@@ -3189,7 +3189,7 @@
   },
   "CCX-dep-trace-002": {
     "task_id": "CCX-dep-trace-002",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/consumer/internals/ConsumerRebalanceListenerInvoker.java",
       "clients/src/main/java/org/apache/kafka/clients/consumer/internals/ConsumerRebalanceListenerMethodName.java",
@@ -3222,7 +3222,7 @@
   },
   "CCX-config-trace-003": {
     "task_id": "CCX-config-trace-003",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "sg-evals/data-plane-api--84e84367::envoy/extensions/filters/network/http_connection_manager/v3/http_connection_manager.proto",
       "sg-evals/data-plane-api--84e84367::envoy/extensions/filters/http/router/v3/router.proto",
@@ -3253,7 +3253,7 @@
   },
   "CCX-vuln-remed-012": {
     "task_id": "CCX-vuln-remed-012",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "source/common/tls/cert_validator/default_validator.cc",
       "source/common/tls/cert_validator/default_validator.h",
@@ -3288,7 +3288,7 @@
   },
   "CCX-vuln-remed-013": {
     "task_id": "CCX-vuln-remed-013",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "clients/src/main/java/org/apache/kafka/common/acl/AccessControlEntry.java",
       "clients/src/main/java/org/apache/kafka/common/acl/AccessControlEntryData.java",
@@ -3347,7 +3347,7 @@
   },
   "CCX-migration-022": {
     "task_id": "CCX-migration-022",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "streams/src/main/java/org/apache/kafka/streams/StreamsConfig.java",
       "streams/src/main/java/org/apache/kafka/streams/errors/ProductionExceptionHandler.java",
@@ -3372,7 +3372,7 @@
   },
   "CCX-migration-026": {
     "task_id": "CCX-migration-026",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "sg-evals/envoy--v1.31.2::source/common/config/type_to_endpoint.cc",
       "sg-evals/envoy--v1.31.2::source/common/listener_manager/listener_manager_impl.cc",
@@ -3421,7 +3421,7 @@
   },
   "CCX-incident-032": {
     "task_id": "CCX-incident-032",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "sg-evals/envoy--v1.31.2::source/common/http/utility.cc",
       "sg-evals/envoy--v1.31.2::envoy/http/stream_reset_handler.h",
@@ -3454,7 +3454,7 @@
   },
   "CCX-incident-033": {
     "task_id": "CCX-incident-033",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "clients/src/main/java/org/apache/kafka/common/errors/TimeoutException.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
@@ -3487,7 +3487,7 @@
   },
   "CCX-onboard-043": {
     "task_id": "CCX-onboard-043",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "streams/src/main/java/org/apache/kafka/streams/Topology.java",
       "streams/src/main/java/org/apache/kafka/streams/StreamsBuilder.java",
@@ -3528,7 +3528,7 @@
   },
   "CCX-onboard-044": {
     "task_id": "CCX-onboard-044",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "compiler/rustc_infer/src/infer/mod.rs",
       "compiler/rustc_infer/src/infer/type_variable.rs",
@@ -3555,7 +3555,7 @@
   },
   "CCX-compliance-052": {
     "task_id": "CCX-compliance-052",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "sg-evals/envoy--v1.31.2::source/common/access_log/access_log_impl.h",
       "sg-evals/envoy--v1.31.2::source/common/access_log/access_log_impl.cc",
@@ -3598,7 +3598,7 @@
   },
   "CCX-compliance-053": {
     "task_id": "CCX-compliance-053",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizerData.java",
       "metadata/src/main/java/org/apache/kafka/metadata/authorizer/StandardAuthorizer.java",
@@ -3617,7 +3617,7 @@
   },
   "CCX-crossorg-062": {
     "task_id": "CCX-crossorg-062",
-    "benchmark": "ccb_mcp_crossorg",
+    "benchmark": "csb_org_crossorg",
     "files": [
       "sg-evals/data-plane-api--84e84367::envoy/service/discovery/v3/ads.proto",
       "sg-evals/data-plane-api--84e84367::envoy/service/cluster/v3/cds.proto",
@@ -3654,7 +3654,7 @@
   },
   "CCX-domain-071": {
     "task_id": "CCX-domain-071",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/ProducerConfig.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
@@ -3683,7 +3683,7 @@
   },
   "CCX-domain-072": {
     "task_id": "CCX-domain-072",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "sg-evals/kafka--0753c489::clients/src/main/java/org/apache/kafka/common/serialization/Serializer.java",
       "sg-evals/kafka--0753c489::clients/src/main/java/org/apache/kafka/common/serialization/Deserializer.java",
@@ -3716,7 +3716,7 @@
   },
   "CCX-domain-073": {
     "task_id": "CCX-domain-073",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "sg-evals/etcd-io-etcd::server/mvcc/watchable_store.go",
       "sg-evals/etcd-io-etcd::server/mvcc/watcher.go",
@@ -3739,7 +3739,7 @@
   },
   "CCX-domain-074": {
     "task_id": "CCX-domain-074",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "sg-evals/go-control-plane--71637ad6::pkg/server/v3/server.go",
       "sg-evals/go-control-plane--71637ad6::pkg/server/sotw/v3/server.go",
@@ -3774,7 +3774,7 @@
   },
   "CCX-agentic-081": {
     "task_id": "CCX-agentic-081",
-    "benchmark": "ccb_mcp_org",
+    "benchmark": "csb_org_org",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/consumer/ConsumerConfig.java",
       "clients/src/main/java/org/apache/kafka/clients/consumer/KafkaConsumer.java",
@@ -3797,7 +3797,7 @@
   },
   "CCX-agentic-082": {
     "task_id": "CCX-agentic-082",
-    "benchmark": "ccb_mcp_org",
+    "benchmark": "csb_org_org",
     "files": [
       "rest/client.go",
       "kubernetes/typed/core/v1/pod.go",
@@ -3822,7 +3822,7 @@
   },
   "CCX-agentic-083": {
     "task_id": "CCX-agentic-083",
-    "benchmark": "ccb_mcp_org",
+    "benchmark": "csb_org_org",
     "files": [
       "envoy/http/filter.h",
       "envoy/server/filter_config.h",
@@ -3849,7 +3849,7 @@
   },
   "CCX-domain-101": {
     "task_id": "CCX-domain-101",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "llvm/lib/Passes/PassBuilder.cpp",
       "llvm/include/llvm/IR/PassManager.h",
@@ -3872,7 +3872,7 @@
   },
   "CCX-dep-trace-102": {
     "task_id": "CCX-dep-trace-102",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "sg-evals/llvm-project--a8f3c97d::compiler-rt/lib/asan/asan_interceptors.cpp",
       "sg-evals/llvm-project--a8f3c97d::compiler-rt/lib/asan/asan_rtl.cpp",
@@ -3893,7 +3893,7 @@
   },
   "CCX-onboard-103": {
     "task_id": "CCX-onboard-103",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "llvm/lib/CodeGen/SelectionDAG/SelectionDAGISel.cpp",
       "llvm/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp",
@@ -3914,7 +3914,7 @@
   },
   "CCX-platform-104": {
     "task_id": "CCX-platform-104",
-    "benchmark": "ccb_mcp_platform",
+    "benchmark": "csb_org_platform",
     "files": [
       "llvm/lib/Transforms/Vectorize/LoopVectorize.cpp",
       "llvm/include/llvm/Transforms/Vectorize/LoopVectorize.h",
@@ -3937,7 +3937,7 @@
   },
   "CCX-vuln-remed-105": {
     "task_id": "CCX-vuln-remed-105",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "llvm/lib/CodeGen/StackProtector.cpp",
       "llvm/include/llvm/CodeGen/StackProtector.h",
@@ -3956,7 +3956,7 @@
   },
   "CCX-dep-trace-106": {
     "task_id": "CCX-dep-trace-106",
-    "benchmark": "ccb_mcp_crossrepo",
+    "benchmark": "csb_org_crossrepo",
     "files": [
       "gcc/passes.def",
       "gcc/passes.cc",
@@ -3977,7 +3977,7 @@
   },
   "CCX-migration-107": {
     "task_id": "CCX-migration-107",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp",
       "llvm/lib/Transforms/Scalar/LICM.cpp",
@@ -3998,7 +3998,7 @@
   },
   "CCX-incident-108": {
     "task_id": "CCX-incident-108",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "llvm/lib/CodeGen/SelectionDAG/LegalizeDAG.cpp",
       "llvm/include/llvm/CodeGen/ValueTypes.h",
@@ -4017,7 +4017,7 @@
   },
   "CCX-onboard-109": {
     "task_id": "CCX-onboard-109",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "js/src/jit/Ion.cpp",
       "js/src/jit/IonCompileTask.h",
@@ -4042,7 +4042,7 @@
   },
   "CCX-incident-110": {
     "task_id": "CCX-incident-110",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "dom/ipc/ContentParent.h",
       "dom/ipc/ContentParent.cpp",
@@ -4063,7 +4063,7 @@
   },
   "CCX-vuln-remed-111": {
     "task_id": "CCX-vuln-remed-111",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "security/nss/lib/ssl/ssl3con.c",
       "security/nss/lib/ssl/tls13con.c",
@@ -4084,7 +4084,7 @@
   },
   "CCX-domain-112": {
     "task_id": "CCX-domain-112",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "layout/style/ServoStyleSet.h",
       "layout/style/ServoStyleSet.cpp",
@@ -4107,7 +4107,7 @@
   },
   "CCX-crossorg-121": {
     "task_id": "CCX-crossorg-121",
-    "benchmark": "ccb_mcp_crossorg",
+    "benchmark": "csb_org_crossorg",
     "files": [
       "dom/webidl/Request.webidl",
       "dom/webidl/Response.webidl",
@@ -4164,7 +4164,7 @@
   },
   "CCX-agentic-122": {
     "task_id": "CCX-agentic-122",
-    "benchmark": "ccb_mcp_org",
+    "benchmark": "csb_org_org",
     "files": [
       "xpcom/base/nsISupportsImpl.h",
       "xpcom/base/nsISupportsImpl.cpp",
@@ -4217,7 +4217,7 @@
   },
   "CCX-dep-trace-123": {
     "task_id": "CCX-dep-trace-123",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "netwerk/protocol/http/nsHttpConnection.h",
       "netwerk/protocol/http/nsHttpConnection.cpp",
@@ -4266,7 +4266,7 @@
   },
   "CCX-compliance-124": {
     "task_id": "CCX-compliance-124",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "dom/security/nsCSPParser.h",
       "dom/security/nsCSPParser.cpp",
@@ -4309,7 +4309,7 @@
   },
   "CCX-incident-125": {
     "task_id": "CCX-incident-125",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "gcc/tree-cfg.cc",
       "gcc/tree-cfg.h",
@@ -4332,7 +4332,7 @@
   },
   "CCX-vuln-remed-126": {
     "task_id": "CCX-vuln-remed-126",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "gcc/explow.cc",
       "gcc/explow.h",
@@ -4359,7 +4359,7 @@
   },
   "CCX-agentic-127": {
     "task_id": "CCX-agentic-127",
-    "benchmark": "ccb_mcp_org",
+    "benchmark": "csb_org_org",
     "files": [
       "gcc/tree-pass.h",
       "gcc/tree-ssa-dce.cc",
@@ -4378,7 +4378,7 @@
   },
   "CCX-onboard-128": {
     "task_id": "CCX-onboard-128",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "src/hotspot/share/compiler/compileBroker.hpp",
       "src/hotspot/share/compiler/compilerThread.hpp",
@@ -4399,7 +4399,7 @@
   },
   "CCX-domain-129": {
     "task_id": "CCX-domain-129",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "src/java.base/share/classes/java/lang/ClassLoader.java",
       "src/java.base/share/classes/jdk/internal/loader/BuiltinClassLoader.java",
@@ -4420,7 +4420,7 @@
   },
   "CCX-vuln-remed-130": {
     "task_id": "CCX-vuln-remed-130",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "src/java.base/share/classes/java/security/Provider.java",
       "src/java.base/share/classes/java/security/Security.java",
@@ -4441,7 +4441,7 @@
   },
   "CCX-incident-131": {
     "task_id": "CCX-incident-131",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "compiler/rustc_borrowck/src/lib.rs",
       "compiler/rustc_borrowck/src/borrowck_errors.rs",
@@ -4468,7 +4468,7 @@
   },
   "CCX-crossorg-132": {
     "task_id": "CCX-crossorg-132",
-    "benchmark": "ccb_mcp_crossorg",
+    "benchmark": "csb_org_crossorg",
     "files": [
       "sg-evals/servo--be6a2f99::Cargo.toml",
       "sg-evals/servo--be6a2f99::components/layout/Cargo.toml",
@@ -4507,7 +4507,7 @@
   },
   "CCX-dep-trace-133": {
     "task_id": "CCX-dep-trace-133",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "third_party/blink/renderer/core/css/resolver/style_resolver.cc",
       "third_party/blink/renderer/core/layout/layout_object.cc",
@@ -4526,7 +4526,7 @@
   },
   "CCX-onboard-134": {
     "task_id": "CCX-onboard-134",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "content/browser/renderer_host/render_process_host_impl.cc",
       "content/browser/browser_main_loop.cc",
@@ -4547,7 +4547,7 @@
   },
   "CCX-vuln-remed-135": {
     "task_id": "CCX-vuln-remed-135",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc",
       "sandbox/win/src/sandbox_policy_base.cc",
@@ -4566,7 +4566,7 @@
   },
   "CCX-onboard-136": {
     "task_id": "CCX-onboard-136",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "core/java/android/app/Activity.java",
       "core/java/android/app/ActivityThread.java",
@@ -4585,7 +4585,7 @@
   },
   "CCX-domain-137": {
     "task_id": "CCX-domain-137",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "core/java/android/view/View.java",
       "core/java/android/view/ViewRootImpl.java",
@@ -4606,7 +4606,7 @@
   },
   "CCX-onboard-138": {
     "task_id": "CCX-onboard-138",
-    "benchmark": "ccb_mcp_onboarding",
+    "benchmark": "csb_org_onboarding",
     "files": [
       "include/sfx2/objsh.hxx",
       "sw/inc/doc.hxx",
@@ -4627,7 +4627,7 @@
   },
   "CCX-incident-139": {
     "task_id": "CCX-incident-139",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "sc/source/core/tool/compiler.cxx",
       "sc/source/core/tool/interpr1.cxx",
@@ -4646,7 +4646,7 @@
   },
   "CCX-domain-140": {
     "task_id": "CCX-domain-140",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "arangod/Aql/Parser.cpp",
       "arangod/Aql/Optimizer.cpp",
@@ -4669,7 +4669,7 @@
   },
   "CCX-vuln-remed-141": {
     "task_id": "CCX-vuln-remed-141",
-    "benchmark": "ccb_mcp_security",
+    "benchmark": "csb_org_security",
     "files": [
       "arangod/RestHandler/RestAuthHandler.cpp",
       "arangod/Auth/TokenCache.cpp",
@@ -4692,7 +4692,7 @@
   },
   "CCX-incident-113": {
     "task_id": "CCX-incident-113",
-    "benchmark": "ccb_mcp_incident",
+    "benchmark": "csb_org_incident",
     "files": [
       "schemaversion/v38",
       "migration/schemaversion"
@@ -4707,7 +4707,7 @@
   },
   "CCX-migration-114": {
     "task_id": "CCX-migration-114",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "clients/src/main/java/org/apache/kafka/clients/producer/internals/RecordAccumulator.java",
       "clients/src/main/java/org/apache/kafka/clients/producer/KafkaProducer.java",
@@ -4740,7 +4740,7 @@
   },
   "CCX-compliance-115": {
     "task_id": "CCX-compliance-115",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "django/contrib/sessions/backends/base.py",
       "django/contrib/sessions/backends/db.py",
@@ -4757,7 +4757,7 @@
   },
   "CCX-dep-trace-116": {
     "task_id": "CCX-dep-trace-116",
-    "benchmark": "ccb_mcp_crossrepo_tracing",
+    "benchmark": "csb_org_crossrepo_tracing",
     "files": [
       "kubernetes/kubernetes::staging/src/k8s.io/api/core/v1/types.go",
       "kubernetes/api::core/v1/types.go",
@@ -4774,7 +4774,7 @@
   },
   "CCX-migration-117": {
     "task_id": "CCX-migration-117",
-    "benchmark": "ccb_mcp_migration",
+    "benchmark": "csb_org_migration",
     "files": [
       "pkg/scheduler/framework/interface.go",
       "pkg/scheduler/metrics/metrics.go",
@@ -4817,7 +4817,7 @@
   },
   "CCX-compliance-118": {
     "task_id": "CCX-compliance-118",
-    "benchmark": "ccb_mcp_compliance",
+    "benchmark": "csb_org_compliance",
     "files": [
       "django/contrib/admin/filters.py",
       "django/contrib/admin/views/main.py",
@@ -4838,7 +4838,7 @@
   },
   "CCX-platform-119": {
     "task_id": "CCX-platform-119",
-    "benchmark": "ccb_mcp_platform",
+    "benchmark": "csb_org_platform",
     "files": [
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/WindowAssigner.java",
       "flink-runtime/src/main/java/org/apache/flink/streaming/api/windowing/assigners/MergingWindowAssigner.java",
@@ -4875,7 +4875,7 @@
   },
   "CCX-domain-120": {
     "task_id": "CCX-domain-120",
-    "benchmark": "ccb_mcp_domain",
+    "benchmark": "csb_org_domain",
     "files": [
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOption.java",
       "modules/product/src/main/java/com/opengamma/strata/product/fxopt/FxVanillaOptionTrade.java",

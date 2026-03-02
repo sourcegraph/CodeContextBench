@@ -1,13 +1,13 @@
 # mcp_ghost-code-review-001_Fus02d (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `passed`
 - Reward: `0.7100`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_ghost-code-review-001_Fus02d/claude-code.txt)
 
 ## Metrics
 

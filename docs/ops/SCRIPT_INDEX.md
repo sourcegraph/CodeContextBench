@@ -173,6 +173,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/control_plane.py` - Utility script for control plane.
 - `scripts/convert_harbor_to_contextbench.py` - Utility script for convert harbor to contextbench.
 - `scripts/cross_validate_oracles.py` - Utility script for cross validate oracles.
+- `scripts/daytona_curator_runner.py` - Utility script for daytona curator runner.
 - `scripts/daytona_poc_runner.py` - Utility script for daytona poc runner.
 - `scripts/daytona_runner.py` - Utility script for daytona runner.
 - `scripts/dependeval_eval_dr.py` - Utility script for dependeval eval dr.
@@ -183,6 +184,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/ds_wrapper.sh` - Utility script for ds wrapper.
 - `scripts/export_official_results.py` - Utility script for export official results.
 - `scripts/extract_analysis_metrics.py` - Utility script for extract analysis metrics.
+- `scripts/extract_build_diary.py` - Utility script for extract build diary.
 - `scripts/find_mcp_distracted.py` - Utility script for find mcp distracted.
 - `scripts/fix_h3_tokens.py` [one_off] - Historical one-off script: fix h3 tokens.
 - `scripts/fix_workspace_perms.py` [one_off] - Historical one-off script: fix workspace perms.
@@ -196,11 +198,14 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/list_gemini_models.py` - Utility script for list gemini models.
 - `scripts/mirror_largerepo_expansion.sh` - Utility script for mirror largerepo expansion.
 - `scripts/plan_variance_runs.py` - Utility script for plan variance runs.
+- `scripts/plot_build_diary.py` - Utility script for plot build diary.
+- `scripts/plot_build_diary_supplementary.py` - Utility script for plot build diary supplementary.
 - `scripts/promote_agent_oracles.py` - Utility script for promote agent oracles.
 - `scripts/push_base_images_ghcr.sh` - Utility script for push base images ghcr.
 - `scripts/regenerate_artifact_dockerfiles.py` - Utility script for regenerate artifact dockerfiles.
 - `scripts/rehost_sweap_images.py` - Utility script for rehost sweap images.
 - `scripts/remirror_mcp_unique_repos.sh` - Utility script for remirror mcp unique repos.
+- `scripts/rename_project.py` - Utility script for rename project.
 - `scripts/repair_h3_trajectories.py` [one_off] - Historical one-off script: repair h3 trajectories.
 - `scripts/rerun_crossrepo_2tasks.sh` [one_off] - Historical one-off script: rerun crossrepo 2tasks.
 - `scripts/rerun_crossrepo_all4.sh` [one_off] - Historical one-off script: rerun crossrepo all4.

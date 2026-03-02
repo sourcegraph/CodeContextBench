@@ -1,6 +1,6 @@
 # Skills System
 
-CodeContextBench includes a set of **AI agent skill definitions** in the [`skills/`](../skills/) directory. These are structured markdown runbooks that encode operational knowledge for common benchmark workflows, enabling any AI coding agent to operate the benchmark suite reliably.
+CodeScaleBench includes a set of **AI agent skill definitions** in the [`skills/`](../skills/) directory. These are structured markdown runbooks that encode operational knowledge for common benchmark workflows, enabling any AI coding agent to operate the benchmark suite reliably.
 
 ## Overview
 
@@ -8,9 +8,9 @@ Skills solve a practical problem: running a benchmark involves many multi-step w
 
 ## Skill Categories
 
-### CCB Operations (`skills/ccb/`)
+### CSB Operations (`skills/ccb/`)
 
-Project-specific skills for operating the CodeContextBench pipeline:
+Project-specific skills for operating the CodeScaleBench pipeline:
 
 | File | Skills | Purpose |
 |------|--------|---------|

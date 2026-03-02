@@ -927,14 +927,14 @@
       "transcript_sha256": "bf88e586fc40892f6e3871f1d604220bbd0c106683a0cad795fc720c2ecd0e37"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ",
     "task_name": "sgonly_kafka-contributor-workflow-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_kafka-contributor-workflow-001_mcp-remote-direct/sgonly_kafka-contributor-workflo__jUSodrQ/agent/claude-code.txt"
     }
   },
   "score": {

@@ -902,14 +902,14 @@
       "transcript_sha256": "2dad31fb9dfc8a8897b1aad1cff1018cb9e19fefe54cf2a40631629855aac208"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP",
     "task_name": "dotenv-expand-deps-install-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_dotenv-expand-deps-install-001_baseline-local-direct/dotenv-expand-deps-install-001__QRwDqLP/agent/claude-code.txt"
     }
   },
   "score": {

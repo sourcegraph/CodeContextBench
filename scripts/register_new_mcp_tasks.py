@@ -169,7 +169,7 @@ def main():
     bench_data["metadata"]["last_updated"] = "2026-02-24"
     bench_data["metadata"]["target_note"] = (
         f"All SDLC suites at target + {len([t for t in bench_data['tasks'] if t.get('mcp_unique')])} "
-        f"MCP-unique tasks across 10 ccb_mcp_* suites."
+        f"MCP-unique tasks across 10 csb_org_* suites."
     )
     bench_data["metadata"]["note"] = (
         "Added 21 mega-repo tasks (Firefox, GCC, OpenJDK, Chromium, AOSP, LibreOffice, ArangoDB, Rust). "
@@ -180,7 +180,7 @@ def main():
     # Update mcp_unique_suites list
     bench_data["methodology"]["mcp_unique_suites"] = sorted(set(
         bench_data["methodology"].get("mcp_unique_suites", [])
-        + ["ccb_mcp_domain", "ccb_mcp_org"]
+        + ["csb_org_domain", "csb_org_org"]
     ))
 
     # Update statistics

@@ -1,4 +1,4 @@
-# CodeContextBench Benchmarks
+# CodeScaleBench Benchmarks
 
 This directory contains SDLC-aligned suites plus MCP-unique org-scale retrieval suites. The canonical selected task catalog is in [`selected_benchmark_tasks.json`](../configs/selected_benchmark_tasks.json) (currently 294 selected tasks across 20 suites).
 
@@ -10,15 +10,15 @@ See [`docs/TASK_SELECTION.md`](../docs/TASK_SELECTION.md) for selection methodol
 
 | Suite | SDLC Phase | Tasks | Description |
 |-------|-----------|------:|-------------|
-| `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
-| `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
-| `ccb_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
-| `ccb_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
-| `ccb_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
-| `ccb_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
-| `ccb_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
-| `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
-| `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
+| `csb_sdlc_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
+| `csb_sdlc_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
+| `csb_sdlc_fix` | Bug Repair | 25 | Diagnosing and fixing real bugs across production codebases |
+| `csb_sdlc_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
+| `csb_sdlc_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
+| `csb_sdlc_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
+| `csb_sdlc_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
+| `csb_sdlc_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
+| `csb_sdlc_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
 | **Total** | | **199** | |
 
 ---
@@ -29,24 +29,24 @@ These suites measure cross-repo discovery, tracing, and org-scale code intellige
 
 | Suite | Tasks | Description |
 |-------|------:|-------------|
-| `ccb_mcp_compliance` | 7 | Compliance, audit, and provenance workflows |
-| `ccb_mcp_crossorg` | 5 | Cross-org discovery and authoritative repo identification |
-| `ccb_mcp_crossrepo` | 1 | Legacy cross-repo discovery/tracing task (compatibility) |
-| `ccb_mcp_crossrepo_tracing` | 9 | Cross-repo dependency tracing and symbol resolution |
-| `ccb_mcp_domain` | 10 | Domain-specific lineage and analysis workflows |
-| `ccb_mcp_incident` | 11 | Incident debugging across services and repos |
-| `ccb_mcp_migration` | 7 | Framework and platform migrations across repos |
-| `ccb_mcp_onboarding` | 11 | Onboarding, architecture comprehension, API discovery |
-| `ccb_mcp_org` | 5 | Org-wide coding correctness tasks requiring broad context |
-| `ccb_mcp_platform` | 5 | Platform/devtools and tribal-knowledge discovery |
-| `ccb_mcp_security` | 10 | Vulnerability remediation and security analysis at org scale |
+| `csb_org_compliance` | 7 | Compliance, audit, and provenance workflows |
+| `csb_org_crossorg` | 5 | Cross-org discovery and authoritative repo identification |
+| `csb_org_crossrepo` | 1 | Legacy cross-repo discovery/tracing task (compatibility) |
+| `csb_org_crossrepo_tracing` | 9 | Cross-repo dependency tracing and symbol resolution |
+| `csb_org_domain` | 10 | Domain-specific lineage and analysis workflows |
+| `csb_org_incident` | 11 | Incident debugging across services and repos |
+| `csb_org_migration` | 7 | Framework and platform migrations across repos |
+| `csb_org_onboarding` | 11 | Onboarding, architecture comprehension, API discovery |
+| `csb_org_org` | 5 | Org-wide coding correctness tasks requiring broad context |
+| `csb_org_platform` | 5 | Platform/devtools and tribal-knowledge discovery |
+| `csb_org_security` | 10 | Vulnerability remediation and security analysis at org scale |
 | **Total MCP-Unique (selected)** | **81** | |
 
 For suite taxonomy, authoring, and oracle evaluation details, see [`docs/MCP_UNIQUE_TASKS.md`](../docs/MCP_UNIQUE_TASKS.md).
 
 ---
 
-## ccb_understand (20 tasks) — Requirements & Discovery
+## csb_sdlc_understand (20 tasks) — Requirements & Discovery
 
 Codebase comprehension, natural-language Q&A, onboarding exercises, and knowledge recovery tasks.
 
@@ -75,7 +75,7 @@ Codebase comprehension, natural-language Q&A, onboarding exercises, and knowledg
 
 ---
 
-## ccb_design (20 tasks) — Architecture & Design
+## csb_sdlc_design (20 tasks) — Architecture & Design
 
 Architecture analysis, dependency chain tracing, change impact assessment, and design proposals.
 
@@ -104,7 +104,7 @@ Architecture analysis, dependency chain tracing, change impact assessment, and d
 
 ---
 
-## ccb_fix (25 tasks) — Bug Repair
+## csb_sdlc_fix (25 tasks) — Bug Repair
 
 Diagnosing and fixing real bugs across production codebases (SWE-bench Pro, PyTorch, large repos).
 
@@ -138,7 +138,7 @@ Diagnosing and fixing real bugs across production codebases (SWE-bench Pro, PyTo
 
 ---
 
-## ccb_feature (20 tasks) — Feature Implementation
+## csb_sdlc_feature (20 tasks) — Feature Implementation
 
 New feature implementation, interface implementation, and big-code feature tasks.
 
@@ -167,7 +167,7 @@ New feature implementation, interface implementation, and big-code feature tasks
 
 ---
 
-## ccb_refactor (20 tasks) — Cross-File Refactoring
+## csb_sdlc_refactor (20 tasks) — Cross-File Refactoring
 
 Cross-file refactoring, enterprise dependency refactoring, and rename refactoring tasks.
 
@@ -196,7 +196,7 @@ Cross-file refactoring, enterprise dependency refactoring, and rename refactorin
 
 ---
 
-## ccb_test (20 tasks) — Testing & QA
+## csb_sdlc_test (20 tasks) — Testing & QA
 
 Code review with injected defects, performance testing, and code search validation.
 
@@ -225,7 +225,7 @@ Code review with injected defects, performance testing, and code search validati
 
 ---
 
-## ccb_document (20 tasks) — Documentation
+## csb_sdlc_document (20 tasks) — Documentation
 
 API reference generation, architecture documentation, and migration guide creation.
 
@@ -254,7 +254,7 @@ API reference generation, architecture documentation, and migration guide creati
 
 ---
 
-## ccb_secure (20 tasks) — Security & Compliance
+## csb_sdlc_secure (20 tasks) — Security & Compliance
 
 CVE analysis, vulnerability reachability, governance enforcement, and access control.
 
@@ -283,7 +283,7 @@ CVE analysis, vulnerability reachability, governance enforcement, and access con
 
 ---
 
-## ccb_debug (20 tasks) — Debugging & Investigation
+## csb_sdlc_debug (20 tasks) — Debugging & Investigation
 
 Root cause tracing, fault localization, regression provenance, and deep investigation.
 
@@ -334,10 +334,10 @@ Each task follows this layout:
 bash configs/run_selected_tasks.sh
 
 # Run a single SDLC phase
-bash configs/run_selected_tasks.sh --benchmark ccb_fix
+bash configs/run_selected_tasks.sh --benchmark csb_sdlc_fix
 
 # Single task
-harbor run --path benchmarks/ccb_feature/servo-scrollend-event-feat-001 \
+harbor run --path benchmarks/csb_sdlc_feature/servo-scrollend-event-feat-001 \
   --agent-import-path agents.claude_baseline_agent:BaselineClaudeCodeAgent \
   --model anthropic/claude-haiku-4-5-20251001 \
   -n 1

@@ -1505,14 +1505,14 @@
       "transcript_sha256": "a047610d221baf2625369c8d54232daa8d9fe31c6ce7f1dd22114a7381837583"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb",
     "task_name": "linux-acpi-backlight-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-acpi-backlight-fault-001_baseline-local-direct/linux-acpi-backlight-fault-001__GPNNSVb/agent/claude-code.txt"
     }
   },
   "score": {

@@ -36,7 +36,7 @@ Environment variables:
     ANTHROPIC_API_KEY        Enables LLM query expansion (optional)
 
 Usage:
-    python3 scripts/curate_oracle.py --task-dir benchmarks/ccb_mcp_incident/ccx-incident-142
+    python3 scripts/curate_oracle.py --task-dir benchmarks/csb_org_incident/ccx-incident-142
     python3 scripts/curate_oracle.py --task-dir <dir> --mode deep --num-runs 4 --min-hits 2
     python3 scripts/curate_oracle.py --task-dir <dir> --mode keyword  # legacy
     python3 scripts/curate_oracle.py --task-dir <dir> --no-llm        # skip LLM expansion

@@ -13,7 +13,7 @@ Move old completed run directories to `runs/official/archive/` to save disk and 
 ### 1. Show what can be archived
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/archive_run.py --older-than 7
+cd ~/CodeScaleBench && python3 scripts/archive_run.py --older-than 7
 ```
 
 ### 2. Present the candidates

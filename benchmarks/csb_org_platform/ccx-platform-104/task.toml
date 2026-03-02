@@ -1,0 +1,29 @@
+version = "1.0"
+
+[metadata]
+name = "CCX-platform-104"
+description = "LLVM Loop Vectorization Infrastructure"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-platform-104"
+repo = "sg-evals/llvm-project--a8f3c97d"
+category = "platform-knowledge"
+language = "c++"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "csb_org_platform"
+use_case_id = 104
+repo_set_id = "compiler-toolchain"
+mcp_unique = true
+verification_modes = ["artifact"]
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+
+reward_type = "score"
+description = "LLVM Loop Vectorization Infrastructure"
+
+[environment]
+build_timeout_sec = 600.0

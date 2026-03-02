@@ -1,13 +1,13 @@
 # django-select-for-update-fix-001 (baseline-local-direct)
 
-- Run: `ccb_fix_haiku_022326`
+- Run: `csb_sdlc_fix_haiku_022326`
 - Status: `passed`
 - Reward: `0.6700`
-- Audit JSON: [link](../audits/ccb_fix_haiku_022326--baseline--django-select-for-update-fix-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_fix_haiku_022326--baseline--django-select-for-update-fix-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_fix_haiku_022326--baseline--django-select-for-update-fix-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_fix_haiku_022326--baseline--django-select-for-update-fix-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_fix_haiku_022326--baseline--django-select-for-update-fix-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_fix_haiku_022326--baseline--django-select-for-update-fix-001/claude-code.txt)
 
 ## Metrics
 

@@ -149,14 +149,14 @@
       "transcript_sha256": "2dbff37aaa84db5ac949ec92771f032cf18d31fd82eaf9ed3e8d225c065d6593"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi",
     "task_name": "terraform-arch-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-arch-doc-gen-001_baseline-local-direct/terraform-arch-doc-gen-001__eEbXKTi/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,13 +1,13 @@
 # ghost-code-review-001 (baseline-local-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `passed`
 - Reward: `0.8000`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--baseline-local-direct--ghost-code-review-001/claude-code.txt)
 
 ## Metrics
 

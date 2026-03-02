@@ -2659,14 +2659,14 @@
       "transcript_sha256": "728a6d9c3bd415b9dc0aa77be41a1895f20e381f7a146eaa2787da6bd6a56f0d"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/result.json",
-    "run_dir": "ccb_test_haiku_022326",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J",
+    "result_path": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/result.json",
+    "run_dir": "csb_sdlc_test_haiku_022326",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J",
     "task_name": "test-coverage-gap-002",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/agent/trajectory.json",
-      "transcript": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_test-coverage-gap-002_baseline-local-direct/test-coverage-gap-002__d9RU49J/agent/claude-code.txt"
     }
   },
   "score": {

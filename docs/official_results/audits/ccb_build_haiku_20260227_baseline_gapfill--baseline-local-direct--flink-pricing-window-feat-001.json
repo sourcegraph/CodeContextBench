@@ -1715,14 +1715,14 @@
       "transcript_sha256": "b5e1b8865a2f2e2b6c35fb56004440a743235be4ac91e4631830469b2e3c28aa"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/result.json",
-    "run_dir": "ccb_build_haiku_20260227_baseline_gapfill",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A",
+    "result_path": "runs/official/csb_sdlc_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/result.json",
+    "run_dir": "csb_sdlc_build_haiku_20260227_baseline_gapfill",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A",
     "task_name": "flink-pricing-window-feat-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_20260227_baseline_gapfill/baseline-local-direct/2026-02-27__13-40-00/flink-pricing-window-feat-001__Pi5K55A/agent/claude-code.txt"
     }
   },
   "score": {

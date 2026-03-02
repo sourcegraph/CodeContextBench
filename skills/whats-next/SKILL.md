@@ -13,13 +13,13 @@ Analyze the current state of benchmark runs and recommend the highest-value next
 ### 1. Get current status with gap analysis
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/aggregate_status.py --gap-analysis --format json
+cd ~/CodeScaleBench && python3 scripts/aggregate_status.py --gap-analysis --format json
 ```
 
 ### 2. Get config comparison
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/compare_configs.py --format json
+cd ~/CodeScaleBench && python3 scripts/compare_configs.py --format json
 ```
 
 ### 3. Categorize the situation and recommend
@@ -77,7 +77,7 @@ After paired_rerun batches finish (BL + SF on same VM), recommend analysis:
 
 #### If extraction bugs were fixed
 
-After changes to `extract_task_metrics.py` or `ccb_metrics/extractors.py`:
+After changes to `extract_task_metrics.py` or `csb_metrics/extractors.py`:
 - Run `/reextract-metrics` to batch-update all task_metrics.json files
 - Then regenerate MANIFEST: `python3 scripts/generate_manifest.py`
 - Then re-run analysis skills (`/mcp-audit`, `/evaluate-traces`) with corrected data

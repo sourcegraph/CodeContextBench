@@ -414,13 +414,14 @@ def run_retrieval_agent_on_cb_task(
     sg: Any = None,
     verbose: bool = False,
     use_cli: bool = False,
+    prune: bool = False,
 ) -> Dict[str, Any]:
     """Run our retrieval agent on a ContextBench task.
 
     Returns the agent's oracle output.
     """
     from context_retrieval_agent import (
-        run_agent, run_agent_cli,
+        run_agent, run_agent_cli, prune_with_haiku,
     )
 
     # Build a CCB-style context dict from ContextBench task
@@ -447,6 +448,7 @@ def run_retrieval_agent_on_cb_task(
             ctx, repo_paths,
             model=model, backend=backend,
             verbose=verbose,
+            prune=prune,
         )
     else:
         oracle, metadata = run_agent(
@@ -454,6 +456,12 @@ def run_retrieval_agent_on_cb_task(
             model=model, backend=backend,
             sg=sg, verbose=verbose,
         )
+        # Prune for SDK mode too
+        if prune and oracle.get("files"):
+            oracle = prune_with_haiku(
+                oracle, problem, use_cli=use_cli, verbose=verbose,
+            )
+            metadata["pruned"] = True
 
     return {
         "oracle": oracle,
@@ -821,6 +829,11 @@ def main() -> int:
     args = parser.parse_args()
     use_cli = not args.use_sdk
 
+    # Cap parallelism for CLI mode (MCP connection contention at >5)
+    if use_cli and args.parallel > 5:
+        log.warning("Capping --parallel to 5 for CLI mode (MCP contention). Use --use-sdk for higher parallelism.")
+        args.parallel = 5
+
     # Parse composite weights if provided
     composite_weights = None
     if args.composite_weights:
@@ -963,26 +976,32 @@ def main() -> int:
                 model=args.model, backend=args.backend,
                 sg=sg, verbose=args.verbose,
                 use_cli=use_cli,
+                prune=args.prune,
             )
         except Exception as e:
             log.error("[%d] Agent failed for %s: %s", idx + 1, instance_id, e)
             return None
 
-        # Optional pruning pass
-        if args.prune:
-            from context_retrieval_agent import prune_oracle_cli
-            ctx_for_prune = {
-                "seed_prompt": task.get("problem_statement", ""),
-                "instruction": task.get("problem_statement", ""),
-            }
-            result["oracle"] = prune_oracle_cli(
-                result["oracle"], ctx_for_prune, verbose=args.verbose,
-            )
-            prune_meta = result["oracle"].get("_prune_metadata", {})
-            result["metadata"]["prune_cost_usd"] = prune_meta.get("prune_cost_usd", 0)
-            result["metadata"]["cost_usd"] = (
-                result["metadata"].get("cost_usd", 0) + prune_meta.get("prune_cost_usd", 0)
-            )
+        # Retry once if agent returned 0 files (common in parallel CLI mode)
+        n_pred = len(result.get("oracle", {}).get("files", []))
+        is_error = result.get("metadata", {}).get("error", False)
+        if n_pred == 0 and (is_error or not result.get("oracle", {}).get("text")):
+            log.warning("[%d] Empty result for %s, retrying after 10s...", idx + 1, instance_id)
+            time.sleep(10)
+            try:
+                result = run_retrieval_agent_on_cb_task(
+                    task, repo_path, client,
+                    model=args.model, backend=args.backend,
+                    sg=sg, verbose=args.verbose,
+                    use_cli=use_cli,
+                    prune=args.prune,
+                )
+                n_retry = len(result.get("oracle", {}).get("files", []))
+                log.info("[%d] Retry for %s: %d files", idx + 1, instance_id, n_retry)
+            except Exception as e:
+                log.error("[%d] Retry failed for %s: %s", idx + 1, instance_id, e)
+                return None
+
 
         n_files = len(result["oracle"].get("files", []))
         log.info("[%d] %s -> %d files, $%.4f",

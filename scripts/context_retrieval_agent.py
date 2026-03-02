@@ -22,16 +22,16 @@ Environment variables:
 Usage:
     # Single task with hybrid backend (default)
     python3 scripts/context_retrieval_agent.py \\
-        --task-dir benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001
+        --task-dir benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001
 
     # Local-only backend (for cross-validation against SG oracle)
     python3 scripts/context_retrieval_agent.py \\
-        --task-dir benchmarks/ccb_fix/kafka-producer-bufpool-fix-001 \\
+        --task-dir benchmarks/csb_sdlc_fix/kafka-producer-bufpool-fix-001 \\
         --backend local
 
     # Cross-validate: run all backends on same tasks, compare agreement
     python3 scripts/context_retrieval_agent.py \\
-        --task-dir benchmarks/ccb_mcp_crossrepo_tracing/ccx-dep-trace-001 \\
+        --task-dir benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001 \\
         --cross-validate
 
     # Cheaper model for batch runs
@@ -85,16 +85,16 @@ MODEL_COSTS = {
 }
 
 SDLC_SUITES = [
-    "ccb_fix", "ccb_feature", "ccb_debug", "ccb_design",
-    "ccb_document", "ccb_refactor", "ccb_secure", "ccb_test",
-    "ccb_understand",
+    "csb_sdlc_fix", "csb_sdlc_feature", "csb_sdlc_debug", "csb_sdlc_design",
+    "csb_sdlc_document", "csb_sdlc_refactor", "csb_sdlc_secure", "csb_sdlc_test",
+    "csb_sdlc_understand",
 ]
 
 MCP_UNIQUE_SUITES = [
-    "ccb_mcp_crossrepo_tracing", "ccb_mcp_crossrepo", "ccb_mcp_crossorg",
-    "ccb_mcp_compliance", "ccb_mcp_domain", "ccb_mcp_incident",
-    "ccb_mcp_migration", "ccb_mcp_onboarding", "ccb_mcp_org",
-    "ccb_mcp_platform", "ccb_mcp_security",
+    "csb_org_crossrepo_tracing", "csb_org_crossrepo", "csb_org_crossorg",
+    "csb_org_compliance", "csb_org_domain", "csb_org_incident",
+    "csb_org_migration", "csb_org_onboarding", "csb_org_org",
+    "csb_org_platform", "csb_org_security",
 ]
 
 # ---------------------------------------------------------------------------
@@ -728,7 +728,7 @@ def ensure_repos_cloned(
 
 
 def find_project_root() -> Path:
-    """Walk up from this script to find the CodeContextBench root."""
+    """Walk up from this script to find the CodeScaleBench root."""
     p = Path(__file__).resolve().parent
     while p != p.parent:
         if (p / "benchmarks").is_dir() and (p / "fixtures").is_dir():
@@ -873,7 +873,7 @@ def _extract_clone_urls(dockerfile_content: str) -> List[Dict[str, str]]:
 
 CURATOR_SYSTEM_PROMPT = """\
 # Role
-You are a benchmark curator agent for CodeContextBench. Your task is to
+You are a benchmark curator agent for CodeScaleBench. Your task is to
 identify all source files a developer would need to READ or MODIFY to
 understand and solve a software engineering task, then annotate each file
 with the specific line ranges that are relevant.
@@ -887,37 +887,65 @@ Your behavior is calibrated against ContextBench's human-annotated dataset
 AND understanding/context files (tests, configs, dependencies). You must
 do the same.
 
-# Inclusion Rule
-Include a file if a skilled developer MUST read it to correctly solve the task:
-- Files that need code changes (edits/patches)
-- Test files that reveal the bug or define expected behavior
-- Dependency implementations needed to understand the call chain
-- Configuration files that constrain the solution
-- Type definitions, headers, or interfaces needed for correctness
+# Inclusion Rule — Be Precise
+Include a file ONLY if a skilled developer MUST read it to correctly solve
+the task. For each candidate file, ask: "Would the developer's solution be
+WRONG or INCOMPLETE without reading this specific file?" If the answer is
+no, do not include it.
 
-Do NOT include files discovered incidentally (e.g., via transitive imports)
-that are not needed to understand the core issue.
+INCLUDE:
+- Files that need code changes (edits/patches) — these are the CORE set
+- Test files ONLY if the patch itself would modify them (e.g., adding new test
+  cases, updating assertions, modifying fixtures). Do NOT include test files
+  merely because they exercise the changed code path.
+- Test fixture files (JSON, YAML, etc.) ONLY when the patch modifies them
+- Direct dependency implementations in the IMMEDIATE call chain (1-2 hops)
+- Configuration files that DIRECTLY constrain the solution
+- Type definitions, headers, or interfaces that define the API being changed
+- For feature additions: documentation files, changelog entries, and demo pages
+  that would be created or modified as part of the implementation
+
+EXCLUDE (common precision traps):
+- Test snapshot files (.snap, .snap.js)
+- Test files for OTHER features in the same module
+- Test files that merely call/exercise the changed code but wouldn't be modified
+- Sibling implementations (e.g. if Zoom.js is patched, do NOT include Fade.js,
+  Grow.js, Slide.js just because they follow the same pattern)
+- Related source files in the same package unless they are directly modified
+- Shell completion outputs or generated boilerplate
+- Transitive dependencies beyond 2 hops in the call chain
+- Files found via broad grep that happen to mention the same symbol
+- Build system files (Makefile, CMakeLists.txt) unless the task changes the build
+- __init__.py or index.ts barrel exports unless they contain real logic being changed
 
 # Size Calibration (from ContextBench empirical distribution)
-- Small tasks: 1-3 files (narrow, focused issues)
-- Medium tasks: 3-8 files (multi-component understanding)
-- Large tasks: 8-15+ files (complex dependencies or broad refactors)
-Most tasks need 3-5 files. Err toward recall over precision — missing a
-relevant file is worse than including an extra one.
+- Small tasks (most common): 1-3 files
+- Medium tasks: 3-8 files
+- Large tasks: 8-15 files (rare — only for broad refactors)
+HARD CEILING: If you have more than 15 files, you are almost certainly
+over-including. Review each file and drop anything that is not essential.
+The median ContextBench task has 3 gold files. Precision matters as much
+as recall.
 
 # Tools Available
 {tool_description}
 
 # Strategy
-1. Parse the task carefully. Identify key entities (packages, types, functions).
-2. Explore broadly first — understand the repo structure and locate entry points.
-3. For each candidate file, READ it to identify the specific line ranges relevant
-   to the task. Record start_line and end_line for each relevant section.
-4. Classify each included file as either:
-   - "edit": file that would need modification to solve the task
-   - "context": file needed for understanding but not modified
-5. For multi-repo tasks, search ALL repos, not just the most obvious one.
-6. Cross-validate: verify every file you include by reading it directly.
+1. Parse the task carefully. Identify the SPECIFIC entities (packages, types,
+   functions) that need to change.
+2. Start with the edit files — find exactly which files need modification.
+3. For each edit file, identify its DIRECT dependencies (1-2 hops only).
+4. Only include test files if the fix/feature would MODIFY them (new tests,
+   updated assertions, changed fixtures). Do not include tests just because
+   they exercise the affected code.
+5. For each candidate file, READ it and verify it contains code directly
+   relevant to the task. Record specific line ranges.
+6. PRECISION REVIEW: Before finalizing, critically review every file and ask
+   "would a developer need to EDIT this file to resolve the issue?" For any
+   file where the answer is no, remove it unless it's a direct dependency
+   that constrains the solution (type def, interface, config).
+7. For multi-repo tasks, search ALL repos, not just the most obvious one.
+8. Cross-validate: verify every file you include by reading it directly.
    Do not include files based solely on search result summaries.
 
 # Output Format
@@ -961,7 +989,7 @@ def _tool_description_for_backend(backend: str, cli_mode: bool = False) -> str:
         )
         ds = (
             "Sourcegraph Deep Search (via Bash — MUST USE):\n"
-            "Run: bash /home/stephanie_jarmak/CodeContextBench/scripts/ds_wrapper.sh \"your question here\"\n"
+            "Run: bash /home/stephanie_jarmak/CodeScaleBench/scripts/ds_wrapper.sh \"your question here\"\n"
             "CRITICAL: Always include the repository name in your query.\n"
             "Examples:\n"
             "- \"What files implement RBAC escalation checks in kubernetes/kubernetes?\"\n"
@@ -1011,6 +1039,7 @@ def run_agent_cli(
     model: str = DEFAULT_MODEL,
     backend: str = "hybrid",
     verbose: bool = False,
+    prune: bool = False,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """Run the retrieval agent via Claude CLI (subscription billing).
 
@@ -1065,7 +1094,7 @@ def run_agent_cli(
                 }
             }
             mcp_file = tempfile.NamedTemporaryFile(
-                mode="w", suffix=".json", prefix="ccb_mcp_", delete=False,
+                mode="w", suffix=".json", prefix="csb_mcp_", delete=False,
             )
             json.dump(mcp_config, mcp_file)
             mcp_file.close()
@@ -1177,6 +1206,15 @@ def run_agent_cli(
         log.info("  CLI done: %d turns, $%.4f, %.1fs",
                  metadata["num_turns"], metadata["cost_usd"], elapsed)
 
+    # Optional haiku pruning pass for precision
+    if prune and oracle_result.get("files"):
+        problem = ctx.get("seed_prompt", "") or ctx.get("instruction", "")
+        oracle_result = prune_with_haiku(
+            oracle_result, problem, use_cli=True, verbose=verbose,
+        )
+        metadata["pruned"] = True
+        metadata["files_before_prune"] = oracle_result.get("_pruned_from", len(oracle_result.get("files", [])))
+
     return oracle_result, metadata
 
 
@@ -1197,10 +1235,170 @@ def _cli_error_metadata(model: str, backend: str, start_time: float) -> Dict[str
     }
 
 
-# PRUNE_PROMPT and prune_oracle_cli() removed — pruning guidance is now
-# integrated into the unified CURATOR_SYSTEM_PROMPT. The curator prompt
-# instructs the agent to classify files as "edit" vs "context" and
-# exclude files discovered incidentally.
+# ---------------------------------------------------------------------------
+# Haiku Pruning Pass
+# ---------------------------------------------------------------------------
+# After the main curator agent returns a file list, run a cheap haiku pass
+# to filter out files unlikely to be in the actual patch. This improves
+# precision without hurting recall significantly.
+
+PRUNE_PROMPT = """\
+You are a conservative precision filter for a code retrieval system. Given a bug
+report and a list of candidate files, identify ONLY the obvious false positives.
+
+**CRITICAL: When in doubt, KEEP the file. It is far worse to drop a needed file
+than to keep an extra one. Only DROP files you are highly confident would NOT be
+modified by the patch.**
+
+## Bug Report / Task
+{problem_statement}
+
+## Candidate Files
+{file_list}
+
+## Instructions
+For each file, output KEEP or DROP. Default to KEEP unless the file is a clear
+false positive matching one of these specific patterns:
+
+DROP only if ALL of these are true:
+1. The file is a test file (path contains test/tests, or name matches *_test.* / *.test.*)
+2. The bug report does NOT mention needing new tests or updated test assertions
+3. The file tests a DIFFERENT feature/module than the one described in the bug
+
+Also DROP:
+- Sibling implementations that are clearly unrelated (e.g. if only Zoom.js has
+  a bug, DROP Fade.js / Grow.js / Slide.js)
+
+KEEP everything else, including:
+- Source files that might be edited (even if you're unsure)
+- Utility/helper files referenced by the bug report
+- Config files, type definitions, interfaces
+- Test files if there's any chance the fix involves updating them
+
+Output a JSON object:
+```json
+{{"keep": ["file1.py", "file2.py"], "drop": ["file3.py"]}}
+```
+"""
+
+
+def prune_with_haiku(
+    oracle: Dict[str, Any],
+    problem_statement: str,
+    prune_model: str = "claude-haiku-4-5-20251001",
+    use_cli: bool = True,
+    verbose: bool = False,
+) -> Dict[str, Any]:
+    """Run a cheap haiku pass to filter false positives from the oracle.
+
+    Args:
+        oracle: The oracle result dict from the main curator agent.
+        problem_statement: The bug report / task description.
+        prune_model: Model to use for pruning (default: haiku).
+        use_cli: If True, use claude CLI; otherwise use anthropic SDK.
+        verbose: Log details.
+
+    Returns:
+        Updated oracle dict with pruned file list.
+    """
+    files = oracle.get("files", [])
+    if len(files) <= 1:
+        return oracle  # Nothing to prune
+
+    file_list = "\n".join(f"- {f}" for f in files)
+    prompt = PRUNE_PROMPT.format(
+        problem_statement=problem_statement[:3000],
+        file_list=file_list,
+    )
+
+    if use_cli:
+        keep_files = _prune_via_cli(prompt, prune_model, verbose)
+    else:
+        keep_files = _prune_via_sdk(prompt, prune_model, verbose)
+
+    if keep_files is None:
+        # Pruning failed — return original (don't lose files)
+        if verbose:
+            log.warning("Haiku pruning failed, keeping original %d files", len(files))
+        return oracle
+
+    # Preserve order from original list, only keep files haiku approved
+    keep_set = set(keep_files)
+    pruned = [f for f in files if f in keep_set]
+
+    # Safety: never prune to 0 — keep at least edit files
+    if not pruned:
+        edit_files = oracle.get("expected_edit_files", [])
+        pruned = edit_files if edit_files else files[:1]
+
+    if verbose:
+        dropped = len(files) - len(pruned)
+        log.info("Haiku pruning: %d -> %d files (dropped %d)",
+                 len(files), len(pruned), dropped)
+
+    result = dict(oracle)
+    result["files"] = pruned
+    result["_pruned_from"] = len(files)
+
+    # Also prune chunks to match
+    if "chunks" in result:
+        result["chunks"] = [c for c in result["chunks"]
+                            if c.get("file") in keep_set]
+
+    return result
+
+
+def _prune_via_cli(
+    prompt: str, model: str, verbose: bool,
+) -> Optional[List[str]]:
+    """Prune via claude CLI (subscription billing)."""
+    cmd = [
+        "claude", "-p", prompt,
+        "--output-format", "json",
+        "--model", model,
+        "--dangerously-skip-permissions",
+    ]
+    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
+
+    try:
+        proc = subprocess.run(
+            cmd, capture_output=True, text=True, env=env, timeout=60,
+        )
+        if proc.returncode != 0:
+            log.warning("Haiku prune CLI failed (rc=%d)", proc.returncode)
+            return None
+
+        cli_output = json.loads(proc.stdout)
+        result_text = cli_output.get("result", "")
+        parsed = _extract_json_from_text(result_text)
+        if parsed and "keep" in parsed:
+            return parsed["keep"]
+        return None
+    except (subprocess.TimeoutExpired, json.JSONDecodeError, Exception) as e:
+        log.warning("Haiku prune error: %s", e)
+        return None
+
+
+def _prune_via_sdk(
+    prompt: str, model: str, verbose: bool,
+) -> Optional[List[str]]:
+    """Prune via anthropic SDK (API billing)."""
+    try:
+        import anthropic
+        client = anthropic.Anthropic()
+        response = client.messages.create(
+            model=model,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        text = response.content[0].text if response.content else ""
+        parsed = _extract_json_from_text(text)
+        if parsed and "keep" in parsed:
+            return parsed["keep"]
+        return None
+    except Exception as e:
+        log.warning("Haiku prune SDK error: %s", e)
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -1219,7 +1417,7 @@ def parse_task_for_curator(task_dir: Path) -> Dict[str, Any]:
     """
     ctx = load_task_context(task_dir)
     suite = ctx.get("suite_name", "")
-    ctx["task_type"] = "mcp_unique" if suite.startswith("ccb_mcp_") else "sdlc"
+    ctx["task_type"] = "mcp_unique" if suite.startswith(("csb_org_", "ccb_mcp_")) else "sdlc"
 
     # Detect multi-repo from Dockerfile env vars or fixture
     ctx["is_multi_repo"] = bool(ctx.get("repo_fixture", {}).get("repos", []))
@@ -1898,7 +2096,7 @@ def write_curator_outputs(
 
     # 2. oracle_answer.json (MCP-unique only, artifact verifier format)
     suite = ctx.get("suite_name", "")
-    if suite.startswith("ccb_mcp_"):
+    if suite.startswith(("csb_org_", "ccb_mcp_")):
         oracle_fmt = _convert_to_oracle_schema(raw_oracle, ctx)
         oracle_fmt["_metadata"] = metadata
         existing_oracle = tests_dir / "oracle_answer.json"
@@ -1964,7 +2162,7 @@ def write_oracle(
         tests_dir = task_dir / "tests"
         tests_dir.mkdir(exist_ok=True)
         suite = task_dir.parent.name
-        if suite.startswith("ccb_mcp_"):
+        if suite.startswith(("csb_org_", "ccb_mcp_")):
             out = tests_dir / "oracle_answer_agent.json"
         else:
             out = tests_dir / "ground_truth_agent.json"
@@ -1989,7 +2187,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--suite", type=str, default="",
-        help="Process all tasks in a suite (e.g., ccb_mcp_crossrepo_tracing)",
+        help="Process all tasks in a suite (e.g., csb_org_crossrepo_tracing)",
     )
     parser.add_argument(
         "--sdlc-all", action="store_true",
@@ -2111,7 +2309,7 @@ def main() -> int:
             suite = t.parent.name
             # Check for agent-generated oracle
             if args.skip_existing:
-                if suite.startswith("ccb_mcp_"):
+                if suite.startswith(("csb_org_", "ccb_mcp_")):
                     if (tests_dir / "oracle_answer_agent.json").exists():
                         continue
                 else:
@@ -2233,7 +2431,7 @@ def main() -> int:
             out_dir = Path(args.output_dir) / task_dir.parent.name
             out_dir.mkdir(parents=True, exist_ok=True)
             suite = task_dir.parent.name
-            if suite.startswith("ccb_mcp_"):
+            if suite.startswith(("csb_org_", "ccb_mcp_")):
                 output_path = str(out_dir / f"{task_dir.name}_oracle_agent.json")
             else:
                 output_path = str(out_dir / f"{task_dir.name}_gt_agent.json")

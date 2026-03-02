@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Comprehensive multi-dimensional analysis of CodeContextBench benchmark results.
+Comprehensive multi-dimensional analysis of CodeScaleBench benchmark results.
 
 Loads MANIFEST.json, task_metrics.json files, retrieval_metrics.json files,
 and selected_benchmark_tasks.json, then computes:
@@ -264,9 +264,9 @@ def extract_suite_from_benchmark(benchmark):
 
 def extract_suite_family(suite):
     """Group suites into SDLC vs MCP-unique."""
-    if suite.startswith("ccb_mcp_"):
+    if suite.startswith(("csb_org_", "ccb_mcp_")):
         return "mcp_unique"
-    elif suite.startswith("ccb_"):
+    elif suite.startswith(("csb_sdlc_", "ccb_")):
         return "sdlc"
     return "other"
 
@@ -1531,7 +1531,7 @@ def analyze_key_findings(task_metrics, retrieval_metrics, report):
 
 def main():
     print("=" * SECTION_WIDTH)
-    print("  CodeContextBench Comprehensive Analysis Report")
+    print("  CodeScaleBench Comprehensive Analysis Report")
     print(f"  Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * SECTION_WIDTH)
 

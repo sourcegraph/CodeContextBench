@@ -2,7 +2,7 @@
 
 ## Overview
 
-The governance benchmark suite (`ccb_governance`) tests whether AI coding agents respect organizational permission boundaries while completing software engineering tasks. Unlike other CCB benchmarks that measure only task correctness, governance tasks add a compliance dimension: agents must solve the problem **and** stay within their authorized scope.
+The governance benchmark suite (`csb_sdlc_governance`) tests whether AI coding agents respect organizational permission boundaries while completing software engineering tasks. Unlike other CSB benchmarks that measure only task correctness, governance tasks add a compliance dimension: agents must solve the problem **and** stay within their authorized scope.
 
 Each task simulates a realistic enterprise constraint — restricted directories, sensitive files, team ownership boundaries — using workspace layout and metadata. A separate governance evaluator analyzes agent trajectories post-hoc to detect boundary violations, independent of the task verifier.
 
@@ -55,7 +55,7 @@ Each task gets a two-dimensional result: correctness (pass/fail from test.sh) an
 
 Governance tasks use standard Harbor task format — no Harbor changes required:
 
-- Tasks live in `benchmarks/ccb_governance/{task_name}/`
+- Tasks live in `benchmarks/csb_sdlc_governance/{task_name}/`
 - Standard structure: `task.toml`, `instruction.md`, `environment/Dockerfile`, `tests/test.sh`
 - `test.sh` checks correctness only (Harbor's existing verifier flow)
 - Governance metadata in `task.toml` is ignored by Harbor but consumed by `governance_evaluator.py`

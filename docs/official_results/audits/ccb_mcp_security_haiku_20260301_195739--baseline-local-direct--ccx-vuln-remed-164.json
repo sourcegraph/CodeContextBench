@@ -1168,14 +1168,14 @@
       "transcript_sha256": "a304e5d85c2eb5f4dfa282dce8a7f0350813f4fe446b9d07a12846f518b0fbc6"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_mcp_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/result.json",
-    "run_dir": "ccb_mcp_security_haiku_20260301_195739",
-    "suite": "ccb_mcp_security",
-    "task_dir": "runs/official/ccb_mcp_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6",
+    "result_path": "runs/official/csb_org_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/result.json",
+    "run_dir": "csb_org_security_haiku_20260301_195739",
+    "suite": "csb_org_security",
+    "task_dir": "runs/official/csb_org_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6",
     "task_name": "ccx-vuln-remed-164",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_mcp_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/agent/trajectory.json",
-      "transcript": "runs/official/ccb_mcp_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_org_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/agent/trajectory.json",
+      "transcript": "runs/official/csb_org_security_haiku_20260301_195739/baseline-local-direct/2026-03-01__20-06-24/ccx-vuln-remed-164__CCXgjy6/agent/claude-code.txt"
     }
   },
   "score": {

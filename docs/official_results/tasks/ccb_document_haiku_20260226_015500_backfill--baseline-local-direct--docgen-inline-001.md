@@ -1,13 +1,13 @@
 # docgen-inline-001 (baseline-local-direct)
 
-- Run: `ccb_document_haiku_20260226_015500_backfill`
+- Run: `csb_sdlc_document_haiku_20260226_015500_backfill`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_document_haiku_20260226_015500_backfill--baseline-local-direct--docgen-inline-001/claude-code.txt)
 
 ## Metrics
 

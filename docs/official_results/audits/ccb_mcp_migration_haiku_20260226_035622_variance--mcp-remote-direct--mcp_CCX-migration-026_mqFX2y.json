@@ -531,14 +531,14 @@
       "transcript_sha256": "257ac4264bca7c34a3736ce284de42e9f5f2618ed3572ba447a12debba9cf826"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_mcp_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/result.json",
-    "run_dir": "ccb_mcp_migration_haiku_20260226_035622_variance",
-    "suite": "ccb_mcp_migration",
-    "task_dir": "runs/official/ccb_mcp_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6",
+    "result_path": "runs/official/csb_org_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/result.json",
+    "run_dir": "csb_org_migration_haiku_20260226_035622_variance",
+    "suite": "csb_org_migration",
+    "task_dir": "runs/official/csb_org_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6",
     "task_name": "mcp_CCX-migration-026_mqFX2y",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_mcp_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/agent/trajectory.json",
-      "transcript": "runs/official/ccb_mcp_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_org_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/agent/trajectory.json",
+      "transcript": "runs/official/csb_org_migration_haiku_20260226_035622_variance/mcp-remote-direct/2026-02-26__08-05-36/mcp_CCX-migration-026_mqFX2y__pHGMAW6/agent/claude-code.txt"
     }
   },
   "score": {

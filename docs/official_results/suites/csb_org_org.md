@@ -1,0 +1,158 @@
+# csb_org_org
+
+## Run/Config Summary
+
+| Run | Config | Valid Tasks | Mean Reward | Pass Rate |
+|---|---|---:|---:|---:|
+| [csb_org_org_haiku_20260224_181919](../runs/csb_org_org_haiku_20260224_181919.md) | `mcp-remote-artifact` | 2 | 0.705 | 1.000 |
+| [csb_org_org_haiku_20260225_011700](../runs/csb_org_org_haiku_20260225_011700.md) | `baseline-local-artifact` | 2 | 0.500 | 1.000 |
+| [csb_org_org_haiku_20260226_035617](../runs/csb_org_org_haiku_20260226_035617.md) | `mcp-remote-direct` | 3 | 0.503 | 1.000 |
+| [csb_org_org_haiku_20260226_035622_variance](../runs/csb_org_org_haiku_20260226_035622_variance.md) | `mcp-remote-direct` | 3 | 0.557 | 1.000 |
+| [csb_org_org_haiku_20260226_035628_variance](../runs/csb_org_org_haiku_20260226_035628_variance.md) | `mcp-remote-direct` | 3 | 0.497 | 1.000 |
+| [csb_org_org_haiku_20260226_035633_variance](../runs/csb_org_org_haiku_20260226_035633_variance.md) | `mcp-remote-direct` | 3 | 0.515 | 1.000 |
+| [csb_org_org_haiku_20260228_010402](../runs/csb_org_org_haiku_20260228_010402.md) | `baseline-local-direct` | 3 | 0.488 | 1.000 |
+| [csb_org_org_haiku_20260228_010402](../runs/csb_org_org_haiku_20260228_010402.md) | `mcp-remote-direct` | 5 | 0.592 | 1.000 |
+| [csb_org_org_haiku_20260301_191250](../runs/csb_org_org_haiku_20260301_191250.md) | `mcp-remote-direct` | 13 | 0.000 | 0.000 |
+| [csb_org_org_haiku_20260301_195739](../runs/csb_org_org_haiku_20260301_195739.md) | `baseline-local-direct` | 5 | 0.102 | 0.800 |
+| [csb_org_org_haiku_20260301_195739](../runs/csb_org_org_haiku_20260301_195739.md) | `mcp-remote-direct` | 15 | 0.338 | 0.933 |
+| [csb_org_org_haiku_20260302_014939](../runs/csb_org_org_haiku_20260302_014939.md) | `mcp-remote-direct` | 2 | 0.274 | 1.000 |
+| [csb_org_org_haiku_20260302_175821](../runs/csb_org_org_haiku_20260302_175821.md) | `baseline-local-direct` | 5 | 0.335 | 1.000 |
+| [csb_org_org_haiku_20260302_175821](../runs/csb_org_org_haiku_20260302_175821.md) | `mcp-remote-direct` | 12 | 0.427 | 1.000 |
+| [csb_org_org_haiku_20260302_175827](../runs/csb_org_org_haiku_20260302_175827.md) | `baseline-local-direct` | 7 | 0.458 | 1.000 |
+| [csb_org_org_haiku_20260302_175827](../runs/csb_org_org_haiku_20260302_175827.md) | `mcp-remote-direct` | 11 | 0.454 | 1.000 |
+
+## Tasks
+
+| Task | Benchmark | Config | Status | Reward | Runs | MCP Ratio |
+|---|---|---|---|---:|---:|---:|
+| [ccx-agentic-081](../tasks/csb_org_org_haiku_20260228_010402--baseline-local-direct--ccx-agentic-081.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `baseline-local-direct` | `passed` | 0.545 | 3 | 0.000 |
+| [mcp_CCX-agentic-081_NxSZhx](../tasks/csb_org_org_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-agentic-081_NxSZhx.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | `passed` | 0.727 | 5 | 0.667 |
+| [mcp_CCX-agentic-081_beza2I](../tasks/csb_org_org_haiku_20260228_010402--mcp-remote-direct--mcp_CCX-agentic-081_beza2I.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | `passed` | 0.800 | 5 | 0.833 |
+| [mcp_CCX-agentic-081_nhEmFP](../tasks/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-081_nhEmFP.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | `passed` | 0.833 | 5 | 0.615 |
+| [mcp_CCX-agentic-081_qwOen4](../tasks/csb_org_org_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-agentic-081_qwOen4.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | `passed` | 0.600 | 5 | 0.778 |
+| [mcp_CCX-agentic-081_vk5N7K](../tasks/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-081_vk5N7K.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | `passed` | 0.545 | 5 | 0.846 |
+| [ccx-agentic-082](../tasks/csb_org_org_haiku_20260228_010402--baseline-local-direct--ccx-agentic-082.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `baseline-local-direct` | `passed` | 0.458 | 3 | 0.000 |
+| [mcp_CCX-agentic-082_19O0Sc](../tasks/csb_org_org_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-agentic-082_19O0Sc.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | `passed` | 0.139 | 5 | 0.684 |
+| [mcp_CCX-agentic-082_f0OoET](../tasks/csb_org_org_haiku_20260228_010402--mcp-remote-direct--mcp_CCX-agentic-082_f0OoET.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | `passed` | 0.321 | 5 | 0.875 |
+| [mcp_CCX-agentic-082_rl9F5X](../tasks/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-082_rl9F5X.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | `passed` | 0.330 | 5 | 0.762 |
+| [mcp_CCX-agentic-082_CqbdIY](../tasks/csb_org_org_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-agentic-082_CqbdIY.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | `passed` | 0.279 | 5 | 0.520 |
+| [mcp_CCX-agentic-082_42BGOY](../tasks/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-082_42BGOY.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | `passed` | 0.372 | 5 | 0.591 |
+| [ccx-agentic-083](../tasks/csb_org_org_haiku_20260228_010402--baseline-local-direct--ccx-agentic-083.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `baseline-local-direct` | `passed` | 0.460 | 3 | 0.000 |
+| [mcp_CCX-agentic-083_YcQodu](../tasks/csb_org_org_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-agentic-083_YcQodu.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | `passed` | 0.625 | 5 | 0.840 |
+| [mcp_CCX-agentic-083_uUCRBj](../tasks/csb_org_org_haiku_20260228_010402--mcp-remote-direct--mcp_CCX-agentic-083_uUCRBj.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | `passed` | 0.515 | 5 | 0.815 |
+| [mcp_CCX-agentic-083_MGgD0v](../tasks/csb_org_org_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-agentic-083_MGgD0v.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | `passed` | 0.508 | 5 | 0.667 |
+| [mcp_CCX-agentic-083_EvgZpL](../tasks/csb_org_org_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-agentic-083_EvgZpL.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | `passed` | 0.667 | 5 | 0.645 |
+| [mcp_CCX-agentic-083_gI8ntw](../tasks/csb_org_org_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-agentic-083_gI8ntw.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | `passed` | 0.592 | 5 | 0.762 |
+| [bl_CCX-agentic-122_8VHUFv](../tasks/csb_org_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-122_8VHUFv.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `baseline-local-artifact` | `passed` | 0.500 | 1 | 0.000 |
+| [ccx-agentic-122](../tasks/csb_org_org_haiku_20260302_175821--baseline-local-direct--ccx-agentic-122.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `baseline-local-direct` | `passed` | 0.357 | 5 | 0.000 |
+| [mcp_CCX-agentic-122_NhlzeE](../tasks/csb_org_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-122_NhlzeE.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `mcp-remote-artifact` | `passed` | 0.601 | 1 | 0.875 |
+| [mcp_CCX-agentic-122_no8Cih](../tasks/csb_org_org_haiku_20260228_010402--mcp-remote-direct--mcp_CCX-agentic-122_no8Cih.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `mcp-remote-direct` | `passed` | 0.652 | 3 | 0.909 |
+| [mcp_ccx-agentic-122_eje92w](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-122_eje92w.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `mcp-remote-direct` | `passed` | 0.302 | 3 | 0.864 |
+| [mcp_ccx-agentic-122_teyun6](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-122_teyun6.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `mcp-remote-direct` | `passed` | 0.315 | 3 | 0.852 |
+| [bl_CCX-agentic-127_W11C77](../tasks/csb_org_org_haiku_20260225_011700--baseline-local-artifact--bl_CCX-agentic-127_W11C77.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `baseline-local-artifact` | `passed` | 0.500 | 1 | 0.000 |
+| [ccx-agentic-127](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-127.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `baseline-local-direct` | `passed` | 0.604 | 5 | 0.000 |
+| [mcp_CCX-agentic-127_u23YO8](../tasks/csb_org_org_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-agentic-127_u23YO8.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `mcp-remote-artifact` | `passed` | 0.809 | 1 | 0.762 |
+| [mcp_CCX-agentic-127_r9hPi0](../tasks/csb_org_org_haiku_20260228_010402--mcp-remote-direct--mcp_CCX-agentic-127_r9hPi0.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `mcp-remote-direct` | `passed` | 0.672 | 3 | 0.652 |
+| [mcp_ccx-agentic-127_r8r4dj](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-127_r8r4dj.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `mcp-remote-direct` | `passed` | 0.354 | 3 | 0.786 |
+| [mcp_ccx-agentic-127_grjfyv](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-127_grjfyv.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `mcp-remote-direct` | `passed` | 0.482 | 3 | 0.857 |
+| [ccx-agentic-223](../tasks/csb_org_org_haiku_20260302_175821--baseline-local-direct--ccx-agentic-223.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `baseline-local-direct` | `passed` | 0.375 | 4 | 0.000 |
+| [mcp_ccx-agentic-223_w2pszm](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-223_w2pszm.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `mcp-remote-direct` | `passed` | 0.462 | 4 | 0.957 |
+| [mcp_ccx-agentic-223_pnoniz](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-223_pnoniz.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `mcp-remote-direct` | `passed` | 0.556 | 4 | 0.947 |
+| [mcp_ccx-agentic-223_0efmbz](../tasks/csb_org_org_haiku_20260302_014939--mcp-remote-direct--mcp_ccx-agentic-223_0efmbz.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `mcp-remote-direct` | `passed` | 0.308 | 4 | 0.962 |
+| [mcp_ccx-agentic-223_ugttch](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-223_ugttch.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `mcp-remote-direct` | `passed` | 0.462 | 4 | 0.941 |
+| [ccx-agentic-224](../tasks/csb_org_org_haiku_20260302_175821--baseline-local-direct--ccx-agentic-224.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `baseline-local-direct` | `passed` | 0.400 | 3 | 0.000 |
+| [mcp_ccx-agentic-224_nxdnlg](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-224_nxdnlg.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `mcp-remote-direct` | `passed` | 0.500 | 4 | 0.875 |
+| [mcp_ccx-agentic-224_vv9bcr](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-224_vv9bcr.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `mcp-remote-direct` | `passed` | 0.500 | 4 | 0.920 |
+| [mcp_ccx-agentic-224_zuxaaq](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-224_zuxaaq.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `mcp-remote-direct` | `passed` | 0.600 | 4 | 0.905 |
+| [mcp_ccx-agentic-224_kppnpk](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-224_kppnpk.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.964 |
+| [ccx-agentic-225](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-225.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `baseline-local-direct` | `passed` | 0.500 | 4 | 0.000 |
+| [mcp_ccx-agentic-225_grqjxk](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-225_grqjxk.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `mcp-remote-direct` | `passed` | 0.182 | 4 | 0.937 |
+| [mcp_ccx-agentic-225_wuasla](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-225_wuasla.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `mcp-remote-direct` | `passed` | 0.571 | 4 | 0.947 |
+| [mcp_ccx-agentic-225_b4rzm3](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-225_b4rzm3.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `mcp-remote-direct` | `passed` | 0.191 | 4 | 0.817 |
+| [mcp_ccx-agentic-225_abixku](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-225_abixku.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.972 |
+| [ccx-agentic-226](../tasks/csb_org_org_haiku_20260301_195739--baseline-local-direct--ccx-agentic-226.html) | — | `baseline-local-direct` | `passed` | 0.129 | 2 | 0.000 |
+| [mcp_ccx-agentic-226_mvqtfx](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-226_mvqtfx.html) | — | `mcp-remote-direct` | `passed` | 0.182 | 2 | 0.947 |
+| [mcp_ccx-agentic-226_pz5ot3](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-226_pz5ot3.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.909 |
+| [ccx-agentic-227](../tasks/csb_org_org_haiku_20260301_195739--baseline-local-direct--ccx-agentic-227.html) | — | `baseline-local-direct` | `passed` | 0.136 | 2 | 0.000 |
+| [mcp_ccx-agentic-227_yrhagi](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-227_yrhagi.html) | — | `mcp-remote-direct` | `passed` | 0.135 | 2 | 0.968 |
+| [mcp_ccx-agentic-227_xxeehn](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-227_xxeehn.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.970 |
+| [ccx-agentic-228](../tasks/csb_org_org_haiku_20260301_195739--baseline-local-direct--ccx-agentic-228.html) | — | `baseline-local-direct` | `passed` | 0.158 | 2 | 0.000 |
+| [mcp_ccx-agentic-228_ly0ffd](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-228_ly0ffd.html) | — | `mcp-remote-direct` | `passed` | 0.125 | 2 | 0.944 |
+| [mcp_ccx-agentic-228_l65oyd](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-228_l65oyd.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.938 |
+| [ccx-agentic-229](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-229.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `baseline-local-direct` | `passed` | 0.151 | 4 | 0.000 |
+| [mcp_ccx-agentic-229_lsnixs](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-229_lsnixs.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `mcp-remote-direct` | `passed` | 0.244 | 4 | 0.913 |
+| [mcp_ccx-agentic-229_vd1zzb](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-229_vd1zzb.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `mcp-remote-direct` | `passed` | 0.196 | 4 | 0.960 |
+| [mcp_ccx-agentic-229_gb3yhs](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-229_gb3yhs.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `mcp-remote-direct` | `passed` | 0.242 | 4 | 0.909 |
+| [mcp_ccx-agentic-229_ikwdlo](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-229_ikwdlo.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.950 |
+| [ccx-agentic-230](../tasks/csb_org_org_haiku_20260301_195739--baseline-local-direct--ccx-agentic-230.html) | — | `baseline-local-direct` | `failed` | 0.000 | 2 | 0.000 |
+| [mcp_ccx-agentic-230_iou09d](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-230_iou09d.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.974 |
+| [mcp_ccx-agentic-230_enmooj](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-230_enmooj.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.970 |
+| [ccx-agentic-231](../tasks/csb_org_org_haiku_20260301_195739--baseline-local-direct--ccx-agentic-231.html) | — | `baseline-local-direct` | `passed` | 0.085 | 2 | 0.000 |
+| [mcp_ccx-agentic-231_7xqg88](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-231_7xqg88.html) | — | `mcp-remote-direct` | `passed` | 0.098 | 2 | 0.873 |
+| [mcp_ccx-agentic-231_kcddjh](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-231_kcddjh.html) | — | `mcp-remote-direct` | `failed` | 0.000 | 2 | 0.962 |
+| [ccx-agentic-232](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-232.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `baseline-local-direct` | `passed` | 0.270 | 4 | 0.000 |
+| [mcp_ccx-agentic-232_j8itev](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-232_j8itev.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `mcp-remote-direct` | `passed` | 0.400 | 4 | 0.957 |
+| [mcp_ccx-agentic-232_js3cnd](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-232_js3cnd.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `mcp-remote-direct` | `passed` | 0.417 | 4 | 0.955 |
+| [mcp_ccx-agentic-232_y8bsde](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-232_y8bsde.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `mcp-remote-direct` | `passed` | 0.444 | 4 | 0.955 |
+| [mcp_ccx-agentic-232_vzdkl2](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-232_vzdkl2.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.962 |
+| [ccx-agentic-233](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-233.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `baseline-local-direct` | `passed` | 0.667 | 4 | 0.000 |
+| [mcp_ccx-agentic-233_ita8kf](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-233_ita8kf.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `mcp-remote-direct` | `passed` | 0.769 | 4 | 0.909 |
+| [mcp_ccx-agentic-233_cgr4j2](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-233_cgr4j2.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `mcp-remote-direct` | `passed` | 0.667 | 4 | 0.857 |
+| [mcp_ccx-agentic-233_cbmrnu](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-233_cbmrnu.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `mcp-remote-direct` | `passed` | 0.615 | 4 | 0.960 |
+| [mcp_ccx-agentic-233_wsa3gr](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-233_wsa3gr.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.833 |
+| [ccx-agentic-234](../tasks/csb_org_org_haiku_20260302_175821--baseline-local-direct--ccx-agentic-234.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `baseline-local-direct` | `passed` | 0.271 | 4 | 0.000 |
+| [mcp_ccx-agentic-234_3ags4g](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-234_3ags4g.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `mcp-remote-direct` | `passed` | 0.471 | 4 | 0.913 |
+| [mcp_ccx-agentic-234_p8zs1k](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-234_p8zs1k.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `mcp-remote-direct` | `passed` | 0.500 | 4 | 0.818 |
+| [mcp_ccx-agentic-234_kjlggm](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-234_kjlggm.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `mcp-remote-direct` | `passed` | 0.467 | 4 | 0.818 |
+| [mcp_ccx-agentic-234_mcxnew](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-234_mcxnew.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.958 |
+| [ccx-agentic-235](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-235.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `baseline-local-direct` | `passed` | 0.400 | 4 | 0.000 |
+| [mcp_ccx-agentic-235_qzbzjn](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-235_qzbzjn.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `mcp-remote-direct` | `passed` | 0.571 | 4 | 0.964 |
+| [mcp_ccx-agentic-235_j850jd](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-235_j850jd.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `mcp-remote-direct` | `passed` | 0.500 | 4 | 0.933 |
+| [mcp_ccx-agentic-235_xywwfk](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-235_xywwfk.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `mcp-remote-direct` | `passed` | 0.571 | 4 | 0.955 |
+| [mcp_ccx-agentic-235_yqvftu](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-235_yqvftu.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.931 |
+| [ccx-agentic-236](../tasks/csb_org_org_haiku_20260302_175821--baseline-local-direct--ccx-agentic-236.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `baseline-local-direct` | `passed` | 0.273 | 4 | 0.000 |
+| [mcp_ccx-agentic-236_r3l3qj](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-236_r3l3qj.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `mcp-remote-direct` | `passed` | 0.300 | 4 | 0.964 |
+| [mcp_ccx-agentic-236_rowi2l](../tasks/csb_org_org_haiku_20260302_175827--mcp-remote-direct--mcp_ccx-agentic-236_rowi2l.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `mcp-remote-direct` | `passed` | 0.286 | 4 | 0.969 |
+| [mcp_ccx-agentic-236_aamppb](../tasks/csb_org_org_haiku_20260302_014939--mcp-remote-direct--mcp_ccx-agentic-236_aamppb.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `mcp-remote-direct` | `passed` | 0.240 | 4 | 0.933 |
+| [mcp_ccx-agentic-236_pv5blp](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-236_pv5blp.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `mcp-remote-direct` | `passed` | 0.316 | 4 | 0.968 |
+| [ccx-agentic-237](../tasks/csb_org_org_haiku_20260302_175827--baseline-local-direct--ccx-agentic-237.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `baseline-local-direct` | `passed` | 0.615 | 4 | 0.000 |
+| [mcp_ccx-agentic-237_6kkue1](../tasks/csb_org_org_haiku_20260302_175821--mcp-remote-direct--mcp_ccx-agentic-237_6kkue1.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `mcp-remote-direct` | `passed` | 0.571 | 3 | 0.929 |
+| [mcp_ccx-agentic-237_zcaaku](../tasks/csb_org_org_haiku_20260301_195739--mcp-remote-direct--mcp_ccx-agentic-237_zcaaku.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `mcp-remote-direct` | `passed` | 0.625 | 3 | 0.976 |
+| [mcp_ccx-agentic-237_km84xp](../tasks/csb_org_org_haiku_20260301_191250--mcp-remote-direct--mcp_ccx-agentic-237_km84xp.html) | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `mcp-remote-direct` | `failed` | 0.000 | 3 | 0.964 |
+
+## Multi-Run Variance
+
+Tasks with multiple valid runs (30 task/config pairs).
+
+| Task | Benchmark | Config | Runs | Mean | Std | Individual Rewards |
+|---|---|---|---:|---:|---:|---|
+| CCX-agentic-081 | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `baseline-local-direct` | 3 | 0.460 | 0.112 | 0.500, 0.333, 0.545 |
+| CCX-agentic-081 | [source](../../../benchmarks/csb_org_org/ccx-agentic-081) | `mcp-remote-direct` | 5 | 0.701 | 0.125 | 0.545, 0.600, 0.727, 0.833, 0.800 |
+| CCX-agentic-082 | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `baseline-local-direct` | 3 | 0.375 | 0.083 | 0.292, 0.375, 0.458 |
+| CCX-agentic-082 | [source](../../../benchmarks/csb_org_org/ccx-agentic-082) | `mcp-remote-direct` | 5 | 0.288 | 0.090 | 0.279, 0.372, 0.139, 0.330, 0.321 |
+| CCX-agentic-083 | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `baseline-local-direct` | 3 | 0.443 | 0.072 | 0.364, 0.505, 0.460 |
+| CCX-agentic-083 | [source](../../../benchmarks/csb_org_org/ccx-agentic-083) | `mcp-remote-direct` | 5 | 0.581 | 0.069 | 0.592, 0.667, 0.508, 0.625, 0.515 |
+| CCX-agentic-122 | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `baseline-local-direct` | 5 | 0.448 | 0.148 | 0.545, 0.533, 0.574, 0.231, 0.357 |
+| CCX-agentic-122 | [source](../../../benchmarks/csb_org_org/ccx-agentic-122) | `mcp-remote-direct` | 3 | 0.423 | 0.199 | 0.652, 0.302, 0.315 |
+| CCX-agentic-127 | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `baseline-local-direct` | 5 | 0.666 | 0.137 | 0.705, 0.720, 0.833, 0.469, 0.604 |
+| CCX-agentic-127 | [source](../../../benchmarks/csb_org_org/ccx-agentic-127) | `mcp-remote-direct` | 3 | 0.503 | 0.160 | 0.672, 0.354, 0.482 |
+| CCX-agentic-223 | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `baseline-local-direct` | 4 | 0.426 | 0.089 | 0.462, 0.333, 0.533, 0.375 |
+| CCX-agentic-223 | [source](../../../benchmarks/csb_org_org/ccx-agentic-223) | `mcp-remote-direct` | 4 | 0.447 | 0.103 | 0.462, 0.308, 0.556, 0.462 |
+| CCX-agentic-224 | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `baseline-local-direct` | 3 | 0.333 | 0.305 | 0.000, 0.600, 0.400 |
+| CCX-agentic-224 | [source](../../../benchmarks/csb_org_org/ccx-agentic-224) | `mcp-remote-direct` | 4 | 0.400 | 0.271 | 0.000, 0.600, 0.500, 0.500 |
+| CCX-agentic-225 | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `baseline-local-direct` | 4 | 0.258 | 0.207 | 0.000, 0.308, 0.222, 0.500 |
+| CCX-agentic-225 | [source](../../../benchmarks/csb_org_org/ccx-agentic-225) | `mcp-remote-direct` | 4 | 0.236 | 0.240 | 0.000, 0.191, 0.182, 0.571 |
+| CCX-agentic-229 | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `baseline-local-direct` | 4 | 0.127 | 0.086 | 0.000, 0.186, 0.170, 0.151 |
+| CCX-agentic-229 | [source](../../../benchmarks/csb_org_org/ccx-agentic-229) | `mcp-remote-direct` | 4 | 0.171 | 0.116 | 0.000, 0.242, 0.196, 0.244 |
+| CCX-agentic-232 | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `baseline-local-direct` | 4 | 0.206 | 0.139 | 0.000, 0.250, 0.303, 0.270 |
+| CCX-agentic-232 | [source](../../../benchmarks/csb_org_org/ccx-agentic-232) | `mcp-remote-direct` | 4 | 0.315 | 0.211 | 0.000, 0.444, 0.417, 0.400 |
+| CCX-agentic-233 | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `baseline-local-direct` | 4 | 0.515 | 0.345 | 0.000, 0.727, 0.667, 0.667 |
+| CCX-agentic-233 | [source](../../../benchmarks/csb_org_org/ccx-agentic-233) | `mcp-remote-direct` | 4 | 0.513 | 0.348 | 0.000, 0.615, 0.667, 0.769 |
+| CCX-agentic-234 | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `baseline-local-direct` | 4 | 0.267 | 0.193 | 0.000, 0.340, 0.455, 0.271 |
+| CCX-agentic-234 | [source](../../../benchmarks/csb_org_org/ccx-agentic-234) | `mcp-remote-direct` | 4 | 0.359 | 0.240 | 0.000, 0.467, 0.500, 0.471 |
+| CCX-agentic-235 | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `baseline-local-direct` | 4 | 0.288 | 0.200 | 0.000, 0.308, 0.444, 0.400 |
+| CCX-agentic-235 | [source](../../../benchmarks/csb_org_org/ccx-agentic-235) | `mcp-remote-direct` | 4 | 0.411 | 0.276 | 0.000, 0.571, 0.500, 0.571 |
+| CCX-agentic-236 | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `baseline-local-direct` | 4 | 0.205 | 0.141 | 0.316, 0.231, 0.000, 0.273 |
+| CCX-agentic-236 | [source](../../../benchmarks/csb_org_org/ccx-agentic-236) | `mcp-remote-direct` | 4 | 0.285 | 0.033 | 0.316, 0.240, 0.286, 0.300 |
+| CCX-agentic-237 | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `baseline-local-direct` | 4 | 0.462 | 0.308 | 0.000, 0.615, 0.615, 0.615 |
+| CCX-agentic-237 | [source](../../../benchmarks/csb_org_org/ccx-agentic-237) | `mcp-remote-direct` | 3 | 0.399 | 0.346 | 0.000, 0.625, 0.571 |

@@ -1,14 +1,14 @@
-# AI Agent Skills for CodeContextBench
+# AI Agent Skills for CodeScaleBench
 
 This directory contains reusable **skill definitions** for AI coding agents (Claude Code, Cursor, Copilot, etc.) that operate on this repository. Skills are structured instructions that tell an AI agent *how* to perform specific operational tasks — think of them as runbooks that an agent can follow autonomously.
 
-Only **project-specific** (CCB) skills are kept here. General-purpose skills
+Only **project-specific** (CSB) skills are kept here. General-purpose skills
 (coding standards, security review, TDD, agent delegation, etc.) live in
 `~/.claude/skills/` and in `.cursor/rules/` as separate `.mdc` files.
 
 ## Why Skills?
 
-Running a benchmark suite like CodeContextBench involves many repetitive multi-step workflows: validating tasks, launching runs, triaging failures, comparing configs, generating reports. Rather than re-explaining these workflows each session, skills encode the operational knowledge once and let any AI agent execute them reliably.
+Running a benchmark suite like CodeScaleBench involves many repetitive multi-step workflows: validating tasks, launching runs, triaging failures, comparing configs, generating reports. Rather than re-explaining these workflows each session, skills encode the operational knowledge once and let any AI agent execute them reliably.
 
 Skills are particularly valuable for:
 - **Onboarding** — New contributors (human or AI) can immediately operate the benchmark
@@ -21,7 +21,7 @@ Skills are particularly valuable for:
 ```
 skills/
 ├── README.md                  ← You are here
-├── ccb/                       ← Consolidated CCB skill guides (grouped by phase)
+├── ccb/                       ← Consolidated CSB skill guides (grouped by phase)
 │   ├── pre-run.md             ← Infrastructure checks, task validation, launching runs
 │   ├── monitoring.md          ← Run status, watching benchmark progress
 │   ├── triage-rerun.md        ← Failure investigation, quick reruns to verify fixes
@@ -99,7 +99,7 @@ full detail.
 
 ### With Cursor (`.cursor/rules/`)
 
-All CCB skills are already installed as individual `.mdc` rules in
+All CSB skills are already installed as individual `.mdc` rules in
 `.cursor/rules/`. Cursor will auto-load them based on file glob matching.
 The rules are named to match the skill directories (e.g.,
 `.cursor/rules/check-infra.mdc` corresponds to `skills/check-infra/SKILL.md`).

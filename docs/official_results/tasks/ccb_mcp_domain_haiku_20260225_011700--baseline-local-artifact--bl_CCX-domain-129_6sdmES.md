@@ -1,13 +1,13 @@
 # bl_CCX-domain-129_6sdmES (baseline-local-artifact)
 
-- Run: `ccb_mcp_domain_haiku_20260225_011700`
+- Run: `csb_org_domain_haiku_20260225_011700`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_domain_haiku_20260225_011700--baseline-local-artifact--bl_CCX-domain-129_6sdmES/claude-code.txt)
 
 ## Metrics
 

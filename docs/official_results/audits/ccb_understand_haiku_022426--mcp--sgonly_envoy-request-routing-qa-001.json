@@ -1542,14 +1542,14 @@
       "transcript_sha256": "f9cb7365742bca1465df3aec30192fa00d24a04c45723da81bed7ddb77fe1204"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU",
     "task_name": "sgonly_envoy-request-routing-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-request-routing-qa-001_mcp-remote-direct/sgonly_envoy-request-routing-qa-__HVxbjnU/agent/claude-code.txt"
     }
   },
   "score": {

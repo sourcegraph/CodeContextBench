@@ -10,7 +10,7 @@ metrics, and produces a markdown report with:
   - Efficiency analysis
   - Discussion and conclusions
 
-Stdlib + ccb_metrics only. Python 3.10+.
+Stdlib + csb_metrics only. Python 3.10+.
 
 Usage:
     python3 scripts/generate_comprehensive_report.py [--output-dir ./eval_reports/]
@@ -31,7 +31,7 @@ if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 from config_utils import discover_configs, is_mcp_config, is_config_dir, config_short_name
 
-from ccb_metrics.statistics import (
+from csb_metrics.statistics import (
     welchs_t_test,
     cohens_d,
     mcnemar_test,
@@ -344,7 +344,7 @@ def section_executive_summary(
     lines = [
         "## Executive Summary",
         "",
-        f"CodeContextBench (CCB) evaluates whether providing an AI coding agent with Sourcegraph "
+        f"CodeScaleBench (CCB) evaluates whether providing an AI coding agent with Sourcegraph "
         f"MCP (Model Context Protocol) tools improves its ability to solve software engineering tasks "
         f"across diverse real-world codebases. This report compares two configurations:",
         "",
@@ -956,7 +956,7 @@ def main():
     # Generate report
     print("Generating report...")
     sections = [
-        f"# CodeContextBench Evaluation Report",
+        f"# CodeScaleBench Evaluation Report",
         "",
         f"**Generated**: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
         f"**Paired tasks**: {len(paired)} across {len(BENCHMARK_INFO)} benchmark suites",

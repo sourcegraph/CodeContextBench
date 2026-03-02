@@ -1,13 +1,13 @@
 # mcp_django-role-based-access-001_2ERzmK (mcp-remote-direct)
 
-- Run: `ccb_secure_haiku_20260224_213146`
+- Run: `csb_sdlc_secure_haiku_20260224_213146`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK.json)
+- Audit JSON: [link](../audits/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-role-based-access-001_2ERzmK/claude-code.txt)
 
 ## Metrics
 

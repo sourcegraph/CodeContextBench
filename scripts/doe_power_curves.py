@@ -31,8 +31,8 @@ MANIFEST_PATH = PROJECT_ROOT / "runs" / "official" / "MANIFEST.json"
 SELECTION_PATH = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 SDLC_SUITES = [
-    "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
-    "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
 ]
 
 BASELINE_CONFIGS = {"baseline", "baseline-local-direct", "baseline-local-artifact"}
@@ -399,12 +399,12 @@ def main():
     print(f"  {'Suite':<18} {'n':>4} {'mean_delta':>11} {'std_delta':>11} {'sigma2_delta':>13}")
     print(f"  {'-'*57}")
     for suite in SDLC_SUITES:
-        s = vc["per_suite_stats"].get(suite.replace("ccb_", ""), vc["per_suite_stats"].get(suite, {}))
+        s = vc["per_suite_stats"].get(suite.replace("csb_sdlc_", "").replace("ccb_", ""), vc["per_suite_stats"].get(suite, {}))
         if not s:
             # Try with full name
             s = vc["per_suite_stats"].get(suite, {})
         if s:
-            short = suite.replace("ccb_", "")
+            short = suite.replace("csb_sdlc_", "").replace("ccb_", "")
             print(f"  {short:<18} {s['n']:>4} {s['mean_delta']:>+11.4f} {s['std_delta']:>11.4f} {s['sigma2_delta']:>13.4f}")
 
     # --- Section 2: Effect Sizes We Want to Detect ---

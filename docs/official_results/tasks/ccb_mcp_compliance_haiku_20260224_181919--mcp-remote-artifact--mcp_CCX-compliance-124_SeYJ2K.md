@@ -1,13 +1,13 @@
 # mcp_CCX-compliance-124_SeYJ2K (mcp-remote-artifact)
 
-- Run: `ccb_mcp_compliance_haiku_20260224_181919`
+- Run: `csb_org_compliance_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.7419`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_compliance_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-compliance-124_SeYJ2K/claude-code.txt)
 
 ## Metrics
 

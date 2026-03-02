@@ -1,13 +1,13 @@
 # mcp_CCX-incident-108_vvAydm (mcp-remote-direct)
 
-- Run: `ccb_mcp_incident_haiku_20260226_035617`
+- Run: `csb_org_incident_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.8485`
-- Audit JSON: [link](../audits/ccb_mcp_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm.json)
+- Audit JSON: [link](../audits/csb_org_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_incident_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-incident-108_vvAydm/claude-code.txt)
 
 ## Metrics
 

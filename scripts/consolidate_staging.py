@@ -55,7 +55,7 @@ def get_task_set(run_dir: str) -> set:
         if not config_path.exists():
             continue
         for d in os.listdir(config_path):
-            if d.startswith("ccb_"):
+            if d.startswith(("ccb_", "csb_")):
                 # Normalize: strip config suffix
                 norm = re.sub(r"_(baseline|sourcegraph_full)$", "", d)
                 tasks.add(norm)

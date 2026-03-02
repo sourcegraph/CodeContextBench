@@ -45,7 +45,8 @@ from official_runs import load_prefix_map, detect_suite, top_level_run_dirs, tra
 # Helpers
 # ---------------------------------------------------------------------------
 
-MCP_SUITE_PREFIX = "ccb_mcp_"
+MCP_SUITE_PREFIX = "csb_org_"
+LEGACY_MCP_PREFIX = "ccb_mcp_"
 SKIP_DIR_PARTS = {"retrieval_events", "archive", "__archived", "__broken_verifier", "validation_test"}
 TRANSCRIPT_CANDIDATES = (
     "claude-code.txt",
@@ -95,7 +96,7 @@ def _resolve_task_dir_name(suite: str, task_name: str) -> str:
 
 def _is_mcp_suite(suite: str) -> bool:
     """Check if a suite is an MCP-unique suite."""
-    return suite.startswith(MCP_SUITE_PREFIX)
+    return suite.startswith((MCP_SUITE_PREFIX, LEGACY_MCP_PREFIX))
 
 
 def _is_baseline_side_config(config: str) -> bool:
@@ -111,9 +112,11 @@ def _suite_from_run_dir(run_dir_name: str, prefix_map: dict[str, str]) -> str:
     if suite:
         return suite
 
-    if run_dir_name.startswith("ccb_"):
+    if run_dir_name.startswith(("ccb_", "csb_")):
         parts = run_dir_name.split("_")
-        if len(parts) >= 3 and parts[1] == "mcp":
+        if len(parts) >= 3 and parts[1] in ("mcp", "org"):
+            return "_".join(parts[:3])
+        if len(parts) >= 3 and parts[1] == "sdlc":
             return "_".join(parts[:3])
         if len(parts) >= 2:
             return "_".join(parts[:2])
@@ -213,8 +216,8 @@ def load_selected_tasks_by_suite(path: Path) -> dict[str, set[str]]:
         task_name = str(task.get("task_name", task.get("task_id", "")))
         if not suite or not task_name:
             continue
-        if not suite.startswith("ccb_"):
-            suite = f"ccb_{suite}"
+        if not suite.startswith(("ccb_", "csb_")):
+            suite = f"csb_sdlc_{suite}"
         selected[suite].add(_normalize_task_name(task_name))
     return dict(selected)
 
@@ -1039,7 +1042,7 @@ def run_audit(
     """Run the full audit and return the report dict."""
 
     print("=" * 72)
-    print("  CodeContextBench Official Score Audit")
+    print("  CodeScaleBench Official Score Audit")
     print("=" * 72)
     print()
 
@@ -1322,7 +1325,7 @@ def _print_summary(report: dict, verbose: bool = False) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Audit official CodeContextBench scores for legitimacy, "
+        description="Audit official CodeScaleBench scores for legitimacy, "
                     "fairness, and infrastructure health.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(

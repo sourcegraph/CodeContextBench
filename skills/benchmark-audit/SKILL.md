@@ -22,7 +22,7 @@ Runs `scripts/abc_audit.py` which:
 ### 1. Audit a specific suite
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/abc_audit.py --suite ccb_pytorch --format table
+cd ~/CodeScaleBench && python3 scripts/abc_audit.py --suite csb_sdlc_pytorch --format table
 ```
 
 ### 2. Audit all suites
@@ -34,7 +34,7 @@ python3 scripts/abc_audit.py --all --format table
 ### 3. Show only critical issues
 
 ```bash
-python3 scripts/abc_audit.py --suite ccb_swebenchpro --critical-only
+python3 scripts/abc_audit.py --suite csb_sdlc_swebenchpro --critical-only
 ```
 
 ### 4. JSON output for detailed analysis
@@ -46,8 +46,8 @@ python3 scripts/abc_audit.py --all --format json
 ### 5. Filter by dimension
 
 ```bash
-python3 scripts/abc_audit.py --suite ccb_pytorch --dimension task_validity
-python3 scripts/abc_audit.py --suite ccb_pytorch --dimension outcome_validity
+python3 scripts/abc_audit.py --suite csb_sdlc_pytorch --dimension task_validity
+python3 scripts/abc_audit.py --suite csb_sdlc_pytorch --dimension outcome_validity
 ```
 
 ### 6. Present findings

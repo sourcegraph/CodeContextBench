@@ -1,13 +1,13 @@
 # mcp_CCX-onboard-103_0JgOXi (mcp-remote-direct)
 
-- Run: `ccb_mcp_onboarding_haiku_20260226_035617`
+- Run: `csb_org_onboarding_haiku_20260226_035617`
 - Status: `passed`
 - Reward: `0.4667`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_20260226_035617--mcp-remote-direct--mcp_CCX-onboard-103_0JgOXi/claude-code.txt)
 
 ## Metrics
 

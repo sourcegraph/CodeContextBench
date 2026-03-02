@@ -3,7 +3,7 @@
 
 Writes task_metrics.json into the task directory and prints a one-line summary.
 
-Reuses extractors from scripts/ccb_metrics/ — same logic as discovery.py's
+Reuses extractors from scripts/csb_metrics/ — same logic as discovery.py's
 _process_task_dir() but callable as a standalone CLI.
 
 Usage:
@@ -21,17 +21,17 @@ import json
 import sys
 from pathlib import Path
 
-# Ensure the scripts/ directory is on sys.path so ccb_metrics can be imported
+# Ensure the scripts/ directory is on sys.path so csb_metrics can be imported
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ccb_metrics.models import TaskMetrics
-from ccb_metrics.ground_truth import load_registry, TaskGroundTruth
-from ccb_metrics.ir_metrics import (
+from csb_metrics.models import TaskMetrics
+from csb_metrics.ground_truth import load_registry, TaskGroundTruth
+from csb_metrics.ir_metrics import (
     extract_time_to_context,
     extract_cost_metrics_before_first_relevant,
     extract_agent_time_to_first_relevant,
 )
-from ccb_metrics.extractors import (
+from csb_metrics.extractors import (
     extract_task_from_result_json,
     extract_task_tokens_from_transcript,
     extract_swebench_partial_score,
@@ -53,7 +53,7 @@ from ccb_metrics.extractors import (
     extract_mcp_latency_from_trajectory,
     classify_search_strategy,
 )
-from ccb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
+from csb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
 
 GT_CACHE = Path(__file__).resolve().parent.parent / "configs" / "ground_truth_files.json"
 _GT_REGISTRY: dict[str, TaskGroundTruth] | None = None
@@ -87,7 +87,7 @@ def _lookup_ground_truth(task_id: str, registry: dict[str, TaskGroundTruth]) -> 
 
     # Candidate key variants seen across benchmark families.
     candidates = [task_id]
-    if task_id.startswith("ccb_"):
+    if task_id.startswith(("ccb_", "csb_")):
         candidates.append(task_id[4:])
     for prefix in ("ccb_dibench-", "ccb_tac-", "ccb_largerepo-"):
         if task_id.startswith(prefix):

@@ -1,4 +1,4 @@
-# CCB Analysis Skills
+# CSB Analysis Skills
 
 Compare configs, audit MCP usage, IR quality metrics, cost analysis, and trace evaluation. Use when analyzing benchmark results, comparing configurations, or investigating MCP impact.
 
@@ -14,7 +14,7 @@ Compare results between agent configurations to find signal about MCP tool impac
 
 #### 1. Run the comparison
 ```bash
-cd ~/CodeContextBench && python3 scripts/compare_configs.py --format json
+cd ~/CodeScaleBench && python3 scripts/compare_configs.py --format json
 ```
 
 #### 2. Present results as tables
@@ -33,7 +33,7 @@ Separates used-MCP vs zero-MCP tasks. Present reward delta table by intensity bu
 
 ### Variants
 ```bash
-python3 scripts/compare_configs.py --suite ccb_pytorch --format json
+python3 scripts/compare_configs.py --suite csb_sdlc_pytorch --format json
 python3 scripts/compare_configs.py --divergent-only --format json
 python3 scripts/compare_configs.py --format table
 ```
@@ -57,7 +57,7 @@ Analyze MCP (Sourcegraph) tool usage across benchmark runs.
 
 #### 1. Run the audit
 ```bash
-cd ~/CodeContextBench && python3 scripts/mcp_audit.py --json --verbose 2>/dev/null
+cd ~/CodeScaleBench && python3 scripts/mcp_audit.py --json --verbose 2>/dev/null
 ```
 
 #### 2. Present key findings
@@ -101,12 +101,12 @@ Measure how well agents find the right files, comparing baseline vs MCP retrieva
 
 #### 1. Ensure ground truth is built
 ```bash
-cd ~/CodeContextBench && python3 scripts/ir_analysis.py --build-ground-truth
+cd ~/CodeScaleBench && python3 scripts/ir_analysis.py --build-ground-truth
 ```
 
 #### 2. Run the IR analysis
 ```bash
-cd ~/CodeContextBench && python3 scripts/ir_analysis.py --json 2>/dev/null
+cd ~/CodeScaleBench && python3 scripts/ir_analysis.py --json 2>/dev/null
 ```
 
 #### 3. Present key findings
@@ -118,7 +118,7 @@ Key metrics: file recall, MRR, context efficiency, P@K.
 ### Variants
 ```bash
 python3 scripts/ir_analysis.py --per-task --json 2>/dev/null
-python3 scripts/ir_analysis.py --suite ccb_swebenchpro 2>/dev/null
+python3 scripts/ir_analysis.py --suite csb_sdlc_swebenchpro 2>/dev/null
 ```
 
 ### Ground Truth Sources
@@ -139,14 +139,14 @@ Analyze token usage and estimated cost across benchmark runs.
 
 ### Steps
 ```bash
-cd ~/CodeContextBench && python3 scripts/cost_report.py
+cd ~/CodeScaleBench && python3 scripts/cost_report.py
 ```
 
 Shows: total cost/tokens/hours, per suite/config breakdown, config cost comparison, top 10 most expensive tasks.
 
 ### Variants
 ```bash
-python3 scripts/cost_report.py --suite ccb_pytorch
+python3 scripts/cost_report.py --suite csb_sdlc_pytorch
 python3 scripts/cost_report.py --config sourcegraph_full
 python3 scripts/cost_report.py --format json
 ```

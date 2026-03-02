@@ -1,13 +1,13 @@
 # mcp_CCX-incident-110_wEEezQ (mcp-remote-direct)
 
-- Run: `ccb_mcp_incident_haiku_20260226_035628_variance`
+- Run: `csb_org_incident_haiku_20260226_035628_variance`
 - Status: `passed`
 - Reward: `0.9444`
-- Audit JSON: [link](../audits/ccb_mcp_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ.json)
+- Audit JSON: [link](../audits/csb_org_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_incident_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-incident-110_wEEezQ/claude-code.txt)
 
 ## Metrics
 

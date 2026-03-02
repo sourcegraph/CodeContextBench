@@ -1,6 +1,6 @@
 # Enterprise Benchmark — Repository Mirrors
 
-Repos used by `ccb_enterprise` tasks, with commit SHAs and Sourcegraph indexing status.
+Repos used by `csb_sdlc_enterprise` tasks, with commit SHAs and Sourcegraph indexing status.
 
 ## Repos
 

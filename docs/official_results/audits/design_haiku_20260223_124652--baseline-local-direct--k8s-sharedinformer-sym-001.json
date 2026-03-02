@@ -1244,14 +1244,14 @@
       "transcript_sha256": "4e27d2dd3865a190211a6e135a1e3f011bcd093e9007af148ac17c2a8f291529"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/result.json",
+    "result_path": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/result.json",
     "run_dir": "design_haiku_20260223_124652",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX",
     "task_name": "k8s-sharedinformer-sym-001",
     "trace_paths": {
-      "trajectory": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/agent/trajectory.json",
-      "transcript": "runs/official/design_haiku_20260223_124652/baseline-local-direct/ccb_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/agent/claude-code.txt"
+      "trajectory": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/agent/trajectory.json",
+      "transcript": "runs/official/design_haiku_20260223_124652/baseline-local-direct/csb_sdlc_design_k8s-sharedinformer-sym-001_baseline-local-direct/k8s-sharedinformer-sym-001__YhS2ruX/agent/claude-code.txt"
     }
   },
   "score": {

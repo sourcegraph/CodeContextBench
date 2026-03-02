@@ -2,7 +2,7 @@
 
 ## Overview
 
-CodeContextBench supports **5 enterprise customer profiles** (ICPs) that filter benchmark results to metrics relevant to specific organizational contexts. Each profile maps to a subset of benchmarks, defines success thresholds, and generates tailored reports.
+CodeScaleBench supports **5 enterprise customer profiles** (ICPs) that filter benchmark results to metrics relevant to specific organizational contexts. Each profile maps to a subset of benchmarks, defines success thresholds, and generates tailored reports.
 
 Profiles answer four questions for each customer type:
 1. What problem does this customer have?
@@ -37,7 +37,7 @@ Key thresholds:
 ### C. Security & Compliance ("Governance First")
 
 **Buyer**: CISO / Head of Engineering Compliance
-**Suites**: Governance (ccb_governance), CrossRepo
+**Suites**: Governance (csb_sdlc_governance), CrossRepo
 **Report**: Governance & Risk Report
 
 Key thresholds:

@@ -1,13 +1,13 @@
 # ccx-onboard-041 (mcp-remote-artifact)
 
-- Run: `ccb_mcp_onboarding_haiku_022126`
+- Run: `csb_org_onboarding_haiku_022126`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_022126--mcp--ccx-onboard-041.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_022126--mcp--ccx-onboard-041.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_022126--mcp--ccx-onboard-041/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_022126--mcp--ccx-onboard-041/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_022126--mcp--ccx-onboard-041/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_022126--mcp--ccx-onboard-041/claude-code.txt)
 
 ## Metrics
 

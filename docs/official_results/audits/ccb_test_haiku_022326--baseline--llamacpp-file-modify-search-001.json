@@ -1983,14 +1983,14 @@
       "transcript_sha256": "c5fa736ec13ce6f2f4ce02afd9e32a33d45c88dc84c34f5830f9bd1b06c1de1f"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/result.json",
-    "run_dir": "ccb_test_haiku_022326",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V",
+    "result_path": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/result.json",
+    "run_dir": "csb_sdlc_test_haiku_022326",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V",
     "task_name": "llamacpp-file-modify-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/agent/trajectory.json",
-      "transcript": "runs/official/ccb_test_haiku_022326/baseline/ccb_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_test_haiku_022326/baseline/csb_sdlc_test_llamacpp-file-modify-search-001_baseline-local-direct/llamacpp-file-modify-search-001__uojiV7V/agent/claude-code.txt"
     }
   },
   "score": {

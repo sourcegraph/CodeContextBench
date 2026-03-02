@@ -36,7 +36,7 @@ except ModuleNotFoundError:  # pragma: no cover
     tomllib = None
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO_BLOB_BASE = "https://github.com/sourcegraph/CodeContextBench/blob/main"
+DEFAULT_REPO_BLOB_BASE = "https://github.com/sourcegraph/CodeScaleBench/blob/main"
 if str(PROJECT_ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
@@ -60,26 +60,26 @@ AUDIT_EVENT_LIMIT = 200
 CONVERSATION_PREVIEW_LIMIT = 80
 TASK_PAGE_EVENT_LIMIT = 400
 SDLC_SUITES = {
-    "ccb_feature",
-    "ccb_refactor",
-    "ccb_debug",
-    "ccb_design",
-    "ccb_document",
-    "ccb_fix",
-    "ccb_secure",
-    "ccb_test",
-    "ccb_understand",
+    "csb_sdlc_feature",
+    "csb_sdlc_refactor",
+    "csb_sdlc_debug",
+    "csb_sdlc_design",
+    "csb_sdlc_document",
+    "csb_sdlc_fix",
+    "csb_sdlc_secure",
+    "csb_sdlc_test",
+    "csb_sdlc_understand",
 }
 SDLC_MIN_VALID_TASKS = {
-    "ccb_feature": 20,
-    "ccb_refactor": 20,
-    "ccb_fix": 25,
-    "ccb_debug": 20,
-    "ccb_design": 20,
-    "ccb_document": 20,
-    "ccb_secure": 20,
-    "ccb_test": 20,
-    "ccb_understand": 20,
+    "csb_sdlc_feature": 20,
+    "csb_sdlc_refactor": 20,
+    "csb_sdlc_fix": 25,
+    "csb_sdlc_debug": 20,
+    "csb_sdlc_design": 20,
+    "csb_sdlc_document": 20,
+    "csb_sdlc_secure": 20,
+    "csb_sdlc_test": 20,
+    "csb_sdlc_understand": 20,
 }
 
 
@@ -974,7 +974,7 @@ def _normalize_config_for_suite(suite: str, config: str) -> str:
             return "baseline-local-direct"
         if config == "mcp":
             return "mcp-remote-direct"
-    elif suite.startswith("ccb_mcp_"):
+    elif suite.startswith(("csb_org_", "ccb_mcp_")):
         if config == "baseline":
             return "baseline-local-artifact"
         if config == "mcp":
@@ -999,9 +999,13 @@ def _suite_from_run_dir(run_dir_name: str, prefix_map: dict[str, str]) -> str:
     if suite:
         return suite
 
-    if run_dir_name.startswith("ccb_"):
+    if run_dir_name.startswith(("ccb_", "csb_")):
         parts = run_dir_name.split("_")
-        if len(parts) >= 3 and parts[1] == "mcp":
+        # csb_org_* or ccb_mcp_* suites
+        if len(parts) >= 3 and parts[1] in ("mcp", "org"):
+            return "_".join(parts[:3])
+        # csb_sdlc_* suites
+        if len(parts) >= 3 and parts[1] == "sdlc":
             return "_".join(parts[:3])
         if len(parts) >= 2:
             return "_".join(parts[:2])
@@ -1942,7 +1946,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--repo-blob-base",
         default=DEFAULT_REPO_BLOB_BASE,
-        help="GitHub blob base URL for repo links (default: CodeContextBench main branch).",
+        help="GitHub blob base URL for repo links (default: CodeScaleBench main branch).",
     )
     parser.add_argument(
         "--manifest-only",

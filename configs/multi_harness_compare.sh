@@ -8,7 +8,7 @@
 #
 # Options:
 #   --harnesses LIST       Comma-separated subset (default: codex,cursor,gemini,copilot,openhands)
-#   --benchmark BENCH      Optional benchmark filter (e.g. ccb_crossrepo)
+#   --benchmark BENCH      Optional benchmark filter (e.g. csb_org_crossrepo)
 #   --task-ids LIST        Optional comma-separated task IDs from selected tasks
 #   --selection-file PATH  Selected tasks JSON (default: configs/selected_benchmark_tasks.json)
 #   --registry PATH        Harness registry JSON (default: configs/harness_registry.json)

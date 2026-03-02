@@ -196,7 +196,7 @@ def main():
     }
 
     for suite_dir in sorted(BENCHMARKS.iterdir()):
-        if not suite_dir.is_dir() or not suite_dir.name.startswith("ccb_"):
+        if not suite_dir.is_dir() or not suite_dir.name.startswith(("csb_", "ccb_")):
             continue
 
         for task_dir in sorted(suite_dir.iterdir()):

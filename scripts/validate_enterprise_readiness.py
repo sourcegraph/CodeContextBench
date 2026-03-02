@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate enterprise readiness of CodeContextBench.
+"""Validate enterprise readiness of CodeScaleBench.
 
 Checks whether the benchmark can answer 5 key enterprise validation questions:
   Q1: Does centralized context improve agent reliability? (2+ configs, 20+ tasks)
@@ -312,7 +312,7 @@ def format_human(results: dict[str, Any]) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Validate enterprise readiness of CodeContextBench."
+        description="Validate enterprise readiness of CodeScaleBench."
     )
     parser.add_argument(
         "--json", action="store_true",

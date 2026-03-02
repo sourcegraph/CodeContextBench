@@ -1,4 +1,4 @@
-# CodeContextBench Quality Assurance Process
+# CodeScaleBench Quality Assurance Process
 
 ## Agent Navigation
 - `docs/ops/README.md` is the ops index for agent navigation.
@@ -6,7 +6,7 @@
 - `docs/QA_PROCESS.md` is a compatibility stub for legacy references.
 - If you need only script discovery, use `docs/ops/SCRIPT_INDEX.md` first.
 
-End-to-end quality assurance and validation infrastructure for CodeContextBench benchmark runs. This document describes each pipeline stage, the scripts involved, and the audit methodology.
+End-to-end quality assurance and validation infrastructure for CodeScaleBench benchmark runs. This document describes each pipeline stage, the scripts involved, and the audit methodology.
 
 ---
 
@@ -58,7 +58,7 @@ bash configs/validate_one_per_benchmark.sh --smoke-runtime --smoke-timeout-sec 3
 
 # Override timeout-heavy suites (format: suite=seconds,suite=seconds)
 bash configs/validate_one_per_benchmark.sh --smoke-runtime --smoke-timeout-sec 300 \
-  --smoke-timeout-overrides "ccb_feature=900,ccb_refactor=900,ccb_fix=900,ccb_design=600"
+  --smoke-timeout-overrides "csb_sdlc_feature=900,csb_sdlc_refactor=900,csb_sdlc_fix=900,csb_sdlc_design=600"
 ```
 
 **Usage:**
@@ -67,19 +67,19 @@ bash configs/validate_one_per_benchmark.sh --smoke-runtime --smoke-timeout-sec 3
 python3 scripts/validate_tasks_preflight.py --all
 
 # Validate a specific suite
-python3 scripts/validate_tasks_preflight.py --suite ccb_feature
+python3 scripts/validate_tasks_preflight.py --suite csb_sdlc_feature
 
 # Validate a single task
-python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_feature/envoy-grpc-server-impl-001
+python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_feature/envoy-grpc-server-impl-001
 
 # Runtime smoke for a single task (no agent)
-python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_understand/terraform-plan-pipeline-qa-001 --smoke-runtime
+python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_understand/terraform-plan-pipeline-qa-001 --smoke-runtime
 
 # Runtime smoke for a suite (expensive)
-python3 scripts/validate_tasks_preflight.py --suite ccb_fix --smoke-runtime --smoke-timeout-sec 900
+python3 scripts/validate_tasks_preflight.py --suite csb_sdlc_fix --smoke-runtime --smoke-timeout-sec 900
 
 # Separate build/verifier timeouts (for phase-level diagnosis)
-python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_fix/pytorch-relu-gelu-fusion-fix-001 \
+python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_fix/pytorch-relu-gelu-fusion-fix-001 \
   --smoke-runtime --smoke-build-timeout-sec 900 --smoke-verify-timeout-sec 900
 ```
 

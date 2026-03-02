@@ -3,7 +3,7 @@
   "tasks": [
     {
       "task_id": "CCX-crossorg-208",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -17,7 +17,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "gRPC Error Status Propagation Across Go Services",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-208",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-208",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -25,7 +25,7 @@
     },
     {
       "task_id": "CCX-crossorg-209",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -39,7 +39,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "HTTP Health Check Endpoint Conventions Across Go Projects",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-209",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-209",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -47,7 +47,7 @@
     },
     {
       "task_id": "CCX-crossorg-210",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -61,7 +61,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Distributed Tracing Context Propagation Across Go Services",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-210",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-210",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -69,7 +69,7 @@
     },
     {
       "task_id": "CCX-crossorg-211",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -83,7 +83,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Leader Election Patterns Across K8s Ecosystem",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-211",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-211",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -91,7 +91,7 @@
     },
     {
       "task_id": "CCX-crossorg-212",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -105,7 +105,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rate Limiting Middleware Pattern Across Envoy and K8s",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-212",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-212",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -113,7 +113,7 @@
     },
     {
       "task_id": "CCX-crossorg-213",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -127,7 +127,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Retry with Exponential Backoff Pattern Across Go Repos",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-213",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-213",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -135,7 +135,7 @@
     },
     {
       "task_id": "CCX-crossorg-214",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -149,7 +149,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Graceful Shutdown Signal Handling Across Go Services",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-214",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-214",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -157,7 +157,7 @@
     },
     {
       "task_id": "CCX-crossorg-215",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -171,7 +171,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Configuration Hot-Reload Patterns Across K8s and Prometheus",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-215",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-215",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -179,7 +179,7 @@
     },
     {
       "task_id": "CCX-crossorg-216",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -193,7 +193,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Prometheus Metric Registration Pattern Across Projects",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-216",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-216",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -201,7 +201,7 @@
     },
     {
       "task_id": "CCX-crossorg-217",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "python",
       "difficulty": "hard",
@@ -215,7 +215,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Django vs Flask Middleware Chain Implementation Comparison",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-217",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-217",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -223,7 +223,7 @@
     },
     {
       "task_id": "CCX-crossorg-218",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "python",
       "difficulty": "hard",
@@ -237,7 +237,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Structured Logging Pattern in Python ML Repos",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-218",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-218",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -245,7 +245,7 @@
     },
     {
       "task_id": "CCX-crossorg-219",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "go",
       "difficulty": "hard",
@@ -259,7 +259,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "OpenTelemetry Span Creation Across Monitoring Stack",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-219",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-219",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -267,7 +267,7 @@
     },
     {
       "task_id": "CCX-crossorg-220",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "java",
       "difficulty": "hard",
@@ -281,7 +281,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Java Service Initialization Lifecycle Pattern in Kafka",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-220",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-220",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -289,7 +289,7 @@
     },
     {
       "task_id": "CCX-crossorg-221",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "java",
       "difficulty": "hard",
@@ -303,7 +303,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Java Dependency Injection with Kafka Plugin Architecture",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-221",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-221",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -311,7 +311,7 @@
     },
     {
       "task_id": "CCX-crossorg-222",
-      "benchmark": "ccb_mcp_crossorg",
+      "benchmark": "csb_org_crossorg",
       "sdlc_phase": "cross-org-discovery",
       "language": "java",
       "difficulty": "hard",
@@ -325,7 +325,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Java Annotation Processing for Kafka Config Keys",
-      "task_dir": "ccb_mcp_crossorg/ccx-crossorg-222",
+      "task_dir": "csb_org_crossorg/ccx-crossorg-222",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -333,7 +333,7 @@
     },
     {
       "task_id": "CCX-dep-trace-253",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "cpp",
       "difficulty": "hard",
@@ -347,7 +347,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "LLVM Pass Manager Registration and Execution Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-253",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-253",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -355,7 +355,7 @@
     },
     {
       "task_id": "CCX-dep-trace-254",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "cpp",
       "difficulty": "hard",
@@ -369,7 +369,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "LLVM IR Type System to Code Generation Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-254",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-254",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -377,7 +377,7 @@
     },
     {
       "task_id": "CCX-dep-trace-257",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -391,7 +391,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes API Server to etcd Storage Write Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-257",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-257",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -399,7 +399,7 @@
     },
     {
       "task_id": "CCX-dep-trace-258",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -413,7 +413,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Deployment Controller Reconcile to Pod Creation Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-258",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-258",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -421,7 +421,7 @@
     },
     {
       "task_id": "CCX-dep-trace-265",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "cpp",
       "difficulty": "hard",
@@ -435,7 +435,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Firefox CSS Style Resolution to Layout Paint Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-265",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-265",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -443,7 +443,7 @@
     },
     {
       "task_id": "CCX-dep-trace-266",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "cpp",
       "difficulty": "hard",
@@ -457,7 +457,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Firefox DOM Event Dispatch Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-266",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-266",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -465,7 +465,7 @@
     },
     {
       "task_id": "CCX-dep-trace-267",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "rust",
       "difficulty": "hard",
@@ -479,7 +479,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rust Borrow Checker MIR Analysis Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-267",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-267",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -487,7 +487,7 @@
     },
     {
       "task_id": "CCX-dep-trace-268",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "rust",
       "difficulty": "hard",
@@ -501,7 +501,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rust Trait Solver Obligation Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-268",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-268",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -509,7 +509,7 @@
     },
     {
       "task_id": "CCX-dep-trace-269",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "rust",
       "difficulty": "hard",
@@ -523,7 +523,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rust Macro Expansion to HIR Lowering Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-269",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-269",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -531,7 +531,7 @@
     },
     {
       "task_id": "CCX-dep-trace-270",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "java",
       "difficulty": "hard",
@@ -545,7 +545,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "OpenJDK Bytecode to JIT Compiled Code Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-270",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-270",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -553,7 +553,7 @@
     },
     {
       "task_id": "CCX-dep-trace-271",
-      "benchmark": "ccb_mcp_crossrepo",
+      "benchmark": "csb_org_crossrepo",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "java",
       "difficulty": "hard",
@@ -567,7 +567,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "OpenJDK G1 GC Garbage Collection Cycle Chain",
-      "task_dir": "ccb_mcp_crossrepo/ccx-dep-trace-271",
+      "task_dir": "csb_org_crossrepo/ccx-dep-trace-271",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -575,7 +575,7 @@
     },
     {
       "task_id": "CCX-dep-trace-171",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -589,7 +589,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes apimachinery runtime.Object Import Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-171",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-171",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -597,7 +597,7 @@
     },
     {
       "task_id": "CCX-dep-trace-173",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -611,7 +611,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Informer Cache Event Handler Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-173",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-173",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -619,7 +619,7 @@
     },
     {
       "task_id": "CCX-dep-trace-174",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -633,7 +633,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Prometheus prometheus-common HTTP Config to TLS Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-174",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-174",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -641,7 +641,7 @@
     },
     {
       "task_id": "CCX-dep-trace-175",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -655,7 +655,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Prometheus Alertmanager Notification Pipeline",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-175",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-175",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -663,7 +663,7 @@
     },
     {
       "task_id": "CCX-dep-trace-177",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "cpp",
       "difficulty": "hard",
@@ -677,7 +677,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy HTTP Filter Factory Registration and Instantiation",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-177",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-177",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -685,7 +685,7 @@
     },
     {
       "task_id": "CCX-dep-trace-178",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -699,7 +699,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Plugin Backend Query to Data Frame Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-178",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-178",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -707,7 +707,7 @@
     },
     {
       "task_id": "CCX-dep-trace-179",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "go",
       "difficulty": "hard",
@@ -721,7 +721,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Alerting Rule Evaluation to Notification Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-179",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-179",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -729,7 +729,7 @@
     },
     {
       "task_id": "CCX-dep-trace-180",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "java",
       "difficulty": "hard",
@@ -743,7 +743,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Producer RecordAccumulator Batch Drain Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-180",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-180",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -751,7 +751,7 @@
     },
     {
       "task_id": "CCX-dep-trace-181",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "cross-repo-dep-trace",
       "language": "java",
       "difficulty": "hard",
@@ -765,7 +765,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Consumer Fetch Request to Record Processing Chain",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-181",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-181",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -773,7 +773,7 @@
     },
     {
       "task_id": "CCX-domain-151",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "java",
       "difficulty": "hard",
@@ -787,7 +787,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Log Compaction Architecture",
-      "task_dir": "ccb_mcp_domain/ccx-domain-151",
+      "task_dir": "csb_org_domain/ccx-domain-151",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -795,7 +795,7 @@
     },
     {
       "task_id": "CCX-domain-152",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "java",
       "difficulty": "hard",
@@ -809,7 +809,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Consumer Group Protocol State Machine",
-      "task_dir": "ccb_mcp_domain/ccx-domain-152",
+      "task_dir": "csb_org_domain/ccx-domain-152",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -817,7 +817,7 @@
     },
     {
       "task_id": "CCX-domain-153",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "cpp",
       "difficulty": "hard",
@@ -831,7 +831,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy HTTP Connection Manager Route Matching",
-      "task_dir": "ccb_mcp_domain/ccx-domain-153",
+      "task_dir": "csb_org_domain/ccx-domain-153",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -839,7 +839,7 @@
     },
     {
       "task_id": "CCX-domain-156",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "go",
       "difficulty": "hard",
@@ -853,7 +853,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes SharedInformer Factory and Cache Sync",
-      "task_dir": "ccb_mcp_domain/ccx-domain-156",
+      "task_dir": "csb_org_domain/ccx-domain-156",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -861,7 +861,7 @@
     },
     {
       "task_id": "CCX-domain-157",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "go",
       "difficulty": "hard",
@@ -875,7 +875,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Datasource Plugin Query Architecture",
-      "task_dir": "ccb_mcp_domain/ccx-domain-157",
+      "task_dir": "csb_org_domain/ccx-domain-157",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -883,7 +883,7 @@
     },
     {
       "task_id": "CCX-domain-158",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "rust",
       "difficulty": "hard",
@@ -897,7 +897,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rust Async Runtime Waker and Future Polling",
-      "task_dir": "ccb_mcp_domain/ccx-domain-158",
+      "task_dir": "csb_org_domain/ccx-domain-158",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -905,7 +905,7 @@
     },
     {
       "task_id": "CCX-domain-159",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "cpp",
       "difficulty": "hard",
@@ -919,7 +919,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Firefox Layout Engine Reflow Architecture",
-      "task_dir": "ccb_mcp_domain/ccx-domain-159",
+      "task_dir": "csb_org_domain/ccx-domain-159",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -927,7 +927,7 @@
     },
     {
       "task_id": "CCX-domain-160",
-      "benchmark": "ccb_mcp_domain",
+      "benchmark": "csb_org_domain",
       "sdlc_phase": "domain-lineage",
       "language": "java",
       "difficulty": "hard",
@@ -941,7 +941,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "OpenJDK JVM Bytecode Interpretation Loop",
-      "task_dir": "ccb_mcp_domain/ccx-domain-160",
+      "task_dir": "csb_org_domain/ccx-domain-160",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -949,7 +949,7 @@
     },
     {
       "task_id": "CCX-incident-142",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "java",
       "difficulty": "hard",
@@ -963,7 +963,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Consumer Heartbeat Session Timeout",
-      "task_dir": "ccb_mcp_incident/ccx-incident-142",
+      "task_dir": "csb_org_incident/ccx-incident-142",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -971,7 +971,7 @@
     },
     {
       "task_id": "CCX-incident-143",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "cpp",
       "difficulty": "hard",
@@ -985,7 +985,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy Upstream Connection Pool Overflow",
-      "task_dir": "ccb_mcp_incident/ccx-incident-143",
+      "task_dir": "csb_org_incident/ccx-incident-143",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -993,7 +993,7 @@
     },
     {
       "task_id": "CCX-incident-144",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "go",
       "difficulty": "hard",
@@ -1007,7 +1007,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Pod Eviction on Node Memory Pressure",
-      "task_dir": "ccb_mcp_incident/ccx-incident-144",
+      "task_dir": "csb_org_incident/ccx-incident-144",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1015,7 +1015,7 @@
     },
     {
       "task_id": "CCX-incident-145",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "go",
       "difficulty": "hard",
@@ -1029,7 +1029,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Alert Evaluation Cycle Overrun",
-      "task_dir": "ccb_mcp_incident/ccx-incident-145",
+      "task_dir": "csb_org_incident/ccx-incident-145",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1037,7 +1037,7 @@
     },
     {
       "task_id": "CCX-incident-146",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "python",
       "difficulty": "hard",
@@ -1051,7 +1051,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Django QuerySet Evaluation OperationalError",
-      "task_dir": "ccb_mcp_incident/ccx-incident-146",
+      "task_dir": "csb_org_incident/ccx-incident-146",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1059,7 +1059,7 @@
     },
     {
       "task_id": "CCX-incident-147",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "incident-debug",
       "language": "go",
       "difficulty": "hard",
@@ -1073,7 +1073,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Prometheus TSDB Head Series Limit Exceeded",
-      "task_dir": "ccb_mcp_incident/ccx-incident-147",
+      "task_dir": "csb_org_incident/ccx-incident-147",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1081,7 +1081,7 @@
     },
     {
       "task_id": "CCX-migration-195",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "java",
       "difficulty": "hard",
@@ -1095,7 +1095,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Old Consumer API to New Consumer API Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-195",
+      "task_dir": "csb_org_migration/ccx-migration-195",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1103,7 +1103,7 @@
     },
     {
       "task_id": "CCX-migration-196",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "java",
       "difficulty": "hard",
@@ -1117,7 +1117,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Streams DSL to Processor API Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-196",
+      "task_dir": "csb_org_migration/ccx-migration-196",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1125,7 +1125,7 @@
     },
     {
       "task_id": "CCX-migration-197",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "java",
       "difficulty": "hard",
@@ -1139,7 +1139,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Connect REST API v1 to v2 Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-197",
+      "task_dir": "csb_org_migration/ccx-migration-197",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1147,7 +1147,7 @@
     },
     {
       "task_id": "CCX-migration-198",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "go",
       "difficulty": "hard",
@@ -1161,7 +1161,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Ingress v1beta1 to v1 Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-198",
+      "task_dir": "csb_org_migration/ccx-migration-198",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1169,7 +1169,7 @@
     },
     {
       "task_id": "CCX-migration-199",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "go",
       "difficulty": "hard",
@@ -1183,7 +1183,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes CronJob v1beta1 to batch/v1 Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-199",
+      "task_dir": "csb_org_migration/ccx-migration-199",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1191,7 +1191,7 @@
     },
     {
       "task_id": "CCX-migration-201",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "cpp",
       "difficulty": "hard",
@@ -1205,7 +1205,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy xDS v2 to v3 API Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-201",
+      "task_dir": "csb_org_migration/ccx-migration-201",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1213,7 +1213,7 @@
     },
     {
       "task_id": "CCX-migration-202",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "cpp",
       "difficulty": "hard",
@@ -1227,7 +1227,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy HTTP/1.1 to HTTP/2 Header Normalization Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-202",
+      "task_dir": "csb_org_migration/ccx-migration-202",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1235,7 +1235,7 @@
     },
     {
       "task_id": "CCX-migration-203",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "python",
       "difficulty": "hard",
@@ -1249,7 +1249,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Django URL Patterns Migration from patterns() to list",
-      "task_dir": "ccb_mcp_migration/ccx-migration-203",
+      "task_dir": "csb_org_migration/ccx-migration-203",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1257,7 +1257,7 @@
     },
     {
       "task_id": "CCX-migration-204",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "python",
       "difficulty": "hard",
@@ -1271,7 +1271,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Django CharField max_length Enforcement Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-204",
+      "task_dir": "csb_org_migration/ccx-migration-204",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1279,7 +1279,7 @@
     },
     {
       "task_id": "CCX-migration-205",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "go",
       "difficulty": "hard",
@@ -1293,7 +1293,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Legacy Alerting to Unified Alerting Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-205",
+      "task_dir": "csb_org_migration/ccx-migration-205",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1301,7 +1301,7 @@
     },
     {
       "task_id": "CCX-migration-206",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "go",
       "difficulty": "hard",
@@ -1315,7 +1315,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Dashboard JSON Model Version Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-206",
+      "task_dir": "csb_org_migration/ccx-migration-206",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1323,7 +1323,7 @@
     },
     {
       "task_id": "CCX-migration-207",
-      "benchmark": "ccb_mcp_migration",
+      "benchmark": "csb_org_migration",
       "sdlc_phase": "migration-inventory",
       "language": "rust",
       "difficulty": "hard",
@@ -1337,7 +1337,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Rust Edition 2018 to 2021 Import Path Migration",
-      "task_dir": "ccb_mcp_migration/ccx-migration-207",
+      "task_dir": "csb_org_migration/ccx-migration-207",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1345,7 +1345,7 @@
     },
     {
       "task_id": "CCX-onboard-042",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Onboarding comprehension",
       "language": "unknown",
       "difficulty": "hard",
@@ -1359,18 +1359,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-042",
+      "task_dir": "csb_org_onboarding/ccx-onboard-042",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_onboarding",
+      "mcp_suite": "csb_org_onboarding",
       "repo_set_id": "python-ml-stack"
     },
     {
       "task_id": "CCX-onboard-050",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Onboarding comprehension",
       "language": "go",
       "difficulty": "hard",
@@ -1384,18 +1384,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-050",
+      "task_dir": "csb_org_onboarding/ccx-onboard-050",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_onboarding",
+      "mcp_suite": "csb_org_onboarding",
       "repo_set_id": "kubernetes-ecosystem"
     },
     {
       "task_id": "CCX-agentic-224",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1409,7 +1409,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Storage Subsystem CSI Driver Integration",
-      "task_dir": "ccb_mcp_org/ccx-agentic-224",
+      "task_dir": "csb_org_org/ccx-agentic-224",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1417,7 +1417,7 @@
     },
     {
       "task_id": "CCX-agentic-225",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1431,7 +1431,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes CNI Network Plugin Interface Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-225",
+      "task_dir": "csb_org_org/ccx-agentic-225",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1439,7 +1439,7 @@
     },
     {
       "task_id": "CCX-agentic-226",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "cpp",
       "difficulty": "hard",
@@ -1453,7 +1453,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy Extension Registry and Factory Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-226",
+      "task_dir": "csb_org_org/ccx-agentic-226",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1461,7 +1461,7 @@
     },
     {
       "task_id": "CCX-agentic-227",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "cpp",
       "difficulty": "hard",
@@ -1475,7 +1475,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy Stats Scope and Tag Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-227",
+      "task_dir": "csb_org_org/ccx-agentic-227",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1483,7 +1483,7 @@
     },
     {
       "task_id": "CCX-agentic-228",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "cpp",
       "difficulty": "hard",
@@ -1497,7 +1497,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy Listener Manager Lifecycle Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-228",
+      "task_dir": "csb_org_org/ccx-agentic-228",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1505,7 +1505,7 @@
     },
     {
       "task_id": "CCX-agentic-229",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1519,7 +1519,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Unified Alerting Architecture Overview",
-      "task_dir": "ccb_mcp_org/ccx-agentic-229",
+      "task_dir": "csb_org_org/ccx-agentic-229",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1527,7 +1527,7 @@
     },
     {
       "task_id": "CCX-agentic-230",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1541,7 +1541,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Query Caching Layer Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-230",
+      "task_dir": "csb_org_org/ccx-agentic-230",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1549,7 +1549,7 @@
     },
     {
       "task_id": "CCX-agentic-231",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1563,7 +1563,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Organization and Team Permission Hierarchy",
-      "task_dir": "ccb_mcp_org/ccx-agentic-231",
+      "task_dir": "csb_org_org/ccx-agentic-231",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1571,7 +1571,7 @@
     },
     {
       "task_id": "CCX-agentic-232",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "java",
       "difficulty": "hard",
@@ -1585,7 +1585,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Inter-Broker Replication Protocol Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-232",
+      "task_dir": "csb_org_org/ccx-agentic-232",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1593,7 +1593,7 @@
     },
     {
       "task_id": "CCX-agentic-233",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "java",
       "difficulty": "hard",
@@ -1607,7 +1607,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Partition Assignment Algorithm Implementations",
-      "task_dir": "ccb_mcp_org/ccx-agentic-233",
+      "task_dir": "csb_org_org/ccx-agentic-233",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1615,7 +1615,7 @@
     },
     {
       "task_id": "CCX-agentic-234",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "java",
       "difficulty": "hard",
@@ -1629,7 +1629,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Offset Management Architecture",
-      "task_dir": "ccb_mcp_org/ccx-agentic-234",
+      "task_dir": "csb_org_org/ccx-agentic-234",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1637,7 +1637,7 @@
     },
     {
       "task_id": "CCX-agentic-235",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1651,7 +1651,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "etcd Client gRPC Retry and Timeout Policy",
-      "task_dir": "ccb_mcp_org/ccx-agentic-235",
+      "task_dir": "csb_org_org/ccx-agentic-235",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1659,7 +1659,7 @@
     },
     {
       "task_id": "CCX-agentic-237",
-      "benchmark": "ccb_mcp_org",
+      "benchmark": "csb_org_org",
       "sdlc_phase": "agentic-correctness",
       "language": "go",
       "difficulty": "hard",
@@ -1673,7 +1673,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Prometheus WAL Write-Ahead Log Segment Management",
-      "task_dir": "ccb_mcp_org/ccx-agentic-237",
+      "task_dir": "csb_org_org/ccx-agentic-237",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1681,7 +1681,7 @@
     },
     {
       "task_id": "CCX-platform-091",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "Platform knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1695,18 +1695,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_platform/ccx-platform-091",
+      "task_dir": "csb_org_platform/ccx-platform-091",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_platform",
+      "mcp_suite": "csb_org_platform",
       "repo_set_id": "kubernetes-ecosystem"
     },
     {
       "task_id": "CCX-platform-238",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1720,7 +1720,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes API Server Admission Controller Chain",
-      "task_dir": "ccb_mcp_platform/ccx-platform-238",
+      "task_dir": "csb_org_platform/ccx-platform-238",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1728,7 +1728,7 @@
     },
     {
       "task_id": "CCX-platform-239",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1742,7 +1742,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Audit Log Middleware and Backend",
-      "task_dir": "ccb_mcp_platform/ccx-platform-239",
+      "task_dir": "csb_org_platform/ccx-platform-239",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1750,7 +1750,7 @@
     },
     {
       "task_id": "CCX-platform-240",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1764,7 +1764,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes API Server Authentication Chain",
-      "task_dir": "ccb_mcp_platform/ccx-platform-240",
+      "task_dir": "csb_org_platform/ccx-platform-240",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1772,7 +1772,7 @@
     },
     {
       "task_id": "CCX-platform-242",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1786,7 +1786,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Scheduler Framework Plugin Extension Points",
-      "task_dir": "ccb_mcp_platform/ccx-platform-242",
+      "task_dir": "csb_org_platform/ccx-platform-242",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1794,7 +1794,7 @@
     },
     {
       "task_id": "CCX-platform-243",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "cpp",
       "difficulty": "hard",
@@ -1808,7 +1808,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy Admin API Endpoint Registration",
-      "task_dir": "ccb_mcp_platform/ccx-platform-243",
+      "task_dir": "csb_org_platform/ccx-platform-243",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1816,7 +1816,7 @@
     },
     {
       "task_id": "CCX-platform-245",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "cpp",
       "difficulty": "hard",
@@ -1830,7 +1830,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy xDS Aggregated Discovery Service Server",
-      "task_dir": "ccb_mcp_platform/ccx-platform-245",
+      "task_dir": "csb_org_platform/ccx-platform-245",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1838,7 +1838,7 @@
     },
     {
       "task_id": "CCX-platform-247",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "go",
       "difficulty": "hard",
@@ -1852,7 +1852,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana Backend Plugin Management and Lifecycle",
-      "task_dir": "ccb_mcp_platform/ccx-platform-247",
+      "task_dir": "csb_org_platform/ccx-platform-247",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1860,7 +1860,7 @@
     },
     {
       "task_id": "CCX-platform-250",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "java",
       "difficulty": "hard",
@@ -1874,7 +1874,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Log Segment and Index File Architecture",
-      "task_dir": "ccb_mcp_platform/ccx-platform-250",
+      "task_dir": "csb_org_platform/ccx-platform-250",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1882,7 +1882,7 @@
     },
     {
       "task_id": "CCX-platform-251",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "java",
       "difficulty": "hard",
@@ -1896,7 +1896,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Group Coordinator State and Protocol Handling",
-      "task_dir": "ccb_mcp_platform/ccx-platform-251",
+      "task_dir": "csb_org_platform/ccx-platform-251",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1904,7 +1904,7 @@
     },
     {
       "task_id": "CCX-platform-252",
-      "benchmark": "ccb_mcp_platform",
+      "benchmark": "csb_org_platform",
       "sdlc_phase": "platform-knowledge",
       "language": "java",
       "difficulty": "hard",
@@ -1918,7 +1918,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka Network Layer Selector and Processor Architecture",
-      "task_dir": "ccb_mcp_platform/ccx-platform-252",
+      "task_dir": "csb_org_platform/ccx-platform-252",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1926,7 +1926,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-161",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "go",
       "difficulty": "hard",
@@ -1940,7 +1940,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes RBAC ClusterRole Privilege Escalation Paths",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-161",
+      "task_dir": "csb_org_security/ccx-vuln-remed-161",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1948,7 +1948,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-162",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "go",
       "difficulty": "hard",
@@ -1962,7 +1962,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kubernetes Service Account Token Auto-Mount Audit",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-162",
+      "task_dir": "csb_org_security/ccx-vuln-remed-162",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1970,7 +1970,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-163",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "cpp",
       "difficulty": "hard",
@@ -1984,7 +1984,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy HTTP Request Header Injection Validation",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-163",
+      "task_dir": "csb_org_security/ccx-vuln-remed-163",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -1992,7 +1992,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-164",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "cpp",
       "difficulty": "hard",
@@ -2006,7 +2006,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Envoy External Authorization Bypass Controls",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-164",
+      "task_dir": "csb_org_security/ccx-vuln-remed-164",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -2014,7 +2014,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-166",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "python",
       "difficulty": "hard",
@@ -2028,7 +2028,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Django CSRF Token Validation Chain",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-166",
+      "task_dir": "csb_org_security/ccx-vuln-remed-166",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -2036,7 +2036,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-167",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "go",
       "difficulty": "hard",
@@ -2050,7 +2050,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Grafana API Key Authentication and Scope Enforcement",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-167",
+      "task_dir": "csb_org_security/ccx-vuln-remed-167",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -2058,7 +2058,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-168",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "java",
       "difficulty": "hard",
@@ -2072,7 +2072,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Kafka SASL Authentication Mechanism Implementation",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-168",
+      "task_dir": "csb_org_security/ccx-vuln-remed-168",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,
@@ -2080,7 +2080,7 @@
     },
     {
       "task_id": "CCX-vuln-remed-169",
-      "benchmark": "ccb_mcp_security",
+      "benchmark": "csb_org_security",
       "sdlc_phase": "vuln-remediation",
       "language": "javascript",
       "difficulty": "hard",
@@ -2094,7 +2094,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Node.js Prototype Pollution Prevention in Core",
-      "task_dir": "ccb_mcp_security/ccx-vuln-remed-169",
+      "task_dir": "csb_org_security/ccx-vuln-remed-169",
       "context_length": 0,
       "context_length_source": "tbd",
       "files_count": 0,

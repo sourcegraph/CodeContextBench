@@ -1,13 +1,13 @@
 # mcp_CCX-migration-117_Iw0OWn (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_221038`
+- Run: `csb_org_migration_haiku_20260226_221038`
 - Status: `passed`
 - Reward: `0.8421`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_221038--mcp-remote-direct--mcp_CCX-migration-117_Iw0OWn/claude-code.txt)
 
 ## Metrics
 

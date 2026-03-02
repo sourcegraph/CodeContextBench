@@ -1509,14 +1509,14 @@
       "transcript_sha256": "6711b0288a1f4630f39301b8bd0d851b32e9de923280ce3cf438faf31713304c"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk",
     "task_name": "sgonly_cilium-ebpf-fault-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_cilium-ebpf-fault-qa-001_mcp-remote-direct/sgonly_cilium-ebpf-fault-qa-001__tknBjTk/agent/claude-code.txt"
     }
   },
   "score": {

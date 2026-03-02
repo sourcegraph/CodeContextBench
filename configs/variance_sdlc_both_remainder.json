@@ -10,23 +10,23 @@
   "tasks": [
     {
       "task_id": "openlibrary-fntocli-adapter-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/openlibrary-fntocli-adapter-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001"
     },
     {
       "task_id": "pytorch-release-210-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/pytorch-release-210-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/pytorch-release-210-fix-001"
     },
     {
       "task_id": "pytorch-relu-gelu-fusion-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/pytorch-relu-gelu-fusion-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/pytorch-relu-gelu-fusion-fix-001"
     },
     {
       "task_id": "kafka-security-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/kafka-security-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/kafka-security-review-001"
     }
   ]
 }

@@ -1686,14 +1686,14 @@
       "transcript_sha256": "d106a047d7d1e65b083d091c4f5d7bdb718aaef84d5c20756ca29fd78b95a2ab"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j",
     "task_name": "postgres-client-auth-audit-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_postgres-client-auth-audit-001_baseline-local-direct/postgres-client-auth-audit-001__gvZ6R9j/agent/claude-code.txt"
     }
   },
   "score": {

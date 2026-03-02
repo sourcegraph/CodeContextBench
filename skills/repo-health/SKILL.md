@@ -20,12 +20,12 @@ Run the health gate **before committing or pushing** so the tree stays clean and
 
 **Quick** (docs + selection file only; use after editing only docs/config):
 ```bash
-cd ~/CodeContextBench && python3 scripts/repo_health.py --quick
+cd ~/CodeScaleBench && python3 scripts/repo_health.py --quick
 ```
 
 **Full** (adds task preflight static; use before merge or after touching task defs):
 ```bash
-cd ~/CodeContextBench && python3 scripts/repo_health.py
+cd ~/CodeScaleBench && python3 scripts/repo_health.py
 ```
 
 ### 2. If any check fails

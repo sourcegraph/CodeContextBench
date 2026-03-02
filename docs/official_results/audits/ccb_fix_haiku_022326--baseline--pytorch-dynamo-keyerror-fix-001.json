@@ -2467,14 +2467,14 @@
       "transcript_sha256": "e89f0497f1cf8dc17bc938404fcc9961e4c685a5b67e7d0fd1ac44f59f9bb628"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX",
     "task_name": "pytorch-dynamo-keyerror-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_pytorch-dynamo-keyerror-fix-001_baseline-local-direct/pytorch-dynamo-keyerror-fix-001__ZDQpqgX/agent/claude-code.txt"
     }
   },
   "score": {

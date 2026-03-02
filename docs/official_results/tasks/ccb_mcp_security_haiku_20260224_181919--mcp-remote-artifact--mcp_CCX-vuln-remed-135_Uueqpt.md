@@ -1,13 +1,13 @@
 # mcp_CCX-vuln-remed-135_Uueqpt (mcp-remote-artifact)
 
-- Run: `ccb_mcp_security_haiku_20260224_181919`
+- Run: `csb_org_security_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.6111`
-- Audit JSON: [link](../audits/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt.json)
+- Audit JSON: [link](../audits/csb_org_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_security_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-vuln-remed-135_Uueqpt/claude-code.txt)
 
 ## Metrics
 

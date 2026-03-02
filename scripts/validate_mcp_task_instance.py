@@ -30,7 +30,7 @@ from pathlib import Path
 # Add parent to sys.path for oracle_checks import
 _SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_SCRIPT_DIR))
-from ccb_metrics.oracle_checks import run_all_checks
+from csb_metrics.oracle_checks import run_all_checks
 
 
 def _find_task_spec(task_dir: Path) -> Path:

@@ -1,13 +1,13 @@
 # sgonly_test-integration-002 (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260226_015500_backfill`
+- Run: `csb_sdlc_test_haiku_20260226_015500_backfill`
 - Status: `passed`
 - Reward: `0.9000`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260226_015500_backfill--mcp-remote-direct--sgonly_test-integration-002/claude-code.txt)
 
 ## Metrics
 

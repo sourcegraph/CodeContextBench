@@ -1,0 +1,59 @@
+{
+  "id": "CCX-config-trace-010",
+  "family": "cross-repo-config-trace",
+  "use_case_id": 10,
+  "category": "A",
+  "mcp_suite": "csb_org_crossrepo_tracing",
+  "prd": {
+    "user_story": "As a developer, I want to: Find the repository and file path where the `Config` struct is defined (not vendored) in the `rest` package of `k8s.io/client-go`. What is the exact Go package import path?",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the kubernetes-ecosystem fixture.",
+    "seed_prompt": "Find the repository and file path where the `Config` struct is defined (not vendored) in the `rest` package of `k8s.io/client-go`. What is the exact Go package import path?"
+  },
+  "artifacts": {
+    "repo_set_id": "kubernetes-ecosystem",
+    "oracle": {
+      "required_files": [],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/kubernetes-client-go",
+          "path": "rest/config.go",
+          "symbol": "Config"
+        }
+      ],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "Config"
+          ]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

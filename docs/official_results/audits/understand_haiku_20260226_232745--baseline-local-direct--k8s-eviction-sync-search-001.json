@@ -325,14 +325,14 @@
       "transcript_sha256": "b34d06a29438bef741200014420a911138ba65986dfd5715f4050cb3ddf4fce9"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/result.json",
+    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/result.json",
     "run_dir": "understand_haiku_20260226_232745",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y",
     "task_name": "k8s-eviction-sync-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/agent/trajectory.json",
-      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/agent/claude-code.txt"
+      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/agent/trajectory.json",
+      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-eviction-sync-search-001_baseline-local-direct/k8s-eviction-sync-search-001__L7yY69y/agent/claude-code.txt"
     }
   },
   "score": {

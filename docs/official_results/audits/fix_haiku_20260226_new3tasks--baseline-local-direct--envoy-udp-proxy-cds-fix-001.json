@@ -895,14 +895,14 @@
       "transcript_sha256": "af99f6527868e540c7bd412156437317badf39159dfded2c1c68763780c03400"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/result.json",
+    "result_path": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/result.json",
     "run_dir": "fix_haiku_20260226_new3tasks",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih",
     "task_name": "envoy-udp-proxy-cds-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/ccb_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260226_new3tasks/baseline-local-direct/csb_sdlc_fix_envoy-udp-proxy-cds-fix-001_baseline-local-direct/envoy-udp-proxy-cds-fix-001__P6fgMih/agent/claude-code.txt"
     }
   },
   "score": {

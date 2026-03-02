@@ -1746,14 +1746,14 @@
       "transcript_sha256": "6e5c62d0afc39015ca30d45b4a3aa391c5446a3d6081b7fa5b3d0c02e5943eca"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg",
     "task_name": "sgonly_terraform-phantom-update-debug-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_terraform-phantom-update-debug-001_mcp-remote-direct/sgonly_terraform-phantom-update-__JaS5mvg/agent/claude-code.txt"
     }
   },
   "score": {

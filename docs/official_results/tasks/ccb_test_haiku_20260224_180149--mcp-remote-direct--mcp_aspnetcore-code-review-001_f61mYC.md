@@ -1,13 +1,13 @@
 # mcp_aspnetcore-code-review-001_f61mYC (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `passed`
 - Reward: `0.4600`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_aspnetcore-code-review-001_f61mYC/claude-code.txt)
 
 ## Metrics
 

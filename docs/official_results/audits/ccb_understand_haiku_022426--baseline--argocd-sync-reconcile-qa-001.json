@@ -2438,14 +2438,14 @@
       "transcript_sha256": "7c79293358cfd8b1589a17943bbf5cf84562f531418e52541e1f6d4d11a91bd6"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk",
     "task_name": "argocd-sync-reconcile-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-sync-reconcile-qa-001_baseline-local-direct/argocd-sync-reconcile-qa-001__FPWyCbk/agent/claude-code.txt"
     }
   },
   "score": {

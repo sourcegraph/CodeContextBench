@@ -10,13 +10,13 @@
   "tasks": [
     {
       "task_id": "flink-window-late-data-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/flink-window-late-data-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/flink-window-late-data-fix-001"
     },
     {
       "task_id": "kafka-security-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/kafka-security-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/kafka-security-review-001"
     }
   ]
 }

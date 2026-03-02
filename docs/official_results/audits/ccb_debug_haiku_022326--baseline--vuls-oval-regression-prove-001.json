@@ -1879,14 +1879,14 @@
       "transcript_sha256": "3b1404d439fdab7ff5daa16095ede9965dfd1c6301d4451ea6e38d09ad888822"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4",
     "task_name": "vuls-oval-regression-prove-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_vuls-oval-regression-prove-001_baseline-local-direct/vuls-oval-regression-prove-001__gc2Qyn4/agent/claude-code.txt"
     }
   },
   "score": {

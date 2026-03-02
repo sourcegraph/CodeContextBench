@@ -2409,14 +2409,14 @@
       "transcript_sha256": "888817f18f306b77f7c2c7c75681f54cac11f57d804feeccfd3ad402e055e16c"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf",
     "task_name": "flipt-degraded-context-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_flipt-degraded-context-fix-001_baseline-local-direct/flipt-degraded-context-fix-001__7VhAcXf/agent/claude-code.txt"
     }
   },
   "score": {

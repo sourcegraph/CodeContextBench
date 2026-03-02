@@ -1,13 +1,13 @@
 # mcp_CCX-onboard-109_zOgjnr (mcp-remote-direct)
 
-- Run: `ccb_mcp_onboarding_haiku_20260226_035633_variance`
+- Run: `csb_org_onboarding_haiku_20260226_035633_variance`
 - Status: `passed`
 - Reward: `0.8571`
-- Audit JSON: [link](../audits/ccb_mcp_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr.json)
+- Audit JSON: [link](../audits/csb_org_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_onboarding_haiku_20260226_035633_variance--mcp-remote-direct--mcp_CCX-onboard-109_zOgjnr/claude-code.txt)
 
 ## Metrics
 

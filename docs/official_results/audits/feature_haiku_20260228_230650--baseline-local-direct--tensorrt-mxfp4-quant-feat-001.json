@@ -3446,14 +3446,14 @@
       "transcript_sha256": "8ad5593d192258b8f1c9524b1454096ce542c13c82400757fc5f583df05f8fd2"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/result.json",
+    "result_path": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/result.json",
     "run_dir": "feature_haiku_20260228_230650",
-    "suite": "ccb_feature",
-    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps",
+    "suite": "csb_sdlc_feature",
+    "task_dir": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps",
     "task_name": "tensorrt-mxfp4-quant-feat-001",
     "trace_paths": {
-      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/agent/trajectory.json",
-      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/ccb_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/agent/claude-code.txt"
+      "trajectory": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/agent/trajectory.json",
+      "transcript": "runs/official/feature_haiku_20260228_230650/baseline-local-direct/csb_sdlc_feature_tensorrt-mxfp4-quant-feat-001_baseline-local-direct/tensorrt-mxfp4-quant-feat-001__iVHuUps/agent/claude-code.txt"
     }
   },
   "score": {

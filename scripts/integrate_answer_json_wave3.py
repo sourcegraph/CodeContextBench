@@ -443,7 +443,8 @@ def integrate_task(task_dir, task_name, dry_run=False):
 def main():
     dry_run = "--dry-run" in sys.argv
 
-    suites = ["ccb_fix", "ccb_secure", "ccb_build"]
+    suites = ["csb_sdlc_fix", "csb_sdlc_secure", "ccb_build",
+              "ccb_fix", "ccb_secure"]  # legacy fallbacks
     benchmarks_dir = os.path.join(ROOT, "benchmarks")
 
     results = {"ok": 0, "skip": 0, "error": 0}

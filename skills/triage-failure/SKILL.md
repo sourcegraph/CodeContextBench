@@ -12,7 +12,7 @@ Investigate a failed benchmark task and produce a diagnosis.
 
 User provides one of:
 - Task path: `runs/official/pytorch_opus_.../baseline/.../sgt-005__hash/`
-- Suite/config/task: `ccb_pytorch/baseline/sgt-005`
+- Suite/config/task: `csb_sdlc_pytorch/baseline/sgt-005`
 - Just a task name: `sgt-005` (will search for it)
 - Or says "triage the most recent failure"
 
@@ -23,7 +23,7 @@ User provides one of:
 If user gave a full path, use it directly. Otherwise, find it:
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 
 # If "most recent failure" — get failures from aggregate_status.py
 python3 scripts/aggregate_status.py --failures-only --format json | python3 -c "
@@ -95,7 +95,7 @@ Categorize into one of:
 
 ```bash
 # Check error catalog
-cat ~/CodeContextBench/docs/ERROR_CATALOG.md
+cat ~/CodeScaleBench/docs/ERROR_CATALOG.md
 ```
 
 Cross-reference the error with known patterns in the catalog.
@@ -124,7 +124,7 @@ Present findings in this format:
 
 **Repro Command**:
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 # For baseline
 BASELINE_MCP_TYPE=none harbor run \
     --path benchmarks/<suite>/<task> \
@@ -148,7 +148,7 @@ If it's infrastructure, provide the remediation command.
 
 ### Triage all failures in a suite
 ```bash
-python3 scripts/aggregate_status.py --suite ccb_pytorch --failures-only --format json
+python3 scripts/aggregate_status.py --suite csb_sdlc_pytorch --failures-only --format json
 ```
 Then triage each one.
 

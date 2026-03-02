@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.h"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "test/extensions/filters/udp/udp_proxy/udp_proxy_filter_test.cc"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "changelogs/current.yaml"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::onClusterAddOrUpdate"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::onClusterRemoval"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "test/extensions/filters/udp/udp_proxy/udp_proxy_filter_test.cc",
+      "symbol": "ClusterDynamicAddAndRemoval"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "test/extensions/filters/udp/udp_proxy/udp_proxy_filter_test.cc",
+      "symbol": "PerPacketLoadBalancingBasicFlow"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "test/extensions/filters/udp/udp_proxy/udp_proxy_filter_test.cc",
+      "symbol": "PerPacketLoadBalancingRemoveCluster"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::onClusterAddOrUpdate"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::ClusterInfo::ClusterInfo"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::PerPacketLoadBalancingClusterInfo::PerPacketLoadBalancingClusterInfo"
+    },
+    {
+      "repo": "sg-evals/envoy--1ae957c1",
+      "path": "source/extensions/filters/udp/udp_proxy/udp_proxy_filter.cc",
+      "symbol": "UdpProxyFilter::StickySessionClusterInfo::StickySessionClusterInfo"
+    }
+  ],
+  "text": "The bug is in `onClusterAddOrUpdate()` in udp_proxy_filter.cc. The `cluster_infos_.emplace()` calls on lines 52-56 silently fail when the cluster already exists in the map (absl::flat_hash_map::emplace does not replace existing entries). When a CDS cluster update occurs, the old ClusterInfo entry is left unchanged with a stale reference to the old ThreadLocalCluster, causing a dangling pointer crash when the old cluster is destroyed.\n\nThe fix replaces `emplace()` with `insert_or_assign()` (or equivalent) in both code paths (PerPacketLoadBalancing and StickySession) to ensure the old entry is replaced. A regression test `ClusterDynamicInfoMapUpdate` must be added to test/extensions/filters/udp/udp_proxy/udp_proxy_filter_test.cc, and a bug_fix changelog entry must be added to changelogs/current.yaml.\n\nKey files:\n- udp_proxy_filter.cc: Contains `onClusterAddOrUpdate()` with the buggy `emplace` calls\n- udp_proxy_filter.h: Contains the class definitions including `cluster_infos_` map, `PerPacketLoadBalancingClusterInfo`, `StickySessionClusterInfo`\n- udp_proxy_filter_test.cc: Contains existing cluster tests like `ClusterDynamicAddAndRemoval` and `PerPacketLoadBalancingRemoveCluster` as pattern references\n- changelogs/current.yaml: Needs a new bug_fix entry under the `bug_fixes` section",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 444743,
+    "output_tokens": 3974,
+    "tool_calls": 18,
+    "elapsed_sec": 70.6,
+    "cost_usd": 1.3938,
+    "timestamp": "2026-03-02T01:01:34.413569+00:00"
+  }
+}

@@ -1,4 +1,4 @@
-# CCB Pre-Run Skills
+# CSB Pre-Run Skills
 
 Check infrastructure readiness, validate tasks, and launch benchmark runs. Use when preparing or starting benchmark runs.
 
@@ -24,7 +24,7 @@ Verify all infrastructure prerequisites before launching a benchmark run.
 #### 1. Run the checker
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/check_infra.py
+cd ~/CodeScaleBench && python3 scripts/check_infra.py
 ```
 
 #### 2. Present results
@@ -67,17 +67,17 @@ Run pre-flight checks on benchmark task definitions to catch problems before com
 
 For a specific suite:
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --suite ccb_pytorch
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --suite csb_sdlc_pytorch
 ```
 
 For all selected tasks:
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --all
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --all
 ```
 
 For a single task:
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_pytorch/sgt-005
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_pytorch/sgt-005
 ```
 
 #### 2. Present results
@@ -108,7 +108,7 @@ python3 scripts/validate_tasks_preflight.py --all --critical-only
 
 ## Run Benchmark
 
-Configure and launch CodeContextBench runs with current paired-run and curation guardrails.
+Configure and launch CodeScaleBench runs with current paired-run and curation guardrails.
 
 ### Scope
 
@@ -136,13 +136,13 @@ Use when the user asks to run benchmark suites, rerun failures, or launch offici
 ./configs/pytorch_2config.sh --parallel 4
 
 # Paired selected-task run
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch
 
 # Gap-fill baseline only (guarded)
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch --baseline-only
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch --baseline-only
 
 # Gap-fill full only (guarded)
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch --full-only
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch --full-only
 ```
 
 ### Preflight Checks

@@ -1770,14 +1770,14 @@
       "transcript_sha256": "45b25c0b94fe6d0be526e3ca4f434db3d9f2b13108c886404f0c505a92741ce9"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF",
     "task_name": "sgonly_argocd-arch-orient-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-arch-orient-001_mcp-remote-direct/sgonly_argocd-arch-orient-001__Z8kemAF/agent/claude-code.txt"
     }
   },
   "score": {

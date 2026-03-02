@@ -3240,14 +3240,14 @@
       "transcript_sha256": "1143fcafdf806e78ecc35aaab272cb36e49a77c73223f37dd338e4cde14ed07d"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/result.json",
+    "result_path": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/result.json",
     "run_dir": "fix_haiku_20260223_171232",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV",
     "task_name": "sgonly_flipt-eval-latency-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/ccb_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260223_171232/mcp-remote-direct/csb_sdlc_fix_flipt-eval-latency-fix-001_mcp-remote-direct/sgonly_flipt-eval-latency-fix-00__HYEnaUV/agent/claude-code.txt"
     }
   },
   "score": {

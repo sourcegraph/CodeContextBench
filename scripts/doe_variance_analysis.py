@@ -29,15 +29,15 @@ MANIFEST_PATH = PROJECT_ROOT / "runs" / "official" / "MANIFEST.json"
 STAGING_DIR = PROJECT_ROOT / "runs" / "staging"
 
 SDLC_SUITES = [
-    "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
-    "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
 ]
 
 MCP_UNIQUE_SUITES = [
-    "ccb_mcp_compliance", "ccb_mcp_crossorg", "ccb_mcp_crossrepo",
-    "ccb_mcp_crossrepo_tracing", "ccb_mcp_domain", "ccb_mcp_incident",
-    "ccb_mcp_migration", "ccb_mcp_onboarding", "ccb_mcp_org",
-    "ccb_mcp_platform", "ccb_mcp_security",
+    "csb_org_compliance", "csb_org_crossorg", "csb_org_crossrepo",
+    "csb_org_crossrepo_tracing", "csb_org_domain", "csb_org_incident",
+    "csb_org_migration", "csb_org_onboarding", "csb_org_org",
+    "csb_org_platform", "csb_org_security",
 ]
 
 BASELINE_CONFIGS = {"baseline", "baseline-local-direct", "baseline-local-artifact"}
@@ -102,7 +102,7 @@ def load_staging_results(suites: list) -> dict:
     for batch_dir in sorted(STAGING_DIR.iterdir()):
         if not batch_dir.is_dir():
             continue
-        m = re.match(r'(ccb_\w+?)_(?:haiku|sonnet)_\d{8}_\d{6}', batch_dir.name)
+        m = re.match(r'((?:csb_|ccb_)\w+?)_(?:haiku|sonnet)_\d{8}_\d{6}', batch_dir.name)
         if not m:
             continue
         suite = m.group(1)
@@ -500,7 +500,7 @@ def _output_json(suites, config_arms, decompositions, combined_decomps,
     }
 
     for suite in suites:
-        short = suite.replace("ccb_mcp_", "mcp_").replace("ccb_", "")
+        short = suite.replace("csb_org_", "org_").replace("csb_sdlc_", "").replace("ccb_mcp_", "mcp_").replace("ccb_", "")
         suite_out = {"suite": suite, "short_name": short}
 
         # Per-config decompositions
@@ -577,7 +577,7 @@ def _output_tables(suites, config_arms, decompositions, combined_decomps,
 
         for suite in suites:
             d = decompositions.get((suite, ct))
-            short = suite.replace("ccb_mcp_", "mcp_").replace("ccb_", "")
+            short = suite.replace("csb_org_", "org_").replace("csb_sdlc_", "").replace("ccb_mcp_", "mcp_").replace("ccb_", "")
             if d is None:
                 print(f"  {short:<18} {'—':>6} {'—':>6} {'—':>7} "
                       f"{'—':>6} {'—':>9} {'—':>9} {'—':>9} {'—':>6} {'—':>13}")
@@ -598,7 +598,7 @@ def _output_tables(suites, config_arms, decompositions, combined_decomps,
     total_minimax = 0
     total_neyman = 0
     for suite in suites:
-        short = suite.replace("ccb_mcp_", "mcp_").replace("ccb_", "")
+        short = suite.replace("csb_org_", "org_").replace("csb_sdlc_", "").replace("ccb_mcp_", "mcp_").replace("ccb_", "")
         cd = combined_decomps.get(suite)
         mn = minimax.get(suite, 20)
         ny = neyman.get(suite, 20)
@@ -647,7 +647,7 @@ def _output_tables(suites, config_arms, decompositions, combined_decomps,
             for task, std in d["task_stds"].items():
                 if std > 0.05:  # filter noise
                     all_task_vars.append({
-                        "suite": suite.replace("ccb_mcp_", "mcp_").replace("ccb_", ""),
+                        "suite": suite.replace("csb_org_", "org_").replace("csb_sdlc_", "").replace("ccb_mcp_", "mcp_").replace("ccb_", ""),
                         "config": ct,
                         "task": task,
                         "mean": d["task_means"][task],
@@ -669,7 +669,7 @@ def _output_tables(suites, config_arms, decompositions, combined_decomps,
     print("-" * W)
 
     for suite in suites:
-        short = suite.replace("ccb_mcp_", "mcp_").replace("ccb_", "")
+        short = suite.replace("csb_org_", "org_").replace("csb_sdlc_", "").replace("ccb_mcp_", "mcp_").replace("ccb_", "")
         ds = delta_stats.get(suite)
         if ds is None or not ds["deltas"]:
             print(f"  {short:<18} {'—':>6}")

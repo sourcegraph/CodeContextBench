@@ -1,13 +1,13 @@
 # envoy-request-routing-qa-001 (baseline-local-direct)
 
-- Run: `ccb_understand_haiku_022426`
+- Run: `csb_sdlc_understand_haiku_022426`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_understand_haiku_022426--baseline--envoy-request-routing-qa-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_understand_haiku_022426--baseline--envoy-request-routing-qa-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_understand_haiku_022426--baseline--envoy-request-routing-qa-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_understand_haiku_022426--baseline--envoy-request-routing-qa-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_understand_haiku_022426--baseline--envoy-request-routing-qa-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_understand_haiku_022426--baseline--envoy-request-routing-qa-001/claude-code.txt)
 
 ## Metrics
 

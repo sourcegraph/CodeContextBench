@@ -1,12 +1,12 @@
 # mcp_CCX-dep-trace-116_qOPSG2 (mcp-remote-direct)
 
-- Run: `ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance`
+- Run: `csb_org_crossrepo_tracing_haiku_20260226_035622_variance`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-116_qOPSG2.json)
+- Audit JSON: [link](../audits/csb_org_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-116_qOPSG2.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-116_qOPSG2/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-dep-trace-116_qOPSG2/trajectory.json)
 
 ## Metrics
 

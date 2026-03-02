@@ -995,14 +995,14 @@
       "transcript_sha256": "e1d95afa017e79adc1c3d99737e077ea14c139cf59931e5c1aa86c4b0d372fd1"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a",
     "task_name": "sgonly_kafka-vuln-reachability-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/mcp/ccb_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/mcp/csb_sdlc_secure_kafka-vuln-reachability-001_mcp-remote-direct/sgonly_kafka-vuln-reachability-0__EuHF77a/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,12 +1,12 @@
 # ccx-domain-120 (baseline-local-direct)
 
-- Run: `ccb_mcp_domain_haiku_20260226_035617`
+- Run: `csb_org_domain_haiku_20260226_035617`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_domain_haiku_20260226_035617--baseline-local-direct--ccx-domain-120.json)
+- Audit JSON: [link](../audits/csb_org_domain_haiku_20260226_035617--baseline-local-direct--ccx-domain-120.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_domain_haiku_20260226_035617--baseline-local-direct--ccx-domain-120/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_domain_haiku_20260226_035617--baseline-local-direct--ccx-domain-120/trajectory.json)
 
 ## Metrics
 

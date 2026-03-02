@@ -1,6 +1,6 @@
-# CodeContextBench
+# CodeScaleBench
 
-Benchmark suite for evaluating how AI coding agents leverage external context tools on software engineering tasks across the SDLC. Developed as the reproducibility artifact for the paper *"CodeContextBench: A Systematic Evaluation Framework for Assessing the Impact of Enhanced Code Intelligence on AI Coding Agent Performance."*
+Benchmark suite for evaluating how AI coding agents leverage external context tools on software engineering tasks across the SDLC. Developed as the reproducibility artifact for the paper *"CodeScaleBench: A Systematic Evaluation Framework for Assessing the Impact of Enhanced Code Intelligence on AI Coding Agent Performance."*
 
 This repository contains **benchmark task definitions**, **evaluation configs**, and a **metrics extraction pipeline**. Tasks are executed via the [Harbor](https://github.com/laude-institute/harbor/tree/main) runner with the Claude Code agent harness.
 
@@ -19,8 +19,8 @@ This repository contains **benchmark task definitions**, **evaluation configs**,
 You can inspect task definitions, run validation and analysis scripts, and use the metrics/report pipeline on existing Harbor run outputs.
 
 ```bash
-git clone https://github.com/sourcegraph/CodeContextBench.git
-cd CodeContextBench
+git clone https://github.com/sourcegraph/CodeScaleBench.git
+cd CodeScaleBench
 
 # Fast repo sanity check (docs/config refs)
 python3 scripts/repo_health.py --quick
@@ -70,15 +70,15 @@ Nine suites organized by software development lifecycle phase:
 
 | Suite | SDLC Phase | Tasks | Description |
 |-------|-----------|------:|-------------|
-| `ccb_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
-| `ccb_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
-| `ccb_fix` | Bug Repair | 20 | Diagnosing and fixing real bugs across production codebases |
-| `ccb_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
-| `ccb_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
-| `ccb_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
-| `ccb_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
-| `ccb_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
-| `ccb_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
+| `csb_sdlc_understand` | Requirements & Discovery | 20 | Codebase comprehension, onboarding, Q&A, knowledge recovery |
+| `csb_sdlc_design` | Architecture & Design | 20 | Architecture analysis, dependency graphs, change impact |
+| `csb_sdlc_fix` | Bug Repair | 20 | Diagnosing and fixing real bugs across production codebases |
+| `csb_sdlc_feature` | Feature Implementation | 20 | New features, interface implementation, big-code features |
+| `csb_sdlc_refactor` | Cross-File Refactoring | 20 | Cross-file refactoring, enterprise dependency refactoring, rename refactoring |
+| `csb_sdlc_test` | Testing & QA | 20 | Code review, performance testing, code search validation, test generation |
+| `csb_sdlc_document` | Documentation | 20 | API references, architecture docs, migration guides, runbooks |
+| `csb_sdlc_secure` | Security & Compliance | 20 | CVE analysis, reachability, governance, access control |
+| `csb_sdlc_debug` | Debugging & Investigation | 20 | Root cause tracing, fault localization, provenance |
 | **Total** | | **180** | |
 
 ## MCP-Unique Suites (Org-Scale Context Retrieval)
@@ -87,17 +87,17 @@ Eleven additional suites measure cross-repo discovery, symbol resolution, depend
 
 | Suite | Category | Tasks | Description |
 |-------|----------|------:|-------------|
-| `ccb_mcp_crossrepo_tracing` | A: Dependency Tracing | 20 | Cross-repo dependency chains, blast radius, symbol resolution |
-| `ccb_mcp_security` | B: Vulnerability Remediation | 20 | CVE mapping, missing auth middleware across repos |
-| `ccb_mcp_migration` | C: Framework Migration | 20 | API migrations, breaking changes across repos |
-| `ccb_mcp_incident` | D: Incident Debugging | 20 | Error-to-code-path tracing across microservices |
-| `ccb_mcp_onboarding` | E: Onboarding & Comprehension | 20 | API consumption mapping, end-to-end flow, architecture maps |
-| `ccb_mcp_compliance` | F: Compliance | 20 | Standards adherence, audit, and provenance workflows |
-| `ccb_mcp_crossorg` | G: Cross-Org Discovery | 20 | Interface implementations and authoritative repo identification across orgs |
-| `ccb_mcp_domain` | H: Domain Lineage | 20 | Config propagation, architecture patterns, domain analysis |
-| `ccb_mcp_org` | I: Organizational Context | 20 | Agentic discovery, org-wide coding correctness |
-| `ccb_mcp_platform` | J: Platform Knowledge | 20 | Service template discovery and tribal knowledge |
-| `ccb_mcp_crossrepo` | K: Cross-Repo Discovery | 20 | Cross-repo search, dependency discovery, impact analysis |
+| `csb_org_crossrepo_tracing` | A: Dependency Tracing | 20 | Cross-repo dependency chains, blast radius, symbol resolution |
+| `csb_org_security` | B: Vulnerability Remediation | 20 | CVE mapping, missing auth middleware across repos |
+| `csb_org_migration` | C: Framework Migration | 20 | API migrations, breaking changes across repos |
+| `csb_org_incident` | D: Incident Debugging | 20 | Error-to-code-path tracing across microservices |
+| `csb_org_onboarding` | E: Onboarding & Comprehension | 20 | API consumption mapping, end-to-end flow, architecture maps |
+| `csb_org_compliance` | F: Compliance | 20 | Standards adherence, audit, and provenance workflows |
+| `csb_org_crossorg` | G: Cross-Org Discovery | 20 | Interface implementations and authoritative repo identification across orgs |
+| `csb_org_domain` | H: Domain Lineage | 20 | Config propagation, architecture patterns, domain analysis |
+| `csb_org_org` | I: Organizational Context | 20 | Agentic discovery, org-wide coding correctness |
+| `csb_org_platform` | J: Platform Knowledge | 20 | Service template discovery and tribal knowledge |
+| `csb_org_crossrepo` | K: Cross-Repo Discovery | 20 | Cross-repo search, dependency discovery, impact analysis |
 | **Total** | | **220** | |
 
 **Combined catalog total: 400 tasks** (180 SDLC across 9 suites + 220 MCP-unique across 11 suites). An additional 28 backup tasks are archived in `benchmarks/backups/`.
@@ -112,8 +112,8 @@ See [docs/MCP_UNIQUE_TASKS.md](docs/MCP_UNIQUE_TASKS.md) for the full task syste
 
 All benchmarks are evaluated across two paper-level configurations (Baseline vs MCP-Full). The concrete run config names differ by task type:
 
-- **SDLC suites** (`ccb_feature`, `ccb_refactor`, `ccb_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
-- **MCP-unique suites** (`ccb_mcp_*`): `baseline-local-artifact` + `mcp-remote-artifact`
+- **SDLC suites** (`csb_sdlc_feature`, `csb_sdlc_refactor`, `csb_sdlc_fix`, etc.): `baseline-local-direct` + `mcp-remote-direct`
+- **MCP-unique suites** (`csb_org_*`): `baseline-local-artifact` + `mcp-remote-artifact`
 
 Legacy run directory names (`baseline`, `sourcegraph_full`, `artifact_full`) may still appear in historical outputs and are handled by analysis scripts.
 
@@ -132,27 +132,27 @@ See [docs/reference/CONFIGS.md](docs/reference/CONFIGS.md) for the canonical con
 
 ```
 benchmarks/              # Task definitions organized by SDLC phase + MCP-unique
-  ccb_feature/           #   Feature Implementation (20 tasks)
-  ccb_refactor/          #   Cross-File Refactoring (20 tasks)
-  ccb_debug/             #   Debugging & Investigation (20 tasks)
-  ccb_design/            #   Architecture & Design (20 tasks)
-  ccb_document/          #   Documentation (20 tasks)
-  ccb_fix/               #   Bug Repair (20 tasks)
-  ccb_secure/            #   Security & Compliance (20 tasks)
-  ccb_test/              #   Testing & QA (20 tasks)
-  ccb_understand/        #   Requirements & Discovery (20 tasks)
+  csb_sdlc_feature/      #   Feature Implementation (20 tasks)
+  csb_sdlc_refactor/     #   Cross-File Refactoring (20 tasks)
+  csb_sdlc_debug/        #   Debugging & Investigation (20 tasks)
+  csb_sdlc_design/       #   Architecture & Design (20 tasks)
+  csb_sdlc_document/     #   Documentation (20 tasks)
+  csb_sdlc_fix/          #   Bug Repair (20 tasks)
+  csb_sdlc_secure/       #   Security & Compliance (20 tasks)
+  csb_sdlc_test/         #   Testing & QA (20 tasks)
+  csb_sdlc_understand/   #   Requirements & Discovery (20 tasks)
   backups/               #   Archived backup tasks (28 total)
-  ccb_mcp_compliance/    #   MCP-unique: compliance & audit (20 tasks)
-  ccb_mcp_crossorg/      #   MCP-unique: cross-org discovery (20 tasks)
-  ccb_mcp_crossrepo/     #   MCP-unique: cross-repo discovery (20 tasks)
-  ccb_mcp_crossrepo_tracing/  #   MCP-unique: dependency tracing (20 tasks)
-  ccb_mcp_domain/        #   MCP-unique: domain lineage (20 tasks)
-  ccb_mcp_incident/      #   MCP-unique: incident debugging (20 tasks)
-  ccb_mcp_migration/     #   MCP-unique: framework migration (20 tasks)
-  ccb_mcp_onboarding/    #   MCP-unique: onboarding (20 tasks)
-  ccb_mcp_org/           #   MCP-unique: org context (20 tasks)
-  ccb_mcp_platform/      #   MCP-unique: platform knowledge (20 tasks)
-  ccb_mcp_security/      #   MCP-unique: vulnerability remediation (20 tasks)
+  csb_org_compliance/    #   MCP-unique: compliance & audit (20 tasks)
+  csb_org_crossorg/      #   MCP-unique: cross-org discovery (20 tasks)
+  csb_org_crossrepo/     #   MCP-unique: cross-repo discovery (20 tasks)
+  csb_org_crossrepo_tracing/  #   MCP-unique: dependency tracing (20 tasks)
+  csb_org_domain/        #   MCP-unique: domain lineage (20 tasks)
+  csb_org_incident/      #   MCP-unique: incident debugging (20 tasks)
+  csb_org_migration/     #   MCP-unique: framework migration (20 tasks)
+  csb_org_onboarding/    #   MCP-unique: onboarding (20 tasks)
+  csb_org_org/           #   MCP-unique: org context (20 tasks)
+  csb_org_platform/      #   MCP-unique: platform knowledge (20 tasks)
+  csb_org_security/      #   MCP-unique: vulnerability remediation (20 tasks)
 configs/                 # Run configs and task selection
   _common.sh             #   Shared infra: token refresh, parallel execution, multi-account
   sdlc_suite_2config.sh  #   Generic SDLC runner (used by phase wrappers below)
@@ -171,7 +171,7 @@ configs/                 # Run configs and task selection
   use_case_registry.json #   100 GTM use cases (MCP-unique task source)
   archive/               #   Pre-SDLC migration scripts (preserved for history)
 scripts/                 # Metrics extraction, evaluation, and operational tooling
-  ccb_metrics/           #   Python package: models, extractors, discovery, judge context
+  csb_metrics/           #   Python package: models, extractors, discovery, judge context
   generate_eval_report.py  # CLI: deterministic evaluation report generator
   aggregate_status.py    #   Core run scanner (status, errors, watch mode)
   status_fingerprints.py #   Error classification (12 regex patterns)
@@ -209,7 +209,7 @@ docs/                    # Operational documentation
   LEADERBOARD.md         #   Ranking policy
   SUBMISSION.md          #   Submission format specification
 skills/                  # AI agent skill definitions (operational runbooks)
-  ccb/                   #   CCB-specific: pre-run, monitoring, triage, analysis, maintenance
+  csb/                   #   CSB-specific: pre-run, monitoring, triage, analysis, maintenance
   general/               #   Reusable: workflow tools, agent delegation, dev practices
 schemas/                 # JSON schemas for MANIFEST.json, task.toml, etc.
 ```
@@ -229,7 +229,7 @@ python3 scripts/generate_eval_report.py \
   --output-dir ./eval_reports/
 
 # Generate LLM judge context files
-python3 -m scripts.ccb_metrics.judge_context \
+python3 -m scripts.csb_metrics.judge_context \
   --runs-dir /path/to/runs/official/ \
   --benchmarks-dir ./benchmarks/ \
   --output-dir ./judge_contexts/
@@ -295,7 +295,7 @@ bash configs/run_selected_tasks.sh
 bash configs/run_selected_tasks.sh --baseline-only
 
 # Run a single SDLC phase
-bash configs/run_selected_tasks.sh --benchmark ccb_fix
+bash configs/run_selected_tasks.sh --benchmark csb_sdlc_fix
 
 # Dry run to list tasks without executing
 bash configs/run_selected_tasks.sh --dry-run
@@ -324,7 +324,7 @@ MCP-unique tasks use a separate selection file:
 bash configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json
 
 # Filter by use-case category
-bash configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json --benchmark ccb_mcp_security
+bash configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json --benchmark csb_org_security
 
 # Dry run
 bash configs/run_selected_tasks.sh --selection-file configs/selected_mcp_unique_tasks.json --dry-run
@@ -336,7 +336,7 @@ All runners support `--baseline-only`, `--full-only`, `--task TASK_ID`, and `--p
 
 ## Quality Assurance & Validation
 
-CodeContextBench includes a multi-stage QA pipeline to ensure task integrity, reproducible runs, and accurate scoring.
+CodeScaleBench includes a multi-stage QA pipeline to ensure task integrity, reproducible runs, and accurate scoring.
 
 | Phase | Script | Purpose |
 |-------|--------|---------|
@@ -359,7 +359,7 @@ Key scripts organized by workflow phase:
 
 | Phase | Script | Usage |
 |-------|--------|-------|
-| **Pre-run** | `validate_tasks_preflight.py` | `python3 scripts/validate_tasks_preflight.py [--suite ccb_pytorch] [--task sgt-001]` |
+| **Pre-run** | `validate_tasks_preflight.py` | `python3 scripts/validate_tasks_preflight.py [--suite csb_sdlc_fix] [--task sgt-001]` |
 | **Pre-run** | `check_infra.py` | `python3 scripts/check_infra.py` |
 | **During run** | `aggregate_status.py --since 2h` | `python3 scripts/aggregate_status.py --since 2h` |
 | **Post-run** | `aggregate_status.py` | `python3 scripts/aggregate_status.py [--watch]` |
@@ -369,7 +369,7 @@ Key scripts organized by workflow phase:
 | **Analysis** | `generate_manifest.py` | `python3 scripts/generate_manifest.py` |
 | **Maintenance** | `sync_task_metadata.py` | `python3 scripts/sync_task_metadata.py [--fix]` |
 | **Maintenance** | `archive_run.py` | `python3 scripts/archive_run.py <run_dir> [--compress]` |
-| **Maintenance** | `rerun_failed.py` | `python3 scripts/rerun_failed.py [--fingerprint timeout] [--suite ccb_pytorch]` |
+| **Maintenance** | `rerun_failed.py` | `python3 scripts/rerun_failed.py [--fingerprint timeout] [--suite csb_sdlc_fix]` |
 
 ---
 
@@ -379,7 +379,7 @@ The `skills/` directory contains structured runbooks for AI coding agents operat
 
 | Category | Skills | Description |
 |----------|--------|-------------|
-| **CCB Operations** | 20 skills in 6 files | Pre-run checks, monitoring, triage, analysis, maintenance, task authoring |
+| **CSB Operations** | 20 skills in 6 files | Pre-run checks, monitoring, triage, analysis, maintenance, task authoring |
 | **General Purpose** | 11 skills in 4 files | Session management, agent delegation, search patterns, dev practices |
 
 Skills are plain markdown and tool-agnostic. See [`skills/README.md`](skills/README.md) for the full index and integration guides for Cursor, Claude Code, and other agents. See [`docs/SKILLS.md`](docs/SKILLS.md) for background on the skills system.

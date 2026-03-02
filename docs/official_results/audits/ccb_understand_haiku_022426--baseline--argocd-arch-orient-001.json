@@ -2341,14 +2341,14 @@
       "transcript_sha256": "c951ed93668fbfb9b1cef25405dd44db60a92bed5e7017893f27f0134c71656b"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM",
     "task_name": "argocd-arch-orient-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/baseline/ccb_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/baseline/csb_sdlc_understand_argocd-arch-orient-001_baseline-local-direct/argocd-arch-orient-001__VqRTjcM/agent/claude-code.txt"
     }
   },
   "score": {

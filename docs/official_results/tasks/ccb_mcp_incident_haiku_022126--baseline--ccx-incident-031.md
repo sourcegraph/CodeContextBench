@@ -1,13 +1,13 @@
 # ccx-incident-031 (baseline-local-artifact)
 
-- Run: `ccb_mcp_incident_haiku_022126`
+- Run: `csb_org_incident_haiku_022126`
 - Status: `passed`
 - Reward: `0.5000`
-- Audit JSON: [link](../audits/ccb_mcp_incident_haiku_022126--baseline--ccx-incident-031.json)
+- Audit JSON: [link](../audits/csb_org_incident_haiku_022126--baseline--ccx-incident-031.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_incident_haiku_022126--baseline--ccx-incident-031/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_incident_haiku_022126--baseline--ccx-incident-031/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_incident_haiku_022126--baseline--ccx-incident-031/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_incident_haiku_022126--baseline--ccx-incident-031/claude-code.txt)
 
 ## Metrics
 

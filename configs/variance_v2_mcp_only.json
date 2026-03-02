@@ -10,19 +10,19 @@
     "target_total": 251,
     "target_note": "All SDLC suites at target + 81 MCP-unique tasks across 10 ccb_mcp_* suites.",
     "last_updated": "2026-02-27",
-    "note": "Added 28 large-repo RepoQA SR-QA tasks (14 ccb_understand + 14 ccb_mcp_onboarding) targeting functions in 1M-35M LOC codebases. Previous: Added 21 mega-repo tasks (Firefox, GCC, OpenJDK, Chromium, AOSP, LibreOffice, ArangoDB, Rust). Expanded to 251 total. New repo sets: java-platform, chromium-browser, android-platform, libreoffice-desktop, arangodb-database."
+    "note": "Added 28 large-repo RepoQA SR-QA tasks (14 csb_sdlc_understand + 14 csb_org_onboarding) targeting functions in 1M-35M LOC codebases. Previous: Added 21 mega-repo tasks (Firefox, GCC, OpenJDK, Chromium, AOSP, LibreOffice, ArangoDB, Rust). Expanded to 251 total. New repo sets: java-platform, chromium-browser, android-platform, libreoffice-desktop, arangodb-database."
   },
   "methodology": {
     "description": "Tasks reorganized from 17 legacy suites into 8 SDLC-phase suites. Each task retains its original scoring and metadata; only the suite assignment and task_dir are updated to reflect the new SDLC taxonomy. Tasks with status 'archived' or 'retired' in migration_map.json are excluded.",
     "sdlc_suites": [
-      "ccb_understand",
-      "ccb_design",
-      "ccb_fix",
-      "ccb_build",
-      "ccb_test",
-      "ccb_document",
-      "ccb_secure",
-      "ccb_debug"
+      "csb_sdlc_understand",
+      "csb_sdlc_design",
+      "csb_sdlc_fix",
+      "csb_sdlc_build",
+      "csb_sdlc_test",
+      "csb_sdlc_document",
+      "csb_sdlc_secure",
+      "csb_sdlc_debug"
     ],
     "mcp_scoring_weights": {
       "context_complexity": 0.25,
@@ -31,26 +31,26 @@
       "task_category_weight": 0.25
     },
     "suite_descriptions": {
-      "ccb_understand": "Codebase comprehension, Q&A, onboarding, knowledge discovery",
-      "ccb_design": "Architecture analysis, dependency mapping, cross-repo reasoning",
-      "ccb_fix": "Bug fixes, SWE-bench Pro patches, multi-team ownership fixes",
-      "ccb_build": "Feature implementation, refactoring, dependency installation",
-      "ccb_test": "Code review, test writing, performance testing, search tasks",
-      "ccb_document": "Documentation generation (API, architecture, migration, K8s packages)",
-      "ccb_secure": "Security vulnerability triage, governance compliance, access control",
-      "ccb_debug": "Investigation, debugging, fault localization, regression hunting"
+      "csb_sdlc_understand": "Codebase comprehension, Q&A, onboarding, knowledge discovery",
+      "csb_sdlc_design": "Architecture analysis, dependency mapping, cross-repo reasoning",
+      "csb_sdlc_fix": "Bug fixes, SWE-bench Pro patches, multi-team ownership fixes",
+      "csb_sdlc_build": "Feature implementation, refactoring, dependency installation",
+      "csb_sdlc_test": "Code review, test writing, performance testing, search tasks",
+      "csb_sdlc_document": "Documentation generation (API, architecture, migration, K8s packages)",
+      "csb_sdlc_secure": "Security vulnerability triage, governance compliance, access control",
+      "csb_sdlc_debug": "Investigation, debugging, fault localization, regression hunting"
     },
     "mcp_unique_suites": [
-      "ccb_mcp_compliance",
-      "ccb_mcp_crossorg",
-      "ccb_mcp_crossrepo_tracing",
-      "ccb_mcp_domain",
-      "ccb_mcp_incident",
-      "ccb_mcp_migration",
-      "ccb_mcp_onboarding",
-      "ccb_mcp_org",
-      "ccb_mcp_platform",
-      "ccb_mcp_security"
+      "csb_org_compliance",
+      "csb_org_crossorg",
+      "csb_org_crossrepo_tracing",
+      "csb_org_domain",
+      "csb_org_incident",
+      "csb_org_migration",
+      "csb_org_onboarding",
+      "csb_org_org",
+      "csb_org_platform",
+      "csb_org_security"
     ],
     "difficulty_formula": {
       "version": "2.0",
@@ -73,7 +73,7 @@
         "expert": 0.86,
         "hard": 0.62
       },
-      "rule_override": "ccb_debug linux-* tasks are expert",
+      "rule_override": "csb_sdlc_debug linux-* tasks are expert",
       "description": "Difficulty is computed from size proxies (context/files), complexity proxies (cross-file + semantic + category), and ground-truth knowledge depth (reward_type + GT artifact richness)."
     }
   },
@@ -83,8 +83,8 @@
   "tasks": [
     {
       "task_id": "ansible-module-respawn-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/ansible-module-respawn-fix-001",
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/ansible-module-respawn-fix-001",
       "language": "python",
       "difficulty": "medium",
       "sdlc_phase": "fix",
@@ -94,7 +94,7 @@
     },
     {
       "task_id": "ccx-config-trace-010",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "Cross-repo tracing",
       "language": "go",
       "difficulty": "hard",
@@ -108,18 +108,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-config-trace-010",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-config-trace-010",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "mcp_suite": "csb_org_crossrepo_tracing",
       "repo_set_id": "kubernetes-ecosystem"
     },
     {
       "task_id": "ccx-dep-trace-001",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "Cross-repo tracing",
       "language": "go",
       "difficulty": "hard",
@@ -133,18 +133,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-001",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-001",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "mcp_suite": "csb_org_crossrepo_tracing",
       "repo_set_id": "kubernetes-ecosystem"
     },
     {
       "task_id": "ccx-dep-trace-004",
-      "benchmark": "ccb_mcp_crossrepo_tracing",
+      "benchmark": "csb_org_crossrepo_tracing",
       "sdlc_phase": "Cross-repo tracing",
       "language": "go",
       "difficulty": "hard",
@@ -158,18 +158,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_crossrepo_tracing/ccx-dep-trace-004",
+      "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-004",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_crossrepo_tracing",
+      "mcp_suite": "csb_org_crossrepo_tracing",
       "repo_set_id": "grafana-observability"
     },
     {
       "task_id": "ccx-explore-042-ds",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Onboarding & comprehension",
       "language": "python",
       "difficulty": "hard",
@@ -183,19 +183,19 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_onboarding/ccx-explore-042-ds",
+      "task_dir": "csb_org_onboarding/ccx-explore-042-ds",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_onboarding",
+      "mcp_suite": "csb_org_onboarding",
       "deepsearch_relevant": true,
       "repo_set_id": "python-ml-stack"
     },
     {
       "task_id": "ccx-incident-031",
-      "benchmark": "ccb_mcp_incident",
+      "benchmark": "csb_org_incident",
       "sdlc_phase": "Incident investigation",
       "language": "go",
       "difficulty": "hard",
@@ -209,18 +209,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_incident/ccx-incident-031",
+      "task_dir": "csb_org_incident/ccx-incident-031",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_incident",
+      "mcp_suite": "csb_org_incident",
       "repo_set_id": "multi-org-go"
     },
     {
       "task_id": "ccx-onboard-041",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Onboarding & comprehension",
       "language": "python",
       "difficulty": "hard",
@@ -234,18 +234,18 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-041",
+      "task_dir": "csb_org_onboarding/ccx-onboard-041",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_onboarding",
+      "mcp_suite": "csb_org_onboarding",
       "repo_set_id": "python-ml-stack"
     },
     {
       "task_id": "ccx-onboard-050-ds",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Onboarding & comprehension",
       "language": "go",
       "difficulty": "hard",
@@ -259,19 +259,19 @@
         "task_category_weight": 1.0
       },
       "selection_rationale": "MCP-unique task: requires cross-repo discovery via MCP tools",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-050-ds",
+      "task_dir": "csb_org_onboarding/ccx-onboard-050-ds",
       "context_length": 0,
       "context_length_source": "mcp_unique_artifact",
       "files_count": 0,
       "files_count_source": "mcp_unique_artifact",
       "mcp_unique": true,
-      "mcp_suite": "ccb_mcp_onboarding",
+      "mcp_suite": "csb_org_onboarding",
       "deepsearch_relevant": true,
       "repo_set_id": "kubernetes-ecosystem"
     },
     {
       "task_id": "ccx-onboard-search-201",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
@@ -285,7 +285,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-201",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-201",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -293,7 +293,7 @@
     },
     {
       "task_id": "ccx-onboard-search-202",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "go",
       "difficulty": "hard",
@@ -307,7 +307,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-202",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-202",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -315,7 +315,7 @@
     },
     {
       "task_id": "ccx-onboard-search-203",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
@@ -329,7 +329,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-203",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-203",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -337,7 +337,7 @@
     },
     {
       "task_id": "ccx-onboard-search-204",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
@@ -351,7 +351,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-204",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-204",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -359,7 +359,7 @@
     },
     {
       "task_id": "ccx-onboard-search-205",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "rust",
       "difficulty": "hard",
@@ -373,7 +373,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-205",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-205",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -381,7 +381,7 @@
     },
     {
       "task_id": "ccx-onboard-search-206",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "rust",
       "difficulty": "hard",
@@ -395,7 +395,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-206",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-206",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -403,7 +403,7 @@
     },
     {
       "task_id": "ccx-onboard-search-207",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -417,7 +417,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-207",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-207",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -425,7 +425,7 @@
     },
     {
       "task_id": "ccx-onboard-search-208",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -439,7 +439,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-208",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-208",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -447,7 +447,7 @@
     },
     {
       "task_id": "ccx-onboard-search-209",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -461,7 +461,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-209",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-209",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -469,7 +469,7 @@
     },
     {
       "task_id": "ccx-onboard-search-210",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -483,7 +483,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-210",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-210",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -491,7 +491,7 @@
     },
     {
       "task_id": "ccx-onboard-search-211",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "python",
       "difficulty": "hard",
@@ -505,7 +505,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-211",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-211",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -513,7 +513,7 @@
     },
     {
       "task_id": "ccx-onboard-search-212",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "python",
       "difficulty": "hard",
@@ -527,7 +527,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-212",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-212",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -535,7 +535,7 @@
     },
     {
       "task_id": "ccx-onboard-search-213",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "typescript",
       "difficulty": "hard",
@@ -549,7 +549,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-213",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-213",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -557,7 +557,7 @@
     },
     {
       "task_id": "ccx-onboard-search-214",
-      "benchmark": "ccb_mcp_onboarding",
+      "benchmark": "csb_org_onboarding",
       "sdlc_phase": "Requirements & Discovery",
       "language": "typescript",
       "difficulty": "hard",
@@ -571,7 +571,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "MCP-unique large-repo RepoQA SR-QA: function search via Sourcegraph",
-      "task_dir": "ccb_mcp_onboarding/ccx-onboard-search-214",
+      "task_dir": "csb_org_onboarding/ccx-onboard-search-214",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -579,7 +579,7 @@
     },
     {
       "task_id": "django-composite-field-recover-001",
-      "benchmark": "ccb_understand",
+      "benchmark": "csb_sdlc_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "python",
       "difficulty": "hard",
@@ -593,7 +593,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "New SDLC task: knowledge fragmentation recovery across Django packages",
-      "task_dir": "ccb_understand/django-composite-field-recover-001",
+      "task_dir": "csb_sdlc_understand/django-composite-field-recover-001",
       "context_length": 850000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 15,
@@ -601,7 +601,7 @@
     },
     {
       "task_id": "docgen-inline-001",
-      "benchmark": "ccb_document",
+      "benchmark": "csb_sdlc_document",
       "sdlc_phase": "Documentation",
       "language": "python",
       "difficulty": "hard",
@@ -615,7 +615,7 @@
         "task_category_weight": 0.9
       },
       "selection_rationale": "Phase 2 backlog promotion: inline docstring generation (Python variant)",
-      "task_dir": "ccb_document/docgen-inline-001",
+      "task_dir": "csb_sdlc_document/docgen-inline-001",
       "context_length": 850000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 12,
@@ -623,8 +623,8 @@
     },
     {
       "task_id": "envoy-vuln-reachability-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/envoy-vuln-reachability-001",
+      "benchmark": "csb_sdlc_secure",
+      "task_dir": "csb_sdlc_secure/envoy-vuln-reachability-001",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -645,7 +645,7 @@
     },
     {
       "task_id": "firefox-cache-race-search-001",
-      "benchmark": "ccb_understand",
+      "benchmark": "csb_sdlc_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -659,7 +659,7 @@
         "task_category_weight": 0.8
       },
       "selection_rationale": "Large-repo RepoQA SR-QA: function search in 1M+ LOC codebase",
-      "task_dir": "ccb_understand/firefox-cache-race-search-001",
+      "task_dir": "csb_sdlc_understand/firefox-cache-race-search-001",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -667,7 +667,7 @@
     },
     {
       "task_id": "firefox-http-response-search-001",
-      "benchmark": "ccb_understand",
+      "benchmark": "csb_sdlc_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "cpp",
       "difficulty": "hard",
@@ -681,7 +681,7 @@
         "task_category_weight": 0.8
       },
       "selection_rationale": "Large-repo RepoQA SR-QA: function search in 1M+ LOC codebase",
-      "task_dir": "ccb_understand/firefox-http-response-search-001",
+      "task_dir": "csb_sdlc_understand/firefox-http-response-search-001",
       "context_length": 0,
       "context_length_source": "large_repo_repoqa",
       "files_count": 0,
@@ -689,8 +689,8 @@
     },
     {
       "task_id": "flipt-degraded-context-fix-001",
-      "benchmark": "ccb_secure",
-      "task_dir": "ccb_secure/flipt-degraded-context-fix-001",
+      "benchmark": "csb_sdlc_secure",
+      "task_dir": "csb_sdlc_secure/flipt-degraded-context-fix-001",
       "language": "go",
       "difficulty": "hard",
       "sdlc_phase": "secure",
@@ -700,13 +700,13 @@
     },
     {
       "task_id": "kafka-contributor-workflow-001",
-      "benchmark": "ccb_understand",
+      "benchmark": "csb_sdlc_understand",
       "sdlc_phase": "Requirements & Discovery",
       "language": "java",
       "difficulty": "hard",
       "category": "workflow_discovery",
       "repo": "apache/kafka",
-      "task_dir": "ccb_understand/kafka-contributor-workflow-001",
+      "task_dir": "csb_sdlc_understand/kafka-contributor-workflow-001",
       "selection_rationale": "Developer workflow discovery in Gradle-based Java project",
       "mcp_benefit_score": 0.77,
       "mcp_breakdown": {
@@ -722,7 +722,7 @@
     },
     {
       "task_id": "strata-fx-european-refac-001",
-      "benchmark": "ccb_build",
+      "benchmark": "csb_sdlc_build",
       "sdlc_phase": "Refactoring",
       "language": "java",
       "difficulty": "hard",
@@ -736,7 +736,7 @@
         "task_category_weight": 0.85
       },
       "selection_rationale": "All ccb_largerepo tasks selected (small benchmark)",
-      "task_dir": "ccb_build/strata-fx-european-refac-001",
+      "task_dir": "csb_sdlc_build/strata-fx-european-refac-001",
       "context_length": 950000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 16,
@@ -744,7 +744,7 @@
     },
     {
       "task_id": "test-coverage-gap-002",
-      "benchmark": "ccb_test",
+      "benchmark": "csb_sdlc_test",
       "sdlc_phase": "Testing & QA",
       "language": "java",
       "difficulty": "hard",
@@ -758,7 +758,7 @@
         "task_category_weight": 0.75
       },
       "selection_rationale": "Phase 2 backlog promotion: coverage gap analysis for Kafka consumer group coordinator",
-      "task_dir": "ccb_test/test-coverage-gap-002",
+      "task_dir": "csb_sdlc_test/test-coverage-gap-002",
       "context_length": 800000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 10,
@@ -766,7 +766,7 @@
     },
     {
       "task_id": "test-integration-001",
-      "benchmark": "ccb_test",
+      "benchmark": "csb_sdlc_test",
       "sdlc_phase": "Testing & QA",
       "language": "go",
       "difficulty": "hard",
@@ -780,7 +780,7 @@
         "task_category_weight": 0.8
       },
       "selection_rationale": "New SDLC task: integration test authoring requiring API endpoint discovery",
-      "task_dir": "ccb_test/test-integration-001",
+      "task_dir": "csb_sdlc_test/test-integration-001",
       "context_length": 700000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 10,
@@ -788,7 +788,7 @@
     },
     {
       "task_id": "test-unitgen-go-001",
-      "benchmark": "ccb_test",
+      "benchmark": "csb_sdlc_test",
       "sdlc_phase": "Testing & QA",
       "language": "go",
       "difficulty": "hard",
@@ -802,7 +802,7 @@
         "task_category_weight": 0.8
       },
       "selection_rationale": "New SDLC task: unit test generation requiring function discovery and pattern analysis",
-      "task_dir": "ccb_test/test-unitgen-go-001",
+      "task_dir": "csb_sdlc_test/test-unitgen-go-001",
       "context_length": 800000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 12,
@@ -810,7 +810,7 @@
     },
     {
       "task_id": "test-unitgen-py-001",
-      "benchmark": "ccb_test",
+      "benchmark": "csb_sdlc_test",
       "sdlc_phase": "Testing & QA",
       "language": "python",
       "difficulty": "hard",
@@ -824,7 +824,7 @@
         "task_category_weight": 0.8
       },
       "selection_rationale": "Phase 2 backlog promotion: unit test generation for Django cache middleware (Python variant)",
-      "task_dir": "ccb_test/test-unitgen-py-001",
+      "task_dir": "csb_sdlc_test/test-unitgen-py-001",
       "context_length": 500000,
       "context_length_source": "mcp_breakdown_proxy",
       "files_count": 8,

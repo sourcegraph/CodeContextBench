@@ -235,7 +235,7 @@ def discover_runs():
     """Find all MCP-unique Haiku runs from the target timestamp."""
     runs = []
     for entry in sorted(STAGING_DIR.iterdir()):
-        if entry.is_dir() and entry.name.startswith("ccb_mcp_") and entry.name.endswith(RUN_SUFFIX):
+        if entry.is_dir() and (entry.name.startswith("csb_org_") or entry.name.startswith("ccb_mcp_")) and entry.name.endswith(RUN_SUFFIX):
             runs.append(entry)
     return runs
 
@@ -267,7 +267,7 @@ def discover_tasks(run_dir, config_name):
 
 def extract_suite_name(run_dir_name):
     """Extract suite name from run directory name."""
-    m = re.match(r"ccb_mcp_(.+?)_haiku_\d+_\d+", run_dir_name)
+    m = re.match(r"(?:csb_org|ccb_mcp)_(.+?)_haiku_\d+_\d+", run_dir_name)
     if m:
         return m.group(1)
     return run_dir_name

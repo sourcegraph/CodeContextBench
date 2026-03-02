@@ -1,13 +1,13 @@
 # mcp_kafka-producer-bufpool-fix-001_2pvDVv (mcp-remote-direct)
 
-- Run: `ccb_fix_haiku_20260224_203138`
+- Run: `csb_sdlc_fix_haiku_20260224_203138`
 - Status: `passed`
 - Reward: `0.7400`
-- Audit JSON: [link](../audits/ccb_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv.json)
+- Audit JSON: [link](../audits/csb_sdlc_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_fix_haiku_20260224_203138--mcp-remote-direct--mcp_kafka-producer-bufpool-fix-001_2pvDVv/claude-code.txt)
 
 ## Metrics
 

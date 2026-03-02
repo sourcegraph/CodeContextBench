@@ -1374,14 +1374,14 @@
       "transcript_sha256": "9f92e6e1b8f6a7f1015fbac1d9a7255fdeb8a6ad9254398928e199bfd7cc6d0c"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu",
     "task_name": "sgonly_envoy-filter-chain-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_envoy-filter-chain-qa-001_mcp-remote-direct/sgonly_envoy-filter-chain-qa-001__VWzBVtu/agent/claude-code.txt"
     }
   },
   "score": {

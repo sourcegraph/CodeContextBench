@@ -1,6 +1,6 @@
 # Multi-Harness Contract
 
-This document defines the required contract for each CodeContextBench harness in this rollout.
+This document defines the required contract for each CodeScaleBench harness in this rollout.
 It applies to: Codex, Cursor, Gemini, Copilot, and OpenHands.
 
 ## Required Registry Fields

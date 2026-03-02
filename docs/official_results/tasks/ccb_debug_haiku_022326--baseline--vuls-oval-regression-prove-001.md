@@ -1,13 +1,13 @@
 # vuls-oval-regression-prove-001 (baseline-local-direct)
 
-- Run: `ccb_debug_haiku_022326`
+- Run: `csb_sdlc_debug_haiku_022326`
 - Status: `passed`
 - Reward: `0.5000`
-- Audit JSON: [link](../audits/ccb_debug_haiku_022326--baseline--vuls-oval-regression-prove-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_debug_haiku_022326--baseline--vuls-oval-regression-prove-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_debug_haiku_022326--baseline--vuls-oval-regression-prove-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_debug_haiku_022326--baseline--vuls-oval-regression-prove-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_debug_haiku_022326--baseline--vuls-oval-regression-prove-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_debug_haiku_022326--baseline--vuls-oval-regression-prove-001/claude-code.txt)
 
 ## Metrics
 

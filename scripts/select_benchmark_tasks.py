@@ -27,7 +27,7 @@ except ModuleNotFoundError:
 # ---------------------------------------------------------------------------
 
 RANDOM_SEED = 42
-EXCLUDED_FROM_DEFAULT_SELECTION = {"ccb_dependeval"}
+EXCLUDED_FROM_DEFAULT_SELECTION = {"ccb_dependeval", "csb_dependeval"}
 
 # SWE-Bench Pro language corrections: repo slug -> correct language
 SWEBENCH_LANGUAGE_OVERRIDES: dict[str, str] = {
@@ -674,7 +674,7 @@ def write_json(selected: list[TaskRecord], total_available: int, output_path: Pa
     stats = build_statistics(selected)
     doc = {
         "metadata": {
-            "title": "CodeContextBench Selected Benchmark Tasks",
+            "title": "CodeScaleBench Selected Benchmark Tasks",
             "version": "1.0",
             "generated_by": "scripts/select_benchmark_tasks.py",
             "random_seed": RANDOM_SEED,

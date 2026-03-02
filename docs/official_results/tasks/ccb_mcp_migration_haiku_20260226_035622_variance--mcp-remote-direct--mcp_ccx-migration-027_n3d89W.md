@@ -1,13 +1,13 @@
 # mcp_ccx-migration-027_n3d89W (mcp-remote-direct)
 
-- Run: `ccb_mcp_migration_haiku_20260226_035622_variance`
+- Run: `csb_org_migration_haiku_20260226_035622_variance`
 - Status: `passed`
 - Reward: `1.0000`
-- Audit JSON: [link](../audits/ccb_mcp_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W.json)
+- Audit JSON: [link](../audits/csb_org_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_migration_haiku_20260226_035622_variance--mcp-remote-direct--mcp_ccx-migration-027_n3d89W/claude-code.txt)
 
 ## Metrics
 

@@ -5,9 +5,9 @@ Builds Dockerfile.artifact_only, runs the verifier with mock artifacts,
 and checks that reward.txt is produced with expected scores.
 
 Usage:
-    python3 scripts/smoke_artifact_verifier.py --task benchmarks/ccb_test/aspnetcore-code-review-001
+    python3 scripts/smoke_artifact_verifier.py --task benchmarks/csb_sdlc_test/aspnetcore-code-review-001
     python3 scripts/smoke_artifact_verifier.py --all         # all tasks with Dockerfile.artifact_only
-    python3 scripts/smoke_artifact_verifier.py --suite ccb_test
+    python3 scripts/smoke_artifact_verifier.py --suite csb_sdlc_test
 """
 
 import argparse
@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def find_artifact_tasks(suite: str | None = None) -> list[Path]:
     """Find all tasks that have a Dockerfile.artifact_only."""
-    pattern = f"benchmarks/{suite or 'ccb_*'}/*"
+    pattern = f"benchmarks/{suite or 'csb_*'}/*"
     tasks = []
     for task_dir in sorted(ROOT.glob(pattern)):
         if not task_dir.is_dir():
@@ -269,7 +269,7 @@ def main():
     parser = argparse.ArgumentParser(description="Smoke-test artifact-only verifiers")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--task", type=str, help="Path to a single task directory")
-    group.add_argument("--suite", type=str, help="Suite name (e.g., ccb_test)")
+    group.add_argument("--suite", type=str, help="Suite name (e.g., csb_sdlc_test)")
     group.add_argument("--all", action="store_true", help="All tasks with Dockerfile.artifact_only")
     parser.add_argument("--build-timeout", type=int, default=300, help="Docker build timeout (s)")
     parser.add_argument("--verify-timeout", type=int, default=120, help="Verifier timeout (s)")

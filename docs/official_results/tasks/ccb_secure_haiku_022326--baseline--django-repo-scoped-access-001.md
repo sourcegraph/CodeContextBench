@@ -1,13 +1,13 @@
 # django-repo-scoped-access-001 (baseline-local-direct)
 
-- Run: `ccb_secure_haiku_022326`
+- Run: `csb_sdlc_secure_haiku_022326`
 - Status: `passed`
 - Reward: `0.5000`
-- Audit JSON: [link](../audits/ccb_secure_haiku_022326--baseline--django-repo-scoped-access-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_secure_haiku_022326--baseline--django-repo-scoped-access-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_secure_haiku_022326--baseline--django-repo-scoped-access-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_secure_haiku_022326--baseline--django-repo-scoped-access-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_secure_haiku_022326--baseline--django-repo-scoped-access-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_secure_haiku_022326--baseline--django-repo-scoped-access-001/claude-code.txt)
 
 ## Metrics
 

@@ -11,7 +11,7 @@ Run a single benchmark task with minimal settings to verify a fix works.
 ## Input
 
 User provides:
-- A benchmark task path: `benchmarks/ccb_pytorch/sgt-005`
+- A benchmark task path: `benchmarks/csb_sdlc_pytorch/sgt-005`
 - Or a task from a failed run to re-test: `sgt-005`
 - Or says "rerun the task I just fixed"
 
@@ -22,7 +22,7 @@ User provides:
 If user gave a task name, find the benchmark path:
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 # Find the task definition
 find benchmarks -type d -name "TASKNAME" | head -5
 ```
@@ -39,7 +39,7 @@ Default to `none` (baseline) for fastest verification.
 ### 3. Set up environment
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 
 # Load credentials
 source .env.local 2>/dev/null || true
@@ -55,7 +55,7 @@ ensure_fresh_token
 ### 4. Run the task
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 
 # Baseline (no MCP) — fastest
 BASELINE_MCP_TYPE=none harbor run \

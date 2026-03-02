@@ -2947,14 +2947,14 @@
       "transcript_sha256": "0dafe5006620624443f2669acff293b8e399235945ce179299b04cf705eb955b"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i",
     "task_name": "sgonly_ansible-abc-imports-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/mcp/ccb_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/mcp/csb_sdlc_fix_ansible-abc-imports-fix-001_mcp-remote-direct/sgonly_ansible-abc-imports-fix-0__LVQvF9i/agent/claude-code.txt"
     }
   },
   "score": {

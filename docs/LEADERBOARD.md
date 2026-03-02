@@ -1,6 +1,6 @@
 # Leaderboard Scoring Specification
 
-This document defines how CodeContextBench ranks agent submissions on the leaderboard.
+This document defines how CodeScaleBench ranks agent submissions on the leaderboard.
 
 ## Submissions
 
@@ -47,15 +47,15 @@ To qualify for a suite's leaderboard, a submission must include results for **al
 
 | Suite | Tasks | Reward Type |
 |-------|------:|-------------|
-| ccb_understand | 34 | varies by task |
-| ccb_design | 20 | varies by task |
-| ccb_fix | 25 | varies by task |
-| ccb_feature | 20 | varies by task |
-| ccb_refactor | 20 | varies by task |
-| ccb_test | 20 | varies by task |
-| ccb_document | 20 | varies by task |
-| ccb_secure | 20 | varies by task |
-| ccb_debug | 20 | varies by task |
+| csb_sdlc_understand | 34 | varies by task |
+| csb_sdlc_design | 20 | varies by task |
+| csb_sdlc_fix | 25 | varies by task |
+| csb_sdlc_feature | 20 | varies by task |
+| csb_sdlc_refactor | 20 | varies by task |
+| csb_sdlc_test | 20 | varies by task |
+| csb_sdlc_document | 20 | varies by task |
+| csb_sdlc_secure | 20 | varies by task |
+| csb_sdlc_debug | 20 | varies by task |
 
 Reward semantics (test_ratio, diff_similarity, checklist, etc.) are defined per task; see [SCORING_SEMANTICS.md](SCORING_SEMANTICS.md).
 
@@ -63,10 +63,10 @@ A submission missing any task in a suite does **not** appear on that suite's lea
 
 ## Aggregate Score
 
-The **CCB Aggregate Score** is the unweighted (macro) average of per-benchmark mean rewards:
+The **CSB Aggregate Score** is the unweighted (macro) average of per-benchmark mean rewards:
 
 ```
-ccb_aggregate = sum(per_benchmark_mean_rewards) / N_qualifying_benchmarks
+csb_aggregate = sum(per_benchmark_mean_rewards) / N_qualifying_benchmarks
 ```
 
 All suites carry equal weight regardless of task count. The aggregate score is computed over suites where the submission has complete results. A submission with complete results for 8 of 9 suites gets an aggregate over those 8. Submissions with more complete suites are ranked higher when scores are close.
@@ -108,17 +108,17 @@ An agent runs all 9 suites (180 tasks) and achieves:
 
 | Suite | Mean Reward |
 |-------|-------------|
-| ccb_understand | 0.550 |
-| ccb_design | 0.400 |
-| ccb_fix | 0.320 |
-| ccb_feature | 0.380 |
-| ccb_refactor | 0.350 |
-| ccb_test | 0.500 |
-| ccb_document | 0.620 |
-| ccb_secure | 0.450 |
-| ccb_debug | 0.410 |
+| csb_sdlc_understand | 0.550 |
+| csb_sdlc_design | 0.400 |
+| csb_sdlc_fix | 0.320 |
+| csb_sdlc_feature | 0.380 |
+| csb_sdlc_refactor | 0.350 |
+| csb_sdlc_test | 0.500 |
+| csb_sdlc_document | 0.620 |
+| csb_sdlc_secure | 0.450 |
+| csb_sdlc_debug | 0.410 |
 
-**CCB Aggregate Score** = sum of means / 9 = **0.442**
+**CSB Aggregate Score** = sum of means / 9 = **0.442**
 
 **Suites completed** = 9/9
 

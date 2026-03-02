@@ -277,14 +277,14 @@
       "transcript_sha256": "0fb2cae5ef6e9e02c81f99c01274416cdc007c020f56022b07098bfc9bdce731"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/result.json",
-    "run_dir": "ccb_test_haiku_022326",
-    "suite": "ccb_test",
-    "task_dir": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC",
+    "result_path": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/result.json",
+    "run_dir": "csb_sdlc_test_haiku_022326",
+    "suite": "csb_sdlc_test",
+    "task_dir": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC",
     "task_name": "sgonly_llamacpp-context-window-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/agent/trajectory.json",
-      "transcript": "runs/official/ccb_test_haiku_022326/mcp/ccb_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_test_haiku_022326/mcp/csb_sdlc_test_llamacpp-context-window-search-001_mcp-remote-direct/sgonly_llamacpp-context-window-s__fpDEuhC/agent/claude-code.txt"
     }
   },
   "score": {

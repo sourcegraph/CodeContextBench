@@ -1,4 +1,4 @@
-# CodeContextBench Agent Router
+# CodeScaleBench Agent Router
 
 This file is the root entrypoint for AI agents working in this repository.
 Keep it small. Use it to route to the right workflow and local guide, not as the

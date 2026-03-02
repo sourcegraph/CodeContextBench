@@ -482,7 +482,7 @@
   },
   "notes": {
     "scope": "Complete mapping for all 9 benchmarks in analysis: 91 tasks in selected_benchmark_tasks.json + 13 tasks in crossrepo & dibench runs",
-    "all_indexed": "✓ ALL 104 tasks with runs have code indexed in Sourcegraph (either sg-evals mirrors or public GitHub)",
+    "all_indexed": "\u2713 ALL 104 tasks with runs have code indexed in Sourcegraph (either sg-evals mirrors or public GitHub)",
     "benchmark_breakdown": "9 total benchmarks: ccb_k8sdocs (5), ccb_largerepo (4), ccb_locobench (25), ccb_pytorch (12), ccb_swebenchpro (36), ccb_sweperf (3), ccb_tac (8), ccb_crossrepo (5), ccb_dibench (8)",
     "sg_benchmarks_mirrors": "58 sg-evals custom mirrors across all benchmarks",
     "public_github_mirrors": "49 public GitHub repos across all benchmarks",
@@ -566,7 +566,14 @@
     "commit": "507c0de87bd5034e3de4ab76ebf96b54dae0cd52",
     "tag": "v3.5.17",
     "indexed": true,
-    "used_by": ["ccx-incident-031", "ccx-onboard-050-ds", "ccx-crossorg-066", "ccx-crossorg-061", "ccx-config-trace-010", "ccx-explore-091-ds"]
+    "used_by": [
+      "ccx-incident-031",
+      "ccx-onboard-050-ds",
+      "ccx-crossorg-066",
+      "ccx-crossorg-061",
+      "ccx-config-trace-010",
+      "ccx-explore-091-ds"
+    ]
   },
   "ccb_dependeval/multifile_editing-typescript-01b00e0e": "sg-evals/dependeval-typescript-me-01b00e0e",
   "ccb_dependeval/multifile_editing-typescript-1469d2cc": "sg-evals/dependeval-typescript-me-1469d2cc",
@@ -609,7 +616,9 @@
         "commit": "50ea83e602d5da162df89fd5798301e22f5540cf",
         "tag": "v1.30.0",
         "indexed": true,
-        "used_by": ["envoy-migration-doc-gen-001"]
+        "used_by": [
+          "envoy-migration-doc-gen-001"
+        ]
       },
       "v1.31.0": {
         "repo": "envoyproxy/envoy",
@@ -617,21 +626,27 @@
         "commit": "7b8baff1758f0a584dcc3cb657b5032000bcb3d7",
         "tag": "v1.31.0",
         "indexed": true,
-        "used_by": ["envoy-migration-doc-gen-001"]
+        "used_by": [
+          "envoy-migration-doc-gen-001"
+        ]
       },
       "pre_fix_udp_cds": {
         "repo": "envoyproxy/envoy",
         "mirror_name": "sg-evals/envoy--1ae957c1",
         "commit": "1ae957c1f92b8e0b0322ab702c67612aa618d214",
         "indexed": true,
-        "used_by": ["envoy-udp-proxy-cds-fix-001"]
+        "used_by": [
+          "envoy-udp-proxy-cds-fix-001"
+        ]
       },
       "pre_fix_dfp_leak": {
         "repo": "envoyproxy/envoy",
         "mirror_name": "sg-evals/envoy--5160151e",
         "commit": "5160151e14837c6f352b9d0b3a9f55119a9317e8",
         "indexed": true,
-        "used_by": ["envoy-dfp-host-leak-fix-001"]
+        "used_by": [
+          "envoy-dfp-host-leak-fix-001"
+        ]
       }
     },
     "terraform": {
@@ -641,7 +656,9 @@
         "commit": "7637a9216e68f2812887eaf0722f9d3f9804c45e",
         "tag": "v1.9.0",
         "indexed": true,
-        "used_by": ["terraform-arch-doc-gen-001"]
+        "used_by": [
+          "terraform-arch-doc-gen-001"
+        ]
       },
       "v1.10.0": {
         "repo": "hashicorp/terraform",
@@ -649,14 +666,18 @@
         "commit": "24236f4f0bd10ada71d70868abe15f9d88099747",
         "tag": "v1.10.0",
         "indexed": true,
-        "used_by": ["terraform-arch-doc-gen-001"]
+        "used_by": [
+          "terraform-arch-doc-gen-001"
+        ]
       },
       "pre_fix_plan_null_unknown": {
         "repo": "hashicorp/terraform",
         "mirror_name": "sg-evals/terraform--abd6b9ef",
         "commit": "abd6b9ef1ba5e98ed273f59f667d3b9f2077a87b",
         "indexed": true,
-        "used_by": ["terraform-plan-null-unknown-fix-001"]
+        "used_by": [
+          "terraform-plan-null-unknown-fix-001"
+        ]
       }
     }
   },

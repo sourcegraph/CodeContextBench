@@ -260,7 +260,7 @@ def build_template_vars(
         "customer_prompt": customer_prompt,
         "context_description": (
             f"You are working on a codebase task involving repos from the "
-            f"{mcp_suite.replace('ccb_mcp_', '').replace('_', ' ')} domain."
+            f"{mcp_suite.replace('csb_org_', '').replace('ccb_mcp_', '').replace('_', ' ')} domain."
         ),
         "evaluation_criteria": evaluation_criteria,
         # TaskSpec / PRD
@@ -380,7 +380,7 @@ def generate_task(
     write_rendered("task_spec.json.j2", tests_dir / "task_spec.json")
 
     # Copy oracle_checks.py to tests/ (so eval.sh can find it at /tests/oracle_checks.py)
-    oracle_src = project_root / "scripts" / "ccb_metrics" / "oracle_checks.py"
+    oracle_src = project_root / "scripts" / "csb_metrics" / "oracle_checks.py"
     oracle_dst = tests_dir / "oracle_checks.py"
     if oracle_src.exists():
         shutil.copy2(oracle_src, oracle_dst)

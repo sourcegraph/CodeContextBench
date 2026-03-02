@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Daytona PoC: Paired task runner for CodeContextBench.
+"""Daytona PoC: Paired task runner for CodeScaleBench.
 
 Runs the cgen-deps-install-001 task in both baseline and MCP configurations
 using Daytona sandboxes, then collects and compares results.

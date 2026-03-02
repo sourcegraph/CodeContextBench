@@ -1243,14 +1243,14 @@
       "transcript_sha256": "108c53783773182f9c5d07bd895596eb3232bae1815717c46f500a691b5497f4"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF",
     "task_name": "docgen-onboard-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_docgen-onboard-001_baseline-local-direct/docgen-onboard-001__Hi3AYUF/agent/claude-code.txt"
     }
   },
   "score": {

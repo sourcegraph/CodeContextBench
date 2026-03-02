@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Workflow taxonomy module for CodeContextBench enterprise metrics.
+"""Workflow taxonomy module for CodeScaleBench enterprise metrics.
 
 Maps benchmark suites to engineering workflow categories with conservative
 time-conversion multipliers for modeling developer productivity impact.

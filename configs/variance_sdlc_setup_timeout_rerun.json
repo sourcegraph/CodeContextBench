@@ -11,48 +11,48 @@
   "tasks": [
     {
       "task_id": "aspnetcore-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/aspnetcore-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/aspnetcore-code-review-001"
     },
     {
       "task_id": "calcom-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/calcom-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/calcom-code-review-001"
     },
     {
       "task_id": "curl-security-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/curl-security-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/curl-security-review-001"
     },
     {
       "task_id": "envoy-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/envoy-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/envoy-code-review-001"
     },
     {
       "task_id": "ghost-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/ghost-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/ghost-code-review-001"
     },
     {
       "task_id": "terraform-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/terraform-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/terraform-code-review-001"
     },
     {
       "task_id": "vscode-code-review-001",
-      "benchmark": "ccb_test",
-      "task_dir": "ccb_test/vscode-code-review-001"
+      "benchmark": "csb_sdlc_test",
+      "task_dir": "csb_sdlc_test/vscode-code-review-001"
     },
     {
       "task_id": "pytorch-release-210-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/pytorch-release-210-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/pytorch-release-210-fix-001"
     },
     {
       "task_id": "pytorch-relu-gelu-fusion-fix-001",
-      "benchmark": "ccb_fix",
-      "task_dir": "ccb_fix/pytorch-relu-gelu-fusion-fix-001"
+      "benchmark": "csb_sdlc_fix",
+      "task_dir": "csb_sdlc_fix/pytorch-relu-gelu-fusion-fix-001"
     }
   ]
 }

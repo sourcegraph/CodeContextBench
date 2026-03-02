@@ -3484,14 +3484,14 @@
       "transcript_sha256": "d42feb6f625eadb039311332a7efa532c3ce7e1e735f799dda5fc38e7505b794"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw",
     "task_name": "flipt-cockroachdb-backend-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_flipt-cockroachdb-backend-fix-001_baseline-local-direct/flipt-cockroachdb-backend-fix-00__R99evYw/agent/claude-code.txt"
     }
   },
   "score": {

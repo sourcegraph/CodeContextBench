@@ -669,14 +669,14 @@
       "transcript_sha256": "c05d47ee7a79f510f3c04319fb1b69b45763fcca2998351918f868ed420699d9"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/result.json",
+    "result_path": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/result.json",
     "run_dir": "understand_haiku_20260226_232745",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ",
     "task_name": "k8s-scheduler-filter-search-001",
     "trace_paths": {
-      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/agent/trajectory.json",
-      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/ccb_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/agent/claude-code.txt"
+      "trajectory": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/agent/trajectory.json",
+      "transcript": "runs/official/understand_haiku_20260226_232745/baseline-local-direct/csb_sdlc_understand_k8s-scheduler-filter-search-001_baseline-local-direct/k8s-scheduler-filter-search-001__8LJ6XMJ/agent/claude-code.txt"
     }
   },
   "score": {

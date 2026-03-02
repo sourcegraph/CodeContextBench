@@ -24,17 +24,17 @@ Run pre-flight checks on benchmark task definitions to catch problems before com
 
 For a specific suite (most common before a run):
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --suite ccb_pytorch
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --suite csb_sdlc_pytorch
 ```
 
 For all selected tasks:
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --all
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --all
 ```
 
 For a single task:
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_pytorch/sgt-005
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_pytorch/sgt-005
 ```
 
 ### 2. Present results

@@ -3357,14 +3357,14 @@
       "transcript_sha256": "3cb7c37cbff8bd9bf1f6fa5c1f51239da498e35cdf9353a47bb13bd3442831d8"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/result.json",
+    "result_path": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/result.json",
     "run_dir": "design_haiku_20260223_124652",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx",
     "task_name": "sgonly_etcd-grpc-api-upgrade-001",
     "trace_paths": {
-      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/agent/trajectory.json",
-      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/ccb_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/agent/claude-code.txt"
+      "trajectory": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/agent/trajectory.json",
+      "transcript": "runs/official/design_haiku_20260223_124652/mcp-remote-direct/csb_sdlc_design_etcd-grpc-api-upgrade-001_mcp-remote-direct/sgonly_etcd-grpc-api-upgrade-001__iPZCDMx/agent/claude-code.txt"
     }
   },
   "score": {

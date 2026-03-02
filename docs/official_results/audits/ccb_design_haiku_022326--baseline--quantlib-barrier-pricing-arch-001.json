@@ -1636,14 +1636,14 @@
       "transcript_sha256": "e852391b3b9aa6dd45bf14a29a99c814925b5cf5e368076fb9c9d6aa4e505bce"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/result.json",
-    "run_dir": "ccb_design_haiku_022326",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD",
+    "result_path": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/result.json",
+    "run_dir": "csb_sdlc_design_haiku_022326",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD",
     "task_name": "quantlib-barrier-pricing-arch-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/agent/trajectory.json",
-      "transcript": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_quantlib-barrier-pricing-arch-001_baseline-local-direct/quantlib-barrier-pricing-arch-00__ttKNNLD/agent/claude-code.txt"
     }
   },
   "score": {

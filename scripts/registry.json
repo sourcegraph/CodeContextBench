@@ -339,6 +339,14 @@
       "summary": "Task creation/selection script for customize mcp skeletons."
     },
     {
+      "name": "daytona_curator_runner.py",
+      "path": "scripts/daytona_curator_runner.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for daytona curator runner."
+    },
+    {
       "name": "daytona_poc_runner.py",
       "path": "scripts/daytona_poc_runner.py",
       "category": "misc",
@@ -457,6 +465,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Utility script for extract analysis metrics."
+    },
+    {
+      "name": "extract_build_diary.py",
+      "path": "scripts/extract_build_diary.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for extract build diary."
     },
     {
       "name": "extract_task_metrics.py",
@@ -899,6 +915,22 @@
       "summary": "Utility script for plan variance runs."
     },
     {
+      "name": "plot_build_diary.py",
+      "path": "scripts/plot_build_diary.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for plot build diary."
+    },
+    {
+      "name": "plot_build_diary_supplementary.py",
+      "path": "scripts/plot_build_diary_supplementary.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for plot build diary supplementary."
+    },
+    {
       "name": "prebuild_images.sh",
       "path": "scripts/prebuild_images.sh",
       "category": "infra_mirrors",
@@ -1001,6 +1033,14 @@
       "status": "maintained",
       "language": "shell",
       "summary": "Utility script for remirror mcp unique repos."
+    },
+    {
+      "name": "rename_project.py",
+      "path": "scripts/rename_project.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for rename project."
     },
     {
       "name": "rename_tasks.py",
@@ -1363,7 +1403,7 @@
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 58,
+    "misc": 63,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,

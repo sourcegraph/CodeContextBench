@@ -1262,14 +1262,14 @@
       "transcript_sha256": "0a4f0bbe11d06e0cdc2eb60f1af9ac2060adfaa74daab08e50c8fa6c568b57bf"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ",
     "task_name": "linux-ssd-trim-timeout-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/ccb_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/baseline-local-direct/csb_sdlc_debug_linux-ssd-trim-timeout-fault-001_baseline-local-direct/linux-ssd-trim-timeout-fault-001__deA3yDQ/agent/claude-code.txt"
     }
   },
   "score": {

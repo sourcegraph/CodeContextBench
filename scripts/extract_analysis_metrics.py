@@ -275,15 +275,16 @@ def load_selected_task_names() -> dict[str, set[str]]:
     result: dict[str, set[str]] = defaultdict(set)
     for t in tasks_list:
         suite = t.get("benchmark", "")
-        if not suite.startswith("ccb_"):
-            suite = "ccb_" + suite
+        if not suite.startswith(("ccb_", "csb_")):
+            suite = "csb_sdlc_" + suite
         task_id = t.get("task_id", "")
         if suite and task_id:
             normalized = _normalize_task_name(task_id)
             result[suite].add(normalized)
-            if normalized.startswith("ccb_"):
+            if normalized.startswith(("ccb_", "csb_")):
                 result[suite].add(normalized[4:])
-            if not normalized.startswith("ccb_"):
+            if not normalized.startswith(("ccb_", "csb_")):
+                result[suite].add("csb_sdlc_" + normalized)
                 result[suite].add("ccb_" + normalized)
     return dict(result)
 
@@ -808,7 +809,7 @@ def main():
     dim = args.dimension
     output_parts = []
 
-    output_parts.append(f"\nCodeContextBench Analysis Report")
+    output_parts.append(f"\nCodeScaleBench Analysis Report")
     output_parts.append(f"Generated: {datetime.utcnow().isoformat()}")
     output_parts.append(f"Total records: {len(enriched)}")
     config_counts = defaultdict(int)

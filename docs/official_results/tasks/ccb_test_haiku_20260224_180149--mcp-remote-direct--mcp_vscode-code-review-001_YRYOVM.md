@@ -1,13 +1,13 @@
 # mcp_vscode-code-review-001_YRYOVM (mcp-remote-direct)
 
-- Run: `ccb_test_haiku_20260224_180149`
+- Run: `csb_sdlc_test_haiku_20260224_180149`
 - Status: `passed`
 - Reward: `0.3000`
-- Audit JSON: [link](../audits/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM.json)
+- Audit JSON: [link](../audits/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_test_haiku_20260224_180149--mcp-remote-direct--mcp_vscode-code-review-001_YRYOVM/claude-code.txt)
 
 ## Metrics
 

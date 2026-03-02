@@ -1,7 +1,7 @@
 # Extensibility Guide
 
 This guide defines the minimum changes required to safely extend
-CodeContextBench.
+CodeScaleBench.
 
 ## 1) Add New Benchmark Tasks or Suites
 
@@ -15,7 +15,7 @@ CodeContextBench.
    ```bash
    python3 scripts/validate_tasks_preflight.py --suite <suite>
    ```
-5. Add/update the phase runner in `configs/<phase>_2config.sh` (e.g. `understand_2config.sh` for suite `ccb_understand`). Runner names use the phase name without the `ccb_` prefix.
+5. Add/update the phase runner in `configs/<phase>_2config.sh` (e.g. `understand_2config.sh` for suite `csb_sdlc_understand`). Runner names use the phase name without the `csb_sdlc_` prefix.
 
 ## 2) Add New Agent Variant / Harness + Model Combo
 
@@ -78,10 +78,10 @@ When adding benchmark environment variants, keep canonical task definitions inta
 2. Add variant files with explicit names (for example `Dockerfile.isolated`,
    `Dockerfile.sg_only`).
 3. Document variant intent and caveats in a per-suite `VARIANTS.md`
-   (for example under `benchmarks/ccb_document/`).
+   (for example under `benchmarks/csb_sdlc_document/`).
 4. Treat variant runs as separate studies in reporting and curation.
 
-## 7) Add MCP-Unique Tasks (ccb_mcp_* suites)
+## 7) Add MCP-Unique Tasks (csb_org_* suites)
 
 MCP-unique tasks measure org-scale cross-repo discovery — what local-only agents
 cannot do. See `docs/MCP_UNIQUE_TASKS.md` for the full authoring guide.
@@ -96,8 +96,8 @@ python3 scripts/generate_mcp_unique_tasks.py --use-case-ids <N> --curate-oracle 
 #    configs/selected_mcp_unique_tasks.json
 
 # 3. Validate
-python3 scripts/validate_mcp_task_instance.py --task-dir benchmarks/ccb_mcp_<suite>/<task>
-python3 scripts/validate_tasks_preflight.py --suite ccb_mcp_<suite>
+python3 scripts/validate_mcp_task_instance.py --task-dir benchmarks/csb_org_<suite>/<task>
+python3 scripts/validate_tasks_preflight.py --suite csb_org_<suite>
 ```
 
 **Key constraints:**
@@ -105,11 +105,11 @@ python3 scripts/validate_tasks_preflight.py --suite ccb_mcp_<suite>
 - `tests/eval.sh` must be executable (`chmod +x`)
 - Use `/tests/` paths inside eval.sh (Harbor uploads `tests/` to `/tests/`)
 - All repos cloned in Dockerfiles must be indexed in Sourcegraph
-- `scripts/ccb_metrics/oracle_checks.py` must be stdlib-only Python
+- `scripts/csb_metrics/oracle_checks.py` must be stdlib-only Python
 
 **Directory structure:**
 ```
-benchmarks/ccb_mcp_<suite>/<task>/
+benchmarks/csb_org_<suite>/<task>/
 ├── task.toml
 ├── instruction.md
 ├── environment/
@@ -123,7 +123,7 @@ benchmarks/ccb_mcp_<suite>/<task>/
     └── criteria.json        (optional: rubric for Deep Search tasks)
 ```
 
-When adding a new ccb_mcp_* suite, add the prefix to `DIR_PREFIX_TO_SUITE` in:
+When adding a new csb_org_* suite, add the prefix to `DIR_PREFIX_TO_SUITE` in:
 - `scripts/aggregate_status.py`
 - `scripts/generate_manifest.py`
 - `scripts/run_judge.py`

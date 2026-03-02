@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Economic analysis engine for CodeContextBench enterprise metrics.
+"""Economic analysis engine for CodeScaleBench enterprise metrics.
 
 Computes cost-per-successful-outcome, productivity-per-dollar, ROI metrics,
 and comparative cost analysis across agent configurations.
@@ -444,7 +444,7 @@ def build_output(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Economic analysis engine for CodeContextBench enterprise metrics."
+        description="Economic analysis engine for CodeScaleBench enterprise metrics."
     )
     parser.add_argument(
         "--suite", default=None,

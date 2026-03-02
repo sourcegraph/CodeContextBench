@@ -1506,14 +1506,14 @@
       "transcript_sha256": "400174464b13f632f610bec9e91ff5bbe4f279319ec45988a5db32ceed65bd71"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/result.json",
-    "run_dir": "ccb_design_haiku_022326",
-    "suite": "ccb_design",
-    "task_dir": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK",
+    "result_path": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/result.json",
+    "run_dir": "csb_sdlc_design_haiku_022326",
+    "suite": "csb_sdlc_design",
+    "task_dir": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK",
     "task_name": "flipt-transitive-deps-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/agent/trajectory.json",
-      "transcript": "runs/official/ccb_design_haiku_022326/baseline/ccb_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_design_haiku_022326/baseline/csb_sdlc_design_flipt-transitive-deps-001_baseline-local-direct/flipt-transitive-deps-001__ACQbxuK/agent/claude-code.txt"
     }
   },
   "score": {

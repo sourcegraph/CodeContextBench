@@ -1,13 +1,13 @@
 # mcp_k8s-apiserver-doc-gen-001_e9qHQA (mcp-remote-direct)
 
-- Run: `ccb_document_haiku_20260224_174311`
+- Run: `csb_sdlc_document_haiku_20260224_174311`
 - Status: `passed`
 - Reward: `0.6500`
-- Audit JSON: [link](../audits/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA.json)
+- Audit JSON: [link](../audits/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_document_haiku_20260224_174311--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_e9qHQA/claude-code.txt)
 
 ## Metrics
 

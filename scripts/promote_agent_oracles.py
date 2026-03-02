@@ -71,7 +71,7 @@ def discover_agent_oracles(
         suites = [suite]
     else:
         for d in sorted(benchmarks.iterdir()):
-            if d.is_dir() and d.name.startswith("ccb_"):
+            if d.is_dir() and d.name.startswith(("csb_", "ccb_")):
                 suites.append(d.name)
 
     for s in suites:
@@ -87,7 +87,7 @@ def discover_agent_oracles(
                 continue
 
             # Check for agent oracle
-            is_mcp = s.startswith("ccb_mcp_")
+            is_mcp = s.startswith(("csb_org_", "ccb_mcp_"))
             if is_mcp:
                 agent_path = tests / "oracle_answer_agent.json"
                 canonical_path = tests / "oracle_answer.json"

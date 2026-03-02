@@ -1,5 +1,5 @@
 {
-  "ccb_document": {
+  "csb_sdlc_document": {
     "api-doc-gen-001": "vscode-api-doc-gen-001",
     "api-doc-gen-002": "cilium-api-doc-gen-001",
     "api-doc-gen-003": "kafka-api-doc-gen-001",
@@ -9,7 +9,7 @@
     "migration-doc-gen-001": "terraform-migration-doc-gen-001",
     "migration-doc-gen-002": "envoy-migration-doc-gen-001"
   },
-  "ccb_secure": {
+  "csb_sdlc_secure": {
     "audit-trail-implement-001": "django-audit-trail-implement-001",
     "cross-team-boundary-enforce-001": "django-cross-team-boundary-001",
     "legacy-dep-vulnerability-001": "django-legacy-dep-vuln-001",
@@ -27,11 +27,11 @@
     "transitive-vuln-002": "grpcurl-transitive-vuln-001",
     "sensitive-file-exclusion-001": "django-sensitive-file-exclusion-001"
   },
-  "ccb_test": {
+  "csb_sdlc_test": {
     "security-code-review-001": "curl-security-review-001",
     "security-code-review-002": "kafka-security-review-001"
   },
-  "ccb_refactor": {
+  "csb_sdlc_refactor": {
     "http-class-naming-refac-001": "python-http-class-naming-refac-001"
   }
 }

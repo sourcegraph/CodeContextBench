@@ -22,6 +22,9 @@ MANIFEST_PATH = PROJECT_ROOT / "runs" / "official" / "MANIFEST.json"
 SELECTION_PATH = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 SDLC_SUITES = {
+    "csb_sdlc_feature", "csb_sdlc_refactor", "csb_sdlc_debug", "csb_sdlc_design", "csb_sdlc_document",
+    "csb_sdlc_fix", "csb_sdlc_secure", "csb_sdlc_test", "csb_sdlc_understand",
+    # Legacy names for backward compatibility
     "ccb_feature", "ccb_refactor", "ccb_debug", "ccb_design", "ccb_document",
     "ccb_fix", "ccb_secure", "ccb_test", "ccb_understand",
 }

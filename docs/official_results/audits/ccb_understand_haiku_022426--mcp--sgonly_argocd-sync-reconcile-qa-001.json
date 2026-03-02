@@ -1358,14 +1358,14 @@
       "transcript_sha256": "111713763e3ce34d1f04bd54779377f72ba5bfd37b267395e054024909110303"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/result.json",
-    "run_dir": "ccb_understand_haiku_022426",
-    "suite": "ccb_understand",
-    "task_dir": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus",
+    "result_path": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/result.json",
+    "run_dir": "csb_sdlc_understand_haiku_022426",
+    "suite": "csb_sdlc_understand",
+    "task_dir": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus",
     "task_name": "sgonly_argocd-sync-reconcile-qa-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/agent/trajectory.json",
-      "transcript": "runs/official/ccb_understand_haiku_022426/mcp/ccb_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_understand_haiku_022426/mcp/csb_sdlc_understand_argocd-sync-reconcile-qa-001_mcp-remote-direct/sgonly_argocd-sync-reconcile-qa-__NFcgpus/agent/claude-code.txt"
     }
   },
   "score": {

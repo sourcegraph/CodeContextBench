@@ -1,13 +1,13 @@
 # mcp_django-sensitive-file-exclusion-001_I216lD (mcp-remote-direct)
 
-- Run: `ccb_secure_haiku_20260224_213146`
+- Run: `csb_sdlc_secure_haiku_20260224_213146`
 - Status: `passed`
 - Reward: `0.5000`
-- Audit JSON: [link](../audits/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD.json)
+- Audit JSON: [link](../audits/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_secure_haiku_20260224_213146--mcp-remote-direct--mcp_django-sensitive-file-exclusion-001_I216lD/claude-code.txt)
 
 ## Metrics
 

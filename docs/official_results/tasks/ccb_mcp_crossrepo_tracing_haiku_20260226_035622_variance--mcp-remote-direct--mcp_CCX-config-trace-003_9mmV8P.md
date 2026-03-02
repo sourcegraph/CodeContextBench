@@ -1,13 +1,13 @@
 # mcp_CCX-config-trace-003_9mmV8P (mcp-remote-direct)
 
-- Run: `ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance`
+- Run: `csb_org_crossrepo_tracing_haiku_20260226_035622_variance`
 - Status: `passed`
 - Reward: `0.4206`
-- Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P.json)
+- Audit JSON: [link](../audits/csb_org_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossrepo_tracing_haiku_20260226_035622_variance--mcp-remote-direct--mcp_CCX-config-trace-003_9mmV8P/claude-code.txt)
 
 ## Metrics
 

@@ -1828,14 +1828,14 @@
       "transcript_sha256": "8f20a16dbf77977d34cec78f516c24d57c92bf723633efc15a0990455187965d"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp",
     "task_name": "similar-asserts-deps-install-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/baseline/ccb_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/baseline/csb_sdlc_build_similar-asserts-deps-install-001_baseline-local-direct/similar-asserts-deps-install-001__fAKVCbp/agent/claude-code.txt"
     }
   },
   "score": {

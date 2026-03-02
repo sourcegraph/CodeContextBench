@@ -1,13 +1,13 @@
 # mcp_CCX-dep-trace-123_Oz3XNK (mcp-remote-artifact)
 
-- Run: `ccb_mcp_crossrepo_tracing_haiku_20260224_181919`
+- Run: `csb_org_crossrepo_tracing_haiku_20260224_181919`
 - Status: `passed`
 - Reward: `0.3687`
-- Audit JSON: [link](../audits/ccb_mcp_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK.json)
+- Audit JSON: [link](../audits/csb_org_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_crossrepo_tracing_haiku_20260224_181919--mcp-remote-artifact--mcp_CCX-dep-trace-123_Oz3XNK/claude-code.txt)
 
 ## Metrics
 

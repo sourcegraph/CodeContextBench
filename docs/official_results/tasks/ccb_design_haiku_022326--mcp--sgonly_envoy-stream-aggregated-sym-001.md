@@ -1,13 +1,13 @@
 # sgonly_envoy-stream-aggregated-sym-001 (mcp-remote-direct)
 
-- Run: `ccb_design_haiku_022326`
+- Run: `csb_sdlc_design_haiku_022326`
 - Status: `passed`
 - Reward: `0.3200`
-- Audit JSON: [link](../audits/ccb_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001.json)
+- Audit JSON: [link](../audits/csb_sdlc_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_sdlc_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001/trajectory.json)
+- Bundled transcript: [link](../traces/csb_sdlc_design_haiku_022326--mcp--sgonly_envoy-stream-aggregated-sym-001/claude-code.txt)
 
 ## Metrics
 

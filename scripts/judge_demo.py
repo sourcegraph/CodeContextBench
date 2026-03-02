@@ -30,14 +30,14 @@ if env_path.is_file():
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ccb_metrics.judge import LLMJudge, JudgeInput, OracleBundle
-from ccb_metrics.judge.oracle import discover_oracle
-from ccb_metrics.judge.prompts import (
+from csb_metrics.judge import LLMJudge, JudgeInput, OracleBundle
+from csb_metrics.judge.oracle import discover_oracle
+from csb_metrics.judge.prompts import (
     REFERENCE_CORRECTNESS_PROMPT,
     REFERENCE_COMPLETENESS_PROMPT,
     DIRECT_REVIEW_PROMPT,
 )
-from ccb_metrics.judge.engine import _select_prompt, _render_prompt
+from csb_metrics.judge.engine import _select_prompt, _render_prompt
 
 # Import the same helpers used by run_judge.py
 from run_judge import (
@@ -70,7 +70,7 @@ SG_TASK_DIR = Path(
 )
 
 TASK_ID = "test-unitgen-go-001"
-BENCHMARK = "ccb_test"
+BENCHMARK = "csb_sdlc_test"
 MODEL = "gpt-4o"
 
 

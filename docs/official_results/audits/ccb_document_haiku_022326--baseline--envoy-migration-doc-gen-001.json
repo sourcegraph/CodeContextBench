@@ -1256,14 +1256,14 @@
       "transcript_sha256": "3f0fe8ae73e4357758939ad5e745f84787086fa167ebd6487fd6cf4dd0173fa9"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9",
     "task_name": "envoy-migration-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_envoy-migration-doc-gen-001_baseline-local-direct/envoy-migration-doc-gen-001__J3HMTV9/agent/claude-code.txt"
     }
   },
   "score": {

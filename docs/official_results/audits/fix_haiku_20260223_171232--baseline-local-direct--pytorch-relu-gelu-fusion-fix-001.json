@@ -2295,14 +2295,14 @@
       "transcript_sha256": "87f67a88c81ec91baa73826b34b0811fe4711d5c87faeb7e128381149bf93e9f"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/result.json",
+    "result_path": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/result.json",
     "run_dir": "fix_haiku_20260223_171232",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj",
     "task_name": "pytorch-relu-gelu-fusion-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/agent/trajectory.json",
-      "transcript": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/ccb_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/agent/claude-code.txt"
+      "trajectory": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/agent/trajectory.json",
+      "transcript": "runs/official/fix_haiku_20260223_171232/baseline-local-direct/csb_sdlc_fix_pytorch-relu-gelu-fusion-fix-001_baseline-local-direct/pytorch-relu-gelu-fusion-fix-001__nozCrWj/agent/claude-code.txt"
     }
   },
   "score": {

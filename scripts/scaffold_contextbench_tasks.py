@@ -31,7 +31,7 @@ BENCHMARKS_DIR = REPO_ROOT / "benchmarks" / "ccb_contextbench"
 SELECTION_DEFAULT = REPO_ROOT / "configs" / "contextbench_pilot_50.json"
 
 # Reference task for copying verifier infrastructure
-REFERENCE_TASK = REPO_ROOT / "benchmarks" / "ccb_fix" / "envoy-dfp-host-leak-fix-001"
+REFERENCE_TASK = REPO_ROOT / "benchmarks" / "csb_sdlc_fix" / "envoy-dfp-host-leak-fix-001"
 
 log = logging.getLogger(__name__)
 
@@ -317,13 +317,13 @@ def scaffold_all(selection_file: Path, dry_run: bool = False) -> int:
     for task in tasks:
         run_selection.append({
             "benchmark": "ccb_contextbench",
-            "task_dir": f"benchmarks/ccb_contextbench/{task['task_id']}",
+            "task_dir": f"ccb_contextbench/{task['task_id']}",
             "task_id": task["task_id"],
             "suite": "ccb_contextbench",
         })
 
     run_sel_path = REPO_ROOT / "configs" / "contextbench_run_selection.json"
-    run_sel_path.write_text(json.dumps(run_selection, indent=2) + "\n")
+    run_sel_path.write_text(json.dumps({"tasks": run_selection}, indent=2) + "\n")
     log.info("Wrote run selection: %s", run_sel_path)
 
     return created

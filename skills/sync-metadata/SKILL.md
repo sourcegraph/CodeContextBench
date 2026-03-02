@@ -19,7 +19,7 @@ Ensure task.toml files match the authoritative `selected_benchmark_tasks.json` r
 ### 1. Run the sync check
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/sync_task_metadata.py
+cd ~/CodeScaleBench && python3 scripts/sync_task_metadata.py
 ```
 
 ### 2. Present mismatches
@@ -39,7 +39,7 @@ This updates the task.toml files to match the selection registry.
 
 ### Filter to one suite
 ```bash
-python3 scripts/sync_task_metadata.py --suite ccb_pytorch
+python3 scripts/sync_task_metadata.py --suite csb_sdlc_pytorch
 ```
 
 ### JSON output

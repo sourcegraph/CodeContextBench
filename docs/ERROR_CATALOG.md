@@ -1,6 +1,6 @@
 # Error Catalog
 
-A living catalog of known error patterns encountered in CodeContextBench benchmark runs. Each entry documents the pattern signature, root cause, affected benchmarks, and recommended fix. Use this to quickly diagnose and resolve failures.
+A living catalog of known error patterns encountered in CodeScaleBench benchmark runs. Each entry documents the pattern signature, root cause, affected benchmarks, and recommended fix. Use this to quickly diagnose and resolve failures.
 
 Fingerprints are defined in `scripts/status_fingerprints.py` and matched in order (first match wins).
 

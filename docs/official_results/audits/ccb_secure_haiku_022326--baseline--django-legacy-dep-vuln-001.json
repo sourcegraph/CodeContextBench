@@ -1414,14 +1414,14 @@
       "transcript_sha256": "d548bdbbf025a4430ede53d464f83766b8f0925f39b5820642e836c9159e0343"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k",
     "task_name": "django-legacy-dep-vuln-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_django-legacy-dep-vuln-001_baseline-local-direct/django-legacy-dep-vuln-001__HHx3s2k/agent/claude-code.txt"
     }
   },
   "score": {

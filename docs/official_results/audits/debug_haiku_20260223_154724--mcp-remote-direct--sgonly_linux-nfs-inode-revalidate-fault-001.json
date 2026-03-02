@@ -2256,14 +2256,14 @@
       "transcript_sha256": "789f0c16995d868ca416ab2569335828ed78863a6ba3c74ad07fa85ca9721421"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG",
     "task_name": "sgonly_linux-nfs-inode-revalidate-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-nfs-inode-revalidate-fault-001_mcp-remote-direct/sgonly_linux-nfs-inode-revalidat__SGKaAmG/agent/claude-code.txt"
     }
   },
   "score": {

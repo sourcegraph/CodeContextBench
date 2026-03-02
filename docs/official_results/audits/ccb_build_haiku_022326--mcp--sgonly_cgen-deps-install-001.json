@@ -651,14 +651,14 @@
       "transcript_sha256": "2330baf81cd2db768b1965f369dd8837505d4eb607000919c4ceb1d686501111"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/result.json",
-    "run_dir": "ccb_build_haiku_022326",
-    "suite": "ccb_build",
-    "task_dir": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy",
+    "result_path": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/result.json",
+    "run_dir": "csb_sdlc_build_haiku_022326",
+    "suite": "csb_sdlc_build",
+    "task_dir": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy",
     "task_name": "sgonly_cgen-deps-install-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/agent/trajectory.json",
-      "transcript": "runs/official/ccb_build_haiku_022326/mcp/ccb_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_build_haiku_022326/mcp/csb_sdlc_build_cgen-deps-install-001_mcp-remote-direct/sgonly_cgen-deps-install-001__RjeANAy/agent/claude-code.txt"
     }
   },
   "score": {

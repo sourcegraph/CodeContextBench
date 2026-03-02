@@ -28,7 +28,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from ccb_metrics.ir_metrics import (
+from csb_metrics.ir_metrics import (
     precision_at_k,
     recall_at_k,
     f1_at_k,

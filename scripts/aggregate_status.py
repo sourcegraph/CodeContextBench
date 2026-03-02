@@ -52,28 +52,28 @@ RUNS_DIR = RUNS_DIR_OFFICIAL  # default; overridden by --staging flag
 SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__v1_hinted", "__aborted"]
 
 DIR_PREFIX_TO_SUITE = {
-    # SDLC phase suite prefixes (new naming: {phase}_{model}_{timestamp})
-    # Also accept ccb_{phase}_ prefix from run_selected_tasks.sh --benchmark runs.
-    "ccb_feature_": "ccb_feature",
-    "ccb_refactor_": "ccb_refactor",
-    "ccb_build_": "ccb_build",  # legacy run dirs
-    "ccb_debug_": "ccb_debug",
-    "ccb_design_": "ccb_design",
-    "ccb_document_": "ccb_document",
-    "ccb_fix_": "ccb_fix",
-    "ccb_secure_": "ccb_secure",
-    "ccb_test_": "ccb_test",
-    "ccb_understand_": "ccb_understand",
-    "feature_": "ccb_feature",
-    "refactor_": "ccb_refactor",
-    "build_": "ccb_build",  # legacy run dirs
-    "debug_": "ccb_debug",
-    "design_": "ccb_design",
-    "document_": "ccb_document",
-    "fix_": "ccb_fix",
-    "secure_": "ccb_secure",
-    "test_": "ccb_test",
-    "understand_": "ccb_understand",
+    # Legacy SDLC phase suite prefixes (ccb_{phase}_ from old run dirs)
+    "ccb_feature_": "csb_sdlc_feature",
+    "ccb_refactor_": "csb_sdlc_refactor",
+    "ccb_build_": "csb_sdlc_build",  # legacy run dirs
+    "ccb_debug_": "csb_sdlc_debug",
+    "ccb_design_": "csb_sdlc_design",
+    "ccb_document_": "csb_sdlc_document",
+    "ccb_fix_": "csb_sdlc_fix",
+    "ccb_secure_": "csb_sdlc_secure",
+    "ccb_test_": "csb_sdlc_test",
+    "ccb_understand_": "csb_sdlc_understand",
+    # Legacy bare SDLC phase prefixes
+    "feature_": "csb_sdlc_feature",
+    "refactor_": "csb_sdlc_refactor",
+    "build_": "csb_sdlc_build",  # legacy run dirs
+    "debug_": "csb_sdlc_debug",
+    "design_": "csb_sdlc_design",
+    "document_": "csb_sdlc_document",
+    "fix_": "csb_sdlc_fix",
+    "secure_": "csb_sdlc_secure",
+    "test_": "csb_sdlc_test",
+    "understand_": "csb_sdlc_understand",
     # Legacy benchmark prefixes
     "bigcode_mcp_": "ccb_largerepo",
     "codereview_": "ccb_codereview",
@@ -96,17 +96,62 @@ DIR_PREFIX_TO_SUITE = {
     "swebenchpro_": "ccb_swebenchpro",
     "sweperf_": "ccb_sweperf",
     "tac_": "ccb_tac",
-    # MCP-unique org-scale retrieval suites
-    "ccb_mcp_crossrepo_tracing_": "ccb_mcp_crossrepo_tracing",
-    "ccb_mcp_security_": "ccb_mcp_security",
-    "ccb_mcp_migration_": "ccb_mcp_migration",
-    "ccb_mcp_incident_": "ccb_mcp_incident",
-    "ccb_mcp_onboarding_": "ccb_mcp_onboarding",
-    "ccb_mcp_compliance_": "ccb_mcp_compliance",
-    "ccb_mcp_crossorg_": "ccb_mcp_crossorg",
-    "ccb_mcp_domain_": "ccb_mcp_domain",
-    "ccb_mcp_org_": "ccb_mcp_org",
-    "ccb_mcp_platform_": "ccb_mcp_platform",
+    # Legacy MCP-unique org-scale retrieval suites (ccb_mcp_ prefixes)
+    "ccb_mcp_crossrepo_tracing_": "csb_org_crossrepo_tracing",
+    "ccb_mcp_security_": "csb_org_security",
+    "ccb_mcp_migration_": "csb_org_migration",
+    "ccb_mcp_incident_": "csb_org_incident",
+    "ccb_mcp_onboarding_": "csb_org_onboarding",
+    "ccb_mcp_compliance_": "csb_org_compliance",
+    "ccb_mcp_crossorg_": "csb_org_crossorg",
+    "ccb_mcp_domain_": "csb_org_domain",
+    "ccb_mcp_org_": "csb_org_org",
+    "ccb_mcp_platform_": "csb_org_platform",
+    # CodeScaleBench renamed suites (new canonical names)
+    "csb_sdlc_feature_": "csb_sdlc_feature",
+    "csb_sdlc_refactor_": "csb_sdlc_refactor",
+    "csb_sdlc_build_": "csb_sdlc_build",
+    "csb_sdlc_debug_": "csb_sdlc_debug",
+    "csb_sdlc_design_": "csb_sdlc_design",
+    "csb_sdlc_document_": "csb_sdlc_document",
+    "csb_sdlc_fix_": "csb_sdlc_fix",
+    "csb_sdlc_secure_": "csb_sdlc_secure",
+    "csb_sdlc_test_": "csb_sdlc_test",
+    "csb_sdlc_understand_": "csb_sdlc_understand",
+    # CSB Org suites (must check crossrepo_tracing before crossrepo)
+    "csb_org_crossrepo_tracing_": "csb_org_crossrepo_tracing",
+    "csb_org_crossrepo_": "csb_org_crossrepo",
+    "csb_org_security_": "csb_org_security",
+    "csb_org_migration_": "csb_org_migration",
+    "csb_org_incident_": "csb_org_incident",
+    "csb_org_onboarding_": "csb_org_onboarding",
+    "csb_org_compliance_": "csb_org_compliance",
+    "csb_org_crossorg_": "csb_org_crossorg",
+    "csb_org_domain_": "csb_org_domain",
+    "csb_org_org_": "csb_org_org",
+    "csb_org_platform_": "csb_org_platform",
+    # Bare sdlc_ and org_ prefixes (short-form run names)
+    "sdlc_feature_": "csb_sdlc_feature",
+    "sdlc_refactor_": "csb_sdlc_refactor",
+    "sdlc_build_": "csb_sdlc_build",
+    "sdlc_debug_": "csb_sdlc_debug",
+    "sdlc_design_": "csb_sdlc_design",
+    "sdlc_document_": "csb_sdlc_document",
+    "sdlc_fix_": "csb_sdlc_fix",
+    "sdlc_secure_": "csb_sdlc_secure",
+    "sdlc_test_": "csb_sdlc_test",
+    "sdlc_understand_": "csb_sdlc_understand",
+    "org_crossrepo_tracing_": "csb_org_crossrepo_tracing",
+    "org_crossrepo_": "csb_org_crossrepo",
+    "org_security_": "csb_org_security",
+    "org_migration_": "csb_org_migration",
+    "org_incident_": "csb_org_incident",
+    "org_onboarding_": "csb_org_onboarding",
+    "org_compliance_": "csb_org_compliance",
+    "org_crossorg_": "csb_org_crossorg",
+    "org_domain_": "csb_org_domain",
+    "org_org_": "csb_org_org",
+    "org_platform_": "csb_org_platform",
 }
 
 # Legacy hardcoded list — kept for backward compatibility (rerun_failed.py imports it).
@@ -433,8 +478,8 @@ def _iter_task_dirs(config_path: Path):
         elif "__" in entry.name:
             # Old-style direct task dir: task_name__hash
             yield entry
-        elif entry.name.startswith("ccb_"):
-            # New SDLC-style task config dir: ccb_{suite}_{task}_{config}
+        elif entry.name.startswith(("ccb_", "csb_")):
+            # SDLC-style task config dir: csb_{suite}_{task}_{config} (or legacy ccb_)
             # The task-level result.json lives in the trial subdir inside.
             # (The result.json directly here is a batch summary without rewards.)
             for trial_dir in sorted(entry.iterdir()):
@@ -458,8 +503,8 @@ def _match_task_id_to_run_name(task_id: str, run_names: set[str]) -> str | None:
     candidates = [task_id]
 
     # Strip ccb_{benchmark}- prefix (e.g., ccb_repoqa-foo → repoqa-foo)
-    if task_id.startswith("ccb_"):
-        stripped = task_id[4:]  # remove "ccb_"
+    if task_id.startswith(("ccb_", "csb_")):
+        stripped = task_id[4:]  # remove "ccb_" or "csb_"
         candidates.append(stripped)
 
     # Gap-fill naming: hyphens vs double underscores

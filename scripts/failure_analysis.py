@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Failure analysis engine for CodeContextBench enterprise metrics.
+"""Failure analysis engine for CodeScaleBench enterprise metrics.
 
 Classifies every failed task by failure mode with context attribution,
 distinguishes infrastructure failures from agent limitations, and
@@ -115,7 +115,7 @@ def _match_task_to_metadata(task_name: str, metadata: dict[str, dict]) -> Option
     for meta_id, meta in metadata.items():
         if meta_id.startswith(task_name) or task_name.startswith(meta_id):
             return meta
-        if meta_id.startswith("ccb_"):
+        if meta_id.startswith(("ccb_", "csb_")):
             stripped = meta_id[4:]
             if stripped.startswith(task_name) or task_name.startswith(stripped):
                 return meta

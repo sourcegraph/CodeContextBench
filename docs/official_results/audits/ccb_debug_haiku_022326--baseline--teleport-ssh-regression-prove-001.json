@@ -3679,14 +3679,14 @@
       "transcript_sha256": "e59669c766187e30e341ced4211b3fb38162fa5ce84f11ec97c56ea116855de8"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv",
     "task_name": "teleport-ssh-regression-prove-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_teleport-ssh-regression-prove-001_baseline-local-direct/teleport-ssh-regression-prove-00__Ca3znmv/agent/claude-code.txt"
     }
   },
   "score": {

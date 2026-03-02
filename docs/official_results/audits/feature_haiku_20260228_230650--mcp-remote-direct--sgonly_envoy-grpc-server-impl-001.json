@@ -1454,14 +1454,14 @@
       "transcript_sha256": "6be0f353de5333e5a4227fc585b34eb53d625cdbe0d87fef652219e0da556caa"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/result.json",
+    "result_path": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/result.json",
     "run_dir": "feature_haiku_20260228_230650",
-    "suite": "ccb_feature",
-    "task_dir": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM",
+    "suite": "csb_sdlc_feature",
+    "task_dir": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM",
     "task_name": "sgonly_envoy-grpc-server-impl-001",
     "trace_paths": {
-      "trajectory": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/agent/trajectory.json",
-      "transcript": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/ccb_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/agent/claude-code.txt"
+      "trajectory": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/agent/trajectory.json",
+      "transcript": "runs/official/feature_haiku_20260228_230650/mcp-remote-direct/csb_sdlc_feature_envoy-grpc-server-impl-001_mcp-remote-direct/sgonly_envoy-grpc-server-impl-00__QRnzBFM/agent/claude-code.txt"
     }
   },
   "score": {

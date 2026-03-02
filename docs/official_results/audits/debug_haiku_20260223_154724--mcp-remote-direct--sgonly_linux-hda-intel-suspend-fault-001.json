@@ -1942,14 +1942,14 @@
       "transcript_sha256": "af449a57756b5e2a3cdbe50c843c0218bde02bd036202dafe4cd7983264dd31e"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/result.json",
+    "result_path": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/result.json",
     "run_dir": "debug_haiku_20260223_154724",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU",
     "task_name": "sgonly_linux-hda-intel-suspend-fault-001",
     "trace_paths": {
-      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/agent/trajectory.json",
-      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/ccb_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/agent/claude-code.txt"
+      "trajectory": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/agent/trajectory.json",
+      "transcript": "runs/official/debug_haiku_20260223_154724/mcp-remote-direct/csb_sdlc_debug_linux-hda-intel-suspend-fault-001_mcp-remote-direct/sgonly_linux-hda-intel-suspend-f__sazTuFU/agent/claude-code.txt"
     }
   },
   "score": {

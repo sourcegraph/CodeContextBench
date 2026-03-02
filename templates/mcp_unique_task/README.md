@@ -28,7 +28,7 @@ Literal `$` signs in bash code are escaped as `$$`.
 | `$language` | string | `go` | Primary programming language |
 | `$difficulty` | string | `medium` | Task difficulty: easy/medium/hard |
 | `$time_limit_sec` | int | `900` | Agent time limit in seconds |
-| `$mcp_suite` | string | `ccb_mcp_crossrepo_tracing` | CCB MCP suite name |
+| `$mcp_suite` | string | `csb_org_crossrepo_tracing` | CSB MCP suite name |
 | `$use_case_id` | int | `1` | Use case ID from registry (1-100) |
 | `$repo_set_id` | string | `kubernetes-ecosystem` | Fixture ID |
 
@@ -57,7 +57,7 @@ Literal `$` signs in bash code are escaped as `$$`.
 | `$task_family` | string | `cross-repo-dep-trace` | Task family |
 | `$use_case_id` | int | `1` | Use case ID |
 | `$category` | string | `A` | Category A-J |
-| `$mcp_suite` | string | `ccb_mcp_crossrepo_tracing` | Suite name |
+| `$mcp_suite` | string | `csb_org_crossrepo_tracing` | Suite name |
 | `$user_story` | string | `As a platform engineer...` | PRD user story |
 | `$constraints_json` | JSON array | `["Must cite file paths"]` | Constraint list as JSON string |
 | `$success_definition` | string | `Agent identifies all affected repos` | Success criteria |
@@ -103,7 +103,7 @@ benchmarks/<mcp_suite>/<task_slug>/
 │   └── Dockerfile.sg_only
 ├── tests/
 │   ├── eval.sh
-│   ├── oracle_checks.py  (copied from scripts/ccb_metrics/oracle_checks.py)
+│   ├── oracle_checks.py  (copied from scripts/csb_metrics/oracle_checks.py)
 │   ├── task_spec.json
 │   └── oracle_answer.json (populated by curate_oracle.py)
 ├── task.toml

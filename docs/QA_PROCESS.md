@@ -1,4 +1,4 @@
-# CodeContextBench Quality Assurance Process (Compatibility Stub)
+# CodeScaleBench Quality Assurance Process (Compatibility Stub)
 
 ## Canonical Source
 - `docs/ops/QA_PROCESS.md`

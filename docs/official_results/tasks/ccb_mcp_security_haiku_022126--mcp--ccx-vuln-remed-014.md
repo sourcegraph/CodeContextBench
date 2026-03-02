@@ -1,13 +1,13 @@
 # ccx-vuln-remed-014 (mcp-remote-artifact)
 
-- Run: `ccb_mcp_security_haiku_022126`
+- Run: `csb_org_security_haiku_022126`
 - Status: `passed`
 - Reward: `0.6429`
-- Audit JSON: [link](../audits/ccb_mcp_security_haiku_022126--mcp--ccx-vuln-remed-014.json)
+- Audit JSON: [link](../audits/csb_org_security_haiku_022126--mcp--ccx-vuln-remed-014.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_security_haiku_022126--mcp--ccx-vuln-remed-014/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_security_haiku_022126--mcp--ccx-vuln-remed-014/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_security_haiku_022126--mcp--ccx-vuln-remed-014/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_security_haiku_022126--mcp--ccx-vuln-remed-014/claude-code.txt)
 
 ## Metrics
 

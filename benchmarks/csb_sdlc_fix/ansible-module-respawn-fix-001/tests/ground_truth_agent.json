@@ -1,0 +1,135 @@
+{
+  "files": [
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/basic.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/compat/selinux.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/facts/system/selinux.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/yumdnf.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/dnf.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/yum.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/apt.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/apt_repository.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/respawn.py"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "test/sanity/ignore.txt"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/basic.py",
+      "symbol": "AnsibleModule"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/basic.py",
+      "symbol": "selinux_enabled"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/basic.py",
+      "symbol": "selinux_context"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/compat/selinux.py",
+      "symbol": "selinux_getenforcemode"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/compat/selinux.py",
+      "symbol": "selinux_getpolicytype"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/facts/system/selinux.py",
+      "symbol": "SelinuxFactCollector"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/yumdnf.py",
+      "symbol": "YumDnf"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/yumdnf.py",
+      "symbol": "yumdnf_argument_spec"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/respawn.py",
+      "symbol": "respawn_module"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/dnf.py",
+      "symbol": "main"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/yum.py",
+      "symbol": "main"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/apt.py",
+      "symbol": "main"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/modules/apt_repository.py",
+      "symbol": "main"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/compat/selinux.py",
+      "symbol": "selinux_getenforcemode"
+    },
+    {
+      "repo": "ansible/ansible",
+      "path": "lib/ansible/module_utils/facts/system/selinux.py",
+      "symbol": "SelinuxFactCollector"
+    }
+  ],
+  "text": "The task requires implementing a module respawn mechanism for ansible modules that need system-specific Python bindings. Key findings:\n\n1. **lib/ansible/module_utils/compat/selinux.py** - Existing SELinux compat shim that uses ctypes to access libselinux.so without the Python bindings. Referenced in test/sanity/ignore.txt with import-skip annotations for Python 3.9/3.10/3.11.\n\n2. **lib/ansible/module_utils/basic.py** - Core AnsibleModule class with selinux_enabled/selinux_context methods that need to be refactored away from libselinux-python dependency.\n\n3. **lib/ansible/module_utils/facts/system/selinux.py** - SELinux fact collector that imports from the compat selinux module.\n\n4. **lib/ansible/module_utils/yumdnf.py** - Shared base class (YumDnf) and argument spec for dnf/yum modules.\n\n5. **lib/ansible/modules/dnf.py**, **yum.py**, **apt.py**, **apt_repository.py** - Package manager modules that need to integrate with the respawn API to re-execute under compatible system interpreters when Python bindings (dnf, rpm, apt) are unavailable.\n\n6. **lib/ansible/module_utils/respawn.py** - New module providing the respawn API allowing modules to detect missing bindings and re-execute under a compatible system Python interpreter.\n\n7. **test/sanity/ignore.txt** - Contains sanity test ignore entries for the selinux compat module, relevant for verifying no regressions.",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 161334,
+    "output_tokens": 4356,
+    "tool_calls": 42,
+    "elapsed_sec": 73.9,
+    "cost_usd": 0.5493,
+    "timestamp": "2026-03-02T00:57:16.258005+00:00"
+  }
+}

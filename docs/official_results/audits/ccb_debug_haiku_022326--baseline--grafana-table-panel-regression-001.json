@@ -1910,14 +1910,14 @@
       "transcript_sha256": "31b2ebd8accec5081e3b77f3ee6b8064832c467ee95363ab82b2c0e31a7f7fca"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw",
     "task_name": "grafana-table-panel-regression-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/baseline/ccb_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/baseline/csb_sdlc_debug_grafana-table-panel-regression-001_baseline-local-direct/grafana-table-panel-regression-0__GWSP2Kw/agent/claude-code.txt"
     }
   },
   "score": {

@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from config_utils import discover_configs, is_mcp_config, config_short_name
 
 from extract_task_metrics import process_task_dir
-from ccb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
+from csb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
 
 RUNS_DIR = Path(__file__).resolve().parent.parent / "runs" / "official"
 

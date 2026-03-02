@@ -1,4 +1,4 @@
-# CodeContextBench: A Systematic Evaluation Framework for Assessing the Impact of Enhanced Code Intelligence on AI Coding Agent Performance
+# CodeScaleBench: A Systematic Evaluation Framework for Assessing the Impact of Enhanced Code Intelligence on AI Coding Agent Performance
 
 **White Paper Technical Report**
 **Date:** February 27, 2026
@@ -7,7 +7,7 @@
 
 ## Abstract
 
-CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.015 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
+CodeScaleBench (CSB) is a benchmark suite of 251 software engineering tasks spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 251 paired task evaluations using Claude Haiku 4.5, the overall MCP effect is +0.049 (95% bootstrap CI: [+0.010, +0.088]) — a small but statistically significant positive. The effect is strongly task-dependent: MCP-unique cross-repository discovery tasks show +0.183, while SDLC tasks with full local code show -0.015 (not significant). This report documents the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
 
 ---
 
@@ -35,7 +35,7 @@ CodeContextBench (CCB) is a benchmark suite of 251 software engineering tasks sp
 
 AI coding agents increasingly rely on external context tools -- code search, symbol resolution, dependency tracing -- to navigate large and unfamiliar codebases. The Model Context Protocol (MCP) has emerged as a standard interface for connecting agents to these tools. Yet no benchmark systematically measures whether these tools actually improve agent performance across the full software development lifecycle.
 
-CodeContextBench fills this gap by evaluating the same agent on identical tasks under two conditions: one with only local tools, and one augmented with Sourcegraph MCP tools. The benchmark addresses a fundamental question facing practitioners and tool providers: **does enhanced code intelligence measurably help AI agents complete real-world software engineering tasks?**
+CodeScaleBench fills this gap by evaluating the same agent on identical tasks under two conditions: one with only local tools, and one augmented with Sourcegraph MCP tools. The benchmark addresses a fundamental question facing practitioners and tool providers: **does enhanced code intelligence measurably help AI agents complete real-world software engineering tasks?**
 
 ### 1.1 The Context Access Gap
 
@@ -43,7 +43,7 @@ Modern enterprise development spans dozens of repositories, millions of lines of
 
 ### 1.2 Design Philosophy
 
-CodeContextBench is built on three core principles:
+CodeScaleBench is built on three core principles:
 
 1. **Information Parity**: Both configurations have access to the same information -- the only difference is the access method (local files vs. remote MCP tools). This ensures we measure tool _effectiveness_, not information advantage. For the MCP-augmented configuration, local source code is removed, and we note that it is not typical that for massive and/or sprawled codebases an agent is unlikely to have complete local access to all relevant information and therefore deltas reported here are a lower bound conservative estimate of value.
 
@@ -72,20 +72,20 @@ CodeContextBench is built on three core principles:
 ### 3.1 High-Level Architecture Diagram
 
 ```
-                         CodeContextBench Architecture
+                         CodeScaleBench Architecture
  ┌─────────────────────────────────────────────────────────────────────┐
  │                        TASK DEFINITIONS                            │
  │  benchmarks/                                                       │
- │  ├── ccb_understand/  (20 tasks)    ├── ccb_mcp_crossrepo_tracing/ │
- │  ├── ccb_design/      (20 tasks)    ├── ccb_mcp_security/          │
- │  ├── ccb_fix/         (25 tasks)    ├── ccb_mcp_incident/          │
- │  ├── ccb_build/       (25 tasks)    ├── ccb_mcp_onboarding/        │
- │  ├── ccb_test/        (20 tasks)    ├── ccb_mcp_compliance/        │
- │  ├── ccb_document/    (20 tasks)    ├── ccb_mcp_crossorg/          │
- │  ├── ccb_secure/      (20 tasks)    ├── ccb_mcp_domain/            │
- │  └── ccb_debug/       (20 tasks)    ├── ccb_mcp_migration/         │
- │       170 SDLC tasks                ├── ccb_mcp_org/               │
- │                                     ├── ccb_mcp_platform/          │
+ │  ├── csb_sdlc_understand/  (20 tasks)    ├── csb_org_crossrepo_tracing/ │
+ │  ├── csb_sdlc_design/      (20 tasks)    ├── csb_org_security/          │
+ │  ├── csb_sdlc_fix/         (25 tasks)    ├── csb_org_incident/          │
+ │  ├── csb_sdlc_build/       (25 tasks)    ├── csb_org_onboarding/        │
+ │  ├── csb_sdlc_test/        (20 tasks)    ├── csb_org_compliance/        │
+ │  ├── csb_sdlc_document/    (20 tasks)    ├── csb_org_crossorg/          │
+ │  ├── csb_sdlc_secure/      (20 tasks)    ├── csb_org_domain/            │
+ │  └── csb_sdlc_debug/       (20 tasks)    ├── csb_org_migration/         │
+ │       170 SDLC tasks                ├── csb_org_org/               │
+ │                                     ├── csb_org_platform/          │
  │                                     └── 81 MCP-unique tasks        │
  └───────────────────┬─────────────────────────────────────────────────┘
                      │
@@ -165,14 +165,14 @@ Tasks are drawn from established benchmarks and custom-authored challenges, then
 
 | Suite            | SDLC Phase                | Tasks | Difficulty Range | Languages                            |
 | ---------------- | ------------------------- | ----: | ---------------- | ------------------------------------ |
-| `ccb_understand` | Requirements & Discovery  |    20 | hard             | C++, Go, Java, Python, TS            |
-| `ccb_design`     | Architecture & Design     |    20 | hard--expert     | C, C++, Go, Java, Python             |
-| `ccb_fix`        | Bug Repair                |    25 | medium--hard     | C++, Go, Java, JS, Python, TS        |
-| `ccb_build`      | Feature & Refactoring     |    25 | medium--hard     | C#, C++, Go, Java, JS, Rust, TS      |
-| `ccb_test`       | Testing & QA              |    20 | medium--hard     | C, C#, C++, Go, Java, JS, Python, TS |
-| `ccb_document`   | Documentation             |    20 | hard             | C++, Go, Java, Python, TS            |
-| `ccb_secure`     | Security & Compliance     |    20 | medium--hard     | C, C++, Go, Java, Python             |
-| `ccb_debug`      | Debugging & Investigation |    20 | medium--expert   | C, C++, Go, Python, TS               |
+| `csb_sdlc_understand` | Requirements & Discovery  |    20 | hard             | C++, Go, Java, Python, TS            |
+| `csb_sdlc_design`     | Architecture & Design     |    20 | hard--expert     | C, C++, Go, Java, Python             |
+| `csb_sdlc_fix`        | Bug Repair                |    25 | medium--hard     | C++, Go, Java, JS, Python, TS        |
+| `csb_sdlc_build`      | Feature & Refactoring     |    25 | medium--hard     | C#, C++, Go, Java, JS, Rust, TS      |
+| `csb_sdlc_test`       | Testing & QA              |    20 | medium--hard     | C, C#, C++, Go, Java, JS, Python, TS |
+| `csb_sdlc_document`   | Documentation             |    20 | hard             | C++, Go, Java, Python, TS            |
+| `csb_sdlc_secure`     | Security & Compliance     |    20 | medium--hard     | C, C++, Go, Java, Python             |
+| `csb_sdlc_debug`      | Debugging & Investigation |    20 | medium--expert   | C, C++, Go, Python, TS               |
 
 ### 4.2 MCP-Unique Suites (81 tasks)
 
@@ -180,16 +180,16 @@ These tasks specifically measure org-scale cross-repository discovery capabiliti
 
 | Suite                       | Use Case Category            | Tasks | Description                               |
 | --------------------------- | ---------------------------- | ----: | ----------------------------------------- |
-| `ccb_mcp_crossrepo_tracing` | A: Dependency Tracing        |     1 | Blast radius analysis, dependency chains  |
-| `ccb_mcp_security`          | B: Vulnerability Remediation |    10 | CVE impact, missing auth middleware       |
-| `ccb_mcp_migration`         | C: Framework Migration       |     7 | API migrations, breaking changes          |
-| `ccb_mcp_incident`          | D: Incident Debugging        |    11 | Error-to-code-path tracing                |
-| `ccb_mcp_onboarding`        | E: Onboarding                |    11 | API consumption, tribal knowledge         |
-| `ccb_mcp_compliance`        | F: Compliance                |     7 | Standards adherence across repos          |
-| `ccb_mcp_crossorg`          | G: Cross-Org Discovery       |     5 | Interface implementations                 |
-| `ccb_mcp_domain`            | H: Domain Lineage            |    10 | Config propagation, architecture patterns |
-| `ccb_mcp_org`               | I: Organizational Context    |     5 | Agentic discovery                         |
-| `ccb_mcp_platform`          | J: Platform Knowledge        |     5 | Service templates, infrastructure         |
+| `csb_org_crossrepo_tracing` | A: Dependency Tracing        |     1 | Blast radius analysis, dependency chains  |
+| `csb_org_security`          | B: Vulnerability Remediation |    10 | CVE impact, missing auth middleware       |
+| `csb_org_migration`         | C: Framework Migration       |     7 | API migrations, breaking changes          |
+| `csb_org_incident`          | D: Incident Debugging        |    11 | Error-to-code-path tracing                |
+| `csb_org_onboarding`        | E: Onboarding                |    11 | API consumption, tribal knowledge         |
+| `csb_org_compliance`        | F: Compliance                |     7 | Standards adherence across repos          |
+| `csb_org_crossorg`          | G: Cross-Org Discovery       |     5 | Interface implementations                 |
+| `csb_org_domain`            | H: Domain Lineage            |    10 | Config propagation, architecture patterns |
+| `csb_org_org`               | I: Organizational Context    |     5 | Agentic discovery                         |
+| `csb_org_platform`          | J: Platform Knowledge        |     5 | Service templates, infrastructure         |
 
 ### 4.3 Repository and Language Coverage
 
@@ -221,16 +221,16 @@ Repository Scale:
 
 ### 5.1 Task Provenance
 
-The 251 tasks in CodeContextBench fall into two broad provenance categories:
+The 251 tasks in CodeScaleBench fall into two broad provenance categories:
 
-**SDLC tasks (170 tasks):** The majority (~158) are fully original tasks authored for CodeContextBench, each grounded in a real repository at a pinned commit and targeting a genuine development scenario (a real bug, a real missing feature, a real documentation gap) identified through analysis of repository issues, PRs, and codebases on GitHub. A smaller number of tasks are adapted from or inspired by existing benchmarks while retaining CCB-specific instructions and verifiers:
+**SDLC tasks (170 tasks):** The majority (~158) are fully original tasks authored for CodeScaleBench, each grounded in a real repository at a pinned commit and targeting a genuine development scenario (a real bug, a real missing feature, a real documentation gap) identified through analysis of repository issues, PRs, and codebases on GitHub. A smaller number of tasks are adapted from or inspired by existing benchmarks while retaining CSB-specific instructions and verifiers:
 
 - 8 dependency-installation tasks adapted from DIBench patterns
 - 5 Linux kernel fault-localization tasks with a custom 10-point rubric from the LinuxFL benchmark
 - 6 code-review tasks using synthetic defect injection (null-deref, resource-leak, etc.) from the Qodo Git Code Review benchmark
 - 1 task sourced from TheAgentCompany (bustub-hyperloglog-impl-001)
 
-All tasks, regardless of inspiration source, use CCB-authored instructions and CCB-built verifiers running inside the CCB Docker environment.
+All tasks, regardless of inspiration source, use CSB-authored instructions and CSB-built verifiers running inside the CSB Docker environment.
 
 **MCP-unique tasks (81 tasks):** Derived from a custom **Use Case Registry** (`configs/use_case_registry.json`) for cross-repository code intelligence. Each use case was validated against Sourcegraph's actual search capabilities and curated into a benchmark task with oracle ground truth. These tasks specifically target org-scale scenarios where information is distributed across 3-20 repositories.
 
@@ -291,7 +291,7 @@ Each task is assigned to one of 8 SDLC phases based on the primary development a
 
 ### 6.1 Role of Ground Truth
 
-Ground truth serves two distinct purposes in CodeContextBench, and it is important to distinguish them:
+Ground truth serves two distinct purposes in CodeScaleBench, and it is important to distinguish them:
 
 1. **Task scoring (verifiers)**: For MCP-unique artifact tasks, ground truth is used _directly_ in scoring -- `oracle_checks.py` compares the agent's `answer.json` against the oracle to compute file-set F1, symbol recall, chain recall, etc. (see Section 7.4). For SDLC direct tasks, ground truth is embedded in the verifier itself -- the test suite, expected defects, or rubric criteria define what "correct" means, and the verifier scores against those expectations without referencing a separate ground truth registry.
 
@@ -319,9 +319,9 @@ Ground truth extraction uses task-type-specific strategies that match how each t
 
 **SDLC tasks (170 tasks)** use a unified extractor (`_gt_sdlc()`) that walks the 6-level priority chain described above. For most tasks, ground truth files come from `ground_truth.json` or are extracted from `instruction.md` via regex patterns matching file path references. Specialized handling exists for specific task patterns:
 
-- **Bug-fix tasks** (ccb_fix): Ground truth extracted from `solution/solve.sh` patches or `expected_changes.json`, identifying which files should be modified
-- **Code-review tasks** (ccb_test): `expected_defects.json` provides structured defect annotations (file, line range, defect type)
-- **Fault-localization tasks** (ccb_debug): Ground truth file paths extracted from `instruction.md`
+- **Bug-fix tasks** (csb_sdlc_fix): Ground truth extracted from `solution/solve.sh` patches or `expected_changes.json`, identifying which files should be modified
+- **Code-review tasks** (csb_sdlc_test): `expected_defects.json` provides structured defect annotations (file, line range, defect type)
+- **Fault-localization tasks** (csb_sdlc_debug): Ground truth file paths extracted from `instruction.md`
 
 **MCP-unique tasks (81 tasks)** use `oracle_answer.json` as the authoritative source, providing structured ground truth with files, symbols, dependency chains, and keywords (see Section 6.5).
 
@@ -915,7 +915,7 @@ C tasks have the highest mean reward (0.801), driven by the Linux kernel fault l
 | Hard | 136 | 0.638 | 0.611 | 89.0% |
 | Expert | 13 | 0.738 | 0.728 | 100.0% |
 
-The `hard > medium` result here is primarily a composition effect in the paired direct-run subset, not evidence that the difficulty metadata is inverted. Medium has only 21 paired tasks and is concentrated in lower-performing slices (`ccb_fix`, `ccb_build`, and `ccb_test`), while hard has 136 paired tasks spread across several higher-performing suites (`ccb_document`, `ccb_understand`, `ccb_secure`, `ccb_design`, etc.). Expert remains highest because this bucket is small (13 tasks) and dominated by Linux fault-localization tasks that currently score well under the rubric verifier.
+The `hard > medium` result here is primarily a composition effect in the paired direct-run subset, not evidence that the difficulty metadata is inverted. Medium has only 21 paired tasks and is concentrated in lower-performing slices (`csb_sdlc_fix`, `csb_sdlc_build`, and `csb_sdlc_test`), while hard has 136 paired tasks spread across several higher-performing suites (`csb_sdlc_document`, `csb_sdlc_understand`, `csb_sdlc_secure`, `csb_sdlc_design`, etc.). Expert remains highest because this bucket is small (13 tasks) and dominated by Linux fault-localization tasks that currently score well under the rubric verifier.
 
 Difficulty metadata is assigned by the deterministic v2 formula used in `scripts/rescore_difficulty.py`:
 
@@ -924,7 +924,7 @@ difficulty_score = 0.40*size_score + 0.35*complexity_score + 0.25*ground_truth_d
 label = expert if score >= 0.86
 label = hard   if score >= 0.62 and < 0.86
 label = medium otherwise
-override: ccb_debug linux-* -> expert
+override: csb_sdlc_debug linux-* -> expert
 ```
 
 Priors and task-type values used by the formula:
@@ -1147,7 +1147,7 @@ All current results use Claude Code as the sole agent harness. The framework alr
 
 ### 14.1 Meta-Recursive Development
 
-CodeContextBench was itself primarily developed using Claude Code, creating a meta-recursive situation: an AI coding agent building a benchmark to evaluate AI coding agents' use of code intelligence tools. This section documents the development process for both methodological transparency and as a case study in AI-assisted benchmark construction.
+CodeScaleBench was itself primarily developed using Claude Code, creating a meta-recursive situation: an AI coding agent building a benchmark to evaluate AI coding agents' use of code intelligence tools. This section documents the development process for both methodological transparency and as a case study in AI-assisted benchmark construction.
 
 ### 14.2 Development Timeline
 
@@ -1226,7 +1226,7 @@ Major architectural decisions emerged through iterative dialogue:
 | **Bootstrap CI**   | Non-parametric confidence intervals            | Percentile method, 10,000 resamples |
 | **Spearman rank**  | IR metric → reward correlation                 | `retrieval_impact_analysis.py`      |
 
-**Bootstrap CI methodology**: All confidence intervals reported in Section 11 use the percentile bootstrap method on paired deltas. For each task pair, the delta is computed as `reward_mcp - reward_baseline`. The vector of deltas is resampled with replacement 10,000 times (seed=42 for reproducibility), the mean is computed for each resample, and the 2.5th and 97.5th percentiles of the bootstrap distribution define the 95% CI bounds. This non-parametric approach makes no normality assumption, which is appropriate for bounded [0, 1] reward data that often exhibits bimodal distributions. Tasks with infrastructure errors (agent never executed) are excluded from paired analysis. The computation is implemented in `scripts/compute_bootstrap_cis.py` and the core bootstrap function in `scripts/ccb_metrics/statistics.py:bootstrap_ci()`.
+**Bootstrap CI methodology**: All confidence intervals reported in Section 11 use the percentile bootstrap method on paired deltas. For each task pair, the delta is computed as `reward_mcp - reward_baseline`. The vector of deltas is resampled with replacement 10,000 times (seed=42 for reproducibility), the mean is computed for each resample, and the 2.5th and 97.5th percentiles of the bootstrap distribution define the 95% CI bounds. This non-parametric approach makes no normality assumption, which is appropriate for bounded [0, 1] reward data that often exhibits bimodal distributions. Tasks with infrastructure errors (agent never executed) are excluded from paired analysis. The computation is implemented in `scripts/compute_bootstrap_cis.py` and the core bootstrap function in `scripts/csb_metrics/statistics.py:bootstrap_ci()`.
 
 ### Appendix B: Task ID Naming Conventions
 
@@ -1299,7 +1299,7 @@ Pre-commit validation via `scripts/repo_health.py`:
 
 | Term                | Definition                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------ |
-| **CCB**             | CodeContextBench                                                                     |
+| **CSB**             | CodeScaleBench                                                                     |
 | **Harbor**          | Docker-based task isolation runner                                                   |
 | **MCP**             | Model Context Protocol -- standard interface for connecting agents to external tools |
 | **SDLC**            | Software Development Lifecycle                                                       |

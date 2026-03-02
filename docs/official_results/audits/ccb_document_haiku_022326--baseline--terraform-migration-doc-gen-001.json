@@ -2710,14 +2710,14 @@
       "transcript_sha256": "7d887f19d53153cc89d8e21fbad31e96bc2964808ba72c2829482fccae1df7a6"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/result.json",
-    "run_dir": "ccb_document_haiku_022326",
-    "suite": "ccb_document",
-    "task_dir": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa",
+    "result_path": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/result.json",
+    "run_dir": "csb_sdlc_document_haiku_022326",
+    "suite": "csb_sdlc_document",
+    "task_dir": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa",
     "task_name": "terraform-migration-doc-gen-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/agent/trajectory.json",
-      "transcript": "runs/official/ccb_document_haiku_022326/baseline/ccb_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_document_haiku_022326/baseline/csb_sdlc_document_terraform-migration-doc-gen-001_baseline-local-direct/terraform-migration-doc-gen-001__Ygyxgxa/agent/claude-code.txt"
     }
   },
   "score": {

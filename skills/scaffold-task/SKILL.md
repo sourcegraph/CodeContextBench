@@ -6,7 +6,7 @@ user-invocable: true
 
 # Scaffold Task
 
-Interactively scaffold a new Harbor-compatible benchmark task for CodeContextBench. Generates all required files and registers the task in the selection registry.
+Interactively scaffold a new Harbor-compatible benchmark task for CodeScaleBench. Generates all required files and registers the task in the selection registry.
 
 This is an **interactive skill**. Walk the user through configuration using AskUserQuestion in multiple phases. Do NOT generate files without first collecting all required inputs.
 
@@ -19,7 +19,7 @@ Ask one question:
 **Question 1** — Header: "Mode"
 - Question: "What would you like to create?"
 - Options:
-  - **Add task to existing suite** — "Create a new task in an existing ccb_* benchmark"
+  - **Add task to existing suite** — "Create a new task in an existing csb_* benchmark"
   - **Create new benchmark suite** — "Create a new benchmark with its first task and run config"
 
 ---
@@ -42,7 +42,7 @@ Ask 3-4 questions depending on mode.
 ### If creating new suite:
 
 Prompt the user (not AskUserQuestion) to provide:
-- **Suite name**: Will become `ccb_{name}` (lowercase, alphanumeric + hyphens)
+- **Suite name**: Will become `csb_sdlc_{name}` (lowercase, alphanumeric + hyphens)
 
 Then ask:
 
@@ -112,7 +112,7 @@ Generate all files using the templates below. Use the Write tool for each file.
 
 ### Template 1: task.toml
 
-Write to `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/task.toml`:
+Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/task.toml`:
 
 ```toml
 version = "1.0"
@@ -173,7 +173,7 @@ Notes:
 
 ### Template 2: Dockerfile (repo-clone type)
 
-Write to `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`:
+Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`:
 
 ```dockerfile
 FROM {BASE_IMAGE}
@@ -257,7 +257,7 @@ WORKDIR /workspace
 
 ### Template 3: instruction.md
 
-Write to `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/instruction.md`:
+Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/instruction.md`:
 
 ```markdown
 # {TITLE}
@@ -295,7 +295,7 @@ Notes:
 
 ### Template 4: test.sh
 
-Write to `benchmarks/ccb_{BENCHMARK}/{TASK_ID}/tests/test.sh`:
+Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/tests/test.sh`:
 
 ```bash
 #!/bin/bash
@@ -386,7 +386,7 @@ Read `configs/selected_benchmark_tasks.json`, then use Edit to append a new task
 ```json
 {
   "task_id": "{TASK_ID}",
-  "benchmark": "ccb_{BENCHMARK}",
+  "benchmark": "csb_sdlc_{BENCHMARK}",
   "sdlc_phase": "{SDLC_PHASE}",
   "language": "{LANGUAGE}",
   "difficulty": "{DIFFICULTY}",
@@ -400,18 +400,18 @@ Read `configs/selected_benchmark_tasks.json`, then use Edit to append a new task
     "task_category_weight": 0.5
   },
   "selection_rationale": "Manually added via /scaffold-task",
-  "task_dir": "ccb_{BENCHMARK}/{TASK_ID}"
+  "task_dir": "csb_sdlc_{BENCHMARK}/{TASK_ID}"
 }
 ```
 
-Also update the `metadata.total_selected` count and the `statistics.tasks_per_benchmark.ccb_{BENCHMARK}` count.
+Also update the `metadata.total_selected` count and the `statistics.tasks_per_benchmark.csb_sdlc_{BENCHMARK}` count.
 
 ### If new suite: Generate run config script
 
 Write to `configs/{BENCHMARK}_2config.sh` using the standard 2-config pattern. Read an existing config (e.g., `configs/tac_2config.sh`) as a reference and adapt it:
 
 1. Source `_common.sh`
-2. Define `SUITE="ccb_{BENCHMARK}"`
+2. Define `SUITE="csb_sdlc_{BENCHMARK}"`
 3. Load task IDs from `selected_benchmark_tasks.json` filtered by benchmark
 4. Define `run_task_batch()` with baseline, sourcegraph_full configs
 5. Run the 2 batches sequentially
@@ -424,7 +424,7 @@ Write to `configs/{BENCHMARK}_2config.sh` using the standard 2-config pattern. R
 After all files are created, run validation:
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/ccb_{BENCHMARK}/{TASK_ID}
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
 ```
 
 Report the validation results. If there are issues, offer to fix them.
@@ -437,22 +437,22 @@ After completion, print a summary:
 
 ```
 Scaffolded task: {TASK_ID}
-  Suite:      ccb_{BENCHMARK}
+  Suite:      csb_sdlc_{BENCHMARK}
   Language:   {LANGUAGE}
   Difficulty: {DIFFICULTY}
   Type:       {TASK_TYPE}
 
 Files created:
-  benchmarks/ccb_{BENCHMARK}/{TASK_ID}/task.toml
-  benchmarks/ccb_{BENCHMARK}/{TASK_ID}/instruction.md
-  benchmarks/ccb_{BENCHMARK}/{TASK_ID}/environment/Dockerfile
-  benchmarks/ccb_{BENCHMARK}/{TASK_ID}/tests/test.sh
+  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/task.toml
+  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/instruction.md
+  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/environment/Dockerfile
+  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/tests/test.sh
 
 Registered in: configs/selected_benchmark_tasks.json
 
 Next steps:
   1. Edit instruction.md with detailed task instructions
   2. Customize tests/test.sh with task-specific verification checks
-  3. Test locally: harbor run --path benchmarks/ccb_{BENCHMARK}/{TASK_ID}
-  4. Run /validate-tasks --task benchmarks/ccb_{BENCHMARK}/{TASK_ID}
+  3. Test locally: harbor run --path benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
+  4. Run /validate-tasks --task benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
 ```

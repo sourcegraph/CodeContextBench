@@ -1,13 +1,13 @@
 # ccx-platform-119 (baseline-local-direct)
 
-- Run: `ccb_mcp_platform_haiku_20260226_214446`
+- Run: `csb_org_platform_haiku_20260226_214446`
 - Status: `passed`
 - Reward: `0.6316`
-- Audit JSON: [link](../audits/ccb_mcp_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119.json)
+- Audit JSON: [link](../audits/csb_org_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119/trajectory.json)
-- Bundled transcript: [link](../traces/ccb_mcp_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119/claude-code.txt)
+- Bundled trajectory: [link](../traces/csb_org_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119/trajectory.json)
+- Bundled transcript: [link](../traces/csb_org_platform_haiku_20260226_214446--baseline-local-direct--ccx-platform-119/claude-code.txt)
 
 ## Metrics
 

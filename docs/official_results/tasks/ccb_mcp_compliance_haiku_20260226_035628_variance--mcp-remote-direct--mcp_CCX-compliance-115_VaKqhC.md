@@ -1,12 +1,12 @@
 # mcp_CCX-compliance-115_VaKqhC (mcp-remote-direct)
 
-- Run: `ccb_mcp_compliance_haiku_20260226_035628_variance`
+- Run: `csb_org_compliance_haiku_20260226_035628_variance`
 - Status: `failed`
 - Reward: `0.0000`
-- Audit JSON: [link](../audits/ccb_mcp_compliance_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-compliance-115_VaKqhC.json)
+- Audit JSON: [link](../audits/csb_org_compliance_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-compliance-115_VaKqhC.json)
 - Trajectory available: `True`
 - Transcript available: `True`
-- Bundled trajectory: [link](../traces/ccb_mcp_compliance_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-compliance-115_VaKqhC/trajectory.json)
+- Bundled trajectory: [link](../traces/csb_org_compliance_haiku_20260226_035628_variance--mcp-remote-direct--mcp_CCX-compliance-115_VaKqhC/trajectory.json)
 
 ## Metrics
 

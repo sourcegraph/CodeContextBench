@@ -13,7 +13,7 @@ Analyze token usage and estimated cost across benchmark runs.
 ### 1. Run cost analysis
 
 ```bash
-cd ~/CodeContextBench && python3 scripts/cost_report.py
+cd ~/CodeScaleBench && python3 scripts/cost_report.py
 ```
 
 ### 2. Present findings
@@ -28,7 +28,7 @@ The table output shows:
 
 ### Filter to one suite
 ```bash
-python3 scripts/cost_report.py --suite ccb_pytorch
+python3 scripts/cost_report.py --suite csb_sdlc_pytorch
 ```
 
 ### Filter to one config

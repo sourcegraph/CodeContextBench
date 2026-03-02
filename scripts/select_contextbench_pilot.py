@@ -58,9 +58,10 @@ def _mirror_name(repo: str, commit: str) -> str:
 def _task_id(instance_id: str) -> str:
     """Normalize ContextBench instance_id to a Harbor-safe task ID.
 
-    e.g. 'django__django-14434' -> 'cb-django__django-14434'
+    Docker requires lowercase image names, so we lowercase everything.
+    e.g. 'SWE-Bench-Verified__python__...__51e329de' -> 'cb-swe-bench-verified__python__...__51e329de'
     """
-    return f"cb-{instance_id}"
+    return f"cb-{instance_id.lower()}"
 
 
 def select_and_export(
@@ -130,6 +131,8 @@ def select_and_export(
 
         if mirror_key not in mirrors_by_key:
             upstream = repo_url.replace("https://", "").replace("http://", "")
+            if upstream.endswith(".git"):
+                upstream = upstream[:-4]
             if not upstream.startswith("github.com/"):
                 upstream = f"github.com/{repo}"
             mirrors_by_key[mirror_key] = {

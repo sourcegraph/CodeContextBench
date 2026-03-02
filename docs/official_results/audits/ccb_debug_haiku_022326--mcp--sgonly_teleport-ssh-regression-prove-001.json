@@ -2343,14 +2343,14 @@
       "transcript_sha256": "41da11cb04a11b64ce0382d6fa48420c43ce73cb71ea4494f8ae658becb5a4a5"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/result.json",
-    "run_dir": "ccb_debug_haiku_022326",
-    "suite": "ccb_debug",
-    "task_dir": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o",
+    "result_path": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/result.json",
+    "run_dir": "csb_sdlc_debug_haiku_022326",
+    "suite": "csb_sdlc_debug",
+    "task_dir": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o",
     "task_name": "sgonly_teleport-ssh-regression-prove-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/agent/trajectory.json",
-      "transcript": "runs/official/ccb_debug_haiku_022326/mcp/ccb_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_debug_haiku_022326/mcp/csb_sdlc_debug_teleport-ssh-regression-prove-001_mcp-remote-direct/sgonly_teleport-ssh-regression-p__Mo67D3o/agent/claude-code.txt"
     }
   },
   "score": {

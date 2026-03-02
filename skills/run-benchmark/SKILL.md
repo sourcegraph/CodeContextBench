@@ -1,13 +1,13 @@
 ---
 name: run-benchmark
-description: Configure and launch CodeContextBench runs with current paired-run and curation guardrails.
+description: Configure and launch CodeScaleBench runs with current paired-run and curation guardrails.
 ---
 
 # Skill: Run Benchmark
 
 ## Scope
 
-Use this skill when the user asks to run benchmark suites, rerun failures, or launch official/gap-fill batches in `CodeContextBench`.
+Use this skill when the user asks to run benchmark suites, rerun failures, or launch official/gap-fill batches in `CodeScaleBench`.
 
 ## Approval Gate (Required Before Running)
 
@@ -43,13 +43,13 @@ Do NOT launch a run until the user has confirmed these five parameters.
 ./configs/pytorch_2config.sh --parallel 4
 
 # Paired selected-task run
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch
 
 # Gap-fill baseline only (guarded)
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch --baseline-only
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch --baseline-only
 
 # Gap-fill full only (guarded)
-./configs/run_selected_tasks.sh --benchmark ccb_pytorch --full-only
+./configs/run_selected_tasks.sh --benchmark csb_sdlc_pytorch --full-only
 ```
 
 ## Preflight Checks

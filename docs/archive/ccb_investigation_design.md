@@ -1,8 +1,8 @@
-# ccb_investigation Benchmark Suite — Design Document
+# csb_sdlc_investigation Benchmark Suite — Design Document
 
 ## 1. Purpose & Motivation
 
-The `ccb_investigation` benchmark suite tests an agent's ability to **find, trace, and explain** code-level phenomena in large codebases — without writing any code. These tasks model the detective work that senior engineers do daily: regression hunting, impact analysis, cross-service debugging, and migration auditing.
+The `csb_sdlc_investigation` benchmark suite tests an agent's ability to **find, trace, and explain** code-level phenomena in large codebases — without writing any code. These tasks model the detective work that senior engineers do daily: regression hunting, impact analysis, cross-service debugging, and migration auditing.
 
 **Why this suite matters for MCP value demonstration:**
 - Investigation tasks are the hardest to solve without code search tools
@@ -283,7 +283,7 @@ All repos are **public GitHub repos already indexed in Sourcegraph**. No sg-eval
 ## 5. File Structure
 
 ```
-benchmarks/ccb_investigation/
+benchmarks/csb_sdlc_investigation/
 ├── CLAUDE.md                          # Suite-level MCP instructions
 ├── inv-regression-001/
 │   ├── task.toml
@@ -381,7 +381,7 @@ Add to `configs/selected_benchmark_tasks.json`:
 ```json
 {
   "task_id": "inv-regression-001",
-  "benchmark": "ccb_investigation",
+  "benchmark": "csb_sdlc_investigation",
   "sdlc_phase": "Debugging (regression hunt)",
   "language": "go",
   "difficulty": "hard",
@@ -394,11 +394,11 @@ Add to `configs/selected_benchmark_tasks.json`:
     "semantic_search_potential": 0.90,
     "task_category_weight": 0.85
   },
-  "task_dir": "ccb_investigation/inv-regression-001"
+  "task_dir": "csb_sdlc_investigation/inv-regression-001"
 },
 {
   "task_id": "inv-impact-001",
-  "benchmark": "ccb_investigation",
+  "benchmark": "csb_sdlc_investigation",
   "sdlc_phase": "Planning (impact analysis)",
   "language": "go",
   "difficulty": "hard",
@@ -411,11 +411,11 @@ Add to `configs/selected_benchmark_tasks.json`:
     "semantic_search_potential": 0.90,
     "task_category_weight": 0.90
   },
-  "task_dir": "ccb_investigation/inv-impact-001"
+  "task_dir": "csb_sdlc_investigation/inv-impact-001"
 },
 {
   "task_id": "inv-debug-001",
-  "benchmark": "ccb_investigation",
+  "benchmark": "csb_sdlc_investigation",
   "sdlc_phase": "Debugging (cross-service)",
   "language": "go",
   "difficulty": "hard",
@@ -428,11 +428,11 @@ Add to `configs/selected_benchmark_tasks.json`:
     "semantic_search_potential": 0.90,
     "task_category_weight": 0.88
   },
-  "task_dir": "ccb_investigation/inv-debug-001"
+  "task_dir": "csb_sdlc_investigation/inv-debug-001"
 },
 {
   "task_id": "inv-migration-001",
-  "benchmark": "ccb_investigation",
+  "benchmark": "csb_sdlc_investigation",
   "sdlc_phase": "Maintenance (migration audit)",
   "language": "python",
   "difficulty": "medium",
@@ -445,14 +445,14 @@ Add to `configs/selected_benchmark_tasks.json`:
     "semantic_search_potential": 0.90,
     "task_category_weight": 0.82
   },
-  "task_dir": "ccb_investigation/inv-migration-001"
+  "task_dir": "csb_sdlc_investigation/inv-migration-001"
 }
 ```
 
 ## 10. Config Script
 
 Create `configs/investigation_3config.sh` following the pattern of `pytorch_3config.sh`:
-- TASKS_DIR pointing to `benchmarks/ccb_investigation`
+- TASKS_DIR pointing to `benchmarks/csb_sdlc_investigation`
 - 3 configs: baseline, sourcegraph_base, sourcegraph_full
 - Uses `--path` mode (local task dirs, not harbor registry)
 - Parallel execution support

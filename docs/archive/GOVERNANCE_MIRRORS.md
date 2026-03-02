@@ -1,6 +1,6 @@
 # Governance Benchmark — Repository Mirrors
 
-Repos used by `ccb_governance` tasks, with commit SHAs and Sourcegraph indexing status.
+Repos used by `csb_sdlc_governance` tasks, with commit SHAs and Sourcegraph indexing status.
 
 ## Repos
 

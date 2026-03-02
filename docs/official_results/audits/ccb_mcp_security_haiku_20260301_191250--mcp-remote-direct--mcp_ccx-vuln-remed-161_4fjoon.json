@@ -901,14 +901,14 @@
       "transcript_sha256": "e945c1a6ec6600145c0e10502a9fd548feb53fe2bc90c72d74c255e524ac2c7c"
     },
     "config": "mcp-remote-direct",
-    "result_path": "runs/official/ccb_mcp_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/result.json",
-    "run_dir": "ccb_mcp_security_haiku_20260301_191250",
-    "suite": "ccb_mcp_security",
-    "task_dir": "runs/official/ccb_mcp_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ",
+    "result_path": "runs/official/csb_org_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/result.json",
+    "run_dir": "csb_org_security_haiku_20260301_191250",
+    "suite": "csb_org_security",
+    "task_dir": "runs/official/csb_org_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ",
     "task_name": "mcp_ccx-vuln-remed-161_4fjoon",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_mcp_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/agent/trajectory.json",
-      "transcript": "runs/official/ccb_mcp_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_org_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/agent/trajectory.json",
+      "transcript": "runs/official/csb_org_security_haiku_20260301_191250/mcp-remote-direct/2026-03-01__19-18-54/mcp_ccx-vuln-remed-161_4fjoon__YfwTKwQ/agent/claude-code.txt"
     }
   },
   "score": {

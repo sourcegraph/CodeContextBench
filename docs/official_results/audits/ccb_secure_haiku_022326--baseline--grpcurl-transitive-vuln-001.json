@@ -1677,14 +1677,14 @@
       "transcript_sha256": "d1139997ff0e4b4b47d8ec6059aabd48a61dd9707570a942064948d6ba038f22"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/result.json",
-    "run_dir": "ccb_secure_haiku_022326",
-    "suite": "ccb_secure",
-    "task_dir": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d",
+    "result_path": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/result.json",
+    "run_dir": "csb_sdlc_secure_haiku_022326",
+    "suite": "csb_sdlc_secure",
+    "task_dir": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d",
     "task_name": "grpcurl-transitive-vuln-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/agent/trajectory.json",
-      "transcript": "runs/official/ccb_secure_haiku_022326/baseline/ccb_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_secure_haiku_022326/baseline/csb_sdlc_secure_grpcurl-transitive-vuln-001_baseline-local-direct/grpcurl-transitive-vuln-001__cikTm7d/agent/claude-code.txt"
     }
   },
   "score": {

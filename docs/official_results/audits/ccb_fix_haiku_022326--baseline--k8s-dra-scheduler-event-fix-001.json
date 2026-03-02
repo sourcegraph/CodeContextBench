@@ -1378,14 +1378,14 @@
       "transcript_sha256": "55e7216e8775dc7c82ce43d202f2a8ce7f99575551a3e8c63ba13767c3218b31"
     },
     "config": "baseline-local-direct",
-    "result_path": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/result.json",
-    "run_dir": "ccb_fix_haiku_022326",
-    "suite": "ccb_fix",
-    "task_dir": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg",
+    "result_path": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/result.json",
+    "run_dir": "csb_sdlc_fix_haiku_022326",
+    "suite": "csb_sdlc_fix",
+    "task_dir": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg",
     "task_name": "k8s-dra-scheduler-event-fix-001",
     "trace_paths": {
-      "trajectory": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/agent/trajectory.json",
-      "transcript": "runs/official/ccb_fix_haiku_022326/baseline/ccb_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/agent/claude-code.txt"
+      "trajectory": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/agent/trajectory.json",
+      "transcript": "runs/official/csb_sdlc_fix_haiku_022326/baseline/csb_sdlc_fix_k8s-dra-scheduler-event-fix-001_baseline-local-direct/k8s-dra-scheduler-event-fix-001__NnCPnjg/agent/claude-code.txt"
     }
   },
   "score": {

@@ -1,4 +1,4 @@
-# CCB Triage & Rerun Skills
+# CSB Triage & Rerun Skills
 
 Investigate failed tasks, diagnose root causes, and verify fixes. Use when investigating benchmark failures or rerunning tasks.
 
@@ -14,7 +14,7 @@ Investigate a failed benchmark task and produce a diagnosis.
 
 User provides one of:
 - Task path: `runs/official/pytorch_opus_.../baseline/.../sgt-005__hash/`
-- Suite/config/task: `ccb_pytorch/baseline/sgt-005`
+- Suite/config/task: `csb_sdlc_pytorch/baseline/sgt-005`
 - Just a task name: `sgt-005`
 - Or says "triage the most recent failure"
 
@@ -23,7 +23,7 @@ User provides one of:
 #### 1. Locate the task directory
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 
 # If "most recent failure"
 python3 scripts/aggregate_status.py --failures-only --format json | python3 -c "
@@ -124,7 +124,7 @@ Run a single benchmark task locally to verify a fix works.
 #### 1. Resolve the task path
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 find benchmarks -type d -name "TASKNAME" | head -5
 ```
 
@@ -137,7 +137,7 @@ find benchmarks -type d -name "TASKNAME" | head -5
 #### 3. Set up environment
 
 ```bash
-cd ~/CodeContextBench
+cd ~/CodeScaleBench
 source .env.local 2>/dev/null || true
 export PYTHONPATH="$(pwd):$PYTHONPATH"
 source configs/_common.sh
