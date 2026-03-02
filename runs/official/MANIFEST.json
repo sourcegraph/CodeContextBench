@@ -1,6 +1,6 @@
 {
   "description": "Canonical run manifest for CodeContextBench evaluation",
-  "generated": "2026-03-02T04:16:33.002122+00:00",
+  "generated": "2026-03-02T17:44:47.601447+00:00",
   "total_tasks": 931,
   "total_runs": 74,
   "runs": {
@@ -3409,10 +3409,10 @@
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-02-28 00-53-37",
       "task_count": 15,
-      "passed": 10,
-      "failed": 5,
+      "passed": 9,
+      "failed": 6,
       "errored": 0,
-      "mean_reward": 0.176,
+      "mean_reward": 0.173,
       "tasks": {
         "CCX-crossorg-062": {
           "status": "passed",
@@ -3476,7 +3476,7 @@
         },
         "CCX-crossorg-213": {
           "status": "passed",
-          "reward": 0.0952,
+          "reward": 0.129,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3495,8 +3495,8 @@
           "judge_confidence": null
         },
         "CCX-crossorg-216": {
-          "status": "failed",
-          "reward": 0.0,
+          "status": "passed",
+          "reward": 0.08,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3506,7 +3506,7 @@
         },
         "CCX-crossorg-217": {
           "status": "passed",
-          "reward": 0.1,
+          "reward": 0.1053,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3516,7 +3516,7 @@
         },
         "CCX-crossorg-218": {
           "status": "passed",
-          "reward": 0.2414,
+          "reward": 0.3333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3525,8 +3525,8 @@
           "judge_confidence": null
         },
         "CCX-crossorg-219": {
-          "status": "passed",
-          "reward": 0.0769,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3535,8 +3535,8 @@
           "judge_confidence": null
         },
         "CCX-crossorg-220": {
-          "status": "passed",
-          "reward": 0.087,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3546,7 +3546,7 @@
         },
         "CCX-crossorg-221": {
           "status": "passed",
-          "reward": 0.4211,
+          "reward": 0.3902,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3556,7 +3556,7 @@
         },
         "CCX-crossorg-222": {
           "status": "passed",
-          "reward": 0.2609,
+          "reward": 0.1972,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3603,10 +3603,10 @@
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-02-28 00-53-39",
       "task_count": 15,
-      "passed": 11,
-      "failed": 4,
+      "passed": 9,
+      "failed": 6,
       "errored": 0,
-      "mean_reward": 0.24,
+      "mean_reward": 0.171,
       "tasks": {
         "CCX-crossorg-062": {
           "status": "passed",
@@ -3670,7 +3670,7 @@
         },
         "CCX-crossorg-213": {
           "status": "passed",
-          "reward": 0.2857,
+          "reward": 0.1739,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3690,7 +3690,7 @@
         },
         "CCX-crossorg-216": {
           "status": "passed",
-          "reward": 0.1463,
+          "reward": 0.069,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3700,7 +3700,7 @@
         },
         "CCX-crossorg-217": {
           "status": "passed",
-          "reward": 0.1,
+          "reward": 0.1053,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3710,7 +3710,7 @@
         },
         "CCX-crossorg-218": {
           "status": "passed",
-          "reward": 0.5455,
+          "reward": 0.25,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3719,8 +3719,8 @@
           "judge_confidence": null
         },
         "CCX-crossorg-219": {
-          "status": "passed",
-          "reward": 0.0465,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3729,8 +3729,8 @@
           "judge_confidence": null
         },
         "CCX-crossorg-220": {
-          "status": "passed",
-          "reward": 0.1111,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3740,7 +3740,7 @@
         },
         "CCX-crossorg-221": {
           "status": "passed",
-          "reward": 0.5161,
+          "reward": 0.2857,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3750,7 +3750,7 @@
         },
         "CCX-crossorg-222": {
           "status": "passed",
-          "reward": 0.4211,
+          "reward": 0.2667,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3768,7 +3768,7 @@
       "passed": 14,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.308,
+      "mean_reward": 0.309,
       "tasks": {
         "CCX-dep-trace-106": {
           "status": "passed",
@@ -3812,7 +3812,7 @@
         },
         "CCX-dep-trace-260": {
           "status": "passed",
-          "reward": 0.2353,
+          "reward": 0.1667,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3842,7 +3842,7 @@
         },
         "CCX-dep-trace-263": {
           "status": "passed",
-          "reward": 0.2353,
+          "reward": 0.3333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3852,7 +3852,7 @@
         },
         "CCX-dep-trace-264": {
           "status": "passed",
-          "reward": 0.25,
+          "reward": 0.2353,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3920,7 +3920,7 @@
       "passed": 13,
       "failed": 1,
       "errored": 0,
-      "mean_reward": 0.286,
+      "mean_reward": 0.283,
       "tasks": {
         "CCX-dep-trace-106": {
           "status": "passed",
@@ -3964,7 +3964,7 @@
         },
         "CCX-dep-trace-260": {
           "status": "passed",
-          "reward": 0.2353,
+          "reward": 0.1429,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3974,7 +3974,7 @@
         },
         "CCX-dep-trace-261": {
           "status": "passed",
-          "reward": 0.2222,
+          "reward": 0.2,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3984,7 +3984,7 @@
         },
         "CCX-dep-trace-262": {
           "status": "passed",
-          "reward": 0.25,
+          "reward": 0.2857,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -3994,7 +3994,7 @@
         },
         "CCX-dep-trace-263": {
           "status": "passed",
-          "reward": 0.3636,
+          "reward": 0.3333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -4004,7 +4004,7 @@
         },
         "CCX-dep-trace-264": {
           "status": "passed",
-          "reward": 0.2105,
+          "reward": 0.2857,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -19544,7 +19544,7 @@
         ]
       },
       "CCX-crossorg-208": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19554,11 +19554,18 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:31.455328Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-209": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19568,11 +19575,18 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:35.663737Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-211": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19582,13 +19596,20 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:39.251563Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-213": {
-        "n_runs": 1,
-        "mean_reward": 0.0952,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.1121,
+        "std_reward": 0.0239,
         "runs": [
           {
             "started_at": "2026-03-02T01:50:48.836361Z",
@@ -19596,11 +19617,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:43.054119Z",
+            "reward": 0.129,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-214": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19610,13 +19638,20 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:47.420726Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-216": {
-        "n_runs": 1,
-        "mean_reward": 0.0,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.04,
+        "std_reward": 0.0566,
         "runs": [
           {
             "started_at": "2026-03-02T01:50:56.216061Z",
@@ -19624,13 +19659,20 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:51.125569Z",
+            "reward": 0.08,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-217": {
-        "n_runs": 1,
-        "mean_reward": 0.1,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.1027,
+        "std_reward": 0.0037,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:00.361528Z",
@@ -19638,13 +19680,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:55.315754Z",
+            "reward": 0.1053,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-218": {
-        "n_runs": 1,
-        "mean_reward": 0.2414,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2873,
+        "std_reward": 0.065,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:04.765846Z",
@@ -19652,13 +19701,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:59.117447Z",
+            "reward": 0.3333,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-219": {
-        "n_runs": 1,
-        "mean_reward": 0.0769,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.0384,
+        "std_reward": 0.0544,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:08.485198Z",
@@ -19666,13 +19722,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:03.329398Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-220": {
-        "n_runs": 1,
-        "mean_reward": 0.087,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.0435,
+        "std_reward": 0.0615,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:13.824929Z",
@@ -19680,13 +19743,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:07.258767Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-221": {
-        "n_runs": 1,
-        "mean_reward": 0.4211,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.4056,
+        "std_reward": 0.0218,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:16.355341Z",
@@ -19694,13 +19764,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:11.393871Z",
+            "reward": 0.3902,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-222": {
-        "n_runs": 1,
-        "mean_reward": 0.2609,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2291,
+        "std_reward": 0.045,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:21.039362Z",
@@ -19708,6 +19785,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:15.401821Z",
+            "reward": 0.1972,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       }
@@ -19814,7 +19898,7 @@
         ]
       },
       "CCX-crossorg-208": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19824,11 +19908,18 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:33.535516Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-209": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19838,11 +19929,18 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:37.339540Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-211": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19852,13 +19950,20 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:41.042511Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-213": {
-        "n_runs": 1,
-        "mean_reward": 0.2857,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2298,
+        "std_reward": 0.0791,
         "runs": [
           {
             "started_at": "2026-03-02T01:50:50.204709Z",
@@ -19866,11 +19971,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:45.366559Z",
+            "reward": 0.1739,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-214": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.0,
         "std_reward": 0.0,
         "runs": [
@@ -19880,13 +19992,20 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:49.355027Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-216": {
-        "n_runs": 1,
-        "mean_reward": 0.1463,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.1077,
+        "std_reward": 0.0547,
         "runs": [
           {
             "started_at": "2026-03-02T01:50:58.554759Z",
@@ -19894,13 +20013,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:53.138777Z",
+            "reward": 0.069,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-217": {
-        "n_runs": 1,
-        "mean_reward": 0.1,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.1027,
+        "std_reward": 0.0037,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:02.447875Z",
@@ -19908,13 +20034,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:16:57.326333Z",
+            "reward": 0.1053,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-218": {
-        "n_runs": 1,
-        "mean_reward": 0.5455,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.3977,
+        "std_reward": 0.209,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:06.474696Z",
@@ -19922,13 +20055,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:01.198736Z",
+            "reward": 0.25,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-219": {
-        "n_runs": 1,
-        "mean_reward": 0.0465,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.0232,
+        "std_reward": 0.0329,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:10.521223Z",
@@ -19936,13 +20076,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:05.568763Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-220": {
-        "n_runs": 1,
-        "mean_reward": 0.1111,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.0556,
+        "std_reward": 0.0786,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:14.607620Z",
@@ -19950,13 +20097,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:09.394528Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-221": {
-        "n_runs": 1,
-        "mean_reward": 0.5161,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.4009,
+        "std_reward": 0.1629,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:18.932546Z",
@@ -19964,13 +20118,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:13.366500Z",
+            "reward": 0.2857,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       },
       "CCX-crossorg-222": {
-        "n_runs": 1,
-        "mean_reward": 0.4211,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.3439,
+        "std_reward": 0.1092,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:23.055519Z",
@@ -19978,6 +20139,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossorg_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:17.389060Z",
+            "reward": 0.2667,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossorg_haiku_20260302_034936"
           }
         ]
       }
@@ -20075,9 +20243,9 @@
         ]
       },
       "CCX-dep-trace-260": {
-        "n_runs": 1,
-        "mean_reward": 0.2353,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.201,
+        "std_reward": 0.0485,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:29.027455Z",
@@ -20085,11 +20253,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:19.448507Z",
+            "reward": 0.1667,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-261": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.2222,
         "std_reward": 0.0,
         "runs": [
@@ -20099,11 +20274,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:23.089486Z",
+            "reward": 0.2222,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-262": {
-        "n_runs": 1,
+        "n_runs": 2,
         "mean_reward": 0.3077,
         "std_reward": 0.0,
         "runs": [
@@ -20113,13 +20295,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:27.163571Z",
+            "reward": 0.3077,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-263": {
-        "n_runs": 1,
-        "mean_reward": 0.2353,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2843,
+        "std_reward": 0.0693,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:40.877495Z",
@@ -20127,13 +20316,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:31.215769Z",
+            "reward": 0.3333,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-264": {
-        "n_runs": 1,
-        "mean_reward": 0.25,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2427,
+        "std_reward": 0.0104,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:44.792961Z",
@@ -20141,6 +20337,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:35.034020Z",
+            "reward": 0.2353,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
@@ -20357,9 +20560,9 @@
         ]
       },
       "CCX-dep-trace-260": {
-        "n_runs": 1,
-        "mean_reward": 0.2353,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.1891,
+        "std_reward": 0.0653,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:31.146904Z",
@@ -20367,13 +20570,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:21.334541Z",
+            "reward": 0.1429,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-261": {
-        "n_runs": 1,
-        "mean_reward": 0.2222,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2111,
+        "std_reward": 0.0157,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:35.670609Z",
@@ -20381,13 +20591,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:25.162903Z",
+            "reward": 0.2,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-262": {
-        "n_runs": 1,
-        "mean_reward": 0.25,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2679,
+        "std_reward": 0.0252,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:38.849170Z",
@@ -20395,13 +20612,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:29.078532Z",
+            "reward": 0.2857,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-263": {
-        "n_runs": 1,
-        "mean_reward": 0.3636,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.3484,
+        "std_reward": 0.0214,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:42.997220Z",
@@ -20409,13 +20633,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:33.373074Z",
+            "reward": 0.3333,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },
       "CCX-dep-trace-264": {
-        "n_runs": 1,
-        "mean_reward": 0.2105,
-        "std_reward": 0.0,
+        "n_runs": 2,
+        "mean_reward": 0.2481,
+        "std_reward": 0.0532,
         "runs": [
           {
             "started_at": "2026-03-02T01:51:47.358711Z",
@@ -20423,6 +20654,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "ccb_mcp_crossrepo_haiku_20260302_014939"
+          },
+          {
+            "started_at": "2026-03-02T04:17:37.031466Z",
+            "reward": 0.2857,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "ccb_mcp_crossrepo_haiku_20260302_034936"
           }
         ]
       },

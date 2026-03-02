@@ -2,7 +2,7 @@
 
 This bundle is generated from `runs/official/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).
 
-Generated: `2026-03-02T04:18:08.444959+00:00`
+Generated: `2026-03-02T17:45:37.306771+00:00`
 
 ## Local Browse
 
@@ -33,14 +33,14 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `baseline-local-direct` | 21 | 54 | 0.318 | 0.810 | FLAG: below minimum |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `mcp-remote-artifact` | 1 | 54 | 0.742 | 1.000 | FLAG: below minimum |
 | [ccb_mcp_compliance](suites/ccb_mcp_compliance.md) | `mcp-remote-direct` | 54 | 54 | 0.394 | 0.889 | ok |
-| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `baseline-local-artifact` | 4 | 21 | 0.406 | 0.750 | FLAG: below minimum |
-| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `baseline-local-direct` | 17 | 21 | 0.170 | 0.647 | FLAG: below minimum |
-| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `mcp-remote-artifact` | 4 | 21 | 0.586 | 0.750 | FLAG: below minimum |
-| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `mcp-remote-direct` | 21 | 21 | 0.344 | 0.762 | ok |
-| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `baseline-local-artifact` | 5 | 81 | 0.565 | 0.600 | FLAG: below minimum |
-| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `baseline-local-direct` | 42 | 81 | 0.296 | 0.762 | FLAG: below minimum |
-| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `mcp-remote-artifact` | 5 | 81 | 0.654 | 1.000 | FLAG: below minimum |
-| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `mcp-remote-direct` | 81 | 81 | 0.369 | 0.815 | ok |
+| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `baseline-local-artifact` | 4 | 33 | 0.406 | 0.750 | FLAG: below minimum |
+| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `baseline-local-direct` | 17 | 33 | 0.167 | 0.588 | FLAG: below minimum |
+| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `mcp-remote-artifact` | 4 | 33 | 0.586 | 0.750 | FLAG: below minimum |
+| [ccb_mcp_crossorg](suites/ccb_mcp_crossorg.md) | `mcp-remote-direct` | 33 | 33 | 0.253 | 0.667 | ok |
+| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `baseline-local-artifact` | 5 | 86 | 0.565 | 0.600 | FLAG: below minimum |
+| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `baseline-local-direct` | 42 | 86 | 0.296 | 0.762 | FLAG: below minimum |
+| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `mcp-remote-artifact` | 5 | 86 | 0.654 | 1.000 | FLAG: below minimum |
+| [ccb_mcp_crossrepo](suites/ccb_mcp_crossrepo.md) | `mcp-remote-direct` | 86 | 86 | 0.362 | 0.826 | ok |
 | [ccb_mcp_domain](suites/ccb_mcp_domain.md) | `baseline-local-artifact` | 3 | 49 | 0.000 | 0.000 | FLAG: below minimum |
 | [ccb_mcp_domain](suites/ccb_mcp_domain.md) | `baseline-local-direct` | 20 | 49 | 0.351 | 0.900 | FLAG: below minimum |
 | [ccb_mcp_domain](suites/ccb_mcp_domain.md) | `mcp-remote-artifact` | 3 | 49 | 0.529 | 1.000 | FLAG: below minimum |
@@ -200,6 +200,8 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_mcp_crossorg_haiku_20260228_133005](runs/ccb_mcp_crossorg_haiku_20260228_133005.md) | `ccb_mcp_crossorg` | `baseline-local-direct` | 2 | 0.334 | 1.000 |
 | [ccb_mcp_crossorg_haiku_20260302_014939](runs/ccb_mcp_crossorg_haiku_20260302_014939.md) | `ccb_mcp_crossorg` | `baseline-local-direct` | 12 | 0.107 | 0.583 |
 | [ccb_mcp_crossorg_haiku_20260302_014939](runs/ccb_mcp_crossorg_haiku_20260302_014939.md) | `ccb_mcp_crossorg` | `mcp-remote-direct` | 12 | 0.181 | 0.667 |
+| [ccb_mcp_crossorg_haiku_20260302_034936](runs/ccb_mcp_crossorg_haiku_20260302_034936.md) | `ccb_mcp_crossorg` | `baseline-local-direct` | 12 | 0.103 | 0.500 |
+| [ccb_mcp_crossorg_haiku_20260302_034936](runs/ccb_mcp_crossorg_haiku_20260302_034936.md) | `ccb_mcp_crossorg` | `mcp-remote-direct` | 12 | 0.096 | 0.500 |
 | [ccb_mcp_crossrepo_haiku_20260226_035617](runs/ccb_mcp_crossrepo_haiku_20260226_035617.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 1 | 0.767 | 1.000 |
 | [ccb_mcp_crossrepo_haiku_20260226_035622_variance](runs/ccb_mcp_crossrepo_haiku_20260226_035622_variance.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 1 | 0.644 | 1.000 |
 | [ccb_mcp_crossrepo_haiku_20260226_035628_variance](runs/ccb_mcp_crossrepo_haiku_20260226_035628_variance.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 1 | 0.767 | 1.000 |
@@ -214,6 +216,8 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [ccb_mcp_crossrepo_haiku_20260301_201320](runs/ccb_mcp_crossrepo_haiku_20260301_201320.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 6 | 0.049 | 0.333 |
 | [ccb_mcp_crossrepo_haiku_20260302_014939](runs/ccb_mcp_crossrepo_haiku_20260302_014939.md) | `ccb_mcp_crossrepo` | `baseline-local-direct` | 11 | 0.293 | 1.000 |
 | [ccb_mcp_crossrepo_haiku_20260302_014939](runs/ccb_mcp_crossrepo_haiku_20260302_014939.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 11 | 0.291 | 1.000 |
+| [ccb_mcp_crossrepo_haiku_20260302_034936](runs/ccb_mcp_crossrepo_haiku_20260302_034936.md) | `ccb_mcp_crossrepo` | `baseline-local-direct` | 5 | 0.253 | 1.000 |
+| [ccb_mcp_crossrepo_haiku_20260302_034936](runs/ccb_mcp_crossrepo_haiku_20260302_034936.md) | `ccb_mcp_crossrepo` | `mcp-remote-direct` | 5 | 0.250 | 1.000 |
 | [ccb_mcp_crossrepo_tracing_haiku_022126](runs/ccb_mcp_crossrepo_tracing_haiku_022126.md) | `ccb_mcp_crossrepo` | `baseline-local-artifact` | 3 | 0.941 | 1.000 |
 | [ccb_mcp_crossrepo_tracing_haiku_022126](runs/ccb_mcp_crossrepo_tracing_haiku_022126.md) | `ccb_mcp_crossrepo` | `mcp-remote-artifact` | 3 | 0.899 | 1.000 |
 | [ccb_mcp_crossrepo_tracing_haiku_20260224_181919](runs/ccb_mcp_crossrepo_tracing_haiku_20260224_181919.md) | `ccb_mcp_crossrepo` | `mcp-remote-artifact` | 2 | 0.287 | 1.000 |
