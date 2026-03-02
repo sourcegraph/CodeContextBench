@@ -70,9 +70,9 @@ log = logging.getLogger("context_retrieval_agent")
 
 DEFAULT_MODEL = "claude-opus-4-6"  # Strongest model for oracle generation
 MAX_TOKENS = 16384
-MAX_TOOL_CALLS = 40
+MAX_TOOL_CALLS = 200  # No artificial cap — let the agent explore fully
 TOOL_TIMEOUT_SEC = 30
-TASK_TIMEOUT_SEC = 600  # 10 minutes per task (Deep Search calls take 30-60s each)
+TASK_TIMEOUT_SEC = 900  # 15 minutes per task (thorough exploration)
 DEFAULT_CACHE_DIR = Path.home() / ".cache" / "ccb_repos"
 
 BACKENDS = ("local", "deepsearch", "hybrid")
@@ -420,56 +420,13 @@ TOOLS = [
     },
 ]
 
-# Allowlist for shell commands (security)
-ALLOWED_COMMANDS = {
-    "grep", "rg", "find", "wc", "tree", "head", "tail",
-    "sort", "uniq", "file", "dirname", "basename", "ls", "stat",
-    "cat", "awk", "sed", "xargs", "echo", "true", "test",
-}
-
 # ---------------------------------------------------------------------------
 # Tool execution
 # ---------------------------------------------------------------------------
 
 
-def _validate_shell_command(command: str) -> Optional[str]:
-    """Check that a shell command uses only allowed executables.
-
-    Returns an error message if blocked, None if OK.
-    """
-    # Extract the first word (the executable)
-    try:
-        parts = shlex.split(command)
-    except ValueError:
-        parts = command.split()
-    if not parts:
-        return "Empty command"
-
-    # Handle pipes: check each segment
-    segments = command.split("|")
-    for seg in segments:
-        seg = seg.strip()
-        if not seg:
-            continue
-        try:
-            seg_parts = shlex.split(seg)
-        except ValueError:
-            seg_parts = seg.split()
-        if not seg_parts:
-            continue
-        exe = seg_parts[0]
-        # Strip path prefix
-        exe = os.path.basename(exe)
-        if exe not in ALLOWED_COMMANDS:
-            return f"Command '{exe}' is not in the allowlist: {sorted(ALLOWED_COMMANDS)}"
-    return None
-
-
 def execute_run_shell(command: str, cwd: str = "") -> str:
-    """Execute a read-only shell command."""
-    err = _validate_shell_command(command)
-    if err:
-        return f"BLOCKED: {err}"
+    """Execute a shell command. No allowlist — agent runs unrestricted."""
     try:
         result = subprocess.run(
             command, shell=True,
