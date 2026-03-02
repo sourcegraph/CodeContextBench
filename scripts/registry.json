@@ -547,6 +547,14 @@
       "summary": "Submission/reporting script for generate comprehensive report."
     },
     {
+      "name": "generate_coverage_gap_configs.py",
+      "path": "scripts/generate_coverage_gap_configs.py",
+      "category": "generation",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Generation script for generate coverage gap configs."
+    },
+    {
       "name": "generate_dependeval_tasks.py",
       "path": "scripts/generate_dependeval_tasks.py",
       "category": "task_creation_selection",
@@ -1415,7 +1423,7 @@
     "analysis_comparison": 22,
     "core_operations": 13,
     "data_management": 10,
-    "generation": 6,
+    "generation": 7,
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,

@@ -26,7 +26,8 @@
 | [csb_sdlc_fix_haiku_20260302_022550](../runs/csb_sdlc_fix_haiku_20260302_022550.md) | `baseline-local-direct` | 1 | 0.667 | 1.000 |
 | [csb_sdlc_fix_haiku_20260302_022550](../runs/csb_sdlc_fix_haiku_20260302_022550.md) | `mcp-remote-direct` | 1 | 1.000 | 1.000 |
 | [csb_sdlc_fix_haiku_20260302_022552](../runs/csb_sdlc_fix_haiku_20260302_022552.md) | `baseline-local-direct` | 1 | 0.000 | 0.000 |
-| [fix_haiku_20260301_190026](../runs/fix_haiku_20260301_190026.md) | `baseline-local-direct` | 2 | 0.000 | 0.000 |
+| [csb_sdlc_fix_haiku_20260302_230235](../runs/csb_sdlc_fix_haiku_20260302_230235.md) | `baseline-local-direct` | 1 | 0.000 | 0.000 |
+| [fix_haiku_20260301_190026](../runs/fix_haiku_20260301_190026.md) | `baseline-local-direct` | 1 | 0.000 | 0.000 |
 | [fix_haiku_20260301_190026](../runs/fix_haiku_20260301_190026.md) | `mcp-remote-direct` | 2 | 0.000 | 0.000 |
 
 ## Tasks
@@ -124,7 +125,7 @@
 | [mcp_openlibrary-fntocli-adapter-fix-001_IMvWES](../tasks/csb_sdlc_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-fntocli-adapter-fix-001_IMvWES.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001) | `mcp-remote-direct` | `passed` | 1.000 | 5 | 0.193 |
 | [mcp_openlibrary-fntocli-adapter-fix-001_3citzd](../tasks/csb_sdlc_fix_haiku_20260302_015531--mcp-remote-direct--mcp_openlibrary-fntocli-adapter-fix-001_3citzd.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001) | `mcp-remote-direct` | `passed` | 1.000 | 5 | 0.250 |
 | [mcp_openlibrary-fntocli-adapter-fix-001_4qeugz](../tasks/csb_sdlc_fix_haiku_20260302_022550--mcp-remote-direct--mcp_openlibrary-fntocli-adapter-fix-001_4qeugz.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001) | `mcp-remote-direct` | `passed` | 1.000 | 5 | 0.194 |
-| [openlibrary-search-query-fix-001](../tasks/fix_haiku_20260301_190026--baseline-local-direct--openlibrary-search-query-fix-001.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 3 | 0.000 |
+| [openlibrary-search-query-fix-001](../tasks/csb_sdlc_fix_haiku_20260302_230235--baseline-local-direct--openlibrary-search-query-fix-001.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | `failed` | 0.000 | 4 | 0.000 |
 | [mcp_openlibrary-search-query-fix-001_HmH4et](../tasks/csb_sdlc_fix_haiku_20260228_205741--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_HmH4et.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.097 |
 | [mcp_openlibrary-search-query-fix-001_wxswww](../tasks/csb_sdlc_fix_haiku_20260228_185835--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_wxswww.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.203 |
 | [mcp_openlibrary-search-query-fix-001_rmywgy](../tasks/csb_sdlc_fix_haiku_20260301_173342--mcp-remote-direct--mcp_openlibrary-search-query-fix-001_rmywgy.html) | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | `failed` | 0.000 | 4 | 0.132 |
@@ -200,7 +201,7 @@ Tasks with multiple valid runs (52 task/config pairs).
 | nodebb-plugin-validate-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/nodebb-plugin-validate-fix-001) | `mcp-remote-direct` | 5 | 0.000 | 0.000 | 0.000, 0.000, 0.000, 0.000, 0.000 |
 | openlibrary-fntocli-adapter-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001) | `baseline-local-direct` | 5 | 0.667 | 0.000 | 0.667, 0.667, 0.667, 0.667, 0.667 |
 | openlibrary-fntocli-adapter-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-fntocli-adapter-fix-001) | `mcp-remote-direct` | 5 | 1.000 | 0.000 | 1.000, 1.000, 1.000, 1.000, 1.000 |
-| openlibrary-search-query-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
+| openlibrary-search-query-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `baseline-local-direct` | 4 | 0.000 | 0.000 | 0.000, 0.000, 0.000, 0.000 |
 | openlibrary-search-query-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-search-query-fix-001) | `mcp-remote-direct` | 4 | 0.000 | 0.000 | 0.000, 0.000, 0.000, 0.000 |
 | openlibrary-solr-boolean-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-solr-boolean-fix-001) | `baseline-local-direct` | 3 | 0.000 | 0.000 | 0.000, 0.000, 0.000 |
 | openlibrary-solr-boolean-fix-001 | [source](../../../benchmarks/csb_sdlc_fix/openlibrary-solr-boolean-fix-001) | `mcp-remote-direct` | 3 | 0.667 | 0.000 | 0.667, 0.667, 0.667 |

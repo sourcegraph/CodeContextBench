@@ -41,7 +41,7 @@ while [[ $# -gt 0 ]]; do
         --force)         FORCE=true; shift ;;
         --jobs)          PREBUILD_JOBS="$2"; shift 2 ;;
         --tasks)         TASKS_FILTER="$2"; shift 2 ;;
-        ccb_*)           SUITES+=("$1"); shift ;;
+        ccb_*|csb_sdlc_*|csb_org_*)  SUITES+=("$1"); shift ;;
         *)               echo "Unknown option: $1"; exit 1 ;;
     esac
 done
