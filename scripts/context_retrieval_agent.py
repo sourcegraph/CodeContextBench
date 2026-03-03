@@ -1578,8 +1578,9 @@ def run_agent_cli(
     if mcp_config_path:
         cmd.extend(["--mcp-config", mcp_config_path])
 
-    # -- Environment: unset CLAUDECODE to avoid nesting detection --
-    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
+    # -- Environment: strip nesting-detection vars so `claude -p` runs --
+    _nest_vars = {"CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT"}
+    env = {k: v for k, v in os.environ.items() if k not in _nest_vars}
     # Ensure SRC_ACCESS_TOKEN is set for ds_wrapper.sh (Deep Search)
     if "SRC_ACCESS_TOKEN" not in env:
         sg_token = env.get("SOURCEGRAPH_ACCESS_TOKEN", "")
@@ -1819,7 +1820,8 @@ def _prune_via_cli(
         "--model", model,
         "--dangerously-skip-permissions",
     ]
-    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
+    _nest_vars = {"CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT"}
+    env = {k: v for k, v in os.environ.items() if k not in _nest_vars}
 
     try:
         proc = subprocess.run(
@@ -2460,8 +2462,13 @@ def verify_dual_retrieval(
     verification = []
 
     for entry in files:
-        repo = entry.get("repo", "")
-        path = entry.get("path", "")
+        # Normalize: files may be strings (V7+) or dicts (legacy)
+        if isinstance(entry, str):
+            repo = ""
+            path = entry
+        else:
+            repo = entry.get("repo", "")
+            path = entry.get("path", "")
 
         # --- Local verification: file exists on disk in any repo_paths ---
         local_ok = False
