@@ -155,6 +155,13 @@ I built an information retrieval evaluation pipeline alongside the task scoring 
 
 The refreshed retrieval pipeline run confirms moderate retrieval quality overall (file recall 0.460, MRR 0.364), but a large fraction of traces still lack mapped ground truth files (488/799), which limits configuration-level retrieval comparisons.
 
+On the computable subset, aggregated baseline vs MCP retrieval metrics are:
+
+| Config Type | n | File Recall | MRR | MAP | Context Efficiency |
+|-------------|---|-------------|-----|-----|--------------------|
+| baseline | 132 | 0.330 | 0.346 | 0.231 | 0.184 |
+| mcp | 179 | 0.556 | 0.378 | 0.267 | 0.204 |
+
 But better retrieval doesn't always mean better outcomes. Still investigating this but likely finding the right files is necessary but not sufficient. The agent still has to correctly apply what it finds, and in some tasks the local code modification step is where removing local code availability from the MCP run environment hurts more than others.
 
 ## Patterns in the Retrieval-Outcome Pairing Data
@@ -174,6 +181,8 @@ Let's take a break from whatever voodoo variables control reward outcomes and ta
 | Overall | 369 | **+$0.040/task** |
 
 This updated snapshot indicates MCP token/tool usage overhead is currently dominating cost in the analysis set.
+
+Suite-level cost is mixed: MCP is cheaper on several Org suites (for example crossorg −$0.062/task and incident −$0.048/task) but more expensive on some SDLC suites (refactor +$0.398/task, feature +$0.211/task). The full per-suite cost table is in the technical report.
 
 Speed tells an even cleaner story:
 

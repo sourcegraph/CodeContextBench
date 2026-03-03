@@ -940,6 +940,15 @@ Pipeline coverage summary:
 
 This indicates retrieval quality remains moderate on computable tasks, but ground-truth availability is still the main bottleneck for broader retrieval coverage.
 
+**IR aggregates by configuration type (baseline vs MCP):**
+
+| Config Type | n | File Recall | MRR | MAP | Context Efficiency |
+|-------------|---|-------------|-----|-----|--------------------|
+| baseline | 132 | 0.3295 | 0.3462 | 0.2307 | 0.1843 |
+| mcp | 179 | 0.5558 | 0.3778 | 0.2667 | 0.2043 |
+
+MCP runs show higher recall and slightly higher ranking/efficiency metrics on computable retrieval tasks.
+
 ### 11.6 Correlation Analysis
 
 Correlation was recomputed from the refreshed retrieval analysis output (`docs/analysis/ir_analysis_analysis_set_20260303.json`):
@@ -1052,6 +1061,31 @@ Token-based cost in this refreshed snapshot is derived from the `analysis_set_me
 | Cost delta (% of means) | **+13.49%** |
 
 Cost is slightly higher in MCP on this refreshed slice.
+
+**Cost per benchmark suite (per-task multi-run means):**
+
+| Suite | n | BL $/task | MCP $/task | Δ $/task | Var(Δ $/task) |
+|------|---|-----------|------------|----------|---------------|
+| csb_org_compliance | 18 | 0.2679 | 0.2521 | -0.0158 | 0.003486 |
+| csb_org_crossorg | 15 | 0.2756 | 0.2136 | -0.0620 | 0.017902 |
+| csb_org_crossrepo | 14 | 0.2575 | 0.2523 | -0.0052 | 0.005375 |
+| csb_org_crossrepo_tracing | 22 | 0.2478 | 0.2187 | -0.0292 | 0.003282 |
+| csb_org_domain | 20 | 0.2108 | 0.2258 | +0.0150 | 0.003268 |
+| csb_org_incident | 20 | 0.2465 | 0.1989 | -0.0476 | 0.007914 |
+| csb_org_migration | 26 | 0.2534 | 0.2501 | -0.0033 | 0.009546 |
+| csb_org_onboarding | 28 | 0.1029 | 0.1049 | +0.0020 | 0.000860 |
+| csb_org_org | 15 | 0.2362 | 0.2193 | -0.0169 | 0.001710 |
+| csb_org_platform | 18 | 0.1940 | 0.2149 | +0.0209 | 0.001999 |
+| csb_org_security | 24 | 0.2167 | 0.2146 | -0.0020 | 0.003105 |
+| csb_sdlc_debug | 18 | 0.3669 | 0.4569 | +0.0901 | 0.023810 |
+| csb_sdlc_design | 14 | 0.4100 | 0.3590 | -0.0510 | 0.097988 |
+| csb_sdlc_document | 13 | 0.2669 | 0.2974 | +0.0305 | 0.014390 |
+| csb_sdlc_feature | 23 | 0.4965 | 0.7079 | +0.2114 | 0.183988 |
+| csb_sdlc_fix | 26 | 0.5997 | 0.7057 | +0.1059 | 0.065870 |
+| csb_sdlc_refactor | 15 | 0.3194 | 0.7173 | +0.3980 | 0.147469 |
+| csb_sdlc_secure | 12 | 0.4825 | 0.5657 | +0.0832 | 0.030859 |
+| csb_sdlc_test | 18 | 0.2641 | 0.2976 | +0.0335 | 0.015625 |
+| csb_sdlc_understand | 10 | 0.3519 | 0.4475 | +0.0956 | 0.022037 |
 
 ### 11.12 Timing Analysis
 
