@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "qutebrowser-darkmode-threshold-regression-prove-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T21:34:52Z",
+  "files_count": 4,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 9,
+  "cost_usd": 3.1905410000000005,
+  "elapsed_sec": 625.6,
+  "exploration_notes": "The bug is in qutebrowser/browser/webengine/darkmode.py. Qt 6.4's Chromium renamed 'TextBrightnessThreshold' to 'ForegroundBrightnessThreshold'. The fix (commit 50efac08f) added: (1) a Variant.qt_64 enum member, (2) a copy_replace_setting method on _Definition, (3) a Qt 6.4 entry in _DEFINITIONS that maps threshold.text to ForegroundBrightnessThreshold, and (4) version detection in _variant() for Qt >= 6.4. Before the fix, Qt 6.4 was treated as Qt 6.3 and used the old TextBrightnessThreshold key"
+}

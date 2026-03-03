@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "qutebrowser-adblock-cache-regression-prove-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T18:03:58Z",
+  "files_count": 2,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 4,
+  "cost_usd": 2.35366845,
+  "elapsed_sec": 449.7,
+  "exploration_notes": "The bug is in `braveadblock.py:read_cache()` (lines 249-254). When `adblock.Engine.deserialize_from_file()` is called on a cache file that exists but cannot be read (e.g., permission denied after system crash/disk corruption), it raises `OSError`. The current code only catches `DeserializationError`, so `OSError` propagates as an unhandled exception, crashing the application. The fix (commit a6bb26d13, not yet on HEAD) adds `except OSError as e:` after the `DeserializationError` handler. The reg"
+}

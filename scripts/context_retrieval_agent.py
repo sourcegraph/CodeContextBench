@@ -2513,21 +2513,32 @@ def _extract_json_from_text(text: str) -> Optional[Dict[str, Any]]:
     """Try to extract oracle JSON from a text string.
 
     Tries in order:
-      1. Fenced ```json block
+      1. Fenced ```json block (also tries ```\n variants)
       2. Balanced-brace search for outermost object containing "files"
-      3. Raw parse of entire text
+      3. Balanced-brace with trailing-comma cleanup (models often add these)
+      4. Raw parse of entire text
     Returns None if no valid JSON found.
     """
     if not text:
         return None
 
-    # 1. Try to extract JSON from fenced block
-    m = re.search(r"```json\s*\n(.*?)\n```", text, re.DOTALL)
-    if m:
-        try:
-            return json.loads(m.group(1))
-        except json.JSONDecodeError:
-            pass
+    # 1. Try to extract JSON from fenced block (```json or ``` with JSON inside)
+    for pattern in [
+        r"```json\s*\n(.*?)\n```",
+        r"```\s*\n(\{.*?\})\n```",
+    ]:
+        m = re.search(pattern, text, re.DOTALL)
+        if m:
+            candidate = m.group(1).strip()
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                # Try with trailing comma cleanup
+                cleaned = _clean_json_trailing_commas(candidate)
+                try:
+                    return json.loads(cleaned)
+                except json.JSONDecodeError:
+                    pass
 
     # 2. Balanced-brace search — finds nested arrays/objects correctly
     depth = 0
@@ -2547,16 +2558,31 @@ def _extract_json_from_text(text: str) -> Optional[Dict[str, Any]]:
                         if isinstance(parsed, dict):
                             return parsed
                     except json.JSONDecodeError:
-                        pass
+                        # 3. Try with trailing comma cleanup
+                        cleaned = _clean_json_trailing_commas(candidate)
+                        try:
+                            parsed = json.loads(cleaned)
+                            if isinstance(parsed, dict):
+                                return parsed
+                        except json.JSONDecodeError:
+                            pass
                 start = None
 
-    # 3. Try the whole text
+    # 4. Try the whole text
     try:
         return json.loads(text)
     except (json.JSONDecodeError, ValueError):
         pass
 
     return None
+
+
+def _clean_json_trailing_commas(text: str) -> str:
+    """Remove trailing commas before ] and } (common LLM JSON error)."""
+    # Remove trailing commas before closing brackets/braces
+    text = re.sub(r',\s*\]', ']', text)
+    text = re.sub(r',\s*\}', '}', text)
+    return text
 
 
 def _extract_json_from_messages(messages: List[Dict]) -> Dict[str, Any]:

@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "test-coverage-gap-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T20:10:12Z",
+  "files_count": 13,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 9,
+  "cost_usd": 7.345817000000003,
+  "elapsed_sec": 555.6,
+  "exploration_notes": "Identified 8 test coverage gaps by cross-referencing ~168 unit tests against the HCM implementation. Methodology: (1) read all source files to catalog code paths, TODOs, and defensive checks, (2) extracted all test names and categorized by feature area, (3) searched test files for specific function names, runtime features, and error paths to confirm absence of coverage. Key findings: transformResponseHeaders failure is completely unhandled (TODO at line 2019), doEndStream CONNECT+upstream-failur"
+}

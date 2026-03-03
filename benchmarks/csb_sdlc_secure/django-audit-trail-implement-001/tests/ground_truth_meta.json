@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "django-audit-trail-implement-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T19:19:58Z",
+  "files_count": 5,
+  "edit_files_count": 2,
+  "chunks_count": 0,
+  "symbols_count": 5,
+  "cost_usd": 1.6028367500000003,
+  "elapsed_sec": 411.4,
+  "exploration_notes": "Fixed context isolation bypass in IncludeNode.render(). The isolated context created by context.new(values) preserves the parent template binding, which prevents Template.render() from calling bind_template() for the child template. Setting isolated.template = None forces proper template binding, ensuring complete isolation from parent scope variables including forloop."
+}

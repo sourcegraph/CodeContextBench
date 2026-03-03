@@ -37,6 +37,7 @@ import sys
 import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import TimeoutError as FuturesTimeoutError
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -320,7 +321,7 @@ def setup_curator_sandbox(
 
     exec_cmd(sandbox, "chmod +x /tmp/ds_wrapper.sh 2>/dev/null || true")
 
-    # Clone repos
+    # Clone repos (with retry for transient GitHub rate limits)
     for repo in repos:
         url = repo["url"]
         commit = repo.get("commit", "HEAD")
@@ -328,9 +329,21 @@ def setup_curator_sandbox(
         target_dir = f"/workspace/{name}"
         log.info("[%s] Cloning %s -> %s (commit: %s)",
                  sandbox.id[:8], url, target_dir, commit[:8] if commit != "HEAD" else "HEAD")
-        exec_cmd(sandbox,
-            f"git clone --no-checkout {url} {target_dir} 2>&1 | tail -3",
-            f"Cloning {name}", timeout=300)
+        for attempt in range(3):
+            exec_cmd(sandbox,
+                f"git clone --no-checkout {url} {target_dir} 2>&1 | tail -3",
+                f"Cloning {name} (attempt {attempt+1})", timeout=300)
+            # Verify clone succeeded
+            check = exec_cmd(sandbox, f"test -d {target_dir}/.git && echo OK || echo FAIL")
+            if "OK" in check:
+                break
+            log.warning("[%s] Clone attempt %d failed for %s, retrying...",
+                        sandbox.id[:8], attempt + 1, name)
+            exec_cmd(sandbox, f"rm -rf {target_dir} 2>/dev/null || true")
+            if attempt < 2:
+                import time as _time; _time.sleep(5 * (attempt + 1))
+        else:
+            raise RuntimeError(f"Failed to clone {url} after 3 attempts")
         if commit != "HEAD":
             exec_cmd(sandbox,
                 f"cd {target_dir} && git checkout {commit} 2>&1 | tail -3",
@@ -348,6 +361,56 @@ def setup_curator_sandbox(
         "Setting ownership")
 
     return sandbox
+
+
+def _build_json_rescue_runner() -> str:
+    """Build a lightweight Python script that extracts JSON from prose via haiku.
+
+    When the main curator agent outputs prose analysis instead of the required
+    JSON format, this rescue runner sends the prose to haiku asking it to
+    extract file paths into the expected JSON structure. Costs ~$0.01-0.02
+    and takes ~5-10 seconds.
+    """
+    return '''#!/usr/bin/env python3
+"""Extract JSON file list from prose curator output using haiku."""
+import json, os, subprocess, sys
+
+prose = open("/tmp/rescue_input.txt").read()
+config = json.load(open("/tmp/curator_config.json"))
+
+prompt = """Extract ALL source code file paths mentioned in this analysis output.
+Output ONLY a JSON object with a "files" array of repo-relative paths.
+Do NOT include test files unless the analysis explicitly says tests need modification.
+Do NOT include directories, only files.
+
+Example output:
+```json
+{"files": ["src/main.py", "pkg/handler/server.go", "internal/config.go"]}
+```
+
+Analysis output:
+""" + prose[:12000]
+
+env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
+env["PATH"] = "/usr/local/bin:/usr/bin:/bin:" + env.get("PATH", "")
+env["HOME"] = "/home/claude"
+for key in ("CLAUDE_CODE_OAUTH_TOKEN",):
+    val = config.get(key, "")
+    if val:
+        env[key] = val
+
+cmd = [
+    "claude", "-p", prompt,
+    "--output-format", "json",
+    "--model", "claude-haiku-4-5-20251001",
+    "--dangerously-skip-permissions",
+]
+
+result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
+if result.stdout:
+    print(result.stdout)
+sys.exit(result.returncode)
+'''
 
 
 def _build_python_runner() -> str:
@@ -398,6 +461,103 @@ if result.stdout:
     print(result.stdout)
 sys.exit(result.returncode)
 '''
+
+
+def _run_json_rescue(
+    sandbox,
+    prose_text: str,
+    creds: Dict[str, Any],
+) -> Optional[Dict[str, Any]]:
+    """Run a haiku rescue call to extract JSON from prose curator output.
+
+    When the main curator agent produces prose analysis instead of the required
+    JSON format, this sends the prose to haiku to extract file paths.
+    Costs ~$0.01-0.02 and takes ~5-10 seconds.
+
+    Returns parsed oracle dict or None on failure.
+    """
+    try:
+        # Write prose text to sandbox
+        prose_b64 = base64.b64encode(prose_text[:12000].encode()).decode()
+        exec_cmd(sandbox,
+            f"echo '{prose_b64}' | base64 -d > /tmp/rescue_input.txt",
+            "Writing rescue input")
+
+        # Write rescue runner script
+        rescue_code = _build_json_rescue_runner()
+        rescue_b64 = base64.b64encode(rescue_code.encode()).decode()
+        exec_cmd(sandbox,
+            f"echo '{rescue_b64}' | base64 -d > /tmp/run_rescue.py && chmod +x /tmp/run_rescue.py",
+            "Writing rescue runner")
+
+        exec_cmd(sandbox,
+            "chown claude:claude /tmp/rescue_input.txt /tmp/run_rescue.py 2>/dev/null || true")
+
+        # Execute rescue
+        rescue_output = exec_cmd(sandbox,
+            "su - claude -c 'python3 /tmp/run_rescue.py 2>/dev/null'",
+            "Haiku JSON rescue", timeout=120)
+
+        if not rescue_output:
+            return None
+
+        parsed = json.loads(rescue_output)
+        result_text = parsed.get("result", "")
+
+        from context_retrieval_agent import _extract_json_from_text
+        return _extract_json_from_text(result_text)
+
+    except Exception as e:
+        log.debug("[%s] Rescue error: %s", sandbox.id[:8], e)
+        return None
+
+
+def _regex_extract_files(text: str) -> List[str]:
+    """Last-resort extraction of file paths from prose text using regex.
+
+    Looks for patterns like:
+      - `path/to/file.ext` (backtick-quoted)
+      - path/to/file.ext (bare paths with common extensions)
+      - **path/to/file.ext** (bold in markdown)
+    """
+    files = set()
+
+    # Pattern: backtick-quoted paths with extensions
+    for m in re.finditer(r'`([a-zA-Z0-9_/.-]+\.[a-zA-Z]{1,10})`', text):
+        path = m.group(1)
+        if '/' in path and not path.startswith('http') and not path.startswith('.'):
+            files.add(path)
+
+    # Pattern: markdown bold paths
+    for m in re.finditer(r'\*\*([a-zA-Z0-9_/.-]+\.[a-zA-Z]{1,10})\*\*', text):
+        path = m.group(1)
+        if '/' in path and not path.startswith('http'):
+            files.add(path)
+
+    # Pattern: bare repo-relative paths (at least 2 segments, with extension)
+    for m in re.finditer(
+        r'(?:^|\s)((?:[a-zA-Z0-9_-]+/){1,10}[a-zA-Z0-9_.-]+\.(?:go|py|java|rs|ts|tsx|js|jsx|c|cc|cpp|h|hpp|rb|ex|exs|swift|kt|scala|sql|proto|yaml|yml|toml|json|xml|sh|bash|md|txt))\b',
+        text,
+    ):
+        path = m.group(1)
+        if not path.startswith('http'):
+            files.add(path)
+
+    # Filter out obvious non-files
+    filtered = []
+    skip_prefixes = ('http', 'www.', 'github.com', 'example.', 'test.')
+    skip_exact = {'go.sum', 'go.mod', 'package.json', 'package-lock.json',
+                  'Cargo.lock', 'yarn.lock', 'pnpm-lock.yaml'}
+    for f in sorted(files):
+        if any(f.startswith(p) for p in skip_prefixes):
+            continue
+        if f in skip_exact:
+            continue
+        if len(f) < 5 or len(f) > 200:
+            continue
+        filtered.append(f)
+
+    return filtered
 
 
 def run_curator_in_sandbox(
@@ -522,6 +682,8 @@ def run_curator_in_sandbox(
         log.debug("[%s] stderr: %s", sandbox.id[:8], stderr[:500])
     if not raw_output and stderr:
         log.warning("[%s] No stdout, stderr: %s", sandbox.id[:8], stderr[:300])
+    if raw_output:
+        log.debug("[%s] raw output (first 500): %s", sandbox.id[:8], raw_output[:500])
 
     # Parse output
     result = {"files": [], "text": ""}
@@ -537,11 +699,37 @@ def run_curator_in_sandbox(
         metadata["cost_usd"] = parsed.get("total_cost_usd", 0.0)
         metadata["num_turns"] = parsed.get("num_turns", 0)
 
+        # Detect rate limiting
+        if parsed.get("is_error") and "hit your limit" in result_text.lower():
+            log.error("[%s] RATE LIMITED: %s", sandbox.id[:8], result_text)
+            metadata["error"] = True
+            metadata["rate_limited"] = True
+            return {"oracle": result, "metadata": metadata}
+
         # Extract oracle JSON from result text
         from context_retrieval_agent import _extract_json_from_text
         oracle = _extract_json_from_text(result_text)
         if oracle:
             result = oracle
+        elif result_text and len(result_text) > 100:
+            # JSON extraction failed but we have prose output — try rescue
+            log.info("[%s] JSON extraction failed, attempting haiku rescue (%d chars of prose)",
+                     sandbox.id[:8], len(result_text))
+            rescue_result = _run_json_rescue(sandbox, result_text, creds)
+            if rescue_result and rescue_result.get("files"):
+                result = rescue_result
+                metadata["json_rescued"] = True
+                log.info("[%s] Haiku rescue recovered %d files",
+                         sandbox.id[:8], len(result["files"]))
+            else:
+                log.warning("[%s] Haiku rescue also failed", sandbox.id[:8])
+                # Last resort: regex extraction of file paths from prose
+                regex_files = _regex_extract_files(result_text)
+                if regex_files:
+                    result = {"files": regex_files, "text": "Extracted via regex from prose output"}
+                    metadata["regex_rescued"] = True
+                    log.info("[%s] Regex rescue recovered %d files",
+                             sandbox.id[:8], len(regex_files))
     except (json.JSONDecodeError, TypeError) as e:
         log.warning("[%s] Failed to parse output: %s", sandbox.id[:8], e)
         if raw_output:
@@ -829,18 +1017,22 @@ def _run_sdlc_mode(args, creds: Dict[str, Any]) -> int:
         for i, task_dir in enumerate(tasks)
     ]
 
-    future_timeout = SANDBOX_TIMEOUT_SEC + 120
+    future_timeout = SANDBOX_TIMEOUT_SEC + 300  # clone (300s) + curator (900s)
+    # Global timeout: generous to handle slow clones + curator runs in parallel
+    # Each task runs in its own sandbox, so total wall time ≈ max(individual times)
+    global_timeout = future_timeout + 600  # extra 10 min buffer
 
-    with ThreadPoolExecutor(max_workers=args.parallel) as executor:
-        futures = {
-            executor.submit(process_sdlc_task, *ta): ta[0]  # task_dir
-            for ta in task_args
-        }
-        for future in as_completed(futures, timeout=future_timeout + 60):
+    executor = ThreadPoolExecutor(max_workers=args.parallel)
+    futures = {
+        executor.submit(process_sdlc_task, *ta): ta[0]  # task_dir
+        for ta in task_args
+    }
+    try:
+        for future in as_completed(futures, timeout=global_timeout):
             task_dir = futures.get(future, Path("?"))
             try:
                 outcome = future.result(timeout=future_timeout)
-            except TimeoutError:
+            except (TimeoutError, FuturesTimeoutError):
                 log.warning("Task %s timed out (>%ds), skipping", task_dir, future_timeout)
                 failed.append(str(task_dir))
                 continue
@@ -851,15 +1043,29 @@ def _run_sdlc_mode(args, creds: Dict[str, Any]) -> int:
             if outcome is None:
                 failed.append(str(task_dir))
                 continue
+            # Abort early on rate limiting
+            if outcome["result"]["metadata"].get("rate_limited"):
+                log.error("Rate limited — aborting remaining tasks. Wait for limit reset.")
+                failed.append(str(task_dir))
+                break
+
             cost = outcome["result"]["metadata"].get("cost_usd", 0)
             total_cost += cost
             completed.append(outcome["task_name"])
 
             if args.max_cost > 0 and total_cost >= args.max_cost:
                 log.warning("Cost limit $%.2f reached, cancelling remaining", total_cost)
-                for f in futures:
-                    f.cancel()
                 break
+    except (TimeoutError, FuturesTimeoutError):
+        log.warning("as_completed global timeout expired — %d futures still pending",
+                    sum(1 for f in futures if not f.done()))
+        for f in futures:
+            if not f.done():
+                task_dir = futures.get(f, Path("?"))
+                failed.append(str(task_dir))
+    finally:
+        # Non-blocking shutdown — don't wait for stuck Daytona SDK threads
+        executor.shutdown(wait=False, cancel_futures=True)
 
     # Summary
     print(f"\n{'=' * 60}")
@@ -943,17 +1149,19 @@ def _run_contextbench_mode(args, creds: Dict[str, Any]) -> int:
         for i, task in enumerate(tasks)
     ]
 
-    future_timeout = SANDBOX_TIMEOUT_SEC + 120
+    future_timeout = SANDBOX_TIMEOUT_SEC + 300
+    global_timeout = future_timeout + 600
 
-    with ThreadPoolExecutor(max_workers=args.parallel) as executor:
-        futures = {
-            executor.submit(process_task, *ta): ta[1]  # idx
-            for ta in task_args
-        }
-        for future in as_completed(futures, timeout=future_timeout + 60):
+    executor = ThreadPoolExecutor(max_workers=args.parallel)
+    futures = {
+        executor.submit(process_task, *ta): ta[1]  # idx
+        for ta in task_args
+    }
+    try:
+        for future in as_completed(futures, timeout=global_timeout):
             try:
                 outcome = future.result(timeout=future_timeout)
-            except TimeoutError:
+            except (TimeoutError, FuturesTimeoutError):
                 idx = futures.get(future, "?")
                 log.warning("Task %s timed out (>%ds), skipping", idx, future_timeout)
                 continue
@@ -970,9 +1178,12 @@ def _run_contextbench_mode(args, creds: Dict[str, Any]) -> int:
 
             if args.max_cost > 0 and total_cost >= args.max_cost:
                 log.warning("Cost limit $%.2f reached, cancelling remaining", total_cost)
-                for f in futures:
-                    f.cancel()
                 break
+    except (TimeoutError, FuturesTimeoutError):
+        log.warning("as_completed global timeout expired — %d futures still pending",
+                    sum(1 for f in futures if not f.done()))
+    finally:
+        executor.shutdown(wait=False, cancel_futures=True)
 
     if not trajectories:
         log.error("No tasks completed")

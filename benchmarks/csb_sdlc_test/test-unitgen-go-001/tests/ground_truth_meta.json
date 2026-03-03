@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "test-unitgen-go-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T19:16:40Z",
+  "files_count": 2,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 5,
+  "cost_usd": 0.9181655,
+  "elapsed_sec": 161.0,
+  "exploration_notes": "Wrote comprehensive unit tests in value_test.go covering the value package. The test file contains 11 test functions with 3 mock types. Tests cover: DefaultContext (table-driven with 3 subtests), Transformer round-trip, prefix mismatch errors, empty-prefix identity transformer, stale detection (table-driven with 4 subtests), nil error default message, overlapping prefix fanout logic (table-driven with 3 subtests), empty data edge case, write error propagation, identity fallthrough on error, data"
+}
