@@ -1802,7 +1802,13 @@ def build_export(
             return
         record, audit_payload = extracted
 
-        task_slug = _slug(f"{run_dir_name}--{config}--{record.task_name}")
+        base_slug = _slug(f"{run_dir_name}--{config}--{record.task_name}")
+        try:
+            rel_task_dir = str(task_dir.relative_to(runs_dir))
+        except ValueError:
+            rel_task_dir = str(task_dir)
+        task_suffix = hashlib.sha1(rel_task_dir.encode("utf-8")).hexdigest()[:10]
+        task_slug = f"{base_slug}--{task_suffix}"
         bundled_trace_paths: dict[str, str | None] = {"trajectory": None, "transcript": None}
         if record.trace_paths.get("trajectory"):
             src = PROJECT_ROOT / record.trace_paths["trajectory"]
