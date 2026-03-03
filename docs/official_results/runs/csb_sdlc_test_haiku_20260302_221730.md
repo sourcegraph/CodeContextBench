@@ -13,11 +13,10 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `2`
-- Mean reward: `0.450`
-- Pass rate: `0.500`
+- Valid tasks: `1`
+- Mean reward: `0.900`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_test-integration-002_m0t7ua](../tasks/csb_sdlc_test_haiku_20260302_221730--mcp-remote-direct--mcp_test-integration-002_m0t7ua.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_test-coverage-gap-001_7jagwr](../tasks/csb_sdlc_test_haiku_20260302_221730--mcp-remote-direct--mcp_test-coverage-gap-001_7jagwr.html) | `passed` | 0.900 | 0.962 | 26 | traj, tx |

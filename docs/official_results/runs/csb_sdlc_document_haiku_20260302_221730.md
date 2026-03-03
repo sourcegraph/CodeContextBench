@@ -2,19 +2,14 @@
 
 ## baseline-local-direct
 
-- Valid tasks: `13`
-- Mean reward: `0.483`
-- Pass rate: `0.692`
+- Valid tasks: `8`
+- Mean reward: `0.776`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [envoy-migration-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--envoy-migration-doc-gen-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [k8s-clientgo-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--k8s-clientgo-doc-gen-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [kafka-api-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--kafka-api-doc-gen-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [terraform-arch-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--terraform-arch-doc-gen-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [docgen-changelog-002](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--docgen-changelog-002.html) | `passed` | 1.000 | 0.000 | 36 | traj, tx |
 | [docgen-inline-002](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--docgen-inline-002.html) | `passed` | 1.000 | 0.000 | 36 | traj, tx |
-| [docgen-runbook-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--docgen-runbook-001.html) | `passed` | 0.070 | - | - | traj, tx |
 | [envoy-arch-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--envoy-arch-doc-gen-001.html) | `passed` | 0.930 | 0.000 | 33 | traj, tx |
 | [istio-arch-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--istio-arch-doc-gen-001.html) | `passed` | 1.000 | 0.000 | 29 | traj, tx |
 | [k8s-apiserver-doc-gen-001](../tasks/csb_sdlc_document_haiku_20260302_221730--baseline-local-direct--k8s-apiserver-doc-gen-001.html) | `passed` | 0.520 | 0.000 | 34 | traj, tx |
@@ -24,16 +19,12 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `13`
-- Mean reward: `0.585`
-- Pass rate: `0.692`
+- Valid tasks: `9`
+- Mean reward: `0.844`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_docgen-changelog-002_elc2uw](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_docgen-changelog-002_elc2uw.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_envoy-arch-doc-gen-001_gjcnoi](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_envoy-arch-doc-gen-001_gjcnoi.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_k8s-apiserver-doc-gen-001_9vexvn](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_k8s-apiserver-doc-gen-001_9vexvn.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_k8s-kubelet-cm-doc-gen-001_c7mukj](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_k8s-kubelet-cm-doc-gen-001_c7mukj.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_docgen-inline-002_l0mqf7](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_docgen-inline-002_l0mqf7.html) | `passed` | 1.000 | 0.368 | 19 | traj, tx |
 | [mcp_docgen-runbook-001_im4s9i](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_docgen-runbook-001_im4s9i.html) | `passed` | 0.920 | 0.966 | 29 | traj, tx |
 | [mcp_envoy-migration-doc-gen-001_neszpz](../tasks/csb_sdlc_document_haiku_20260302_221730--mcp-remote-direct--mcp_envoy-migration-doc-gen-001_neszpz.html) | `passed` | 0.760 | 0.905 | 21 | traj, tx |

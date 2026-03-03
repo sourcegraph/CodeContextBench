@@ -21,15 +21,12 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `10`
-- Mean reward: `0.551`
-- Pass rate: `0.700`
+- Valid tasks: `7`
+- Mean reward: `0.787`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_argocd-arch-orient-001_opacrn](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_argocd-arch-orient-001_opacrn.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_django-composite-field-recover-001_frtplc](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_django-composite-field-recover-001_frtplc.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_terraform-plan-pipeline-qa-001_txjd9y](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_terraform-plan-pipeline-qa-001_txjd9y.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_cilium-ebpf-fault-qa-001_nnyhvi](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_cilium-ebpf-fault-qa-001_nnyhvi.html) | `passed` | 0.800 | 0.966 | 29 | traj, tx |
 | [mcp_cilium-project-orient-001_ffmygj](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_cilium-project-orient-001_ffmygj.html) | `passed` | 0.970 | 0.963 | 27 | traj, tx |
 | [mcp_django-template-inherit-recall-001_bbepsu](../tasks/csb_sdlc_understand_haiku_20260302_221730--mcp-remote-direct--mcp_django-template-inherit-recall-001_bbepsu.html) | `passed` | 0.250 | 0.150 | 100 | traj, tx |

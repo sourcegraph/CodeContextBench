@@ -2,14 +2,13 @@
 
 ## baseline-local-direct
 
-- Valid tasks: `16`
-- Mean reward: `0.405`
-- Pass rate: `0.688`
+- Valid tasks: `14`
+- Mean reward: `0.451`
+- Pass rate: `0.714`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
 | [envoy-listener-manager-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--envoy-listener-manager-refac-001.html) | `failed` | 0.000 | 0.000 | 26 | traj, tx |
-| [numpy-array-dispatch-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--numpy-array-dispatch-refac-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [python-http-class-naming-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--python-http-class-naming-refac-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [strata-fx-european-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--strata-fx-european-refac-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [terraform-eval-context-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--terraform-eval-context-refac-001.html) | `failed` | 0.000 | - | - | traj, tx |
@@ -20,26 +19,19 @@
 | [istio-discovery-server-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--istio-discovery-server-refac-001.html) | `passed` | 1.000 | 0.000 | 61 | traj, tx |
 | [k8s-score-normalizer-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--k8s-score-normalizer-refac-001.html) | `passed` | 0.650 | 0.000 | 77 | traj, tx |
 | [kafka-batch-accumulator-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--kafka-batch-accumulator-refac-001.html) | `passed` | 0.620 | 0.000 | 90 | traj, tx |
-| [kubernetes-scheduler-profile-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--kubernetes-scheduler-profile-refac-001.html) | `passed` | 0.167 | - | - | traj, tx |
 | [pandas-index-engine-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--pandas-index-engine-refac-001.html) | `passed` | 0.667 | 0.000 | 161 | traj, tx |
 | [prometheus-query-engine-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--prometheus-query-engine-refac-001.html) | `passed` | 0.833 | 0.000 | 50 | traj, tx |
 | [pytorch-optimizer-foreach-refac-001](../tasks/csb_sdlc_refactor_haiku_20260302_221730--baseline-local-direct--pytorch-optimizer-foreach-refac-001.html) | `passed` | 0.167 | 0.000 | 77 | traj, tx |
 
 ## mcp-remote-direct
 
-- Valid tasks: `16`
-- Mean reward: `0.502`
-- Pass rate: `0.688`
+- Valid tasks: `10`
+- Mean reward: `0.754`
+- Pass rate: `0.900`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
 | [mcp_envoy-listener-manager-refac-001_jq9w9x](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_envoy-listener-manager-refac-001_jq9w9x.html) | `failed` | 0.000 | 0.385 | 109 | traj, tx |
-| [mcp_flipt-flagexists-refactor-001_zywtsz](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_flipt-flagexists-refactor-001_zywtsz.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_k8s-score-normalizer-refac-001_gnoijf](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_k8s-score-normalizer-refac-001_gnoijf.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_pandas-index-engine-refac-001_exgliy](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_pandas-index-engine-refac-001_exgliy.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_pytorch-optimizer-foreach-refac-001_n5b9mr](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_pytorch-optimizer-foreach-refac-001_n5b9mr.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_cilium-endpoint-manager-refac-001_efmdaw](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_cilium-endpoint-manager-refac-001_efmdaw.html) | `passed` | 0.333 | - | - | traj, tx |
-| [mcp_django-request-factory-refac-001_nsfpx2](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_django-request-factory-refac-001_nsfpx2.html) | `passed` | 0.167 | - | - | traj, tx |
 | [mcp_flipt-dep-refactor-001_6rlpds](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_flipt-dep-refactor-001_6rlpds.html) | `passed` | 0.440 | 0.165 | 121 | traj, tx |
 | [mcp_istio-discovery-server-refac-001_s5eugu](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_istio-discovery-server-refac-001_s5eugu.html) | `passed` | 1.000 | 0.185 | 54 | traj, tx |
 | [mcp_kafka-batch-accumulator-refac-001_gmivwy](../tasks/csb_sdlc_refactor_haiku_20260302_221730--mcp-remote-direct--mcp_kafka-batch-accumulator-refac-001_gmivwy.html) | `passed` | 0.770 | 0.489 | 45 | traj, tx |

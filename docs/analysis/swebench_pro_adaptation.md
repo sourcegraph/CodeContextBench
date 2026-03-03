@@ -117,6 +117,124 @@ All 8 registered in `configs/selected_benchmark_tasks.json`.
 2. Run preflight validation: `python3 scripts/validate_tasks_preflight.py`
 3. Execute baseline + MCP paired runs (3+ per task)
 
+## Rehost Execution (8 New SWE-Bench Pro Tasks)
+
+`scripts/rehost_sweap_images.py` now supports targeted operation by task id/tag so we can
+rehost only the new images instead of all SWEAP tags at once.
+
+Targeted dry run (8 tags, 16 Dockerfiles):
+
+```bash
+python3 scripts/rehost_sweap_images.py --dry-run \
+  --task-id webclients-excessive-repeated-api-fix-001 \
+  --task-id webclients-contact-import-fails-fix-001 \
+  --task-id webclients-api-error-metrics-fix-001 \
+  --task-id webclients-implement-proper-punycode-fix-001 \
+  --task-id webclients-incorrect-rendering-content-fix-001 \
+  --task-id element-web-roomheaderbuttons-can-crash-fix-001 \
+  --task-id element-web-unread-indicators-diverge-fix-001 \
+  --task-id teleport-users-can-delete-fix-001
+```
+
+Rehost:
+
+```bash
+python3 scripts/rehost_sweap_images.py --pull-push \
+  --task-id webclients-excessive-repeated-api-fix-001 \
+  --task-id webclients-contact-import-fails-fix-001 \
+  --task-id webclients-api-error-metrics-fix-001 \
+  --task-id webclients-implement-proper-punycode-fix-001 \
+  --task-id webclients-incorrect-rendering-content-fix-001 \
+  --task-id element-web-roomheaderbuttons-can-crash-fix-001 \
+  --task-id element-web-unread-indicators-diverge-fix-001 \
+  --task-id teleport-users-can-delete-fix-001
+```
+
+After successful push, rewrite FROM lines for those tasks:
+
+```bash
+python3 scripts/rehost_sweap_images.py --update-dockerfiles \
+  --task-id webclients-excessive-repeated-api-fix-001 \
+  --task-id webclients-contact-import-fails-fix-001 \
+  --task-id webclients-api-error-metrics-fix-001 \
+  --task-id webclients-implement-proper-punycode-fix-001 \
+  --task-id webclients-incorrect-rendering-content-fix-001 \
+  --task-id element-web-roomheaderbuttons-can-crash-fix-001 \
+  --task-id element-web-unread-indicators-diverge-fix-001 \
+  --task-id teleport-users-can-delete-fix-001
+```
+
+## Placement Decision For The 8 New Tasks
+
+All 8 should remain in `csb_sdlc_fix`.
+
+Reasoning:
+- All eight are verifier-backed bug-fix tasks (`category = bug_fix`) requiring code patching
+  rather than design/documentation/search-only behavior.
+- Their objective aligns with the fix-phase construct currently used in the benchmark.
+- Moving any of them to another SDLC suite does not improve macro power and risks semantic
+  drift in suite definitions.
+
+Note: `teleport-users-can-delete-fix-001` is security-themed, but operationally it is still
+a bug-fix execution task (patch + tests), so it remains best aligned to `fix`.
+
+## 80% Power Task Gap (Current Sigma, Delta=0.05)
+
+Computed from `scripts/suite_power_analysis.py`:
+
+| Suite | Current n | N needed @80% | Gap |
+|-------|-----------|---------------|-----|
+| csb_org_compliance | 18 | 48 | 30 |
+| csb_org_crossorg | 15 | 14 | 0 |
+| csb_org_crossrepo | 14 | 18 | 4 |
+| csb_org_crossrepo_tracing | 22 | 76 | 54 |
+| csb_org_domain | 20 | 17 | 0 |
+| csb_org_incident | 20 | 161 | 141 |
+| csb_org_migration | 26 | 76 | 50 |
+| csb_org_onboarding | 28 | 89 | 61 |
+| csb_org_org | 15 | 36 | 21 |
+| csb_org_platform | 18 | 44 | 26 |
+| csb_org_security | 24 | 167 | 143 |
+| csb_sdlc_debug | 18 | 31 | 13 |
+| csb_sdlc_design | 14 | 104 | 90 |
+| csb_sdlc_document | 13 | 22 | 9 |
+| csb_sdlc_feature | 23 | 56 | 33 |
+| csb_sdlc_fix | 26 | 121 | 95 |
+| csb_sdlc_refactor | 16 | 82 | 66 |
+| csb_sdlc_secure | 12 | 53 | 41 |
+| csb_sdlc_test | 18 | 150 | 132 |
+| csb_sdlc_understand | 10 | 165 | 155 |
+
+## Practical Additions + Merge Strategy
+
+Recommended reporting merges remain:
+- `csb_org_crossorg + csb_org_org -> crossorg_merged`
+- `csb_org_compliance + csb_org_platform -> compliance_platform`
+
+Strategic low-cost additions (high ROI):
+- `csb_org_crossrepo`: +4 tasks (to n=18) reaches ~81% power.
+- `csb_sdlc_document`: +9 tasks (to n=22) reaches ~81% power.
+- `compliance_platform` merged view: +10 tasks total (to n=46) reaches ~81% power.
+
+Local sourcing already available in backups:
+- `benchmarks/backups/csb_org_crossrepo_doe_trim`: 6 candidates (gap 4 can be fully covered)
+- `benchmarks/backups/csb_sdlc_document_doe_trim`: 7 candidates (covers 7/9, need 2 new)
+- `benchmarks/backups/csb_org_compliance_doe_trim`: 2 candidates
+- `benchmarks/backups/csb_org_platform_doe_trim`: 2 candidates
+- extras: `benchmarks/backups/csb_org_compliance_extra` (1), `benchmarks/backups/csb_org_platform_extra` (1)
+
+This covers 6 of the 10 needed for `compliance_platform`; source 4 additional tasks via
+new scaffolding or retained pools.
+
+## Macro-Group Check (Aggregate SDLC / Org)
+
+Current aggregate power already exceeds 80% without further additions:
+- SDLC macro-group: `n=150`, `sigma=0.1728`, power `94.3%`
+- Org macro-group: `n=220`, `sigma=0.1579`, power `99.7%`
+
+So the recommended merges + targeted additions are primarily about improving
+suite-level interpretability, not macro-group viability.
+
 ## SWEAP Image Handling
 
 Each SWE-Bench Pro task has a unique Docker image at `jefzda/sweap-images:<tag>`.

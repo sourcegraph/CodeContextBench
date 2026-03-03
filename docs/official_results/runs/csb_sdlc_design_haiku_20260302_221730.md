@@ -2,16 +2,12 @@
 
 ## baseline-local-direct
 
-- Valid tasks: `14`
-- Mean reward: `0.579`
-- Pass rate: `0.714`
+- Valid tasks: `10`
+- Mean reward: `0.811`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [django-pre-validate-signal-design-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--django-pre-validate-signal-design-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [envoy-stream-aggregated-sym-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--envoy-stream-aggregated-sym-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [flipt-protobuf-metadata-design-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--flipt-protobuf-metadata-design-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [k8s-typemeta-dep-chain-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--k8s-typemeta-dep-chain-001.html) | `failed` | 0.000 | - | - | traj |
 | [camel-routing-arch-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--camel-routing-arch-001.html) | `passed` | 0.880 | 0.000 | 47 | traj, tx |
 | [django-orm-query-arch-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--django-orm-query-arch-001.html) | `passed` | 0.830 | 0.000 | 58 | traj, tx |
 | [django-rate-limit-design-001](../tasks/csb_sdlc_design_haiku_20260302_221730--baseline-local-direct--django-rate-limit-design-001.html) | `passed` | 1.000 | 0.000 | 35 | traj, tx |
@@ -25,17 +21,12 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `14`
-- Mean reward: `0.477`
-- Pass rate: `0.643`
+- Valid tasks: `9`
+- Mean reward: `0.742`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_camel-routing-arch-001_ushrcu](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_camel-routing-arch-001_ushrcu.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_django-rate-limit-design-001_wivtpw](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_django-rate-limit-design-001_wivtpw.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_etcd-grpc-api-upgrade-001_yug3sd](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_etcd-grpc-api-upgrade-001_yug3sd.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_flipt-transitive-deps-001_4zowde](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_flipt-transitive-deps-001_4zowde.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_kafka-flink-streaming-arch-001_kivjug](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_kafka-flink-streaming-arch-001_kivjug.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_django-orm-query-arch-001_skuw7m](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_django-orm-query-arch-001_skuw7m.html) | `passed` | 0.850 | 0.976 | 42 | traj, tx |
 | [mcp_django-pre-validate-signal-design-001_qh0sd0](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_django-pre-validate-signal-design-001_qh0sd0.html) | `passed` | 0.900 | 0.479 | 48 | traj, tx |
 | [mcp_envoy-routeconfig-dep-chain-001_zwi8mw](../tasks/csb_sdlc_design_haiku_20260302_221730--mcp-remote-direct--mcp_envoy-routeconfig-dep-chain-001_zwi8mw.html) | `passed` | 0.670 | - | - | traj |

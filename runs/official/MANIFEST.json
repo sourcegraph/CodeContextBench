@@ -1,7 +1,7 @@
 {
   "description": "Canonical run manifest for CodeScaleBench evaluation",
-  "generated": "2026-03-02T23:39:42.716098+00:00",
-  "total_tasks": 947,
+  "generated": "2026-03-03T13:57:51.013078+00:00",
+  "total_tasks": 942,
   "total_runs": 74,
   "runs": {
     "csb_org_compliance/baseline-local-artifact": {
@@ -4880,11 +4880,11 @@
       "run_id": "csb_org_security_baseline-local-artifact",
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-03-01 20-31-58",
-      "task_count": 20,
-      "passed": 17,
+      "task_count": 19,
+      "passed": 16,
       "failed": 3,
       "errored": 0,
-      "mean_reward": 0.347,
+      "mean_reward": 0.32,
       "tasks": {
         "CCX-vuln-remed-011": {
           "status": "failed",
@@ -5075,18 +5075,6 @@
           "judge_model": null,
           "judge_dimensions": null,
           "judge_confidence": null
-        },
-        "CCX-vuln-remed-170": {
-          "status": "passed",
-          "reward": 0.8571,
-          "has_trajectory": true,
-          "has_cost": true,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 6000.0
         }
       }
     },
@@ -5095,10 +5083,10 @@
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-02-28 02-05-25",
       "task_count": 24,
-      "passed": 21,
+      "passed": 22,
       "failed": 2,
-      "errored": 1,
-      "mean_reward": 0.507,
+      "errored": 0,
+      "mean_reward": 0.489,
       "tasks": {
         "CCX-vuln-remed-011": {
           "status": "failed",
@@ -5281,8 +5269,8 @@
           "judge_confidence": null
         },
         "CCX-vuln-remed-169": {
-          "status": "errored",
-          "reward": 0.0,
+          "status": "passed",
+          "reward": 0.0755,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -6026,9 +6014,7 @@
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 6000.0
+          "judge_confidence": null
         },
         "similar-asserts-deps-install-001": {
           "status": "passed",
@@ -6086,22 +6072,12 @@
       "run_id": "csb_sdlc_build_mcp-remote-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-02-27 12-48-00",
-      "task_count": 23,
+      "task_count": 19,
       "passed": 15,
       "failed": 4,
-      "errored": 4,
+      "errored": 0,
       "mean_reward": 0.57,
       "tasks": {
-        "bustub-hyperloglog-impl-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": true,
-          "has_cost": true,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null
-        },
         "camel-fix-protocol-feat-001": {
           "status": "passed",
           "reward": 0.34,
@@ -6142,29 +6118,9 @@
           "judge_dimensions": null,
           "judge_confidence": null
         },
-        "dotnetkoans-deps-install-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": true,
-          "has_cost": true,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null
-        },
         "envoy-grpc-server-impl-001": {
           "status": "passed",
           "reward": 0.22,
-          "has_trajectory": true,
-          "has_cost": true,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null
-        },
-        "eslint-markdown-deps-install-001": {
-          "status": "errored",
-          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -6261,18 +6217,6 @@
           "judge_model": null,
           "judge_dimensions": null,
           "judge_confidence": null
-        },
-        "servo-scrollend-event-feat-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
-          "judge_score": null,
-          "judge_model": null,
-          "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 6000.0
         },
         "similar-asserts-deps-install-001": {
           "status": "passed",
@@ -7986,7 +7930,7 @@
       "passed": 20,
       "failed": 3,
       "errored": 0,
-      "mean_reward": 0.58,
+      "mean_reward": 0.572,
       "tasks": {
         "bustub-hyperloglog-impl-001": {
           "status": "passed",
@@ -8130,7 +8074,7 @@
         },
         "prometheus-silence-bulk-api-feat-001": {
           "status": "passed",
-          "reward": 0.8333,
+          "reward": 0.6667,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -8226,9 +8170,9 @@
       "timestamp": "2026-03-01 23-02-58",
       "task_count": 26,
       "passed": 17,
-      "failed": 8,
-      "errored": 1,
-      "mean_reward": 0.516,
+      "failed": 9,
+      "errored": 0,
+      "mean_reward": 0.496,
       "tasks": {
         "ansible-abc-imports-fix-001": {
           "status": "passed",
@@ -8441,10 +8385,10 @@
           "judge_confidence": null
         },
         "pytorch-dynamo-keyerror-fix-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
@@ -8497,10 +8441,10 @@
       "model": "anthropic/claude-haiku-4-5-20251001",
       "timestamp": "2026-03-01 17-33-55",
       "task_count": 26,
-      "passed": 14,
-      "failed": 4,
-      "errored": 8,
-      "mean_reward": 0.648,
+      "passed": 19,
+      "failed": 7,
+      "errored": 0,
+      "mean_reward": 0.573,
       "tasks": {
         "ansible-abc-imports-fix-001": {
           "status": "passed",
@@ -8543,28 +8487,24 @@
           "judge_confidence": null
         },
         "envoy-dfp-host-leak-fix-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.7481,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "envoy-udp-proxy-cds-fix-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.3886,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "flink-window-late-data-fix-001": {
           "status": "passed",
@@ -8697,8 +8637,8 @@
           "judge_confidence": null
         },
         "openlibrary-solr-boolean-fix-001": {
-          "status": "errored",
-          "reward": 0.0,
+          "status": "passed",
+          "reward": 0.6667,
           "has_trajectory": false,
           "has_cost": false,
           "judge_score": null,
@@ -8707,52 +8647,44 @@
           "judge_confidence": null
         },
         "pytorch-cudnn-version-fix-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "pytorch-dynamo-keyerror-fix-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "pytorch-release-210-fix-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "pytorch-relu-gelu-fusion-fix-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.5597,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "pytorch-tracer-graph-cleanup-fix-001": {
           "status": "failed",
@@ -8765,16 +8697,14 @@
           "judge_confidence": null
         },
         "terraform-plan-null-unknown-fix-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.865,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         }
       }
     },
@@ -8786,7 +8716,7 @@
       "passed": 16,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.718,
+      "mean_reward": 0.697,
       "tasks": {
         "cilium-endpoint-manager-refac-001": {
           "status": "passed",
@@ -8800,7 +8730,7 @@
         },
         "django-request-factory-refac-001": {
           "status": "passed",
-          "reward": 1.0,
+          "reward": 0.8333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -8810,7 +8740,7 @@
         },
         "envoy-listener-manager-refac-001": {
           "status": "passed",
-          "reward": 1.0,
+          "reward": 0.8333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -8953,12 +8883,12 @@
     "csb_sdlc_refactor/mcp-remote-direct": {
       "run_id": "csb_sdlc_refactor_mcp-remote-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
-      "timestamp": "2026-03-02 22-40-31",
+      "timestamp": "2026-03-02 22-42-10",
       "task_count": 16,
       "passed": 14,
       "failed": 2,
       "errored": 0,
-      "mean_reward": 0.595,
+      "mean_reward": 0.626,
       "tasks": {
         "cilium-endpoint-manager-refac-001": {
           "status": "passed",
@@ -8972,7 +8902,7 @@
         },
         "django-request-factory-refac-001": {
           "status": "passed",
-          "reward": 0.1667,
+          "reward": 0.6667,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -8981,8 +8911,8 @@
           "judge_confidence": null
         },
         "envoy-listener-manager-refac-001": {
-          "status": "failed",
-          "reward": 0.0,
+          "status": "passed",
+          "reward": 0.8333,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9042,7 +8972,7 @@
         },
         "kubernetes-scheduler-profile-refac-001": {
           "status": "passed",
-          "reward": 0.8333,
+          "reward": 1.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9051,8 +8981,8 @@
           "judge_confidence": null
         },
         "numpy-array-dispatch-refac-001": {
-          "status": "passed",
-          "reward": 1.0,
+          "status": "failed",
+          "reward": 0.0,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9242,7 +9172,7 @@
       "passed": 12,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.735,
+      "mean_reward": 0.723,
       "tasks": {
         "curl-cve-triage-001": {
           "status": "passed",
@@ -9266,7 +9196,7 @@
         },
         "django-audit-trail-implement-001": {
           "status": "passed",
-          "reward": 0.8,
+          "reward": 0.75,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9276,7 +9206,7 @@
         },
         "django-cross-team-boundary-001": {
           "status": "passed",
-          "reward": 0.3,
+          "reward": 0.5,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9296,7 +9226,7 @@
         },
         "django-repo-scoped-access-001": {
           "status": "passed",
-          "reward": 1.0,
+          "reward": 0.7,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9486,7 +9416,7 @@
       "passed": 12,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.731,
+      "mean_reward": 0.706,
       "tasks": {
         "curl-cve-triage-001": {
           "status": "passed",
@@ -9520,7 +9450,7 @@
         },
         "django-cross-team-boundary-001": {
           "status": "passed",
-          "reward": 0.8,
+          "reward": 0.5,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -9616,9 +9546,9 @@
       "timestamp": "2026-03-02 02-15-04",
       "task_count": 18,
       "passed": 15,
-      "failed": 2,
-      "errored": 1,
-      "mean_reward": 0.582,
+      "failed": 3,
+      "errored": 0,
+      "mean_reward": 0.549,
       "tasks": {
         "aspnetcore-code-review-001": {
           "status": "passed",
@@ -9681,10 +9611,10 @@
           "judge_confidence": null
         },
         "numpy-array-sum-perf-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
@@ -9805,24 +9735,22 @@
     "csb_sdlc_test/mcp-remote-direct": {
       "run_id": "csb_sdlc_test_mcp-remote-direct",
       "model": "anthropic/claude-haiku-4-5-20251001",
-      "timestamp": "2026-03-02 02-15-06",
+      "timestamp": "2026-03-02 02-07-11",
       "task_count": 18,
-      "passed": 11,
-      "failed": 2,
-      "errored": 5,
-      "mean_reward": 0.588,
+      "passed": 15,
+      "failed": 3,
+      "errored": 0,
+      "mean_reward": 0.531,
       "tasks": {
         "aspnetcore-code-review-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.55,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "calcom-code-review-001": {
           "status": "passed",
@@ -9845,28 +9773,24 @@
           "judge_confidence": null
         },
         "envoy-code-review-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.47,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "ghost-code-review-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.57,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         },
         "kafka-security-review-001": {
           "status": "passed",
@@ -9909,10 +9833,10 @@
           "judge_confidence": null
         },
         "sklearn-kmeans-perf-001": {
-          "status": "errored",
+          "status": "failed",
           "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
@@ -9989,16 +9913,14 @@
           "judge_confidence": null
         },
         "vscode-code-review-001": {
-          "status": "errored",
-          "reward": 0.0,
-          "has_trajectory": false,
-          "has_cost": false,
+          "status": "passed",
+          "reward": 0.33,
+          "has_trajectory": true,
+          "has_cost": true,
           "judge_score": null,
           "judge_model": null,
           "judge_dimensions": null,
-          "judge_confidence": null,
-          "timed_out": true,
-          "timeout_seconds": 3600.0
+          "judge_confidence": null
         }
       }
     },
@@ -10092,7 +10014,7 @@
       "passed": 10,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.826,
+      "mean_reward": 0.843,
       "tasks": {
         "argocd-arch-orient-001": {
           "status": "passed",
@@ -10156,7 +10078,7 @@
         },
         "kafka-build-orient-001": {
           "status": "passed",
-          "reward": 0.77,
+          "reward": 0.94,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -10286,7 +10208,7 @@
       "passed": 10,
       "failed": 0,
       "errored": 0,
-      "mean_reward": 0.833,
+      "mean_reward": 0.83,
       "tasks": {
         "argocd-arch-orient-001": {
           "status": "passed",
@@ -10380,7 +10302,7 @@
         },
         "terraform-plan-pipeline-qa-001": {
           "status": "passed",
-          "reward": 0.95,
+          "reward": 0.92,
           "has_trajectory": true,
           "has_cost": true,
           "judge_score": null,
@@ -28156,20 +28078,6 @@
             "run_dir": "csb_org_security_haiku_20260301_201904"
           }
         ]
-      },
-      "CCX-vuln-remed-170": {
-        "n_runs": 1,
-        "mean_reward": 0.8571,
-        "std_reward": 0.0,
-        "runs": [
-          {
-            "started_at": "2026-03-01T20:32:51.057743Z",
-            "reward": 0.8571,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "csb_org_security_haiku_20260301_201904"
-          }
-        ]
       }
     },
     "csb_org_security/baseline-local-direct": {
@@ -30408,7 +30316,7 @@
         ]
       },
       "servo-scrollend-event-feat-001": {
-        "n_runs": 2,
+        "n_runs": 1,
         "mean_reward": 0.5,
         "std_reward": 0.0,
         "runs": [
@@ -30418,13 +30326,6 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_build_haiku_20260227_034711"
-          },
-          {
-            "started_at": "2026-02-27T12:54:23.815256",
-            "reward": 0.5,
-            "status": "passed",
-            "is_paired": false,
-            "run_dir": "csb_sdlc_build_haiku_20260227_123839"
           }
         ]
       },
@@ -36431,7 +36332,7 @@
         ]
       },
       "numpy-rolling-median-feat-001": {
-        "n_runs": 6,
+        "n_runs": 7,
         "mean_reward": 1.0,
         "std_reward": 0.0,
         "runs": [
@@ -36476,11 +36377,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:09.260646Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
       "pandas-merge-asof-indicator-feat-001": {
-        "n_runs": 5,
+        "n_runs": 6,
         "mean_reward": 0.6667,
         "std_reward": 0.0,
         "runs": [
@@ -36518,6 +36426,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:13.298981Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
@@ -36564,7 +36479,7 @@
         ]
       },
       "prometheus-silence-bulk-api-feat-001": {
-        "n_runs": 5,
+        "n_runs": 6,
         "mean_reward": 0.8333,
         "std_reward": 0.0,
         "runs": [
@@ -36602,6 +36517,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:16.913613Z",
+            "reward": 0.8333333333333334,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
@@ -37469,7 +37391,7 @@
         ]
       },
       "numpy-rolling-median-feat-001": {
-        "n_runs": 5,
+        "n_runs": 6,
         "mean_reward": 1.0,
         "std_reward": 0.0,
         "runs": [
@@ -37507,11 +37429,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:11.285392Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
       "pandas-merge-asof-indicator-feat-001": {
-        "n_runs": 5,
+        "n_runs": 6,
         "mean_reward": 0.6667,
         "std_reward": 0.0,
         "runs": [
@@ -37549,6 +37478,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:15.111944Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
@@ -37595,9 +37531,9 @@
         ]
       },
       "prometheus-silence-bulk-api-feat-001": {
-        "n_runs": 4,
-        "mean_reward": 0.8333,
-        "std_reward": 0.0,
+        "n_runs": 5,
+        "mean_reward": 0.8,
+        "std_reward": 0.0745,
         "runs": [
           {
             "started_at": "2026-02-28T21:37:52.319468",
@@ -37626,6 +37562,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_feature_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:19.258515Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_feature_haiku_20260303_034215"
           }
         ]
       },
@@ -39799,9 +39742,9 @@
         ]
       },
       "django-request-factory-refac-001": {
-        "n_runs": 6,
-        "mean_reward": 0.8611,
-        "std_reward": 0.1255,
+        "n_runs": 7,
+        "mean_reward": 0.8571,
+        "std_reward": 0.115,
         "runs": [
           {
             "started_at": "2026-03-01T01:14:13.558449",
@@ -39844,13 +39787,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:21.333585Z",
+            "reward": 0.8333333333333334,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "envoy-listener-manager-refac-001": {
-        "n_runs": 5,
-        "mean_reward": 0.8,
-        "std_reward": 0.4472,
+        "n_runs": 6,
+        "mean_reward": 0.8056,
+        "std_reward": 0.4002,
         "runs": [
           {
             "started_at": "2026-03-01T01:08:23.839576",
@@ -39886,6 +39836,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:25.557478Z",
+            "reward": 0.8333333333333334,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -39995,7 +39952,7 @@
         ]
       },
       "istio-discovery-server-refac-001": {
-        "n_runs": 5,
+        "n_runs": 6,
         "mean_reward": 1.0,
         "std_reward": 0.0,
         "runs": [
@@ -40033,6 +39990,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:29.482934Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -40121,9 +40085,9 @@
         ]
       },
       "kubernetes-scheduler-profile-refac-001": {
-        "n_runs": 4,
-        "mean_reward": 0.7917,
-        "std_reward": 0.4167,
+        "n_runs": 5,
+        "mean_reward": 0.8333,
+        "std_reward": 0.3727,
         "runs": [
           {
             "started_at": "2026-03-01T01:18:29.950894",
@@ -40152,11 +40116,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "refactor_haiku_20260301_071230"
+          },
+          {
+            "started_at": "2026-03-03T03:44:33.255184Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "numpy-array-dispatch-refac-001": {
-        "n_runs": 4,
+        "n_runs": 5,
         "mean_reward": 1.0,
         "std_reward": 0.0,
         "runs": [
@@ -40187,11 +40158,18 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "refactor_haiku_20260301_071230"
+          },
+          {
+            "started_at": "2026-03-03T03:44:37.268919Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "pandas-index-engine-refac-001": {
-        "n_runs": 6,
+        "n_runs": 7,
         "mean_reward": 0.6667,
         "std_reward": 0.0,
         "runs": [
@@ -40236,6 +40214,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:41.357896Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -40494,9 +40479,9 @@
         ]
       },
       "django-request-factory-refac-001": {
-        "n_runs": 5,
-        "mean_reward": 0.6,
-        "std_reward": 0.2528,
+        "n_runs": 6,
+        "mean_reward": 0.6111,
+        "std_reward": 0.2277,
         "runs": [
           {
             "started_at": "2026-03-01T01:15:24.658923",
@@ -40532,13 +40517,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_224010"
+          },
+          {
+            "started_at": "2026-03-03T03:44:23.312289Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "envoy-listener-manager-refac-001": {
-        "n_runs": 5,
-        "mean_reward": 0.7333,
-        "std_reward": 0.4183,
+        "n_runs": 6,
+        "mean_reward": 0.75,
+        "std_reward": 0.3764,
         "runs": [
           {
             "started_at": "2026-02-28T23:13:38.369265",
@@ -40574,6 +40566,13 @@
             "status": "failed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:27.259033Z",
+            "reward": 0.8333333333333334,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -40662,9 +40661,9 @@
         ]
       },
       "istio-discovery-server-refac-001": {
-        "n_runs": 4,
-        "mean_reward": 0.875,
-        "std_reward": 0.25,
+        "n_runs": 5,
+        "mean_reward": 0.9,
+        "std_reward": 0.2236,
         "runs": [
           {
             "started_at": "2026-03-01T01:17:49.190982",
@@ -40693,6 +40692,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:31.516597Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -40774,9 +40780,9 @@
         ]
       },
       "kubernetes-scheduler-profile-refac-001": {
-        "n_runs": 5,
-        "mean_reward": 0.9333,
-        "std_reward": 0.0913,
+        "n_runs": 6,
+        "mean_reward": 0.9444,
+        "std_reward": 0.0861,
         "runs": [
           {
             "started_at": "2026-03-01T01:19:12.287295",
@@ -40812,13 +40818,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:35.148140Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "numpy-array-dispatch-refac-001": {
-        "n_runs": 5,
-        "mean_reward": 0.8333,
-        "std_reward": 0.1179,
+        "n_runs": 6,
+        "mean_reward": 0.6944,
+        "std_reward": 0.3562,
         "runs": [
           {
             "started_at": "2026-03-01T01:19:44.293089",
@@ -40854,13 +40867,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_refactor_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:39.215785Z",
+            "reward": 0.0,
+            "status": "failed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
       "pandas-index-engine-refac-001": {
-        "n_runs": 4,
-        "mean_reward": 0.5,
-        "std_reward": 0.3333,
+        "n_runs": 5,
+        "mean_reward": 0.5333,
+        "std_reward": 0.2981,
         "runs": [
           {
             "started_at": "2026-03-01T01:21:23.833991",
@@ -40889,6 +40909,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "refactor_haiku_20260301_071230"
+          },
+          {
+            "started_at": "2026-03-03T03:44:43.383661Z",
+            "reward": 0.6666666666666666,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_refactor_haiku_20260303_034215"
           }
         ]
       },
@@ -41338,9 +41365,9 @@
         ]
       },
       "django-audit-trail-implement-001": {
-        "n_runs": 4,
-        "mean_reward": 0.725,
-        "std_reward": 0.2179,
+        "n_runs": 5,
+        "mean_reward": 0.73,
+        "std_reward": 0.1891,
         "runs": [
           {
             "started_at": "2026-02-23T23:35:49.410921",
@@ -41369,13 +41396,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:45.050309Z",
+            "reward": 0.75,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-cross-team-boundary-001": {
-        "n_runs": 4,
-        "mean_reward": 0.475,
-        "std_reward": 0.35,
+        "n_runs": 5,
+        "mean_reward": 0.48,
+        "std_reward": 0.3033,
         "runs": [
           {
             "started_at": "2026-02-23T23:36:35.306255",
@@ -41404,13 +41438,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:49.056100Z",
+            "reward": 0.5,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-legacy-dep-vuln-001": {
-        "n_runs": 3,
-        "mean_reward": 0.9667,
-        "std_reward": 0.0577,
+        "n_runs": 4,
+        "mean_reward": 0.975,
+        "std_reward": 0.05,
         "runs": [
           {
             "started_at": "2026-02-23T23:33:57.141948",
@@ -41432,13 +41473,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "secure_haiku_20260301_071231"
+          },
+          {
+            "started_at": "2026-03-03T03:44:53.494778Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-repo-scoped-access-001": {
-        "n_runs": 4,
-        "mean_reward": 0.875,
-        "std_reward": 0.25,
+        "n_runs": 5,
+        "mean_reward": 0.84,
+        "std_reward": 0.2302,
         "runs": [
           {
             "started_at": "2026-02-23T23:40:50.921552",
@@ -41467,6 +41515,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:57.463442Z",
+            "reward": 0.7,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
@@ -41930,7 +41985,7 @@
         ]
       },
       "django-audit-trail-implement-001": {
-        "n_runs": 3,
+        "n_runs": 4,
         "mean_reward": 0.55,
         "std_reward": 0.0,
         "runs": [
@@ -41954,13 +42009,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "secure_haiku_20260301_071231"
+          },
+          {
+            "started_at": "2026-03-03T03:44:47.046784Z",
+            "reward": 0.55,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-cross-team-boundary-001": {
-        "n_runs": 4,
-        "mean_reward": 0.475,
-        "std_reward": 0.2363,
+        "n_runs": 5,
+        "mean_reward": 0.48,
+        "std_reward": 0.2049,
         "runs": [
           {
             "started_at": "2026-02-23T23:37:03.401513",
@@ -41989,13 +42051,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:51.078464Z",
+            "reward": 0.5,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-legacy-dep-vuln-001": {
-        "n_runs": 4,
-        "mean_reward": 0.9125,
-        "std_reward": 0.175,
+        "n_runs": 5,
+        "mean_reward": 0.93,
+        "std_reward": 0.1565,
         "runs": [
           {
             "started_at": "2026-02-23T23:34:03.010432",
@@ -42024,13 +42093,20 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:44:55.424105Z",
+            "reward": 1.0,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
       "django-repo-scoped-access-001": {
-        "n_runs": 4,
-        "mean_reward": 0.775,
-        "std_reward": 0.15,
+        "n_runs": 5,
+        "mean_reward": 0.76,
+        "std_reward": 0.1342,
         "runs": [
           {
             "started_at": "2026-02-23T23:41:31.621051",
@@ -42059,6 +42135,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_secure_haiku_20260302_232613"
+          },
+          {
+            "started_at": "2026-03-03T03:44:59.759837Z",
+            "reward": 0.7,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_secure_haiku_20260303_034215"
           }
         ]
       },
@@ -44066,9 +44149,9 @@
         ]
       },
       "kafka-build-orient-001": {
-        "n_runs": 5,
-        "mean_reward": 0.634,
-        "std_reward": 0.358,
+        "n_runs": 6,
+        "mean_reward": 0.685,
+        "std_reward": 0.3437,
         "runs": [
           {
             "started_at": "2026-02-24T00:31:24.345965",
@@ -44104,6 +44187,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_understand_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:45:09.697337Z",
+            "reward": 0.94,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_understand_haiku_20260303_034215"
           }
         ]
       },
@@ -44185,9 +44275,9 @@
         ]
       },
       "terraform-plan-pipeline-qa-001": {
-        "n_runs": 4,
-        "mean_reward": 0.725,
-        "std_reward": 0.4839,
+        "n_runs": 5,
+        "mean_reward": 0.77,
+        "std_reward": 0.431,
         "runs": [
           {
             "started_at": "2026-02-24T00:29:18.192282",
@@ -44216,6 +44306,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_understand_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:45:13.811381Z",
+            "reward": 0.95,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_understand_haiku_20260303_034215"
           }
         ]
       }
@@ -44532,9 +44629,9 @@
         ]
       },
       "kafka-build-orient-001": {
-        "n_runs": 4,
-        "mean_reward": 0.8475,
-        "std_reward": 0.0591,
+        "n_runs": 5,
+        "mean_reward": 0.846,
+        "std_reward": 0.0513,
         "runs": [
           {
             "started_at": "2026-02-25T22:30:40.279941",
@@ -44563,6 +44660,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "csb_sdlc_understand_haiku_20260302_221730"
+          },
+          {
+            "started_at": "2026-03-03T03:45:11.840092Z",
+            "reward": 0.84,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_understand_haiku_20260303_034215"
           }
         ]
       },
@@ -44658,9 +44762,9 @@
         ]
       },
       "terraform-plan-pipeline-qa-001": {
-        "n_runs": 3,
-        "mean_reward": 0.95,
-        "std_reward": 0.0,
+        "n_runs": 4,
+        "mean_reward": 0.9425,
+        "std_reward": 0.015,
         "runs": [
           {
             "started_at": "2026-02-24T00:29:29.963218",
@@ -44682,6 +44786,13 @@
             "status": "passed",
             "is_paired": false,
             "run_dir": "understand_haiku_20260301_071233"
+          },
+          {
+            "started_at": "2026-03-03T03:45:15.647024Z",
+            "reward": 0.92,
+            "status": "passed",
+            "is_paired": false,
+            "run_dir": "csb_sdlc_understand_haiku_20260303_034215"
           }
         ]
       }

@@ -20,15 +20,12 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `9`
-- Mean reward: `0.550`
-- Pass rate: `0.667`
+- Valid tasks: `6`
+- Mean reward: `0.825`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_envoy-duplicate-headers-debug-001_qvlcpx](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_envoy-duplicate-headers-debug-001_qvlcpx.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_linux-acpi-backlight-fault-001_ie3u81](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_linux-acpi-backlight-fault-001_ie3u81.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_linux-nfs-inode-revalidate-fault-001_p2s0z3](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_linux-nfs-inode-revalidate-fault-001_p2s0z3.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_grafana-table-panel-regression-001_alyqvi](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_grafana-table-panel-regression-001_alyqvi.html) | `passed` | 0.900 | 0.968 | 31 | traj, tx |
 | [mcp_istio-xds-destrul-debug-001_jqj09p](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_istio-xds-destrul-debug-001_jqj09p.html) | `passed` | 0.950 | 0.909 | 22 | traj, tx |
 | [mcp_linux-hda-intel-suspend-fault-001_3hex7j](../tasks/csb_sdlc_debug_haiku_20260302_221730--mcp-remote-direct--mcp_linux-hda-intel-suspend-fault-001_3hex7j.html) | `passed` | 0.700 | 0.789 | 38 | traj, tx |

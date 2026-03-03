@@ -628,6 +628,7 @@ _launch_task_pair() {
                 -n "$CONCURRENCY" \
                 --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
                 ${HARBOR_ENV:+--env "$HARBOR_ENV"} \
+                ${DAYTONA_OVERRIDE_MEMORY:+--override-memory-mb "$DAYTONA_OVERRIDE_MEMORY"} \
                 ${DAYTONA_OVERRIDE_STORAGE:+--override-storage-mb "$DAYTONA_OVERRIDE_STORAGE"} \
                 2>&1 | tee -a "${bl_jobs_dir}.log" \
                 || echo "WARNING: $BASELINE_CONFIG failed: $task_id"
@@ -697,6 +698,7 @@ _launch_task_pair() {
                 -n "$CONCURRENCY" \
                 --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
                 ${HARBOR_ENV:+--env "$HARBOR_ENV"} \
+                ${DAYTONA_OVERRIDE_MEMORY:+--override-memory-mb "$DAYTONA_OVERRIDE_MEMORY"} \
                 ${DAYTONA_OVERRIDE_STORAGE:+--override-storage-mb "$DAYTONA_OVERRIDE_STORAGE"} \
                 2>&1 | tee -a "${full_jobs_dir}.log" \
                 || echo "WARNING: $FULL_CONFIG failed: $task_id"

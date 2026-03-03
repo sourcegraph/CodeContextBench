@@ -14,7 +14,15 @@ run_wave() {
   local name="$1"
   shift
   echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] START $name"
-  "$@" < <(yes '' | head -n 100) | tee "$LOG_DIR/${name}.log"
+  # Feed a single Enter to satisfy the interactive launch gate.
+  set +o pipefail
+  "$@" <<< "" 2>&1 | tee "$LOG_DIR/${name}.log"
+  local cmd_status=${PIPESTATUS[0]}
+  set -o pipefail
+  if [ "$cmd_status" -ne 0 ]; then
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] FAIL  $name (exit=$cmd_status)"
+    return "$cmd_status"
+  fi
   echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] END   $name"
 }
 
@@ -109,4 +117,3 @@ run_wave "unmapped_artifact_baseline_only_wave3" \
   --selection-file configs/coverage_gap_20260303/unmapped_artifact_baseline_only_wave3.json \
   --full-config mcp-remote-artifact \
   --baseline-only
-

@@ -2,15 +2,13 @@
 
 ## baseline-local-direct
 
-- Valid tasks: `12`
-- Mean reward: `0.416`
-- Pass rate: `0.667`
+- Valid tasks: `10`
+- Mean reward: `0.499`
+- Pass rate: `0.800`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
 | [curl-vuln-reachability-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--curl-vuln-reachability-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [django-legacy-dep-vuln-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--django-legacy-dep-vuln-001.html) | `failed` | 0.000 | - | - | traj, tx |
-| [django-sensitive-file-exclusion-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--django-sensitive-file-exclusion-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [grpcurl-transitive-vuln-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--grpcurl-transitive-vuln-001.html) | `failed` | 0.000 | - | - | traj, tx |
 | [curl-cve-triage-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--curl-cve-triage-001.html) | `passed` | 0.940 | 0.000 | 9 | traj, tx |
 | [django-audit-trail-implement-001](../tasks/csb_sdlc_secure_haiku_20260302_221730--baseline-local-direct--django-audit-trail-implement-001.html) | `passed` | 0.800 | 0.000 | 67 | traj, tx |
@@ -23,16 +21,12 @@
 
 ## mcp-remote-direct
 
-- Valid tasks: `12`
-- Mean reward: `0.537`
-- Pass rate: `0.667`
+- Valid tasks: `8`
+- Mean reward: `0.805`
+- Pass rate: `1.000`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
-| [mcp_django-audit-trail-implement-001_7oa3dz](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_django-audit-trail-implement-001_7oa3dz.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_django-repo-scoped-access-001_nuvyyn](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_django-repo-scoped-access-001_nuvyyn.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_flipt-degraded-context-fix-001_zka1nq](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_flipt-degraded-context-fix-001_zka1nq.html) | `failed` | 0.000 | - | - | traj, tx |
-| [mcp_kafka-sasl-auth-audit-001_2qqvgn](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_kafka-sasl-auth-audit-001_2qqvgn.html) | `failed` | 0.000 | - | - | traj, tx |
 | [mcp_curl-cve-triage-001_nkn2ep](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_curl-cve-triage-001_nkn2ep.html) | `passed` | 0.940 | 0.833 | 6 | traj, tx |
 | [mcp_curl-vuln-reachability-001_bzcvms](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_curl-vuln-reachability-001_bzcvms.html) | `passed` | 0.710 | 0.892 | 37 | traj, tx |
 | [mcp_django-cross-team-boundary-001_oxflgu](../tasks/csb_sdlc_secure_haiku_20260302_221730--mcp-remote-direct--mcp_django-cross-team-boundary-001_oxflgu.html) | `passed` | 0.800 | 0.244 | 78 | traj, tx |

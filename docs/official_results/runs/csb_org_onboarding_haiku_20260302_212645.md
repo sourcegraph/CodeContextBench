@@ -1,15 +1,5 @@
 # csb_org_onboarding_haiku_20260302_212645
 
-## baseline-local-direct
-
-- Valid tasks: `1`
-- Mean reward: `0.000`
-- Pass rate: `0.000`
-
-| Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
-|---|---|---:|---:|---:|---|
-| [ccx-onboard-044](../tasks/csb_org_onboarding_haiku_20260302_212645--baseline-local-direct--ccx-onboard-044.html) | `failed` | 0.000 | - | - | traj, tx |
-
 ## mcp-remote-direct
 
 - Valid tasks: `1`

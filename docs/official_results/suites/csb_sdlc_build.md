@@ -64,7 +64,7 @@
 
 ## Multi-Run Variance
 
-Tasks with multiple valid runs (6 task/config pairs).
+Tasks with multiple valid runs (5 task/config pairs).
 
 | Task | Benchmark | Config | Runs | Mean | Std | Individual Rewards |
 |---|---|---|---:|---:|---:|---|
@@ -73,4 +73,3 @@ Tasks with multiple valid runs (6 task/config pairs).
 | cgen-deps-install-001 | — | `mcp-remote-direct` | 2 | 0.500 | 0.707 | 1.000, 0.000 |
 | k8s-noschedule-taint-feat-001 | — | `baseline-local-direct` | 2 | 0.700 | 0.000 | 0.700, 0.700 |
 | k8s-score-normalizer-refac-001 | — | `baseline-local-direct` | 2 | 0.800 | 0.113 | 0.720, 0.880 |
-| servo-scrollend-event-feat-001 | — | `baseline-local-direct` | 2 | 0.500 | 0.000 | 0.500, 0.500 |
