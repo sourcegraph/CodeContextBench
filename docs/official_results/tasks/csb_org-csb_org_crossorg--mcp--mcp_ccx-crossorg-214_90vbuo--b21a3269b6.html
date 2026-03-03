@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mcp_ccx-crossorg-214_90vbuo - Official Results</title>
+  <style>
+    :root { --bg:#0b1117; --panel:#131d27; --border:#2a3a4a; --text:#e9f0f6; --muted:#9fb1c2; --accent:#4fd39b; }
+    body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,sans-serif; background:linear-gradient(180deg,#0b1117,#0f1720); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:20px; }
+    h1,h2,h3,h4 { margin:0 0 10px; }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .metric { background:#0f1821; border:1px solid var(--border); border-radius:10px; padding:10px; }
+    .metric .k { color:var(--muted); font-size:12px; }
+    .metric .v { font-size:20px; margin-top:4px; }
+    .meta { color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; font-size:13px; }
+    th { color:var(--muted); }
+    code,pre { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#0d151d; border:1px solid var(--border); border-radius:8px; padding:8px; margin:8px 0; }
+    details { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:8px 0; background:#0f1821; }
+    summary { cursor:pointer; color:var(--accent); }
+    a { color:var(--accent); text-decoration:none; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 900px) { .split { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>mcp_ccx-crossorg-214_90vbuo</h1>
+    <p class="meta">Suite <code>csb_org_crossorg</code> | Run <code>csb_org/csb_org_crossorg</code> | Config <code>mcp-remote-artifact</code></p>
+
+    <div class="panel">
+      <h2>Task Information</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Repositories</div><div class="v" style="font-size:14px">-</div></div>
+        <div class="metric"><div class="k">Task ID</div><div class="v" style="font-size:14px">mcp_ccx-crossorg-214_90vbuo</div></div>
+        <div class="metric"><div class="k">Agent</div><div class="v" style="font-size:16px">claude-code</div></div>
+        <div class="metric"><div class="k">Model</div><div class="v" style="font-size:16px">claude-haiku-4-5-20251001</div></div>
+      </div>
+      <p class="meta" style="margin-top:10px">Benchmark path: <code>-</code></p>
+      <details>
+        <summary>Task instruction sent to agent</summary>
+        <pre># IMPORTANT: Source Code Access
+
+**Local source files are not present.** Your workspace does not contain source code. You **MUST** use Sourcegraph MCP tools to discover, read, and understand code before making any changes.
+
+Use `sg_list_repos` to discover available repositories before searching.
+
+
+## Required Workflow
+
+1. **Search first** — Use MCP tools to find relevant files and understand existing patterns
+2. **Read remotely** — Use `sg_read_file` to read full file contents from Sourcegraph
+3. **Edit locally** — Use Edit, Write, and Bash to create or modify files in your working directory
+4. **Verify locally** — Run tests with Bash to check your changes
+
+## Tool Selection
+
+| Goal | Tool |
+|------|------|
+| Exact symbol/string | `sg_keyword_search` |
+| Concepts/semantic search | `sg_nls_search` |
+| Trace usage/callers | `sg_find_references` |
+| See implementation | `sg_go_to_definition` |
+| Read full file | `sg_read_file` |
+| Browse structure | `sg_list_files` |
+| Find repos | `sg_list_repos` |
+| Search commits | `sg_commit_search` |
+| Track changes | `sg_diff_search` |
+| Compare versions | `sg_compare_revisions` |
+
+**Decision logic:**
+1. Know the exact symbol? → `sg_keyword_search`
+2. Know the concept, not the name? → `sg_nls_search`
+3. Need definition of a symbol? → `sg_go_to_definition`
+4. Need all callers/references? → `sg_find_references`
+5. Need full file content? → `sg_read_file`
+
+## Scoping (Always Do This)
+
+```
+repo:^github.com/ORG/REPO$           # Exact repo (preferred)
+repo:github.com/ORG/                 # All repos in org
+file:.*\.ts$                         # TypeScript only
+file:src/api/                        # Specific directory
+```
+
+Start narrow. Expand only if results are empty.
+
+## Efficiency Rules
+
+- Chain searches logically: search → read → references → definition
+- Don&#x27;t re-search for the same pattern; use results from prior calls
+- Prefer `sg_keyword_search` over `sg_nls_search` when you have exact terms
+- Read 2-3 related files before synthesising, rather than one at a time
+- Don&#x27;t read 20+ remote files without writing code — once you understand the pattern, start implementing
+
+## If Stuck
+
+If MCP search returns no results:
+1. Broaden the search query (synonyms, partial identifiers)
+2. Try `sg_nls_search` for semantic matching
+3. Use `sg_list_files` to browse the directory structure
+4. Use `sg_list_repos` to verify the repository name
+
+---
+
+# Graceful Shutdown Signal Handling Across Go Services
+
+## Your Task
+
+Find Go source files in kubernetes/kubernetes, grafana/grafana, and prometheus/prometheus that handle SIGTERM/SIGINT for graceful shutdown: the signal handler registration, the shutdown timeout, and the cleanup ordering (drain connections before stopping goroutines).
+
+## Context
+
+You are working on a codebase task involving repos from the crossorg domain.
+
+## Available Resources
+
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
+
+## Output Format
+
+Create a file at `/workspace/answer.json` with your findings in the following structure:
+
+```json
+{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;}
+  ],
+  &quot;symbols&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;SymbolName&quot;}
+  ],
+  &quot;chain&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;FunctionName&quot;}
+  ],
+  &quot;text&quot;: &quot;Narrative explanation of your findings, citing repos and file paths.&quot;
+}
+```
+
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
+
+## Evaluation
+
+Your answer will be scored on:
+- **File recall and precision**: Did you find all relevant files?</pre>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Execution Metrics</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Reward</div><div class="v">0.0000</div></div>
+        <div class="metric"><div class="k">Status</div><div class="v">failed</div></div>
+        <div class="metric"><div class="k">Total Time</div><div class="v">98.1s</div></div>
+        <div class="metric"><div class="k">Agent Time</div><div class="v">74.5s</div></div>
+        <div class="metric"><div class="k">Input Tokens</div><div class="v">2,130,094</div></div>
+        <div class="metric"><div class="k">Output Tokens</div><div class="v">7,526</div></div>
+        <div class="metric"><div class="k">Cache Tokens</div><div class="v">2,129,629</div></div>
+        <div class="metric"><div class="k">Tool Calls</div><div class="v">25</div></div>
+        <div class="metric"><div class="k">MCP Ratio</div><div class="v">0.920</div></div>
+      </div>
+      <p class="meta">Raw traces: <a href='../audits/csb_org-csb_org_crossorg--mcp--mcp_ccx-crossorg-214_90vbuo--b21a3269b6.json'>audit.json</a> | <a href='../traces/csb_org-csb_org_crossorg--mcp--mcp_ccx-crossorg-214_90vbuo--b21a3269b6/trajectory.json'>trajectory.json</a> | <a href='../traces/csb_org-csb_org_crossorg--mcp--mcp_ccx-crossorg-214_90vbuo--b21a3269b6/claude-code.txt'>transcript</a></p>
+      <details>
+        <summary>Tool Breakdown</summary>
+        <table><thead><tr><th>Tool</th><th>Calls</th></tr></thead><tbody><tr><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td>11</td></tr><tr><td><code>mcp__sourcegraph__sg_read_file</code></td><td>11</td></tr><tr><td><code>Read</code></td><td>1</td></tr><tr><td><code>Write</code></td><td>1</td></tr><tr><td><code>mcp__sourcegraph__sg_nls_search</code></td><td>1</td></tr></tbody></table>
+      </details>
+      <details>
+        <summary>Context Metrics (task_metrics / IR analysis)</summary>
+        <h3>Context</h3>
+        <table><tbody><tr><td>context_window_peak_pct</td><td>0.3896</td></tr><tr><td>environment_setup_seconds</td><td>1.023437</td></tr><tr><td>files_modified</td><td>1</td></tr><tr><td>lines_added</td><td>133</td></tr><tr><td>lines_removed</td><td>0</td></tr><tr><td>task_context_length</td><td>-</td></tr><tr><td>verifier_seconds</td><td>1.805182</td></tr></tbody></table>
+        <h3 style="margin-top:10px">IR</h3>
+        <table><tbody><tr><td colspan='2'>No IR metrics available</td></tr></tbody></table>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Agent Trace</h2>
+      <details open>
+        <summary>Conversation History (55)</summary>
+        <table>
+          <thead><tr><th>#</th><th>Timestamp</th><th>Type</th><th>Subtype</th><th>Tool</th><th>Text</th></tr></thead>
+          <tbody><tr><td>1</td><td>-</td><td>system</td><td>init</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>2</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>I&#x27;ll help you find Go source files handling SIGTERM/SIGINT for graceful shutdown in these three repositories. Let me search systematically across kubernetes/kubernetes, grafana/grafana, and prometheus/prometheus.</pre></td></tr><tr><td>3</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>4</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>5</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>6</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>7</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>8</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>9</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>10</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>11</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>12</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>13</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>14</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>15</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>16</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>17</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_nls_search</code></td><td><pre></pre></td></tr><tr><td>18</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>19</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>20</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>21</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Let me read the key files to understand the complete signal handling implementations:</pre></td></tr><tr><td>22</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>23</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>24</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>25</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>26</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>27</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>28</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>29</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>30</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>31</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>32</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>33</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>34</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>35</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>36</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>37</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>38</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>39</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>40</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>41</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>42</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>43</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>44</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_keyword_search</code></td><td><pre></pre></td></tr><tr><td>45</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>46</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>47</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>mcp__sourcegraph__sg_read_file</code></td><td><pre></pre></td></tr><tr><td>48</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>49</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>50</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me create a comprehensive answer file with all the findings:</pre></td></tr><tr><td>51</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Write</code></td><td><pre></pre></td></tr><tr><td>52</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>53</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>54</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>55</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Perfect! I&#x27;ve successfully created a comprehensive analysis of signal handling for graceful shutdown in all three major Go services. Here&#x27;s what I found:
+
+## Summary
+
+I&#x27;ve created `/workspace/answer.json` containing detailed findings about SIGTERM/SIGINT signal handling across kubernetes/kubernetes, grafana/grafana, and prometheus/prometheus. The analysis includes:
+
+### Key Findings:
+
+**Kubernetes (kubernetes/kubernetes):**
+- Signal registration via `SetupSignalContext()` in `signal.go`
+- Platform-specific handling in `signal_posix.go` and `signal_windows.go`
+- Graceful shutdown with 60-second request drain timeout + 70-second initial delay
+- Sophisticated lifecycle signaling system with documented shutdown phases
+- Drain connections before stopping goroutines pattern (documented in lifecycle_signals.go)
+
+**Prometheus (prometheus/prometheus):**
+- Signal registration using run.Group actor-like pattern in `cmd/prometheus/main.go`
+- 5-second timeout for tracer provider shutdown
+- Ordered component shutdown: discovery → rules → scrape → storage
+- Conditional queue draining via `DrainOnShutdown` option
+- Ensures dependent services stop in correct order
+
+**Grafana (grafana/grafana):**
+- Signal handlers in `pkg/cmd/grafana-server/commands/cli.go`
+- 30-second main shutdown timeout with cascading service management
+- gRPC server with configurable graceful stop timeout
+- Multiple operator-level signal handlers
+- Background service manager handles cleanup ordering
+
+### Common Patterns:
+- All use buffered signal channels with `signal.Notify()`
+- All register SIGTERM and SIGINT for graceful shutdown
+- All implement connection draining before goroutine termination
+- Shutdown timeouts enforce eventual process exit
+
+The answer file contains 12 relevant source files, 10 key symbols, and
+... (truncated)</pre></td></tr></tbody>
+        </table>
+      </details>
+      <details>
+        <summary>Tool Calls (25)</summary>
+        <details><summary>1. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/kubernetes/kubernetes$ SIGTERM SIGINT signal.Notify&quot;
+}</pre></details><details><summary>2. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/grafana/grafana$ SIGTERM SIGINT signal.Notify&quot;
+}</pre></details><details><summary>3. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/prometheus/prometheus$ SIGTERM SIGINT signal.Notify&quot;
+}</pre></details><details><summary>4. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/prometheus/prometheus$ signal.Notify SIGTERM&quot;
+}</pre></details><details><summary>5. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/kubernetes/kubernetes$ graceful shutdown timeout drain&quot;
+}</pre></details><details><summary>6. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/grafana/grafana$ graceful shutdown timeout drain&quot;
+}</pre></details><details><summary>7. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/prometheus/prometheus$ main.go signal&quot;
+}</pre></details><details><summary>8. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/prometheus/prometheus$ shutdown context timeout&quot;
+}</pre></details><details><summary>9. <code>mcp__sourcegraph__sg_nls_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/grafana/grafana$ context.WithTimeout graceful shutdown drain goroutine&quot;
+}</pre></details><details><summary>10. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal.go&quot;,
+  &quot;repo&quot;: &quot;github.com/kubernetes/kubernetes&quot;
+}</pre></details><details><summary>11. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 650,
+  &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go&quot;,
+  &quot;repo&quot;: &quot;github.com/kubernetes/kubernetes&quot;,
+  &quot;startLine&quot;: 580
+}</pre></details><details><summary>12. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 1280,
+  &quot;path&quot;: &quot;cmd/prometheus/main.go&quot;,
+  &quot;repo&quot;: &quot;github.com/prometheus/prometheus&quot;,
+  &quot;startLine&quot;: 1150
+}</pre></details><details><summary>13. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 170,
+  &quot;path&quot;: &quot;pkg/cmd/grafana-server/commands/cli.go&quot;,
+  &quot;repo&quot;: &quot;github.com/grafana/grafana&quot;,
+  &quot;startLine&quot;: 150
+}</pre></details><details><summary>14. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 200,
+  &quot;path&quot;: &quot;pkg/services/grpcserver/service.go&quot;,
+  &quot;repo&quot;: &quot;github.com/grafana/grafana&quot;,
+  &quot;startLine&quot;: 180
+}</pre></details><details><summary>15. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 170,
+  &quot;path&quot;: &quot;pkg/server/server.go&quot;,
+  &quot;repo&quot;: &quot;github.com/grafana/grafana&quot;,
+  &quot;startLine&quot;: 150
+}</pre></details><details><summary>16. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 100,
+  &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/lifecycle_signals.go&quot;,
+  &quot;repo&quot;: &quot;github.com/kubernetes/kubernetes&quot;,
+  &quot;startLine&quot;: 1
+}</pre></details><details><summary>17. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 140,
+  &quot;path&quot;: &quot;notifier/sendloop.go&quot;,
+  &quot;repo&quot;: &quot;github.com/prometheus/prometheus&quot;,
+  &quot;startLine&quot;: 120
+}</pre></details><details><summary>18. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/kubernetes/kubernetes$ signal.Notify SIGTERM SIGINT syscall&quot;
+}</pre></details><details><summary>19. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal.go&quot;,
+  &quot;repo&quot;: &quot;github.com/kubernetes/kubernetes&quot;
+}</pre></details><details><summary>20. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/kubernetes/kubernetes$ shutdownSignals var signal.Notify&quot;
+}</pre></details><details><summary>21. <code>mcp__sourcegraph__sg_keyword_search</code> @ -</summary><pre>{
+  &quot;query&quot;: &quot;repo:^github.com/kubernetes/kubernetes$ \&quot;var shutdownSignals\&quot; OR \&quot;shutdownSignals = \&quot;&quot;
+}</pre></details><details><summary>22. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 50,
+  &quot;path&quot;: &quot;pkg/operators/provisioning/connection_operator.go&quot;,
+  &quot;repo&quot;: &quot;github.com/grafana/grafana&quot;,
+  &quot;startLine&quot;: 30
+}</pre></details><details><summary>23. <code>mcp__sourcegraph__sg_read_file</code> @ -</summary><pre>{
+  &quot;endLine&quot;: 170,
+  &quot;path&quot;: &quot;tracing/tracing.go&quot;,
+  &quot;repo&quot;: &quot;github.com/prometheus/prometheus&quot;,
+  &quot;startLine&quot;: 160
+}</pre></details><details><summary>24. <code>Write</code> @ -</summary><pre>{
+  &quot;content&quot;: &quot;{\n  \&quot;files\&quot;: [\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal_posix.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal_windows.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/lifecycle_signals.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;cmd/prometheus/main.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;tracing/tracing.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;notifier/sendloop.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/cmd/grafana-server/commands/cli.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/services/grpcserver/service.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/server/server.go\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/operators/provisioning/connection_operator.go\&quot;\n    }\n  ],\n  \&quot;symbols\&quot;: [\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;SetupSignalContext\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;SetupSignalHandler\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal_posix.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;shutdownSignals\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;RunWithContext\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;cmd/prometheus/main.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;signal.Notify\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;tracing/tracing.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;buildTracerProvider\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;notifier/sendloop.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;drainQueue\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/cmd/grafana-server/commands/cli.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;RunServer\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/services/grpcserver/service.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;shutdown\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/server/server.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;Shutdown\&quot;\n    }\n  ],\n  \&quot;chain\&quot;: [\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/signal.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;SetupSignalContext\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;RunWithContext\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;,\n      \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/server/lifecycle_signals.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;lifecycleSignal\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;prometheus/prometheus\&quot;,\n      \&quot;path\&quot;: \&quot;cmd/prometheus/main.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;signal.Notify\&quot;\n    },\n    {\n      \&quot;repo\&quot;: \&quot;grafana/grafana\&quot;,\n      \&quot;path\&quot;: \&quot;pkg/cmd/grafana-server/commands/cli.go\&quot;,\n      \&quot;symbol\&quot;: \&quot;RunServer\&quot;\n    }\n  ],\n  \&quot;text\&quot;: \&quot;## Signal Handling for Graceful Shutdown Across Three Major Go Services\\n\\n### Kubernetes (kubernetes/kubernetes)\\n\\n**Signal Registration:**\\nThe primary signal handler is implemented in `staging/src/k8s.io/apiserver/pkg/server/signal.go`. The `SetupSignalContext()` function registers SIGTERM and SIGINT signals using `signal.Notify(shutdownHandler, shutdownSignals...)`. Platform-specific signal definitions are in:\\n- `staging/src/k8s.io/apiserver/pkg/server/signal_posix.go`: defines `shutdownSignals = []os.Signal{os.Interrupt, syscall.SIGTERM}`\\n- `staging/src/k8s.io/apiserver/pkg/server/signal_windows.go`: defines `shutdownSignals = []os.Signal{os.Interrupt}`\\n\\nThe signal handler creates a buffered channel with capacity 2, allowing it to handle a first signal for graceful shutdown and a second signal for immediate exit (lines 43-51 of signal.go).\\n\\n**Shutdown Timeout:**\\nThe graceful shutdown timeout is configured in `staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go`. The `RunWithContext()` method implements a multi-stage shutdown:\\n- Default shutdown timeout: 60 seconds (configurable via `ShutdownTimeout` parameter, line 585)\\n- When `ShutdownSendRetryAfter` is enabled, the HTTP server shutdown timeout is reduced to 2 seconds to allow proper GOAWAY frame handling (lines 586-595)\\n- The shutdown delay duration (default 70 seconds) allows graceful termination before closing listeners\\n\\n**Cleanup Ordering:**\\nThe cleanup sequence is documented in `staging/src/k8s.io/apiserver/pkg/server/lifecycle_signals.go` (lines 36-87). The lifecycle follows:\\n1. T0: ShutdownInitiated - signal received, /readyz returns red\\n2. T0+70s: AfterShutdownDelayDuration - delay passes, pre-shutdown hooks run\\n3. T0+70s: HTTPServerStoppedListening - server stops accepting connections\\n4. T0+70s to T0+130s: InFlightRequestsDrained - existing requests drain with timeout\\n5. Audit backend shutdown occurs only after in-flight requests have drained\\n6. The request draining phase waits for non-long-running requests to complete before HTTP server shutdown\\n\\n### Prometheus (prometheus/prometheus)\\n\\n**Signal Registration:**\\nThe signal handler is implemented in `cmd/prometheus/main.go` (lines 1158-1159) using a run.Group pattern. It registers SIGTERM and SIGINT:\\n```go\\nterm := make(chan os.Signal, 1)\\nsignal.Notify(term, os.Interrupt, syscall.SIGTERM)\\n```\\n\\nAdditionally, SIGHUP is registered separately (lines 1269-1270) for configuration reloads without shutdown.\\n\\n**Shutdown Timeout:**\\nPrometheus implements shutdown timeouts in multiple components:\\n- Tracing provider shutdown uses a 5-second timeout in `tracing/tracing.go` (lines 165-168): `context.WithTimeout(context.Background(), 5*time.Second)`\\n- Notifier queue draining supports conditional flushing via `DrainOnShutdown` option in `notifier/sendloop.go`\\n\\n**Cleanup Ordering:**\\nThe shutdown sequence uses run.Group (oklog/pkg/group) actor-like pattern with ordered component shutdown:\\n1. Signal handler stops (lines 1174-1177) - sets web ready state to Stopping\\n2. Discovery managers stop (lines 1190-1194, 1204-1207)\\n3. Rule manager stops (lines 1219-1222) - before scrape manager to avoid false alerts\\n4. Scrape manager stops (lines 1239-1246) - before closing storage to prevent write errors\\n5. Tracing manager stops with timeout (lines 1259-1261)\\nThe run.Group implementation ensures dependent services stop in correct order before process exit.\\n\\n### Grafana (grafana/grafana)\\n\\n**Signal Registration:**\\nThe main signal handler is in `pkg/cmd/grafana-server/commands/cli.go` (lines 150-169). It registers both SIGHUP and SIGTERM/SIGINT:\\n```go\\nsignal.Notify(sighupChan, syscall.SIGHUP)\\nsignal.Notify(signalChan, os.Interrupt, syscall.SIGTERM)\\n```\\n\\nAdditional signal handlers are implemented in various operators like `pkg/operators/provisioning/connection_operator.go` (lines 36-42).\\n\\n**Shutdown Timeout:**\\nGrafana implements graceful shutdown with configurable timeouts:\\n- Main server shutdown: 30-second timeout in `pkg/cmd/grafana-server/commands/cli.go` (line 162): `context.WithTimeout(ctx, 30*time.Second)`\\n- gRPC server shutdown: configurable timeout via `GracefulShutdownTimeout` in `pkg/services/grpcserver/service.go` (lines 184-198)\\n- Background services use context-based cancellation in `pkg/server/server.go` and `pkg/server/module_server.go`\\n\\n**Cleanup Ordering:**\\nThe shutdown follows this sequence:\\n1. Signal received, context with timeout created (line 162)\\n2. Server.Shutdown() called with context (line 164) - calls `managerAdapter.Shutdown()`\\n3. Background services drain in reverse order of startup\\n4. gRPC server uses select pattern: waits for graceful stop or timeout (lines 192-197)\\n5. If timeout occurs, forces stop immediately (line 197)\\n6. All service goroutines stop before process exit\\n\\n### Common Patterns\\n\\n**Signal Handling Pattern:**\\nAll three services:\\n- Use buffered signal channels (capacity 1-2) via `signal.Notify()`\\n- Register both SIGTERM and SIGINT (Interrupt)\\n- Handle graceful shutdown in separate goroutines\\n- Support immediate exit on second signal (in Kubernetes) or timeout-based forceful shutdown (in Grafana/Prometheus)\\n\\n**Timeout Implementation:**\\nAll implementations use `context.WithTimeout()` or `context.WithCancel()` for shutdown coordination:\\n- Kubernetes: 60-second request drain timeout + 70-second initial delay\\n- Prometheus: 5-second component shutdown timeout\\n- Grafana: 30-second main shutdown + component-specific timeouts\\n\\n**Connection Draining:**\\nDraining strategies vary:\\n- Kubernetes: Drains non-long-running in-flight requests within timeout, then closes HTTP server\\n- Prometheus: Uses actor-group pattern for ordered component shutdown, notifier supports optional queue drain\\n- Grafana: Background service manager handles cascading shutdown, gRPC server uses timeout-based graceful stop\&quot;\n}\n&quot;,
+  &quot;file_path&quot;: &quot;/workspace/answer.json&quot;
+}</pre></details><details><summary>25. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/answer.json&quot;
+}</pre></details>
+      </details>
+      <details>
+        <summary>Code Changes (1)</summary>
+        <details><summary>1. WRITE <code>/workspace/answer.json</code></summary><pre>{
+  &quot;files&quot;: [
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal_posix.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal_windows.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/genericapiserver.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/lifecycle_signals.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;prometheus/prometheus&quot;,
+      &quot;path&quot;: &quot;cmd/prometheus/main.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;prometheus/prometheus&quot;,
+      &quot;path&quot;: &quot;tracing/tracing.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;prometheus/prometheus&quot;,
+      &quot;path&quot;: &quot;notifier/sendloop.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;grafana/grafana&quot;,
+      &quot;path&quot;: &quot;pkg/cmd/grafana-server/commands/cli.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;grafana/grafana&quot;,
+      &quot;path&quot;: &quot;pkg/services/grpcserver/service.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;grafana/grafana&quot;,
+      &quot;path&quot;: &quot;pkg/server/server.go&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;grafana/grafana&quot;,
+      &quot;path&quot;: &quot;pkg/operators/provisioning/connection_operator.go&quot;
+    }
+  ],
+  &quot;symbols&quot;: [
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal.go&quot;,
+      &quot;symbol&quot;: &quot;SetupSignalContext&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal.go&quot;,
+      &quot;symbol&quot;: &quot;SetupSignalHandler&quot;
+    },
+    {
+      &quot;repo&quot;: &quot;kubernetes/kubernetes&quot;,
+      &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/server/signal_posix.go&quot;,
+      &quot;symbol&quot;: &quot;shutdownSignals&quot;
+    },
+    {
+    
+... (truncated)</pre></details>
+      </details>
+      <details>
+        <summary>Bash Commands (0)</summary>
+        <p>No bash commands parsed.</p>
+      </details>
+    </div>
+  </div>
+</body>
+</html>

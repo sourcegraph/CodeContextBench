@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ccx-crossorg-208 - Official Results</title>
+  <style>
+    :root { --bg:#0b1117; --panel:#131d27; --border:#2a3a4a; --text:#e9f0f6; --muted:#9fb1c2; --accent:#4fd39b; }
+    body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,sans-serif; background:linear-gradient(180deg,#0b1117,#0f1720); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:20px; }
+    h1,h2,h3,h4 { margin:0 0 10px; }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .metric { background:#0f1821; border:1px solid var(--border); border-radius:10px; padding:10px; }
+    .metric .k { color:var(--muted); font-size:12px; }
+    .metric .v { font-size:20px; margin-top:4px; }
+    .meta { color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; font-size:13px; }
+    th { color:var(--muted); }
+    code,pre { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#0d151d; border:1px solid var(--border); border-radius:8px; padding:8px; margin:8px 0; }
+    details { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:8px 0; background:#0f1821; }
+    summary { cursor:pointer; color:var(--accent); }
+    a { color:var(--accent); text-decoration:none; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 900px) { .split { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ccx-crossorg-208</h1>
+    <p class="meta">Suite <code>csb_org_crossorg</code> | Run <code>csb_org/csb_org_crossorg</code> | Config <code>baseline-local-artifact</code></p>
+
+    <div class="panel">
+      <h2>Task Information</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Repositories</div><div class="v" style="font-size:14px">-</div></div>
+        <div class="metric"><div class="k">Task ID</div><div class="v" style="font-size:14px">ccx-crossorg-208</div></div>
+        <div class="metric"><div class="k">Agent</div><div class="v" style="font-size:16px">claude-code</div></div>
+        <div class="metric"><div class="k">Model</div><div class="v" style="font-size:16px">claude-haiku-4-5-20251001</div></div>
+      </div>
+      <p class="meta" style="margin-top:10px">Benchmark path: <code>configs/../benchmarks/csb_org_crossorg/ccx-crossorg-208</code></p>
+      <details>
+        <summary>Task instruction sent to agent</summary>
+        <pre># gRPC Error Status Propagation Across Go Services
+
+## Your Task
+
+Compare how gRPC error status codes are created and propagated in kubernetes/kubernetes vs grafana/grafana vs etcd-io/etcd. Find Go source files in each repo that create gRPC Status errors with codes (codes.NotFound, codes.Internal, etc.) and the files that translate gRPC errors to HTTP responses.
+
+## Context
+
+You are working on a codebase task involving repos from the crossorg domain.
+
+## Available Resources
+
+No local repositories are pre-checked out.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+*(none — all repos available locally)*
+
+## Output Format
+
+Create a file at `/workspace/answer.json` with your findings in the following structure:
+
+```json
+{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;}
+  ],
+  &quot;symbols&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;SymbolName&quot;}
+  ],
+  &quot;chain&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;FunctionName&quot;}
+  ],
+  &quot;text&quot;: &quot;Narrative explanation of your findings, citing repos and file paths.&quot;
+}
+```
+
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
+
+## Evaluation
+
+Your answer will be scored on:
+- **File recall and precision**: Did you find all relevant files?</pre>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Execution Metrics</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Reward</div><div class="v">0.0000</div></div>
+        <div class="metric"><div class="k">Status</div><div class="v">failed</div></div>
+        <div class="metric"><div class="k">Total Time</div><div class="v">139.6s</div></div>
+        <div class="metric"><div class="k">Agent Time</div><div class="v">119.3s</div></div>
+        <div class="metric"><div class="k">Input Tokens</div><div class="v">2,823,204</div></div>
+        <div class="metric"><div class="k">Output Tokens</div><div class="v">11,553</div></div>
+        <div class="metric"><div class="k">Cache Tokens</div><div class="v">2,806,586</div></div>
+        <div class="metric"><div class="k">Tool Calls</div><div class="v">38</div></div>
+        <div class="metric"><div class="k">MCP Ratio</div><div class="v">0.000</div></div>
+      </div>
+      <p class="meta">Raw traces: <a href='../audits/csb_org-csb_org_crossorg--baseline--ccx-crossorg-208--a0030a6bd9.json'>audit.json</a> | <a href='../traces/csb_org-csb_org_crossorg--baseline--ccx-crossorg-208--a0030a6bd9/trajectory.json'>trajectory.json</a> | <a href='../traces/csb_org-csb_org_crossorg--baseline--ccx-crossorg-208--a0030a6bd9/claude-code.txt'>transcript</a></p>
+      <details>
+        <summary>Tool Breakdown</summary>
+        <table><thead><tr><th>Tool</th><th>Calls</th></tr></thead><tbody><tr><td><code>Bash</code></td><td>24</td></tr><tr><td><code>Read</code></td><td>13</td></tr><tr><td><code>Write</code></td><td>1</td></tr></tbody></table>
+      </details>
+      <details>
+        <summary>Context Metrics (task_metrics / IR analysis)</summary>
+        <h3>Context</h3>
+        <table><tbody><tr><td>context_window_peak_pct</td><td>0.3284</td></tr><tr><td>environment_setup_seconds</td><td>0.881075</td></tr><tr><td>files_modified</td><td>1</td></tr><tr><td>lines_added</td><td>46</td></tr><tr><td>lines_removed</td><td>0</td></tr><tr><td>task_context_length</td><td>-</td></tr><tr><td>verifier_seconds</td><td>1.643638</td></tr></tbody></table>
+        <h3 style="margin-top:10px">IR</h3>
+        <table><tbody><tr><td colspan='2'>No IR metrics available</td></tr></tbody></table>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Agent Trace</h2>
+      <details open>
+        <summary>Conversation History (87)</summary>
+        <table>
+          <thead><tr><th>#</th><th>Timestamp</th><th>Type</th><th>Subtype</th><th>Tool</th><th>Text</th></tr></thead>
+          <tbody><tr><td>1</td><td>-</td><td>system</td><td>init</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>2</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>I&#x27;ll help you analyze gRPC error status propagation across these three repositories. Let me start by checking what repositories are available locally and then systematically search for files that create and propagate gRPC Status errors.</pre></td></tr><tr><td>3</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>4</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>5</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>The workspace is empty. Let me clone the three repositories so I can analyze them.</pre></td></tr><tr><td>6</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>7</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>8</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>9</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>10</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>11</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>12</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Good! The repositories are cloning. Now let me search through each one for gRPC error status code creation and propagation patterns. I&#x27;ll search for common gRPC status code patterns.</pre></td></tr><tr><td>13</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>14</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>15</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Perfect! All three repos are cloned. Now let me systematically search for gRPC status code creation and error propagation patterns.</pre></td></tr><tr><td>16</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>17</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>18</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>19</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>20</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>21</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>22</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>23</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>24</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me search grafana and etcd for gRPC error handling:</pre></td></tr><tr><td>25</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>26</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>27</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>28</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>29</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Let me examine the key files I&#x27;ve identified to understand the error creation and propagation patterns:</pre></td></tr><tr><td>30</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>31</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>32</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>33</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>34</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>35</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>36</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Excellent! I found some key files. Let me continue searching for more comprehensive results. Let me look at more files in kubernetes and grafana:</pre></td></tr><tr><td>37</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>38</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>39</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>40</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>41</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>42</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>43</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>44</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>45</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>46</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>47</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>48</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>49</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>50</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>51</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>52</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>53</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>54</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>55</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>56</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>57</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>58</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>59</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>60</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>61</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me do a comprehensive search to identify all key files across the three repos:</pre></td></tr><tr><td>62</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>63</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>64</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>65</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>66</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>67</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>68</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>69</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>70</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>71</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>72</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>73</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>74</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>75</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>76</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>77</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>78</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>79</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>80</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>81</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>82</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>83</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>84</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me create the comprehensive answer file with all my findings:</pre></td></tr><tr><td>85</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Write</code></td><td><pre></pre></td></tr><tr><td>86</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>87</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Perfect! I&#x27;ve completed a comprehensive analysis of how gRPC error status codes are created and propagated across the three repositories.
+
+## Summary
+
+I&#x27;ve identified **23 key files** across kubernetes/kubernetes, grafana/grafana, and etcd-io/etcd that handle gRPC error status creation and HTTP response translation:
+
+### **kubernetes/kubernetes** focuses on:
+- Creating gRPC status codes in volume management (CSI), container runtime (CRI), and health probes
+- **Central translation point**: `ErrorToAPIStatus()` converts gRPC errors to Kubernetes metav1.Status for HTTP responses
+- **Streaming error translation**: `WriteError()` maps gRPC codes directly to HTTP status codes (404 for NotFound, 429 for ResourceExhausted, 500 for others)
+
+### **grafana/grafana** uses gRPC status codes in:
+- Authorization services (`rbac/service.go`) creating errors with codes: InvalidArgument, Internal, PermissionDenied, NotFound
+- Authentication interceptor returning Unauthenticated and PermissionDenied errors
+- Pattern: Services directly return gRPC status errors
+
+### **etcd-io/etcd** has comprehensive error handling:
+- **Centralized error definitions** in `api/v3rpc/rpctypes/error.go` with pre-created status errors using all major codes
+- **Error mapping function** `togRPCError()` in `server/etcdserver/api/v3rpc/util.go` translates internal errors to gRPC codes
+- **Automatic HTTP translation** via gRPC-Gateway generated files (`.pb.gw.go`) that handle both gRPC and HTTP protocols
+
+The answer file at `/workspace/answer.json` contains detailed findings including file paths, key symbols, function chains, and a comprehensive narrative explaining the patterns and differences between the three approaches.</pre></td></tr></tbody>
+        </table>
+      </details>
+      <details>
+        <summary>Tool Calls (38)</summary>
+        <details><summary>1. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace&quot;,
+  &quot;description&quot;: &quot;Check what&#x27;s available in the workspace&quot;
+}</pre></details><details><summary>2. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;git clone --depth 1 https://github.com/kubernetes/kubernetes.git 2&gt;&amp;1 | head -20&quot;,
+  &quot;description&quot;: &quot;Clone kubernetes/kubernetes repository&quot;
+}</pre></details><details><summary>3. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;git clone --depth 1 https://github.com/grafana/grafana.git 2&gt;&amp;1 | tail -5&quot;,
+  &quot;description&quot;: &quot;Clone grafana/grafana repository&quot;
+}</pre></details><details><summary>4. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;git clone --depth 1 https://github.com/etcd-io/etcd.git 2&gt;&amp;1 | tail -5&quot;,
+  &quot;description&quot;: &quot;Clone etcd-io/etcd repository&quot;
+}</pre></details><details><summary>5. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -type d -name .git | wc -l&quot;,
+  &quot;description&quot;: &quot;Wait for clones to complete - count git directories&quot;
+}</pre></details><details><summary>6. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/kubernetes &amp;&amp; find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;codes\\\\.NotFound\\|codes\\\\.Internal\\|codes\\\\.Unavailable\\|codes\\\\.InvalidArgument\\|codes\\\\.FailedPrecondition\&quot; 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Find Go files with gRPC status code usage in kubernetes&quot;
+}</pre></details><details><summary>7. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;status\\\\.Error\\|status\\\\.Errorf\&quot; 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Find Go files using status.Error or status.Errorf in kubernetes&quot;
+}</pre></details><details><summary>8. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -r \&quot;codes\\\\.Unknown\\|codes\\\\.DeadlineExceeded\\|codes\\\\.PermissionDenied\\|codes\\\\.ResourceExhausted\&quot; --include=\&quot;*.go\&quot; | head -10&quot;,
+  &quot;description&quot;: &quot;Search for additional gRPC status codes in kubernetes&quot;
+}</pre></details><details><summary>9. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -r \&quot;ToAPIStatus\\|statusError\\|grpc\\\\.Error\\|convertGRPC\&quot; --include=\&quot;*.go\&quot; staging/src/k8s.io/apiserver/pkg/endpoints/handlers/ 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Search for HTTP response translation in kubernetes apiserver&quot;
+}</pre></details><details><summary>10. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/grafana &amp;&amp; find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;codes\\\\.NotFound\\|codes\\\\.Internal\\|codes\\\\.Unavailable\\|codes\\\\.InvalidArgument\\|status\\\\.Error\\|status\\\\.Errorf\&quot; 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC status codes in grafana&quot;
+}</pre></details><details><summary>11. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/etcd &amp;&amp; find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;codes\\\\.NotFound\\|codes\\\\.Internal\\|codes\\\\.Unavailable\\|status\\\\.Error\\|status\\\\.Errorf\&quot; 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC status codes in etcd&quot;
+}</pre></details><details><summary>12. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/rest.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>13. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/status.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>14. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/etcd/api/v3rpc/rpctypes/error.go&quot;
+}</pre></details><details><summary>15. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/kubernetes &amp;&amp; grep -r \&quot;status\\.Error\\|status\\.Errorf\&quot; --include=\&quot;*.go\&quot; pkg/volume/csi/ | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC error creation in CSI volume plugin&quot;
+}</pre></details><details><summary>16. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/grafana &amp;&amp; find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;status\\.Error\\|status\\.Errorf\\|status\\.New\&quot; 2&gt;/dev/null | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC status functions in grafana&quot;
+}</pre></details><details><summary>17. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/pkg/volume/csi/csi_client.go&quot;,
+  &quot;limit&quot;: 150
+}</pre></details><details><summary>18. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -r \&quot;status\\.Error\\|status\\.Errorf\\|codes\\.\&quot; --include=\&quot;*.go\&quot; pkg/services/ | grep -v \&quot;test\\.go\\|\\.pb\\.go\&quot; | head -30&quot;,
+  &quot;description&quot;: &quot;Search for gRPC error handling in grafana services&quot;
+}</pre></details><details><summary>19. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -name \&quot;*.go\&quot; -type f | xargs grep -l \&quot;FromError\\|grpc.*http\\|Code()\\|gRPC\&quot; | grep -E \&quot;middleware|handler|intercept\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC error handling middleware in grafana&quot;
+}</pre></details><details><summary>20. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/etcd &amp;&amp; find . -name \&quot;*gateway*.go\&quot; -o -name \&quot;*handler*.go\&quot; | grep -E \&quot;grpc|gateway|http\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC to HTTP gateway files in etcd&quot;
+}</pre></details><details><summary>21. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/etcd/server/etcdmain/gateway.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>22. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/etcd &amp;&amp; find . -name \&quot;*pb.gw.go\&quot; | head -10&quot;,
+  &quot;description&quot;: &quot;Find protobuf gateway files in etcd&quot;
+}</pre></details><details><summary>23. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/etcd/api/etcdserverpb/gw/rpc.pb.gw.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>24. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/kubernetes &amp;&amp; grep -r \&quot;errorToStatus\\|StatusError\\|ErrorToAPIStatus\&quot; --include=\&quot;*.go\&quot; staging/src/k8s.io/apiserver/pkg/endpoints/handlers/ | head -20&quot;,
+  &quot;description&quot;: &quot;Search for error to status conversions in kubernetes&quot;
+}</pre></details><details><summary>25. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find staging/src/k8s.io/cri-api -name \&quot;*.go\&quot; | xargs grep -l \&quot;status.Error\\|codes\\.\&quot; | grep -v test | grep -v pb.go&quot;,
+  &quot;description&quot;: &quot;Find CRI API error files in kubernetes&quot;
+}</pre></details><details><summary>26. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/staging/src/k8s.io/cri-api/pkg/errors/errors.go&quot;
+}</pre></details><details><summary>27. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace &amp;&amp; for repo in kubernetes grafana etcd; do\n  echo \&quot;=== $repo ===\&quot;\n  cd $repo\n  echo \&quot;Files with gRPC error code creation:\&quot;\n  find . -name \&quot;*.go\&quot; -type f ! -name \&quot;*test*\&quot; ! -name \&quot;*.pb.go\&quot; 2&gt;/dev/null | xargs grep -l \&quot;codes\\\\.NotFound\\|codes\\\\.Internal\\|codes\\\\.Unavailable\\|codes\\\\.InvalidArgument\\|status\\\\.Error\&quot; 2&gt;/dev/null | head -15\n  cd ..\ndone&quot;,
+  &quot;description&quot;: &quot;Comprehensive search for gRPC error code files across all repos&quot;
+}</pre></details><details><summary>28. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go&quot;
+}</pre></details><details><summary>29. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/etcd/server/etcdserver/api/v3rpc/util.go&quot;
+}</pre></details><details><summary>30. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana/pkg/services/authz/rbac/service.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>31. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana/pkg/services/grpcserver/interceptors/auth.go&quot;,
+  &quot;limit&quot;: 50
+}</pre></details><details><summary>32. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -r \&quot;grpc.*error\\|http.*error\\|ToHTTP\\|FromGRPC\&quot; --include=\&quot;*.go\&quot; pkg/services/grpcserver/ | grep -v test | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC to HTTP error translation in grafana grpcserver&quot;
+}</pre></details><details><summary>33. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/grafana &amp;&amp; find . -path \&quot;*grpcserver*\&quot; -name \&quot;*.go\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find all grpcserver files in grafana&quot;
+}</pre></details><details><summary>34. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/kubernetes &amp;&amp; grep -r \&quot;WriteError\\|ErrorToHTTP\\|ErrorToAPIStatus\\|convertGRPC\&quot; --include=\&quot;*.go\&quot; staging/src/k8s.io/apiserver/pkg/ | grep -v test | head -20&quot;,
+  &quot;description&quot;: &quot;Search for error conversion functions in kubernetes apiserver&quot;
+}</pre></details><details><summary>35. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/staging/src/k8s.io/kubelet/pkg/cri/streaming/server.go&quot;,
+  &quot;limit&quot;: 80
+}</pre></details><details><summary>36. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -rn \&quot;codes\\\\.NotFound\\|codes\\\\.Internal\\|codes\\\\.Unavailable\&quot; --include=\&quot;*.go\&quot; pkg/probe/grpc/ staging/src/k8s.io/kubelet/pkg/cri/ | head -20&quot;,
+  &quot;description&quot;: &quot;Search for gRPC probe and CRI error handling in kubernetes&quot;
+}</pre></details><details><summary>37. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/kubernetes/pkg/probe/grpc/grpc.go&quot;,
+  &quot;limit&quot;: 80
+}</pre></details><details><summary>38. <code>Write</code> @ -</summary><pre>{
+  &quot;content&quot;: &quot;{\n  \&quot;files\&quot;: [\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/rest.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/status.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/cri-api/pkg/errors/errors.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;pkg/volume/csi/csi_client.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;pkg/volume/csi/expander.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/server.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;pkg/probe/grpc/grpc.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;pkg/kubelet/apis/grpc/ratelimit.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/cri-client/pkg/logs/logs.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/authz/rbac/service.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/authz/zanzana/server/auth.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/authz/zanzana/server/server_batch_check.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/grpcserver/interceptors/auth.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/registry/apis/secret/decrypt/grpc_client.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;api/v3rpc/rpctypes/error.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;server/etcdserver/api/v3rpc/util.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;api/etcdserverpb/gw/rpc.pb.gw.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;server/etcdserver/api/v3election/v3electionpb/gw/v3election.pb.gw.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;server/etcdserver/api/v3lock/v3lockpb/gw/v3lock.pb.gw.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;client/v3/client.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;client/v3/retry.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;client/v3/watch.go\&quot;}\n  ],\n  \&quot;symbols\&quot;: [\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/status.go\&quot;, \&quot;symbol\&quot;: \&quot;ErrorToAPIStatus\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go\&quot;, \&quot;symbol\&quot;: \&quot;WriteError\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go\&quot;, \&quot;symbol\&quot;: \&quot;NewErrorTooManyInFlight\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/cri-api/pkg/errors/errors.go\&quot;, \&quot;symbol\&quot;: \&quot;IsNotFound\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/authz/rbac/service.go\&quot;, \&quot;symbol\&quot;: \&quot;Service\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;api/v3rpc/rpctypes/error.go\&quot;, \&quot;symbol\&quot;: \&quot;Error\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;api/v3rpc/rpctypes/error.go\&quot;, \&quot;symbol\&quot;: \&quot;ErrorDesc\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;server/etcdserver/api/v3rpc/util.go\&quot;, \&quot;symbol\&quot;: \&quot;togRPCError\&quot;}\n  ],\n  \&quot;chain\&quot;: [\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/rest.go\&quot;, \&quot;symbol\&quot;: \&quot;RESTCreateHandler\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/writers.go\&quot;, \&quot;symbol\&quot;: \&quot;WriteRawJSON\&quot;},\n    {\&quot;repo\&quot;: \&quot;kubernetes/kubernetes\&quot;, \&quot;path\&quot;: \&quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go\&quot;, \&quot;symbol\&quot;: \&quot;WriteError\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;server/etcdserver/api/v3rpc/util.go\&quot;, \&quot;symbol\&quot;: \&quot;togRPCError\&quot;},\n    {\&quot;repo\&quot;: \&quot;etcd-io/etcd\&quot;, \&quot;path\&quot;: \&quot;api/etcdserverpb/gw/rpc.pb.gw.go\&quot;, \&quot;symbol\&quot;: \&quot;request_KV_Range_0\&quot;}\n  ],\n  \&quot;text\&quot;: \&quot;## gRPC Error Status Propagation Analysis\\n\\n### kubernetes/kubernetes\\n\\n**Error Status Creation and Usage:**\\n- `staging/src/k8s.io/apiserver/pkg/endpoints/handlers/rest.go` (line 29-30): Imports `grpccodes` and `grpcstatus` from google.golang.org/grpc, showing the apiserver handles gRPC codes in REST handlers.\\n- `pkg/volume/csi/csi_client.go` (lines 30-32): Imports gRPC codes and status packages. Directly uses codes like `codes.DeadlineExceeded` and `codes.ResourceExhausted` when handling Container Storage Interface (CSI) volume operations.\\n- `pkg/probe/grpc/grpc.go` (lines 26, 30): gRPC health probe implementation that handles gRPC status codes in health checks.\\n- `pkg/kubelet/apis/grpc/ratelimit.go`: Creates gRPC status errors with `codes.ResourceExhausted` for rate limiting.\\n\\n**HTTP Response Translation:**\\n- `staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/status.go` (line 34): Contains the `ErrorToAPIStatus()` function that converts gRPC errors (and other error types) to Kubernetes metav1.Status objects for HTTP responses. This is the central place where gRPC errors are translated to Kubernetes API status responses.\\n- `staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go` (lines 32-51): Defines `WriteError()` function that translates CRI streaming errors (gRPC errors) to HTTP response status codes. Maps `codes.NotFound` to HTTP 404, `codes.ResourceExhausted` to HTTP 429, and defaults to HTTP 500.\\n\\n**Error Checking:**\\n- `staging/src/k8s.io/cri-api/pkg/errors/errors.go` (lines 44-54): Provides `IsNotFound()` function that extracts and checks gRPC status code using `status.FromError()` and checks for `codes.NotFound`.\\n\\n### grafana/grafana\\n\\n**Error Status Creation:**\\n- `pkg/services/authz/rbac/service.go`: Uses `status.Error()` and `status.Errorf()` to create gRPC status errors with codes:\\n  - `codes.Internal` - For internal service errors\\n  - `codes.InvalidArgument` - For invalid input (batch check size exceeds maximum, mismatched results)\\n  - `codes.PermissionDenied` - For namespace mismatch errors\\n  - `codes.NotFound` - For unsupported resources and verbs\\n  \\n- `pkg/services/authz/zanzana/server/auth.go`: Creates gRPC status errors with:\\n  - `codes.Unauthenticated` - For missing or invalid tokens\\n  - `codes.PermissionDenied` - For insufficient token permissions and namespace mismatches\\n\\n- `pkg/services/authz/zanzana/server/server_batch_check.go`: Creates `status.Errorf()` errors with `grpccodes.InvalidArgument`.\\n\\n**gRPC Server Interception:**\\n- `pkg/services/grpcserver/interceptors/auth.go`: Implements authentication interceptor for gRPC server, extracting authentication context and returning gRPC errors on auth failures.\\n\\n### etcd-io/etcd\\n\\n**Error Status Creation and Mapping:**\\n- `api/v3rpc/rpctypes/error.go` (lines 23-98): Defines pre-created gRPC status errors using `status.Error()` with various codes:\\n  - `codes.InvalidArgument` - For empty keys, invalid arguments, auth failures, invalid API versions\\n  - `codes.NotFound` - For not found resources (lease not found, member not found)\\n  - `codes.FailedPrecondition` - For operation precondition failures (lease exists, member already exists, not leader)\\n  - `codes.OutOfRange` - For out of range values (compacted revisions, future revisions, too large lease TTL)\\n  - `codes.ResourceExhausted` - For resource exhaustion (no space, too many requests)\\n  - `codes.Canceled` - For cancelled operations\\n  - `codes.Unavailable` - For unavailable services (no leader, leader changed, server stopped, timeout, unhealthy cluster)\\n  - `codes.DataLoss` - For corrupt clusters\\n  - `codes.PermissionDenied` - For permission denied errors\\n  - `codes.Unauthenticated` - For invalid auth tokens\\n\\n**Error Translation and Propagation:**\\n- `server/etcdserver/api/v3rpc/util.go` (lines 35-108): Contains `togRPCError()` function that maps internal etcd errors to gRPC status errors using a comprehensive error mapping. This function translates from etcd-specific error types to standardized gRPC status codes.\\n- `api/etcdserverpb/gw/rpc.pb.gw.go`, `server/etcdserver/api/v3election/v3electionpb/gw/v3election.pb.gw.go`, `server/etcdserver/api/v3lock/v3lockpb/gw/v3lock.pb.gw.go`: Generated gRPC Gateway files that translate HTTP requests to gRPC calls and convert gRPC responses/errors back to HTTP. These files use `status.Errorf()` with `codes.InvalidArgument` for request marshalling errors.\\n\\n**Client-side Error Handling:**\\n- `client/v3/client.go`, `client/v3/retry.go`, `client/v3/watch.go`: Client implementations that extract and handle gRPC status codes from server responses.\\n\\n## Key Patterns\\n\\n1. **Status Code Creation**: All three projects use `google.golang.org/grpc/status` package functions (`status.Error()`, `status.Errorf()`) to create gRPC errors with specific codes.\\n\\n2. **Status Code Extraction**: All projects use `status.FromError()` to extract status information from gRPC errors.\\n\\n3. **HTTP Translation**:\\n   - Kubernetes: `ErrorToAPIStatus()` converts to metav1.Status objects; `WriteError()` translates to raw HTTP status codes\\n   - etcd: Uses gRPC-Gateway to automatically handle translation via generated code\\n   - grafana: gRPC services directly return status errors; HTTP translation handled by framework\\n\\n4. **Error Mapping**: etcd shows the most comprehensive error mapping with a dedicated mapping function (`togRPCError`) from internal errors to gRPC status codes.\&quot;\n}\n&quot;,
+  &quot;file_path&quot;: &quot;/workspace/answer.json&quot;
+}</pre></details>
+      </details>
+      <details>
+        <summary>Code Changes (1)</summary>
+        <details><summary>1. WRITE <code>/workspace/answer.json</code></summary><pre>{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/rest.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/apiserver/pkg/endpoints/handlers/responsewriters/status.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/cri-api/pkg/errors/errors.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;pkg/volume/csi/csi_client.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;pkg/volume/csi/expander.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/errors.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/kubelet/pkg/cri/streaming/server.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;pkg/probe/grpc/grpc.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;pkg/kubelet/apis/grpc/ratelimit.go&quot;},
+    {&quot;repo&quot;: &quot;kubernetes/kubernetes&quot;, &quot;path&quot;: &quot;staging/src/k8s.io/cri-client/pkg/logs/logs.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/authz/rbac/service.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/authz/zanzana/server/auth.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/authz/zanzana/server/server_batch_check.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/grpcserver/interceptors/auth.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/registry/apis/secret/decrypt/grpc_client.go&quot;},
+    {&quot;repo&quot;: &quot;etcd-io/etcd&quot;, &quot;path&quot;: &quot;api/v3rpc/rpctypes/error.go&quot;},
+    {&quot;repo&quot;: &quot;etcd-io/etcd&quot;, &quot;path&quot;: &quot;server/etcdserver/api/v3rpc/util.go&quot;},
+    {&quot;repo&quot;: &quot;etcd-io/etcd&quot;, &quot;path&quot;: &quot;api/etcdserverpb/gw/rpc.pb.gw.go&quot;},
+    {&quot;repo&quot;: &quot;etcd-io/etcd&quot;, &quot;path&quot;: &quot;server/etcdserver/api/v3election/v3electionpb/gw/v3election.pb.gw.go&quot;},
+    {&quot;repo&quot;: &quot;etcd-io/etcd&quot;, &quot;path&quot;: &quot;server/etcdser
+... (truncated)</pre></details>
+      </details>
+      <details>
+        <summary>Bash Commands (24)</summary>
+        <pre>1. $ ls -la /workspace</pre><pre>2. $ git clone --depth 1 https://github.com/kubernetes/kubernetes.git 2&gt;&amp;1 | head -20</pre><pre>3. $ git clone --depth 1 https://github.com/grafana/grafana.git 2&gt;&amp;1 | tail -5</pre><pre>4. $ git clone --depth 1 https://github.com/etcd-io/etcd.git 2&gt;&amp;1 | tail -5</pre><pre>5. $ find . -type d -name .git | wc -l</pre><pre>6. $ cd /workspace/kubernetes &amp;&amp; find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;codes\\.NotFound\|codes\\.Internal\|codes\\.Unavailable\|codes\\.InvalidArgument\|codes\\.FailedPrecondition&quot; 2&gt;/dev/null | head -20</pre><pre>7. $ find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;status\\.Error\|status\\.Errorf&quot; 2&gt;/dev/null | head -20</pre><pre>8. $ grep -r &quot;codes\\.Unknown\|codes\\.DeadlineExceeded\|codes\\.PermissionDenied\|codes\\.ResourceExhausted&quot; --include=&quot;*.go&quot; | head -10</pre><pre>9. $ grep -r &quot;ToAPIStatus\|statusError\|grpc\\.Error\|convertGRPC&quot; --include=&quot;*.go&quot; staging/src/k8s.io/apiserver/pkg/endpoints/handlers/ 2&gt;/dev/null | head -20</pre><pre>10. $ cd /workspace/grafana &amp;&amp; find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;codes\\.NotFound\|codes\\.Internal\|codes\\.Unavailable\|codes\\.InvalidArgument\|status\\.Error\|status\\.Errorf&quot; 2&gt;/dev/null | head -20</pre><pre>11. $ cd /workspace/etcd &amp;&amp; find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;codes\\.NotFound\|codes\\.Internal\|codes\\.Unavailable\|status\\.Error\|status\\.Errorf&quot; 2&gt;/dev/null | head -20</pre><pre>12. $ cd /workspace/kubernetes &amp;&amp; grep -r &quot;status\.Error\|status\.Errorf&quot; --include=&quot;*.go&quot; pkg/volume/csi/ | head -20</pre><pre>13. $ cd /workspace/grafana &amp;&amp; find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;status\.Error\|status\.Errorf\|status\.New&quot; 2&gt;/dev/null | head -20</pre><pre>14. $ grep -r &quot;status\.Error\|status\.Errorf\|codes\.&quot; --include=&quot;*.go&quot; pkg/services/ | grep -v &quot;test\.go\|\.pb\.go&quot; | head -30</pre><pre>15. $ find . -name &quot;*.go&quot; -type f | xargs grep -l &quot;FromError\|grpc.*http\|Code()\|gRPC&quot; | grep -E &quot;middleware|handler|intercept&quot; | head -20</pre><pre>16. $ cd /workspace/etcd &amp;&amp; find . -name &quot;*gateway*.go&quot; -o -name &quot;*handler*.go&quot; | grep -E &quot;grpc|gateway|http&quot; | head -20</pre><pre>17. $ cd /workspace/etcd &amp;&amp; find . -name &quot;*pb.gw.go&quot; | head -10</pre><pre>18. $ cd /workspace/kubernetes &amp;&amp; grep -r &quot;errorToStatus\|StatusError\|ErrorToAPIStatus&quot; --include=&quot;*.go&quot; staging/src/k8s.io/apiserver/pkg/endpoints/handlers/ | head -20</pre><pre>19. $ find staging/src/k8s.io/cri-api -name &quot;*.go&quot; | xargs grep -l &quot;status.Error\|codes\.&quot; | grep -v test | grep -v pb.go</pre><pre>20. $ cd /workspace &amp;&amp; for repo in kubernetes grafana etcd; do
+  echo &quot;=== $repo ===&quot;
+  cd $repo
+  echo &quot;Files with gRPC error code creation:&quot;
+  find . -name &quot;*.go&quot; -type f ! -name &quot;*test*&quot; ! -name &quot;*.pb.go&quot; 2&gt;/dev/null | xargs grep -l &quot;codes\\.NotFound\|codes\\.Internal\|codes\\.Unavailable\|codes\\.InvalidArgument\|status\\.Error&quot; 2&gt;/dev/null | head -15
+  cd ..
+done</pre><pre>21. $ grep -r &quot;grpc.*error\|http.*error\|ToHTTP\|FromGRPC&quot; --include=&quot;*.go&quot; pkg/services/grpcserver/ | grep -v test | head -20</pre><pre>22. $ cd /workspace/grafana &amp;&amp; find . -path &quot;*grpcserver*&quot; -name &quot;*.go&quot; | head -20</pre><pre>23. $ cd /workspace/kubernetes &amp;&amp; grep -r &quot;WriteError\|ErrorToHTTP\|ErrorToAPIStatus\|convertGRPC&quot; --include=&quot;*.go&quot; staging/src/k8s.io/apiserver/pkg/ | grep -v test | head -20</pre><pre>24. $ grep -rn &quot;codes\\.NotFound\|codes\\.Internal\|codes\\.Unavailable&quot; --include=&quot;*.go&quot; pkg/probe/grpc/ staging/src/k8s.io/kubelet/pkg/cri/ | head -20</pre>
+      </details>
+    </div>
+  </div>
+</body>
+</html>

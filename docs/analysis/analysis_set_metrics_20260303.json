@@ -1,0 +1,414 @@
+{
+  "generated_at": "2026-03-03T21:25:00Z",
+  "source": "docs/official_results/data/official_results.json::all_tasks",
+  "method": "Per-task per-config means/variances computed across all available runs, then paired baseline-vs-MCP on task means.",
+  "counts": {
+    "all_task_rows": 1822,
+    "selected_tasks": 381,
+    "paired_tasks": 370,
+    "sdlc_paired": 150,
+    "org_paired": 220
+  },
+  "paired_summary": {
+    "n_paired_tasks": 370,
+    "mean_reward_delta": 0.0349,
+    "reward_delta_variance": 0.048985,
+    "mean_wall_delta_seconds": -36.22,
+    "mean_wall_delta_pct": 67.58,
+    "mean_agent_delta_seconds": -101.06,
+    "mean_cost_delta_usd": 0.0404,
+    "mean_cost_delta_pct": 17.67,
+    "n_cost_pairs": 369,
+    "mcp_better_count": 157,
+    "baseline_better_count": 135,
+    "tie_count": 78,
+    "baseline_wall_mean_seconds": 367.11,
+    "mcp_wall_mean_seconds": 330.89,
+    "wall_delta_pct_of_means": -9.87,
+    "baseline_cost_mean_usd": 0.2996,
+    "mcp_cost_mean_usd": 0.34,
+    "cost_delta_pct_of_means": 13.49
+  },
+  "sdlc_summary": {
+    "n": 150,
+    "mean_reward_delta": 0.0363
+  },
+  "org_summary": {
+    "n": 220,
+    "mean_reward_delta": 0.0339
+  },
+  "paired_by_suite": {
+    "csb_org_onboarding": {
+      "n": 28,
+      "mean_reward_delta": 0.0083,
+      "reward_delta_variance": 0.029982,
+      "baseline_reward_mean": 0.7401,
+      "mcp_reward_mean": 0.7484
+    },
+    "csb_org_migration": {
+      "n": 26,
+      "mean_reward_delta": 0.0381,
+      "reward_delta_variance": 0.020784,
+      "baseline_reward_mean": 0.3772,
+      "mcp_reward_mean": 0.4153
+    },
+    "csb_sdlc_fix": {
+      "n": 26,
+      "mean_reward_delta": 0.0986,
+      "reward_delta_variance": 0.055532,
+      "baseline_reward_mean": 0.4681,
+      "mcp_reward_mean": 0.5668
+    },
+    "csb_org_security": {
+      "n": 24,
+      "mean_reward_delta": 0.1057,
+      "reward_delta_variance": 0.055106,
+      "baseline_reward_mean": 0.4517,
+      "mcp_reward_mean": 0.5574
+    },
+    "csb_sdlc_feature": {
+      "n": 23,
+      "mean_reward_delta": 0.013,
+      "reward_delta_variance": 0.118041,
+      "baseline_reward_mean": 0.5348,
+      "mcp_reward_mean": 0.5478
+    },
+    "csb_org_crossrepo_tracing": {
+      "n": 22,
+      "mean_reward_delta": 0.0514,
+      "reward_delta_variance": 0.035013,
+      "baseline_reward_mean": 0.3396,
+      "mcp_reward_mean": 0.391
+    },
+    "csb_org_domain": {
+      "n": 20,
+      "mean_reward_delta": -0.0165,
+      "reward_delta_variance": 0.006946,
+      "baseline_reward_mean": 0.3549,
+      "mcp_reward_mean": 0.3384
+    },
+    "csb_org_incident": {
+      "n": 20,
+      "mean_reward_delta": 0.1125,
+      "reward_delta_variance": 0.056807,
+      "baseline_reward_mean": 0.471,
+      "mcp_reward_mean": 0.5836
+    },
+    "csb_org_compliance": {
+      "n": 18,
+      "mean_reward_delta": 0.0153,
+      "reward_delta_variance": 0.01253,
+      "baseline_reward_mean": 0.2798,
+      "mcp_reward_mean": 0.2952
+    },
+    "csb_org_platform": {
+      "n": 18,
+      "mean_reward_delta": -0.0287,
+      "reward_delta_variance": 0.00993,
+      "baseline_reward_mean": 0.2954,
+      "mcp_reward_mean": 0.2667
+    },
+    "csb_sdlc_debug": {
+      "n": 18,
+      "mean_reward_delta": -0.0372,
+      "reward_delta_variance": 0.017479,
+      "baseline_reward_mean": 0.6063,
+      "mcp_reward_mean": 0.5691
+    },
+    "csb_sdlc_test": {
+      "n": 18,
+      "mean_reward_delta": -0.0113,
+      "reward_delta_variance": 0.037797,
+      "baseline_reward_mean": 0.5472,
+      "mcp_reward_mean": 0.5359
+    },
+    "csb_sdlc_refactor": {
+      "n": 16,
+      "mean_reward_delta": 0.1029,
+      "reward_delta_variance": 0.256679,
+      "baseline_reward_mean": 0.5804,
+      "mcp_reward_mean": 0.6833
+    },
+    "csb_org_crossorg": {
+      "n": 15,
+      "mean_reward_delta": 0.0252,
+      "reward_delta_variance": 0.00441,
+      "baseline_reward_mean": 0.1745,
+      "mcp_reward_mean": 0.1997
+    },
+    "csb_org_org": {
+      "n": 15,
+      "mean_reward_delta": 0.0568,
+      "reward_delta_variance": 0.015604,
+      "baseline_reward_mean": 0.4029,
+      "mcp_reward_mean": 0.4597
+    },
+    "csb_org_crossrepo": {
+      "n": 14,
+      "mean_reward_delta": -0.0242,
+      "reward_delta_variance": 0.003717,
+      "baseline_reward_mean": 0.3093,
+      "mcp_reward_mean": 0.2851
+    },
+    "csb_sdlc_design": {
+      "n": 14,
+      "mean_reward_delta": 0.0514,
+      "reward_delta_variance": 0.091786,
+      "baseline_reward_mean": 0.6853,
+      "mcp_reward_mean": 0.7367
+    },
+    "csb_sdlc_document": {
+      "n": 13,
+      "mean_reward_delta": 0.0415,
+      "reward_delta_variance": 0.007517,
+      "baseline_reward_mean": 0.8012,
+      "mcp_reward_mean": 0.8427
+    },
+    "csb_sdlc_secure": {
+      "n": 12,
+      "mean_reward_delta": -0.05,
+      "reward_delta_variance": 0.012604,
+      "baseline_reward_mean": 0.6537,
+      "mcp_reward_mean": 0.6038
+    },
+    "csb_sdlc_understand": {
+      "n": 10,
+      "mean_reward_delta": 0.1148,
+      "reward_delta_variance": 0.089103,
+      "baseline_reward_mean": 0.6442,
+      "mcp_reward_mean": 0.759
+    }
+  },
+  "paired_by_language": {
+    "go": {
+      "n": 134,
+      "mean_reward_delta": 0.0519,
+      "reward_delta_variance": 0.049442,
+      "baseline_reward_mean": 0.4594,
+      "mcp_reward_mean": 0.5113
+    },
+    "cpp": {
+      "n": 73,
+      "mean_reward_delta": 0.0084,
+      "reward_delta_variance": 0.026095,
+      "baseline_reward_mean": 0.4813,
+      "mcp_reward_mean": 0.4897
+    },
+    "java": {
+      "n": 57,
+      "mean_reward_delta": 0.0188,
+      "reward_delta_variance": 0.030897,
+      "baseline_reward_mean": 0.4829,
+      "mcp_reward_mean": 0.5017
+    },
+    "python": {
+      "n": 55,
+      "mean_reward_delta": 0.0705,
+      "reward_delta_variance": 0.088567,
+      "baseline_reward_mean": 0.4564,
+      "mcp_reward_mean": 0.5269
+    },
+    "rust": {
+      "n": 12,
+      "mean_reward_delta": 0.0232,
+      "reward_delta_variance": 0.006496,
+      "baseline_reward_mean": 0.4286,
+      "mcp_reward_mean": 0.4518
+    },
+    "c": {
+      "n": 10,
+      "mean_reward_delta": 0.0183,
+      "reward_delta_variance": 0.043681,
+      "baseline_reward_mean": 0.6676,
+      "mcp_reward_mean": 0.6858
+    },
+    "javascript": {
+      "n": 8,
+      "mean_reward_delta": 0.1047,
+      "reward_delta_variance": 0.119261,
+      "baseline_reward_mean": 0.4242,
+      "mcp_reward_mean": 0.5289
+    },
+    "typescript": {
+      "n": 7,
+      "mean_reward_delta": -0.046,
+      "reward_delta_variance": 0.117533,
+      "baseline_reward_mean": 0.6448,
+      "mcp_reward_mean": 0.5988
+    },
+    "java,cpp": {
+      "n": 5,
+      "mean_reward_delta": 0.0432,
+      "reward_delta_variance": 0.003436,
+      "baseline_reward_mean": 0.6986,
+      "mcp_reward_mean": 0.7418
+    },
+    "cpp,c,javascript": {
+      "n": 3,
+      "mean_reward_delta": 0.073,
+      "reward_delta_variance": 0.01175,
+      "baseline_reward_mean": 0.3272,
+      "mcp_reward_mean": 0.4002
+    },
+    "csharp": {
+      "n": 1,
+      "mean_reward_delta": -0.045,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 0.55,
+      "mcp_reward_mean": 0.505
+    },
+    "go,cpp": {
+      "n": 1,
+      "mean_reward_delta": -0.16,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 0.655,
+      "mcp_reward_mean": 0.495
+    },
+    "go,protobuf": {
+      "n": 1,
+      "mean_reward_delta": -0.165,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 1.0,
+      "mcp_reward_mean": 0.835
+    },
+    "mixed": {
+      "n": 1,
+      "mean_reward_delta": -0.3547,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 0.8003,
+      "mcp_reward_mean": 0.4456
+    },
+    "python,cpp": {
+      "n": 1,
+      "mean_reward_delta": -0.3,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 1.0,
+      "mcp_reward_mean": 0.7
+    },
+    "unknown": {
+      "n": 1,
+      "mean_reward_delta": 0.0,
+      "reward_delta_variance": 0.0,
+      "baseline_reward_mean": 0.0,
+      "mcp_reward_mean": 0.0
+    }
+  },
+  "paired_by_difficulty": {
+    "hard": {
+      "n": 338,
+      "mean_reward_delta": 0.038,
+      "reward_delta_variance": 0.046768,
+      "baseline_reward_mean": 0.4741,
+      "mcp_reward_mean": 0.5121
+    },
+    "expert": {
+      "n": 21,
+      "mean_reward_delta": -0.0572,
+      "reward_delta_variance": 0.070557,
+      "baseline_reward_mean": 0.6626,
+      "mcp_reward_mean": 0.6054
+    },
+    "medium": {
+      "n": 11,
+      "mean_reward_delta": 0.1147,
+      "reward_delta_variance": 0.053039,
+      "baseline_reward_mean": 0.3066,
+      "mcp_reward_mean": 0.4213
+    }
+  },
+  "paired_by_files_count_bin": {
+    "<10": {
+      "n": 168,
+      "mean_reward_delta": 0.0478,
+      "reward_delta_variance": 0.032454,
+      "baseline_reward_mean": 0.3273,
+      "mcp_reward_mean": 0.3751
+    },
+    "unknown": {
+      "n": 111,
+      "mean_reward_delta": 0.0253,
+      "reward_delta_variance": 0.034117,
+      "baseline_reward_mean": 0.5496,
+      "mcp_reward_mean": 0.575
+    },
+    "10-100": {
+      "n": 91,
+      "mean_reward_delta": 0.0226,
+      "reward_delta_variance": 0.097068,
+      "baseline_reward_mean": 0.6761,
+      "mcp_reward_mean": 0.6988
+    }
+  },
+  "mcp_tool_usage": {
+    "n_runs": 910,
+    "mean_tool_calls_total": 32.48,
+    "mean_tool_calls_mcp": 22.72,
+    "mean_tool_calls_local": 9.67,
+    "mean_mcp_ratio": 0.7979,
+    "mean_search_calls_keyword": 8.83,
+    "mean_search_calls_nls": 1.12,
+    "mean_search_calls_deepsearch": 0.0058,
+    "top_tools_by_calls": [
+      [
+        "mcp__sourcegraph__sg_read_file",
+        8597
+      ],
+      [
+        "mcp__sourcegraph__sg_keyword_search",
+        7967
+      ],
+      [
+        "Bash",
+        5097
+      ],
+      [
+        "mcp__sourcegraph__sg_list_files",
+        2439
+      ],
+      [
+        "Read",
+        1336
+      ],
+      [
+        "Write",
+        1283
+      ],
+      [
+        "mcp__sourcegraph__sg_nls_search",
+        995
+      ],
+      [
+        "Edit",
+        713
+      ],
+      [
+        "mcp__sourcegraph__sg_list_repos",
+        517
+      ],
+      [
+        "TodoWrite",
+        155
+      ],
+      [
+        "Grep",
+        87
+      ],
+      [
+        "mcp__sourcegraph__sg_find_references",
+        61
+      ],
+      [
+        "Agent",
+        50
+      ],
+      [
+        "TaskOutput",
+        38
+      ],
+      [
+        "bash",
+        32
+      ]
+    ]
+  }
+}

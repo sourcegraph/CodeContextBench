@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ccx-dep-trace-179 - Official Results</title>
+  <style>
+    :root { --bg:#0b1117; --panel:#131d27; --border:#2a3a4a; --text:#e9f0f6; --muted:#9fb1c2; --accent:#4fd39b; }
+    body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,sans-serif; background:linear-gradient(180deg,#0b1117,#0f1720); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:20px; }
+    h1,h2,h3,h4 { margin:0 0 10px; }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .metric { background:#0f1821; border:1px solid var(--border); border-radius:10px; padding:10px; }
+    .metric .k { color:var(--muted); font-size:12px; }
+    .metric .v { font-size:20px; margin-top:4px; }
+    .meta { color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; font-size:13px; }
+    th { color:var(--muted); }
+    code,pre { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#0d151d; border:1px solid var(--border); border-radius:8px; padding:8px; margin:8px 0; }
+    details { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:8px 0; background:#0f1821; }
+    summary { cursor:pointer; color:var(--accent); }
+    a { color:var(--accent); text-decoration:none; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 900px) { .split { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ccx-dep-trace-179</h1>
+    <p class="meta">Suite <code>csb_org_crossrepo_tracing</code> | Run <code>csb_org/csb_org_crossrepo_tracing</code> | Config <code>baseline-local-artifact</code></p>
+
+    <div class="panel">
+      <h2>Task Information</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Repositories</div><div class="v" style="font-size:14px">-</div></div>
+        <div class="metric"><div class="k">Task ID</div><div class="v" style="font-size:14px">ccx-dep-trace-179</div></div>
+        <div class="metric"><div class="k">Agent</div><div class="v" style="font-size:16px">claude-code</div></div>
+        <div class="metric"><div class="k">Model</div><div class="v" style="font-size:16px">claude-haiku-4-5-20251001</div></div>
+      </div>
+      <p class="meta" style="margin-top:10px">Benchmark path: <code>configs/../benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-179</code></p>
+      <details>
+        <summary>Task instruction sent to agent</summary>
+        <pre># Grafana Alerting Rule Evaluation to Notification Chain
+
+## Your Task
+
+Trace how a Grafana unified alerting rule is evaluated and fired in grafana/grafana. Find Go source files implementing: the rule scheduler, the rule evaluation, the alert state transition, and the alert notification dispatch to receivers.
+
+## Context
+
+You are working on a codebase task involving repos from the crossrepo tracing domain.
+
+## Available Resources
+
+The local `/workspace/` directory contains: sg-evals/grafana--26d36ec.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+- `sg-evals/grafana--26d36ec` (grafana/grafana)
+- `sg-evals/grafana-loki` (grafana/loki)
+- `sg-evals/grafana-mimir` (grafana/mimir)
+
+## Output Format
+
+Create a file at `/workspace/answer.json` with your findings in the following structure:
+
+```json
+{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;}
+  ],
+  &quot;symbols&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;SymbolName&quot;}
+  ],
+  &quot;chain&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;FunctionName&quot;}
+  ],
+  &quot;text&quot;: &quot;Narrative explanation of your findings, citing repos and file paths.&quot;
+}
+```
+
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
+
+## Evaluation
+
+Your answer will be scored on:
+- **File recall and precision**: Did you find all relevant files?</pre>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Execution Metrics</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Reward</div><div class="v">0.0000</div></div>
+        <div class="metric"><div class="k">Status</div><div class="v">failed</div></div>
+        <div class="metric"><div class="k">Total Time</div><div class="v">114.0s</div></div>
+        <div class="metric"><div class="k">Agent Time</div><div class="v">89.9s</div></div>
+        <div class="metric"><div class="k">Input Tokens</div><div class="v">3,633,254</div></div>
+        <div class="metric"><div class="k">Output Tokens</div><div class="v">9,371</div></div>
+        <div class="metric"><div class="k">Cache Tokens</div><div class="v">3,592,268</div></div>
+        <div class="metric"><div class="k">Tool Calls</div><div class="v">49</div></div>
+        <div class="metric"><div class="k">MCP Ratio</div><div class="v">0.000</div></div>
+      </div>
+      <p class="meta">Raw traces: <a href='../audits/csb_org-csb_org_crossrepo_tracing--baseline--ccx-dep-trace-179--9556638d69.json'>audit.json</a> | <a href='../traces/csb_org-csb_org_crossrepo_tracing--baseline--ccx-dep-trace-179--9556638d69/trajectory.json'>trajectory.json</a> | <a href='../traces/csb_org-csb_org_crossrepo_tracing--baseline--ccx-dep-trace-179--9556638d69/claude-code.txt'>transcript</a></p>
+      <details>
+        <summary>Tool Breakdown</summary>
+        <table><thead><tr><th>Tool</th><th>Calls</th></tr></thead><tbody><tr><td><code>Bash</code></td><td>21</td></tr><tr><td><code>Read</code></td><td>17</td></tr><tr><td><code>Grep</code></td><td>9</td></tr><tr><td><code>Glob</code></td><td>1</td></tr><tr><td><code>Write</code></td><td>1</td></tr></tbody></table>
+      </details>
+      <details>
+        <summary>Context Metrics (task_metrics / IR analysis)</summary>
+        <h3>Context</h3>
+        <table><tbody><tr><td>context_window_peak_pct</td><td>0.3852</td></tr><tr><td>environment_setup_seconds</td><td>1.064069</td></tr><tr><td>files_modified</td><td>1</td></tr><tr><td>lines_added</td><td>56</td></tr><tr><td>lines_removed</td><td>0</td></tr><tr><td>task_context_length</td><td>-</td></tr><tr><td>verifier_seconds</td><td>1.84925</td></tr></tbody></table>
+        <h3 style="margin-top:10px">IR</h3>
+        <table><tbody><tr><td colspan='2'>No IR metrics available</td></tr></tbody></table>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Agent Trace</h2>
+      <details open>
+        <summary>Conversation History (103)</summary>
+        <table>
+          <thead><tr><th>#</th><th>Timestamp</th><th>Type</th><th>Subtype</th><th>Tool</th><th>Text</th></tr></thead>
+          <tbody><tr><td>1</td><td>-</td><td>system</td><td>init</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>2</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>I&#x27;ll help you trace the Grafana unified alerting rule evaluation and notification chain. Let me start by exploring the repository structure.</pre></td></tr><tr><td>3</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>4</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Glob</code></td><td><pre></pre></td></tr><tr><td>5</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>6</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>7</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>8</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>9</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>10</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>11</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>12</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>13</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>14</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>15</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>16</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>17</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>18</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>19</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>20</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>21</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>22</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>23</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>24</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>25</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>26</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>27</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>28</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>29</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>30</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>31</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>32</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>33</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>34</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>35</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>36</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>37</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>38</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>39</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>40</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>41</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>42</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>43</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>44</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>45</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>46</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>47</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>48</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>49</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>50</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>51</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>52</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>53</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>54</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>55</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>56</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>57</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>58</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>59</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>60</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>61</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>62</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>63</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>64</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>65</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>66</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>67</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>68</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>69</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>70</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>71</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>72</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>73</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>74</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>75</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>76</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>77</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>78</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>79</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>80</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>81</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>82</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>83</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>84</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>85</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>86</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>87</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>88</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>89</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>90</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>91</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>92</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>93</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me create a memory file and then compile the answer. Let me first verify the full chain by looking at the ngalert.go which likely initializes the whole pipeline.</pre></td></tr><tr><td>94</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>95</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>96</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Grep</code></td><td><pre></pre></td></tr><tr><td>97</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>98</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>99</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>100</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now I&#x27;ll compile my findings into the answer file:</pre></td></tr><tr><td>101</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Write</code></td><td><pre></pre></td></tr><tr><td>102</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>103</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Perfect! I&#x27;ve successfully traced the Grafana unified alerting rule evaluation and notification chain. Here&#x27;s a summary of what I found:
+
+## Key Findings
+
+I&#x27;ve identified the complete flow from rule evaluation to notification dispatch:
+
+### **1. Rule Scheduler**
+- **File**: `pkg/services/ngalert/schedule/schedule.go`
+- **Entry Point**: `Run()` → `schedulePeriodic()` → `processTick()`
+- Determines which rules should be evaluated based on their evaluation interval
+
+### **2. Rule Evaluation**
+- **File**: `pkg/services/ngalert/schedule/alert_rule.go`
+- **Method**: `Eval()` → `evaluate()`
+- Uses `eval.EvaluatorFactory` to create a `ConditionEvaluator`
+- Executes queries and expressions against datasources
+
+### **3. Alert Condition Evaluation**
+- **File**: `pkg/services/ngalert/eval/eval.go`
+- **Interface**: `ConditionEvaluator.Evaluate()`
+- Returns evaluation results with alert instance data
+
+### **4. State Transition Processing**
+- **File**: `pkg/services/ngalert/state/manager.go`
+- **Method**: `ProcessEvalResults()`
+- Determines state changes for each alert instance (Normal → Alerting, etc.)
+- Generates `StateTransition` objects describing what changed
+
+### **5. Alert Notification Dispatch**
+- **File**: `pkg/services/ngalert/sender/router.go`
+- **Class**: `AlertsRouter.Send()`
+- Routes alerts to either:
+  - **Internal Notifier**: `MultiOrgAlertmanager` → `alertmanager.PutAlerts()` 
+  - **External Notifier**: `ExternalAlertmanager.SendAlerts()`
+
+The complete answer with all relevant files, symbols, and the execution chain has been saved to `/workspace/answer.json`.</pre></td></tr></tbody>
+        </table>
+      </details>
+      <details>
+        <summary>Tool Calls (49)</summary>
+        <details><summary>1. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/sg-evals/grafana--26d36ec -type d -name \&quot;*alert*\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find directories related to alerts&quot;
+}</pre></details><details><summary>2. <code>Glob</code> @ -</summary><pre>{
+  &quot;pattern&quot;: &quot;/workspace/sg-evals/grafana--26d36ec/pkg/**/alerting/**/*.go&quot;
+}</pre></details><details><summary>3. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/&quot;,
+  &quot;description&quot;: &quot;List contents of workspace directory&quot;
+}</pre></details><details><summary>4. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec -type d -name \&quot;*alert*\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find directories related to alerts&quot;
+}</pre></details><details><summary>5. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec -path \&quot;*alerting*\&quot; -name \&quot;*.go\&quot; -type f | grep -E \&quot;(scheduler|evaluator|state|notification)\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find Go files related to scheduling, evaluation, state, and notifications&quot;
+}</pre></details><details><summary>6. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec -type f -name \&quot;*.go\&quot; -path \&quot;*/alerting/*\&quot; | head -30&quot;,
+  &quot;description&quot;: &quot;List Go files in alerting directories&quot;
+}</pre></details><details><summary>7. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec/pkg -type f -name \&quot;*.go\&quot; -path \&quot;*alerting*\&quot; | head -40&quot;,
+  &quot;description&quot;: &quot;Find Go files in pkg alerting directories&quot;
+}</pre></details><details><summary>8. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec/pkg/services -type d -name \&quot;*alert*\&quot;&quot;,
+  &quot;description&quot;: &quot;Find alerting services directories&quot;
+}</pre></details><details><summary>9. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec/pkg/services/ngalert -type f -name \&quot;*.go\&quot; | head -50&quot;,
+  &quot;description&quot;: &quot;List Go files in ngalert directory&quot;
+}</pre></details><details><summary>10. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec/pkg/services/ngalert -type f -name \&quot;*scheduler*\&quot; -o -name \&quot;*evaluator*\&quot; -o -name \&quot;*state*\&quot;&quot;,
+  &quot;description&quot;: &quot;Find scheduler, evaluator, and state related files&quot;
+}</pre></details><details><summary>11. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/&quot;,
+  &quot;description&quot;: &quot;List main directories in ngalert&quot;
+}</pre></details><details><summary>12. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/schedule/&quot;,
+  &quot;description&quot;: &quot;List files in schedule directory&quot;
+}</pre></details><details><summary>13. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/eval/&quot;,
+  &quot;description&quot;: &quot;List files in eval directory&quot;
+}</pre></details><details><summary>14. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/notifier/&quot;,
+  &quot;description&quot;: &quot;List files in notifier directory&quot;
+}</pre></details><details><summary>15. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/sender/&quot;,
+  &quot;description&quot;: &quot;List files in sender directory&quot;
+}</pre></details><details><summary>16. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/schedule.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>17. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/eval/eval.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>18. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>19. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/schedule.go&quot;,
+  &quot;limit&quot;: 200,
+  &quot;offset&quot;: 100
+}</pre></details><details><summary>20. <code>Grep</code> @ -</summary><pre>{
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/schedule.go&quot;,
+  &quot;pattern&quot;: &quot;func.*Run\\(|func.*evaluate|func.*process&quot;
+}</pre></details><details><summary>21. <code>Grep</code> @ -</summary><pre>{
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/alert_rule.go&quot;,
+  &quot;pattern&quot;: &quot;func.*eval|Evaluate|Send&quot;
+}</pre></details><details><summary>22. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/alert_rule.go&quot;,
+  &quot;limit&quot;: 80
+}</pre></details><details><summary>23. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/sender.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>24. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/notifier.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>25. <code>Grep</code> @ -</summary><pre>{
+  &quot;context&quot;: 3,
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/alert_rule.go&quot;,
+  &quot;pattern&quot;: &quot;func.*send|func.*route|func.*dispatch&quot;
+}</pre></details><details><summary>26. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/schedule/alert_rule.go&quot;,
+  &quot;limit&quot;: 100,
+  &quot;offset&quot;: 470
+}</pre></details><details><summary>27. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/router.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>28. <code>Grep</code> @ -</summary><pre>{
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/router.go&quot;,
+  &quot;pattern&quot;: &quot;func.*Send&quot;
+}</pre></details><details><summary>29. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/router.go&quot;,
+  &quot;limit&quot;: 80,
+  &quot;offset&quot;: 316
+}</pre></details><details><summary>30. <code>Grep</code> @ -</summary><pre>{
+  &quot;head_limit&quot;: 20,
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/notifier/alertmanager.go&quot;,
+  &quot;pattern&quot;: &quot;func.*multiOrgNotifier|AlertmanagerMock|func.*notifier&quot;
+}</pre></details><details><summary>31. <code>Grep</code> @ -</summary><pre>{
+  &quot;context&quot;: 5,
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/notifier/alertmanager.go&quot;,
+  &quot;pattern&quot;: &quot;func.*PutAlerts&quot;
+}</pre></details><details><summary>32. <code>Grep</code> @ -</summary><pre>{
+  &quot;context&quot;: 3,
+  &quot;head_limit&quot;: 20,
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/notifier/multiorg_alertmanager.go&quot;,
+  &quot;pattern&quot;: &quot;func.*MultiOrgAlertmanager&quot;
+}</pre></details><details><summary>33. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/notifier/multiorg_alertmanager.go&quot;,
+  &quot;limit&quot;: 150
+}</pre></details><details><summary>34. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/notifier/alertmanager.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>35. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;func.*StateTransition\\|func.*process\\|func.*Execute\&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -30&quot;,
+  &quot;description&quot;: &quot;Find key functions in state manager&quot;
+}</pre></details><details><summary>36. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go&quot;,
+  &quot;limit&quot;: 150,
+  &quot;offset&quot;: 100
+}</pre></details><details><summary>37. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;type Manager\\|func.*Manager\\|func.*Execute\\|func.*RecordStateTransitions\&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -40&quot;,
+  &quot;description&quot;: &quot;Find Manager and RecordStateTransitions functions&quot;
+}</pre></details><details><summary>38. <code>Grep</code> @ -</summary><pre>{
+  &quot;context&quot;: 5,
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go&quot;,
+  &quot;pattern&quot;: &quot;func.*RecordStateTransitions|type Manager&quot;
+}</pre></details><details><summary>39. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;^type\\|^func\&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -50&quot;,
+  &quot;description&quot;: &quot;List all types and functions in state.go&quot;
+}</pre></details><details><summary>40. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace/grafana--26d36ec/pkg/services/ngalert -name \&quot;*.go\&quot; -exec grep -l \&quot;type Manager\&quot; {} \\;&quot;,
+  &quot;description&quot;: &quot;Find files containing Manager type&quot;
+}</pre></details><details><summary>41. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go&quot;,
+  &quot;limit&quot;: 150
+}</pre></details><details><summary>42. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;func.*RecordStateTransitions\\|func.*Execute\&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go&quot;,
+  &quot;description&quot;: &quot;Find key functions in manager&quot;
+}</pre></details><details><summary>43. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;^func (st \\*Manager)\&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go | head -30&quot;,
+  &quot;description&quot;: &quot;List all methods on Manager&quot;
+}</pre></details><details><summary>44. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go&quot;,
+  &quot;limit&quot;: 80,
+  &quot;offset&quot;: 313
+}</pre></details><details><summary>45. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;wc -l /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go&quot;,
+  &quot;description&quot;: &quot;Get total lines in manager.go&quot;
+}</pre></details><details><summary>46. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/ngalert.go&quot;,
+  &quot;limit&quot;: 100
+}</pre></details><details><summary>47. <code>Grep</code> @ -</summary><pre>{
+  &quot;output_mode&quot;: &quot;content&quot;,
+  &quot;path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/sender.go&quot;,
+  &quot;pattern&quot;: &quot;func.*SendAlerts&quot;
+}</pre></details><details><summary>48. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/ngalert/sender/sender.go&quot;
+}</pre></details><details><summary>49. <code>Write</code> @ -</summary><pre>{
+  &quot;content&quot;: &quot;{\n  \&quot;files\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/eval/eval.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/state.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/router.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/alertmanager.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/multiorg_alertmanager.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/sender.go\&quot;}\n  ],\n  \&quot;symbols\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;Run\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;schedulePeriodic\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;processTick\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;Eval\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;evaluate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;send\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/eval/eval.go\&quot;, \&quot;symbol\&quot;: \&quot;EvaluatorFactory\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/eval/eval.go\&quot;, \&quot;symbol\&quot;: \&quot;ConditionEvaluator\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/eval/eval.go\&quot;, \&quot;symbol\&quot;: \&quot;Evaluate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;, \&quot;symbol\&quot;: \&quot;Manager\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;, \&quot;symbol\&quot;: \&quot;ProcessEvalResults\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;, \&quot;symbol\&quot;: \&quot;setNextStateForRule\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/state.go\&quot;, \&quot;symbol\&quot;: \&quot;State\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/state.go\&quot;, \&quot;symbol\&quot;: \&quot;StateTransition\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/state.go\&quot;, \&quot;symbol\&quot;: \&quot;transition\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/router.go\&quot;, \&quot;symbol\&quot;: \&quot;AlertsRouter\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/router.go\&quot;, \&quot;symbol\&quot;: \&quot;Send\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;alertmanager\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;PutAlerts\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/multiorg_alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;MultiOrgAlertmanager\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/multiorg_alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;AlertmanagerFor\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/sender.go\&quot;, \&quot;symbol\&quot;: \&quot;ExternalAlertmanager\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/sender.go\&quot;, \&quot;symbol\&quot;: \&quot;SendAlerts\&quot;}\n  ],\n  \&quot;chain\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;Run\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;schedulePeriodic\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/schedule.go\&quot;, \&quot;symbol\&quot;: \&quot;processTick\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;Eval\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;evaluate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/eval/eval.go\&quot;, \&quot;symbol\&quot;: \&quot;Evaluate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;, \&quot;symbol\&quot;: \&quot;ProcessEvalResults\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/manager.go\&quot;, \&quot;symbol\&quot;: \&quot;setNextStateForRule\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/state/state.go\&quot;, \&quot;symbol\&quot;: \&quot;transition\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/schedule/alert_rule.go\&quot;, \&quot;symbol\&quot;: \&quot;send\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/router.go\&quot;, \&quot;symbol\&quot;: \&quot;Send\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/multiorg_alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;AlertmanagerFor\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/notifier/alertmanager.go\&quot;, \&quot;symbol\&quot;: \&quot;PutAlerts\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/ngalert/sender/sender.go\&quot;, \&quot;symbol\&quot;: \&quot;SendAlerts\&quot;}\n  ],\n  \&quot;text\&quot;: \&quot;In Grafana&#x27;s unified alerting system, an alert rule evaluation flows through these key components:\\n\\n## Rule Scheduling\\nThe scheduler starts in `pkg/services/ngalert/schedule/schedule.go:Run()`, which initiates the `schedulePeriodic()` loop that ticks at regular intervals. On each tick, `processTick()` determines which alert rules should be evaluated based on their evaluation interval.\\n\\n## Rule Evaluation\\nFor each scheduled rule, the alert rule&#x27;s `Eval()` method in `pkg/services/ngalert/schedule/alert_rule.go` is called. This triggers the `evaluate()` method which:\\n1. Creates an evaluator from the `eval.EvaluatorFactory` (defined in `pkg/services/ngalert/eval/eval.go`)\\n2. Calls the `ConditionEvaluator.Evaluate()` method to execute the alert condition against datasources\\n3. Returns evaluation results containing alert instance data\\n\\n## State Transition Management\\nEvaluation results are passed to the State Manager&#x27;s `ProcessEvalResults()` method in `pkg/services/ngalert/state/manager.go`. This:\\n1. Calls `setNextStateForRule()` which processes each evaluation result\\n2. For each result, calls the `State.transition()` method in `pkg/services/ngalert/state/state.go` to determine state changes\\n3. Records whether each alert instance transitioned (e.g., Normal \u2192 Alerting, Alerting \u2192 Normal)\\n4. Generates `StateTransition` objects describing what changed\\n5. Invokes the optional `Sender` callback to dispatch notifications\\n\\n## Alert Notification Dispatch\\nThe `send()` method in `pkg/services/ngalert/schedule/alert_rule.go` converts state transitions to `PostableAlerts` and calls the `AlertsSender.Send()` method. This is implemented by the `AlertsRouter` in `pkg/services/ngalert/sender/router.go`.\\n\\n`AlertsRouter.Send()` determines routing based on organization configuration:\\n- For **internal notifications**: Calls `MultiOrgAlertmanager.AlertmanagerFor()` in `pkg/services/ngalert/notifier/multiorg_alertmanager.go` to get the org&#x27;s alertmanager, then calls `PutAlerts()` on the underlying `alertmanager` struct in `pkg/services/ngalert/notifier/alertmanager.go`\\n- For **external notifications**: Calls `ExternalAlertmanager.SendAlerts()` in `pkg/services/ngalert/sender/sender.go` which sends alerts to configured external Alertmanager(s)\\n\\nThe internal alertmanager processes alerts through the notification routing tree based on receiver configuration, while external alertmanagers receive alerts via their API endpoints for further routing and notification delivery to receivers (email, Slack, PagerDuty, etc.).\&quot;\n}\n&quot;,
+  &quot;file_path&quot;: &quot;/workspace/answer.json&quot;
+}</pre></details>
+      </details>
+      <details>
+        <summary>Code Changes (1)</summary>
+        <details><summary>1. WRITE <code>/workspace/answer.json</code></summary><pre>{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/schedule.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/alert_rule.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/eval/eval.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/state/manager.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/state/state.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/sender/router.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/notifier/alertmanager.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/notifier/multiorg_alertmanager.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/sender/sender.go&quot;}
+  ],
+  &quot;symbols&quot;: [
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/schedule.go&quot;, &quot;symbol&quot;: &quot;Run&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/schedule.go&quot;, &quot;symbol&quot;: &quot;schedulePeriodic&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/schedule.go&quot;, &quot;symbol&quot;: &quot;processTick&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/alert_rule.go&quot;, &quot;symbol&quot;: &quot;Eval&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/alert_rule.go&quot;, &quot;symbol&quot;: &quot;evaluate&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/schedule/alert_rule.go&quot;, &quot;symbol&quot;: &quot;send&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/eval/eval.go&quot;, &quot;symbol&quot;: &quot;EvaluatorFactory&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/eval/eval.go&quot;, &quot;symbol&quot;: &quot;ConditionEvaluator&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/ngalert/eval/eval.go&quot;, &quot;symbol&quot;: &quot;Evaluate&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana
+... (truncated)</pre></details>
+      </details>
+      <details>
+        <summary>Bash Commands (21)</summary>
+        <pre>1. $ find /workspace/sg-evals/grafana--26d36ec -type d -name &quot;*alert*&quot; | head -20</pre><pre>2. $ ls -la /workspace/</pre><pre>3. $ find /workspace/grafana--26d36ec -type d -name &quot;*alert*&quot; | head -20</pre><pre>4. $ find /workspace/grafana--26d36ec -path &quot;*alerting*&quot; -name &quot;*.go&quot; -type f | grep -E &quot;(scheduler|evaluator|state|notification)&quot; | head -20</pre><pre>5. $ find /workspace/grafana--26d36ec -type f -name &quot;*.go&quot; -path &quot;*/alerting/*&quot; | head -30</pre><pre>6. $ find /workspace/grafana--26d36ec/pkg -type f -name &quot;*.go&quot; -path &quot;*alerting*&quot; | head -40</pre><pre>7. $ find /workspace/grafana--26d36ec/pkg/services -type d -name &quot;*alert*&quot;</pre><pre>8. $ find /workspace/grafana--26d36ec/pkg/services/ngalert -type f -name &quot;*.go&quot; | head -50</pre><pre>9. $ find /workspace/grafana--26d36ec/pkg/services/ngalert -type f -name &quot;*scheduler*&quot; -o -name &quot;*evaluator*&quot; -o -name &quot;*state*&quot;</pre><pre>10. $ ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/</pre><pre>11. $ ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/schedule/</pre><pre>12. $ ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/eval/</pre><pre>13. $ ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/notifier/</pre><pre>14. $ ls -la /workspace/grafana--26d36ec/pkg/services/ngalert/sender/</pre><pre>15. $ grep -n &quot;func.*StateTransition\|func.*process\|func.*Execute&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -30</pre><pre>16. $ grep -n &quot;type Manager\|func.*Manager\|func.*Execute\|func.*RecordStateTransitions&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -40</pre><pre>17. $ grep -n &quot;^type\|^func&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/state.go | head -50</pre><pre>18. $ find /workspace/grafana--26d36ec/pkg/services/ngalert -name &quot;*.go&quot; -exec grep -l &quot;type Manager&quot; {} \;</pre><pre>19. $ grep -n &quot;func.*RecordStateTransitions\|func.*Execute&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go</pre><pre>20. $ grep -n &quot;^func (st \*Manager)&quot; /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go | head -30</pre><pre>21. $ wc -l /workspace/grafana--26d36ec/pkg/services/ngalert/state/manager.go</pre>
+      </details>
+    </div>
+  </div>
+</body>
+</html>

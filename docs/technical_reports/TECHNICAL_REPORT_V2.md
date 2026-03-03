@@ -8,7 +8,7 @@
 
 ## Abstract
 
-CodeScaleBench (CSB) is a benchmark suite of **370 software engineering tasks** spanning the full Software Development Lifecycle (SDLC) designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. Across all 370 paired task evaluations (each with 3+ independent runs, yielding 4,132 individual results) using Claude Haiku 4.5, the overall MCP effect is **+0.025** (95% bootstrap CI: [+0.008, +0.042]) — a small but statistically significant positive. The effect is strongly task-dependent: Org cross-repository discovery tasks show **+0.032** (CI: [+0.013, +0.053]), while SDLC tasks with full local code show **+0.014** (CI spans zero). This V2 report reflects the expanded benchmark (150 SDLC + 220 Org tasks across 20 suites) with DOE-driven Neyman-optimal task allocation and multi-run variance reduction, documenting the complete design, construction, information retrieval evaluation pipeline, task curation methodology, ground truth and verifier architecture, and findings from the benchmark's execution.
+CodeScaleBench (CSB) is a benchmark suite of **370 software engineering tasks** spanning the full Software Development Lifecycle (SDLC), designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. In the refreshed analysis snapshot used in this report update (generated March 3, 2026 from `runs/analysis`), there are **1,281 valid scored rows**, **1,822 total historical rows**, and **370 paired baseline/MCP tasks** after averaging multiple runs per task/config. The overall paired reward delta is **+0.0349** (MCP minus baseline), with **+0.0363** on SDLC and **+0.0339** on Org. Retrieval evaluation on the same snapshot yields **799** event files, **311** computable tasks, and aggregate file-level metrics of **0.4598 file recall** and **0.3644 MRR**. This report documents the benchmark design, construction, retrieval evaluation pipeline, verifier architecture, and current findings.
 
 ---
 
@@ -852,134 +852,130 @@ Major verifier bugs discovered through QA audit (Feb 6):
 
 ### 11.1 Data Availability
 
-All **370 canonical tasks** have both baseline and MCP results with 3+ independent paired runs each, yielding **4,132 individual task evaluations** (2,085 baseline + 2,047 MCP) across **429 official run directories**. The 370 tasks span **150 SDLC** tasks across 9 suites and **220 Org** tasks across 11 suites. Task allocation uses DOE-driven Neyman-optimal sizing to maximize statistical power per suite (see Section 5). All results use the Claude Haiku 4.5 model. Per-task reward is the mean across all runs for that task-config pair. All confidence intervals use the percentile bootstrap method (10,000 resamples, seed=42) on paired deltas of per-task means (see Appendix A).
+This section reflects the refreshed analysis export generated on **March 3, 2026** from `runs/analysis`:
+- Valid scored rows in export: **1,281**
+- Historical rows in `all_tasks`: **1,822**
+- Paired baseline/MCP tasks with both sides present: **370**
+- Suites represented: **20** (9 SDLC + 11 Org)
+
+Compared with prior drafts, this is a different analysis slice and should be treated as the current snapshot for reward/time/cost metrics below.
 
 **V1 → V2 changes:** The V1 report (Feb 27) used 251 tasks with single-trial data. V2 expands to 370 tasks with multi-run averaging, which reduces sampling noise and yields narrower confidence intervals with different point estimates. The old `csb_sdlc_build` suite was split into `csb_sdlc_feature` (23 tasks) and `csb_sdlc_refactor` (16 tasks) to better align with SDLC phases. The Org suites grew from 81 to 220 tasks through scaffolding, promotion, and DOE rebalancing.
 
 ### 11.2 SDLC Suite Results (Paired Comparison)
 
-Paired baseline vs. MCP results across all 9 SDLC suites (150 tasks, multi-run averaged):
+Paired deltas for SDLC suites in the refreshed analysis set (computed from per-task means across all available runs, with variance on per-task deltas):
 
-| Suite | n | Baseline Mean | MCP Mean | Delta | 95% Bootstrap CI |
-|-------|---|--------------|----------|-------|------------------|
-| understand | 10 | 0.557 | 0.735 | **+0.178** | [+0.034, +0.322] |
-| fix | 26 | 0.465 | 0.557 | **+0.092** | [+0.024, +0.170] |
-| document | 13 | 0.745 | 0.789 | +0.044 | [-0.021, +0.109] |
-| secure | 12 | 0.608 | 0.634 | +0.026 | [-0.052, +0.110] |
-| test | 18 | 0.513 | 0.503 | -0.010 | [-0.101, +0.087] |
-| feature | 23 | 0.590 | 0.576 | -0.014 | [-0.069, +0.040] |
-| refactor | 16 | 0.666 | 0.622 | -0.045 | [-0.126, +0.038] |
-| design | 14 | 0.745 | 0.698 | -0.047 | [-0.157, +0.049] |
-| debug | 18 | 0.617 | 0.552 | **-0.064** | [-0.112, -0.017] |
+| Suite | n | Mean Reward Delta (MCP - Baseline) | Var(Δ Reward) |
+|-------|---|-------------------------------------|---------------|
+| csb_sdlc_understand | 10 | +0.1148 | 0.089103 |
+| csb_sdlc_refactor | 16 | +0.1029 | 0.256679 |
+| csb_sdlc_fix | 26 | +0.0986 | 0.055532 |
+| csb_sdlc_design | 14 | +0.0514 | 0.091786 |
+| csb_sdlc_document | 13 | +0.0415 | 0.007517 |
+| csb_sdlc_feature | 23 | +0.0130 | 0.118041 |
+| csb_sdlc_test | 18 | -0.0113 | 0.037797 |
+| csb_sdlc_debug | 18 | -0.0372 | 0.017479 |
+| csb_sdlc_secure | 12 | -0.0500 | 0.012604 |
 
-**SDLC total**: Baseline mean 0.598 (n=150), MCP mean 0.611 (n=150), delta **+0.014** (95% CI: [-0.015, +0.043]). The CI spans zero, indicating no statistically significant MCP effect on SDLC tasks with full local source code. MCP wins on 48, loses on 49, neutral on 53 tasks (threshold ±0.05).
+**SDLC total (weighted by paired task count)**: **+0.0363** across **n=150** paired tasks.
 
 ### 11.3 Org Suite Results (Paired Comparison)
 
-Org tasks (220 paired, cross-repository discovery, multi-run averaged):
+Paired deltas for Org suites in the refreshed analysis set:
 
-| Suite | n | Baseline Mean | MCP Mean | Delta | 95% Bootstrap CI |
-|-------|---|--------------|----------|-------|------------------|
-| security | 24 | 0.422 | 0.535 | **+0.113** | [+0.042, +0.197] |
-| incident | 20 | 0.444 | 0.552 | **+0.108** | [+0.033, +0.218] |
-| crossrepo_tracing | 22 | 0.335 | 0.382 | +0.046 | [-0.000, +0.117] |
-| onboarding | 28 | 0.703 | 0.746 | +0.044 | [-0.013, +0.111] |
-| crossorg | 15 | 0.144 | 0.173 | +0.029 | [-0.003, +0.061] |
-| org | 15 | 0.344 | 0.370 | +0.027 | [-0.026, +0.079] |
-| domain | 20 | 0.322 | 0.331 | +0.009 | [-0.020, +0.042] |
-| compliance | 18 | 0.255 | 0.253 | -0.002 | [-0.060, +0.051] |
-| migration | 26 | 0.331 | 0.330 | -0.001 | [-0.054, +0.063] |
-| crossrepo | 14 | 0.292 | 0.274 | -0.019 | [-0.057, +0.017] |
-| platform | 18 | 0.283 | 0.245 | -0.038 | [-0.097, +0.007] |
+| Suite | n | Mean Reward Delta (MCP - Baseline) | Var(Δ Reward) |
+|-------|---|-------------------------------------|---------------|
+| csb_org_incident | 20 | +0.1125 | 0.056807 |
+| csb_org_security | 24 | +0.1057 | 0.055106 |
+| csb_org_org | 15 | +0.0568 | 0.015604 |
+| csb_org_crossrepo_tracing | 22 | +0.0514 | 0.035013 |
+| csb_org_migration | 26 | +0.0381 | 0.020784 |
+| csb_org_crossorg | 15 | +0.0252 | 0.004410 |
+| csb_org_compliance | 18 | +0.0153 | 0.012530 |
+| csb_org_onboarding | 28 | +0.0083 | 0.029982 |
+| csb_org_domain | 20 | -0.0165 | 0.006946 |
+| csb_org_crossrepo | 14 | -0.0242 | 0.003717 |
+| csb_org_platform | 18 | -0.0287 | 0.009930 |
 
-**Org total**: Baseline mean 0.374 (n=220), MCP mean 0.406 (n=220), delta **+0.032** (95% CI: [+0.013, +0.053]). MCP wins on 63, loses on 37, neutral on 120 tasks.
+**Org total (weighted by paired task count)**: **+0.0339** across **n=220** paired tasks.
 
-**Overall**: Baseline mean 0.464 (n=370), MCP mean 0.489 (n=370), delta **+0.025** (95% CI: [+0.008, +0.042]). The confidence interval excludes zero, indicating a statistically significant positive MCP effect across the full benchmark.
+**Overall paired delta**: **+0.0349** across **n=370** paired tasks.
 
 ### 11.4 V1 → V2 Results Comparison
 
-The shift from V1 (251 tasks, single-trial) to V2 (370 tasks, 3+ runs averaged) produced meaningful changes in point estimates:
+The refreshed analysis set supersedes the prior V2 numeric snapshot in this section. The key directional change from the old write-up is that reward deltas remain positive overall while efficiency metrics (time/cost) are now adverse in the current slice.
 
-| Metric | V1 (Feb 27) | V2 (Mar 3) | Change |
-|--------|-------------|------------|--------|
-| Overall delta | +0.049 | +0.025 | -0.024 |
-| SDLC delta | -0.015 | +0.014 | +0.029 |
-| Org delta | +0.183 | +0.032 | -0.151 |
-| Overall CI | [+0.010, +0.088] | [+0.008, +0.042] | Narrower |
-| n (tasks) | 251 | 370 | +119 |
-| n (results) | 502 | 4,132 | +3,630 |
-
-Key observations:
-1. **Multi-run averaging reduces noise.** V1's single-trial Org delta of +0.183 was inflated by sampling variance — with 3+ runs per task, the true effect is smaller (+0.032) but still significant (CI excludes zero).
-2. **SDLC direction flip.** V1 showed SDLC delta -0.015; V2 shows +0.014. Both CIs span zero, confirming no significant SDLC effect. The sign change reflects task composition (9 suites vs. 8, with `build` split into `feature`+`refactor`).
-3. **Narrower CIs.** The 8x increase in individual results narrows confidence intervals substantially, increasing measurement precision.
-4. **The core finding is stable:** MCP helps on cross-repository/org-scale tasks, is neutral on single-repo SDLC tasks, and the overall effect is small but positive and significant.
+| Metric | Refreshed Value |
+|--------|------------------|
+| Paired tasks | 370 |
+| Overall reward delta | +0.0349 |
+| SDLC reward delta | +0.0363 |
+| Org reward delta | +0.0339 |
+| Reward-delta variance | 0.048985 |
+| Mean wall-clock delta | -36.22s |
+| Mean agent-execution delta | -101.06s |
 
 ### 11.5 Information Retrieval Metrics
 
-The IR evaluation pipeline (Section 8) produces file-level recall, MRR, MAP, nDCG, context efficiency, and TTFR for tasks with ground truth file sets. Results from the full pipeline run (n=1,745 computable tasks out of 4,829 event files):
+The retrieval pipeline was rerun over the analysis-set adapter input (`runs/_analysis_eval_input2`) using `normalize_retrieval_events.py` and `retrieval_eval_pipeline.py`.
 
 **Aggregate File-Level IR Metrics:**
 
 | Metric | Mean | Median | Std | n |
 |--------|------|--------|-----|---|
-| File Recall | 0.390 | 0.222 | 0.420 | 1,745 |
-| MRR | 0.352 | 0.036 | 0.441 | 1,745 |
-| MAP | 0.237 | 0.028 | 0.346 | 1,745 |
-| Context Efficiency | 0.180 | 0.031 | 0.262 | 1,745 |
-| Precision@1 | 0.299 | 0.000 | 0.458 | 1,745 |
-| Recall@5 | 0.225 | 0.000 | 0.353 | 1,745 |
-| nDCG@10 | 0.279 | 0.000 | 0.373 | 1,745 |
-| TTFR | 15.4s | 7.8s | 28.7s | 968 |
+| File Recall | 0.4598 | 0.4444 | 0.4226 | 311 |
+| MRR | 0.3644 | 0.0833 | 0.4325 | 311 |
+| MAP | 0.2514 | 0.0670 | 0.3451 | 311 |
+| Context Efficiency | 0.1958 | 0.0545 | 0.2658 | 311 |
+| Precision@1 | 0.2926 | 0.0000 | 0.4557 | 311 |
+| Recall@5 | 0.2431 | 0.0000 | 0.3577 | 311 |
+| nDCG@10 | 0.3298 | 0.0000 | 0.3908 | 311 |
 
-**IR Metrics by Config:**
+Pipeline coverage summary:
+- Event files: **799**
+- Computable tasks: **311**
+- Skipped for missing GT: **488**
+- Parse errors: **0**
 
-| Config | n | File Recall | MRR | Precision@1 | Precision@5 | F1@5 | F1@10 |
-|--------|---|------------|-----|-------------|-------------|------|-------|
-| baseline-local-direct | 963 | 0.326 | 0.357 | 0.312 | 0.216 | 0.185 | 0.158 |
-| mcp-remote-direct | 698 | 0.474 | 0.343 | 0.282 | 0.197 | 0.174 | 0.156 |
-| mcp-remote-artifact | 23 | 0.787 | 0.461 | 0.348 | 0.365 | 0.349 | 0.259 |
-| baseline (legacy) | 61 | 0.295 | 0.323 | 0.262 | 0.187 | 0.172 | 0.137 |
-
-MCP-remote-direct runs achieve substantially higher file recall (0.474 vs. 0.326 baseline, +0.148), confirming that Sourcegraph search tools help agents discover more ground-truth files. However, MCP runs have slightly _lower_ precision (Precision@1: 0.282 vs. 0.312, −0.030) and F1 scores (F1@5: 0.174 vs. 0.185). This reflects a recall-precision trade-off: MCP retrieves more files overall, finding more relevant ones but also more irrelevant ones. F1@10 converges (0.156 vs. 0.158), suggesting the trade-off narrows at higher K values. The artifact-only config achieves the highest file recall (0.787) and F1@5 (0.349) because those tasks are pure discovery tasks with well-defined file targets.
+This indicates retrieval quality remains moderate on computable tasks, but ground-truth availability is still the main bottleneck for broader retrieval coverage.
 
 ### 11.6 Correlation Analysis
 
-| Correlation (Spearman rho) | Value | n | Interpretation |
-|---------------------------|-------|---|---------------|
-| task_files_count vs. reward | +0.333 | 616 | Moderate positive: larger codebases yield higher reward |
-| task_context_length vs. reward | +0.321 | 788 | Moderate positive: more context correlates with better outcomes |
-| instruction_length vs. reward | +0.250 | 1,116 | Weak positive: longer instructions slightly help |
-| context_window_peak_pct vs. reward | -0.137 | 1,115 | Weak negative: hitting context limits hurts |
-| conversation_turns vs. reward | -0.127 | 1,116 | Weak negative: more turns slightly associated with lower reward |
+Correlation was recomputed from the refreshed retrieval analysis output (`docs/analysis/ir_analysis_analysis_set_20260303.json`):
 
-The positive correlation between codebase size metrics and reward (+0.33 for files_count, +0.32 for context_length) is counterintuitive but reflects task composition: larger codebases tend to have richer verification infrastructure (test suites, CI configurations) that helps the agent verify its work.
+| Correlation | Value |
+|-------------|-------|
+| Spearman rho (MRR delta vs reward delta) | +0.1295 |
+| p-value | 0.1533 |
+| Paired tasks with both retrieval sides | 2 |
+
+Current interpretation: no statistically significant retrieval-outcome correlation signal yet in the paired subset, largely because paired retrieval coverage is still sparse.
 
 ### 11.7 Reward by Language
 
-Multi-run averaged reward by primary programming language across 369 paired canonical tasks. Languages with fewer than 3 tasks are grouped under "Other."
+Per-language results are computed from per-task means (multiple runs averaged first), and variance is reported on per-task reward deltas:
 
-| Language | n | BL Mean | MCP Mean | Δ Reward | Δ Wall Clock | Δ Agent Exec | Δ $/task |
-|----------|---|---------|----------|----------|-------------|-------------|---------|
-| Go       | 134 | 0.448 | 0.472 | +0.024 | −54s | −76s | −$1.18 |
-| C++      | 73  | 0.460 | 0.475 | +0.015 | −11s | −98s | +$0.04 |
-| Java     | 57  | 0.438 | 0.450 | +0.012 | −46s | −104s | +$1.07 |
-| Python   | 55  | 0.492 | 0.532 | +0.040 | +83s | −41s | +$0.08 |
-| Rust     | 12  | 0.426 | 0.443 | +0.017 | −358s | −123s | −$0.02 |
-| C        | 10  | 0.681 | 0.691 | +0.010 | −28s | −40s | +$0.09 |
-| JavaScript | 8 | 0.396 | 0.513 | +0.117 | +363s | −5s | +$0.11 |
-| TypeScript | 7 | 0.585 | 0.567 | −0.018 | +97s | +21s | +$0.06 |
-| Java+C++ | 5   | 0.592 | 0.706 | +0.114 | −239s | −146s | +$0.04 |
+| Language | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
+|----------|---|---------|----------|----------|---------------|
+| Go | 134 | 0.459 | 0.511 | +0.052 | 0.049442 |
+| C++ | 73 | 0.481 | 0.490 | +0.008 | 0.026095 |
+| Java | 57 | 0.483 | 0.502 | +0.019 | 0.030897 |
+| Python | 55 | 0.456 | 0.527 | +0.070 | 0.088567 |
+| Rust | 12 | 0.429 | 0.452 | +0.023 | 0.006496 |
+| C | 10 | 0.702 | 0.718 | +0.016 | 0.009334 |
+| JavaScript | 8 | 0.407 | 0.542 | +0.135 | 0.123174 |
+| TypeScript | 7 | 0.588 | 0.448 | -0.140 | 0.013694 |
 
-MCP provides a positive reward delta for all major single languages except TypeScript (−0.018, n=7). Python shows the largest single-language reward gain (+0.040, n=55). Go, the most represented language (n=134), combines a solid reward lift (+0.024) with the largest per-task cost savings (−$1.18). Rust shows the largest wall-clock savings (−358s) despite a small sample. Java has the biggest agent execution time savings (−104s) but higher cost (+$1.07, driven by token-heavy MCP searches). TypeScript is the only language where MCP hurts across all three dimensions (reward, time, cost).
+Largest positive deltas are in JavaScript/Python/Go; TypeScript remains the strongest negative outlier.
 
 ### 11.8 Reward by Difficulty
 
-| Difficulty | n   | BL Mean | MCP Mean | Δ Reward | Δ Wall Clock | Δ Agent Exec | Δ $/task |
-|-----------|-----|---------|----------|----------|-------------|-------------|---------|
-| Hard      | 338 | 0.457   | 0.481    | +0.023   | −58s        | −95s        | −$0.42  |
-| Expert    | 21  | 0.660   | 0.641    | −0.019   | −3s         | −9s         | +$3.01  |
-| Medium    | 11  | 0.307   | 0.444    | +0.137   | +582s       | −36s        | +$0.06  |
+| Difficulty | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
+|-----------|---|---------|----------|----------|---------------|
+| Hard | 338 | 0.474 | 0.512 | +0.038 | 0.046768 |
+| Expert | 21 | 0.663 | 0.605 | -0.057 | 0.070557 |
+| Medium | 11 | 0.307 | 0.421 | +0.115 | 0.053039 |
 
 Difficulty is assigned by the `rescore_difficulty.py` pipeline, which combines code complexity, codebase size, and ground-truth depth into a composite score:
 
@@ -988,134 +984,75 @@ raw = 0.4 * size_score + 0.4 * complexity_score + 0.2 * ground_truth_depth_score
 difficulty = "medium" if raw < 0.35 else "hard" if raw < 0.75 else "expert"
 ```
 
-The benchmark is dominated by "hard" tasks (338/370, 91%), reflecting the deliberate selection of non-trivial engineering challenges. Hard tasks show the best overall MCP profile: a positive reward delta (+0.023), faster execution (−58s wall clock, −95s agent), and lower cost (−$0.42/task). Medium tasks show the largest reward gain (+0.137) but are slower on wall clock (+582s), though agent execution time is still shorter (−36s). Expert tasks show a slightly negative reward delta (−0.019) and substantially higher cost (+$3.01, driven by a few expensive outliers), suggesting that at the highest complexity tier MCP provides inconsistent benefit and can increase cost.
+The benchmark remains dominated by hard tasks. In this refreshed aggregation, hard and medium are positive on reward delta, while expert remains negative.
 
 ### 11.9 Impact by Codebase Size
 
-**By repository size** (GitHub API-reported size for 365/370 tasks, approximate LoC computed at ~25 bytes/line):
+Repository-size bins are not available in the refreshed analysis artifact, but file-count bins are:
 
-| Repo Size | Approx LoC | n | BL Mean | MCP Mean | Δ Reward | Δ Wall Clock | Δ Agent Exec | Δ $/task |
-|-----------|-----------|---|---------|----------|----------|-------------|-------------|---------|
-| <10 MB | <400K | 60 | 0.480 | 0.473 | −0.007 | −23s | −52s | +$1.39 |
-| 10–50 MB | 400K–2M | 61 | 0.574 | 0.618 | +0.043 | −153s | −137s | −$2.74 |
-| 50–200 MB | 2M–8M | 113 | 0.407 | 0.435 | +0.027 | +64s | −51s | +$0.03 |
-| 200MB–1GB | 8M–40M | 104 | 0.464 | 0.497 | +0.033 | −13s | −97s | +$0.02 |
-| >1 GB | >40M | 27 | 0.457 | 0.542 | +0.085 | −135s | −123s | +$0.06 |
+| Files Count Bin | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
+|----------------|---|---------|----------|----------|---------------|
+| <10 | 168 | 0.327 | 0.375 | +0.048 | 0.032454 |
+| 10–100 | 91 | 0.676 | 0.699 | +0.023 | 0.097068 |
+| unknown | 111 | 0.550 | 0.575 | +0.025 | 0.034117 |
 
-**By files count** (number of files provided in task context):
-
-| Files Count | n | BL Mean | MCP Mean | Δ Reward | Δ Wall Clock | Δ Agent Exec | Δ $/task |
-|------------|---|---------|----------|----------|-------------|-------------|---------|
-| <10 files | 168 | 0.314 | 0.351 | +0.037 | −90s | −54s | ~$0.00 |
-| 10–100 files | 91 | 0.675 | 0.668 | −0.007 | −70s | −94s | −$1.13 |
-
-**MCP's reward benefit scales monotonically with codebase size.** The only category where MCP hurts reward is the smallest repos (<10 MB, −0.007). At >1 GB codebases (~40M+ LoC), MCP delivers the largest reward lift (+0.085). The 10–50 MB range is the cost-efficiency sweet spot: MCP saves $2.74/task while also delivering the biggest wall-clock savings (−153s) and a strong reward gain (+0.043). Agent execution time is shorter with MCP across all size categories, even where wall-clock time increases (50–200 MB), indicating that MCP reduces the agent's active problem-solving time even when infrastructure overhead increases.
-
-For file count, tasks with fewer files (<10) benefit more from MCP on reward (+0.037) while medium-file tasks (10–100) see greater cost savings (−$1.13/task).
+Across available bins, MCP reward delta is positive, with the strongest lift in low-file-count tasks.
 
 ### 11.10 MCP Tool Usage Patterns
 
-Based on n=344 MCP-config task evaluations with tool usage data:
+Based on all MCP run rows in the refreshed analysis (`n=910`):
 
 **Overall usage:**
-- Mean total tool calls per task: 34.4 (23.1 MCP + 11.2 local)
-- Mean MCP ratio: 0.78
-- Zero-MCP tasks: 0 (0.0%)—all MCP-config tasks used at least one Sourcegraph tool
-- Deep Search usage: near zero (0.0 mean calls per task)
+- Mean total tool calls per run: 32.12
+- Mean MCP tool calls per run: 22.46
+- Mean local tool calls per run: 9.58
+- Mean MCP ratio: 0.7974
+- Mean keyword searches: 8.76/run
+- Mean NLS searches: 1.11/run
+- Mean Deep Search calls: 0.0057/run
 
-**Search strategy distribution** (n=335 tasks with search data):
-- Mean keyword searches per task: 8.5
-- Mean NLS (natural language search) per task: 1.1
-- Mean Deep Search per task: 0.0
+Top tools by total calls:
 
-**MCP tool adoption by tool name** (from 602 MCP task runs across all evaluations):
+| Tool | Total Calls |
+|------|-------------|
+| `mcp__sourcegraph__sg_read_file` | 8,605 |
+| `mcp__sourcegraph__sg_keyword_search` | 7,993 |
+| `Bash` | 5,146 |
+| `mcp__sourcegraph__sg_list_files` | 2,449 |
+| `Read` | 1,310 |
+| `Write` | 1,272 |
+| `mcp__sourcegraph__sg_nls_search` | 997 |
+| `Edit` | 715 |
 
-| Tool                         | Tasks Using | Total Calls | Mean Reward |
-|------------------------------|-------------|-------------|-------------|
-| sg_read_file                 | 602         | 6,324       | 0.622       |
-| sg_keyword_search            | 577         | 4,813       | 0.615       |
-| sg_list_files                | 447         | 1,791       | 0.613       |
-| sg_nls_search                | 256         | 587         | 0.525       |
-| sg_list_repos                | 215         | 270         | 0.451       |
-| sg_find_references           | 35          | 48          | 0.644       |
-| sg_commit_search             | 28          | 38          | 0.514       |
-| sg_diff_search               | 10          | 10          | 0.550       |
-| sg_compare_revisions         | 6           | 9           | 0.560       |
-| sg_deepsearch                | 6           | 8           | 0.563       |
-| sg_go_to_definition          | 5           | 6           | 0.341       |
-
-The agent overwhelmingly relies on keyword search (sg_keyword_search) and file reading (sg_read_file) as its primary MCP tools. Natural language search (sg_nls_search) is used in roughly 42% of tasks but contributes only 587 calls vs. 4,813 for keyword search. Deep Search is effectively unused (6 tasks, 8 calls across 602 MCP runs), indicating the agent does not discover or leverage this tool. The MCP ratio of 0.78 means 78% of all tool calls in MCP-config runs go through Sourcegraph—significantly higher in Org tasks (0.88–0.96) than SDLC tasks (0.31–0.88), because Org tasks have truncated local code and must rely on remote search.
+The dominant pattern is unchanged: keyword search + read-file dominate MCP usage, and Deep Search remains near-zero.
 
 ### 11.11 Cost Analysis
 
-Token-based cost computed from Claude Haiku 4.5 pricing (input $0.80/M, output $4.00/M, cache write $1.00/M, cache read $0.08/M). Based on n=370 paired tasks with cost data.
+Token-based cost in this refreshed snapshot is derived from the `analysis_set_metrics_20260303.json` paired analysis.
 
-**Per-config token breakdown** (across all 4,063 individual evaluations):
+| Metric | Value |
+|--------|-------|
+| Paired tasks with cost deltas | 369 |
+| Mean paired cost delta (MCP vs baseline) | **+$0.040/task** |
+| Mean paired cost delta (%; per-task mean) | **+17.67%** |
+| Cost delta (% of means) | **+13.49%** |
 
-| Metric | Baseline (n=1,833) | MCP (n=1,774) | Delta |
-|--------|-------------------|---------------|-------|
-| Mean input tokens | 494K | 605K | +111K |
-| Mean output tokens | 12.3K | 12.7K | +0.3K |
-| Mean cache tokens | 3.52M | 4.55M | +1.03M |
-| Mean cost/eval | $0.909 | $0.787 | −$0.122 |
-| Total cost | $1,666 | $1,395 | −$271 |
-
-**Per-category cost** (paired task averages):
-
-| Category | n | Baseline Mean ($/task) | MCP Mean ($/task) | Delta |
-|----------|---|------------------------|-------------------|-------|
-| SDLC     | 149 | $2.176 | $1.672 | −$0.504 |
-| Org      | 220 | $0.221 | $0.211 | −$0.010 |
-| **Overall** | **369** | **$1.008** | **$0.801** | **−$0.210** |
-
-**Per-suite cost** (top movers):
-
-| Suite | n | BL $/task | MCP $/task | Δ $/task |
-|-------|---|-----------|-----------|---------|
-| csb_sdlc_refactor | 16 | $7.292 | $3.054 | −$4.238 |
-| csb_sdlc_feature | 23 | $4.918 | $3.371 | −$1.547 |
-| csb_sdlc_design | 14 | $3.926 | $5.481 | +$1.554 |
-| csb_sdlc_fix | 26 | $0.600 | $0.765 | +$0.166 |
-| csb_sdlc_debug | 18 | $0.342 | $0.441 | +$0.098 |
-| csb_org_crossorg | 15 | $0.257 | $0.210 | −$0.047 |
-| csb_org_crossrepo_tracing | 22 | $0.249 | $0.218 | −$0.031 |
-| csb_org_incident | 20 | $0.234 | $0.213 | −$0.021 |
-
-MCP is cheaper overall (−$0.210/task). SDLC refactor and feature tasks drive the largest savings (−$4.24 and −$1.55 respectively), where MCP's semantic search replaces expensive exhaustive code traversal. Design tasks are the main exception (+$1.55), where MCP adds overhead without replacing local analysis. For Org tasks, MCP is consistently slightly cheaper across all suites.
+Cost is slightly higher in MCP on this refreshed slice.
 
 ### 11.12 Timing Analysis
 
-Wall-clock and agent execution time across n=370 paired canonical tasks.
+Timing in the refreshed snapshot:
 
-| Metric               | n   | Baseline Mean (s) | MCP Mean (s) | Delta    |
-|----------------------|-----|--------------------|--------------|----------|
-| Wall clock           | 370 | 411.1              | 375.2        | −36.0    |
-| Agent execution      | 370 | 243.7              | 155.1        | −88.6    |
+| Metric | Value |
+|--------|-------|
+| Paired tasks with timing deltas | 370 |
+| Baseline mean wall clock | **367.11s** |
+| MCP mean wall clock | **330.89s** |
+| Mean paired wall-clock delta | **−36.22s** |
+| Wall-clock delta (% of means) | **−9.87%** |
+| Mean paired agent-execution delta | **−101.06s** |
 
-**By category:**
-
-| Category | n   | BL Wall (s) | MCP Wall (s) | Wall Δ | BL Agent (s) | MCP Agent (s) | Agent Δ |
-|----------|-----|-------------|--------------|--------|-------------|---------------|---------|
-| SDLC     | 150 | 549.3       | 552.6        | +3.3   | — | — | — |
-| Org      | 220 | 316.9       | 254.2        | −62.7  | — | — | — |
-
-**Per-suite timing** (top movers):
-
-| Suite | n | BL Wall (s) | MCP Wall (s) | Wall Δ | BL Agent (s) | MCP Agent (s) | Agent Δ |
-|-------|---|-------------|--------------|--------|-------------|---------------|---------|
-| csb_sdlc_design | 14 | 679 | 265 | −415s | 593 | 162 | −431s |
-| csb_org_onboarding | 28 | 648 | 311 | −337s | 134 | 49 | −85s |
-| csb_org_security | 24 | 445 | 176 | −269s | 330 | 87 | −243s |
-| csb_org_org | 15 | 313 | 183 | −130s | 180 | 82 | −98s |
-| csb_org_platform | 18 | 271 | 154 | −116s | 228 | 85 | −143s |
-| csb_org_incident | 20 | 399 | 307 | −92s | 299 | 89 | −209s |
-| csb_org_compliance | 18 | 204 | 354 | +150s | 131 | 109 | −22s |
-| csb_org_domain | 20 | 280 | 373 | +93s | 181 | 97 | −84s |
-| csb_sdlc_fix | 26 | 907 | 1267 | +360s | 381 | 380 | −1s |
-
-**Org tasks are 63 seconds faster** on wall clock with MCP (−19.8%), because remote search eliminates the need to read many local files when source is truncated. SDLC tasks are essentially flat on wall clock (+3.3s), though individual suites vary widely: design tasks are 415 seconds faster with MCP, while fix tasks are 360 seconds slower.
-
-Agent execution time (excluding environment setup and verification) shows MCP is **89 seconds faster** overall (−36.4%). This means the agent's active problem-solving phase is substantially shorter with MCP. Notably, agent execution time is shorter with MCP for every single suite except csb_sdlc_refactor (+5s) and csb_sdlc_fix (−1s, essentially flat). The largest agent-time savings are on csb_sdlc_design (−431s), csb_org_security (−243s), and csb_org_incident (−209s).
+MCP is faster on both wall-clock and agent-execution in the refreshed per-task averaged analysis.
 
 ---
 

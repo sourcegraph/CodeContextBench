@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ccx-compliance-190 - Official Results</title>
+  <style>
+    :root { --bg:#0b1117; --panel:#131d27; --border:#2a3a4a; --text:#e9f0f6; --muted:#9fb1c2; --accent:#4fd39b; }
+    body { margin:0; font-family: ui-sans-serif,system-ui,-apple-system,sans-serif; background:linear-gradient(180deg,#0b1117,#0f1720); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:20px; }
+    h1,h2,h3,h4 { margin:0 0 10px; }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .metric { background:#0f1821; border:1px solid var(--border); border-radius:10px; padding:10px; }
+    .metric .k { color:var(--muted); font-size:12px; }
+    .metric .v { font-size:20px; margin-top:4px; }
+    .meta { color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; font-size:13px; }
+    th { color:var(--muted); }
+    code,pre { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; }
+    pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#0d151d; border:1px solid var(--border); border-radius:8px; padding:8px; margin:8px 0; }
+    details { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:8px 0; background:#0f1821; }
+    summary { cursor:pointer; color:var(--accent); }
+    a { color:var(--accent); text-decoration:none; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 900px) { .split { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ccx-compliance-190</h1>
+    <p class="meta">Suite <code>csb_org_compliance</code> | Run <code>csb_org/csb_org_compliance</code> | Config <code>baseline-local-artifact</code></p>
+
+    <div class="panel">
+      <h2>Task Information</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Repositories</div><div class="v" style="font-size:14px">-</div></div>
+        <div class="metric"><div class="k">Task ID</div><div class="v" style="font-size:14px">ccx-compliance-190</div></div>
+        <div class="metric"><div class="k">Agent</div><div class="v" style="font-size:16px">claude-code</div></div>
+        <div class="metric"><div class="k">Model</div><div class="v" style="font-size:16px">claude-haiku-4-5-20251001</div></div>
+      </div>
+      <p class="meta" style="margin-top:10px">Benchmark path: <code>configs/../benchmarks/csb_org_compliance/ccx-compliance-190</code></p>
+      <details>
+        <summary>Task instruction sent to agent</summary>
+        <pre># Grafana Plugin Security Signature Verification
+
+## Your Task
+
+Find all Go source files in grafana/grafana that implement plugin signature verification: the plugin manifest signing, the signature validation on load, and the unsigned plugin allowlist enforcement.
+
+## Context
+
+You are working on a codebase task involving repos from the compliance domain.
+
+## Available Resources
+
+The local `/workspace/` directory contains: sg-evals/grafana--26d36ec.
+
+**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
+- `sg-evals/grafana--26d36ec` (grafana/grafana)
+- `sg-evals/grafana-loki` (grafana/loki)
+- `sg-evals/grafana-mimir` (grafana/mimir)
+
+## Output Format
+
+Create a file at `/workspace/answer.json` with your findings in the following structure:
+
+```json
+{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;}
+  ],
+  &quot;symbols&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;SymbolName&quot;}
+  ],
+  &quot;chain&quot;: [
+    {&quot;repo&quot;: &quot;org/repo-name&quot;, &quot;path&quot;: &quot;relative/path/to/file.go&quot;, &quot;symbol&quot;: &quot;FunctionName&quot;}
+  ],
+  &quot;text&quot;: &quot;Narrative explanation of your findings, citing repos and file paths.&quot;
+}
+```
+
+Include only the fields relevant to this task. Your answer is evaluated against a closed-world oracle — completeness matters.
+
+## Evaluation
+
+Your answer will be scored on:
+- **File recall and precision**: Did you find all relevant files?</pre>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Execution Metrics</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">Reward</div><div class="v">0.0769</div></div>
+        <div class="metric"><div class="k">Status</div><div class="v">passed</div></div>
+        <div class="metric"><div class="k">Total Time</div><div class="v">158.6s</div></div>
+        <div class="metric"><div class="k">Agent Time</div><div class="v">133.1s</div></div>
+        <div class="metric"><div class="k">Input Tokens</div><div class="v">5,237,034</div></div>
+        <div class="metric"><div class="k">Output Tokens</div><div class="v">12,399</div></div>
+        <div class="metric"><div class="k">Cache Tokens</div><div class="v">5,235,850</div></div>
+        <div class="metric"><div class="k">Tool Calls</div><div class="v">55</div></div>
+        <div class="metric"><div class="k">MCP Ratio</div><div class="v">0.000</div></div>
+      </div>
+      <p class="meta">Raw traces: <a href='../audits/csb_org-csb_org_compliance--baseline--ccx-compliance-190--49ae9554d9.json'>audit.json</a> | <a href='../traces/csb_org-csb_org_compliance--baseline--ccx-compliance-190--49ae9554d9/trajectory.json'>trajectory.json</a> | <a href='../traces/csb_org-csb_org_compliance--baseline--ccx-compliance-190--49ae9554d9/claude-code.txt'>transcript</a></p>
+      <details>
+        <summary>Tool Breakdown</summary>
+        <table><thead><tr><th>Tool</th><th>Calls</th></tr></thead><tbody><tr><td><code>Bash</code></td><td>29</td></tr><tr><td><code>Read</code></td><td>25</td></tr><tr><td><code>Write</code></td><td>1</td></tr></tbody></table>
+      </details>
+      <details>
+        <summary>Context Metrics (task_metrics / IR analysis)</summary>
+        <h3>Context</h3>
+        <table><tbody><tr><td>context_window_peak_pct</td><td>0.3992</td></tr><tr><td>environment_setup_seconds</td><td>1.123482</td></tr><tr><td>files_modified</td><td>1</td></tr><tr><td>lines_added</td><td>69</td></tr><tr><td>lines_removed</td><td>0</td></tr><tr><td>task_context_length</td><td>-</td></tr><tr><td>verifier_seconds</td><td>1.783239</td></tr></tbody></table>
+        <h3 style="margin-top:10px">IR</h3>
+        <table><tbody><tr><td colspan='2'>No IR metrics available</td></tr></tbody></table>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>Agent Trace</h2>
+      <details open>
+        <summary>Conversation History (114)</summary>
+        <table>
+          <thead><tr><th>#</th><th>Timestamp</th><th>Type</th><th>Subtype</th><th>Tool</th><th>Text</th></tr></thead>
+          <tbody><tr><td>1</td><td>-</td><td>system</td><td>init</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>2</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>I&#x27;ll help you find all Go source files related to plugin signature verification in the grafana/grafana repository. Let me start by exploring the workspace and searching for relevant files.</pre></td></tr><tr><td>3</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>4</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>5</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>6</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>7</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>8</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>9</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>10</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>11</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>12</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>13</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>14</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>15</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>16</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>17</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>18</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>19</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>20</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>21</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>22</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>23</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>24</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>25</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>26</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>27</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>28</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>29</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>30</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>31</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>32</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>33</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>34</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>35</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>36</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>37</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>38</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>39</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>40</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>41</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>42</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>43</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>44</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>45</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>46</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>47</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>48</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>49</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>50</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>51</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>52</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>53</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>54</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>55</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>56</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>57</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>58</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>59</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>60</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>61</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>62</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>63</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>64</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>65</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>66</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>67</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>68</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>69</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>70</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>71</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>72</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>73</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>74</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>75</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>76</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>77</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>78</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>79</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>80</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>81</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>82</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>83</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>84</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>85</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>86</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>87</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>88</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>89</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>90</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>91</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>92</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>93</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>94</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>95</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>96</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>97</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>98</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>99</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>100</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>101</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>102</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>103</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>104</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>105</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>106</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>107</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Bash</code></td><td><pre></pre></td></tr><tr><td>108</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>109</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Read</code></td><td><pre></pre></td></tr><tr><td>110</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>111</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Now let me create the answer.json file with all my findings:</pre></td></tr><tr><td>112</td><td>-</td><td>assistant</td><td>tool_use</td><td><code>Write</code></td><td><pre></pre></td></tr><tr><td>113</td><td>-</td><td>user</td><td>text</td><td><code>-</code></td><td><pre></pre></td></tr><tr><td>114</td><td>-</td><td>assistant</td><td>text</td><td><code>-</code></td><td><pre>Perfect! I&#x27;ve completed a comprehensive analysis of the Grafana plugin signature verification system and created the answer file. Here&#x27;s a summary of what I found:
+
+## Summary of Plugin Signature Verification in Grafana
+
+I identified **20 key Go source files** that implement plugin signature verification across three main areas:
+
+### **Plugin Manifest Signing &amp; Verification**
+- **Core file**: `pkg/plugins/manager/signature/signature.go` - implements the `Signature` struct with the `Calculate()` method that:
+  - Reads MANIFEST.txt files using clearsign (OpenPGP) format
+  - Validates manifest structure and required fields
+  - Verifies OpenPGP signatures using public keys
+  - Computes and verifies SHA256 hashes of all plugin files
+  - Validates root URLs for private/private-glob signatures
+  - Returns signature status (Valid, Invalid, Modified, Unsigned, Internal)
+
+### **Signature Validation on Plugin Load**
+- **Pipeline stage**: `pkg/plugins/manager/pipeline/validation/validation.go` and `steps.go`
+- **Validator**: `pkg/plugins/manager/signature/signature.go` with `ValidateSignature()` method that:
+  - Checks if signature is valid
+  - Inherits signatures from parent plugins
+  - Delegates unsigned plugin checks to the authorizer
+  - Rejects invalid/modified signatures
+
+### **Unsigned Plugin Allowlist Enforcement**
+- **Authorizer**: `pkg/plugins/manager/signature/authorizer.go` - `UnsignedPluginAuthorizer` with `CanLoadPlugin()` that:
+  - Checks if plugin is in the allowlist via `PluginsAllowUnsigned` configuration
+  - Allows unsigned plugins in dev mode
+  - Reads configuration from `pkg/setting/setting_plugins.go` via `allow_loading_unsigned_plugins` setting
+
+### **Additional Components**
+- Dynamic and static key retrievers for managing public keys
+- Bootstrap pipeline int
+... (truncated)</pre></td></tr></tbody>
+        </table>
+      </details>
+      <details>
+        <summary>Tool Calls (55)</summary>
+        <details><summary>1. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find /workspace -type d -name \&quot;plugin*\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find plugin-related directories&quot;
+}</pre></details><details><summary>2. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la /workspace/&quot;,
+  &quot;description&quot;: &quot;List workspace contents&quot;
+}</pre></details><details><summary>3. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;cd /workspace/grafana--26d36ec &amp;&amp; find . -type f -name \&quot;*.go\&quot; -path \&quot;*/plugin*\&quot; 2&gt;/dev/null | head -30&quot;,
+  &quot;description&quot;: &quot;Find Go files in plugin directories&quot;
+}</pre></details><details><summary>4. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -r \&quot;signature\\|Signature\&quot; --include=\&quot;*.go\&quot; | grep -i \&quot;plugin\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Search for signature-related code in plugin files&quot;
+}</pre></details><details><summary>5. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;manifest.*sign\\|sign.*manifest\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find files with manifest signing code&quot;
+}</pre></details><details><summary>6. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;verify\\|Verify\&quot; | grep -i plugin | head -20&quot;,
+  &quot;description&quot;: &quot;Find files with verification code&quot;
+}</pre></details><details><summary>7. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find . -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;allowlist\\|allow.*list\\|whitelist\&quot; | grep -i plugin&quot;,
+  &quot;description&quot;: &quot;Find files with allowlist code&quot;
+}</pre></details><details><summary>8. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/plugins -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;signature\\|Signature\&quot; | head -30&quot;,
+  &quot;description&quot;: &quot;Find all plugin-related signature files&quot;
+}</pre></details><details><summary>9. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la ./pkg/plugins/manager/signature/&quot;,
+  &quot;description&quot;: &quot;List files in signature directory&quot;
+}</pre></details><details><summary>10. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;ls -la ./pkg/plugins/manager/signature/statickey/&quot;,
+  &quot;description&quot;: &quot;List files in statickey directory&quot;
+}</pre></details><details><summary>11. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/signature/signature.go&quot;
+}</pre></details><details><summary>12. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/signature/manifest.go&quot;
+}</pre></details><details><summary>13. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/signature/authorizer.go&quot;
+}</pre></details><details><summary>14. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/signature/statickey/static_retriever.go&quot;
+}</pre></details><details><summary>15. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/bootstrap/bootstrap.go&quot;
+}</pre></details><details><summary>16. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/bootstrap/steps.go&quot;
+}</pre></details><details><summary>17. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/validation/steps.go&quot;
+}</pre></details><details><summary>18. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;PluginLoaderAuthorizer\\|SignatureCalculator\\|Signature\\|SignatureType\\|SignatureStatus\&quot; ./pkg/plugins/ifaces.go | head -50&quot;,
+  &quot;description&quot;: &quot;Search for signature-related interfaces&quot;
+}</pre></details><details><summary>19. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/ifaces.go&quot;,
+  &quot;limit&quot;: 50,
+  &quot;offset&quot;: 100
+}</pre></details><details><summary>20. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/models.go&quot;,
+  &quot;limit&quot;: 100,
+  &quot;offset&quot;: 1
+}</pre></details><details><summary>21. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;type Signature\\|type SignatureStatus\\|type SignatureType\&quot; ./pkg/plugins/models.go&quot;,
+  &quot;description&quot;: &quot;Find signature type definitions&quot;
+}</pre></details><details><summary>22. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/models.go&quot;,
+  &quot;limit&quot;: 100,
+  &quot;offset&quot;: 215
+}</pre></details><details><summary>23. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/services/pluginsintegration/keyretriever -type f -name \&quot;*.go\&quot; 2&gt;/dev/null&quot;,
+  &quot;description&quot;: &quot;Find key retriever files&quot;
+}</pre></details><details><summary>24. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/pluginsintegration/keyretriever/retriever.go&quot;
+}</pre></details><details><summary>25. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go&quot;
+}</pre></details><details><summary>26. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -rn \&quot;PluginsAllowUnsigned\\|AllowUnsigned\&quot; ./pkg/plugins/config --include=\&quot;*.go\&quot;&quot;,
+  &quot;description&quot;: &quot;Find configuration for unsigned plugin allowlist&quot;
+}</pre></details><details><summary>27. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/config/config.go&quot;
+}</pre></details><details><summary>28. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -rn \&quot;PluginsAllowUnsigned\\|PluginSkip\\|DevMode\&quot; ./pkg/setting --include=\&quot;*.go\&quot; | grep -i plugin | head -20&quot;,
+  &quot;description&quot;: &quot;Find plugin-related settings&quot;
+}</pre></details><details><summary>29. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/setting/setting_plugins.go&quot;
+}</pre></details><details><summary>30. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/plugins/manager -type f -name \&quot;*.go\&quot; | head -30&quot;,
+  &quot;description&quot;: &quot;Find plugin manager files&quot;
+}</pre></details><details><summary>31. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/plugins/manager/pipeline -type f -name \&quot;*.go\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find pipeline files&quot;
+}</pre></details><details><summary>32. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/validation/validation.go&quot;
+}</pre></details><details><summary>33. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/initialization/initialization.go&quot;
+}</pre></details><details><summary>34. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/doc.go&quot;
+}</pre></details><details><summary>35. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/pipeline/bootstrap/doc.go&quot;
+}</pre></details><details><summary>36. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/services/pluginsintegration -type f -name \&quot;*.go\&quot; | grep -E \&quot;signature|loader|init\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find pluginsintegration files&quot;
+}</pre></details><details><summary>37. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/pluginsintegration/loader/loader.go&quot;,
+  &quot;limit&quot;: 150,
+  &quot;offset&quot;: 1
+}</pre></details><details><summary>38. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;Signature\\|SignatureType\\|SignatureOrg\&quot; ./pkg/plugins/plugins.go | head -30&quot;,
+  &quot;description&quot;: &quot;Find signature fields in Plugin struct&quot;
+}</pre></details><details><summary>39. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/plugins.go&quot;,
+  &quot;limit&quot;: 100,
+  &quot;offset&quot;: 1
+}</pre></details><details><summary>40. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;Signature\\|signature\&quot; ./pkg/plugins/localfiles.go | head -20&quot;,
+  &quot;description&quot;: &quot;Check plugin localfiles for signature handling&quot;
+}</pre></details><details><summary>41. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/localfiles.go&quot;
+}</pre></details><details><summary>42. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/plugins/manager/sources -type f -name \&quot;*.go\&quot; 2&gt;/dev/null&quot;,
+  &quot;description&quot;: &quot;Find plugin source files&quot;
+}</pre></details><details><summary>43. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;PluginSource\\|DefaultSignature\&quot; ./pkg/plugins/manager/sources/ifaces.go&quot;,
+  &quot;description&quot;: &quot;Find PluginSource interface&quot;
+}</pre></details><details><summary>44. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/ifaces.go&quot;,
+  &quot;limit&quot;: 130,
+  &quot;offset&quot;: 1
+}</pre></details><details><summary>45. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -rn \&quot;DefaultSignature\\|SignatureStatusInternal\&quot; ./pkg/plugins --include=\&quot;*.go\&quot; | head -20&quot;,
+  &quot;description&quot;: &quot;Find DefaultSignature implementations&quot;
+}</pre></details><details><summary>46. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/manager/sources/source_local_disk.go&quot;
+}</pre></details><details><summary>47. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg -type f -name \&quot;*.go\&quot; -path \&quot;*plugins*\&quot; | xargs grep -l \&quot;SignatureStatusInternal\\|ClassCore\&quot; 2&gt;/dev/null | head -15&quot;,
+  &quot;description&quot;: &quot;Find files that handle core plugins&quot;
+}</pre></details><details><summary>48. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;Signature\\|signature\&quot; ./pkg/services/pluginsintegration/pipeline/steps.go&quot;,
+  &quot;description&quot;: &quot;Check pluginsintegration pipeline steps&quot;
+}</pre></details><details><summary>49. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/services/pluginsintegration/pipeline/steps.go&quot;,
+  &quot;limit&quot;: 50,
+  &quot;offset&quot;: 200
+}</pre></details><details><summary>50. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;ProvideService.*Signature\\|ProvideValidator\\|ProvideOSSAuthorizer\&quot; 2&gt;/dev/null | head -10&quot;,
+  &quot;description&quot;: &quot;Find provider functions for signature components&quot;
+}</pre></details><details><summary>51. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;Signature\\|signature\&quot; ./pkg/services/pluginsintegration/pluginsintegration.go | head -30&quot;,
+  &quot;description&quot;: &quot;Check pluginsintegration wiring&quot;
+}</pre></details><details><summary>52. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;find ./pkg/plugins -type f -name \&quot;*.go\&quot; | xargs grep -l \&quot;ErrorCodeSignature\\|SignatureStatus\\|SignatureType\&quot; 2&gt;/dev/null | sort&quot;,
+  &quot;description&quot;: &quot;Find all files with signature enums and error codes&quot;
+}</pre></details><details><summary>53. <code>Bash</code> @ -</summary><pre>{
+  &quot;command&quot;: &quot;grep -n \&quot;ErrorCodeSignature\\|type Error struct\&quot; ./pkg/plugins/models.go | head -20&quot;,
+  &quot;description&quot;: &quot;Find signature error codes&quot;
+}</pre></details><details><summary>54. <code>Read</code> @ -</summary><pre>{
+  &quot;file_path&quot;: &quot;/workspace/grafana--26d36ec/pkg/plugins/models.go&quot;,
+  &quot;limit&quot;: 100,
+  &quot;offset&quot;: 340
+}</pre></details><details><summary>55. <code>Write</code> @ -</summary><pre>{
+  &quot;content&quot;: &quot;{\n  \&quot;files\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/manifest.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/authorizer.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/statickey/static_retriever.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/manifest_test.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/validation/validation.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/validation/steps.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/bootstrap/bootstrap.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/bootstrap/steps.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/sources/source_local_disk.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/models.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/plugins.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/ifaces.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/config/config.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/setting/setting_plugins.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/retriever.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/pipeline/steps.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/pluginsintegration.go\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/loader/loader.go\&quot;}\n  ],\n  \&quot;symbols\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;Signature\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;PluginManifest\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;Calculate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;readPluginManifest\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;ReadPluginManifestFromFS\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;Verify\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;validateManifest\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;verifyHash\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;urlMatch\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/manifest.go\&quot;, \&quot;symbol\&quot;: \&quot;ErrSignatureTypeUnsigned\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/authorizer.go\&quot;, \&quot;symbol\&quot;: \&quot;UnsignedPluginAuthorizer\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/authorizer.go\&quot;, \&quot;symbol\&quot;: \&quot;CanLoadPlugin\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/statickey/static_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;KeyRetriever\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/statickey/static_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;GetPublicKey\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/validation/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureValidationStep\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/validation/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;PluginSignatureValidator\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/models.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureStatus\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/models.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureType\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/models.go\&quot;, \&quot;symbol\&quot;: \&quot;Signature\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/models.go\&quot;, \&quot;symbol\&quot;: \&quot;Error\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/ifaces.go\&quot;, \&quot;symbol\&quot;: \&quot;PluginLoaderAuthorizer\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/ifaces.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureCalculator\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;KeyRetriever\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;GetPublicKey\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;updateKeys\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go\&quot;, \&quot;symbol\&quot;: \&quot;downloadKeys\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/pipeline/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureValidation\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/services/pluginsintegration/pipeline/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureValidationStep\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/sources/source_local_disk.go\&quot;, \&quot;symbol\&quot;: \&quot;LocalSource\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/sources/source_local_disk.go\&quot;, \&quot;symbol\&quot;: \&quot;DefaultSignature\&quot;}\n  ],\n  \&quot;chain\&quot;: [\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/bootstrap/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;DefaultConstructFunc\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;Calculate\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;ReadPluginManifestFromFS\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;readPluginManifest\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;validateManifest\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;Verify\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/pipeline/validation/steps.go\&quot;, \&quot;symbol\&quot;: \&quot;SignatureValidationStep\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/signature.go\&quot;, \&quot;symbol\&quot;: \&quot;ValidateSignature\&quot;},\n    {\&quot;repo\&quot;: \&quot;grafana/grafana\&quot;, \&quot;path\&quot;: \&quot;pkg/plugins/manager/signature/authorizer.go\&quot;, \&quot;symbol\&quot;: \&quot;CanLoadPlugin\&quot;}\n  ],\n  \&quot;text\&quot;: \&quot;Grafana implements comprehensive plugin signature verification through multiple layers:\\n\\n## Plugin Manifest Signing (pkg/plugins/manager/signature/)\\n\\nThe core signature verification system is located in `pkg/plugins/manager/signature/signature.go`. The `Signature` struct implements the `SignatureCalculator` interface and provides the `Calculate()` method that is the main entry point for signature verification. This method orchestrates the entire signature validation process.\\n\\nThe `PluginManifest` struct in `manifest.go` defines the structure of MANIFEST.txt files that plugins include for signed distributions. Key fields include `plugin` (ID), `version`, `keyId`, `time`, `files` (SHA256 hashes), and V2-specific fields like `signatureType`, `signedByOrg`, `signedByOrgName`, and `rootUrls`.\\n\\nThe signature calculation flow begins in `pkg/plugins/manager/pipeline/bootstrap/steps.go` where `DefaultConstructFunc` calls the `SignatureCalculator.Calculate()` method for each discovered plugin. This method:\\n\\n1. Checks for default signatures via `src.DefaultSignature()` for core plugins\\n2. Calls `ReadPluginManifestFromFS()` to read MANIFEST.txt from the plugin&#x27;s filesystem\\n3. Parses the manifest using clearsign (OpenPGP clear-text signature format)\\n4. Validates manifest structure via `validateManifest()` including required fields\\n5. Verifies the OpenPGP signature using `Verify()` which retrieves the public key and validates against the manifest&#x27;s keyId\\n6. Computes SHA256 hashes of all plugin files via `verifyHash()` and compares against manifest hashes\\n7. Validates rootURLs for private and private-glob signature types via `urlMatch()`\\n8. Ensures all files in the plugin directory are listed in the manifest\\n9. Returns a `Signature` struct with status (Valid, Invalid, Modified, Unsigned, or Internal)\\n\\n## Signature Validation on Load (pkg/plugins/manager/pipeline/validation/)\\n\\nAfter the bootstrap stage, the validation stage runs in `pkg/plugins/manager/pipeline/validation/validation.go`. The `DefaultValidateFuncs()` in `steps.go` includes `SignatureValidationStep()` which creates a `PluginSignatureValidator` that calls the signature validator&#x27;s `ValidateSignature()` method.\\n\\nThe `Validation` struct in `pkg/plugins/manager/signature/signature.go` implements the `Validator` interface. Its `ValidateSignature()` method:\\n\\n1. Checks if the signature is already valid\\n2. For nested child plugins, inherits the parent plugin&#x27;s signature (unless core or internal)\\n3. Returns early for core plugins\\n4. Switches on the signature status (Unsigned, Invalid, Modified)\\n5. For unsigned plugins, delegates to the `PluginLoaderAuthorizer` via `CanLoadPlugin()`\\n6. Returns permission denied errors for signatures that don&#x27;t pass validation\\n\\n## Unsigned Plugin Allowlist (pkg/plugins/manager/signature/authorizer.go)\\n\\nThe `UnsignedPluginAuthorizer` struct implements the `PluginLoaderAuthorizer` interface. Its `CanLoadPlugin()` method enforces the unsigned plugin allowlist with three conditions:\\n\\n1. If the signature is not unsigned, return true (allow)\\n2. If dev mode is enabled, return true (allow)\\n3. Check if the plugin ID is in `cfg.PluginsAllowUnsigned` list\\n\\nThe allowlist is configured via `pkg/plugins/config/config.go` which stores `PluginsAllowUnsigned` as a list of plugin IDs. This configuration is loaded from settings in `pkg/setting/setting_plugins.go` where it reads the `allow_loading_unsigned_plugins` key from the `[plugins]` section of the configuration file.\\n\\n## Public Key Retrieval\\n\\nPublic keys for signature verification come from two sources controlled by `pkg/services/pluginsintegration/keyretriever/`:\\n\\n1. **Static Key Retriever** (`pkg/plugins/manager/signature/statickey/static_retriever.go`): Contains a hardcoded Grafana public key (keyId: 7e4d0c6a708866e7) used by default\\n\\n2. **Dynamic Key Retriever** (`pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go`): When enabled, fetches public keys from the Grafana.com API endpoint `/plugins/ci/keys`. The keys are cached in a key-value store and updated periodically (10-day sync interval). The service can be disabled via the `PluginSkipPublicKeyDownload` setting.\\n\\nThe key retriever service (`pkg/services/pluginsintegration/keyretriever/retriever.go`) routes to the dynamic retriever if enabled, otherwise falls back to the static key retriever.\\n\\n## Core Plugin Signature Handling\\n\\nCore plugins get special treatment. In `pkg/plugins/manager/sources/source_local_disk.go`, the `LocalSource` class implements `DefaultSignature()` which returns a signature with status `SignatureStatusInternal` for plugins discovered from the core class. This allows core plugins to bypass manifest signature verification.\\n\\n## Error Handling\\n\\nSignature errors are represented in `pkg/plugins/models.go` via the `Error` struct with `SignatureStatus` field. Error codes include:\\n- `ErrorCodeSignatureMissing` for unsigned plugins\\n- `ErrorCodeSignatureModified` for modified files\\n- `ErrorCodeSignatureInvalid` for invalid signatures\\n\\nThe error is propagated through the validation pipeline and prevents the plugin from loading if the signature status is not valid.\\n\\n## Integration\\n\\nAll components are wired together in `pkg/services/pluginsintegration/pluginsintegration.go` using dependency injection. The `Loader` in `pkg/services/pluginsintegration/loader/loader.go` coordinates the complete plugin loading pipeline including discovery, bootstrap (which calculates signatures), validation (which validates signatures), and initialization stages.\\n\&quot;\n}\n&quot;,
+  &quot;file_path&quot;: &quot;/workspace/answer.json&quot;
+}</pre></details>
+      </details>
+      <details>
+        <summary>Code Changes (1)</summary>
+        <details><summary>1. WRITE <code>/workspace/answer.json</code></summary><pre>{
+  &quot;files&quot;: [
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/signature/signature.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/signature/manifest.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/signature/authorizer.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/signature/statickey/static_retriever.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/signature/manifest_test.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/pipeline/validation/validation.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/pipeline/validation/steps.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/pipeline/bootstrap/bootstrap.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/pipeline/bootstrap/steps.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/manager/sources/source_local_disk.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/models.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/plugins.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/ifaces.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/plugins/config/config.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/setting/setting_plugins.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/pluginsintegration/keyretriever/retriever.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/pluginsintegration/keyretriever/dynamic/dynamic_retriever.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/pluginsintegration/pipeline/steps.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/pluginsintegration/pluginsintegration.go&quot;},
+    {&quot;repo&quot;: &quot;grafana/grafana&quot;, &quot;path&quot;: &quot;pkg/services/pluginsintegration/loader/loader.go&quot;}
+  ],
+ 
+... (truncated)</pre></details>
+      </details>
+      <details>
+        <summary>Bash Commands (29)</summary>
+        <pre>1. $ find /workspace -type d -name &quot;plugin*&quot; | head -20</pre><pre>2. $ ls -la /workspace/</pre><pre>3. $ cd /workspace/grafana--26d36ec &amp;&amp; find . -type f -name &quot;*.go&quot; -path &quot;*/plugin*&quot; 2&gt;/dev/null | head -30</pre><pre>4. $ grep -r &quot;signature\|Signature&quot; --include=&quot;*.go&quot; | grep -i &quot;plugin&quot; | head -20</pre><pre>5. $ find . -type f -name &quot;*.go&quot; | xargs grep -l &quot;manifest.*sign\|sign.*manifest&quot; | head -20</pre><pre>6. $ find . -type f -name &quot;*.go&quot; | xargs grep -l &quot;verify\|Verify&quot; | grep -i plugin | head -20</pre><pre>7. $ find . -type f -name &quot;*.go&quot; | xargs grep -l &quot;allowlist\|allow.*list\|whitelist&quot; | grep -i plugin</pre><pre>8. $ find ./pkg/plugins -type f -name &quot;*.go&quot; | xargs grep -l &quot;signature\|Signature&quot; | head -30</pre><pre>9. $ ls -la ./pkg/plugins/manager/signature/</pre><pre>10. $ ls -la ./pkg/plugins/manager/signature/statickey/</pre><pre>11. $ grep -n &quot;PluginLoaderAuthorizer\|SignatureCalculator\|Signature\|SignatureType\|SignatureStatus&quot; ./pkg/plugins/ifaces.go | head -50</pre><pre>12. $ grep -n &quot;type Signature\|type SignatureStatus\|type SignatureType&quot; ./pkg/plugins/models.go</pre><pre>13. $ find ./pkg/services/pluginsintegration/keyretriever -type f -name &quot;*.go&quot; 2&gt;/dev/null</pre><pre>14. $ grep -rn &quot;PluginsAllowUnsigned\|AllowUnsigned&quot; ./pkg/plugins/config --include=&quot;*.go&quot;</pre><pre>15. $ grep -rn &quot;PluginsAllowUnsigned\|PluginSkip\|DevMode&quot; ./pkg/setting --include=&quot;*.go&quot; | grep -i plugin | head -20</pre><pre>16. $ find ./pkg/plugins/manager -type f -name &quot;*.go&quot; | head -30</pre><pre>17. $ find ./pkg/plugins/manager/pipeline -type f -name &quot;*.go&quot; | head -20</pre><pre>18. $ find ./pkg/services/pluginsintegration -type f -name &quot;*.go&quot; | grep -E &quot;signature|loader|init&quot; | head -20</pre><pre>19. $ grep -n &quot;Signature\|SignatureType\|SignatureOrg&quot; ./pkg/plugins/plugins.go | head -30</pre><pre>20. $ grep -n &quot;Signature\|signature&quot; ./pkg/plugins/localfiles.go | head -20</pre><pre>21. $ find ./pkg/plugins/manager/sources -type f -name &quot;*.go&quot; 2&gt;/dev/null</pre><pre>22. $ grep -n &quot;PluginSource\|DefaultSignature&quot; ./pkg/plugins/manager/sources/ifaces.go</pre><pre>23. $ grep -rn &quot;DefaultSignature\|SignatureStatusInternal&quot; ./pkg/plugins --include=&quot;*.go&quot; | head -20</pre><pre>24. $ find ./pkg -type f -name &quot;*.go&quot; -path &quot;*plugins*&quot; | xargs grep -l &quot;SignatureStatusInternal\|ClassCore&quot; 2&gt;/dev/null | head -15</pre><pre>25. $ grep -n &quot;Signature\|signature&quot; ./pkg/services/pluginsintegration/pipeline/steps.go</pre><pre>26. $ find ./pkg -type f -name &quot;*.go&quot; | xargs grep -l &quot;ProvideService.*Signature\|ProvideValidator\|ProvideOSSAuthorizer&quot; 2&gt;/dev/null | head -10</pre><pre>27. $ grep -n &quot;Signature\|signature&quot; ./pkg/services/pluginsintegration/pluginsintegration.go | head -30</pre><pre>28. $ find ./pkg/plugins -type f -name &quot;*.go&quot; | xargs grep -l &quot;ErrorCodeSignature\|SignatureStatus\|SignatureType&quot; 2&gt;/dev/null | sort</pre><pre>29. $ grep -n &quot;ErrorCodeSignature\|type Error struct&quot; ./pkg/plugins/models.go | head -20</pre>
+      </details>
+    </div>
+  </div>
+</body>
+</html>
