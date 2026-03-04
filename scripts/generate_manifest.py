@@ -17,8 +17,10 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from config_utils import discover_configs
+from official_runs import raw_runs_dir
 
-RUNS_DIR = PROJECT_ROOT / "runs" / "official"
+RUNS_DIR = raw_runs_dir(PROJECT_ROOT / "runs" / "official")
+MANIFEST_OUTPUT_PATH = PROJECT_ROOT / "runs" / "official" / "MANIFEST.json"
 
 # Directories to skip entirely.
 # __v1_hinted: old run dirs from before enterprise task de-hinting (US-001..US-003).
@@ -938,7 +940,7 @@ def main():
         "run_history": run_history_section,
     }
 
-    output_path = RUNS_DIR / "MANIFEST.json"
+    output_path = MANIFEST_OUTPUT_PATH
     with open(output_path, "w") as f:
         json.dump(manifest, f, indent=2)
 

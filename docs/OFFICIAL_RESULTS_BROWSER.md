@@ -46,6 +46,10 @@ python3 scripts/export_official_results.py \
   --output-dir ./docs/official_results/
 ```
 
+Note: `runs/official/` uses a split layout (`_raw` for raw runs, organized
+views at top-level). Export tooling handles this automatically; pass
+`--runs-dir ./runs/official/` unless you intentionally want a custom root.
+
 If you promote runs with:
 
 ```bash

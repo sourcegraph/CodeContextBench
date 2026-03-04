@@ -212,6 +212,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/plot_csb_mcp_blog_figures.py` - Utility script for plot csb mcp blog figures.
 - `scripts/prepare_analysis_runs.py` - Utility script for prepare analysis runs.
 - `scripts/promote_agent_oracles.py` - Utility script for promote agent oracles.
+- `scripts/promote_blocked.py` - Utility script for promote blocked.
 - `scripts/push_base_images_ghcr.sh` - Utility script for push base images ghcr.
 - `scripts/regenerate_artifact_dockerfiles.py` - Utility script for regenerate artifact dockerfiles.
 - `scripts/rehost_sweap_images.py` - Utility script for rehost sweap images.

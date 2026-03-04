@@ -10,6 +10,7 @@ SKIP_PATTERNS = ["__broken_verifier", "validation_test", "archive", "__archived"
 DEFAULT_PREFIX_MAP_PATH = Path("configs/run_dir_prefix_map.json")
 TRIAGE_FILENAME = "triage.json"
 TRIAGE_DECISIONS = {"include", "exclude", "pending"}
+RAW_DIRNAME = "_raw"
 
 
 def should_skip(dirname: str) -> bool:
@@ -33,13 +34,29 @@ def detect_suite(run_dir_name: str, prefix_map: dict[str, str]) -> str | None:
     return None
 
 
+def raw_runs_dir(runs_dir: Path) -> Path:
+    """Return the directory that contains raw official run dirs.
+
+    Compatibility behavior:
+    - New layout: runs/official/_raw (preferred)
+    - Legacy layout: runs/official
+    """
+    if runs_dir.name == RAW_DIRNAME and runs_dir.is_dir():
+        return runs_dir
+    candidate = runs_dir / RAW_DIRNAME
+    if candidate.is_dir():
+        return candidate
+    return runs_dir
+
+
 def top_level_run_dirs(runs_dir: Path) -> list[Path]:
-    if not runs_dir.is_dir():
+    raw_dir = raw_runs_dir(runs_dir)
+    if not raw_dir.is_dir():
         return []
     return sorted(
         [
             p
-            for p in runs_dir.iterdir()
+            for p in raw_dir.iterdir()
             if p.is_dir() and not should_skip(p.name)
         ],
         key=lambda p: p.name,
@@ -90,4 +107,3 @@ def read_triage(run_dir: Path) -> tuple[dict | None, str | None]:
         if not triage.get(field):
             return triage, f"missing_{field}"
     return triage, None
-

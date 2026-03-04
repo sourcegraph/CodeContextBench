@@ -34,9 +34,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from config_utils import discover_configs
+from official_runs import raw_runs_dir
 
 STAGING_DIR = PROJECT_ROOT / "runs" / "staging"
 OFFICIAL_DIR = PROJECT_ROOT / "runs" / "official"
+OFFICIAL_RAW_DIR = raw_runs_dir(OFFICIAL_DIR)
 VALIDATE_SCRIPT = PROJECT_ROOT / "scripts" / "validate_task_run.py"
 MANIFEST_SCRIPT = PROJECT_ROOT / "scripts" / "generate_manifest.py"
 EXPORT_OFFICIAL_RESULTS_SCRIPT = PROJECT_ROOT / "scripts" / "export_official_results.py"
@@ -583,11 +585,11 @@ def cmd_promote(
             print(f"\n  {YELLOW}--force: bypassing failed gates{RESET}")
             passed = True
 
-        official_dest = OFFICIAL_DIR / run_dir.name
+        official_dest = OFFICIAL_RAW_DIR / run_dir.name
         if official_dest.exists():
             if force:
                 suffix = datetime.now().strftime("__promoted_%Y%m%d_%H%M%S")
-                official_dest = OFFICIAL_DIR / (run_dir.name + suffix)
+                official_dest = OFFICIAL_RAW_DIR / (run_dir.name + suffix)
                 print(f"\n  {YELLOW}Conflict: appending suffix → {official_dest.name}{RESET}")
             else:
                 print(f"\n  {RED}[FAIL]{RESET} Already exists in official: {official_dest.name}")

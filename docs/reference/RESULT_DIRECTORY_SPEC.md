@@ -14,13 +14,22 @@
 
 ## Directory Layouts
 
-`runs/official/` contains batches with **three different directory structures**.
+`runs/official/` now has a split layout:
+
+- Raw run data (source of truth): `runs/official/_raw/`
+- Organized symlink views: `runs/official/csb_sdlc/`, `runs/official/csb_org/`, etc.
+- Canonical manifest: `runs/official/MANIFEST.json`
+
+Any scanner that reads run artifacts MUST scan `runs/official/_raw/` (or use
+`scripts/official_runs.py:raw_runs_dir(...)`), not top-level `runs/official/`.
+
+Inside the raw root, batches use **three different directory structures**.
 Any scanner MUST handle all three or it will under-count results.
 
 ### Layout 1: Old Promoted Format (pre-2026-02-24)
 
 ```
-runs/official/{suite}_{model}_{date}/
+runs/official/_raw/{suite}_{model}_{date}/
   baseline/
     {suite}_{task_id}_{config_name}/       ← wrapper dir
       {trial_dirname}/                     ← e.g. sgonly_task-name__AbCdEfG
@@ -40,7 +49,7 @@ Example (historical, from pre-split `csb_sdlc_build` runs): `csb_sdlc_build_haik
 ### Layout 2: Harbor Nested Format (2026-02-24+)
 
 ```
-runs/official/{suite}_{model}_{timestamp}/
+runs/official/_raw/{suite}_{model}_{timestamp}/
   baseline-local-direct/
     {harbor_timestamp}/                    ← e.g. 2026-02-26__00-09-23
       {task_dirname}/                      ← e.g. task-name__AbCdEfG
@@ -57,7 +66,7 @@ runs/official/{suite}_{model}_{timestamp}/
 ### Layout 3: CodeScaleBench-Org / Artifact Format
 
 ```
-runs/official/{suite}_{model}_{timestamp}/
+runs/official/_raw/{suite}_{model}_{timestamp}/
   baseline-local-direct/                   (or baseline-local-artifact)
     {harbor_timestamp}/
       bl_{TASK_ID}_{hash}__hash/           ← bl_ prefix, uppercase task ID
@@ -191,7 +200,9 @@ def extract_task_id_from_result(data: dict, parent_dir: str, suites: set[str]) -
 from pathlib import Path
 
 # Use rglob to find ALL result.json at any depth
-for rj in Path('runs/official').rglob('result.json'):
+from official_runs import raw_runs_dir
+raw_root = raw_runs_dir(Path('runs/official'))
+for rj in raw_root.rglob('result.json'):
     data = json.loads(rj.read_text())
 
     # 1. Skip batch-level results
@@ -199,7 +210,7 @@ for rj in Path('runs/official').rglob('result.json'):
         continue
 
     # 2. Determine config from PATH COMPONENTS (not from result content)
-    parts = rj.relative_to(official).parts
+    parts = rj.relative_to(raw_root).parts
     is_baseline = any(p in BL_NAMES for p in parts)
     is_mcp = any(p in MCP_NAMES for p in parts)
 
@@ -217,6 +228,7 @@ for rj in Path('runs/official').rglob('result.json'):
 
 | Mistake | Consequence |
 |---|---|
+| Scanning top-level `runs/official/` instead of `_raw` | Mixes in organized symlink views and non-run artifacts |
 | Only checking 2-3 levels deep | Misses Layout 1 (old promoted, 4 levels deep) |
 | Using `task_id` field without checking if it's a dict | Crash or empty string |
 | Not stripping `sgonly_` prefix from `task_name` | No match against selection file |

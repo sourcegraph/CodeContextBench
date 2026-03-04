@@ -225,6 +225,11 @@ Each suite directory contains per-task subdirectories with `instruction.md`, `ta
 The `scripts/` directory contains a stdlib-only Python 3.10+ pipeline for extracting deterministic metrics from Harbor run output.
 Use `runs/analysis` for active analysis runs (and `runs/official` when producing publishable exports):
 
+Official runs layout note:
+- Raw source-of-truth run dirs now live under `runs/official/_raw/`.
+- Top-level `runs/official/` is kept clean for organized benchmark/model views (`csb_sdlc/`, `csb_org/`) plus `MANIFEST.json`.
+- Core scripts (manifest generation, promotion, organizer) resolve `_raw` automatically.
+
 ```bash
 # Generate evaluation report from analysis runs
 python3 scripts/generate_eval_report.py \

@@ -1035,6 +1035,14 @@
       "summary": "Utility script for promote agent oracles."
     },
     {
+      "name": "promote_blocked.py",
+      "path": "scripts/promote_blocked.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for promote blocked."
+    },
+    {
       "name": "promote_run.py",
       "path": "scripts/promote_run.py",
       "category": "data_management",
@@ -1507,7 +1515,7 @@
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 74,
+    "misc": 75,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,
