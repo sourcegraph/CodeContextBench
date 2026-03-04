@@ -33,6 +33,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 ## Analysis & Comparison
 
 - `scripts/analyze_mcp_unique_haiku.py` - Analysis/comparison script for analyze mcp unique haiku.
+- `scripts/analyze_paired_cost_official_raw.py` - Analysis/comparison script for analyze paired cost official raw.
 - `scripts/analyze_run_coverage.py` - Analysis/comparison script for analyze run coverage.
 - `scripts/audit_traces.py` - Analysis/comparison script for audit traces.
 - `scripts/compare_configs.py` - Compares benchmark outcomes across configs on matched task sets.
@@ -179,6 +180,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/daytona_curator_runner.py` - Utility script for daytona curator runner.
 - `scripts/daytona_poc_runner.py` - Utility script for daytona poc runner.
 - `scripts/daytona_runner.py` - Utility script for daytona runner.
+- `scripts/daytona_snapshot_cleanup.py` - Utility script for daytona snapshot cleanup.
 - `scripts/dependeval_eval_dr.py` - Utility script for dependeval eval dr.
 - `scripts/dependeval_eval_me.py` - Utility script for dependeval eval me.
 - `scripts/docgen_quality_sweep.py` - Utility script for docgen quality sweep.

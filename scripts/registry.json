@@ -51,6 +51,14 @@
       "summary": "Analysis/comparison script for analyze mcp unique haiku."
     },
     {
+      "name": "analyze_paired_cost_official_raw.py",
+      "path": "scripts/analyze_paired_cost_official_raw.py",
+      "category": "analysis_comparison",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Analysis/comparison script for analyze paired cost official raw."
+    },
+    {
       "name": "analyze_run_coverage.py",
       "path": "scripts/analyze_run_coverage.py",
       "category": "analysis_comparison",
@@ -369,6 +377,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Utility script for daytona runner."
+    },
+    {
+      "name": "daytona_snapshot_cleanup.py",
+      "path": "scripts/daytona_snapshot_cleanup.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for daytona snapshot cleanup."
     },
     {
       "name": "dependeval_eval_dr.py",
@@ -1508,14 +1524,14 @@
     }
   ],
   "category_counts": {
-    "analysis_comparison": 23,
+    "analysis_comparison": 24,
     "core_operations": 13,
     "data_management": 10,
     "generation": 7,
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 75,
+    "misc": 76,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,

@@ -1,0 +1,344 @@
+{
+  "generated_at": "2026-03-04T23:08:01.932836+00:00",
+  "source": "runs/official/_raw",
+  "canonical_pairing_rule": "latest valid per side per (model, task_id); one pair per task",
+  "sensitivity_pairing_rule": "count-matched per (model, task_id), newest-first within side",
+  "valid_filter": "output_tokens > 0 and agent_execution_seconds >= 10",
+  "records_scanned": 7703,
+  "latest_task": {
+    "all_pairs": {
+      "pair_count": 502,
+      "model_summary": {
+        "haiku": {
+          "pairs": 392,
+          "baseline_total_cost_usd": 174.00601425,
+          "mcp_total_cost_usd": 198.0197303500001,
+          "baseline_avg_cost_usd": 0.44389289349489797,
+          "mcp_avg_cost_usd": 0.5051523733418369,
+          "delta_cost_usd": 24.013716100000096,
+          "pct_delta_cost_of_means": 13.800509254524297,
+          "input_ratio_mcp_over_baseline": 0.8004334702678465
+        },
+        "sonnet": {
+          "pairs": 9,
+          "baseline_total_cost_usd": 13.34744245,
+          "mcp_total_cost_usd": 12.55560455,
+          "baseline_avg_cost_usd": 1.4830491611111112,
+          "mcp_avg_cost_usd": 1.3950671722222223,
+          "delta_cost_usd": -0.7918379000000009,
+          "pct_delta_cost_of_means": -5.932506567953033,
+          "input_ratio_mcp_over_baseline": 0.24737631184407796
+        },
+        "opus": {
+          "pairs": 101,
+          "baseline_total_cost_usd": 5653.1065816499995,
+          "mcp_total_cost_usd": 9119.03358425,
+          "baseline_avg_cost_usd": 55.97135229356435,
+          "mcp_avg_cost_usd": 90.28746123019803,
+          "delta_cost_usd": 3465.9270026000013,
+          "pct_delta_cost_of_means": 61.31013014773878,
+          "input_ratio_mcp_over_baseline": 1.2365269473317915
+        }
+      },
+      "size_summary": {
+        "haiku_by_context_length": {
+          "100k-1m": {
+            "pairs": 98,
+            "baseline_avg_cost_usd": 0.35356851377551024,
+            "mcp_avg_cost_usd": 0.4815632173469387,
+            "delta_avg_cost_usd": 0.12799470357142845,
+            "pct_delta_cost_of_means": 36.200820656981804
+          },
+          "<100k": {
+            "pairs": 222,
+            "baseline_avg_cost_usd": 0.22787664121621623,
+            "mcp_avg_cost_usd": 0.21461094842342338,
+            "delta_avg_cost_usd": -0.013265692792792837,
+            "pct_delta_cost_of_means": -5.821435984834422
+          },
+          "unknown": {
+            "pairs": 72,
+            "baseline_avg_cost_usd": 1.232884521527778,
+            "mcp_avg_cost_usd": 1.4330958958333335,
+            "delta_avg_cost_usd": 0.2002113743055555,
+            "pct_delta_cost_of_means": 16.239264165426913
+          }
+        },
+        "haiku_by_files_count": {
+          "10-100": {
+            "pairs": 91,
+            "baseline_avg_cost_usd": 0.35155932912087917,
+            "mcp_avg_cost_usd": 0.4929996104395605,
+            "delta_avg_cost_usd": 0.1414402813186813,
+            "pct_delta_cost_of_means": 40.23226511222773
+          },
+          "<10": {
+            "pairs": 168,
+            "baseline_avg_cost_usd": 0.2537777163690476,
+            "mcp_avg_cost_usd": 0.2341883002976191,
+            "delta_avg_cost_usd": -0.01958941607142851,
+            "pct_delta_cost_of_means": -7.719123787425552
+          },
+          "unknown": {
+            "pairs": 133,
+            "baseline_avg_cost_usd": 0.7472139770676692,
+            "mcp_avg_cost_usd": 0.855737829699248,
+            "delta_avg_cost_usd": 0.10852385263157878,
+            "pct_delta_cost_of_means": 14.52379853190977
+          }
+        }
+      }
+    },
+    "valid_only": {
+      "pair_count": 497,
+      "model_summary": {
+        "haiku": {
+          "pairs": 392,
+          "baseline_total_cost_usd": 287.4485963499998,
+          "mcp_total_cost_usd": 200.74471865000007,
+          "baseline_avg_cost_usd": 0.7332872355867341,
+          "mcp_avg_cost_usd": 0.512103874107143,
+          "delta_cost_usd": -86.70387769999971,
+          "pct_delta_cost_of_means": -30.163263554235055,
+          "input_ratio_mcp_over_baseline": 0.3431840458617894
+        },
+        "sonnet": {
+          "pairs": 9,
+          "baseline_total_cost_usd": 13.34744245,
+          "mcp_total_cost_usd": 12.55560455,
+          "baseline_avg_cost_usd": 1.4830491611111112,
+          "mcp_avg_cost_usd": 1.3950671722222223,
+          "delta_cost_usd": -0.7918379000000009,
+          "pct_delta_cost_of_means": -5.932506567953033,
+          "input_ratio_mcp_over_baseline": 0.24737631184407796
+        },
+        "opus": {
+          "pairs": 96,
+          "baseline_total_cost_usd": 5654.35168975,
+          "mcp_total_cost_usd": 9109.5925864,
+          "baseline_avg_cost_usd": 58.89949676822917,
+          "mcp_avg_cost_usd": 94.89158944166667,
+          "delta_cost_usd": 3455.2408966499997,
+          "pct_delta_cost_of_means": 61.10764038454724,
+          "input_ratio_mcp_over_baseline": 1.2363819844806747
+        }
+      },
+      "size_summary": {
+        "haiku_by_context_length": {
+          "100k-1m": {
+            "pairs": 98,
+            "baseline_avg_cost_usd": 1.483237409693878,
+            "mcp_avg_cost_usd": 0.5093692204081632,
+            "delta_avg_cost_usd": -0.9738681892857148,
+            "pct_delta_cost_of_means": -65.65828119766135
+          },
+          "<100k": {
+            "pairs": 222,
+            "baseline_avg_cost_usd": 0.23492972049549551,
+            "mcp_avg_cost_usd": 0.21461094842342338,
+            "delta_avg_cost_usd": -0.020318772072072132,
+            "pct_delta_cost_of_means": -8.648872534823326
+          },
+          "unknown": {
+            "pairs": 72,
+            "baseline_avg_cost_usd": 1.2491240590277777,
+            "mcp_avg_cost_usd": 1.4330958958333335,
+            "delta_avg_cost_usd": 0.18397183680555568,
+            "pct_delta_cost_of_means": 14.728067678781652
+          }
+        },
+        "haiku_by_files_count": {
+          "10-100": {
+            "pairs": 91,
+            "baseline_avg_cost_usd": 1.5676902109890112,
+            "mcp_avg_cost_usd": 0.5063856565934066,
+            "delta_avg_cost_usd": -1.0613045543956046,
+            "pct_delta_cost_of_means": -67.69861462144729
+          },
+          "<10": {
+            "pairs": 168,
+            "baseline_avg_cost_usd": 0.26154956279761904,
+            "mcp_avg_cost_usd": 0.24315769375000004,
+            "delta_avg_cost_usd": -0.018391869047619025,
+            "pct_delta_cost_of_means": -7.031886748688709
+          },
+          "unknown": {
+            "pairs": 133,
+            "baseline_avg_cost_usd": 0.7582591022556393,
+            "mcp_avg_cost_usd": 0.855737829699248,
+            "delta_avg_cost_usd": 0.09747872744360878,
+            "pct_delta_cost_of_means": 12.855596082346121
+          }
+        }
+      }
+    }
+  },
+  "count_matched": {
+    "all_pairs": {
+      "pair_count": 3390,
+      "model_summary": {
+        "haiku": {
+          "pairs": 3275,
+          "baseline_total_cost_usd": 1838.4468086999973,
+          "mcp_total_cost_usd": 1427.1376392500022,
+          "baseline_avg_cost_usd": 0.5613578041832052,
+          "mcp_avg_cost_usd": 0.43576721809160374,
+          "delta_cost_usd": -411.3091694499951,
+          "pct_delta_cost_of_means": -22.372644533612597,
+          "input_ratio_mcp_over_baseline": 0.5995627052572636
+        },
+        "sonnet": {
+          "pairs": 9,
+          "baseline_total_cost_usd": 13.34744245,
+          "mcp_total_cost_usd": 12.55560455,
+          "baseline_avg_cost_usd": 1.4830491611111112,
+          "mcp_avg_cost_usd": 1.3950671722222223,
+          "delta_cost_usd": -0.7918379000000009,
+          "pct_delta_cost_of_means": -5.932506567953033,
+          "input_ratio_mcp_over_baseline": 0.24737631184407796
+        },
+        "opus": {
+          "pairs": 106,
+          "baseline_total_cost_usd": 5964.47455875,
+          "mcp_total_cost_usd": 9588.241008750001,
+          "baseline_avg_cost_usd": 56.26862791273585,
+          "mcp_avg_cost_usd": 90.45510385613208,
+          "delta_cost_usd": 3623.766450000001,
+          "pct_delta_cost_of_means": 60.75583715390094,
+          "input_ratio_mcp_over_baseline": 1.243122149086989
+        }
+      },
+      "size_summary": {
+        "haiku_by_context_length": {
+          "100k-1m": {
+            "pairs": 473,
+            "baseline_avg_cost_usd": 2.1341574990486274,
+            "mcp_avg_cost_usd": 1.2989662008456662,
+            "delta_avg_cost_usd": -0.8351912982029611,
+            "pct_delta_cost_of_means": -39.134473372995004
+          },
+          "<100k": {
+            "pairs": 1104,
+            "baseline_avg_cost_usd": 0.22202567758152175,
+            "mcp_avg_cost_usd": 0.21036057576992792,
+            "delta_avg_cost_usd": -0.011665101811593855,
+            "pct_delta_cost_of_means": -5.253942669451261
+          },
+          "unknown": {
+            "pairs": 1698,
+            "baseline_avg_cost_usd": 0.34385981366313306,
+            "mcp_avg_cost_usd": 0.3418660486454651,
+            "delta_avg_cost_usd": -0.0019937650176679615,
+            "pct_delta_cost_of_means": -0.5798191409541076
+          }
+        },
+        "haiku_by_files_count": {
+          "10-100": {
+            "pairs": 445,
+            "baseline_avg_cost_usd": 2.2411581459550582,
+            "mcp_avg_cost_usd": 1.348002051460674,
+            "delta_avg_cost_usd": -0.8931560944943839,
+            "pct_delta_cost_of_means": -39.85243505043996
+          },
+          "<10": {
+            "pairs": 880,
+            "baseline_avg_cost_usd": 0.2421480316477273,
+            "mcp_avg_cost_usd": 0.2284137342613639,
+            "delta_avg_cost_usd": -0.013734297386363408,
+            "pct_delta_cost_of_means": -5.671860015919449
+          },
+          "unknown": {
+            "pairs": 1950,
+            "baseline_avg_cost_usd": 0.3220723927692305,
+            "mcp_avg_cost_usd": 0.3211654565128203,
+            "delta_avg_cost_usd": -0.0009069362564101678,
+            "pct_delta_cost_of_means": -0.28159391390618627
+          }
+        }
+      }
+    },
+    "valid_only": {
+      "pair_count": 3358,
+      "model_summary": {
+        "haiku": {
+          "pairs": 3250,
+          "baseline_total_cost_usd": 1836.0302942999972,
+          "mcp_total_cost_usd": 1424.4097463000019,
+          "baseline_avg_cost_usd": 0.5649323982461529,
+          "mcp_avg_cost_usd": 0.4382799219384621,
+          "delta_cost_usd": -411.6205479999953,
+          "pct_delta_cost_of_means": -22.419049907721124,
+          "input_ratio_mcp_over_baseline": 0.5995818403986736
+        },
+        "sonnet": {
+          "pairs": 9,
+          "baseline_total_cost_usd": 13.34744245,
+          "mcp_total_cost_usd": 12.55560455,
+          "baseline_avg_cost_usd": 1.4830491611111112,
+          "mcp_avg_cost_usd": 1.3950671722222223,
+          "delta_cost_usd": -0.7918379000000009,
+          "pct_delta_cost_of_means": -5.932506567953033,
+          "input_ratio_mcp_over_baseline": 0.24737631184407796
+        },
+        "opus": {
+          "pairs": 99,
+          "baseline_total_cost_usd": 5963.191190750001,
+          "mcp_total_cost_usd": 9567.017012400001,
+          "baseline_avg_cost_usd": 60.23425445202021,
+          "mcp_avg_cost_usd": 96.63653547878789,
+          "delta_cost_usd": 3603.8258216500008,
+          "pct_delta_cost_of_means": 60.43451746508133,
+          "input_ratio_mcp_over_baseline": 1.2429818699306676
+        }
+      },
+      "size_summary": {
+        "haiku_by_context_length": {
+          "100k-1m": {
+            "pairs": 463,
+            "baseline_avg_cost_usd": 2.178298606803457,
+            "mcp_avg_cost_usd": 1.3272076822894172,
+            "delta_avg_cost_usd": -0.85109092451404,
+            "pct_delta_cost_of_means": -39.07136155969786
+          },
+          "<100k": {
+            "pairs": 1101,
+            "baseline_avg_cost_usd": 0.2228427490463215,
+            "mcp_avg_cost_usd": 0.21056418301544086,
+            "delta_avg_cost_usd": -0.01227856603088064,
+            "pct_delta_cost_of_means": -5.509968838307744
+          },
+          "unknown": {
+            "pairs": 1686,
+            "baseline_avg_cost_usd": 0.34527175127520754,
+            "mcp_avg_cost_usd": 0.3428715444246736,
+            "delta_avg_cost_usd": -0.0024002068505339464,
+            "pct_delta_cost_of_means": -0.6951645599934442
+          }
+        },
+        "haiku_by_files_count": {
+          "10-100": {
+            "pairs": 436,
+            "baseline_avg_cost_usd": 2.285346634977066,
+            "mcp_avg_cost_usd": 1.3760253596330274,
+            "delta_avg_cost_usd": -0.9093212753440388,
+            "pct_delta_cost_of_means": -39.789205778543256
+          },
+          "<10": {
+            "pairs": 876,
+            "baseline_avg_cost_usd": 0.24325373042237447,
+            "mcp_avg_cost_usd": 0.22899221004566234,
+            "delta_avg_cost_usd": -0.014261520376712116,
+            "pct_delta_cost_of_means": -5.862816718966268
+          },
+          "unknown": {
+            "pairs": 1938,
+            "baseline_avg_cost_usd": 0.3232863228070173,
+            "mcp_avg_cost_usd": 0.3219120296697624,
+            "delta_avg_cost_usd": -0.0013742931372548641,
+            "pct_delta_cost_of_means": -0.42510092147487466
+          }
+        }
+      }
+    }
+  }
+}
