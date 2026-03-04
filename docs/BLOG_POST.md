@@ -170,21 +170,18 @@ Could also just be plain ol' agent non-determinism. Retrieval quality alone does
 
 Let's take a break from whatever voodoo variables control reward outcomes and talk about costs and timing.
 
-I updated cost reporting to a cleaner canonical pairing method on `runs/official/_raw`: for each `(model, task)` pair, keep the latest valid baseline run and latest valid MCP run, then compare those one-to-one (task-weighted, stratified by model).
+For the headline cost comparison, I switched to one canonical paired method on `runs/official/_raw`:
 
-Headline cost results from that method:
+1. Normalize task IDs (`mcp_` / `sgonly_` prefixes and random suffixes removed).
+2. For each `(model, task)`, keep the latest valid baseline run and latest valid MCP run.
+3. Valid means `output_tokens > 0` and `agent_execution_seconds >= 10`.
+4. Compare one MCP run to one baseline run per task, then average per model.
 
-| Model | n paired tasks | BL $/task | MCP $/task | MCP vs BL |
-|-------|-----------------|-----------|------------|-----------|
-| haiku | 392 | 0.7333 | 0.5121 | **-30.16%** |
-| sonnet | 9 | 1.4830 | 1.3951 | **-5.93%** |
-| opus | 96 | 58.8995 | 94.8916 | **+61.11%** |
+For **haiku valid pairs** (`n=392`), baseline is `$0.733/task` and MCP is `$0.512/task` (**-30.16%**).
 
-So the cost story is model-dependent: MCP is cheaper on haiku/sonnet in this slice, but substantially more expensive on opus.
+![Haiku valid pairs baseline vs MCP cost](assets/blog/codescalebench_mcp/figure_8_haiku_cost_baseline_vs_mcp.png)
 
-![Paired MCP vs baseline cost for haiku by estimated codebase LOC](assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.png)
-
-For haiku specifically (same canonical pairing), cost as a function of estimated codebase LOC from GitHub repository size:
+If you split the same haiku pairs by estimated codebase LOC (from GitHub repo size), MCP looks more expensive in several bins:
 
 | Estimated LOC Band | n | BL $/task | MCP $/task | MCP vs BL |
 |--------------------|---|-----------|------------|-----------|
@@ -195,7 +192,7 @@ For haiku specifically (same canonical pairing), cost as a function of estimated
 | >40M | 97 | 1.8362 | 0.6554 | **-64.31%** |
 | unknown | 102 | 0.4277 | 0.5864 | **+37.11%** |
 
-Method note: this figure intentionally excludes opus and uses only haiku paired tasks. Size bins are derived from GitHub repo size (`/repos/{owner}/{repo}.size` in KB) mapped to LOC bands (`<400K`, `400K-2M`, `2M-8M`, `8M-40M`, `>40M`); `unknown` means missing/unresolved repo metadata.
+That is a weighting effect, not a contradiction: the `>40M` band has large absolute savings and enough mass to pull the overall weighted average down even when several smaller bands are MCP-expensive.
 
 Speed tells an even cleaner story:
 
