@@ -949,6 +949,60 @@ This indicates retrieval quality remains moderate on computable tasks, but groun
 
 MCP runs show higher recall and slightly higher ranking/efficiency metrics on computable retrieval tasks.
 
+### 11.5.1 Retrieval Breakdown on Newly Curated Ground Truth (runs/analysis)
+
+To isolate retrieval quality effects on the currently curated task set, we recomputed baseline-vs-MCP file-level metrics directly from `runs/analysis/**/agent/trajectory.json` and compared:
+- pre-existing ground truth (`ground_truth.json` / `oracle_answer.json`), and
+- curated ground truth (`ground_truth_agent.json` / `oracle_answer_agent.json`).
+
+Output artifact: `results/ir/baseline_vs_mcp_breakdown_org_sdlc_runs_analysis_20260304.json`.
+
+Coverage in this slice:
+- Scored task pairs: **329** (`org=206`, `sdlc=123`)
+- Metrics shown: Precision@5, Recall@5, F1@5, Precision@10, Recall@10, F1@10, and full-set `total_file_recall`
+
+#### Curated Ground Truth (preferred)
+
+| Group | n | P@5 (BL / MCP) | R@5 (BL / MCP) | F1@5 (BL / MCP) | P@10 (BL / MCP) | R@10 (BL / MCP) | F1@10 (BL / MCP) | Total File Recall (BL / MCP) |
+|-------|---:|----------------|----------------|-----------------|-----------------|-----------------|------------------|-------------------------------|
+| Org | 206 | 0.000 / 0.365 | 0.000 / 0.262 | 0.000 / 0.275 | 0.001 / 0.245 | 0.001 / 0.314 | 0.001 / 0.246 | 0.001 / 0.322 |
+| SDLC | 123 | 0.361 / 0.455 | 0.272 / 0.373 | 0.268 / 0.350 | 0.242 / 0.293 | 0.327 / 0.431 | 0.239 / 0.297 | 0.345 / 0.438 |
+| Combined | 329 | 0.135 / 0.399 | 0.102 / 0.304 | 0.100 / 0.303 | 0.091 / 0.263 | 0.123 / 0.358 | 0.090 / 0.265 | 0.129 / 0.365 |
+
+Key interpretation:
+- MCP improves retrieval substantially on both benchmark families in the curated set.
+- Largest absolute lift appears on Org tasks, where baseline retrieval against curated oracle is near-zero while MCP reaches meaningful coverage.
+
+#### Pre-existing Ground Truth (for continuity)
+
+| Group | n | P@5 (BL / MCP) | R@5 (BL / MCP) | F1@5 (BL / MCP) | P@10 (BL / MCP) | R@10 (BL / MCP) | F1@10 (BL / MCP) | Total File Recall (BL / MCP) |
+|-------|---:|----------------|----------------|-----------------|-----------------|-----------------|------------------|-------------------------------|
+| Org | 206 | 0.000 / 0.122 | 0.000 / 0.121 | 0.000 / 0.113 | 0.000 / 0.074 | 0.000 / 0.137 | 0.000 / 0.090 | 0.000 / 0.139 |
+| SDLC | 123 | 0.296 / 0.379 | 0.288 / 0.405 | 0.262 / 0.347 | 0.192 / 0.231 | 0.335 / 0.458 | 0.216 / 0.274 | 0.347 / 0.471 |
+| Combined | 329 | 0.111 / 0.218 | 0.108 / 0.227 | 0.098 / 0.200 | 0.072 / 0.133 | 0.125 / 0.257 | 0.081 / 0.159 | 0.130 / 0.263 |
+
+#### Correlation Slices: Multi-Repo and Size Effects
+
+On curated ground truth (`MCP - Baseline`, combined):
+
+| Slice | n | Δ F1@10 | Δ Total File Recall |
+|-------|---:|--------:|--------------------:|
+| single_repo | 159 | +0.1075 | +0.1658 |
+| multi_repo | 170 | +0.2387 | +0.3017 |
+
+Curated size-bin deltas (`MCP - Baseline`):
+
+| Size Bin (proxy) | n | Δ F1@10 | Δ Total File Recall |
+|------------------|---:|--------:|--------------------:|
+| <1M | 144 | +0.1047 | +0.1736 |
+| 1M-5M | 99 | +0.3417 | +0.4148 |
+| 5M-20M | 57 | +0.0696 | +0.0960 |
+| >20M | 29 | +0.1653 | +0.2104 |
+
+These slices indicate MCP retrieval gains are larger on multi-repo tasks than single-repo tasks in this snapshot.
+
+Methodology note: size bins here are metadata-driven proxies (`repo_set` fixture LOC totals for Org; `context_length` proxy for SDLC with fallback), so they should be interpreted as directional rather than exact physical repository size measurements.
+
 ### 11.6 Correlation Analysis
 
 Correlation was recomputed from the retrieval analysis output (`docs/analysis/ir_analysis_analysis_set_20260303.json`):
