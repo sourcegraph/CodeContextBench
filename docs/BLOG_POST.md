@@ -118,23 +118,17 @@ Context retrieval isn't the bottleneck for every software development situation.
 
 ## MCP Value Scales With Codebase Size
 
-For the fully refreshed pass, I used task-level size proxies that are present for this dataset (`context_length` and `files_count`) with multi-run averages per task/config:
+For the refreshed pass, I binned tasks by estimated LOC from GitHub repo size (same LOC mapping used elsewhere: `<400K`, `400K-2M`, `2M-8M`, `8M-40M`, `>40M`):
 
-| Context Size Proxy | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
-|--------------------|---|---------|----------|----------|---------------|
-| <100K tokens | 222 | 0.400 | 0.433 | +0.034 | 0.026862 |
-| 100K–1M tokens | 98 | 0.639 | 0.670 | +0.031 | 0.093518 |
-| unknown | 50 | 0.523 | 0.571 | +0.048 | 0.059717 |
+| Estimated LOC Band | n | BL Mean | MCP Mean | Δ Reward |
+|--------------------|---|---------|----------|----------|
+| <400K | 3 | 0.850 | 0.770 | -0.080 |
+| 400K-2M | 8 | 0.140 | 0.399 | +0.259 |
+| 2M-8M | 48 | 0.521 | 0.483 | -0.037 |
+| 8M-40M | 166 | 0.489 | 0.544 | +0.055 |
+| >40M | 145 | 0.462 | 0.492 | +0.030 |
 
-And by file-count bins:
-
-| Files Count Bin | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
-|----------------|---|---------|----------|----------|---------------|
-| <10 | 168 | 0.327 | 0.375 | +0.048 | 0.032454 |
-| 10–100 | 91 | 0.676 | 0.699 | +0.023 | 0.097068 |
-| unknown | 111 | 0.550 | 0.575 | +0.025 | 0.034117 |
-
-So in this refreshed slice, MCP reward delta is positive across all available size-proxy bins.
+So in this refreshed slice, MCP reward gains are strongest in the 400K-2M and 8M-40M bands, mixed in smaller/mid bands, and still positive in the largest band.
 
 Breaking it down by difficulty (with variance): hard tasks remain positive (+0.038, var 0.046768), medium tasks are most positive (+0.115, var 0.053039), and expert tasks remain negative (−0.057, var 0.070557).
 
@@ -188,17 +182,20 @@ Headline cost results from that method:
 
 So the cost story is model-dependent: MCP is cheaper on haiku/sonnet in this slice, but substantially more expensive on opus.
 
-![Paired MCP vs baseline cost by model and size](assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.png)
+![Paired MCP vs baseline cost for haiku by estimated codebase LOC](assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.png)
 
-And for haiku specifically (same canonical pairing), cost as a function of size proxies:
+For haiku specifically (same canonical pairing), cost as a function of estimated codebase LOC from GitHub repository size:
 
-| Context Length Bin | n | BL $/task | MCP $/task | MCP vs BL |
+| Estimated LOC Band | n | BL $/task | MCP $/task | MCP vs BL |
 |--------------------|---|-----------|------------|-----------|
-| <100K | 222 | 0.2349 | 0.2146 | **-8.65%** |
-| 100K-1M | 98 | 1.4832 | 0.5094 | **-65.66%** |
-| unknown | 72 | 1.2491 | 1.4331 | **+14.73%** |
+| <400K | 9 | 0.3721 | 0.7599 | **+104.20%** |
+| 400K-2M | 14 | 0.3680 | 0.5237 | **+42.29%** |
+| 2M-8M | 44 | 0.4057 | 0.4139 | **+2.02%** |
+| 8M-40M | 126 | 0.3124 | 0.3569 | **+14.26%** |
+| >40M | 97 | 1.8362 | 0.6554 | **-64.31%** |
+| unknown | 102 | 0.4277 | 0.5864 | **+37.11%** |
 
-The large `unknown` bucket is important context here: size metadata coverage is incomplete in this slice, so the known-size bins are cleaner than aggregate unknown.
+Method note: this figure intentionally excludes opus and uses only haiku paired tasks. Size bins are derived from GitHub repo size (`/repos/{owner}/{repo}.size` in KB) mapped to LOC bands (`<400K`, `400K-2M`, `2M-8M`, `8M-40M`, `>40M`); `unknown` means missing/unresolved repo metadata.
 
 Speed tells an even cleaner story:
 

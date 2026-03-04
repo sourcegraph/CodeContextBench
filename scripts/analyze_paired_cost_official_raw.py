@@ -24,6 +24,8 @@ import re
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib import error as urllib_error
+from urllib import request as urllib_request
 
 import matplotlib
 matplotlib.use("Agg")
@@ -36,6 +38,7 @@ RAW_DIR = ROOT / "runs" / "official" / "_raw"
 TASK_META_PATH = ROOT / "configs" / "selected_benchmark_tasks.json"
 ANALYSIS_DIR = ROOT / "docs" / "analysis"
 ASSET_DIR = ROOT / "docs" / "assets" / "blog" / "codescalebench_mcp"
+REPO_SIZE_CACHE_PATH = ANALYSIS_DIR / "github_repo_size_kb_cache.json"
 
 PALETTE = {
     "bg": "#020202",
@@ -127,6 +130,34 @@ def _files_bin(value: int | None) -> str:
     return ">100"
 
 
+def _repo_size_mb_band(size_mb: float | None) -> str:
+    if size_mb is None:
+        return "unknown"
+    if size_mb < 10:
+        return "<10 MB"
+    if size_mb < 50:
+        return "10-50 MB"
+    if size_mb < 200:
+        return "50-200 MB"
+    if size_mb < 1024:
+        return "200MB-1GB"
+    return ">1 GB"
+
+
+def _repo_size_to_loc_band(size_mb: float | None) -> str:
+    if size_mb is None:
+        return "unknown"
+    if size_mb < 10:
+        return "<400K"
+    if size_mb < 50:
+        return "400K-2M"
+    if size_mb < 200:
+        return "2M-8M"
+    if size_mb < 1024:
+        return "8M-40M"
+    return ">40M"
+
+
 def _mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
@@ -142,6 +173,71 @@ def _collect_task_meta() -> dict[str, dict]:
         if task_id:
             out[task_id] = t
     return out
+
+
+def _load_repo_size_cache() -> dict[str, int | None]:
+    if not REPO_SIZE_CACHE_PATH.is_file():
+        return {}
+    try:
+        raw = json.loads(REPO_SIZE_CACHE_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(raw, dict):
+        return {}
+    out: dict[str, int | None] = {}
+    for repo, size_kb in raw.items():
+        if not isinstance(repo, str):
+            continue
+        if size_kb is None:
+            out[repo] = None
+            continue
+        try:
+            out[repo] = int(size_kb)
+        except (TypeError, ValueError):
+            out[repo] = None
+    return out
+
+
+def _write_repo_size_cache(cache: dict[str, int | None]) -> None:
+    ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
+    REPO_SIZE_CACHE_PATH.write_text(json.dumps(cache, indent=2, sort_keys=True))
+
+
+def _fetch_repo_size_kb(repo: str) -> int | None:
+    req = urllib_request.Request(
+        f"https://api.github.com/repos/{repo}",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "CodeScaleBench-cost-analysis",
+        },
+    )
+    try:
+        with urllib_request.urlopen(req, timeout=12) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except (urllib_error.HTTPError, urllib_error.URLError, TimeoutError, json.JSONDecodeError):
+        return None
+    try:
+        return int(data.get("size"))
+    except (TypeError, ValueError):
+        return None
+
+
+def _collect_repo_sizes(task_meta: dict[str, dict]) -> dict[str, int | None]:
+    repos = {
+        str(meta.get("repo")).strip()
+        for meta in task_meta.values()
+        if isinstance(meta.get("repo"), str) and str(meta.get("repo")).strip()
+    }
+    cache = _load_repo_size_cache()
+    updated = False
+    for repo in sorted(repos):
+        if repo in cache:
+            continue
+        cache[repo] = _fetch_repo_size_kb(repo)
+        updated = True
+    if updated:
+        _write_repo_size_cache(cache)
+    return cache
 
 
 def _collect_records() -> list[dict]:
@@ -293,17 +389,24 @@ def _summarize_model(pairs: list[dict]) -> dict[str, dict]:
     return out
 
 
-def _summarize_size(pairs: list[dict], task_meta: dict[str, dict]) -> dict[str, dict]:
+def _summarize_size(
+    pairs: list[dict],
+    task_meta: dict[str, dict],
+    repo_size_kb_by_repo: dict[str, int | None],
+) -> dict[str, dict]:
     rows = [p for p in pairs if p["model"] == "haiku"]
 
-    by_ctx: dict[str, list[dict]] = defaultdict(list)
-    by_files: dict[str, list[dict]] = defaultdict(list)
+    by_loc: dict[str, list[dict]] = defaultdict(list)
+    by_repo_size: dict[str, list[dict]] = defaultdict(list)
     for p in rows:
         meta = task_meta.get(p["task_id"], {})
-        cbin = _context_bin(meta.get("context_length"))
-        fbin = _files_bin(meta.get("files_count"))
-        by_ctx[cbin].append(p)
-        by_files[fbin].append(p)
+        repo = str(meta.get("repo") or "").strip()
+        size_kb = repo_size_kb_by_repo.get(repo) if repo else None
+        size_mb = (size_kb / 1024.0) if size_kb is not None else None
+        loc_bin = _repo_size_to_loc_band(size_mb)
+        size_bin = _repo_size_mb_band(size_mb)
+        by_loc[loc_bin].append(p)
+        by_repo_size[size_bin].append(p)
 
     def summarize(groups: dict[str, list[dict]]) -> dict[str, dict]:
         out = {}
@@ -321,8 +424,8 @@ def _summarize_size(pairs: list[dict], task_meta: dict[str, dict]) -> dict[str, 
         return out
 
     return {
-        "haiku_by_context_length": summarize(by_ctx),
-        "haiku_by_files_count": summarize(by_files),
+        "haiku_by_repo_loc_estimate": summarize(by_loc),
+        "haiku_by_repo_size_mb": summarize(by_repo_size),
     }
 
 
@@ -331,53 +434,32 @@ def _plot_figure(report: dict) -> None:
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
 
     canonical = report["latest_task"]["valid_only"]
-    model = canonical["model_summary"]
-    ctx = canonical["size_summary"]["haiku_by_context_length"]
+    loc = canonical["size_summary"]["haiku_by_repo_loc_estimate"]
+    loc_order = ["<400K", "400K-2M", "2M-8M", "8M-40M", ">40M", "unknown"]
+    bands = [b for b in loc_order if b in loc]
+    vals = [loc[b]["pct_delta_cost_of_means"] or 0.0 for b in bands]
+    cols = [PALETTE["pos"] if v < 0 else PALETTE["neg"] for v in vals]
 
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.8))
-    ax1, ax2 = axes
-
-    # Panel A: model-level % cost delta.
-    labels = ["haiku", "opus"]
-    vals = [
-        model["haiku"]["pct_delta_cost_of_means"] or 0.0,
-        model["opus"]["pct_delta_cost_of_means"] or 0.0,
-    ]
-    colors = [PALETTE["pos"] if v < 0 else PALETTE["neg"] for v in vals]
-    x = np.arange(len(labels))
-    bars = ax1.bar(x, vals, color=colors, width=0.62)
-    ax1.axhline(0, color=PALETTE["grid"], linewidth=1)
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(labels)
-    ax1.set_ylabel("% cost delta (MCP vs baseline)", color=PALETTE["text_secondary"])
-    ax1.set_title("Valid Paired Cost Delta by Model")
-    ax1.grid(axis="y", alpha=0.3)
+    fig, ax = plt.subplots(1, 1, figsize=(8.8, 4.9))
+    x = np.arange(len(bands))
+    bars = ax.bar(x, vals, color=cols, width=0.64)
+    ax.axhline(0, color=PALETTE["grid"], linewidth=1)
+    ax.set_xticks(x)
+    ax.set_xticklabels(bands, rotation=15, ha="right")
+    ax.set_ylabel("% cost delta (MCP vs baseline)", color=PALETTE["text_secondary"])
+    ax.set_title("Haiku Cost Delta by Estimated Codebase LOC")
+    ax.grid(axis="y", alpha=0.3)
     for b, v in zip(bars, vals):
         y = v + 1.8 if v >= 0 else v - 2.6
         va = "bottom" if v >= 0 else "top"
-        ax1.text(b.get_x() + b.get_width() / 2, y, f"{v:+.1f}%", ha="center", va=va, fontsize=9)
-    ax1.text(0.03, 0.05, "sonnet: no valid pairs", transform=ax1.transAxes, fontsize=8, color=PALETTE["text_secondary"])
+        ax.text(b.get_x() + b.get_width() / 2, y, f"{v:+.1f}%", ha="center", va=va, fontsize=8)
 
-    # Panel B: haiku by context-length proxy.
-    ctx_order = ["<100k", "100k-1m", ">=1m", "unknown"]
-    bands = [b for b in ctx_order if b in ctx]
-    ctx_vals = [ctx[b]["pct_delta_cost_of_means"] or 0.0 for b in bands]
-    c2 = [PALETTE["pos"] if v < 0 else PALETTE["neg"] for v in ctx_vals]
-    x2 = np.arange(len(bands))
-    bars2 = ax2.bar(x2, ctx_vals, color=c2, width=0.62)
-    ax2.axhline(0, color=PALETTE["grid"], linewidth=1)
-    ax2.set_xticks(x2)
-    ax2.set_xticklabels(bands, rotation=15, ha="right")
-    ax2.set_ylabel("% cost delta (MCP vs baseline)", color=PALETTE["text_secondary"])
-    ax2.set_title("Haiku Cost Delta by Context-Length Proxy")
-    ax2.grid(axis="y", alpha=0.3)
-    for b, v in zip(bars2, ctx_vals):
-        y = v + 1.8 if v >= 0 else v - 2.6
-        va = "bottom" if v >= 0 else "top"
-        ax2.text(b.get_x() + b.get_width() / 2, y, f"{v:+.1f}%", ha="center", va=va, fontsize=8)
-
-    fig.suptitle("MCP vs Baseline Cost (Latest-Task Valid Pairing, runs/official/_raw)", fontsize=12, fontweight="bold")
-    fig.tight_layout(rect=[0, 0, 1, 0.92])
+    fig.suptitle(
+        "MCP vs Baseline Cost (Haiku, Latest-Task Valid Pairing; LOC estimated from GitHub repo size)",
+        fontsize=11.5,
+        fontweight="bold",
+    )
+    fig.tight_layout(rect=[0, 0, 1, 0.9])
     fig.savefig(ASSET_DIR / "figure_7_cost_pairing_by_model_and_size.png", dpi=220, bbox_inches="tight")
     fig.savefig(ASSET_DIR / "figure_7_cost_pairing_by_model_and_size.svg", bbox_inches="tight")
     plt.close(fig)
@@ -386,6 +468,7 @@ def _plot_figure(report: dict) -> None:
 def build_report() -> dict:
     records = _collect_records()
     task_meta = _collect_task_meta()
+    repo_size_kb_by_repo = _collect_repo_sizes(task_meta)
 
     latest_all = _pair_records_latest_task(records, valid_only=False)
     latest_valid = _pair_records_latest_task(records, valid_only=True)
@@ -399,29 +482,33 @@ def build_report() -> dict:
         "canonical_pairing_rule": "latest valid per side per (model, task_id); one pair per task",
         "sensitivity_pairing_rule": "count-matched per (model, task_id), newest-first within side",
         "valid_filter": "output_tokens > 0 and agent_execution_seconds >= 10",
+        "size_binning": "GitHub repository size (KB) mapped to LOC bands: <400K, 400K-2M, 2M-8M, 8M-40M, >40M",
+        "repo_size_cache_path": str(REPO_SIZE_CACHE_PATH.relative_to(ROOT)),
+        "repo_size_resolved_repos": sum(1 for v in repo_size_kb_by_repo.values() if v is not None),
+        "repo_size_unknown_repos": sum(1 for v in repo_size_kb_by_repo.values() if v is None),
         "records_scanned": len(records),
         "latest_task": {
             "all_pairs": {
                 "pair_count": len(latest_all),
                 "model_summary": _summarize_model(latest_all),
-                "size_summary": _summarize_size(latest_all, task_meta),
+                "size_summary": _summarize_size(latest_all, task_meta, repo_size_kb_by_repo),
             },
             "valid_only": {
                 "pair_count": len(latest_valid),
                 "model_summary": _summarize_model(latest_valid),
-                "size_summary": _summarize_size(latest_valid, task_meta),
+                "size_summary": _summarize_size(latest_valid, task_meta, repo_size_kb_by_repo),
             },
         },
         "count_matched": {
             "all_pairs": {
                 "pair_count": len(count_all),
                 "model_summary": _summarize_model(count_all),
-                "size_summary": _summarize_size(count_all, task_meta),
+                "size_summary": _summarize_size(count_all, task_meta, repo_size_kb_by_repo),
             },
             "valid_only": {
                 "pair_count": len(count_valid),
                 "model_summary": _summarize_model(count_valid),
-                "size_summary": _summarize_size(count_valid, task_meta),
+                "size_summary": _summarize_size(count_valid, task_meta, repo_size_kb_by_repo),
             },
         },
     }

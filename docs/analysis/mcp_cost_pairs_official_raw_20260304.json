@@ -1,9 +1,13 @@
 {
-  "generated_at": "2026-03-04T23:08:01.932836+00:00",
+  "generated_at": "2026-03-04T23:40:49.157340+00:00",
   "source": "runs/official/_raw",
   "canonical_pairing_rule": "latest valid per side per (model, task_id); one pair per task",
   "sensitivity_pairing_rule": "count-matched per (model, task_id), newest-first within side",
   "valid_filter": "output_tokens > 0 and agent_execution_seconds >= 10",
+  "size_binning": "GitHub repository size (KB) mapped to LOC bands: <400K, 400K-2M, 2M-8M, 8M-40M, >40M",
+  "repo_size_cache_path": "docs/analysis/github_repo_size_kb_cache.json",
+  "repo_size_resolved_repos": 55,
+  "repo_size_unknown_repos": 9,
   "records_scanned": 7703,
   "latest_task": {
     "all_pairs": {
@@ -11,12 +15,12 @@
       "model_summary": {
         "haiku": {
           "pairs": 392,
-          "baseline_total_cost_usd": 174.00601425,
+          "baseline_total_cost_usd": 174.0060142499999,
           "mcp_total_cost_usd": 198.0197303500001,
-          "baseline_avg_cost_usd": 0.44389289349489797,
+          "baseline_avg_cost_usd": 0.44389289349489774,
           "mcp_avg_cost_usd": 0.5051523733418369,
-          "delta_cost_usd": 24.013716100000096,
-          "pct_delta_cost_of_means": 13.800509254524297,
+          "delta_cost_usd": 24.01371610000018,
+          "pct_delta_cost_of_means": 13.80050925452434,
           "input_ratio_mcp_over_baseline": 0.8004334702678465
         },
         "sonnet": {
@@ -41,50 +45,92 @@
         }
       },
       "size_summary": {
-        "haiku_by_context_length": {
-          "100k-1m": {
-            "pairs": 98,
-            "baseline_avg_cost_usd": 0.35356851377551024,
-            "mcp_avg_cost_usd": 0.4815632173469387,
-            "delta_avg_cost_usd": 0.12799470357142845,
-            "pct_delta_cost_of_means": 36.200820656981804
+        "haiku_by_repo_loc_estimate": {
+          "2M-8M": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.3960641602272728,
+            "mcp_avg_cost_usd": 0.413907144318182,
+            "delta_avg_cost_usd": 0.0178429840909092,
+            "pct_delta_cost_of_means": 4.505074147751809
           },
-          "<100k": {
-            "pairs": 222,
-            "baseline_avg_cost_usd": 0.22787664121621623,
-            "mcp_avg_cost_usd": 0.21461094842342338,
-            "delta_avg_cost_usd": -0.013265692792792837,
-            "pct_delta_cost_of_means": -5.821435984834422
+          "400K-2M": {
+            "pairs": 14,
+            "baseline_avg_cost_usd": 0.24817798214285716,
+            "mcp_avg_cost_usd": 0.41601901785714285,
+            "delta_avg_cost_usd": 0.16784103571428569,
+            "pct_delta_cost_of_means": 67.62930146545894
+          },
+          "8M-40M": {
+            "pairs": 126,
+            "baseline_avg_cost_usd": 0.3123824567460318,
+            "mcp_avg_cost_usd": 0.3569161325396825,
+            "delta_avg_cost_usd": 0.04453367579365068,
+            "pct_delta_cost_of_means": 14.256138535288088
+          },
+          "<400K": {
+            "pairs": 9,
+            "baseline_avg_cost_usd": 0.3721386555555556,
+            "mcp_avg_cost_usd": 0.7599156166666667,
+            "delta_avg_cost_usd": 0.3877769611111111,
+            "pct_delta_cost_of_means": 104.20227926395059
+          },
+          ">40M": {
+            "pairs": 97,
+            "baseline_avg_cost_usd": 0.6967613773195873,
+            "mcp_avg_cost_usd": 0.6428563659793813,
+            "delta_avg_cost_usd": -0.05390501134020597,
+            "pct_delta_cost_of_means": -7.73650967101196
           },
           "unknown": {
-            "pairs": 72,
-            "baseline_avg_cost_usd": 1.232884521527778,
-            "mcp_avg_cost_usd": 1.4330958958333335,
-            "delta_avg_cost_usd": 0.2002113743055555,
-            "pct_delta_cost_of_means": 16.239264165426913
+            "pairs": 102,
+            "baseline_avg_cost_usd": 0.41970008235294115,
+            "mcp_avg_cost_usd": 0.5864295,
+            "delta_avg_cost_usd": 0.1667294176470589,
+            "pct_delta_cost_of_means": 39.725848208638205
           }
         },
-        "haiku_by_files_count": {
-          "10-100": {
-            "pairs": 91,
-            "baseline_avg_cost_usd": 0.35155932912087917,
-            "mcp_avg_cost_usd": 0.4929996104395605,
-            "delta_avg_cost_usd": 0.1414402813186813,
-            "pct_delta_cost_of_means": 40.23226511222773
+        "haiku_by_repo_size_mb": {
+          "10-50 MB": {
+            "pairs": 14,
+            "baseline_avg_cost_usd": 0.24817798214285716,
+            "mcp_avg_cost_usd": 0.41601901785714285,
+            "delta_avg_cost_usd": 0.16784103571428569,
+            "pct_delta_cost_of_means": 67.62930146545894
           },
-          "<10": {
-            "pairs": 168,
-            "baseline_avg_cost_usd": 0.2537777163690476,
-            "mcp_avg_cost_usd": 0.2341883002976191,
-            "delta_avg_cost_usd": -0.01958941607142851,
-            "pct_delta_cost_of_means": -7.719123787425552
+          "200MB-1GB": {
+            "pairs": 126,
+            "baseline_avg_cost_usd": 0.3123824567460318,
+            "mcp_avg_cost_usd": 0.3569161325396825,
+            "delta_avg_cost_usd": 0.04453367579365068,
+            "pct_delta_cost_of_means": 14.256138535288088
+          },
+          "50-200 MB": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.3960641602272728,
+            "mcp_avg_cost_usd": 0.413907144318182,
+            "delta_avg_cost_usd": 0.0178429840909092,
+            "pct_delta_cost_of_means": 4.505074147751809
+          },
+          "<10 MB": {
+            "pairs": 9,
+            "baseline_avg_cost_usd": 0.3721386555555556,
+            "mcp_avg_cost_usd": 0.7599156166666667,
+            "delta_avg_cost_usd": 0.3877769611111111,
+            "pct_delta_cost_of_means": 104.20227926395059
+          },
+          ">1 GB": {
+            "pairs": 97,
+            "baseline_avg_cost_usd": 0.6967613773195873,
+            "mcp_avg_cost_usd": 0.6428563659793813,
+            "delta_avg_cost_usd": -0.05390501134020597,
+            "pct_delta_cost_of_means": -7.73650967101196
           },
           "unknown": {
-            "pairs": 133,
-            "baseline_avg_cost_usd": 0.7472139770676692,
-            "mcp_avg_cost_usd": 0.855737829699248,
-            "delta_avg_cost_usd": 0.10852385263157878,
-            "pct_delta_cost_of_means": 14.52379853190977
+            "pairs": 102,
+            "baseline_avg_cost_usd": 0.41970008235294115,
+            "mcp_avg_cost_usd": 0.5864295,
+            "delta_avg_cost_usd": 0.1667294176470589,
+            "pct_delta_cost_of_means": 39.725848208638205
           }
         }
       }
@@ -94,12 +140,12 @@
       "model_summary": {
         "haiku": {
           "pairs": 392,
-          "baseline_total_cost_usd": 287.4485963499998,
+          "baseline_total_cost_usd": 287.4485963500003,
           "mcp_total_cost_usd": 200.74471865000007,
-          "baseline_avg_cost_usd": 0.7332872355867341,
+          "baseline_avg_cost_usd": 0.7332872355867355,
           "mcp_avg_cost_usd": 0.512103874107143,
-          "delta_cost_usd": -86.70387769999971,
-          "pct_delta_cost_of_means": -30.163263554235055,
+          "delta_cost_usd": -86.70387770000022,
+          "pct_delta_cost_of_means": -30.163263554235176,
           "input_ratio_mcp_over_baseline": 0.3431840458617894
         },
         "sonnet": {
@@ -114,60 +160,102 @@
         },
         "opus": {
           "pairs": 96,
-          "baseline_total_cost_usd": 5654.35168975,
+          "baseline_total_cost_usd": 5654.351689749999,
           "mcp_total_cost_usd": 9109.5925864,
-          "baseline_avg_cost_usd": 58.89949676822917,
+          "baseline_avg_cost_usd": 58.89949676822916,
           "mcp_avg_cost_usd": 94.89158944166667,
-          "delta_cost_usd": 3455.2408966499997,
-          "pct_delta_cost_of_means": 61.10764038454724,
+          "delta_cost_usd": 3455.2408966500006,
+          "pct_delta_cost_of_means": 61.10764038454726,
           "input_ratio_mcp_over_baseline": 1.2363819844806747
         }
       },
       "size_summary": {
-        "haiku_by_context_length": {
-          "100k-1m": {
-            "pairs": 98,
-            "baseline_avg_cost_usd": 1.483237409693878,
-            "mcp_avg_cost_usd": 0.5093692204081632,
-            "delta_avg_cost_usd": -0.9738681892857148,
-            "pct_delta_cost_of_means": -65.65828119766135
+        "haiku_by_repo_loc_estimate": {
+          "2M-8M": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.4057128193181818,
+            "mcp_avg_cost_usd": 0.413907144318182,
+            "delta_avg_cost_usd": 0.008194325000000158,
+            "pct_delta_cost_of_means": 2.019735293001368
           },
-          "<100k": {
-            "pairs": 222,
-            "baseline_avg_cost_usd": 0.23492972049549551,
-            "mcp_avg_cost_usd": 0.21461094842342338,
-            "delta_avg_cost_usd": -0.020318772072072132,
-            "pct_delta_cost_of_means": -8.648872534823326
+          "400K-2M": {
+            "pairs": 14,
+            "baseline_avg_cost_usd": 0.36801285357142854,
+            "mcp_avg_cost_usd": 0.5236517392857143,
+            "delta_avg_cost_usd": 0.1556388857142857,
+            "pct_delta_cost_of_means": 42.2916982936514
+          },
+          "8M-40M": {
+            "pairs": 126,
+            "baseline_avg_cost_usd": 0.3123824567460318,
+            "mcp_avg_cost_usd": 0.3569161325396825,
+            "delta_avg_cost_usd": 0.04453367579365068,
+            "pct_delta_cost_of_means": 14.256138535288088
+          },
+          "<400K": {
+            "pairs": 9,
+            "baseline_avg_cost_usd": 0.3721386555555556,
+            "mcp_avg_cost_usd": 0.7599156166666667,
+            "delta_avg_cost_usd": 0.3877769611111111,
+            "pct_delta_cost_of_means": 104.20227926395059
+          },
+          ">40M": {
+            "pairs": 97,
+            "baseline_avg_cost_usd": 1.8361672396907214,
+            "mcp_avg_cost_usd": 0.6554144092783504,
+            "delta_avg_cost_usd": -1.1807528304123711,
+            "pct_delta_cost_of_means": -64.30529882513608
           },
           "unknown": {
-            "pairs": 72,
-            "baseline_avg_cost_usd": 1.2491240590277777,
-            "mcp_avg_cost_usd": 1.4330958958333335,
-            "delta_avg_cost_usd": 0.18397183680555568,
-            "pct_delta_cost_of_means": 14.728067678781652
+            "pairs": 102,
+            "baseline_avg_cost_usd": 0.42771953578431365,
+            "mcp_avg_cost_usd": 0.5864295,
+            "delta_avg_cost_usd": 0.1587099642156864,
+            "pct_delta_cost_of_means": 37.106082593271864
           }
         },
-        "haiku_by_files_count": {
-          "10-100": {
-            "pairs": 91,
-            "baseline_avg_cost_usd": 1.5676902109890112,
-            "mcp_avg_cost_usd": 0.5063856565934066,
-            "delta_avg_cost_usd": -1.0613045543956046,
-            "pct_delta_cost_of_means": -67.69861462144729
+        "haiku_by_repo_size_mb": {
+          "10-50 MB": {
+            "pairs": 14,
+            "baseline_avg_cost_usd": 0.36801285357142854,
+            "mcp_avg_cost_usd": 0.5236517392857143,
+            "delta_avg_cost_usd": 0.1556388857142857,
+            "pct_delta_cost_of_means": 42.2916982936514
           },
-          "<10": {
-            "pairs": 168,
-            "baseline_avg_cost_usd": 0.26154956279761904,
-            "mcp_avg_cost_usd": 0.24315769375000004,
-            "delta_avg_cost_usd": -0.018391869047619025,
-            "pct_delta_cost_of_means": -7.031886748688709
+          "200MB-1GB": {
+            "pairs": 126,
+            "baseline_avg_cost_usd": 0.3123824567460318,
+            "mcp_avg_cost_usd": 0.3569161325396825,
+            "delta_avg_cost_usd": 0.04453367579365068,
+            "pct_delta_cost_of_means": 14.256138535288088
+          },
+          "50-200 MB": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.4057128193181818,
+            "mcp_avg_cost_usd": 0.413907144318182,
+            "delta_avg_cost_usd": 0.008194325000000158,
+            "pct_delta_cost_of_means": 2.019735293001368
+          },
+          "<10 MB": {
+            "pairs": 9,
+            "baseline_avg_cost_usd": 0.3721386555555556,
+            "mcp_avg_cost_usd": 0.7599156166666667,
+            "delta_avg_cost_usd": 0.3877769611111111,
+            "pct_delta_cost_of_means": 104.20227926395059
+          },
+          ">1 GB": {
+            "pairs": 97,
+            "baseline_avg_cost_usd": 1.8361672396907214,
+            "mcp_avg_cost_usd": 0.6554144092783504,
+            "delta_avg_cost_usd": -1.1807528304123711,
+            "pct_delta_cost_of_means": -64.30529882513608
           },
           "unknown": {
-            "pairs": 133,
-            "baseline_avg_cost_usd": 0.7582591022556393,
-            "mcp_avg_cost_usd": 0.855737829699248,
-            "delta_avg_cost_usd": 0.09747872744360878,
-            "pct_delta_cost_of_means": 12.855596082346121
+            "pairs": 102,
+            "baseline_avg_cost_usd": 0.42771953578431365,
+            "mcp_avg_cost_usd": 0.5864295,
+            "delta_avg_cost_usd": 0.1587099642156864,
+            "pct_delta_cost_of_means": 37.106082593271864
           }
         }
       }
@@ -180,11 +268,11 @@
         "haiku": {
           "pairs": 3275,
           "baseline_total_cost_usd": 1838.4468086999973,
-          "mcp_total_cost_usd": 1427.1376392500022,
+          "mcp_total_cost_usd": 1427.1376392500003,
           "baseline_avg_cost_usd": 0.5613578041832052,
-          "mcp_avg_cost_usd": 0.43576721809160374,
-          "delta_cost_usd": -411.3091694499951,
-          "pct_delta_cost_of_means": -22.372644533612597,
+          "mcp_avg_cost_usd": 0.4357672180916032,
+          "delta_cost_usd": -411.30916944999694,
+          "pct_delta_cost_of_means": -22.372644533612696,
           "input_ratio_mcp_over_baseline": 0.5995627052572636
         },
         "sonnet": {
@@ -209,50 +297,92 @@
         }
       },
       "size_summary": {
-        "haiku_by_context_length": {
-          "100k-1m": {
-            "pairs": 473,
-            "baseline_avg_cost_usd": 2.1341574990486274,
-            "mcp_avg_cost_usd": 1.2989662008456662,
-            "delta_avg_cost_usd": -0.8351912982029611,
-            "pct_delta_cost_of_means": -39.134473372995004
+        "haiku_by_repo_loc_estimate": {
+          "2M-8M": {
+            "pairs": 236,
+            "baseline_avg_cost_usd": 0.3213587294491527,
+            "mcp_avg_cost_usd": 0.38396939279661024,
+            "delta_avg_cost_usd": 0.06261066334745749,
+            "pct_delta_cost_of_means": 19.483106450781552
           },
-          "<100k": {
-            "pairs": 1104,
-            "baseline_avg_cost_usd": 0.22202567758152175,
-            "mcp_avg_cost_usd": 0.21036057576992792,
-            "delta_avg_cost_usd": -0.011665101811593855,
-            "pct_delta_cost_of_means": -5.253942669451261
+          "400K-2M": {
+            "pairs": 70,
+            "baseline_avg_cost_usd": 0.39812355571428576,
+            "mcp_avg_cost_usd": 3.974855553571429,
+            "delta_avg_cost_usd": 3.5767319978571432,
+            "pct_delta_cost_of_means": 898.3974815155104
+          },
+          "8M-40M": {
+            "pairs": 632,
+            "baseline_avg_cost_usd": 0.2986809935917722,
+            "mcp_avg_cost_usd": 0.3315761013449368,
+            "delta_avg_cost_usd": 0.03289510775316462,
+            "pct_delta_cost_of_means": 11.013458659550546
+          },
+          "<400K": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.37906741818181816,
+            "mcp_avg_cost_usd": 0.6265124636363638,
+            "delta_avg_cost_usd": 0.24744504545454557,
+            "pct_delta_cost_of_means": 65.27731838347013
+          },
+          ">40M": {
+            "pairs": 508,
+            "baseline_avg_cost_usd": 2.596051301870077,
+            "mcp_avg_cost_usd": 1.046771610629921,
+            "delta_avg_cost_usd": -1.5492796912401559,
+            "pct_delta_cost_of_means": -59.6783156836741
           },
           "unknown": {
-            "pairs": 1698,
-            "baseline_avg_cost_usd": 0.34385981366313306,
-            "mcp_avg_cost_usd": 0.3418660486454651,
-            "delta_avg_cost_usd": -0.0019937650176679615,
-            "pct_delta_cost_of_means": -0.5798191409541076
+            "pairs": 1785,
+            "baseline_avg_cost_usd": 0.11792609745098019,
+            "mcp_avg_cost_usd": 0.1621279278151262,
+            "delta_avg_cost_usd": 0.04420183036414601,
+            "pct_delta_cost_of_means": 37.48265339020478
           }
         },
-        "haiku_by_files_count": {
-          "10-100": {
-            "pairs": 445,
-            "baseline_avg_cost_usd": 2.2411581459550582,
-            "mcp_avg_cost_usd": 1.348002051460674,
-            "delta_avg_cost_usd": -0.8931560944943839,
-            "pct_delta_cost_of_means": -39.85243505043996
+        "haiku_by_repo_size_mb": {
+          "10-50 MB": {
+            "pairs": 70,
+            "baseline_avg_cost_usd": 0.39812355571428576,
+            "mcp_avg_cost_usd": 3.974855553571429,
+            "delta_avg_cost_usd": 3.5767319978571432,
+            "pct_delta_cost_of_means": 898.3974815155104
           },
-          "<10": {
-            "pairs": 880,
-            "baseline_avg_cost_usd": 0.2421480316477273,
-            "mcp_avg_cost_usd": 0.2284137342613639,
-            "delta_avg_cost_usd": -0.013734297386363408,
-            "pct_delta_cost_of_means": -5.671860015919449
+          "200MB-1GB": {
+            "pairs": 632,
+            "baseline_avg_cost_usd": 0.2986809935917722,
+            "mcp_avg_cost_usd": 0.3315761013449368,
+            "delta_avg_cost_usd": 0.03289510775316462,
+            "pct_delta_cost_of_means": 11.013458659550546
+          },
+          "50-200 MB": {
+            "pairs": 236,
+            "baseline_avg_cost_usd": 0.3213587294491527,
+            "mcp_avg_cost_usd": 0.38396939279661024,
+            "delta_avg_cost_usd": 0.06261066334745749,
+            "pct_delta_cost_of_means": 19.483106450781552
+          },
+          "<10 MB": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.37906741818181816,
+            "mcp_avg_cost_usd": 0.6265124636363638,
+            "delta_avg_cost_usd": 0.24744504545454557,
+            "pct_delta_cost_of_means": 65.27731838347013
+          },
+          ">1 GB": {
+            "pairs": 508,
+            "baseline_avg_cost_usd": 2.596051301870077,
+            "mcp_avg_cost_usd": 1.046771610629921,
+            "delta_avg_cost_usd": -1.5492796912401559,
+            "pct_delta_cost_of_means": -59.6783156836741
           },
           "unknown": {
-            "pairs": 1950,
-            "baseline_avg_cost_usd": 0.3220723927692305,
-            "mcp_avg_cost_usd": 0.3211654565128203,
-            "delta_avg_cost_usd": -0.0009069362564101678,
-            "pct_delta_cost_of_means": -0.28159391390618627
+            "pairs": 1785,
+            "baseline_avg_cost_usd": 0.11792609745098019,
+            "mcp_avg_cost_usd": 0.1621279278151262,
+            "delta_avg_cost_usd": 0.04420183036414601,
+            "pct_delta_cost_of_means": 37.48265339020478
           }
         }
       }
@@ -263,11 +393,11 @@
         "haiku": {
           "pairs": 3250,
           "baseline_total_cost_usd": 1836.0302942999972,
-          "mcp_total_cost_usd": 1424.4097463000019,
+          "mcp_total_cost_usd": 1424.4097463000003,
           "baseline_avg_cost_usd": 0.5649323982461529,
-          "mcp_avg_cost_usd": 0.4382799219384621,
-          "delta_cost_usd": -411.6205479999953,
-          "pct_delta_cost_of_means": -22.419049907721124,
+          "mcp_avg_cost_usd": 0.4382799219384616,
+          "delta_cost_usd": -411.6205479999969,
+          "pct_delta_cost_of_means": -22.41904990772121,
           "input_ratio_mcp_over_baseline": 0.5995818403986736
         },
         "sonnet": {
@@ -282,60 +412,102 @@
         },
         "opus": {
           "pairs": 99,
-          "baseline_total_cost_usd": 5963.191190750001,
+          "baseline_total_cost_usd": 5963.19119075,
           "mcp_total_cost_usd": 9567.017012400001,
-          "baseline_avg_cost_usd": 60.23425445202021,
+          "baseline_avg_cost_usd": 60.2342544520202,
           "mcp_avg_cost_usd": 96.63653547878789,
-          "delta_cost_usd": 3603.8258216500008,
-          "pct_delta_cost_of_means": 60.43451746508133,
+          "delta_cost_usd": 3603.8258216500017,
+          "pct_delta_cost_of_means": 60.43451746508135,
           "input_ratio_mcp_over_baseline": 1.2429818699306676
         }
       },
       "size_summary": {
-        "haiku_by_context_length": {
-          "100k-1m": {
-            "pairs": 463,
-            "baseline_avg_cost_usd": 2.178298606803457,
-            "mcp_avg_cost_usd": 1.3272076822894172,
-            "delta_avg_cost_usd": -0.85109092451404,
-            "pct_delta_cost_of_means": -39.07136155969786
+        "haiku_by_repo_loc_estimate": {
+          "2M-8M": {
+            "pairs": 229,
+            "baseline_avg_cost_usd": 0.32529885764192157,
+            "mcp_avg_cost_usd": 0.38792443275109173,
+            "delta_avg_cost_usd": 0.06262557510917013,
+            "pct_delta_cost_of_means": 19.251704590400486
           },
-          "<100k": {
-            "pairs": 1101,
-            "baseline_avg_cost_usd": 0.2228427490463215,
-            "mcp_avg_cost_usd": 0.21056418301544086,
-            "delta_avg_cost_usd": -0.01227856603088064,
-            "pct_delta_cost_of_means": -5.509968838307744
+          "400K-2M": {
+            "pairs": 66,
+            "baseline_avg_cost_usd": 0.4222522560606061,
+            "mcp_avg_cost_usd": 4.200597816666667,
+            "delta_avg_cost_usd": 3.7783455606060605,
+            "pct_delta_cost_of_means": 894.8076668331057
+          },
+          "8M-40M": {
+            "pairs": 628,
+            "baseline_avg_cost_usd": 0.2988580448248408,
+            "mcp_avg_cost_usd": 0.3339892908439491,
+            "delta_avg_cost_usd": 0.03513124601910832,
+            "pct_delta_cost_of_means": 11.755161564982664
+          },
+          "<400K": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.37906741818181816,
+            "mcp_avg_cost_usd": 0.6265124636363638,
+            "delta_avg_cost_usd": 0.24744504545454557,
+            "pct_delta_cost_of_means": 65.27731838347013
+          },
+          ">40M": {
+            "pairs": 501,
+            "baseline_avg_cost_usd": 2.631885800099799,
+            "mcp_avg_cost_usd": 1.0614824091816364,
+            "delta_avg_cost_usd": -1.5704033909181623,
+            "pct_delta_cost_of_means": -59.66837128186238
           },
           "unknown": {
-            "pairs": 1686,
-            "baseline_avg_cost_usd": 0.34527175127520754,
-            "mcp_avg_cost_usd": 0.3428715444246736,
-            "delta_avg_cost_usd": -0.0024002068505339464,
-            "pct_delta_cost_of_means": -0.6951645599934442
+            "pairs": 1782,
+            "baseline_avg_cost_usd": 0.11825566924803572,
+            "mcp_avg_cost_usd": 0.16230139464085316,
+            "delta_avg_cost_usd": 0.04404572539281743,
+            "pct_delta_cost_of_means": 37.246185043723855
           }
         },
-        "haiku_by_files_count": {
-          "10-100": {
-            "pairs": 436,
-            "baseline_avg_cost_usd": 2.285346634977066,
-            "mcp_avg_cost_usd": 1.3760253596330274,
-            "delta_avg_cost_usd": -0.9093212753440388,
-            "pct_delta_cost_of_means": -39.789205778543256
+        "haiku_by_repo_size_mb": {
+          "10-50 MB": {
+            "pairs": 66,
+            "baseline_avg_cost_usd": 0.4222522560606061,
+            "mcp_avg_cost_usd": 4.200597816666667,
+            "delta_avg_cost_usd": 3.7783455606060605,
+            "pct_delta_cost_of_means": 894.8076668331057
           },
-          "<10": {
-            "pairs": 876,
-            "baseline_avg_cost_usd": 0.24325373042237447,
-            "mcp_avg_cost_usd": 0.22899221004566234,
-            "delta_avg_cost_usd": -0.014261520376712116,
-            "pct_delta_cost_of_means": -5.862816718966268
+          "200MB-1GB": {
+            "pairs": 628,
+            "baseline_avg_cost_usd": 0.2988580448248408,
+            "mcp_avg_cost_usd": 0.3339892908439491,
+            "delta_avg_cost_usd": 0.03513124601910832,
+            "pct_delta_cost_of_means": 11.755161564982664
+          },
+          "50-200 MB": {
+            "pairs": 229,
+            "baseline_avg_cost_usd": 0.32529885764192157,
+            "mcp_avg_cost_usd": 0.38792443275109173,
+            "delta_avg_cost_usd": 0.06262557510917013,
+            "pct_delta_cost_of_means": 19.251704590400486
+          },
+          "<10 MB": {
+            "pairs": 44,
+            "baseline_avg_cost_usd": 0.37906741818181816,
+            "mcp_avg_cost_usd": 0.6265124636363638,
+            "delta_avg_cost_usd": 0.24744504545454557,
+            "pct_delta_cost_of_means": 65.27731838347013
+          },
+          ">1 GB": {
+            "pairs": 501,
+            "baseline_avg_cost_usd": 2.631885800099799,
+            "mcp_avg_cost_usd": 1.0614824091816364,
+            "delta_avg_cost_usd": -1.5704033909181623,
+            "pct_delta_cost_of_means": -59.66837128186238
           },
           "unknown": {
-            "pairs": 1938,
-            "baseline_avg_cost_usd": 0.3232863228070173,
-            "mcp_avg_cost_usd": 0.3219120296697624,
-            "delta_avg_cost_usd": -0.0013742931372548641,
-            "pct_delta_cost_of_means": -0.42510092147487466
+            "pairs": 1782,
+            "baseline_avg_cost_usd": 0.11825566924803572,
+            "mcp_avg_cost_usd": 0.16230139464085316,
+            "delta_avg_cost_usd": 0.04404572539281743,
+            "pct_delta_cost_of_means": 37.246185043723855
           }
         }
       }

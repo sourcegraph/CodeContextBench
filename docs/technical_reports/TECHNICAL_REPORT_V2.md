@@ -1005,7 +1005,7 @@ Curated size-bin deltas (`MCP - Baseline`), using the revised LOC bands shared w
 
 These slices indicate MCP retrieval gains are larger on multi-repo tasks than single-repo tasks in this snapshot.
 
-Methodology note: size bins here are no longer `context_length` proxies. Org tasks use fixture `loc_estimate` totals; SDLC tasks use repository size from GitHub metadata mapped into the same LOC bands (`docs/analysis/repo_size_bins_revised_20260303.json` conventions). `unknown` indicates tasks without resolved size metadata in this pass.
+Methodology note: size bins are not `context_length` proxies. They are derived from GitHub repository metadata (`/repos/{owner}/{repo}.size`, KB) mapped into LOC bands (`<400K`, `400K-2M`, `2M-8M`, `8M-40M`, `>40M`); `unknown` indicates unresolved/missing repo metadata.
 
 ### 11.6 Correlation Analysis
 
@@ -1055,29 +1055,17 @@ The benchmark remains dominated by hard tasks. In this aggregation, hard and med
 
 ### 11.9 Impact by Codebase Size
 
-Codebase-size analysis in this pass uses two available proxies:
-1) `context_length` bins from task metadata, and
-2) `files_count` bins.
+Codebase-size analysis in this pass uses estimated LOC from GitHub repository size (`/repos/{owner}/{repo}.size` in KB), mapped to shared LOC bands.
 
-**By context-length bin:**
+| Estimated LOC Band | n | BL Mean | MCP Mean | Δ Reward |
+|--------------------|---|---------|----------|----------|
+| <400K | 3 | 0.850 | 0.770 | -0.080 |
+| 400K-2M | 8 | 0.140 | 0.399 | +0.259 |
+| 2M-8M | 48 | 0.521 | 0.483 | -0.037 |
+| 8M-40M | 166 | 0.489 | 0.544 | +0.055 |
+| >40M | 145 | 0.462 | 0.492 | +0.030 |
 
-| Context Length Bin | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
-|--------------------|---|---------|----------|----------|---------------|
-| <100K tokens | 222 | 0.400 | 0.433 | +0.034 | 0.026862 |
-| 100K-1M tokens | 98 | 0.639 | 0.670 | +0.031 | 0.093518 |
-| unknown | 50 | 0.523 | 0.571 | +0.048 | 0.059717 |
-
-MCP reward delta is positive across all context-size bins in this slice.
-
-**By files-count bin:**
-
-| Files Count Bin | n | BL Mean | MCP Mean | Δ Reward | Var(Δ Reward) |
-|----------------|---|---------|----------|----------|---------------|
-| <10 | 168 | 0.327 | 0.375 | +0.048 | 0.032454 |
-| 10–100 | 91 | 0.676 | 0.699 | +0.023 | 0.097068 |
-| unknown | 111 | 0.550 | 0.575 | +0.025 | 0.034117 |
-
-Across available bins, MCP reward delta is positive, with the strongest lift in low-file-count tasks.
+MCP reward impact is size-dependent in this slice: strong positive lift in 400K-2M and moderate lift in 8M-40M and >40M, with mixed signal in smaller/mid bands.
 
 ### 11.10 MCP Tool Usage Patterns
 
@@ -1116,7 +1104,7 @@ Updated cost results are now reported from `runs/official/_raw` with a model-str
 - Compare one pair per task (`output_tokens > 0` and `agent_execution_seconds >= 10`).
 
 Source artifact: `docs/analysis/mcp_cost_pairs_official_raw_20260304.json`.
-Figure: `docs/assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.{png,svg}`.
+Figure: `docs/assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.{png,svg}` (haiku only, size-binned by estimated LOC from GitHub repo size).
 
 | Model | n paired tasks | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
 |-------|-----------------|-----------|------------|----------|-----------|
@@ -1126,25 +1114,18 @@ Figure: `docs/assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_
 
 This replaces the prior single pooled cost headline and makes the model effect explicit: MCP is cheaper on haiku/sonnet in this slice, but more expensive on opus.
 
-**Haiku cost by codebase-size proxies (same canonical pairing):**
+**Haiku cost by estimated codebase LOC (same canonical pairing):**
 
-By context-length bin:
-
-| Context Length Bin | n | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
+| Estimated LOC Band | n | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
 |--------------------|---|-----------|------------|----------|-----------|
-| <100K | 222 | 0.2349 | 0.2146 | -0.0203 | **-8.65%** |
-| 100K-1M | 98 | 1.4832 | 0.5094 | -0.9739 | **-65.66%** |
-| unknown | 72 | 1.2491 | 1.4331 | +0.1840 | **+14.73%** |
+| <400K | 9 | 0.3721 | 0.7599 | +0.3878 | **+104.20%** |
+| 400K-2M | 14 | 0.3680 | 0.5237 | +0.1556 | **+42.29%** |
+| 2M-8M | 44 | 0.4057 | 0.4139 | +0.0082 | **+2.02%** |
+| 8M-40M | 126 | 0.3124 | 0.3569 | +0.0445 | **+14.26%** |
+| >40M | 97 | 1.8362 | 0.6554 | -1.1808 | **-64.31%** |
+| unknown | 102 | 0.4277 | 0.5864 | +0.1587 | **+37.11%** |
 
-By files-count bin:
-
-| Files Count Bin | n | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
-|----------------|---|-----------|------------|----------|-----------|
-| <10 | 168 | 0.2615 | 0.2432 | -0.0184 | **-7.03%** |
-| 10-100 | 91 | 1.5677 | 0.5064 | -1.0613 | **-67.70%** |
-| unknown | 133 | 0.7583 | 0.8557 | +0.0975 | **+12.86%** |
-
-Coverage note: `unknown` size bins remain non-trivial, so size-conditioned estimates should be interpreted primarily from known bins.
+Method note: size bins are derived from GitHub repo size in KB and mapped to LOC bands; `unknown` indicates missing or unresolved repository metadata.
 
 ### 11.12 Timing Analysis
 
