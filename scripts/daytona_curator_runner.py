@@ -192,10 +192,22 @@ def _extract_repo_info_for_sandbox(ctx: Dict[str, Any]) -> List[Dict[str, str]]:
         slug = entry.get("slug", "")
         target = entry.get("target", "repo")
         if url:
-            # Ensure URL ends with .git for clone
-            clone_url = url if url.endswith(".git") else url + ".git"
-            # Extract dir name from target path
-            name = target.rstrip("/").split("/")[-1] if target else "repo"
+            # Only normalize GitHub URLs to ".git"; other hosts (e.g.
+            # go.googlesource.com) often work best with the original URL.
+            if url.endswith(".git"):
+                clone_url = url
+            elif "github.com/" in url:
+                clone_url = url + ".git"
+            else:
+                clone_url = url
+
+            # Extract dir name from target path. If Dockerfile uses "." as the
+            # target, derive a stable repo name from slug/URL.
+            target_name = target.rstrip("/").split("/")[-1] if target else ""
+            if target_name in {"", "."}:
+                fallback = slug or url
+                target_name = fallback.rstrip("/").split("/")[-1].replace(".git", "")
+            name = target_name or "repo"
             repos.append({
                 "url": clone_url,
                 "commit": "HEAD",  # mirrors are at the right commit
@@ -1134,9 +1146,11 @@ def _run_sdlc_mode(args, creds: Dict[str, Any]) -> int:
     ]
 
     future_timeout = SANDBOX_TIMEOUT_SEC + 300  # clone (300s) + curator (900s)
-    # Global timeout: generous to handle slow clones + curator runs in parallel
-    # Each task runs in its own sandbox, so total wall time ≈ max(individual times)
-    global_timeout = future_timeout + 600  # extra 10 min buffer
+    # Scale global timeout by queued "waves" so large batches don't get cut off
+    # by a fixed wall-clock limit. Allow explicit override for long/retry runs.
+    waves = max(1, (len(tasks) + max(1, args.parallel) - 1) // max(1, args.parallel))
+    computed_global_timeout = (future_timeout * waves) + 600  # extra 10 min buffer
+    global_timeout = args.global_timeout_sec if args.global_timeout_sec > 0 else computed_global_timeout
 
     executor = ThreadPoolExecutor(max_workers=args.parallel)
     futures = {
@@ -1291,7 +1305,9 @@ def _run_contextbench_mode(args, creds: Dict[str, Any]) -> int:
     ]
 
     future_timeout = SANDBOX_TIMEOUT_SEC + 300
-    global_timeout = future_timeout + 600
+    waves = max(1, (len(tasks) + max(1, args.parallel) - 1) // max(1, args.parallel))
+    computed_global_timeout = (future_timeout * waves) + 600
+    global_timeout = args.global_timeout_sec if args.global_timeout_sec > 0 else computed_global_timeout
 
     executor = ThreadPoolExecutor(max_workers=args.parallel)
     futures = {
@@ -1437,6 +1453,15 @@ def main() -> int:
                         choices=("local", "deepsearch", "hybrid"))
     parser.add_argument("--parallel", type=int, default=DEFAULT_PARALLEL,
                         help=f"Concurrent sandboxes (default: {DEFAULT_PARALLEL})")
+    parser.add_argument(
+        "--global-timeout-sec",
+        type=int,
+        default=0,
+        help=(
+            "Override wall-clock timeout for the full batch in seconds. "
+            "Default (0) uses a computed timeout based on task count and parallelism."
+        ),
+    )
     parser.add_argument("--max-cost", type=float, default=0, help="Cost limit in USD")
     parser.add_argument("--max-tasks", type=int, default=0, help="Max tasks to process")
     parser.add_argument("--dry-run", action="store_true")

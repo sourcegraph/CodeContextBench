@@ -844,18 +844,74 @@ def load_task_context(task_dir: Path) -> Dict[str, Any]:
 
 
 def _extract_clone_urls(dockerfile_content: str) -> List[Dict[str, str]]:
-    """Extract git clone URLs from a Dockerfile."""
+    """Extract git clone URLs from a Dockerfile.
+
+    Handles common clone flag variants (`--branch`, `--no-tags`, etc.) and
+    clones without an explicit target directory.
+    """
+    def _default_clone_target(url: str) -> str:
+        clean = url.rstrip("/")
+        if clean.endswith(".git"):
+            clean = clean[:-4]
+        # Support scp-like syntax, e.g. git@github.com:org/repo.git
+        clean = clean.split(":")[-1]
+        return clean.split("/")[-1] or "repo"
+
+    option_with_value = {
+        "--branch",
+        "--depth",
+        "--config",
+        "--origin",
+        "--reference",
+        "--reference-if-able",
+        "--separate-git-dir",
+        "--upload-pack",
+        "--shallow-since",
+        "--jobs",
+        "-b",
+        "-c",
+        "-o",
+        "-u",
+    }
+
+    normalized = dockerfile_content.replace("\\\n", " ")
     results = []
-    for match in re.finditer(
-        r"git\s+clone\s+(?:--depth\s+\d+\s+)?(\S+?)(?:\.git)?\s+(\S+)",
-        dockerfile_content,
-    ):
-        url = match.group(1)
-        target = match.group(2)
-        # Extract mirror slug from URL
+    for match in re.finditer(r"git\s+clone\b([^\n]*)", normalized):
+        suffix = match.group(1).strip()
+        suffix = re.split(r"\s*(?:&&|;|\|\|)\s*", suffix, maxsplit=1)[0]
+        try:
+            tokens = shlex.split(f"git clone {suffix}")
+        except ValueError:
+            continue
+
+        # Parse: git clone [options] <repo> [<directory>]
+        positional = []
+        i = 2
+        while i < len(tokens):
+            tok = tokens[i]
+            if tok == "--":
+                i += 1
+                continue
+            if tok in option_with_value:
+                i += 2
+                continue
+            if tok.startswith("-"):
+                i += 1
+                continue
+            positional.append(tok)
+            i += 1
+
+        if not positional:
+            continue
+
+        url = positional[0]
+        target = positional[1] if len(positional) > 1 else _default_clone_target(url)
+
+        # Extract mirror slug from URL when available.
         m = re.search(r"github\.com/(.+?)(?:\.git)?$", url)
         slug = m.group(1) if m else url
         results.append({"url": url, "slug": slug, "target": target})
+
     return results
 
 
