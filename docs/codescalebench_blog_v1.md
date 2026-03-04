@@ -87,35 +87,37 @@ Scored tasks in this slice:
 
 | Group | n | P@5 (BL/MCP) | R@5 (BL/MCP) | F1@5 (BL/MCP) | P@10 (BL/MCP) | R@10 (BL/MCP) | F1@10 (BL/MCP) | Total File Recall (BL/MCP) |
 |---|---:|---|---|---|---|---|---|---|
-| Org | 206 | 0.000 / 0.365 | 0.000 / 0.262 | 0.000 / 0.275 | 0.001 / 0.245 | 0.001 / 0.314 | 0.001 / 0.246 | 0.001 / 0.322 |
-| SDLC | 123 | 0.361 / 0.455 | 0.272 / 0.373 | 0.268 / 0.350 | 0.242 / 0.293 | 0.327 / 0.431 | 0.239 / 0.297 | 0.345 / 0.438 |
-| Combined | 329 | 0.135 / 0.399 | 0.102 / 0.304 | 0.100 / 0.303 | 0.091 / 0.263 | 0.123 / 0.358 | 0.090 / 0.265 | 0.129 / 0.365 |
+| Org | 206 | 0.007 / 0.471 | 0.002 / 0.149 | 0.003 / 0.206 | 0.007 / 0.311 | 0.004 / 0.177 | 0.005 / 0.200 | 0.005 / 0.182 |
+| SDLC | 123 | 0.364 / 0.489 | 0.261 / 0.371 | 0.260 / 0.356 | 0.243 / 0.318 | 0.314 / 0.430 | 0.234 / 0.308 | 0.331 / 0.437 |
+| Combined | 329 | 0.140 / 0.478 | 0.099 / 0.232 | 0.099 / 0.262 | 0.095 / 0.313 | 0.120 / 0.272 | 0.091 / 0.240 | 0.127 / 0.277 |
 
 ### Pre-existing GT (`ground_truth.json` / `oracle_answer.json`)
 
 | Group | n | P@5 (BL/MCP) | R@5 (BL/MCP) | F1@5 (BL/MCP) | P@10 (BL/MCP) | R@10 (BL/MCP) | F1@10 (BL/MCP) | Total File Recall (BL/MCP) |
 |---|---:|---|---|---|---|---|---|---|
-| Org | 206 | 0.000 / 0.122 | 0.000 / 0.121 | 0.000 / 0.113 | 0.000 / 0.074 | 0.000 / 0.137 | 0.000 / 0.090 | 0.000 / 0.139 |
-| SDLC | 123 | 0.296 / 0.379 | 0.288 / 0.405 | 0.262 / 0.347 | 0.192 / 0.231 | 0.335 / 0.458 | 0.216 / 0.274 | 0.347 / 0.471 |
-| Combined | 329 | 0.111 / 0.218 | 0.108 / 0.227 | 0.098 / 0.200 | 0.072 / 0.133 | 0.125 / 0.257 | 0.081 / 0.159 | 0.130 / 0.263 |
+| Org | 206 | 0.011 / 0.199 | 0.005 / 0.089 | 0.006 / 0.114 | 0.008 / 0.124 | 0.008 / 0.104 | 0.007 / 0.105 | 0.008 / 0.106 |
+| SDLC | 123 | 0.301 / 0.397 | 0.296 / 0.410 | 0.266 / 0.354 | 0.194 / 0.241 | 0.343 / 0.463 | 0.218 / 0.280 | 0.356 / 0.476 |
+| Combined | 329 | 0.119 / 0.273 | 0.114 / 0.209 | 0.103 / 0.204 | 0.078 / 0.167 | 0.133 / 0.238 | 0.086 / 0.170 | 0.138 / 0.244 |
 
 ## MCP Value Highlights from the New Retrieval Slices
 
 ### 1) Multi-repo tasks benefit more than single-repo tasks
 
 Curated GT deltas (`MCP - baseline`, combined):
-- `single_repo` (n=159): **F1@10 +0.1075**, **Total Recall +0.1658**
-- `multi_repo` (n=170): **F1@10 +0.2387**, **Total Recall +0.3017**
+- `single_repo` (n=158): **F1@10 +0.0853**, **Total Recall +0.1119**
+- `multi_repo` (n=171): **F1@10 +0.2089**, **Total Recall +0.1862**
 
 ### 2) Gains persist across size bins, with strongest lift in 1M-5M proxy bucket
 
 Curated GT deltas (`MCP - baseline`):
-- `<1M`: F1@10 +0.1047, Total +0.1736
-- `1M-5M`: F1@10 +0.3417, Total +0.4148
-- `5M-20M`: F1@10 +0.0696, Total +0.0960
-- `>20M`: F1@10 +0.1653, Total +0.2104
+- `<1M`: F1@10 +0.1007, Total +0.1318
+- `1M-5M`: F1@10 +0.2680, Total +0.2392
+- `5M-20M`: F1@10 +0.0648, Total +0.0565
+- `>20M`: F1@10 +0.1247, Total +0.1075
 
 Interpretation: retrieval lift is not uniform, but MCP shows clear upside where task context is more distributed and retrieval-heavy.
+
+Method note: I corrected an Org path-normalization bug in an earlier draft where some baseline paths were mismatched due to path shape differences (for example `repo/repo/path` vs `repo/path`).
 
 ## Cost and Speed
 
@@ -170,4 +172,3 @@ Planned next steps:
 3. Compare alternate MCP providers on the same task set.
 4. Run tool-policy experiments (especially semantic/deep-search nudges).
 5. Continue tightening verifier and QA infrastructure before final white paper publication.
-

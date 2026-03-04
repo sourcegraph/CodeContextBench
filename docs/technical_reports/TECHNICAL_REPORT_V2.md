@@ -957,6 +957,8 @@ To isolate retrieval quality effects on the currently curated task set, we recom
 
 Output artifact: `results/ir/baseline_vs_mcp_breakdown_org_sdlc_runs_analysis_20260304.json`.
 
+Correction note: an earlier draft of this subsection undercounted Org baseline matches due to path-shape normalization differences (for example `repo/repo/path` vs `repo/path`). Numbers below use corrected canonical exact matching.
+
 Coverage in this slice:
 - Scored task pairs: **329** (`org=206`, `sdlc=123`)
 - Metrics shown: Precision@5, Recall@5, F1@5, Precision@10, Recall@10, F1@10, and full-set `total_file_recall`
@@ -965,9 +967,9 @@ Coverage in this slice:
 
 | Group | n | P@5 (BL / MCP) | R@5 (BL / MCP) | F1@5 (BL / MCP) | P@10 (BL / MCP) | R@10 (BL / MCP) | F1@10 (BL / MCP) | Total File Recall (BL / MCP) |
 |-------|---:|----------------|----------------|-----------------|-----------------|-----------------|------------------|-------------------------------|
-| Org | 206 | 0.000 / 0.365 | 0.000 / 0.262 | 0.000 / 0.275 | 0.001 / 0.245 | 0.001 / 0.314 | 0.001 / 0.246 | 0.001 / 0.322 |
-| SDLC | 123 | 0.361 / 0.455 | 0.272 / 0.373 | 0.268 / 0.350 | 0.242 / 0.293 | 0.327 / 0.431 | 0.239 / 0.297 | 0.345 / 0.438 |
-| Combined | 329 | 0.135 / 0.399 | 0.102 / 0.304 | 0.100 / 0.303 | 0.091 / 0.263 | 0.123 / 0.358 | 0.090 / 0.265 | 0.129 / 0.365 |
+| Org | 206 | 0.007 / 0.471 | 0.002 / 0.149 | 0.003 / 0.206 | 0.007 / 0.311 | 0.004 / 0.177 | 0.005 / 0.200 | 0.005 / 0.182 |
+| SDLC | 123 | 0.364 / 0.489 | 0.261 / 0.371 | 0.260 / 0.356 | 0.243 / 0.318 | 0.314 / 0.430 | 0.234 / 0.308 | 0.331 / 0.437 |
+| Combined | 329 | 0.140 / 0.478 | 0.099 / 0.232 | 0.099 / 0.262 | 0.095 / 0.313 | 0.120 / 0.272 | 0.091 / 0.240 | 0.127 / 0.277 |
 
 Key interpretation:
 - MCP improves retrieval substantially on both benchmark families in the curated set.
@@ -977,9 +979,9 @@ Key interpretation:
 
 | Group | n | P@5 (BL / MCP) | R@5 (BL / MCP) | F1@5 (BL / MCP) | P@10 (BL / MCP) | R@10 (BL / MCP) | F1@10 (BL / MCP) | Total File Recall (BL / MCP) |
 |-------|---:|----------------|----------------|-----------------|-----------------|-----------------|------------------|-------------------------------|
-| Org | 206 | 0.000 / 0.122 | 0.000 / 0.121 | 0.000 / 0.113 | 0.000 / 0.074 | 0.000 / 0.137 | 0.000 / 0.090 | 0.000 / 0.139 |
-| SDLC | 123 | 0.296 / 0.379 | 0.288 / 0.405 | 0.262 / 0.347 | 0.192 / 0.231 | 0.335 / 0.458 | 0.216 / 0.274 | 0.347 / 0.471 |
-| Combined | 329 | 0.111 / 0.218 | 0.108 / 0.227 | 0.098 / 0.200 | 0.072 / 0.133 | 0.125 / 0.257 | 0.081 / 0.159 | 0.130 / 0.263 |
+| Org | 206 | 0.011 / 0.199 | 0.005 / 0.089 | 0.006 / 0.114 | 0.008 / 0.124 | 0.008 / 0.104 | 0.007 / 0.105 | 0.008 / 0.106 |
+| SDLC | 123 | 0.301 / 0.397 | 0.296 / 0.410 | 0.266 / 0.354 | 0.194 / 0.241 | 0.343 / 0.463 | 0.218 / 0.280 | 0.356 / 0.476 |
+| Combined | 329 | 0.119 / 0.273 | 0.114 / 0.209 | 0.103 / 0.204 | 0.078 / 0.167 | 0.133 / 0.238 | 0.086 / 0.170 | 0.138 / 0.244 |
 
 #### Correlation Slices: Multi-Repo and Size Effects
 
@@ -987,17 +989,17 @@ On curated ground truth (`MCP - Baseline`, combined):
 
 | Slice | n | Δ F1@10 | Δ Total File Recall |
 |-------|---:|--------:|--------------------:|
-| single_repo | 159 | +0.1075 | +0.1658 |
-| multi_repo | 170 | +0.2387 | +0.3017 |
+| single_repo | 158 | +0.0853 | +0.1119 |
+| multi_repo | 171 | +0.2089 | +0.1862 |
 
 Curated size-bin deltas (`MCP - Baseline`):
 
 | Size Bin (proxy) | n | Δ F1@10 | Δ Total File Recall |
 |------------------|---:|--------:|--------------------:|
-| <1M | 144 | +0.1047 | +0.1736 |
-| 1M-5M | 99 | +0.3417 | +0.4148 |
-| 5M-20M | 57 | +0.0696 | +0.0960 |
-| >20M | 29 | +0.1653 | +0.2104 |
+| <1M | 139 | +0.1007 | +0.1318 |
+| 1M-5M | 104 | +0.2680 | +0.2392 |
+| 5M-20M | 57 | +0.0648 | +0.0565 |
+| >20M | 29 | +0.1247 | +0.1075 |
 
 These slices indicate MCP retrieval gains are larger on multi-repo tasks than single-repo tasks in this snapshot.
 
