@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "servo-scrollend-event-feat-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T14:38:14Z",
+  "files_count": 9,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 16,
+  "cost_usd": 2.5501116500000003,
+  "elapsed_sec": 412.9,
+  "exploration_notes": "Implementation adds `scrollend` DOM event support to Servo via frame-based debouncing. Two new fields on `Document` track scrollend state: `scrollend_next_frame_targets` (targets scrolled this frame) and `pending_scrollend_event_targets` (targets to fire scrollend for). When a scroll event is queued in `handle_viewport_scroll_event` or `handle_element_scroll_event`, the target is added to next-frame targets and removed from any pending scrollend (canceling premature fire). During `run_the_scroll"
+}

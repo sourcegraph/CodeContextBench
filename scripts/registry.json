@@ -939,6 +939,14 @@
       "summary": "Analysis/comparison script for oracle retrieval analysis."
     },
     {
+      "name": "organize_official_by_model.py",
+      "path": "scripts/organize_official_by_model.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for organize official by model."
+    },
+    {
       "name": "organize_staging_to_official.py",
       "path": "scripts/organize_staging_to_official.py",
       "category": "data_management",
@@ -1491,7 +1499,7 @@
     "infra_mirrors": 18,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 72,
+    "misc": 73,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,

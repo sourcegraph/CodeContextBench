@@ -204,6 +204,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/judge_demo.py` - Utility script for judge demo.
 - `scripts/list_gemini_models.py` - Utility script for list gemini models.
 - `scripts/mirror_largerepo_expansion.sh` - Utility script for mirror largerepo expansion.
+- `scripts/organize_official_by_model.py` - Utility script for organize official by model.
 - `scripts/plan_variance_runs.py` - Utility script for plan variance runs.
 - `scripts/plot_build_diary.py` - Utility script for plot build diary.
 - `scripts/plot_build_diary_supplementary.py` - Utility script for plot build diary supplementary.
