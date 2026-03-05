@@ -1093,35 +1093,20 @@ The dominant pattern is unchanged: keyword search + read-file dominate MCP usage
 
 ### 11.11 Cost Analysis
 
-Updated cost results are now reported from `runs/official/_raw` with a model-stratified, task-weighted canonical pairing:
+Updated cost results are now reported from `runs/official/_raw` with a task-weighted canonical pairing:
 
 - Normalize task IDs (`mcp_`/`sgonly_`/random suffix stripped).
 - For each `(model, task)`, keep the latest valid baseline and latest valid MCP run.
 - Compare one pair per task (`output_tokens > 0` and `agent_execution_seconds >= 10`).
 
 Source artifact: `docs/analysis/mcp_cost_pairs_official_raw_20260304.json`.
-Figure: `docs/assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_size.{png,svg}` (haiku only, size-binned by estimated LOC from GitHub repo size).
+Figure: `docs/assets/blog/codescalebench_mcp/figure_8_haiku_cost_baseline_vs_mcp.{png,svg}`.
 
 | Model | n paired tasks | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
 |-------|-----------------|-----------|------------|----------|-----------|
 | haiku | 392 | 0.7333 | 0.5121 | -0.2212 | **-30.16%** |
-| sonnet | 9 | 1.4830 | 1.3951 | -0.0880 | **-5.93%** |
-| opus | 96 | 58.8995 | 94.8916 | +35.9921 | **+61.11%** |
 
-This replaces the prior single pooled cost headline and is the canonical cost estimate in this report. For the most stable comparison set (haiku, `n=392` valid pairs), MCP reduces average cost per task from **$0.7333** to **$0.5121** (**-30.16%**). Model effects remain heterogeneous: sonnet is slightly cheaper with MCP, while opus is more expensive.
-
-**Haiku cost by estimated codebase LOC (same canonical pairing):**
-
-| Estimated LOC Band | n | BL $/task | MCP $/task | Δ $/task | MCP vs BL |
-|--------------------|---|-----------|------------|----------|-----------|
-| <400K | 9 | 0.3721 | 0.7599 | +0.3878 | **+104.20%** |
-| 400K-2M | 14 | 0.3680 | 0.5237 | +0.1556 | **+42.29%** |
-| 2M-8M | 44 | 0.4057 | 0.4139 | +0.0082 | **+2.02%** |
-| 8M-40M | 126 | 0.3124 | 0.3569 | +0.0445 | **+14.26%** |
-| >40M | 97 | 1.8362 | 0.6554 | -1.1808 | **-64.31%** |
-| unknown | 102 | 0.4277 | 0.5864 | +0.1587 | **+37.11%** |
-
-Method note: size bins are derived from GitHub repo size in KB and mapped to LOC bands; `unknown` indicates missing or unresolved repository metadata.
+This is the canonical cost estimate in this report: for haiku (`n=392` valid pairs), MCP reduces average cost per task from **$0.7333** to **$0.5121** (**-30.16%**).
 
 ### 11.12 Timing Analysis
 

@@ -170,29 +170,16 @@ Could also just be plain ol' agent non-determinism. Retrieval quality alone does
 
 Let's take a break from whatever voodoo variables control reward outcomes and talk about costs and timing.
 
-For the headline cost comparison, I switched to one canonical paired method on `runs/official/_raw`:
+For the headline cost comparison, I use one canonical paired method on `runs/official/_raw`:
 
 1. Normalize task IDs (`mcp_` / `sgonly_` prefixes and random suffixes removed).
 2. For each `(model, task)`, keep the latest valid baseline run and latest valid MCP run.
 3. Valid means `output_tokens > 0` and `agent_execution_seconds >= 10`.
-4. Compare one MCP run to one baseline run per task, then average per model.
+4. Compare one MCP run to one baseline run per task.
 
 For **haiku valid pairs** (`n=392`), baseline is `$0.733/task` and MCP is `$0.512/task` (**-30.16%**).
 
 ![Haiku valid pairs baseline vs MCP cost](assets/blog/codescalebench_mcp/figure_8_haiku_cost_baseline_vs_mcp.png)
-
-If you split the same haiku pairs by estimated codebase LOC (from GitHub repo size), MCP looks more expensive in several bins:
-
-| Estimated LOC Band | n | BL $/task | MCP $/task | MCP vs BL |
-|--------------------|---|-----------|------------|-----------|
-| <400K | 9 | 0.3721 | 0.7599 | **+104.20%** |
-| 400K-2M | 14 | 0.3680 | 0.5237 | **+42.29%** |
-| 2M-8M | 44 | 0.4057 | 0.4139 | **+2.02%** |
-| 8M-40M | 126 | 0.3124 | 0.3569 | **+14.26%** |
-| >40M | 97 | 1.8362 | 0.6554 | **-64.31%** |
-| unknown | 102 | 0.4277 | 0.5864 | **+37.11%** |
-
-That is a weighting effect, not a contradiction: the `>40M` band has large absolute savings and enough mass to pull the overall weighted average down even when several smaller bands are MCP-expensive.
 
 Speed tells an even cleaner story:
 
