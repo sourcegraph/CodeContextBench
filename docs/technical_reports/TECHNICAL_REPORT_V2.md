@@ -2,13 +2,13 @@
 
 **White Paper Technical Report -- V2**
 **Date:** March 3, 2026
-**Revision:** V2 (supersedes February 27 V1 report)
+**Revision:** V2
 
 ---
 
 ## Abstract
 
-CodeScaleBench (CSB) is a benchmark suite of **370 software engineering tasks** spanning the full Software Development Lifecycle (SDLC), designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. In the analysis snapshot used in this report update (generated March 3, 2026 from `runs/analysis`), there are **1,281 valid scored rows**, **1,822 total historical rows**, and **370 paired baseline/MCP tasks** after averaging multiple runs per task/config. The overall paired reward delta is **+0.0349** (MCP minus baseline), with **+0.0363** on SDLC and **+0.0339** on Org. Retrieval evaluation on the same snapshot yields **799** event files, **311** computable tasks, and aggregate file-level metrics of **0.4598 file recall** and **0.3644 MRR**. This report documents the benchmark design, construction, retrieval evaluation pipeline, verifier architecture, and current findings.
+CodeScaleBench (CSB) is a benchmark suite of **370 software engineering tasks** spanning the full Software Development Lifecycle (SDLC), designed to measure whether external code intelligence tools -- specifically Sourcegraph's Model Context Protocol (MCP) tools -- improve AI coding agent performance. The benchmark evaluates agents under two controlled conditions: a baseline with full local source code and no external tools, and an MCP-augmented configuration where source code is unavailable locally and the agent must use remote code intelligence tools (semantic search, symbol resolution, dependency tracing, etc.) to navigate codebases. In the analysis set used in this report update (generated March 3, 2026 from `runs/analysis`), there are **1,281 valid scored rows**, **1,822 total historical rows**, and **370 paired baseline/MCP tasks** after averaging multiple runs per task/config. The overall paired reward delta is **+0.0349** (MCP minus baseline), with **+0.0363** on SDLC and **+0.0339** on Org. Retrieval evaluation on the same analysis set yields **799** event files, **311** computable tasks, and aggregate file-level metrics of **0.4598 file recall** and **0.3644 MRR**. This report documents the benchmark design, construction, retrieval evaluation pipeline, verifier architecture, and current findings.
 
 ---
 
@@ -858,9 +858,7 @@ This section reflects the analysis export generated on **March 3, 2026** from `r
 - Paired baseline/MCP tasks with both sides present: **370**
 - Suites represented: **20** (9 SDLC + 11 Org)
 
-Compared with prior drafts, this is a different analysis slice and should be treated as the current snapshot for reward/time/cost metrics below.
-
-**V1 → V2 changes:** The V1 report (Feb 27) used 251 tasks with single-trial data. V2 expands to 370 tasks with multi-run averaging, which reduces sampling noise and yields narrower confidence intervals with different point estimates. The old `csb_sdlc_build` suite was split into `csb_sdlc_feature` (23 tasks) and `csb_sdlc_refactor` (16 tasks) to better align with SDLC phases. The Org suites grew from 81 to 220 tasks through scaffolding, promotion, and DOE rebalancing.
+This analysis set is the basis for all reward, timing, and cost metrics reported below.
 
 ### 11.2 SDLC Suite Results (Paired Comparison)
 
@@ -902,9 +900,7 @@ Paired deltas for Org suites in the analysis set:
 
 **Overall paired delta**: **+0.0349** across **n=370** paired tasks, 95% CI **[+0.0130, +0.0579]**.
 
-### 11.4 V1 → V2 Results Comparison
-
-The current analysis set supersedes the prior V2 numeric snapshot in this section. The key directional change from the old write-up is that reward deltas remain positive overall while efficiency metrics (time/cost) are now adverse in the current slice.
+### 11.4 Results Summary
 
 | Metric | Value |
 |--------|------------------|
@@ -959,7 +955,7 @@ Output artifact: `results/ir/baseline_vs_mcp_breakdown_org_sdlc_runs_analysis_20
 
 Correction note: an earlier draft of this subsection undercounted Org baseline matches due to path-shape normalization differences (for example `repo/repo/path` vs `repo/path`). Numbers below use corrected canonical exact matching.
 
-Coverage in this slice:
+Coverage in this analysis set:
 - Scored task pairs: **329** (`org=206`, `sdlc=123`)
 - Metrics shown: Precision@5, Recall@5, F1@5, Precision@10, Recall@10, F1@10, and full-set `total_file_recall`
 
@@ -1003,7 +999,7 @@ Curated size-bin deltas (`MCP - Baseline`), using the revised LOC bands shared w
 | >40M | 3 | +0.0242 | +0.0667 |
 | unknown | 63 | +0.0992 | +0.1601 |
 
-These slices indicate MCP retrieval gains are larger on multi-repo tasks than single-repo tasks in this snapshot.
+These results indicate MCP retrieval gains are larger on multi-repo tasks than single-repo tasks in this analysis set.
 
 Methodology note: size bins are not `context_length` proxies. They are derived from GitHub repository metadata (`/repos/{owner}/{repo}.size`, KB) mapped into LOC bands (`<400K`, `400K-2M`, `2M-8M`, `8M-40M`, `>40M`); `unknown` indicates unresolved/missing repo metadata.
 
@@ -1065,11 +1061,11 @@ Codebase-size analysis in this pass uses estimated LOC from GitHub repository si
 | 8M-40M | 166 | 0.489 | 0.544 | +0.055 |
 | >40M | 145 | 0.462 | 0.492 | +0.030 |
 
-MCP reward impact is size-dependent in this slice: strong positive lift in 400K-2M and moderate lift in 8M-40M and >40M, with mixed signal in smaller/mid bands.
+MCP reward impact is size-dependent: strong positive lift in 400K-2M and moderate lift in 8M-40M and >40M, with mixed signal in smaller/mid bands.
 
 ### 11.10 MCP Tool Usage Patterns
 
-Based on all MCP run rows in the analysis snapshot (`n=910`):
+Based on all MCP run rows in the analysis set (`n=910`):
 
 **Overall usage:**
 - Mean total tool calls per run: 32.12
@@ -1112,7 +1108,7 @@ Figure: `docs/assets/blog/codescalebench_mcp/figure_7_cost_pairing_by_model_and_
 | sonnet | 9 | 1.4830 | 1.3951 | -0.0880 | **-5.93%** |
 | opus | 96 | 58.8995 | 94.8916 | +35.9921 | **+61.11%** |
 
-This replaces the prior single pooled cost headline and makes the model effect explicit: MCP is cheaper on haiku/sonnet in this slice, but more expensive on opus.
+This replaces the prior single pooled cost headline and is the canonical cost estimate in this report. For the most stable comparison set (haiku, `n=392` valid pairs), MCP reduces average cost per task from **$0.7333** to **$0.5121** (**-30.16%**). Model effects remain heterogeneous: sonnet is slightly cheaper with MCP, while opus is more expensive.
 
 **Haiku cost by estimated codebase LOC (same canonical pairing):**
 
@@ -1129,7 +1125,7 @@ Method note: size bins are derived from GitHub repo size in KB and mapped to LOC
 
 ### 11.12 Timing Analysis
 
-Timing in this snapshot:
+Timing summary from the same canonical paired set:
 
 | Metric | Value |
 |--------|-------|
