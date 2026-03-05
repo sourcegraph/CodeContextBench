@@ -71,9 +71,9 @@
 
 ## mcp-remote-artifact
 
-- Valid tasks: `60`
-- Mean reward: `0.338`
-- Pass rate: `0.900`
+- Valid tasks: `58`
+- Mean reward: `0.331`
+- Pass rate: `0.897`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
@@ -90,11 +90,9 @@
 | [mcp_CCX-domain-072_IE7oYH](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-072_IE7oYH--45021d0ad6.html) | `passed` | 0.338 | 0.947 | 38 | traj, tx |
 | [mcp_CCX-domain-072_xs2Lub](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-072_xs2Lub--061b75df9a.html) | `passed` | 0.266 | 0.968 | 31 | traj, tx |
 | [mcp_CCX-domain-073_EeST2e](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_EeST2e--2b4d41944a.html) | `passed` | 0.601 | 0.917 | 24 | traj, tx |
-| [mcp_CCX-domain-073_JCAeB9](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_JCAeB9--2d75bf5fa3.html) | `passed` | 0.637 | 0.000 | 44 | traj, tx |
 | [mcp_CCX-domain-073_WXM33N](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_WXM33N--3feb343703.html) | `passed` | 0.601 | 0.950 | 20 | traj, tx |
 | [mcp_CCX-domain-074_85ZOtP](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_85ZOtP--d3ef183fde.html) | `passed` | 0.444 | 0.939 | 33 | traj, tx |
 | [mcp_CCX-domain-074_QyRJSW](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_QyRJSW--f8f0f5a469.html) | `passed` | 0.425 | 0.929 | 28 | traj, tx |
-| [mcp_CCX-domain-074_s0Zq46](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_s0Zq46--b8c5e98d7e.html) | `passed` | 0.483 | 0.000 | 32 | traj, tx |
 | [mcp_CCX-domain-101_Ow8okd](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-101_Ow8okd--a8f7a6fd30.html) | `passed` | 0.521 | 0.944 | 18 | traj, tx |
 | [mcp_CCX-domain-101_QYoisJ](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-101_QYoisJ--3bd09048f5.html) | `passed` | 0.468 | 0.952 | 21 | traj, tx |
 | [mcp_CCX-domain-101_VcLXM5](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-101_VcLXM5--9670e2b4ee.html) | `passed` | 0.465 | 0.931 | 29 | traj, tx |

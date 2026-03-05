@@ -5,7 +5,7 @@
 | Run | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
 | [csb_org/csb_org_compliance](../runs/csb_org-csb_org_compliance.md) | `baseline-local-artifact` | 18 | 0.247 | 0.889 |
-| [csb_org/csb_org_compliance](../runs/csb_org-csb_org_compliance.md) | `mcp-remote-artifact` | 54 | 0.295 | 0.889 |
+| [csb_org/csb_org_compliance](../runs/csb_org-csb_org_compliance.md) | `mcp-remote-artifact` | 53 | 0.298 | 0.887 |
 
 ## Tasks
 
@@ -16,9 +16,8 @@
 | [mcp_ccx-compliance-051_sqbujj](../tasks/csb_org-csb_org_compliance--mcp--mcp_ccx-compliance-051_sqbujj--1505857528.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-051) | `mcp-remote-artifact` | `passed` | 0.800 | 3 | 0.953 |
 | [mcp_ccx-compliance-051_y1ft1l](../tasks/csb_org-csb_org_compliance--mcp--mcp_ccx-compliance-051_y1ft1l--75e84ec091.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-051) | `mcp-remote-artifact` | `passed` | 0.455 | 3 | 0.981 |
 | [ccx-compliance-052](../tasks/csb_org-csb_org_compliance--baseline--ccx-compliance-052--a6e85db74e.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `baseline-local-artifact` | `passed` | 0.638 | 3 | 0.000 |
-| [mcp_CCX-compliance-052_IiH4T2](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_IiH4T2--2dfaec4c07.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `mcp-remote-artifact` | `passed` | 0.137 | 3 | 0.000 |
-| [mcp_CCX-compliance-052_eFym6p](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_eFym6p--b07b12ca22.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `mcp-remote-artifact` | `passed` | 0.383 | 3 | 0.932 |
-| [mcp_CCX-compliance-052_j0NGKx](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_j0NGKx--9c207d66bc.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `mcp-remote-artifact` | `passed` | 0.663 | 3 | 0.982 |
+| [mcp_CCX-compliance-052_eFym6p](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_eFym6p--b07b12ca22.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `mcp-remote-artifact` | `passed` | 0.383 | 2 | 0.932 |
+| [mcp_CCX-compliance-052_j0NGKx](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_j0NGKx--9c207d66bc.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-052) | `mcp-remote-artifact` | `passed` | 0.663 | 2 | 0.982 |
 | [ccx-compliance-053](../tasks/csb_org-csb_org_compliance--baseline--ccx-compliance-053--d7e6cd25c4.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-053) | `baseline-local-artifact` | `passed` | 0.538 | 3 | 0.000 |
 | [mcp_CCX-compliance-053_QYb1jb](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-053_QYb1jb--73b3bac61b.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-053) | `mcp-remote-artifact` | `passed` | 0.381 | 3 | 0.926 |
 | [mcp_CCX-compliance-053_fgVrO8](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-053_fgVrO8--68193d61b1.html) | [source](../../../benchmarks/csb_org_compliance/ccx-compliance-053) | `mcp-remote-artifact` | `passed` | 0.726 | 3 | 0.962 |

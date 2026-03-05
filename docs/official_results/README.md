@@ -1,8 +1,8 @@
 # Official Results Browser
 
-This bundle is generated from `runs/analysis/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).
+This bundle is generated from `runs/analysis/` and includes only valid scored tasks (`passed`/`failed` with numeric reward) that pass config-specific validity checks.
 
-Generated: `2026-03-05T21:30:17.060820+00:00`
+Generated: `2026-03-05T22:59:58.640809+00:00`
 
 ## Local Browse
 
@@ -17,16 +17,16 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 
 | Suite | Config | Valid Tasks | Min Required | Mean Reward | Pass Rate | Coverage |
 |---|---|---:|---:|---:|---:|---|
-| [csb_org_compliance](suites/csb_org_compliance.md) | `baseline-local-artifact` | 18 | 54 | 0.247 | 0.889 | FLAG: below minimum |
-| [csb_org_compliance](suites/csb_org_compliance.md) | `mcp-remote-artifact` | 54 | 54 | 0.295 | 0.889 | ok |
+| [csb_org_compliance](suites/csb_org_compliance.md) | `baseline-local-artifact` | 18 | 53 | 0.247 | 0.889 | FLAG: below minimum |
+| [csb_org_compliance](suites/csb_org_compliance.md) | `mcp-remote-artifact` | 53 | 53 | 0.298 | 0.887 | ok |
 | [csb_org_crossorg](suites/csb_org_crossorg.md) | `baseline-local-artifact` | 15 | 45 | 0.196 | 0.667 | FLAG: below minimum |
 | [csb_org_crossorg](suites/csb_org_crossorg.md) | `mcp-remote-artifact` | 45 | 45 | 0.200 | 0.667 | ok |
 | [csb_org_crossrepo](suites/csb_org_crossrepo.md) | `baseline-local-artifact` | 14 | 42 | 0.312 | 1.000 | FLAG: below minimum |
 | [csb_org_crossrepo](suites/csb_org_crossrepo.md) | `mcp-remote-artifact` | 42 | 42 | 0.285 | 0.976 | ok |
 | [csb_org_crossrepo_tracing](suites/csb_org_crossrepo_tracing.md) | `baseline-local-artifact` | 22 | 62 | 0.351 | 0.727 | FLAG: below minimum |
 | [csb_org_crossrepo_tracing](suites/csb_org_crossrepo_tracing.md) | `mcp-remote-artifact` | 62 | 62 | 0.356 | 0.758 | ok |
-| [csb_org_domain](suites/csb_org_domain.md) | `baseline-local-artifact` | 20 | 60 | 0.351 | 0.950 | FLAG: below minimum |
-| [csb_org_domain](suites/csb_org_domain.md) | `mcp-remote-artifact` | 60 | 60 | 0.338 | 0.900 | ok |
+| [csb_org_domain](suites/csb_org_domain.md) | `baseline-local-artifact` | 20 | 58 | 0.351 | 0.950 | FLAG: below minimum |
+| [csb_org_domain](suites/csb_org_domain.md) | `mcp-remote-artifact` | 58 | 58 | 0.331 | 0.897 | ok |
 | [csb_org_incident](suites/csb_org_incident.md) | `baseline-local-artifact` | 20 | 58 | 0.502 | 0.900 | FLAG: below minimum |
 | [csb_org_incident](suites/csb_org_incident.md) | `mcp-remote-artifact` | 58 | 58 | 0.569 | 0.948 | ok |
 | [csb_org_migration](suites/csb_org_migration.md) | `baseline-local-artifact` | 26 | 77 | 0.325 | 0.846 | FLAG: below minimum |
@@ -65,7 +65,7 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | Run | Suite | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---|---:|---:|---:|
 | [csb_org/csb_org_compliance](runs/csb_org-csb_org_compliance.md) | `csb_org_compliance` | `baseline-local-artifact` | 54 | 0.280 | 0.889 |
-| [csb_org/csb_org_compliance](runs/csb_org-csb_org_compliance.md) | `csb_org_compliance` | `mcp-remote-artifact` | 54 | 0.295 | 0.889 |
+| [csb_org/csb_org_compliance](runs/csb_org-csb_org_compliance.md) | `csb_org_compliance` | `mcp-remote-artifact` | 53 | 0.298 | 0.887 |
 | [csb_org/csb_org_crossorg](runs/csb_org-csb_org_crossorg.md) | `csb_org_crossorg` | `baseline-local-artifact` | 45 | 0.175 | 0.667 |
 | [csb_org/csb_org_crossorg](runs/csb_org-csb_org_crossorg.md) | `csb_org_crossorg` | `mcp-remote-artifact` | 45 | 0.200 | 0.667 |
 | [csb_org/csb_org_crossrepo](runs/csb_org-csb_org_crossrepo.md) | `csb_org_crossrepo` | `baseline-local-artifact` | 42 | 0.309 | 1.000 |
@@ -73,7 +73,7 @@ Historical reruns/backfills remain available in `data/official_results.json` und
 | [csb_org/csb_org_crossrepo_tracing](runs/csb_org-csb_org_crossrepo_tracing.md) | `csb_org_crossrepo_tracing` | `baseline-local-artifact` | 63 | 0.324 | 0.683 |
 | [csb_org/csb_org_crossrepo_tracing](runs/csb_org-csb_org_crossrepo_tracing.md) | `csb_org_crossrepo_tracing` | `mcp-remote-artifact` | 62 | 0.356 | 0.758 |
 | [csb_org/csb_org_domain](runs/csb_org-csb_org_domain.md) | `csb_org_domain` | `baseline-local-artifact` | 60 | 0.355 | 0.933 |
-| [csb_org/csb_org_domain](runs/csb_org-csb_org_domain.md) | `csb_org_domain` | `mcp-remote-artifact` | 60 | 0.338 | 0.900 |
+| [csb_org/csb_org_domain](runs/csb_org-csb_org_domain.md) | `csb_org_domain` | `mcp-remote-artifact` | 58 | 0.331 | 0.897 |
 | [csb_org/csb_org_incident](runs/csb_org-csb_org_incident.md) | `csb_org_incident` | `baseline-local-artifact` | 58 | 0.487 | 0.862 |
 | [csb_org/csb_org_incident](runs/csb_org-csb_org_incident.md) | `csb_org_incident` | `mcp-remote-artifact` | 58 | 0.569 | 0.948 |
 | [csb_org/csb_org_migration](runs/csb_org-csb_org_migration.md) | `csb_org_migration` | `baseline-local-artifact` | 77 | 0.381 | 0.870 |

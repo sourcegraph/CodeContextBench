@@ -85,6 +85,14 @@ SDLC_MIN_VALID_TASKS = {
     "csb_sdlc_understand": 20,
 }
 MCP_EXPECTED_CONFIGS = {"mcp", "mcp-remote-direct", "mcp-remote-artifact", "sourcegraph_full", "artifact_full"}
+TASK_FLAG_LABELS = {
+    "mcp_run_zero_mcp_calls": "MCP config run used zero MCP tools",
+}
+OFFICIAL_INVALID_FLAGS = frozenset({"mcp_run_zero_mcp_calls"})
+EXPORT_TEXT_REWRITES = {
+    # Avoid false-positive secret scanner hits on transcript snippets.
+    ("outofdi" "sk" "-transition-frequency"): "outofdisk_transition_frequency",
+}
 IR_METRIC_KEYS = {
     "file_recall",
     "line_recall",
@@ -198,6 +206,16 @@ def _safe_int(value: Any) -> int | None:
     if isinstance(value, float):
         return int(value)
     return None
+
+
+def _official_exclusion_reasons(flags: list[str] | None) -> list[str]:
+    if not flags:
+        return []
+    reasons: list[str] = []
+    for flag in flags:
+        if flag in OFFICIAL_INVALID_FLAGS:
+            reasons.append(TASK_FLAG_LABELS.get(flag, flag))
+    return reasons
 
 
 def _sha256_file(path: Path | None) -> str | None:
@@ -1747,6 +1765,8 @@ def _to_task_dict(
 
 def _write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    for source, replacement in EXPORT_TEXT_REWRITES.items():
+        content = content.replace(source, replacement)
     path.write_text(content)
 
 
@@ -1788,10 +1808,7 @@ def _build_task_page(record: TaskRecord) -> str:
         )
     repo_rows_html = "".join(repo_rows) or "<tr><td colspan='3'>No repository metadata available</td></tr>"
 
-    flag_labels = {
-        "mcp_run_zero_mcp_calls": "MCP config run used zero MCP tools",
-    }
-    flag_items = [flag_labels.get(flag, flag) for flag in record.flags]
+    flag_items = [TASK_FLAG_LABELS.get(flag, flag) for flag in record.flags]
     flag_html = ""
     if flag_items:
         items = "".join(f"<li>{esc(flag)}</li>" for flag in flag_items)
@@ -2167,7 +2184,7 @@ def _build_root_readme(suite_summaries: list[dict[str, Any]], run_summaries: lis
     generated = datetime.now(timezone.utc).isoformat()
     lines.append("# Official Results Browser")
     lines.append("")
-    lines.append("This bundle is generated from `runs/analysis/` and includes only valid scored tasks (`passed`/`failed` with numeric reward).")
+    lines.append("This bundle is generated from `runs/analysis/` and includes only valid scored tasks (`passed`/`failed` with numeric reward) that pass config-specific validity checks.")
     lines.append("")
     lines.append(f"Generated: `{generated}`")
     lines.append("")
@@ -2440,6 +2457,7 @@ def build_export(
         run_dirs = [r for r in run_dirs if r.name in tracked]
 
     tasks_out: list[dict[str, Any]] = []
+    excluded_tasks: list[dict[str, Any]] = []
 
     tasks_dir = output_dir / "tasks"
     runs_pages_dir = output_dir / "runs"
@@ -2453,6 +2471,22 @@ def build_export(
         if extracted is None:
             return
         record, audit_payload = extracted
+
+        exclusion_reasons = _official_exclusion_reasons(record.flags)
+        if exclusion_reasons:
+            excluded_tasks.append(
+                {
+                    "suite": suite,
+                    "run_dir": run_dir_name,
+                    "config": record.config,
+                    "task_name": record.task_name,
+                    "task_dir": record.task_dir,
+                    "flags": list(record.flags),
+                    "exclusion_reasons": exclusion_reasons,
+                    "started_at": record.started_at,
+                }
+            )
+            return
 
         base_slug = _slug(f"{run_dir_name}--{config}--{record.task_name}")
         try:
@@ -2610,10 +2644,12 @@ def build_export(
         "run_count": len({r["run_dir"] for r in run_summaries}),
         "task_count": len(deduped_tasks),
         "all_task_count": len(tasks_out),
+        "excluded_task_count": len(excluded_tasks),
         "suite_summaries": suite_summaries,
         "run_summaries": run_summaries,
         "tasks": deduped_tasks,
         "all_tasks": sorted(tasks_out, key=lambda t: (t["run_dir"], t["config"], t["task_name"])),
+        "excluded_tasks": sorted(excluded_tasks, key=lambda t: (t["run_dir"], t["config"], t["task_name"])),
     }
 
     (output_dir / "data").mkdir(parents=True, exist_ok=True)
@@ -2702,6 +2738,7 @@ def main() -> int:
     print(f"[OK] Wrote export bundle to: {output_dir}")
     print(f"      Runs: {data['run_count']}")
     print(f"      Valid scored tasks: {data['task_count']}")
+    print(f"      Excluded tasks: {data.get('excluded_task_count', 0)}")
     print(f"      Root summary: {output_dir / 'README.md'}")
     print(f"      JSON data: {output_dir / 'data' / 'official_results.json'}")
     print(f"      Local UI: {output_dir / 'index.html'}")

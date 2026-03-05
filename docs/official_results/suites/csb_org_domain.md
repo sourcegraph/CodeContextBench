@@ -5,7 +5,7 @@
 | Run | Config | Valid Tasks | Mean Reward | Pass Rate |
 |---|---|---:|---:|---:|
 | [csb_org/csb_org_domain](../runs/csb_org-csb_org_domain.md) | `baseline-local-artifact` | 20 | 0.351 | 0.950 |
-| [csb_org/csb_org_domain](../runs/csb_org-csb_org_domain.md) | `mcp-remote-artifact` | 60 | 0.338 | 0.900 |
+| [csb_org/csb_org_domain](../runs/csb_org-csb_org_domain.md) | `mcp-remote-artifact` | 58 | 0.331 | 0.897 |
 
 ## Tasks
 
@@ -20,13 +20,11 @@
 | [mcp_CCX-domain-072_IE7oYH](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-072_IE7oYH--45021d0ad6.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-072) | `mcp-remote-artifact` | `passed` | 0.338 | 3 | 0.947 |
 | [mcp_CCX-domain-072_xs2Lub](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-072_xs2Lub--061b75df9a.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-072) | `mcp-remote-artifact` | `passed` | 0.266 | 3 | 0.968 |
 | [ccx-domain-073](../tasks/csb_org-csb_org_domain--baseline--ccx-domain-073--224f50b87f.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `baseline-local-artifact` | `passed` | 0.708 | 3 | 0.000 |
-| [mcp_CCX-domain-073_EeST2e](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_EeST2e--2b4d41944a.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `mcp-remote-artifact` | `passed` | 0.601 | 3 | 0.917 |
-| [mcp_CCX-domain-073_JCAeB9](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_JCAeB9--2d75bf5fa3.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `mcp-remote-artifact` | `passed` | 0.637 | 3 | 0.000 |
-| [mcp_CCX-domain-073_WXM33N](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_WXM33N--3feb343703.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `mcp-remote-artifact` | `passed` | 0.601 | 3 | 0.950 |
+| [mcp_CCX-domain-073_EeST2e](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_EeST2e--2b4d41944a.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `mcp-remote-artifact` | `passed` | 0.601 | 2 | 0.917 |
+| [mcp_CCX-domain-073_WXM33N](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-073_WXM33N--3feb343703.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-073) | `mcp-remote-artifact` | `passed` | 0.601 | 2 | 0.950 |
 | [ccx-domain-074](../tasks/csb_org-csb_org_domain--baseline--ccx-domain-074--eade132ca0.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `baseline-local-artifact` | `passed` | 0.509 | 3 | 0.000 |
-| [mcp_CCX-domain-074_85ZOtP](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_85ZOtP--d3ef183fde.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `mcp-remote-artifact` | `passed` | 0.444 | 3 | 0.939 |
-| [mcp_CCX-domain-074_QyRJSW](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_QyRJSW--f8f0f5a469.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `mcp-remote-artifact` | `passed` | 0.425 | 3 | 0.929 |
-| [mcp_CCX-domain-074_s0Zq46](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_s0Zq46--b8c5e98d7e.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `mcp-remote-artifact` | `passed` | 0.483 | 3 | 0.000 |
+| [mcp_CCX-domain-074_85ZOtP](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_85ZOtP--d3ef183fde.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `mcp-remote-artifact` | `passed` | 0.444 | 2 | 0.939 |
+| [mcp_CCX-domain-074_QyRJSW](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-074_QyRJSW--f8f0f5a469.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-074) | `mcp-remote-artifact` | `passed` | 0.425 | 2 | 0.929 |
 | [ccx-domain-101](../tasks/csb_org-csb_org_domain--baseline--ccx-domain-101--f4c89d8454.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-101) | `baseline-local-artifact` | `passed` | 0.543 | 3 | 0.000 |
 | [mcp_CCX-domain-101_Ow8okd](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-101_Ow8okd--a8f7a6fd30.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-101) | `mcp-remote-artifact` | `passed` | 0.521 | 3 | 0.944 |
 | [mcp_CCX-domain-101_QYoisJ](../tasks/csb_org-csb_org_domain--mcp--mcp_CCX-domain-101_QYoisJ--3bd09048f5.html) | [source](../../../benchmarks/csb_org_domain/ccx-domain-101) | `mcp-remote-artifact` | `passed` | 0.468 | 3 | 0.952 |

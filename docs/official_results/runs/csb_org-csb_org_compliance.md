@@ -65,9 +65,9 @@
 
 ## mcp-remote-artifact
 
-- Valid tasks: `54`
-- Mean reward: `0.295`
-- Pass rate: `0.889`
+- Valid tasks: `53`
+- Mean reward: `0.298`
+- Pass rate: `0.887`
 
 | Task | Status | Reward | MCP Ratio | Tool Calls | Trace |
 |---|---|---:|---:|---:|---|
@@ -77,7 +77,6 @@
 | [mcp_ccx-compliance-190_13a9bs](../tasks/csb_org-csb_org_compliance--mcp--mcp_ccx-compliance-190_13a9bs--f5c44eb296.html) | `failed` | 0.000 | 0.966 | 29 | traj, tx |
 | [mcp_ccx-compliance-190_7b5ykr](../tasks/csb_org-csb_org_compliance--mcp--mcp_ccx-compliance-190_7b5ykr--bdbbed35eb.html) | `failed` | 0.000 | 0.966 | 29 | traj, tx |
 | [mcp_ccx-compliance-190_jcixwn](../tasks/csb_org-csb_org_compliance--mcp--mcp_ccx-compliance-190_jcixwn--4689100240.html) | `failed` | 0.000 | 0.966 | 29 | traj, tx |
-| [mcp_CCX-compliance-052_IiH4T2](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_IiH4T2--2dfaec4c07.html) | `passed` | 0.137 | 0.000 | 85 | traj, tx |
 | [mcp_CCX-compliance-052_eFym6p](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_eFym6p--b07b12ca22.html) | `passed` | 0.383 | 0.932 | 74 | traj, tx |
 | [mcp_CCX-compliance-052_j0NGKx](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-052_j0NGKx--9c207d66bc.html) | `passed` | 0.663 | 0.982 | 55 | traj, tx |
 | [mcp_CCX-compliance-053_QYb1jb](../tasks/csb_org-csb_org_compliance--mcp--mcp_CCX-compliance-053_QYb1jb--73b3bac61b.html) | `passed` | 0.381 | 0.926 | 27 | traj, tx |
