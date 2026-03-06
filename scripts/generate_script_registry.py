@@ -84,6 +84,7 @@ CATEGORY_HINTS = {
         "curate_oracle.py",
         "customize_mcp_skeletons.py",
         "rename_tasks.py",
+        "select_subset.py",
     },
 }
 

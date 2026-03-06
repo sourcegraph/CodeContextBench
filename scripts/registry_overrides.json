@@ -86,6 +86,11 @@
       "name": "refresh_agent_navigation.py",
       "category": "core_operations",
       "summary": "One-command refresh/check for generated agent-navigation artifacts (guides + script registry/index)."
+    },
+    {
+      "name": "select_subset.py",
+      "category": "task_creation_selection",
+      "summary": "Selects a representative task subset stratified by suite effect-size bucket, language, difficulty, and codebase size. Outputs JSON selection file and plain-text task list."
     }
   ]
 }

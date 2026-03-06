@@ -1411,6 +1411,14 @@
       "summary": "Task creation/selection script for select dependeval tasks."
     },
     {
+      "name": "select_subset.py",
+      "path": "scripts/select_subset.py",
+      "category": "task_creation_selection",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Selects a representative task subset stratified by suite effect-size bucket, language, difficulty, and codebase size. Outputs JSON selection file and plain-text task list."
+    },
+    {
       "name": "sgonly_verifier_wrapper.sh",
       "path": "scripts/sgonly_verifier_wrapper.sh",
       "category": "library_helpers",
@@ -1614,7 +1622,7 @@
     "misc": 85,
     "qa_quality": 10,
     "submission_reporting": 7,
-    "task_creation_selection": 12,
+    "task_creation_selection": 13,
     "validation": 2
   }
 }

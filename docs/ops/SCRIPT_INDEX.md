@@ -107,6 +107,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/rename_tasks.py` - Task creation/selection script for rename tasks.
 - `scripts/select_benchmark_tasks.py` - Task creation/selection script for select benchmark tasks.
 - `scripts/select_dependeval_tasks.py` - Task creation/selection script for select dependeval tasks.
+- `scripts/select_subset.py` - Selects a representative task subset stratified by suite effect-size bucket, language, difficulty, and codebase size. Outputs JSON selection file and plain-text task list.
 
 ## Infra & Mirrors
 
