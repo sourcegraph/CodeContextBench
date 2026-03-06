@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 The local `/workspace/` directory contains: sg-evals/firefox--871325b8.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/firefox--871325b8` (mozilla-firefox/firefox)
 
 ## Output Format
 

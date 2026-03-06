@@ -12,11 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 The local `/workspace/` directory contains: prometheus/prometheus.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `prometheus/prometheus` (prometheus/prometheus)
-- `sourcegraph-testing/prometheus-common` (prometheus/client_golang)
-- `prometheus/alertmanager` (prometheus/alertmanager)
-- `sg-evals/grafana--26d36ec` (grafana/grafana)
 
 ## Output Format
 

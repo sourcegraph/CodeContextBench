@@ -12,9 +12,6 @@ You are working on a codebase task involving repos from the crossorg domain. Bot
 
 The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/grafana--v11.4.0.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/kubernetes--v1.32.0` (kubernetes/kubernetes)
-- `sg-evals/grafana--v11.4.0` (grafana/grafana)
 
 ## Output Format
 

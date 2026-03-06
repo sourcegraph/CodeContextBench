@@ -215,25 +215,33 @@ _sdlc_run_single() {
         return 1
     fi
 
+    if [ "$config" = "baseline-local-artifact" ] && \
+       grep -q "No local repositories are pre-checked out." "${task_path}/instruction.md"; then
+        echo "ERROR: baseline-local-artifact requires local repos, but ${task_id} declares none in instruction.md"
+        return 1
+    fi
+
     # Derive source access and verifier mode from config name.
     # config_to_mcp_type sets SOURCE_ACCESS and VERIFIER_MODE globals.
     config_to_mcp_type "$config" > /dev/null
 
     # Dockerfile selection based on SOURCE_ACCESS and VERIFIER_MODE:
     #   local  + direct   → original Dockerfile (no swap needed)
-    #   local  + artifact → Dockerfile.artifact_only (source stays readable for baseline)
+    #   local  + artifact → Dockerfile.artifact_baseline
     #   remote + direct   → Dockerfile.sg_only (empty workspace, verifier restores repo)
     #   remote + artifact → Dockerfile.artifact_only (repo backup + sentinel for answer.json verifier)
     if [ "$SOURCE_ACCESS" = "local" ] && [ "$VERIFIER_MODE" = "artifact" ]; then
-        local artifact="${task_path}/environment/Dockerfile.artifact_only"
-        if [ -f "$artifact" ]; then
-            temp_task_dir="/tmp/artifact_bl_${task_id}"
-            rm -rf "$temp_task_dir"
-            mkdir -p "$temp_task_dir"
-            cp -a "${task_path}/." "${temp_task_dir}/"
-            cp "${temp_task_dir}/environment/Dockerfile.artifact_only" "${temp_task_dir}/environment/Dockerfile"
-            run_task_path="$temp_task_dir"
+        local artifact_baseline="${task_path}/environment/Dockerfile.artifact_baseline"
+        if [ ! -f "$artifact_baseline" ]; then
+            echo "ERROR: Missing Dockerfile.artifact_baseline for $task_id at $artifact_baseline"
+            return 1
         fi
+        temp_task_dir="/tmp/artifact_bl_${task_id}"
+        rm -rf "$temp_task_dir"
+        mkdir -p "$temp_task_dir"
+        cp -a "${task_path}/." "${temp_task_dir}/"
+        cp "${temp_task_dir}/environment/Dockerfile.artifact_baseline" "${temp_task_dir}/environment/Dockerfile"
+        run_task_path="$temp_task_dir"
 
     elif [ "$SOURCE_ACCESS" = "remote" ] && [ "$VERIFIER_MODE" = "direct" ]; then
         local sgonly="${task_path}/environment/Dockerfile.sg_only"

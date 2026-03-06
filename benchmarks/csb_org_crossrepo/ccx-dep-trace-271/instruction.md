@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the crossrepo domain.
 
 The local `/workspace/` directory contains: sg-evals/jdk--742e735d.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/jdk--742e735d` (openjdk/jdk)
 
 ## Output Format
 

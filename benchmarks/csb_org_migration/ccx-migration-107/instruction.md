@@ -12,9 +12,6 @@ You are working on a codebase task involving repos from the migration domain.
 
 The local `/workspace/` directory contains: sg-evals/llvm-project--a8f3c97d, sg-evals/gcc--96dfb333.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/llvm-project--a8f3c97d` (llvm/llvm-project)
-- `sg-evals/gcc--96dfb333` (gcc-mirror/gcc)
 
 ## Output Format
 

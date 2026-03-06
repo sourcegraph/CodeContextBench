@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 The local `/workspace/` directory contains: sg-evals/chromium--2d05e315.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/chromium--2d05e315` (chromium/chromium)
 
 ## Output Format
 

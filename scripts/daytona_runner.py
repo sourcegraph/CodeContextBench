@@ -54,7 +54,7 @@ CLAUDE_MAX_TURNS = 30
 CONFIG_DOCKERFILE_MAP = {
     "baseline-local-direct": "Dockerfile",
     "mcp-remote-direct": "Dockerfile.sg_only",
-    "baseline-local-artifact": "Dockerfile.artifact_only",
+    "baseline-local-artifact": "Dockerfile.artifact_baseline",
     "mcp-remote-artifact": "Dockerfile.artifact_only",
 }
 
@@ -66,6 +66,25 @@ CONFIG_INSTRUCTION_MAP = {
 }
 
 MCP_CONFIGS = {"mcp-remote-direct", "mcp-remote-artifact"}
+
+
+def resolve_dockerfile_name(task: "TaskSpec", config_name: str) -> str:
+    dockerfile_name = CONFIG_DOCKERFILE_MAP[config_name]
+    if config_name != "baseline-local-artifact":
+        return dockerfile_name
+
+    env_dir = task.task_dir / "environment"
+    if (env_dir / dockerfile_name).exists():
+        return dockerfile_name
+    return dockerfile_name
+
+
+def baseline_artifact_has_local_repos(task: "TaskSpec") -> bool:
+    instruction_path = task.task_dir / "instruction.md"
+    if not instruction_path.exists():
+        return False
+    text = instruction_path.read_text()
+    return "No local repositories are pre-checked out." not in text
 
 log = logging.getLogger("daytona_runner")
 
@@ -369,7 +388,7 @@ class SandboxManager:
     def create_sandbox(self, task: TaskSpec):
         from daytona_sdk import CreateSandboxFromImageParams, Image, Resources
 
-        dockerfile_name = CONFIG_DOCKERFILE_MAP[self._config.config_name]
+        dockerfile_name = resolve_dockerfile_name(task, self._config.config_name)
         dockerfile_path = task.task_dir / "environment" / dockerfile_name
 
         if not dockerfile_path.exists():
@@ -644,10 +663,17 @@ class TaskRunner:
             task_id=task.task_id, config=run_config.config_name, run_id=run_config.run_id)
 
         # Validate Dockerfile exists
-        dockerfile_name = CONFIG_DOCKERFILE_MAP[run_config.config_name]
+        dockerfile_name = resolve_dockerfile_name(task, run_config.config_name)
         if not (task.task_dir / "environment" / dockerfile_name).exists():
             result.status = "skipped"
             result.error_message = f"Missing {dockerfile_name}"
+            log.warning(f"[{task.task_id}] Skipped: {result.error_message}")
+            self._collector.save_result(result)
+            return result
+
+        if run_config.config_name == "baseline-local-artifact" and not baseline_artifact_has_local_repos(task):
+            result.status = "skipped"
+            result.error_message = "baseline-local-artifact requires local repos, but instruction.md declares none"
             log.warning(f"[{task.task_id}] Skipped: {result.error_message}")
             self._collector.save_result(result)
             return result

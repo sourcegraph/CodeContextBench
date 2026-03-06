@@ -338,10 +338,21 @@ check_dockerfile_variants() {
             local task_id
             task_id=$(basename "$task_path")
 
-            # Baseline: needs environment/Dockerfile
-            if [ "$RUN_BASELINE" = true ] && [ ! -f "${abs_path}/environment/Dockerfile" ]; then
-                DOCKERFILE_WARNINGS+="  MISSING: ${task_id} — Dockerfile (baseline)"$'\n'
-                DOCKERFILE_MISSING_COUNT=$(( DOCKERFILE_MISSING_COUNT + 1 ))
+            # Baseline: needs environment/Dockerfile, or Dockerfile.artifact_baseline for artifact mode
+            if [ "$RUN_BASELINE" = true ]; then
+                if [ "$_is_artifact" = true ]; then
+                    if [ ! -f "${abs_path}/environment/Dockerfile.artifact_baseline" ]; then
+                        DOCKERFILE_WARNINGS+="  MISSING: ${task_id} — Dockerfile.artifact_baseline"$'\n'
+                        DOCKERFILE_MISSING_COUNT=$(( DOCKERFILE_MISSING_COUNT + 1 ))
+                    fi
+                    if grep -q "No local repositories are pre-checked out." "${abs_path}/instruction.md"; then
+                        DOCKERFILE_WARNINGS+="  INVALID: ${task_id} — baseline-local-artifact requires local repos"$'\n'
+                        DOCKERFILE_MISSING_COUNT=$(( DOCKERFILE_MISSING_COUNT + 1 ))
+                    fi
+                elif [ ! -f "${abs_path}/environment/Dockerfile" ]; then
+                    DOCKERFILE_WARNINGS+="  MISSING: ${task_id} — Dockerfile (baseline)"$'\n'
+                    DOCKERFILE_MISSING_COUNT=$(( DOCKERFILE_MISSING_COUNT + 1 ))
+                fi
             fi
 
             # Full/MCP: needs the variant Dockerfile
@@ -597,25 +608,19 @@ _launch_task_pair() {
     if [ "$RUN_BASELINE" = true ]; then
         local _bl_task_path="$abs_path"
 
-        # Artifact mode: baseline uses Dockerfile.artifact_baseline (local code + artifact sentinel)
-        # Falls back to Dockerfile.artifact_only if artifact_baseline doesn't exist.
+        # Artifact mode: baseline uses Dockerfile.artifact_baseline (local code + artifact sentinel).
+        # Do not fall back to Dockerfile.artifact_only; that changes the run semantics.
         if [ "$_is_artifact" = true ]; then
             local _df_artifact_bl="${abs_path}/environment/Dockerfile.artifact_baseline"
-            local _df_artifact="${abs_path}/environment/Dockerfile.artifact_only"
             if [ -f "$_df_artifact_bl" ]; then
                 _bl_temp_dir=$(_td=$(mktemp -d "/tmp/bl_${task_id}_XXXXXX") && _td_lower=$(echo "$_td" | tr '[:upper:]' '[:lower:]') && [ "$_td" != "$_td_lower" ] && mv "$_td" "$_td_lower"; echo "${_td_lower:-$_td}")
                 cp -a "${abs_path}/." "${_bl_temp_dir}/"
                 cp "$_df_artifact_bl" "${_bl_temp_dir}/environment/Dockerfile"
                 _bl_task_path="$_bl_temp_dir"
                 echo "  [artifact-baseline] Using local-code artifact Dockerfile for baseline: $task_id"
-            elif [ -f "$_df_artifact" ]; then
-                _bl_temp_dir=$(_td=$(mktemp -d "/tmp/bl_${task_id}_XXXXXX") && _td_lower=$(echo "$_td" | tr '[:upper:]' '[:lower:]') && [ "$_td" != "$_td_lower" ] && mv "$_td" "$_td_lower"; echo "${_td_lower:-$_td}")
-                cp -a "${abs_path}/." "${_bl_temp_dir}/"
-                cp "$_df_artifact" "${_bl_temp_dir}/environment/Dockerfile"
-                _bl_task_path="$_bl_temp_dir"
-                echo "  [artifact] Fallback: using artifact_only Dockerfile for baseline: $task_id"
             else
-                echo "  WARNING: No Dockerfile.artifact_baseline or artifact_only for $task_id"
+                echo "  ERROR: Missing Dockerfile.artifact_baseline for $task_id"
+                continue
             fi
         fi
 

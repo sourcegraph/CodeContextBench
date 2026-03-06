@@ -31,7 +31,7 @@ Config names encode three independent dimensions:
 | `baseline-local-direct` | No MCP | Full source | Git changes | `none` | Original |
 | `mcp-remote-direct` | MCP | Source deleted | Git changes | `sourcegraph_full` | `Dockerfile.sg_only` |
 | `mcp-scip-remote-direct` | MCP + SCIP | Source deleted | Git changes | `sourcegraph_full` | `Dockerfile.sg_only` |
-| `baseline-local-artifact` | No MCP | Full source | `review.json` | `none` | `Dockerfile.artifact_only` |
+| `baseline-local-artifact` | No MCP | Full source | `review.json` | `none` | `Dockerfile.artifact_baseline` |
 | `mcp-remote-artifact` | MCP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
 | `mcp-scip-remote-artifact` | MCP + SCIP | Source deleted | `review.json` | `artifact_full` | `Dockerfile.artifact_only` |
 

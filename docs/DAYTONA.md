@@ -190,7 +190,7 @@ python3 scripts/daytona_runner.py --all --parallel 8
 |--------|-----------|-------------|-----|
 | `baseline-local-direct` | `Dockerfile` | `instruction.md` | No |
 | `mcp-remote-direct` | `Dockerfile.sg_only` | `instruction_mcp.md` | Yes |
-| `baseline-local-artifact` | `Dockerfile.artifact_only` | `instruction.md` | No |
+| `baseline-local-artifact` | `Dockerfile.artifact_baseline` | `instruction.md` | No |
 | `mcp-remote-artifact` | `Dockerfile.artifact_only` | `instruction_mcp.md` | Yes |
 
 ### Standalone Runner Options

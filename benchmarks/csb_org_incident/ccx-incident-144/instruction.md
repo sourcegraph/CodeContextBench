@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the incident domain.
 
 The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/client-go--v0.32.0, sg-evals/api--v0.32.0, sg-evals/etcd-io-etcd.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/etcd-io-etcd` (etcd-io/etcd)
 
 ## Output Format
 

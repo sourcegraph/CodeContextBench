@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 The local `/workspace/` directory contains: sg-evals/django--674eda1c.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/django--674eda1c` (django/django)
 
 ## Output Format
 

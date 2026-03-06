@@ -12,9 +12,6 @@ You are working on a codebase task involving repos from the domain domain.
 
 The local `/workspace/` directory contains: sg-evals/rust--01f6ddf7, sg-evals/servo--be6a2f99.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/rust--01f6ddf7` (rust-lang/rust)
-- `sg-evals/servo--be6a2f99` (servo/servo)
 
 ## Output Format
 

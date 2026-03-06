@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 The local `/workspace/` directory contains: sg-evals/node--v22.13.0.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/node--v22.13.0` (nodejs/node)
 
 ## Output Format
 

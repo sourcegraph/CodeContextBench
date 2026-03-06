@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the domain domain.
 
 The local `/workspace/` directory contains: sg-evals/android-frameworks-base--d41da232.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/android-frameworks-base--d41da232` (aosp-mirror/platform_frameworks_base)
 
 ## Output Format
 

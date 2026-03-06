@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the domain domain.
 
 The local `/workspace/` directory contains: sg-evals/arangodb--a5cca0b8.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-- `sg-evals/arangodb--a5cca0b8` (arangodb/arangodb)
 
 ## Output Format
 

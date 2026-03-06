@@ -12,8 +12,6 @@ You are working on a codebase task involving repos from the security domain.
 
 No local repositories are pre-checked out.
 
-**Note:** Additional repositories are accessible via Sourcegraph MCP tools:
-*(none — all repos available locally)*
 
 ## Output Format
 
