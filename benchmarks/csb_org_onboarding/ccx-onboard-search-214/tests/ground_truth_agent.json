@@ -1,0 +1,22 @@
+{
+  "files": [
+    "packages/grafana-data/src/transformations/fieldReducer.ts"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "packages/grafana-data/src/transformations/fieldReducer.ts",
+      "symbol": "doStandardCalcs",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "packages/grafana-data/src/transformations/fieldReducer.ts",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: doStandardCalcs"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: packages/grafana-data/src/transformations/fieldReducer.ts::doStandardCalcs"
+}

@@ -1,0 +1,22 @@
+{
+  "files": [
+    "source/common/router/retry_state_impl.cc"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "source/common/router/retry_state_impl.cc",
+      "symbol": "wouldRetryFromHeaders",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "source/common/router/retry_state_impl.cc",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: wouldRetryFromHeaders"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: source/common/router/retry_state_impl.cc::wouldRetryFromHeaders"
+}

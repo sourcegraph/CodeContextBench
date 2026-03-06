@@ -1077,9 +1077,8 @@ def _run_sdlc_mode(args, creds: Dict[str, Any]) -> int:
         log.error("No tasks found")
         return 1
 
-    # Skip unsupported task types (onboarding-search uses function_id schema)
-    # and tasks whose repos are too large to clone in Daytona (linux kernel ~3.5GB)
-    SKIP_TASK_PATTERNS = ("ccx-onboard-search-",)
+    # Skip tasks whose repos are too large to clone in Daytona (linux kernel ~3.5GB)
+    SKIP_TASK_PATTERNS = ()
     SKIP_TASK_NAMES = {
         "linux-acpi-backlight-fault-001",
         "linux-hda-intel-suspend-fault-001",

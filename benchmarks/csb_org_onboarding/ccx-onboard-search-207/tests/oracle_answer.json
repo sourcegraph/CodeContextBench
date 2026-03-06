@@ -1,0 +1,28 @@
+{
+  "files": [
+    "netwerk/protocol/http/nsHttpChannel.cpp"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "netwerk/protocol/http/nsHttpChannel.cpp",
+      "symbol": "ContinueProcessResponse1",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "netwerk/protocol/http/nsHttpChannel.cpp",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: ContinueProcessResponse1"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: netwerk/protocol/http/nsHttpChannel.cpp::ContinueProcessResponse1",
+  "_metadata": {
+    "model": "manual",
+    "backend": "manual",
+    "ground_truth_source": "converted_from_function_id_schema",
+    "timestamp": "2026-03-06T19:47:38.688748+00:00"
+  }
+}

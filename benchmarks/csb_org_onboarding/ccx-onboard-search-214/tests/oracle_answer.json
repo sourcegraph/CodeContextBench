@@ -1,0 +1,28 @@
+{
+  "files": [
+    "packages/grafana-data/src/transformations/fieldReducer.ts"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "packages/grafana-data/src/transformations/fieldReducer.ts",
+      "symbol": "doStandardCalcs",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "packages/grafana-data/src/transformations/fieldReducer.ts",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: doStandardCalcs"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: packages/grafana-data/src/transformations/fieldReducer.ts::doStandardCalcs",
+  "_metadata": {
+    "model": "manual",
+    "backend": "manual",
+    "ground_truth_source": "converted_from_function_id_schema",
+    "timestamp": "2026-03-06T19:47:38.690388+00:00"
+  }
+}
