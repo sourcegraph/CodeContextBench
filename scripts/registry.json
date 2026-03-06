@@ -211,6 +211,14 @@
       "summary": "Utility script for compare contextbench results."
     },
     {
+      "name": "compare_old_new_ground_truth.py",
+      "path": "scripts/compare_old_new_ground_truth.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for compare old new ground truth."
+    },
+    {
       "name": "comprehensive_analysis.py",
       "path": "scripts/comprehensive_analysis.py",
       "category": "analysis_comparison",
@@ -1571,7 +1579,7 @@
     "infra_mirrors": 19,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 80,
+    "misc": 81,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 12,

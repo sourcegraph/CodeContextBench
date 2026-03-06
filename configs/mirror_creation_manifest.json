@@ -1,7 +1,7 @@
 {
   "_description": "Mirrors needed for reproducible Sourcegraph indexing",
   "_generated": "2026-02-22",
-  "_status": "UPDATED 2026-03-02 \u2014 159 mirrors (50 new contextbench)",
+  "_status": "UPDATED 2026-03-06 \u2014 170 mirrors (11 new scaling-gap repos)",
   "mirrors": [
     {
       "upstream": "github.com/NVIDIA/TensorRT-LLM",
@@ -1523,13 +1523,123 @@
       "tasks": [
         "ccb_contextbench/cb-multi-swe-bench__typescript__maintenance__bugfix__6a14056a"
       ]
+    },
+    {
+      "upstream": "github.com/grpc/grpc",
+      "commit": "v1.68.0",
+      "mirror": "sg-evals/grpc--v1.68.0",
+      "pin_source": "scaling-gap fixture grpc-ecosystem.json",
+      "tasks": [
+        "csb_sdlc_document/grpc-channel-api-docgen-001",
+        "csb_org_compliance/ccx-compliance-286"
+      ]
+    },
+    {
+      "upstream": "github.com/pingcap/tidb",
+      "commit": "v8.5.0",
+      "mirror": "sg-evals/tidb--v8.5.0",
+      "pin_source": "scaling-gap fixture tidb-database.json",
+      "tasks": [
+        "csb_sdlc_debug/tidb-query-plan-regression-debug-001",
+        "csb_org_platform/ccx-platform-285"
+      ]
+    },
+    {
+      "upstream": "github.com/ceph/ceph",
+      "commit": "v19.2.1",
+      "mirror": "sg-evals/ceph--v19.2.1",
+      "pin_source": "scaling-gap fixture ceph-storage.json",
+      "tasks": [
+        "csb_sdlc_secure/ceph-rgw-auth-secure-001",
+        "csb_org_security/ccx-vuln-remed-287"
+      ]
+    },
+    {
+      "upstream": "github.com/apache/beam",
+      "commit": "v2.62.0",
+      "mirror": "sg-evals/beam--v2.62.0",
+      "pin_source": "scaling-gap fixture beam-pipeline.json",
+      "tasks": [
+        "csb_sdlc_refactor/beam-pipeline-builder-refac-001",
+        "csb_org_migration/ccx-migration-289"
+      ]
+    },
+    {
+      "upstream": "github.com/bazelbuild/bazel",
+      "commit": "8.0.0",
+      "mirror": "sg-evals/bazel--8.0.0",
+      "pin_source": "scaling-gap fixture bazel-build.json",
+      "tasks": [
+        "csb_sdlc_test/bazel-starlark-eval-test-001",
+        "csb_org_onboarding/ccx-onboard-290"
+      ]
+    },
+    {
+      "upstream": "github.com/elastic/elasticsearch",
+      "commit": "v8.17.0",
+      "mirror": "sg-evals/elasticsearch--v8.17.0",
+      "pin_source": "scaling-gap fixture elasticsearch-search.json",
+      "tasks": [
+        "csb_sdlc_design/elasticsearch-shard-alloc-design-001",
+        "csb_org_platform/ccx-platform-291"
+      ]
+    },
+    {
+      "upstream": "github.com/godotengine/godot",
+      "commit": "4.3-stable",
+      "mirror": "sg-evals/godot--4.3-stable",
+      "pin_source": "scaling-gap fixture godot-engine.json",
+      "tasks": [
+        "csb_sdlc_document/godot-gdscript-api-docgen-001",
+        "csb_org_compliance/ccx-compliance-292"
+      ]
+    },
+    {
+      "upstream": "github.com/dotnet/roslyn",
+      "commit": "NET-SDK-9.0.100",
+      "mirror": "sg-evals/roslyn--v4.12.0",
+      "pin_source": "scaling-gap fixture roslyn-compiler.json (tag NET-SDK-9.0.100 = Roslyn 4.12)",
+      "tasks": [
+        "csb_sdlc_refactor/roslyn-symbol-resolver-refac-001",
+        "csb_org_crossrepo_tracing/ccx-dep-trace-293"
+      ]
+    },
+    {
+      "upstream": "github.com/microsoft/TypeScript",
+      "commit": "v5.7.2",
+      "mirror": "sg-evals/TypeScript--v5.7.2",
+      "pin_source": "scaling-gap fixture typescript-compiler.json",
+      "tasks": [
+        "csb_sdlc_secure/typescript-type-narrowing-secure-001",
+        "csb_org_migration/ccx-migration-294"
+      ]
+    },
+    {
+      "upstream": "github.com/cockroachdb/cockroach",
+      "commit": "v24.3.0",
+      "mirror": "sg-evals/cockroach--v24.3.0",
+      "pin_source": "scaling-gap fixture cockroach-database.json",
+      "tasks": [
+        "csb_sdlc_test/cockroach-kv-txn-test-001",
+        "csb_org_crossorg/ccx-crossorg-295"
+      ]
+    },
+    {
+      "upstream": "github.com/ClickHouse/ClickHouse",
+      "commit": "v24.12.1.1614-stable",
+      "mirror": "sg-evals/ClickHouse--v24.12",
+      "pin_source": "scaling-gap fixture clickhouse-analytics.json (tag v24.12.1.1614-stable)",
+      "tasks": [
+        "csb_sdlc_understand/clickhouse-mergetree-arch-understand-001",
+        "csb_org_security/ccx-vuln-remed-296"
+      ]
     }
   ],
   "unresolved": [],
   "summary": {
-    "total_mirrors_needed": 109,
-    "unique_upstream_repos": 57,
-    "tasks_affected": 149,
+    "total_mirrors_needed": 120,
+    "unique_upstream_repos": 68,
+    "tasks_affected": 171,
     "unresolved_count": 0
   }
 }
