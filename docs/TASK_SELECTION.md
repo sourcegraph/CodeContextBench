@@ -34,6 +34,29 @@ Selected **0 tasks** from 0 available across 7 benchmarks, stratified by SDLC ph
 | Language | Tasks |
 |----------|-------|
 
+## Difficulty Distribution
+
+CodeScaleBench tasks are intentionally concentrated at the hard and expert difficulty levels because the benchmark targets enterprise-scale software engineering scenarios that challenge frontier AI agents.
+
+| Difficulty | Count | Percentage |
+|-----------|-------|------------|
+| hard      | 371   | 91.8%      |
+| expert    | 21    | 5.2%       |
+| medium    | 12    | 3.0%       |
+| **Total** | **404** | **100%** |
+
+### Why 97% Hard or Expert
+
+1. **Enterprise-scale targeting**: Tasks are drawn from large, real-world codebases (1GB+) where even locating the relevant code requires significant reasoning. Easy tasks in these repositories would not meaningfully differentiate agent capabilities.
+
+2. **Cross-file and cross-repo complexity**: Most tasks require navigating multiple files or repositories, understanding dependency chains, and synthesizing information across codebases.
+
+3. **Ceiling avoidance**: If tasks were easier, current agents would score near-perfectly, leaving no room to measure improvement. Hard tasks ensure the benchmark remains discriminative as agent capabilities advance.
+
+4. **Org-suite uniformity**: The 11 organization-scale suites (csb_org_*) are uniformly hard because they all involve multi-repository analysis, compliance audits, incident investigation, or migration planning.
+
+5. **SDLC-suite variance**: The 9 SDLC suites have more difficulty diversity (medium through expert) because they include both single-repo bug fixes (some medium) and complex architectural tasks (expert).
+
 ## MCP Benefit Scoring
 
 Each task receives an MCP benefit score in [0.0, 1.0] computed as:
