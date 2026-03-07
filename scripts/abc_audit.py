@@ -947,6 +947,115 @@ def check_t10_shared_state(tasks: list[Path]) -> CriterionResult:
     )
 
 
+def check_oa_equivalent_solutions(tasks: list[Path]) -> CriterionResult:
+    """O.a: Verifiers accept functionally equivalent solutions (no overly-strict matching)."""
+    issues = []
+    for task_dir in tasks:
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier:
+            continue
+
+        content = verifier.read_text(errors="replace")
+        task_name = task_dir.name
+        task_issues = []
+
+        if verifier.suffix == ".sh":
+            # Flag grep -Fx (exact fixed-string line match)
+            if re.search(r"\bgrep\s+.*-[A-Za-z]*F[A-Za-z]*x|grep\s+.*-[A-Za-z]*x[A-Za-z]*F", content):
+                task_issues.append("grep -Fx (exact fixed-string match)")
+
+            # Flag direct string equality tests: [ "$var" = "hardcoded" ] or == "hardcoded"
+            strict_eq = re.findall(r'\[\s*"\$\w+"\s*==?\s*"([^"]+)"\s*\]', content)
+            if strict_eq:
+                task_issues.append(f"exact string comparison against: {', '.join(strict_eq[:3])}")
+
+            # Flag diff without any tolerance flags (allow diff -w, diff -b, diff --ignore)
+            diff_calls = re.finditer(r"\bdiff\s+([^\n|;&]+)", content)
+            for m in diff_calls:
+                args = m.group(1)
+                if re.search(r"-[A-Za-z]*[wbBi]|--ignore|--strip", args):
+                    continue
+                if "<(" in args:
+                    continue
+                task_issues.append("diff without tolerance flags (-w/-b/--ignore)")
+                break
+
+        if task_issues:
+            issues.append(f"{task_name}: {'; '.join(task_issues)}")
+
+    if not issues:
+        return CriterionResult(
+            criterion_id="O.a", status=Status.PASS,
+            evidence=f"No overly-strict matching found across {len(tasks)} verifiers",
+        )
+    return CriterionResult(
+        criterion_id="O.a", status=Status.WARN,
+        evidence="\n".join(issues[:10]),
+        remediation="Consider using flexible matching (regex, -i flag, tolerance) in verifiers",
+        details={"issue_count": len(issues), "issues": issues[:20]},
+    )
+
+
+def check_ob_negated_solutions(tasks: list[Path]) -> CriterionResult:
+    """O.b: Verifiers reject negated/inverted solutions (no keyword-only matching)."""
+    issues = []
+    for task_dir in tasks:
+        verifier = _get_primary_verifier(task_dir)
+        if not verifier or verifier.suffix != ".sh":
+            continue
+
+        content = verifier.read_text(errors="replace")
+        task_name = task_dir.name
+        task_issues = []
+
+        # Find bare grep for a single short keyword without robust flags.
+        # These could match "NOT keyword" or "the answer is definitely not keyword".
+        # Exclude greps with flags: -E (regex), -P (perl), -w (word boundary),
+        # -c (count), -r/-R (recursive code search), -l (file list), -q (boolean),
+        # -n (line numbers).
+        bare_greps = re.finditer(
+            r"""grep\s+(?:-[A-Za-z]*\s+)*['"]([^'"]{1,20})['"]\s+(\S+)""",
+            content,
+        )
+        for m in bare_greps:
+            keyword = m.group(1).strip()
+            target = m.group(2)
+            prefix = m.group(0).split(keyword)[0]
+
+            # Skip multi-word or regex patterns (inherently more specific)
+            if re.search(r"[.*+?^${}()|\\[\]]", keyword) or " " in keyword:
+                continue
+
+            # Skip if grep has flags that make matching more robust
+            if re.search(r"-[A-Za-z]*[cEPrlRwqn]", prefix):
+                continue
+
+            # Skip if grepping source code files (not agent output)
+            if re.search(r"\.(py|js|ts|go|java|rs|c|cpp|sh|rb|yaml|yml|toml|json|md)$", target):
+                continue
+
+            # Skip if target is log/reward/result paths (structured output)
+            if re.search(r"/logs/|reward\.|result\.|\.log", target):
+                continue
+
+            task_issues.append(f"bare grep for '{keyword}' could match negated answer")
+
+        if task_issues:
+            issues.append(f"{task_name}: {'; '.join(task_issues[:3])}")
+
+    if not issues:
+        return CriterionResult(
+            criterion_id="O.b", status=Status.PASS,
+            evidence=f"No keyword-only matching vulnerable to negation across {len(tasks)} verifiers",
+        )
+    return CriterionResult(
+        criterion_id="O.b", status=Status.WARN,
+        evidence="\n".join(issues[:10]),
+        remediation="Use multi-word patterns, regex with context, or structured JSON validation instead of bare keyword grep",
+        details={"issue_count": len(issues), "issues": issues[:20]},
+    )
+
+
 # ---------------------------------------------------------------------------
 # Main auditor
 # ---------------------------------------------------------------------------
@@ -959,6 +1068,8 @@ TASK_CHECKS = {
     "T.4": check_t4_git_sha,
     "T.5": check_t5_no_solution_leak,
     "T.8": check_t8_oracle_exists,
+    "O.a": check_oa_equivalent_solutions,
+    "O.b": check_ob_negated_solutions,
     "O.c": check_oc_empty_solution_rejected,
     "O.d": check_od_error_handling,
     "O.e": check_oe_multiple_assertions,
@@ -988,7 +1099,7 @@ PROJECT_CHECKS = {
 }
 
 # Semi-automated / manual checks (skip with note)
-SKIP_CHECKS = {"T.2", "T.9", "O.a", "O.b", "O.f", "O.g", "R.6"}
+SKIP_CHECKS = {"T.2", "T.9", "O.f", "O.g", "R.6"}
 
 
 def audit_suite(suite: str, dimension: Optional[Dimension] = None) -> AuditReport:
