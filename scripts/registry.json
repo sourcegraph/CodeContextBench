@@ -147,6 +147,14 @@
       "summary": "Historical one-off script: backfill instruction artifacts."
     },
     {
+      "name": "backfill_reviewers.py",
+      "path": "scripts/backfill_reviewers.py",
+      "category": "misc",
+      "status": "one_off",
+      "language": "python",
+      "summary": "Historical one-off script: backfill reviewers."
+    },
+    {
       "name": "backfill_size_metadata.py",
       "path": "scripts/backfill_size_metadata.py",
       "category": "misc",
@@ -1339,6 +1347,14 @@
       "summary": "Utility script for run scaling gap oracles."
     },
     {
+      "name": "run_sg_validation.py",
+      "path": "scripts/run_sg_validation.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for run sg validation."
+    },
+    {
       "name": "scaffold_contextbench_tasks.py",
       "path": "scripts/scaffold_contextbench_tasks.py",
       "category": "misc",
@@ -1643,7 +1659,7 @@
     "infra_mirrors": 20,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 87,
+    "misc": 89,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

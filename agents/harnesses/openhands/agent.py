@@ -105,11 +105,11 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             source_path=proxy_src,
             target_path="/tmp/sg_auth_proxy.py",
         )
-        # Start proxy as background daemon
+        # Start proxy as background daemon (try python3, fall back to python)
         start_cmd = (
             f"SG_MCP_URL={mcp_endpoint} "
             f"SG_MCP_TOKEN={sg_token} "
-            f"nohup python3 /tmp/sg_auth_proxy.py --port {self._SG_PROXY_PORT} "
+            f"nohup $(command -v python3 || command -v python) /tmp/sg_auth_proxy.py --port {self._SG_PROXY_PORT} "
             f"> /tmp/sg_proxy.log 2>&1 &"
         )
         await environment.exec(start_cmd)

@@ -172,6 +172,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/audit_unpinned_repos.py` - Utility script for audit unpinned repos.
 - `scripts/audit_v2_report_data.py` - Utility script for audit v2 report data.
 - `scripts/backfill_instruction_artifacts.py` [one_off] - Historical one-off script: backfill instruction artifacts.
+- `scripts/backfill_reviewers.py` [one_off] - Historical one-off script: backfill reviewers.
 - `scripts/backfill_size_metadata.py` [one_off] - Historical one-off script: backfill size metadata.
 - `scripts/backfill_triage_from_manifest.py` [one_off] - Historical one-off script: backfill triage from manifest.
 - `scripts/check_harness_readiness.py` - Utility script for check harness readiness.
@@ -241,6 +242,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/run_judge.py` - Utility script for run judge.
 - `scripts/run_missing_oracles.sh` - Utility script for run missing oracles.
 - `scripts/run_scaling_gap_oracles.sh` - Utility script for run scaling gap oracles.
+- `scripts/run_sg_validation.py` - Utility script for run sg validation.
 - `scripts/scaffold_contextbench_tasks.py` - Utility script for scaffold contextbench tasks.
 - `scripts/scaffold_feature_tasks.py` - Utility script for scaffold feature tasks.
 - `scripts/scaffold_refactor_tasks.py` - Utility script for scaffold refactor tasks.

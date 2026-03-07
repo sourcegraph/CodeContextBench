@@ -160,12 +160,12 @@ for row in "${TASK_ROWS[@]}"; do
 done
 
 if [ -z "${PARALLEL_JOBS:-}" ] || [ "$PARALLEL_JOBS" -lt 1 ] 2>/dev/null; then
-    PARALLEL_JOBS=1
+    PARALLEL_JOBS=0  # sentinel; setup_multi_accounts will auto-set
 fi
 
-# run_tasks_parallel expects CLAUDE_HOMES; use current HOME for OpenHands harness runs.
-CLAUDE_HOMES=("$HOME")
+# Multi-account support: rotate OAuth tokens across accounts.
 REAL_HOME="$HOME"
+setup_multi_accounts
 
 _model_lower=$(echo "$MODEL" | awk -F/ '{print $NF}' | tr '[:upper:]' '[:lower:]')
 case "$_model_lower" in
@@ -210,6 +210,23 @@ _openhands_run_single() {
     local jobs_base=${5:-$JOBS_BASE}
     local jobs_subdir="${jobs_base}/${config}"
     local task_path="${TASK_PATH_BY_ID[$task_id]}"
+
+    # Extract ANTHROPIC_API_KEY from this account's OAuth credentials.
+    # run_tasks_parallel sets HOME=$_task_home for account rotation.
+    if [ "$USE_SUBSCRIPTION" = "true" ]; then
+        local _acct_token
+        _acct_token=$(python3 -c "
+import json, os
+creds_file = os.path.join('${_task_home}', '.claude', '.credentials.json')
+if os.path.exists(creds_file):
+    creds = json.load(open(creds_file))
+    token = creds.get('claudeAiOauth', {}).get('accessToken', '')
+    if token: print(token)
+" 2>/dev/null)
+        if [ -n "$_acct_token" ]; then
+            export ANTHROPIC_API_KEY="$_acct_token"
+        fi
+    fi
 
     case "$mcp_type" in
         none|sourcegraph_full)
