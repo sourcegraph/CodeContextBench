@@ -305,7 +305,8 @@
           "code_lines": 63573
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flink-pricing-window-feat-001",
@@ -421,7 +422,8 @@
           "code_lines": 137457
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-noschedule-taint-feat-001",
@@ -517,7 +519,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-score-normalizer-refac-001",
@@ -613,7 +616,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "kafka-batch-accumulator-refac-001",
@@ -704,7 +708,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "servo-scrollend-event-feat-001",
@@ -815,7 +820,8 @@
           "code_lines": 363690
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "strata-cds-tranche-feat-001",
@@ -881,7 +887,8 @@
           "code_lines": 2050
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "strata-fx-european-refac-001",
@@ -947,7 +954,8 @@
           "code_lines": 2050
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "tensorrt-mxfp4-quant-feat-001",
@@ -1048,7 +1056,8 @@
           "code_lines": 97308
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "vscode-stale-diagnostics-feat-001",
@@ -1199,7 +1208,8 @@
           "code_lines": 14400
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "numpy-dtype-localize-001",
@@ -1290,7 +1300,8 @@
           "code_lines": 41654
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "numpy-array-sum-perf-001",
@@ -1381,7 +1392,8 @@
           "code_lines": 33873
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "sklearn-kmeans-perf-001",
@@ -1477,7 +1489,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "pandas-groupby-perf-001",
@@ -1558,7 +1571,8 @@
           "code_lines": 15720
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "aspnetcore-code-review-001",
@@ -1674,7 +1688,8 @@
           "code_lines": 30835
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "calcom-code-review-001",
@@ -1765,7 +1780,8 @@
           "code_lines": 9477
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "envoy-code-review-001",
@@ -1906,7 +1922,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ghost-code-review-001",
@@ -1987,7 +2004,8 @@
           "code_lines": 16647
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "curl-security-review-001",
@@ -2078,7 +2096,8 @@
           "code_lines": 14945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "kafka-security-review-001",
@@ -2164,7 +2183,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "terraform-code-review-001",
@@ -2250,7 +2270,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "vscode-code-review-001",
@@ -2401,7 +2422,8 @@
           "code_lines": 14400
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "k8s-runtime-object-impl-001",
@@ -2497,7 +2519,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-grpc-server-impl-001",
@@ -2583,7 +2606,8 @@
           "code_lines": 126
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-flagexists-refactor-001",
@@ -2684,7 +2708,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-dep-refactor-001",
@@ -2785,7 +2810,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "kafka-api-doc-gen-001",
@@ -2871,7 +2897,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-arch-doc-gen-001",
@@ -3012,7 +3039,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "istio-arch-doc-gen-001",
@@ -3133,7 +3161,8 @@
           "code_lines": 3642
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "terraform-arch-doc-gen-001",
@@ -3219,7 +3248,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-apiserver-doc-gen-001",
@@ -3315,7 +3345,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-applyconfig-doc-gen-001",
@@ -3411,7 +3442,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-clientgo-doc-gen-001",
@@ -3507,7 +3539,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-kubelet-cm-doc-gen-001",
@@ -3603,7 +3636,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-fairqueuing-doc-gen-001",
@@ -3699,7 +3733,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-migration-doc-gen-001",
@@ -3840,7 +3875,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-request-routing-qa-001",
@@ -3981,7 +4017,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "terraform-plan-pipeline-qa-001",
@@ -4067,7 +4104,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "cilium-ebpf-fault-qa-001",
@@ -4173,7 +4211,8 @@
           "code_lines": 28143
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "cilium-project-orient-001",
@@ -4279,7 +4318,8 @@
           "code_lines": 28143
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "argocd-arch-orient-001",
@@ -4375,7 +4415,8 @@
           "code_lines": 29192
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "kafka-build-orient-001",
@@ -4461,7 +4502,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "kafka-contributor-workflow-001",
@@ -4547,7 +4589,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "python-http-class-naming-refac-001",
@@ -4633,7 +4676,8 @@
           "code_lines": 5458
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "bustub-hyperloglog-impl-001",
@@ -4734,7 +4778,8 @@
           "code_lines": 8280
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "openhands-search-file-test-001",
@@ -4825,7 +4870,8 @@
           "code_lines": 2810
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-composite-field-recover-001",
@@ -4906,7 +4952,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-template-inherit-recall-001",
@@ -4987,7 +5034,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "docgen-changelog-002",
@@ -5078,7 +5126,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "docgen-inline-002",
@@ -5164,7 +5213,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "test-integration-001",
@@ -5255,7 +5305,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "test-unitgen-go-001",
@@ -5351,7 +5402,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ansible-galaxy-tar-regression-prove-001",
@@ -5425,7 +5477,8 @@
           "code_lines": 5399
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "envoy-duplicate-headers-debug-001",
@@ -5566,7 +5619,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "flipt-auth-cookie-regression-prove-001",
@@ -5650,7 +5704,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "grafana-table-panel-regression-001",
@@ -5756,7 +5811,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "istio-xds-destrul-debug-001",
@@ -5877,7 +5933,8 @@
           "code_lines": 3642
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "linux-acpi-backlight-fault-001",
@@ -5976,7 +6033,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "linux-hda-intel-suspend-fault-001",
@@ -6075,7 +6133,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "linux-iwlwifi-subdevice-fault-001",
@@ -6174,7 +6233,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "linux-nfs-inode-revalidate-fault-001",
@@ -6273,7 +6333,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "prometheus-queue-reshard-debug-001",
@@ -6369,7 +6430,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "qutebrowser-hsv-color-regression-prove-001",
@@ -6448,7 +6510,8 @@
           "code_lines": 7945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "qutebrowser-adblock-cache-regression-prove-001",
@@ -6527,7 +6590,8 @@
           "code_lines": 7945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "qutebrowser-darkmode-threshold-regression-prove-001",
@@ -6606,7 +6670,8 @@
           "code_lines": 7945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "qutebrowser-url-regression-prove-001",
@@ -6685,7 +6750,8 @@
           "code_lines": 7945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "teleport-ssh-regression-prove-001",
@@ -6804,7 +6870,8 @@
           "code_lines": 56284
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "terraform-phantom-update-debug-001",
@@ -6890,7 +6957,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "tutanota-search-regression-prove-001",
@@ -6999,7 +7067,8 @@
           "code_lines": 48844
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "vuls-oval-regression-prove-001",
@@ -7063,7 +7132,8 @@
           "code_lines": 51
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "camel-routing-arch-001",
@@ -7164,7 +7234,8 @@
           "code_lines": 63573
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-orm-query-arch-001",
@@ -7240,7 +7311,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-pre-validate-signal-design-001",
@@ -7314,7 +7386,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-rate-limit-design-001",
@@ -7388,7 +7461,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-routeconfig-dep-chain-001",
@@ -7502,7 +7576,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-stream-aggregated-sym-001",
@@ -7636,7 +7711,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "etcd-grpc-api-upgrade-001",
@@ -7730,7 +7806,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "flink-checkpoint-arch-001",
@@ -7846,7 +7923,8 @@
           "code_lines": 137457
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "flipt-protobuf-metadata-design-001",
@@ -7940,7 +8018,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "flipt-transitive-deps-001",
@@ -8034,7 +8113,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-crd-lifecycle-arch-001",
@@ -8130,7 +8210,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-typemeta-dep-chain-001",
@@ -8219,7 +8300,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "kafka-flink-streaming-arch-001",
@@ -8310,7 +8392,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "postgres-query-exec-arch-001",
@@ -8406,7 +8489,8 @@
           "code_lines": 65593
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ansible-abc-imports-fix-001",
@@ -8490,7 +8574,8 @@
           "code_lines": 5399
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ansible-module-respawn-fix-001",
@@ -8579,7 +8664,8 @@
           "code_lines": 5399
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "django-modelchoice-fk-fix-001",
@@ -8653,7 +8739,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "django-select-for-update-fix-001",
@@ -8729,7 +8816,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-cockroachdb-backend-fix-001",
@@ -8818,7 +8906,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-ecr-auth-oci-fix-001",
@@ -8912,7 +9001,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-eval-latency-fix-001",
@@ -9006,7 +9096,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-dra-scheduler-event-fix-001",
@@ -9102,7 +9193,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "kafka-producer-bufpool-fix-001",
@@ -9193,7 +9285,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "navidrome-windows-log-fix-001",
@@ -9292,7 +9385,8 @@
           "code_lines": 3929
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "nodebb-notif-dropdown-fix-001",
@@ -9366,7 +9460,8 @@
           "code_lines": 2000
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "nodebb-plugin-validate-fix-001",
@@ -9440,7 +9535,8 @@
           "code_lines": 2000
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "openlibrary-solr-boolean-fix-001",
@@ -9524,7 +9620,8 @@
           "code_lines": 12964
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-cudnn-version-fix-001",
@@ -9628,7 +9725,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-dynamo-keyerror-fix-001",
@@ -9732,7 +9830,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-udp-proxy-cds-fix-001",
@@ -9871,7 +9970,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-dfp-host-leak-fix-001",
@@ -10010,7 +10110,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "terraform-plan-null-unknown-fix-001",
@@ -10089,7 +10190,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "curl-cve-triage-001",
@@ -10180,7 +10282,8 @@
           "code_lines": 14945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "curl-vuln-reachability-001",
@@ -10271,7 +10374,8 @@
           "code_lines": 14945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-audit-trail-implement-001",
@@ -10345,7 +10449,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-cross-team-boundary-001",
@@ -10419,7 +10524,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-legacy-dep-vuln-001",
@@ -10493,7 +10599,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-repo-scoped-access-001",
@@ -10567,7 +10674,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-role-based-access-001",
@@ -10641,7 +10749,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "django-sensitive-file-exclusion-001",
@@ -10715,7 +10824,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "flipt-degraded-context-fix-001",
@@ -10809,7 +10919,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "flipt-repo-scoped-access-001",
@@ -10903,7 +11014,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "grpcurl-transitive-vuln-001",
@@ -10982,7 +11094,8 @@
           "code_lines": 94
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "kafka-sasl-auth-audit-001",
@@ -11073,7 +11186,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "docgen-runbook-001",
@@ -11169,7 +11283,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "test-coverage-gap-001",
@@ -11310,7 +11425,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "test-coverage-gap-002",
@@ -11396,7 +11512,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "test-integration-002",
@@ -11512,7 +11629,8 @@
           "code_lines": 3929
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "test-unitgen-py-001",
@@ -11593,7 +11711,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-compliance-051",
@@ -11692,7 +11811,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-config-trace-010",
@@ -11791,7 +11911,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-dep-trace-001",
@@ -11890,7 +12011,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-dep-trace-004",
@@ -11999,7 +12121,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-incident-031",
@@ -12098,7 +12221,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-incident-034",
@@ -12207,7 +12331,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-incident-037",
@@ -12306,7 +12431,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-migration-025",
@@ -12400,7 +12526,8 @@
           "code_lines": 33873
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-027",
@@ -12469,7 +12596,8 @@
           "code_lines": 99
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-onboard-041",
@@ -12568,7 +12696,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-platform-094",
@@ -12677,7 +12806,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-platform-100",
@@ -12776,7 +12906,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-011",
@@ -12900,7 +13031,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-014",
@@ -13009,7 +13141,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-dep-trace-002",
@@ -13124,7 +13257,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-config-trace-003",
@@ -13279,7 +13413,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-vuln-remed-012",
@@ -13434,7 +13569,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-013",
@@ -13549,7 +13685,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-migration-022",
@@ -13664,7 +13801,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-026",
@@ -13819,7 +13957,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-incident-032",
@@ -13974,7 +14113,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-033",
@@ -14089,7 +14229,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-onboard-043",
@@ -14204,7 +14345,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-044",
@@ -14319,7 +14461,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-compliance-052",
@@ -14474,7 +14617,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-053",
@@ -14589,7 +14733,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-crossorg-062",
@@ -14744,7 +14889,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-071",
@@ -14859,7 +15005,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-072",
@@ -14974,7 +15121,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-073",
@@ -15064,7 +15212,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-074",
@@ -15219,7 +15368,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-081",
@@ -15334,7 +15484,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-082",
@@ -15424,7 +15575,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-083",
@@ -15579,7 +15731,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-101",
@@ -15714,7 +15867,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-102",
@@ -15849,7 +16003,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-103",
@@ -15984,7 +16139,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-platform-104",
@@ -16119,7 +16275,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-105",
@@ -16254,7 +16411,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-dep-trace-106",
@@ -16389,7 +16547,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-migration-107",
@@ -16524,7 +16683,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-incident-108",
@@ -16659,7 +16819,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-onboard-109",
@@ -16819,7 +16980,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-incident-110",
@@ -16979,7 +17141,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-111",
@@ -17139,7 +17302,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-domain-112",
@@ -17299,7 +17463,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-121",
@@ -17459,7 +17624,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-122",
@@ -17619,7 +17785,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-123",
@@ -17779,7 +17946,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-compliance-124",
@@ -17939,7 +18107,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-125",
@@ -18074,7 +18243,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-126",
@@ -18209,7 +18379,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-agentic-127",
@@ -18344,7 +18515,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-128",
@@ -18444,7 +18616,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-129",
@@ -18544,7 +18717,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-vuln-remed-130",
@@ -18644,7 +18818,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-131",
@@ -18759,7 +18934,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-crossorg-132",
@@ -18874,7 +19050,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-133",
@@ -19034,7 +19211,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-134",
@@ -19194,7 +19372,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-vuln-remed-135",
@@ -19354,7 +19533,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-onboard-136",
@@ -19464,7 +19644,8 @@
           "code_lines": 42491
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-137",
@@ -19574,7 +19755,8 @@
           "code_lines": 42491
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-138",
@@ -19684,7 +19866,8 @@
           "code_lines": 297480
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-incident-139",
@@ -19794,7 +19977,8 @@
           "code_lines": 297480
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-domain-140",
@@ -19939,7 +20123,8 @@
           "code_lines": 570420
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-vuln-remed-141",
@@ -20084,7 +20269,8 @@
           "code_lines": 570420
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-113",
@@ -20188,7 +20374,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-migration-114",
@@ -20307,7 +20494,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-compliance-115",
@@ -20386,7 +20574,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-dep-trace-116",
@@ -20480,7 +20669,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-migration-117",
@@ -20574,7 +20764,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-compliance-118",
@@ -20653,7 +20844,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-119",
@@ -20772,7 +20964,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-domain-120",
@@ -20836,7 +21029,8 @@
           "code_lines": 2050
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-201",
@@ -20932,7 +21126,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-202",
@@ -21028,7 +21223,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-203",
@@ -21114,7 +21310,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-204",
@@ -21200,7 +21397,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-205",
@@ -21306,7 +21504,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-206",
@@ -21412,7 +21611,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-207",
@@ -21578,7 +21778,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-208",
@@ -21744,7 +21945,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-209",
@@ -21885,7 +22087,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-rate-limit-middleware-feat-001",
@@ -21972,7 +22175,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "prometheus-silence-bulk-api-feat-001",
@@ -22074,7 +22278,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "cilium-policy-audit-logger-feat-001",
@@ -22186,7 +22391,8 @@
           "code_lines": 28143
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "terraform-compact-diff-fmt-feat-001",
@@ -22278,7 +22484,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "numpy-rolling-median-feat-001",
@@ -22375,7 +22582,8 @@
           "code_lines": 33873
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-custom-header-filter-feat-001",
@@ -22522,7 +22730,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-gradient-noise-feat-001",
@@ -22639,7 +22848,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pandas-merge-asof-indicator-feat-001",
@@ -22726,7 +22936,8 @@
           "code_lines": 15720
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "cilium-policy-quota-feat-001",
@@ -22838,7 +23049,8 @@
           "code_lines": 28143
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "curl-http3-priority-feat-001",
@@ -22935,7 +23147,8 @@
           "code_lines": 14945
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "django-request-factory-refac-001",
@@ -23022,7 +23235,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "prometheus-query-engine-refac-001",
@@ -23124,7 +23338,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "terraform-eval-context-refac-001",
@@ -23216,7 +23431,8 @@
           "code_lines": 2516
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "cilium-endpoint-manager-refac-001",
@@ -23328,7 +23544,8 @@
           "code_lines": 28143
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-listener-manager-refac-001",
@@ -23475,7 +23692,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "numpy-array-dispatch-refac-001",
@@ -23572,7 +23790,8 @@
           "code_lines": 33873
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-optimizer-foreach-refac-001",
@@ -23689,7 +23908,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "istio-discovery-server-refac-001",
@@ -23816,7 +24036,8 @@
           "code_lines": 3642
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "kubernetes-scheduler-profile-refac-001",
@@ -23918,7 +24139,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pandas-index-engine-refac-001",
@@ -24005,7 +24227,8 @@
           "code_lines": 15720
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-incident-142",
@@ -24091,7 +24314,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-143",
@@ -24232,7 +24456,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-144",
@@ -24328,7 +24553,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-145",
@@ -24434,7 +24660,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-146",
@@ -24515,7 +24742,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-147",
@@ -24611,7 +24839,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-148",
@@ -24717,7 +24946,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-149",
@@ -24883,7 +25113,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-150",
@@ -24969,7 +25200,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-domain-151",
@@ -25055,7 +25287,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-152",
@@ -25141,7 +25374,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-153",
@@ -25282,7 +25516,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-154",
@@ -25423,7 +25658,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-155",
@@ -25519,7 +25755,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-156",
@@ -25615,7 +25852,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-157",
@@ -25721,7 +25959,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-158",
@@ -25827,7 +26066,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-159",
@@ -25993,7 +26233,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-160",
@@ -26099,7 +26340,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-vuln-remed-161",
@@ -26195,7 +26437,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-162",
@@ -26291,7 +26534,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-163",
@@ -26432,7 +26676,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-164",
@@ -26573,7 +26818,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-165",
@@ -26654,7 +26900,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-166",
@@ -26735,7 +26982,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-167",
@@ -26841,7 +27089,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-168",
@@ -26927,7 +27176,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-169",
@@ -27048,7 +27298,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-170",
@@ -27144,7 +27395,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-dep-trace-171",
@@ -27240,7 +27492,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-172",
@@ -27336,7 +27589,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-173",
@@ -27432,7 +27686,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-174",
@@ -27528,7 +27783,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-175",
@@ -27624,7 +27880,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-176",
@@ -27765,7 +28022,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-177",
@@ -27906,7 +28164,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-178",
@@ -28012,7 +28271,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-179",
@@ -28118,7 +28378,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-180",
@@ -28204,7 +28465,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-181",
@@ -28290,7 +28552,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-compliance-182",
@@ -28386,7 +28649,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-183",
@@ -28482,7 +28746,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-184",
@@ -28578,7 +28843,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-185",
@@ -28674,7 +28940,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-186",
@@ -28770,7 +29037,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-187",
@@ -28911,7 +29179,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-189",
@@ -29017,7 +29286,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-190",
@@ -29123,7 +29393,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-191",
@@ -29209,7 +29480,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-192",
@@ -29295,7 +29567,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-193",
@@ -29376,7 +29649,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-194",
@@ -29457,7 +29731,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-migration-195",
@@ -29543,7 +29818,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-196",
@@ -29629,7 +29905,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-197",
@@ -29715,7 +29992,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-198",
@@ -29811,7 +30089,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-199",
@@ -29907,7 +30186,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-200",
@@ -30003,7 +30283,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-201",
@@ -30144,7 +30425,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-202",
@@ -30285,7 +30567,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-203",
@@ -30366,7 +30649,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-204",
@@ -30447,7 +30731,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-205",
@@ -30553,7 +30838,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-206",
@@ -30659,7 +30945,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-207",
@@ -30765,7 +31052,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-crossorg-208",
@@ -30851,7 +31139,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-209",
@@ -30937,7 +31226,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-211",
@@ -31023,7 +31313,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-213",
@@ -31109,7 +31400,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-214",
@@ -31195,7 +31487,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-216",
@@ -31281,7 +31574,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-217",
@@ -31362,7 +31656,8 @@
           "code_lines": 4278
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-218",
@@ -31458,7 +31753,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-219",
@@ -31554,7 +31850,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-220",
@@ -31640,7 +31937,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-221",
@@ -31726,7 +32024,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-222",
@@ -31812,7 +32111,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-223",
@@ -31908,7 +32208,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-224",
@@ -32004,7 +32305,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-225",
@@ -32100,7 +32402,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-229",
@@ -32206,7 +32509,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-232",
@@ -32292,7 +32596,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-233",
@@ -32378,7 +32683,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-234",
@@ -32464,7 +32770,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-235",
@@ -32550,7 +32857,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-236",
@@ -32636,7 +32944,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-237",
@@ -32732,7 +33041,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-platform-238",
@@ -32828,7 +33138,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-239",
@@ -32924,7 +33235,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-240",
@@ -33020,7 +33332,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-241",
@@ -33116,7 +33429,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-242",
@@ -33212,7 +33526,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-243",
@@ -33353,7 +33668,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-244",
@@ -33494,7 +33810,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-245",
@@ -33635,7 +33952,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-246",
@@ -33776,7 +34094,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-248",
@@ -33882,7 +34201,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-249",
@@ -33988,7 +34308,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-250",
@@ -34074,7 +34395,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-251",
@@ -34160,7 +34482,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-dep-trace-253",
@@ -34291,7 +34614,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-254",
@@ -34422,7 +34746,8 @@
           "code_lines": 1204068
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-258",
@@ -34518,7 +34843,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-260",
@@ -34614,7 +34940,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-261",
@@ -34700,7 +35027,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-262",
@@ -34786,7 +35114,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-263",
@@ -34872,7 +35201,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-264",
@@ -35038,7 +35368,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-265",
@@ -35204,7 +35535,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-266",
@@ -35370,7 +35702,8 @@
           "code_lines": 3225815
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-267",
@@ -35476,7 +35809,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-268",
@@ -35582,7 +35916,8 @@
           "code_lines": 111064
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-271",
@@ -35688,7 +36023,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-042",
@@ -35787,7 +36123,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-050",
@@ -35886,7 +36223,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-platform-091",
@@ -35985,7 +36323,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "openlibrary-search-query-fix-001",
@@ -36076,7 +36415,8 @@
           "code_lines": 12964
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-tracer-graph-cleanup-fix-001",
@@ -36187,7 +36527,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-relu-gelu-fusion-fix-001",
@@ -36291,7 +36632,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-otlp-exporter-fix-001",
@@ -36375,7 +36717,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-release-210-fix-001",
@@ -36479,7 +36822,8 @@
           "code_lines": 52832
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-trace-sampling-fix-001",
@@ -36573,7 +36917,8 @@
           "code_lines": 2395
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "openlibrary-fntocli-adapter-fix-001",
@@ -36657,7 +37002,8 @@
           "code_lines": 12964
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "postgres-copy-csv-header-feat-001",
@@ -36753,7 +37099,8 @@
           "code_lines": 65593
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "servo-css-container-query-feat-001",
@@ -36864,7 +37211,8 @@
           "code_lines": 363690
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "vscode-custom-fold-region-feat-001",
@@ -37015,7 +37363,8 @@
           "code_lines": 14400
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "flink-window-late-data-fix-001",
@@ -37131,7 +37480,8 @@
           "code_lines": 137457
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-dep-trace-272",
@@ -37275,7 +37625,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-dep-trace-273",
@@ -37374,7 +37725,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-migration-274",
@@ -37493,7 +37845,8 @@
           "code_lines": 137457
         }
       ],
-      "n_repos": 3
+      "n_repos": 3,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-275",
@@ -37592,7 +37945,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-276",
@@ -37716,7 +38070,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-277",
@@ -37825,7 +38180,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-278",
@@ -37969,7 +38325,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-279",
@@ -38078,7 +38435,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-onboard-280",
@@ -38177,7 +38535,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-vuln-remed-281",
@@ -38301,7 +38660,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-282",
@@ -38400,7 +38760,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-283",
@@ -38544,7 +38905,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-284",
@@ -38643,7 +39005,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-explore-042-ds",
@@ -38736,7 +39099,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-050-ds",
@@ -38829,7 +39193,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 4
+      "n_repos": 4,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-210",
@@ -38966,7 +39331,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-211",
@@ -39058,7 +39424,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-212",
@@ -39135,7 +39502,8 @@
           "code_lines": 15720
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-213",
@@ -39282,7 +39650,8 @@
           "code_lines": 14400
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-214",
@@ -39384,7 +39753,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "k8s-rbac-auth-audit-001",
@@ -39470,7 +39840,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "grafana-platform-orient-001",
@@ -39566,7 +39937,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-280",
@@ -39652,7 +40024,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "teleport-users-can-delete-fix-001",
@@ -39769,7 +40142,8 @@
           "code_lines": 56284
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "webclients-api-error-metrics-fix-001",
@@ -39871,7 +40245,8 @@
           "code_lines": 34028
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "element-web-unread-indicators-diverge-fix-001",
@@ -39948,7 +40323,8 @@
           "code_lines": 2037
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "webclients-incorrect-rendering-content-fix-001",
@@ -40050,7 +40426,8 @@
           "code_lines": 34028
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "webclients-contact-import-fails-fix-001",
@@ -40152,7 +40529,8 @@
           "code_lines": 34028
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "webclients-excessive-repeated-api-fix-001",
@@ -40254,7 +40632,8 @@
           "code_lines": 34028
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "element-web-roomheaderbuttons-can-crash-fix-001",
@@ -40331,7 +40710,8 @@
           "code_lines": 2037
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "webclients-implement-proper-punycode-fix-001",
@@ -40433,7 +40813,8 @@
           "code_lines": 34028
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "tidb-query-plan-regression-debug-001",
@@ -40533,7 +40914,8 @@
           "code_lines": 25121
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "grpc-channel-api-docgen-001",
@@ -40673,7 +41055,8 @@
           "code_lines": 53213
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "beam-pipeline-builder-refac-001",
@@ -40798,7 +41181,8 @@
           "code_lines": 103404
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ceph-rgw-auth-secure-001",
@@ -40913,7 +41297,8 @@
           "code_lines": 119985
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "bazel-starlark-eval-test-001",
@@ -41028,7 +41413,8 @@
           "code_lines": 34893
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "elasticsearch-shard-alloc-design-001",
@@ -41133,7 +41519,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "godot-gdscript-api-docgen-001",
@@ -41253,7 +41640,8 @@
           "code_lines": 172370
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "roslyn-symbol-resolver-refac-001",
@@ -41328,7 +41716,8 @@
           "code_lines": 28473
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "typescript-type-narrowing-secure-001",
@@ -41393,7 +41782,8 @@
           "code_lines": 46297
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "cockroach-kv-txn-test-001",
@@ -41528,7 +41918,8 @@
           "code_lines": 106479
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "clickhouse-mergetree-arch-understand-001",
@@ -41655,7 +42046,8 @@
           "code_lines": 203456
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-platform-285",
@@ -41795,7 +42187,8 @@
           "code_lines": 53213
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-compliance-286",
@@ -41895,7 +42288,8 @@
           "code_lines": 25121
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-287",
@@ -42010,7 +42404,8 @@
           "code_lines": 119985
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-crossorg-288",
@@ -42135,7 +42530,8 @@
           "code_lines": 103404
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-migration-289",
@@ -42250,7 +42646,8 @@
           "code_lines": 34893
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-agentic-290",
@@ -42390,7 +42787,8 @@
           "code_lines": 53213
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-platform-291",
@@ -42495,7 +42893,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-compliance-292",
@@ -42615,7 +43014,8 @@
           "code_lines": 172370
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-dep-trace-293",
@@ -42690,7 +43090,8 @@
           "code_lines": 28473
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-migration-294",
@@ -42755,7 +43156,8 @@
           "code_lines": 46297
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-crossorg-295",
@@ -42890,7 +43292,8 @@
           "code_lines": 106479
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-vuln-remed-296",
@@ -43015,7 +43418,8 @@
           "code_lines": 203456
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-051",
@@ -43049,7 +43453,8 @@
           "code_lines": 14166
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-286",
@@ -43083,7 +43488,8 @@
           "code_lines": 25121
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-292",
@@ -43117,7 +43523,8 @@
           "code_lines": 172370
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-crossorg-288",
@@ -43151,7 +43558,8 @@
           "code_lines": 103404
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-295",
@@ -43185,7 +43593,8 @@
           "code_lines": 106479
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-config-trace-010",
@@ -43219,7 +43628,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-001",
@@ -43253,7 +43663,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-004",
@@ -43287,7 +43698,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-272",
@@ -43321,7 +43733,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-273",
@@ -43355,7 +43768,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-293",
@@ -43389,7 +43803,8 @@
           "code_lines": 28473
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-incident-031",
@@ -43423,7 +43838,8 @@
           "code_lines": 1510
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-034",
@@ -43457,7 +43873,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-037",
@@ -43491,7 +43908,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-migration-025",
@@ -43525,7 +43943,8 @@
           "code_lines": 43630
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-027",
@@ -43559,7 +43978,8 @@
           "code_lines": 99
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-274",
@@ -43593,7 +44013,8 @@
           "code_lines": 16079
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-275",
@@ -43627,7 +44048,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-276",
@@ -43661,7 +44083,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-277",
@@ -43695,7 +44118,8 @@
           "code_lines": 407511
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-278",
@@ -43729,7 +44153,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-279",
@@ -43763,7 +44188,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-289",
@@ -43797,7 +44223,8 @@
           "code_lines": 34893
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-294",
@@ -43831,7 +44258,8 @@
           "code_lines": 46297
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-explore-042-ds",
@@ -43865,7 +44293,8 @@
           "code_lines": 2113
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-041",
@@ -43899,7 +44328,8 @@
           "code_lines": 15720
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-050-ds",
@@ -43933,7 +44363,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-280",
@@ -43967,7 +44398,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-290",
@@ -44001,7 +44433,8 @@
           "code_lines": 53213
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-platform-094",
@@ -44035,7 +44468,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-100",
@@ -44069,7 +44503,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-285",
@@ -44103,7 +44538,8 @@
           "code_lines": 53213
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-291",
@@ -44137,7 +44573,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-011",
@@ -44171,7 +44608,8 @@
           "code_lines": 99
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-014",
@@ -44205,7 +44643,8 @@
           "code_lines": 32878
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-281",
@@ -44239,7 +44678,8 @@
           "code_lines": 1012681
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-282",
@@ -44273,7 +44713,8 @@
           "code_lines": 33706
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-283",
@@ -44307,7 +44748,8 @@
           "code_lines": 25729
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-284",
@@ -44341,7 +44783,8 @@
           "code_lines": 14045
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-287",
@@ -44375,7 +44818,8 @@
           "code_lines": 119985
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-296",
@@ -44409,7 +44853,8 @@
           "code_lines": 203456
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-297",
@@ -44462,7 +44907,8 @@
           "code_lines": 430
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-298",
@@ -44515,7 +44961,8 @@
           "code_lines": 430
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-299",
@@ -44568,7 +45015,8 @@
           "code_lines": 10
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-300",
@@ -44621,7 +45069,8 @@
           "code_lines": 10
         }
       ],
-      "n_repos": 2
+      "n_repos": 2,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-301",
@@ -44674,7 +45123,8 @@
           "code_lines": 45046
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-302",
@@ -44727,7 +45177,8 @@
           "code_lines": 45046
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-303",
@@ -44780,7 +45231,8 @@
           "code_lines": 45046
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-304",
@@ -44833,7 +45285,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-305",
@@ -44886,7 +45339,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-306",
@@ -44939,7 +45393,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-307",
@@ -44992,7 +45447,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-308",
@@ -45045,7 +45501,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-309",
@@ -45098,7 +45555,8 @@
           "code_lines": 493927
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-310",
@@ -45151,7 +45609,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-311",
@@ -45204,7 +45663,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-312",
@@ -45257,7 +45717,8 @@
           "code_lines": 2800496
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-313",
@@ -45310,7 +45771,8 @@
           "code_lines": 430
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-314",
@@ -45363,7 +45825,8 @@
           "code_lines": 430
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-315",
@@ -45416,7 +45879,8 @@
           "code_lines": 430
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-316",
@@ -45469,7 +45933,8 @@
           "code_lines": 199
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-317",
@@ -45522,7 +45987,8 @@
           "code_lines": 199
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-318",
@@ -45575,7 +46041,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-319",
@@ -45628,7 +46095,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-320",
@@ -45681,7 +46149,8 @@
           "code_lines": 25350
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-321",
@@ -45734,7 +46203,8 @@
           "code_lines": 17198
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-322",
@@ -45787,7 +46257,8 @@
           "code_lines": 17198
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-323",
@@ -45840,7 +46311,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-324",
@@ -45893,7 +46365,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-325",
@@ -45946,7 +46419,8 @@
           "code_lines": 122541
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-326",
@@ -45999,7 +46473,8 @@
           "code_lines": 58634
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-327",
@@ -46052,7 +46527,8 @@
           "code_lines": 58634
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-328",
@@ -46105,7 +46581,8 @@
           "code_lines": 58634
         }
       ],
-      "n_repos": 1
+      "n_repos": 1,
+      "task_type": "quality"
     }
   ]
 }

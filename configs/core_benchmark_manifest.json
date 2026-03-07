@@ -92,7 +92,8 @@
       "repo_approx_loc": 19864,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-012",
@@ -100,7 +101,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-014",
@@ -108,7 +110,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-011",
@@ -116,7 +119,8 @@
       "repo_approx_loc": 10348385,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-135",
@@ -124,7 +128,8 @@
       "repo_approx_loc": 43395387,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": ">40M"
+      "loc_band": ">40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-013",
@@ -132,7 +137,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-105",
@@ -140,7 +146,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-111",
@@ -148,7 +155,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-126",
@@ -156,7 +164,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-130",
@@ -164,7 +173,8 @@
       "repo_approx_loc": 9668428,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-141",
@@ -172,7 +182,8 @@
       "repo_approx_loc": 8952214,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-161",
@@ -180,7 +191,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-162",
@@ -188,7 +200,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-163",
@@ -196,7 +209,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-164",
@@ -204,7 +218,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-165",
@@ -212,7 +227,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-166",
@@ -220,7 +236,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-167",
@@ -228,7 +245,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-168",
@@ -236,7 +254,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-169",
@@ -244,7 +263,8 @@
       "repo_approx_loc": 10348385,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-170",
@@ -252,7 +272,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-281",
@@ -260,7 +281,8 @@
       "repo_approx_loc": 10348385,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-282",
@@ -268,7 +290,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-283",
@@ -276,7 +299,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-284",
@@ -284,7 +308,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-287",
@@ -292,7 +317,8 @@
       "repo_approx_loc": 2619836,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-vuln-remed-296",
@@ -300,7 +326,8 @@
       "repo_approx_loc": 2615132,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-vuln-remed-014",
@@ -308,7 +335,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-150",
@@ -316,7 +344,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-032",
@@ -324,7 +353,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-incident-031",
@@ -332,7 +362,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-108",
@@ -340,7 +371,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-incident-037",
@@ -348,7 +380,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-incident-034",
@@ -356,7 +389,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-033",
@@ -364,7 +398,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-110",
@@ -372,7 +407,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-125",
@@ -380,7 +416,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-131",
@@ -388,7 +425,8 @@
       "repo_approx_loc": 3544550,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-139",
@@ -396,7 +434,8 @@
       "repo_approx_loc": 9864385,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-113",
@@ -404,7 +443,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-142",
@@ -412,7 +452,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-143",
@@ -420,7 +461,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-144",
@@ -428,7 +470,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-145",
@@ -436,7 +479,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-146",
@@ -444,7 +488,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-147",
@@ -452,7 +497,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-148",
@@ -460,7 +506,8 @@
       "repo_approx_loc": 3544550,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-incident-149",
@@ -468,7 +515,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-migration-027",
@@ -476,7 +524,8 @@
       "repo_approx_loc": 19864,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-025",
@@ -484,7 +533,8 @@
       "repo_approx_loc": 552241,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-117",
@@ -492,7 +542,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-107",
@@ -500,7 +551,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-022",
@@ -508,7 +560,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-026",
@@ -516,7 +569,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-114",
@@ -524,7 +578,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-195",
@@ -532,7 +587,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-196",
@@ -540,7 +596,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-197",
@@ -548,7 +605,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-198",
@@ -556,7 +614,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-199",
@@ -564,7 +623,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-200",
@@ -572,7 +632,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-201",
@@ -580,7 +641,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-202",
@@ -588,7 +650,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-203",
@@ -596,7 +659,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-204",
@@ -604,7 +668,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-205",
@@ -612,7 +677,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-206",
@@ -620,7 +686,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-migration-207",
@@ -628,7 +695,8 @@
       "repo_approx_loc": 3544550,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-274",
@@ -636,7 +704,8 @@
       "repo_approx_loc": 2500657,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "ccx-migration-275",
@@ -644,7 +713,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "CCX-dep-trace-002",
@@ -652,7 +722,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-config-trace-010",
@@ -660,7 +731,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-102",
@@ -668,7 +740,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-133",
@@ -676,7 +749,8 @@
       "repo_approx_loc": 43395387,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": ">40M"
+      "loc_band": ">40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-dep-trace-001",
@@ -684,7 +758,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-dep-trace-004",
@@ -692,7 +767,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-config-trace-003",
@@ -700,7 +776,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-123",
@@ -708,7 +785,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-116",
@@ -716,7 +794,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-171",
@@ -724,7 +803,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-172",
@@ -732,7 +812,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-173",
@@ -740,7 +821,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-174",
@@ -748,7 +830,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-175",
@@ -756,7 +839,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-176",
@@ -764,7 +848,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-177",
@@ -772,7 +857,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-178",
@@ -780,7 +866,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-179",
@@ -788,7 +875,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-211",
@@ -796,7 +884,8 @@
       "repo_approx_loc": 299313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-209",
@@ -804,7 +893,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-213",
@@ -812,7 +902,8 @@
       "repo_approx_loc": 2343519,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-207",
@@ -820,7 +911,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-134",
@@ -828,7 +920,8 @@
       "repo_approx_loc": 43395387,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": ">40M"
+      "loc_band": ">40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-043",
@@ -836,7 +929,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-208",
@@ -844,7 +938,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-210",
@@ -852,7 +947,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-212",
@@ -860,7 +956,8 @@
       "repo_approx_loc": 556846,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-search-214",
@@ -868,7 +965,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-onboard-041",
@@ -876,7 +974,8 @@
       "repo_approx_loc": 299313,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-044",
@@ -884,7 +983,8 @@
       "repo_approx_loc": 3544550,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-103",
@@ -892,7 +992,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-109",
@@ -900,7 +1001,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-128",
@@ -908,7 +1010,8 @@
       "repo_approx_loc": 9668428,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-onboard-136",
@@ -916,7 +1019,8 @@
       "repo_approx_loc": 6640423,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "ccx-compliance-051",
@@ -924,7 +1028,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-182",
@@ -932,7 +1037,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-124",
@@ -940,7 +1046,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-052",
@@ -948,7 +1055,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-053",
@@ -956,7 +1064,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-115",
@@ -964,7 +1073,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-118",
@@ -972,7 +1082,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-183",
@@ -980,7 +1091,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-184",
@@ -988,7 +1100,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-185",
@@ -996,7 +1109,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-186",
@@ -1004,7 +1118,8 @@
       "repo_approx_loc": 439603,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-compliance-187",
@@ -1012,7 +1127,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-crossorg-208",
@@ -1020,7 +1136,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-062",
@@ -1028,7 +1145,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-132",
@@ -1036,7 +1154,8 @@
       "repo_approx_loc": 3544550,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-121",
@@ -1044,7 +1163,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-220",
@@ -1052,7 +1172,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-209",
@@ -1060,7 +1181,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-211",
@@ -1068,7 +1190,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-213",
@@ -1076,7 +1199,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-214",
@@ -1084,7 +1208,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-crossorg-216",
@@ -1092,7 +1217,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-071",
@@ -1100,7 +1226,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-073",
@@ -1108,7 +1235,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-101",
@@ -1116,7 +1244,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-072",
@@ -1124,7 +1253,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-074",
@@ -1132,7 +1262,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-112",
@@ -1140,7 +1271,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-129",
@@ -1148,7 +1280,8 @@
       "repo_approx_loc": 9668428,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-137",
@@ -1156,7 +1289,8 @@
       "repo_approx_loc": 6640423,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-140",
@@ -1164,7 +1298,8 @@
       "repo_approx_loc": 8952214,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-domain-120",
@@ -1172,7 +1307,8 @@
       "repo_approx_loc": 579850,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-235",
@@ -1180,7 +1316,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-081",
@@ -1188,7 +1325,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-082",
@@ -1196,7 +1334,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-122",
@@ -1204,7 +1343,8 @@
       "repo_approx_loc": 37932586,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-083",
@@ -1212,7 +1352,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-127",
@@ -1220,7 +1361,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-223",
@@ -1228,7 +1370,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-224",
@@ -1236,7 +1379,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-225",
@@ -1244,7 +1388,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-agentic-229",
@@ -1252,7 +1397,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-261",
@@ -1260,7 +1406,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-258",
@@ -1268,7 +1415,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-106",
@@ -1276,7 +1424,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-253",
@@ -1284,7 +1433,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-254",
@@ -1292,7 +1442,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-260",
@@ -1300,7 +1451,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-262",
@@ -1308,7 +1460,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-dep-trace-263",
@@ -1316,7 +1469,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "CCX-platform-119",
@@ -1324,7 +1478,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-platform-094",
@@ -1332,7 +1487,8 @@
       "repo_approx_loc": 3571731,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-104",
@@ -1340,7 +1496,8 @@
       "repo_approx_loc": 17798155,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-238",
@@ -1348,7 +1505,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ccx-platform-100",
@@ -1356,7 +1514,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "CCX-platform-239",
@@ -1364,7 +1523,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 4,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "ansible-abc-imports-fix-001",
@@ -1372,7 +1532,8 @@
       "repo_approx_loc": 262325,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "django-modelchoice-fk-fix-001",
@@ -1380,7 +1541,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-dra-scheduler-event-fix-001",
@@ -1388,7 +1550,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "ansible-module-respawn-fix-001",
@@ -1396,7 +1559,8 @@
       "repo_approx_loc": 262325,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "django-select-for-update-fix-001",
@@ -1404,7 +1568,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-cockroachdb-backend-fix-001",
@@ -1412,7 +1577,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-ecr-auth-oci-fix-001",
@@ -1420,7 +1586,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "flipt-eval-latency-fix-001",
@@ -1428,7 +1595,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "kafka-producer-bufpool-fix-001",
@@ -1436,7 +1604,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "navidrome-windows-log-fix-001",
@@ -1444,7 +1613,8 @@
       "repo_approx_loc": 192049,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "nodebb-notif-dropdown-fix-001",
@@ -1452,7 +1622,8 @@
       "repo_approx_loc": 293348,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "nodebb-plugin-validate-fix-001",
@@ -1460,7 +1631,8 @@
       "repo_approx_loc": 293348,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "openlibrary-solr-boolean-fix-001",
@@ -1468,7 +1640,8 @@
       "repo_approx_loc": 221475,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-cudnn-version-fix-001",
@@ -1476,7 +1649,8 @@
       "repo_approx_loc": 2961281,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "pytorch-dynamo-keyerror-fix-001",
@@ -1484,7 +1658,8 @@
       "repo_approx_loc": 2961281,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-udp-proxy-cds-fix-001",
@@ -1492,7 +1667,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "envoy-dfp-host-leak-fix-001",
@@ -1500,7 +1676,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "terraform-plan-null-unknown-fix-001",
@@ -1508,7 +1685,8 @@
       "repo_approx_loc": 558119,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "numpy-dtype-localize-001",
@@ -1516,7 +1694,8 @@
       "repo_approx_loc": 1408400,
       "n_repos": 2,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "cilium-ebpf-fault-qa-001",
@@ -1524,7 +1703,8 @@
       "repo_approx_loc": 4420511,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-composite-field-recover-001",
@@ -1532,7 +1712,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-template-inherit-recall-001",
@@ -1540,7 +1721,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-request-routing-qa-001",
@@ -1548,7 +1730,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "terraform-plan-pipeline-qa-001",
@@ -1556,7 +1739,8 @@
       "repo_approx_loc": 558119,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "cilium-project-orient-001",
@@ -1564,7 +1748,8 @@
       "repo_approx_loc": 4420511,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "argocd-arch-orient-001",
@@ -1572,7 +1757,8 @@
       "repo_approx_loc": 894728,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "flipt-degraded-context-fix-001",
@@ -1580,7 +1766,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "django-audit-trail-implement-001",
@@ -1588,7 +1775,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "k8s-rbac-auth-audit-001",
@@ -1596,7 +1784,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "grpcurl-transitive-vuln-001",
@@ -1604,7 +1793,8 @@
       "repo_approx_loc": 9927,
       "n_repos": 3,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "django-cross-team-boundary-001",
@@ -1612,7 +1802,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "django-legacy-dep-vuln-001",
@@ -1620,7 +1811,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "sklearn-kmeans-perf-001",
@@ -1628,7 +1820,8 @@
       "repo_approx_loc": 299313,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "numpy-array-sum-perf-001",
@@ -1636,7 +1829,8 @@
       "repo_approx_loc": 552241,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "vscode-code-review-001",
@@ -1644,7 +1838,8 @@
       "repo_approx_loc": 2343519,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "pandas-groupby-perf-001",
@@ -1652,7 +1847,8 @@
       "repo_approx_loc": 556846,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "aspnetcore-code-review-001",
@@ -1660,7 +1856,8 @@
       "repo_approx_loc": 1475013,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "calcom-code-review-001",
@@ -1668,7 +1865,8 @@
       "repo_approx_loc": 1047189,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "bustub-hyperloglog-impl-001",
@@ -1676,7 +1874,8 @@
       "repo_approx_loc": 262071,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "strata-cds-tranche-feat-001",
@@ -1684,7 +1883,8 @@
       "repo_approx_loc": 579850,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "camel-fix-protocol-feat-001",
@@ -1692,7 +1892,8 @@
       "repo_approx_loc": 2874039,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "servo-scrollend-event-feat-001",
@@ -1700,7 +1901,8 @@
       "repo_approx_loc": 9572707,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-runtime-object-impl-001",
@@ -1708,7 +1910,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "flink-pricing-window-feat-001",
@@ -1716,7 +1919,8 @@
       "repo_approx_loc": 2500657,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "ansible-galaxy-tar-regression-prove-001",
@@ -1724,7 +1928,8 @@
       "repo_approx_loc": 262325,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "quality"
     },
     {
       "task_id": "tidb-query-plan-regression-debug-001",
@@ -1732,7 +1937,8 @@
       "repo_approx_loc": 1618176,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "quality"
     },
     {
       "task_id": "teleport-ssh-regression-prove-001",
@@ -1740,7 +1946,8 @@
       "repo_approx_loc": 2582043,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "quality"
     },
     {
       "task_id": "linux-acpi-backlight-fault-001",
@@ -1748,7 +1955,8 @@
       "repo_approx_loc": 29793408,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "8M-40M"
+      "loc_band": "8M-40M",
+      "task_type": "quality"
     },
     {
       "task_id": "etcd-grpc-api-upgrade-001",
@@ -1756,7 +1964,8 @@
       "repo_approx_loc": 210518,
       "n_repos": 3,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "django-orm-query-arch-001",
@@ -1764,7 +1973,8 @@
       "repo_approx_loc": 679737,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "camel-routing-arch-001",
@@ -1772,7 +1982,8 @@
       "repo_approx_loc": 2874039,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "kafka-flink-streaming-arch-001",
@@ -1780,7 +1991,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 2,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "docgen-changelog-002",
@@ -1788,7 +2000,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "conditional",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "comprehension"
     },
     {
       "task_id": "grpc-channel-api-docgen-001",
@@ -1796,7 +2009,8 @@
       "repo_approx_loc": 1197467,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "godot-gdscript-api-docgen-001",
@@ -1804,7 +2018,8 @@
       "repo_approx_loc": 5581514,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "envoy-migration-doc-gen-001",
@@ -1812,7 +2027,8 @@
       "repo_approx_loc": 1445313,
       "n_repos": 2,
       "verifier_quality": "conditional",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "comprehension"
     },
     {
       "task_id": "flipt-flagexists-refactor-001",
@@ -1820,7 +2036,8 @@
       "repo_approx_loc": 149380,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "<400K"
+      "loc_band": "<400K",
+      "task_type": "implementation"
     },
     {
       "task_id": "kafka-batch-accumulator-refac-001",
@@ -1828,7 +2045,8 @@
       "repo_approx_loc": 1158189,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     },
     {
       "task_id": "k8s-score-normalizer-refac-001",
@@ -1836,7 +2054,8 @@
       "repo_approx_loc": 4977128,
       "n_repos": 1,
       "verifier_quality": "core_ready",
-      "loc_band": "2M-8M"
+      "loc_band": "2M-8M",
+      "task_type": "implementation"
     },
     {
       "task_id": "python-http-class-naming-refac-001",
@@ -1844,7 +2063,8 @@
       "repo_approx_loc": 710787,
       "n_repos": 3,
       "verifier_quality": "core_ready",
-      "loc_band": "400K-2M"
+      "loc_band": "400K-2M",
+      "task_type": "implementation"
     }
   ]
 }
