@@ -404,7 +404,7 @@ def _extract_task_id_from_job_log(
                 return tid
 
     # Fallback: regex for baseline paths (reliable, no truncation)
-    m = re.search(r"benchmarks/ccb_contextbench/(cb-[^/]+)/environment", text)
+    m = re.search(r"(?:benchmarks/ccb_contextbench|calibration/curator_calibration)/(cb-[^/]+)/environment", text)
     if m:
         return m.group(1)
 

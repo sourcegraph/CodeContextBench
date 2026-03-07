@@ -27,7 +27,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-BENCHMARKS_DIR = REPO_ROOT / "benchmarks" / "ccb_contextbench"
+BENCHMARKS_DIR = REPO_ROOT / "calibration" / "curator_calibration"
 SELECTION_DEFAULT = REPO_ROOT / "configs" / "contextbench_pilot_50.json"
 
 # Reference task for copying verifier infrastructure
@@ -316,10 +316,10 @@ def scaffold_all(selection_file: Path, dry_run: bool = False) -> int:
     run_selection = []
     for task in tasks:
         run_selection.append({
-            "benchmark": "ccb_contextbench",
-            "task_dir": f"ccb_contextbench/{task['task_id']}",
+            "benchmark": "curator_calibration",
+            "task_dir": f"curator_calibration/{task['task_id']}",
             "task_id": task["task_id"],
-            "suite": "ccb_contextbench",
+            "suite": "curator_calibration",
         })
 
     run_sel_path = REPO_ROOT / "configs" / "contextbench_run_selection.json"

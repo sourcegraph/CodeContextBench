@@ -62,11 +62,19 @@ _PATH_JSON_RE = re.compile(r'"path"\s*:\s*"([^"]+)"')
 
 
 def _normalize_task_name(task_name: str) -> str:
-    """Normalize MCP wrapper task names for GT lookup and artifact naming."""
+    """Normalize wrapper task names for GT lookup and artifact naming.
+
+    Strips config prefixes (mcp_, bl_, sgonly_, artifact_bl_, artifact_)
+    and Harbor random suffixes (_AbCdEf).
+    """
     name = task_name or ""
-    if name.startswith("mcp_"):
-        name = name[4:]
-        name = re.sub(r"_[A-Za-z0-9]{6}$", "", name)
+    # Strip config prefixes (order matters — longest first)
+    for prefix in ("artifact_bl_", "artifact_", "mcp_", "bl_", "sgonly_"):
+        if name.startswith(prefix):
+            name = name[len(prefix):]
+            break
+    # Strip Harbor random suffix (e.g. _AbCdEf, _8VHUFv, __tC8kxsb)
+    name = re.sub(r"_+[A-Za-z0-9]{4,8}$", "", name)
     return name
 
 # ---------------------------------------------------------------------------
@@ -755,8 +763,8 @@ def normalize_task(
     elif not events:
         degraded_reason = "Trace files exist but no retrieval events could be extracted"
 
-    # Ground truth
-    gt = gt_registry.get(task_name)
+    # Ground truth (try exact match, then case-insensitive fallback)
+    gt = gt_registry.get(task_name) or gt_registry.get(task_name.lower())
     gt_files: list[str] = gt.files if gt else []
     gt_source: str | None = gt.source if gt else None
     gt_confidence: str | None = gt.confidence if gt else None

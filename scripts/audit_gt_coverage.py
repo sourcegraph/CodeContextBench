@@ -33,7 +33,10 @@ def classify_gt(tests_dir: Path) -> tuple[str, str, str | None]:
         provenance: 'manual' | 'curator' | 'none'
         gt_file_path: relative path to the GT file used, or None
     """
-    # Check manual files first (higher priority), then curator
+    # Check all GT files; return the first valid one.
+    # Don't short-circuit on invalid schema — a later file may be valid
+    # (e.g. ground_truth.json has verifier-specific schema but oracle_answer.json has files).
+    best_invalid = None  # track best invalid result as fallback
     for gt_name in ALL_GT_FILES:
         gt_path = tests_dir / gt_name
         if not gt_path.exists():
@@ -45,24 +48,37 @@ def classify_gt(tests_dir: Path) -> tuple[str, str, str | None]:
         try:
             data = json.loads(gt_path.read_text())
         except (json.JSONDecodeError, UnicodeDecodeError):
-            return "invalid-schema", provenance, rel_path
+            if best_invalid is None:
+                best_invalid = ("invalid-schema", provenance, rel_path)
+            continue
 
         if not isinstance(data, dict):
-            return "invalid-schema", provenance, rel_path
+            if best_invalid is None:
+                best_invalid = ("invalid-schema", provenance, rel_path)
+            continue
 
         # Check for 'files' key
         if "files" not in data:
             # Legacy onboard-search format uses 'function_id'
             if "function_id" in data:
                 return "valid", provenance, rel_path
-            return "invalid-schema", provenance, rel_path
+            # Legacy scaling-gap format uses 'expected_files'
+            if "expected_files" in data:
+                return "valid", provenance, rel_path
+            if best_invalid is None:
+                best_invalid = ("invalid-schema", provenance, rel_path)
+            continue
 
         files = data["files"]
         if not isinstance(files, list) or len(files) == 0:
-            return "empty", provenance, rel_path
+            if best_invalid is None:
+                best_invalid = ("empty", provenance, rel_path)
+            continue
 
         return "valid", provenance, rel_path
 
+    if best_invalid is not None:
+        return best_invalid
     return "missing", "none", None
 
 

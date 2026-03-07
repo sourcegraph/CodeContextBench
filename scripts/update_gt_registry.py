@@ -36,7 +36,7 @@ def extract_files(gt_path: Path) -> list[str]:
     if not isinstance(data, dict):
         return []
 
-    raw = data.get("files", [])
+    raw = data.get("files", data.get("expected_files", []))
     if not isinstance(raw, list):
         return []
 
@@ -111,16 +111,17 @@ def main() -> int:
     # Scan for current GT
     new_entries = scan_gt_files()
 
-    # Compute diff
+    # Compute diff (scan is authoritative — stale entries are dropped)
     added = set(new_entries.keys()) - set(existing.keys())
     unchanged = set(new_entries.keys()) & set(existing.keys())
-    # We only add, never remove
-    merged = dict(existing)
-    merged.update(new_entries)
+    removed = set(existing.keys()) - set(new_entries.keys())
+    merged = dict(new_entries)
 
     print(f"Total entries: {len(merged)}")
     print(f"New entries added: {len(added)}")
     print(f"Entries unchanged: {len(unchanged)}")
+    if removed:
+        print(f"Stale entries removed: {len(removed)}")
 
     if added:
         print(f"\nNew tasks:")

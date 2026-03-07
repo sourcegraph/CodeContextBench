@@ -143,7 +143,7 @@ def select_and_export(
                 "tasks": [],
             }
         mirrors_by_key[mirror_key]["tasks"].append(
-            f"ccb_contextbench/{_task_id(instance_id)}"
+            f"curator_calibration/{_task_id(instance_id)}"
         )
 
     # Write selection file
