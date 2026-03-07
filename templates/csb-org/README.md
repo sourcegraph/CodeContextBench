@@ -84,12 +84,12 @@ Literal `$` signs in bash code are escaped as `$$`.
 
 ## Generation
 
-Templates are filled by `scripts/generate_mcp_unique_tasks.py`:
+Templates are filled by `scripts/generate_csb_org_tasks.py`:
 
 ```bash
-python3 scripts/generate_mcp_unique_tasks.py --use-case-ids 1 --out benchmarks/
-python3 scripts/generate_mcp_unique_tasks.py --category A --dry-run
-python3 scripts/generate_mcp_unique_tasks.py --all --curate-oracle
+python3 scripts/generate_csb_org_tasks.py --use-case-ids 1 --out benchmarks/
+python3 scripts/generate_csb_org_tasks.py --category A --dry-run
+python3 scripts/generate_csb_org_tasks.py --all --curate-oracle
 ```
 
 ## Layout

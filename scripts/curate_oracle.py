@@ -1099,7 +1099,7 @@ def main() -> int:
         json.dump(log_data, f, indent=2)
 
     if args.verify:
-        validator = project_root / "scripts" / "validate_mcp_task_instance.py"
+        validator = project_root / "scripts" / "validate_org_task_instance.py"
         if validator.exists():
             result = subprocess.run(
                 [sys.executable, str(validator), "--task-dir", str(task_dir), "--verbose"],

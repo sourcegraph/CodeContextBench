@@ -39,7 +39,7 @@ cross-repo tasks — not whether MCP can access information the baseline can't.
 │  configs/use_case_registry.json        (100 use cases)     │
 │         │                                                   │
 │         ▼                                                   │
-│  scripts/generate_mcp_unique_tasks.py  (task generator)    │
+│  scripts/generate_csb_org_tasks.py  (task generator)    │
 │         │                                                   │
 │         ▼                                                   │
 │  benchmarks/csb_org_<suite>/<task>/                        │
@@ -57,7 +57,7 @@ cross-repo tasks — not whether MCP can access information the baseline can't.
 │                                                             │
 │  scripts/csb_metrics/retrieval.py      (KPI extractor)     │
 │  scripts/curate_oracle.py              (oracle auto-curator)│
-│  scripts/validate_mcp_task_instance.py (validity gate)     │
+│  scripts/validate_org_task_instance.py (validity gate)     │
 └────────────────────────────────────────────────────────────┘
 ```
 
@@ -106,16 +106,16 @@ source of truth for which repos a task uses and at what version.
 
 ```bash
 # Generate a task for use case ID 1 (dry run to preview)
-python3 scripts/generate_mcp_unique_tasks.py --use-case-ids 1 --dry-run
+python3 scripts/generate_csb_org_tasks.py --use-case-ids 1 --dry-run
 
 # Generate with oracle curation
-python3 scripts/generate_mcp_unique_tasks.py --use-case-ids 1 --curate-oracle
+python3 scripts/generate_csb_org_tasks.py --use-case-ids 1 --curate-oracle
 
 # Generate all category A tasks
-python3 scripts/generate_mcp_unique_tasks.py --category A
+python3 scripts/generate_csb_org_tasks.py --category A
 
 # Generate and validate
-python3 scripts/generate_mcp_unique_tasks.py --use-case-ids 1 --validate
+python3 scripts/generate_csb_org_tasks.py --use-case-ids 1 --validate
 ```
 
 The generator reads `configs/use_case_registry.json` to fill
@@ -138,7 +138,7 @@ print(uc['customer_prompt'])
 
 **Step 2: Generate the task skeleton**
 ```bash
-python3 scripts/generate_mcp_unique_tasks.py \
+python3 scripts/generate_csb_org_tasks.py \
   --use-case-ids 1 \
   --out benchmarks/ \
   --verbose
@@ -159,7 +159,7 @@ to discover all files matching the task's `seed_prompt`. It writes:
 
 **Step 4: Validate the oracle (fail2pass gate)**
 ```bash
-python3 scripts/validate_mcp_task_instance.py \
+python3 scripts/validate_org_task_instance.py \
   --task-dir benchmarks/csb_org_crossrepo_tracing/ccx-dep-trace-001 \
   --verbose
 ```
@@ -471,7 +471,7 @@ See `configs/use_case_registry.json` — entries with
 
 1. Set `"verification_modes": ["artifact", "direct"]` in the registry entry.
 2. Ensure the fixture has `local_checkout_repos` (direct mode needs full repo).
-3. Run `generate_mcp_unique_tasks.py` — creates `direct_verifier.sh` placeholder.
+3. Run `generate_csb_org_tasks.py` — creates `direct_verifier.sh` placeholder.
 4. Run `customize_mcp_skeletons.py` — generates dual-mode `test.sh` and copies
    parent verifier if the task has SDLC lineage.
 5. Manually curate `direct_verifier.sh` for task-specific verification logic.

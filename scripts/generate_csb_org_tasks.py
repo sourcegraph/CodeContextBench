@@ -3,14 +3,14 @@
 
 Reads configs/use_case_registry.json and fixtures/repo_sets/*.json, fills
 templates from templates/csb-org/, and writes task directories under
-benchmarks/<mcp_suite>/<task_slug>/.
+benchmarks/<org_suite>/<task_slug>/.
 
 Usage:
-    python3 scripts/generate_mcp_unique_tasks.py --use-case-ids 1 4 10
-    python3 scripts/generate_mcp_unique_tasks.py --category A
-    python3 scripts/generate_mcp_unique_tasks.py --family cross-repo-dep-trace
-    python3 scripts/generate_mcp_unique_tasks.py --all --dry-run
-    python3 scripts/generate_mcp_unique_tasks.py --category A --curate-oracle --verbose
+    python3 scripts/generate_csb_org_tasks.py --use-case-ids 1 4 10
+    python3 scripts/generate_csb_org_tasks.py --category A
+    python3 scripts/generate_csb_org_tasks.py --family cross-repo-dep-trace
+    python3 scripts/generate_csb_org_tasks.py --all --dry-run
+    python3 scripts/generate_csb_org_tasks.py --category A --curate-oracle --verbose
 """
 
 import argparse

@@ -3,7 +3,7 @@
 # These repos already exist on GitHub — we shallow-clone at the correct tag,
 # create an orphan commit, and force-push to overwrite.
 #
-# Usage: bash scripts/remirror_mcp_unique_repos.sh
+# Usage: bash scripts/remirror_org_repos.sh
 set -euo pipefail
 
 SG_ORG="sg-evals"

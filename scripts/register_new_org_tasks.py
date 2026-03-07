@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Register 20 new MCP-unique tasks in both selection files."""
+"""Register new org-scale tasks in both selection files."""
 
 import json
 import os

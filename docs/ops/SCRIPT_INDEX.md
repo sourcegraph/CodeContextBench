@@ -67,8 +67,8 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/official_runs.py` - QA/validation script for official runs.
 - `scripts/quarantine_invalid_tasks.py` - QA/validation script for quarantine invalid tasks.
 - `scripts/validate_artifact_golden.py` - QA/validation script for validate artifact golden.
-- `scripts/validate_mcp_task_instance.py` - QA/validation script for validate mcp task instance.
 - `scripts/validate_official_integrity.py` - QA/validation script for validate official integrity.
+- `scripts/validate_org_task_instance.py` - QA/validation script for validate org task instance.
 
 ## Data Management
 
@@ -97,13 +97,13 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 
 - `scripts/curate_oracle.py` - Task creation/selection script for curate oracle.
 - `scripts/customize_mcp_skeletons.py` - Task creation/selection script for customize mcp skeletons.
+- `scripts/generate_csb_org_tasks.py` - Task creation/selection script for generate csb org tasks.
 - `scripts/generate_dependeval_tasks.py` - Task creation/selection script for generate dependeval tasks.
-- `scripts/generate_mcp_unique_tasks.py` - Task creation/selection script for generate mcp unique tasks.
 - `scripts/generate_pytorch_expected_diffs.py` - Task creation/selection script for generate pytorch expected diffs.
 - `scripts/materialize_dependeval_repos.py` - Task creation/selection script for materialize dependeval repos.
 - `scripts/materialize_sdlc_suites.py` - Task creation/selection script for materialize sdlc suites.
 - `scripts/mine_bug_tasks.py` - Task creation/selection script for mine bug tasks.
-- `scripts/register_new_mcp_tasks.py` - Task creation/selection script for register new mcp tasks.
+- `scripts/register_new_org_tasks.py` - Task creation/selection script for register new org tasks.
 - `scripts/rename_tasks.py` - Task creation/selection script for rename tasks.
 - `scripts/select_benchmark_tasks.py` - Task creation/selection script for select benchmark tasks.
 - `scripts/select_dependeval_tasks.py` - Task creation/selection script for select dependeval tasks.
@@ -228,7 +228,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/push_base_images_ghcr.sh` - Utility script for push base images ghcr.
 - `scripts/regenerate_artifact_dockerfiles.py` - Utility script for regenerate artifact dockerfiles.
 - `scripts/rehost_sweap_images.py` - Utility script for rehost sweap images.
-- `scripts/remirror_mcp_unique_repos.sh` - Utility script for remirror mcp unique repos.
+- `scripts/remirror_org_repos.sh` - Utility script for remirror org repos.
 - `scripts/rename_project.py` - Utility script for rename project.
 - `scripts/repair_h3_trajectories.py` [one_off] - Historical one-off script: repair h3 trajectories.
 - `scripts/rerun_crossrepo_2tasks.sh` [one_off] - Historical one-off script: rerun crossrepo 2tasks.

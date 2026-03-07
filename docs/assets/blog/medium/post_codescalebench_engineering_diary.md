@@ -69,7 +69,7 @@ Oracle quality was gated before task inclusion with the fail2pass check.
 
 Implementation anchors:
 - `configs/use_case_registry.json`
-- `scripts/generate_mcp_unique_tasks.py`
+- `scripts/generate_csb_org_tasks.py`
 - `scripts/customize_mcp_skeletons.py`
 - `docs/technical_reports/TECHNICAL_REPORT.md` (Section 5)
 

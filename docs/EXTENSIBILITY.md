@@ -90,13 +90,13 @@ cannot do. See `docs/ORG_TASKS.md` for the full authoring guide.
 
 ```bash
 # 1. Generate from use case registry
-python3 scripts/generate_mcp_unique_tasks.py --use-case-ids <N> --curate-oracle --validate
+python3 scripts/generate_csb_org_tasks.py --use-case-ids <N> --curate-oracle --validate
 
 # 2. Register in selection file
 #    configs/selected_benchmark_tasks.json
 
 # 3. Validate
-python3 scripts/validate_mcp_task_instance.py --task-dir benchmarks/csb_org_<suite>/<task>
+python3 scripts/validate_org_task_instance.py --task-dir benchmarks/csb_org_<suite>/<task>
 python3 scripts/validate_tasks_preflight.py --suite csb_org_<suite>
 ```
 

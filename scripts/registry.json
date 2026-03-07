@@ -651,6 +651,14 @@
       "summary": "Generation script for generate coverage gap configs."
     },
     {
+      "name": "generate_csb_org_tasks.py",
+      "path": "scripts/generate_csb_org_tasks.py",
+      "category": "task_creation_selection",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Task creation/selection script for generate csb org tasks."
+    },
+    {
       "name": "generate_dependeval_tasks.py",
       "path": "scripts/generate_dependeval_tasks.py",
       "category": "task_creation_selection",
@@ -697,14 +705,6 @@
       "status": "maintained",
       "language": "python",
       "summary": "Rebuilds `MANIFEST.json` from on-disk run results."
-    },
-    {
-      "name": "generate_mcp_unique_tasks.py",
-      "path": "scripts/generate_mcp_unique_tasks.py",
-      "category": "task_creation_selection",
-      "status": "maintained",
-      "language": "python",
-      "summary": "Task creation/selection script for generate mcp unique tasks."
     },
     {
       "name": "generate_pytorch_expected_diffs.py",
@@ -1171,12 +1171,12 @@
       "summary": "Utility script for regenerate artifact dockerfiles."
     },
     {
-      "name": "register_new_mcp_tasks.py",
-      "path": "scripts/register_new_mcp_tasks.py",
+      "name": "register_new_org_tasks.py",
+      "path": "scripts/register_new_org_tasks.py",
       "category": "task_creation_selection",
       "status": "maintained",
       "language": "python",
-      "summary": "Task creation/selection script for register new mcp tasks."
+      "summary": "Task creation/selection script for register new org tasks."
     },
     {
       "name": "rehost_sweap_images.py",
@@ -1195,12 +1195,12 @@
       "summary": "Analysis/comparison script for reliability analysis."
     },
     {
-      "name": "remirror_mcp_unique_repos.sh",
-      "path": "scripts/remirror_mcp_unique_repos.sh",
+      "name": "remirror_org_repos.sh",
+      "path": "scripts/remirror_org_repos.sh",
       "category": "misc",
       "status": "maintained",
       "language": "shell",
-      "summary": "Utility script for remirror mcp unique repos."
+      "summary": "Utility script for remirror org repos."
     },
     {
       "name": "rename_project.py",
@@ -1547,14 +1547,6 @@
       "summary": "Validation script for validate enterprise readiness."
     },
     {
-      "name": "validate_mcp_task_instance.py",
-      "path": "scripts/validate_mcp_task_instance.py",
-      "category": "qa_quality",
-      "status": "maintained",
-      "language": "python",
-      "summary": "QA/validation script for validate mcp task instance."
-    },
-    {
       "name": "validate_official_integrity.py",
       "path": "scripts/validate_official_integrity.py",
       "category": "qa_quality",
@@ -1569,6 +1561,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Validation script for validate on contextbench."
+    },
+    {
+      "name": "validate_org_task_instance.py",
+      "path": "scripts/validate_org_task_instance.py",
+      "category": "qa_quality",
+      "status": "maintained",
+      "language": "python",
+      "summary": "QA/validation script for validate org task instance."
     },
     {
       "name": "validate_submission.py",

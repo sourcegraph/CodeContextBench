@@ -1,12 +1,12 @@
 ---
 name: scaffold-task
-description: Scaffold a new Harbor-compatible benchmark task (and optionally a new benchmark suite). Generates task.toml, instruction.md, Dockerfile, test.sh, and registers the task. Triggers on scaffold task, new task, create task, add task, new benchmark.
+description: Scaffold a new Harbor-compatible benchmark task (SDLC or org-scale) and optionally a new benchmark suite. Generates task.toml, instruction.md, Dockerfile, test.sh, and registers the task. Triggers on scaffold task, new task, create task, add task, new benchmark.
 user-invocable: true
 ---
 
 # Scaffold Task
 
-Interactively scaffold a new Harbor-compatible benchmark task for CodeScaleBench. Generates all required files and registers the task in the selection registry.
+Interactively scaffold a new Harbor-compatible benchmark task for CodeScaleBench. Supports both **SDLC tasks** (code changes in a single repo) and **org-scale tasks** (cross-repo discovery, compliance, incident triage — artifact-based evaluation). Generates all required files and registers the task in the selection registry.
 
 This is an **interactive skill**. Walk the user through configuration using AskUserQuestion in multiple phases. Do NOT generate files without first collecting all required inputs.
 
@@ -19,8 +19,12 @@ Ask one question:
 **Question 1** — Header: "Mode"
 - Question: "What would you like to create?"
 - Options:
-  - **Add task to existing suite** — "Create a new task in an existing csb_* benchmark"
-  - **Create new benchmark suite** — "Create a new benchmark with its first task and run config"
+  - **Add SDLC task to existing suite** — "Create a new task in an existing csb_sdlc_* benchmark (agent makes code changes)"
+  - **Add org-scale task to existing suite** — "Create a new task in an existing csb_org_* benchmark (agent produces an answer artifact)"
+  - **Create new SDLC suite** — "Create a new csb_sdlc_* benchmark with its first task and run config"
+  - **Create new org-scale suite** — "Create a new csb_org_* benchmark with its first task and run config"
+
+Set `{TASK_FAMILY}` to either `sdlc` or `org` based on the selection.
 
 ---
 
@@ -28,10 +32,10 @@ Ask one question:
 
 Ask 3-4 questions depending on mode.
 
-### If adding to existing suite:
+### If adding to existing SDLC suite:
 
 **Question 1** — Header: "Benchmark"
-- Question: "Which benchmark suite?"
+- Question: "Which SDLC benchmark suite?"
 - Options:
   - **swebenchpro** — "Real-world SWE across repos (Go, TS, Python)"
   - **pytorch** — "PyTorch PR-level tasks (Python/C++)"
@@ -39,10 +43,27 @@ Ask 3-4 questions depending on mode.
   - **k8sdocs** — "Kubernetes documentation (Go)"
 - Note: User can type "Other" for tac, largerepo, sweperf, crossrepo, dibench
 
+### If adding to existing org-scale suite:
+
+**Question 1** — Header: "Benchmark"
+- Question: "Which org-scale benchmark suite?"
+- Options:
+  - **crossrepo** — "Cross-repo dependency tracing"
+  - **crossrepo_tracing** — "Cross-repo config/dep tracing with provenance"
+  - **crossorg** — "Cross-organization discovery"
+  - **compliance** — "Compliance audit tasks"
+  - **migration** — "Migration inventory and planning"
+  - **incident** — "Incident debug and triage"
+  - **onboarding** — "Onboarding comprehension"
+  - **domain** — "Domain lineage tasks"
+  - **platform** — "Platform knowledge tasks"
+  - **security** — "Vulnerability remediation"
+  - **org** — "Agentic correctness"
+
 ### If creating new suite:
 
 Prompt the user (not AskUserQuestion) to provide:
-- **Suite name**: Will become `csb_sdlc_{name}` (lowercase, alphanumeric + hyphens)
+- **Suite name**: Will become `csb_{sdlc|org}_{name}` (lowercase, alphanumeric + hyphens)
 
 Then ask:
 
@@ -66,6 +87,7 @@ Then ask:
 - Question: "How is the task environment set up?"
 - Options:
   - **repo-clone** — "Clone a git repo at a specific commit (most common)"
+  - **multi-repo-clone** — "Clone multiple repos (org-scale tasks)" *(org only)*
   - **pre-built-image** — "FROM an existing Docker image (e.g., TAC tasks)"
   - **standalone** — "Empty workspace, no repo (agent creates everything)"
 
@@ -76,6 +98,8 @@ For existing suites, also ask Language, Difficulty, and Task type (same question
 ## Phase 3: Task-Specific Inputs
 
 Prompt the user for these values (use text prompts, not AskUserQuestion since these are free-form):
+
+### SDLC tasks:
 
 | Input | Required | Default | Example |
 |-------|----------|---------|---------|
@@ -89,6 +113,18 @@ Prompt the user for these values (use text prompts, not AskUserQuestion since th
 | Time limit (sec) | No | 900 | `600` |
 
 Valid SDLC phases: "Requirements & Discovery", "Architecture & Design", "Implementation (feature)", "Implementation (bug fix)", "Implementation (refactoring)", "Testing & QA", "Documentation", "Maintenance"
+
+### Org-scale tasks:
+
+| Input | Required | Default | Example |
+|-------|----------|---------|---------|
+| Task ID | Yes | — | `CCX-crossorg-301` |
+| Description | Yes | — | "Trace gRPC service dependency chain across K8s repos" |
+| Repos (owner/name) | Yes (1+) | — | `kubernetes/kubernetes`, `kubernetes/client-go` |
+| Commit/tag per repo | If repo-clone | — | `v1.32.0` |
+| Category | Yes | — | `cross-repo-dep-trace`, `compliance-audit`, etc. |
+| Difficulty | Yes | "hard" | `hard`, `very_hard`, `expert` |
+| Time limit (sec) | No | 900 | `600` |
 
 ---
 
@@ -110,7 +146,11 @@ Generate all files using the templates below. Use the Write tool for each file.
 | csharp | `mcr.microsoft.com/dotnet/sdk:8.0` |
 | mixed | `ubuntu:22.04` |
 
-### Template 1: task.toml
+---
+
+### SDLC Templates
+
+#### Template 1: task.toml (SDLC)
 
 Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/task.toml`:
 
@@ -171,7 +211,7 @@ Notes:
 - For pre-built-image tasks, omit the `repo` field if there's no git repo
 - For standalone tasks, omit the `repo` field
 
-### Template 2: Dockerfile (repo-clone type)
+#### Template 2: Dockerfile (SDLC, repo-clone type)
 
 Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`:
 
@@ -209,7 +249,7 @@ RUN chmod +x /workspace/tests/test.sh
 WORKDIR /workspace
 ```
 
-### Template 2b: Dockerfile (pre-built-image type)
+#### Template 2b: Dockerfile (SDLC, pre-built-image type)
 
 ```dockerfile
 FROM {BASE_IMAGE}
@@ -224,7 +264,7 @@ RUN chmod +x /workspace/tests/test.sh
 WORKDIR /workspace
 ```
 
-### Template 2c: Dockerfile (standalone type)
+#### Template 2c: Dockerfile (SDLC, standalone type)
 
 ```dockerfile
 FROM {BASE_IMAGE}
@@ -255,7 +295,7 @@ RUN chmod +x /workspace/tests/test.sh
 WORKDIR /workspace
 ```
 
-### Template 3: instruction.md
+#### Template 3: instruction.md (SDLC)
 
 Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/instruction.md`:
 
@@ -293,7 +333,7 @@ Notes:
 - `{TITLE}` is derived from the task ID: replace hyphens with spaces, title-case
 - The TODO sections are placeholders for the user to fill in after scaffolding
 
-### Template 4: test.sh
+#### Template 4: test.sh (SDLC)
 
 Write to `benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/tests/test.sh`:
 
@@ -377,11 +417,278 @@ echo "Tests completed - Score: $FINAL_SCORE (${SCORE}/${MAX_SCORE} checks passed
 
 ---
 
+### Org-Scale Templates
+
+#### Template 1: task.toml (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/task.toml`:
+
+```toml
+version = "1.0"
+
+[metadata]
+name = "{TASK_ID}"
+description = "{DESCRIPTION}"
+license = "Apache-2.0"
+
+[task]
+id = "{TASK_ID}"
+repo = "{PRIMARY_REPO}"
+category = "{CATEGORY}"
+language = "{LANGUAGE}"
+difficulty = "{DIFFICULTY}"
+time_limit_sec = {TIME_LIMIT}
+mcp_suite = "csb_org_{BENCHMARK}"
+org_scale = true
+verification_modes = ["artifact"]
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+reward_type = "score"
+description = "{DESCRIPTION}"
+
+[environment]
+build_timeout_sec = 600.0
+```
+
+Notes:
+- `{PRIMARY_REPO}` uses the sg-evals mirror format if available (e.g., `sg-evals/kubernetes--v1.32.0`), otherwise `owner/repo`
+- `verification.command` uses `/tests/test.sh` (NOT `/workspace/tests/test.sh` — Harbor uploads tests to `/tests/`)
+- `org_scale = true` marks this as an organizational use-case benchmark
+
+#### Template 2: Dockerfile (org-scale, multi-repo-clone)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/environment/Dockerfile`:
+
+```dockerfile
+FROM {BASE_IMAGE}
+
+# Install common tools
+RUN apt-get update && apt-get install -y \
+    git curl jq ripgrep python3 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js (for Claude Code CLI)
+RUN if ! command -v node &> /dev/null; then \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs; \
+    fi
+
+# Install Claude Code CLI
+RUN npm install -g @anthropic-ai/claude-code
+
+# Clone repos at pinned versions
+{CLONE_COMMANDS}
+
+# Create directories
+RUN mkdir -p /workspace /tests /logs/verifier
+
+COPY tests/ /tests/
+RUN chmod +x /tests/test.sh /tests/eval.sh 2>/dev/null || true
+
+WORKDIR /workspace
+```
+
+For each repo, generate a clone command like:
+```dockerfile
+RUN git clone --filter=blob:none https://github.com/{REPO}.git /workspace/{REPO_DIR} && \
+    cd /workspace/{REPO_DIR} && \
+    git checkout {COMMIT_OR_TAG}
+```
+
+Where `{REPO_DIR}` is derived from the repo name (e.g., `kubernetes` from `kubernetes/kubernetes`).
+
+#### Template 2b: Dockerfile (org-scale, single repo-clone)
+
+Same as multi-repo but with a single clone command.
+
+#### Template 3: instruction.md (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/instruction.md`:
+
+```markdown
+# {TITLE}
+
+## Context
+
+You have access to the following repositories in `/workspace/`:
+
+{REPO_LIST}
+
+## Task
+
+{DESCRIPTION}
+
+## Deliverable
+
+Write your answer to `/workspace/answer.json` with the following structure:
+
+```json
+{
+  "task_id": "{TASK_ID}",
+  "findings": [
+    {
+      "description": "TODO: describe finding",
+      "files": ["path/to/relevant/file"],
+      "evidence": "TODO: supporting evidence"
+    }
+  ]
+}
+```
+
+## Constraints
+
+- **Time limit**: {TIME_LIMIT} seconds
+- Your answer MUST be valid JSON written to `/workspace/answer.json`
+- Be thorough — recall matters more than precision
+```
+
+Notes:
+- `{REPO_LIST}` is a bulleted list of repos with their paths, e.g., `- kubernetes/kubernetes → /workspace/kubernetes`
+- Org-scale instructions must be **tool-neutral** — do NOT mention MCP, Sourcegraph, or specific tools. Both baseline and MCP agents must be able to solve the task.
+
+#### Template 4: eval.sh (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/eval.sh`:
+
+```bash
+#!/bin/bash
+# eval.sh — org-scale benchmark evaluator for {TASK_ID}
+# Exit-code-first (SWE-Factory pattern):
+#   exit 0 — agent produced useful output (composite score > 0)
+#   exit 1 — total failure (composite score == 0 or missing answer)
+#
+# Writes /logs/verifier/reward.txt with the composite score [0.0, 1.0]
+
+set -euo pipefail
+
+TASK_ID="{TASK_ID}"
+ANSWER_PATH="/workspace/answer.json"
+TASK_SPEC_PATH="/tests/task_spec.json"
+ORACLE_CHECKS="/tests/oracle_checks.py"
+REWARD_PATH="/logs/verifier/reward.txt"
+
+mkdir -p /logs/verifier
+
+echo "=== {TASK_ID} evaluator ==="
+echo "Task spec: $TASK_SPEC_PATH"
+
+# --- Guard: answer.json must exist and be valid JSON ---
+if [ ! -f "$ANSWER_PATH" ]; then
+    echo "FAIL: $ANSWER_PATH not found"
+    echo "0.0" > "$REWARD_PATH"
+    exit 1
+fi
+if ! python3 -c "import json; json.load(open('$ANSWER_PATH'))" 2>/dev/null; then
+    echo "FAIL: $ANSWER_PATH is not valid JSON"
+    echo "0.0" > "$REWARD_PATH"
+    exit 1
+fi
+
+# --- Run oracle checks ---
+if [ -f "$ORACLE_CHECKS" ] && [ -f "$TASK_SPEC_PATH" ]; then
+    SCORE=$(python3 "$ORACLE_CHECKS" "$TASK_SPEC_PATH" "$ANSWER_PATH" 2>&1) || true
+    echo "Oracle score: $SCORE"
+    echo "$SCORE" > "$REWARD_PATH"
+else
+    echo "WARNING: oracle_checks.py or task_spec.json missing, using placeholder"
+    echo "0.5" > "$REWARD_PATH"
+fi
+
+FINAL=$(cat "$REWARD_PATH")
+echo "Final score: $FINAL"
+
+if [ "$(echo "$FINAL > 0" | bc -l 2>/dev/null || echo 0)" = "1" ]; then
+    exit 0
+else
+    exit 1
+fi
+```
+
+#### Template 5: test.sh (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/test.sh`:
+
+```bash
+#!/bin/bash
+# test.sh — wrapper that delegates to eval.sh
+exec bash /tests/eval.sh "$@"
+```
+
+#### Template 6: oracle_checks.py (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/oracle_checks.py`:
+
+```python
+#!/usr/bin/env python3
+"""Deterministic oracle check library for org-scale benchmark evaluation.
+
+Provides reusable check functions that eval.sh scripts invoke to score agent
+answers against closed-world oracle definitions. Returns raw scores (no
+rounding) so the caller controls final precision.
+"""
+
+import json
+import sys
+
+
+def main():
+    if len(sys.argv) < 3:
+        print("Usage: oracle_checks.py <task_spec.json> <answer.json>", file=sys.stderr)
+        print("0.0")
+        sys.exit(0)
+
+    with open(sys.argv[1]) as f:
+        spec = json.load(f)
+    with open(sys.argv[2]) as f:
+        answer = json.load(f)
+
+    # TODO: Implement oracle checks against spec
+    # Example: check that required files/symbols are found
+    checks = spec.get("evaluation", {}).get("checks", [])
+    if not checks:
+        print("0.5")  # No checks defined yet
+        return
+
+    passed = 0
+    total = len(checks)
+    for check in checks:
+        # TODO: implement check logic
+        passed += 1
+
+    score = passed / total if total > 0 else 0.0
+    print(f"{score:.4f}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+#### Template 7: task_spec.json (org-scale)
+
+Write to `benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/task_spec.json`:
+
+```json
+{
+  "task_id": "{TASK_ID}",
+  "evaluation": {
+    "checks": []
+  }
+}
+```
+
+Note: The checks array should be populated with oracle checks after the task is authored. Use `scripts/generate_csb_org_tasks.py` or manual curation.
+
+---
+
 ## Phase 5: Registration
 
 ### Add to selected_benchmark_tasks.json
 
-Read `configs/selected_benchmark_tasks.json`, then use Edit to append a new task entry to the `tasks` array (before the closing `]`). Use this structure:
+Read `configs/selected_benchmark_tasks.json`, then use Edit to append a new task entry to the `tasks` array (before the closing `]`).
+
+#### SDLC registration entry:
 
 ```json
 {
@@ -404,18 +711,33 @@ Read `configs/selected_benchmark_tasks.json`, then use Edit to append a new task
 }
 ```
 
-Also update the `metadata.total_selected` count and the `statistics.tasks_per_benchmark.csb_sdlc_{BENCHMARK}` count.
+#### Org-scale registration entry:
+
+```json
+{
+  "task_id": "{TASK_ID}",
+  "benchmark": "csb_org_{BENCHMARK}",
+  "language": "{LANGUAGE}",
+  "difficulty": "{DIFFICULTY}",
+  "category": "{CATEGORY}",
+  "repo": "{PRIMARY_REPO}",
+  "selection_rationale": "Manually added via /scaffold-task",
+  "task_dir": "csb_org_{BENCHMARK}/{TASK_ID}"
+}
+```
+
+Also update the `metadata.total_selected` count and the `statistics.tasks_per_benchmark` count for the appropriate suite.
 
 ### If new suite: Generate run config script
 
 Write to `configs/{BENCHMARK}_2config.sh` using the standard 2-config pattern. Read an existing config (e.g., `configs/tac_2config.sh`) as a reference and adapt it:
 
 1. Source `_common.sh`
-2. Define `SUITE="csb_sdlc_{BENCHMARK}"`
+2. Define `SUITE="csb_{sdlc|org}_{BENCHMARK}"`
 3. Load task IDs from `selected_benchmark_tasks.json` filtered by benchmark
 4. Define `run_task_batch()` with baseline, sourcegraph_full configs
 5. Run the 2 batches sequentially
-6. Make it executable: `chmod +x configs/{BENCHMARK}_3config.sh`
+6. Make it executable: `chmod +x configs/{BENCHMARK}_2config.sh`
 
 ---
 
@@ -424,7 +746,7 @@ Write to `configs/{BENCHMARK}_2config.sh` using the standard 2-config pattern. R
 After all files are created, run validation:
 
 ```bash
-cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
+cd ~/CodeScaleBench && python3 scripts/validate_tasks_preflight.py --task benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}
 ```
 
 Report the validation results. If there are issues, offer to fix them.
@@ -437,22 +759,27 @@ After completion, print a summary:
 
 ```
 Scaffolded task: {TASK_ID}
-  Suite:      csb_sdlc_{BENCHMARK}
+  Suite:      csb_{sdlc|org}_{BENCHMARK}
+  Family:     {sdlc|org-scale}
   Language:   {LANGUAGE}
   Difficulty: {DIFFICULTY}
   Type:       {TASK_TYPE}
 
 Files created:
-  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/task.toml
-  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/instruction.md
-  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/environment/Dockerfile
-  benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}/tests/test.sh
+  benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}/task.toml
+  benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}/instruction.md
+  benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}/environment/Dockerfile
+  benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}/tests/test.sh
+  [org-scale only] benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/eval.sh
+  [org-scale only] benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/oracle_checks.py
+  [org-scale only] benchmarks/csb_org_{BENCHMARK}/{TASK_ID}/tests/task_spec.json
 
 Registered in: configs/selected_benchmark_tasks.json
 
 Next steps:
   1. Edit instruction.md with detailed task instructions
-  2. Customize tests/test.sh with task-specific verification checks
-  3. Test locally: harbor run --path benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
-  4. Run /validate-tasks --task benchmarks/csb_sdlc_{BENCHMARK}/{TASK_ID}
+  2. Customize tests/ with task-specific verification checks
+  3. [org-scale] Populate task_spec.json with oracle checks
+  4. Test locally: harbor run --path benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}
+  5. Run /validate-tasks --task benchmarks/csb_{sdlc|org}_{BENCHMARK}/{TASK_ID}
 ```
