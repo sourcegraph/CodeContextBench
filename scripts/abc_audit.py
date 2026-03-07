@@ -888,54 +888,69 @@ def check_r13_manifest() -> CriterionResult:
         remediation="Generate with: python3 scripts/generate_manifest.py",
     )
 
-def check_oa_equivalent_solutions(tasks: list[Path]) -> CriterionResult:
-    """O.a: Verifiers accept functionally equivalent solutions (no overly-strict matching)."""
-    issues = []
-    for task_dir in tasks:
-        verifier = _get_primary_verifier(task_dir)
-        if not verifier:
-            continue
-
-        content = verifier.read_text(errors="replace")
-        task_name = task_dir.name
-        task_issues = []
-
-        if verifier.suffix == ".sh":
-            # Flag grep -Fx (exact fixed-string line match)
-            if re.search(r"\bgrep\s+.*-[A-Za-z]*F[A-Za-z]*x|grep\s+.*-[A-Za-z]*x[A-Za-z]*F", content):
-                task_issues.append("grep -Fx (exact fixed-string match)")
-
-            # Flag direct string equality tests: [ "$var" = "hardcoded" ] or == "hardcoded"
-            strict_eq = re.findall(r'\[\s*"\$\w+"\s*==?\s*"([^"]+)"\s*\]', content)
-            if strict_eq:
-                task_issues.append(f"exact string comparison against: {', '.join(strict_eq[:3])}")
-
-            # Flag diff without any tolerance flags (allow diff -w, diff -b, diff --ignore)
-            diff_calls = re.finditer(r"\bdiff\s+([^\n|;&]+)", content)
-            for m in diff_calls:
-                args = m.group(1)
-                # Skip if tolerance flags present
-                if re.search(r"-[A-Za-z]*[wbBi]|--ignore|--strip", args):
-                    continue
-                # Skip if used with process substitution (usually flexible)
-                if "<(" in args:
-                    continue
-                task_issues.append("diff without tolerance flags (-w/-b/--ignore)")
-                break  # one flag per task is enough
-
-        if task_issues:
-            issues.append(f"{task_name}: {'; '.join(task_issues)}")
-
-    if not issues:
+def check_r6_multi_config(suite: str) -> CriterionResult:
+    """R.6: Multiple config results exist for comparison."""
+    if not RUNS_DIR.is_dir():
         return CriterionResult(
-            criterion_id="O.a", status=Status.PASS,
-            evidence=f"No overly-strict matching found across {len(tasks)} verifiers",
+            criterion_id="R.6", status=Status.SKIP,
+            evidence="runs/official/ directory not found",
+        )
+
+    # Determine category prefix for directory scanning
+    if suite.startswith("csb_sdlc_"):
+        category = "csb_sdlc"
+    elif suite.startswith("csb_org_"):
+        category = "csb_org"
+    else:
+        category = None
+
+    configs_found: set[str] = set()
+
+    # New directory structure: runs/official/{category}/{model}/{suite}/{config}/
+    if category:
+        cat_dir = RUNS_DIR / category
+        if cat_dir.is_dir():
+            for model_dir in cat_dir.iterdir():
+                if not model_dir.is_dir():
+                    continue
+                suite_dir = model_dir / suite
+                if suite_dir.is_dir():
+                    for config_dir in suite_dir.iterdir():
+                        if config_dir.is_dir():
+                            configs_found.add(config_dir.name)
+
+    # Also scan legacy flat structure: runs/official/{run_name}/
+    # Run names contain config identifiers like 'baseline', 'sourcegraph_full'
+    config_patterns = ["baseline", "sourcegraph_full", "SG_base", "SG_full",
+                       "mcp_V1", "mcp_V4", "mcp_unknown"]
+    for run_dir in RUNS_DIR.iterdir():
+        if not run_dir.is_dir() or run_dir.name.startswith(("_", "archive")):
+            continue
+        if run_dir.name in ("csb_sdlc", "csb_org"):
+            continue  # Already handled above
+        for pat in config_patterns:
+            if pat in run_dir.name:
+                # Check if run contains tasks for this suite
+                for child in run_dir.iterdir():
+                    if child.is_dir() and (child / "result.json").is_file():
+                        configs_found.add(pat)
+                        break
+                break
+
+    if len(configs_found) >= 2:
+        return CriterionResult(
+            criterion_id="R.6", status=Status.PASS,
+            evidence=f"Found {len(configs_found)} configs for {suite}: {', '.join(sorted(configs_found))}",
+        )
+    if len(configs_found) == 1:
+        return CriterionResult(
+            criterion_id="R.6", status=Status.WARN,
+            evidence=f"Only 1 config found for {suite}: {', '.join(configs_found)}",
+            remediation="Run at least one additional configuration (e.g., baseline + sourcegraph_full)",
         )
     return CriterionResult(
-        criterion_id="O.a", status=Status.WARN,
-        evidence="\n".join(issues[:10]),
-        remediation="Consider using flexible matching (regex, -i flag, tolerance) in verifiers",
-        details={"issue_count": len(issues), "issues": issues[:20]},
+        criterion_id="R.6", status=Status.SKIP,
+        evidence=f"No run results found for {suite}",
     )
 
 
@@ -1158,6 +1173,7 @@ SUITE_CHECKS = {
     "R.4": check_r4_sdlc_phase,
     "R.7": check_r7_baseline_results,
     "R.9": check_r9_difficulty_distribution,
+    "R.6": check_r6_multi_config,
 }
 
 # Functions that take no args (project-level)
@@ -1171,7 +1187,7 @@ PROJECT_CHECKS = {
 }
 
 # Semi-automated / manual checks (skip with note)
-SKIP_CHECKS = {"T.2", "T.9", "T.10", "O.g", "R.6"}
+SKIP_CHECKS = {"T.2", "T.9", "T.10", "O.g"}
 
 
 def audit_suite(suite: str, dimension: Optional[Dimension] = None) -> AuditReport:

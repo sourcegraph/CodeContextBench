@@ -84,3 +84,18 @@ def check_xx_name(tasks: list[Path]) -> CriterionResult:
   - The O.b check will mostly PASS since the codebase uses robust verification patterns
   - Branch divergence: US-004 was committed on a parallel history; had to re-implement O.a on current branch rather than cherry-pick (conflicts)
 ---
+
+## 2026-03-07 - US-008
+- Implemented `check_r6_multi_config(suite)` in abc_audit.py
+- Scans `runs/official/{csb_sdlc,csb_org}/{model}/{suite}/{config}/` for config directories
+- Also scans legacy flat structure for config identifiers (baseline, sourcegraph_full, SG_base, SG_full, mcp_V1, mcp_V4, mcp_unknown)
+- Returns PASS if >=2 configs found, WARN if 1, SKIP if no runs exist
+- R.6 added to SUITE_CHECKS, removed from SKIP_CHECKS
+- Also removed duplicate `check_oa_equivalent_solutions` function (was defined twice)
+- Result: all 20 suites show R.6=PASS
+- Files changed: `scripts/abc_audit.py`, `ralph-abc-checks/prd.json`, `ralph-abc-checks/progress.txt`
+- **Learnings for future iterations:**
+  - Run directory structure is `runs/official/{csb_sdlc,csb_org}/{model}/{suite}/{config}/` (new) plus legacy flat dirs
+  - Config names include: baseline, mcp_V1, mcp_V4, mcp_unknown (not just baseline/sourcegraph_full)
+  - Skip `_raw`, `_meta`, `_views_legacy`, `archive` directories when scanning runs
+---

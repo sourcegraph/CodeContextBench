@@ -124,7 +124,7 @@
         "python3 scripts/abc_audit.py --suite csb_sdlc_fix --format table 2>&1 | grep R.6 shows PASS or WARN (not SKIP)"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "R.6 is IMPORTANT severity. This should check for run directory names containing config identifiers."
     },
     {
