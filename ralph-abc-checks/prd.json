@@ -154,7 +154,7 @@
         "All 20 suites complete audit without Python exceptions"
       ],
       "priority": 10,
-      "passes": false,
+      "passes": true,
       "notes": "R.2 for csb_org_* suites will still show SKIP because MCP references in org suite instructions are by design (line 958). This is correct behavior. All other SKIPs should be eliminated."
     }
   ]
