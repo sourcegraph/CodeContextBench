@@ -68,3 +68,19 @@ def check_xx_name(tasks: list[Path]) -> CriterionResult:
   - grep -Fx is the clearest signal of overly-strict matching
   - Pre-commit hook runs repo_health.py which checks docs consistency — regenerate with `python3 scripts/refresh_agent_navigation.py` if stale
 ---
+
+## 2026-03-07 - US-005
+- Implemented `check_ob_negated_solutions(tasks)` in abc_audit.py
+- Also integrated O.a check (from parallel branch cherry-pick) into current branch
+- Scans verifier shell scripts for bare grep with single short keywords that could match negated answers
+- Filters out robust patterns: grep with -E/-P/-w/-q/-r/-c/-n flags, multi-word patterns, regex patterns
+- Skips greps targeting source code files or log/result paths (structured output)
+- O.b added to TASK_CHECKS, removed from SKIP_CHECKS (along with O.a)
+- Uses WARN (not FAIL) since O.b is IMPORTANT severity and this is heuristic
+- Result: csb_sdlc_fix shows O.b=PASS (no bare keyword greps found — verifiers use structured validation)
+- Files changed: `scripts/abc_audit.py`, `ralph-abc-checks/prd.json`, `ralph-abc-checks/progress.txt`
+- **Learnings for future iterations:**
+  - Most verifiers use test frameworks, JSON parsing, or diff-based validation — bare keyword grep is rare
+  - The O.b check will mostly PASS since the codebase uses robust verification patterns
+  - Branch divergence: US-004 was committed on a parallel history; had to re-implement O.a on current branch rather than cherry-pick (conflicts)
+---
