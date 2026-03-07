@@ -176,6 +176,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/backfill_size_metadata.py` [one_off] - Historical one-off script: backfill size metadata.
 - `scripts/backfill_triage_from_manifest.py` [one_off] - Historical one-off script: backfill triage from manifest.
 - `scripts/check_harness_readiness.py` - Utility script for check harness readiness.
+- `scripts/collect_repo_cloc.py` - Utility script for collect repo cloc.
 - `scripts/compare_contextbench_results.py` - Utility script for compare contextbench results.
 - `scripts/compare_old_new_ground_truth.py` - Utility script for compare old new ground truth.
 - `scripts/compute_analysis_ir_metrics.py` - Utility script for compute analysis ir metrics.

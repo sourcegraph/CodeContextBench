@@ -211,6 +211,14 @@
       "summary": "Pre-run infrastructure readiness checker (tokens, Docker, disk, Harbor CLI)."
     },
     {
+      "name": "collect_repo_cloc.py",
+      "path": "scripts/collect_repo_cloc.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for collect repo cloc."
+    },
+    {
       "name": "compare_configs.py",
       "path": "scripts/compare_configs.py",
       "category": "analysis_comparison",
@@ -1667,7 +1675,7 @@
     "infra_mirrors": 20,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 90,
+    "misc": 91,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,
