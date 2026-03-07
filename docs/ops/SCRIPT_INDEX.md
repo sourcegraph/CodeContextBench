@@ -33,8 +33,11 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 ## Analysis & Comparison
 
 - `scripts/analyze_mcp_unique_haiku.py` - Analysis/comparison script for analyze mcp unique haiku.
+- `scripts/analyze_minimum_subset.py` - Analysis/comparison script for analyze minimum subset.
 - `scripts/analyze_paired_cost_official_raw.py` - Analysis/comparison script for analyze paired cost official raw.
+- `scripts/analyze_rq_power.py` - Analysis/comparison script for analyze rq power.
 - `scripts/analyze_run_coverage.py` - Analysis/comparison script for analyze run coverage.
+- `scripts/analyze_size_effects.py` - Analysis/comparison script for analyze size effects.
 - `scripts/audit_traces.py` - Analysis/comparison script for audit traces.
 - `scripts/compare_configs.py` - Compares benchmark outcomes across configs on matched task sets.
 - `scripts/comprehensive_analysis.py` - Analysis/comparison script for comprehensive analysis.
@@ -187,6 +190,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/convert_harbor_to_contextbench.py` - Utility script for convert harbor to contextbench.
 - `scripts/cross_validate_gt.py` - Utility script for cross validate gt.
 - `scripts/cross_validate_oracles.py` - Utility script for cross validate oracles.
+- `scripts/daytona_cost_guard.py` - Utility script for daytona cost guard.
 - `scripts/daytona_curator_runner.py` - Utility script for daytona curator runner.
 - `scripts/daytona_poc_runner.py` - Utility script for daytona poc runner.
 - `scripts/daytona_runner.py` - Utility script for daytona runner.

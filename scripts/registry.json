@@ -51,6 +51,14 @@
       "summary": "Analysis/comparison script for analyze mcp unique haiku."
     },
     {
+      "name": "analyze_minimum_subset.py",
+      "path": "scripts/analyze_minimum_subset.py",
+      "category": "analysis_comparison",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Analysis/comparison script for analyze minimum subset."
+    },
+    {
       "name": "analyze_paired_cost_official_raw.py",
       "path": "scripts/analyze_paired_cost_official_raw.py",
       "category": "analysis_comparison",
@@ -59,12 +67,28 @@
       "summary": "Analysis/comparison script for analyze paired cost official raw."
     },
     {
+      "name": "analyze_rq_power.py",
+      "path": "scripts/analyze_rq_power.py",
+      "category": "analysis_comparison",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Analysis/comparison script for analyze rq power."
+    },
+    {
       "name": "analyze_run_coverage.py",
       "path": "scripts/analyze_run_coverage.py",
       "category": "analysis_comparison",
       "status": "maintained",
       "language": "python",
       "summary": "Analysis/comparison script for analyze run coverage."
+    },
+    {
+      "name": "analyze_size_effects.py",
+      "path": "scripts/analyze_size_effects.py",
+      "category": "analysis_comparison",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Analysis/comparison script for analyze size effects."
     },
     {
       "name": "answer_json_verifier_lib.sh",
@@ -409,6 +433,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Task creation/selection script for customize mcp skeletons."
+    },
+    {
+      "name": "daytona_cost_guard.py",
+      "path": "scripts/daytona_cost_guard.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for daytona cost guard."
     },
     {
       "name": "daytona_curator_runner.py",
@@ -1684,14 +1716,14 @@
     }
   ],
   "category_counts": {
-    "analysis_comparison": 24,
+    "analysis_comparison": 27,
     "core_operations": 13,
     "data_management": 10,
     "generation": 7,
     "infra_mirrors": 21,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 92,
+    "misc": 93,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

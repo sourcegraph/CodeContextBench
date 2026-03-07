@@ -25,6 +25,7 @@ with open(TASKS_FILE) as f:
         TASK_META = {t["task_id"].lower(): t for t in _tasks_raw}
     else:
         TASK_META = {k.lower(): v for k, v in _tasks_raw.items()}
+TASK_KEYS_SORTED = sorted(TASK_META)
 
 # Build canonical sets
 SDLC_TASKS = set()
@@ -46,10 +47,39 @@ SUITE_MERGE_MAP = {
     "csb_org_platform": "compliance_platform",
 }
 
+# Paper-only analytical categories. Directory layout and benchmark names stay unchanged.
+SUITE_TO_CATEGORY = {
+    "csb_sdlc_understand": "Comprehension",
+    "csb_sdlc_design": "Comprehension",
+    "csb_sdlc_document": "Comprehension",
+    "csb_org_crossrepo_tracing": "Comprehension",
+    "csb_org_domain": "Comprehension",
+    "csb_org_onboarding": "Comprehension",
+    "csb_org_platform": "Comprehension",
+    "csb_org_crossorg": "Comprehension",
+    "csb_org_org": "Comprehension",
+    "csb_sdlc_feature": "Implementation",
+    "csb_sdlc_fix": "Implementation",
+    "csb_sdlc_refactor": "Implementation",
+    "csb_org_crossrepo": "Implementation",
+    "csb_org_migration": "Implementation",
+    "csb_sdlc_debug": "Quality",
+    "csb_sdlc_test": "Quality",
+    "csb_sdlc_secure": "Quality",
+    "csb_org_incident": "Quality",
+    "csb_org_security": "Quality",
+    "csb_org_compliance": "Quality",
+}
+
 
 def get_merged_suite(benchmark: str) -> str:
     """Map a benchmark suite to its merged name, or return original."""
     return SUITE_MERGE_MAP.get(benchmark, benchmark)
+
+
+def get_analysis_category(benchmark: str) -> str:
+    """Map a benchmark suite to the paper's 3-category reporting taxonomy."""
+    return SUITE_TO_CATEGORY.get(benchmark, "unknown")
 
 
 def normalize_task_name(raw_name: str) -> str:
@@ -61,11 +91,30 @@ def normalize_task_name(raw_name: str) -> str:
     name = re.sub(r"^bl_", "", name, flags=re.IGNORECASE)
     # Strip sgonly_ prefix
     name = re.sub(r"^sgonly_", "", name, flags=re.IGNORECASE)
+    # Strip Harbor secondary suffix: __XXXXXX
+    name = re.sub(r"__[A-Za-z0-9]+$", "", name)
     # Strip Harbor random suffix: _XXXXXX or _XXXXXXX (6-8 alphanumeric)
     name = re.sub(r"_[A-Za-z0-9]{6,8}$", "", name)
     # Lowercase for case-insensitive matching
     name = name.lower()
     return name
+
+
+def resolve_task_name(raw_name: str) -> str:
+    """Resolve a Harbor task name to the canonical selected-task ID.
+
+    Harbor sometimes truncates long task directory names mid-ID. After normalizing
+    prefixes/suffixes, fall back to a unique prefix match against known task IDs.
+    """
+    task_name = normalize_task_name(raw_name)
+    if task_name in TASK_META:
+        return task_name
+
+    prefix_matches = [candidate for candidate in TASK_KEYS_SORTED if candidate.startswith(task_name)]
+    if len(prefix_matches) == 1:
+        return prefix_matches[0]
+
+    return task_name
 
 
 def classify_config(config_name: str) -> str:
@@ -98,6 +147,7 @@ def parse_timestamp(ts: str) -> datetime:
 
 def find_task_metadata(task_name: str) -> dict:
     """Find task metadata from selected_benchmark_tasks.json."""
+    task_name = resolve_task_name(task_name)
     # Direct lookup (already lowercase from normalize_task_name)
     if task_name in TASK_META:
         return TASK_META[task_name]
@@ -136,7 +186,7 @@ def _process_task_dir(task_dir, run_name, config_type, records):
     # Normalize task name
     raw_name = result.get("task_name", task_dir.name)
     raw_name = re.sub(r"__[A-Za-z0-9]+$", "", raw_name)
-    task_name = normalize_task_name(raw_name)
+    task_name = resolve_task_name(raw_name)
 
     # Skip non-canonical tasks
     if task_name not in TASK_META:
@@ -208,8 +258,11 @@ def _process_task_dir(task_dir, run_name, config_type, records):
 
     # Add task metadata
     meta = find_task_metadata(task_name)
+    benchmark = meta.get("benchmark", "unknown")
     rec["language"] = meta.get("language", "unknown")
     rec["difficulty"] = meta.get("difficulty", "unknown")
+    rec["benchmark"] = benchmark
+    rec["analysis_category"] = get_analysis_category(benchmark)
     rec["task_context_length"] = meta.get("context_length")
     rec["task_files_count"] = meta.get("files_count")
 
@@ -217,44 +270,30 @@ def _process_task_dir(task_dir, run_name, config_type, records):
 
 
 def scan_all_tasks():
-    """Scan all task-level results from runs/official/.
-
-    Handles both directory formats:
-    - New format: run_dir/config_dir/YYYY-MM-DD__HH-MM-SS/task_dir/result.json
-    - Old format: run_dir/config_dir/ccb_*_batch_dir/task_dir/result.json
-    """
+    """Scan all task-level results from runs/official/, including runs/official/_raw/."""
     records = []
-
-    for run_dir in sorted(OFFICIAL.iterdir()):
-        if not run_dir.is_dir() or run_dir.name == "archive":
+    for result_file in sorted(OFFICIAL.rglob("result.json")):
+        task_dir = result_file.parent
+        rel_parts = result_file.relative_to(OFFICIAL).parts
+        if not rel_parts or rel_parts[0] == "archive":
             continue
-        run_name = run_dir.name
 
-        for config_dir in sorted(run_dir.iterdir()):
-            if not config_dir.is_dir():
+        if rel_parts[0] == "_raw":
+            if len(rel_parts) < 5:
                 continue
-            config_name = config_dir.name
-            config_type = classify_config(config_name)
-            if config_type == "unknown":
+            run_name = rel_parts[1]
+            config_name = rel_parts[2]
+        else:
+            if len(rel_parts) < 4:
                 continue
+            run_name = rel_parts[0]
+            config_name = rel_parts[1]
 
-            for sub_dir in sorted(config_dir.iterdir()):
-                if not sub_dir.is_dir():
-                    continue
+        config_type = classify_config(config_name)
+        if config_type == "unknown":
+            continue
 
-                # New format: timestamp directories
-                if re.match(r"^\d{4}-\d{2}-\d{2}", sub_dir.name):
-                    for task_dir in sorted(sub_dir.iterdir()):
-                        if not task_dir.is_dir():
-                            continue
-                        _process_task_dir(task_dir, run_name, config_type, records)
-
-                # Old format: batch directories (ccb_* or csb_*)
-                elif sub_dir.name.startswith(("ccb_", "csb_")):
-                    for task_dir in sorted(sub_dir.iterdir()):
-                        if not task_dir.is_dir():
-                            continue
-                        _process_task_dir(task_dir, run_name, config_type, records)
+        _process_task_dir(task_dir, run_name, config_type, records)
 
     return records
 
@@ -290,6 +329,7 @@ def compute_paired_stats(records):
         task_meta = find_task_metadata(task_name)
         benchmark = task_meta.get("benchmark", "unknown")
         merged_suite = get_merged_suite(benchmark)
+        analysis_category = get_analysis_category(benchmark)
 
         paired.append({
             "task_name": task_name,
@@ -298,6 +338,7 @@ def compute_paired_stats(records):
             "suite_type": meta["suite_type"],
             "benchmark": benchmark,
             "merged_suite": merged_suite,
+            "analysis_category": analysis_category,
             "task_context_length": meta.get("task_context_length"),
             "task_files_count": meta.get("task_files_count"),
             "bl_reward": bl_mean,

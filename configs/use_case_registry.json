@@ -5915,6 +5915,853 @@
       "verification_modes": [
         "artifact"
       ]
+    },
+    {
+      "use_case_id": 297,
+      "category": "D",
+      "title": "FastAPI 422 Validation Error Trace Across Client and Server",
+      "customer_prompt": "A POST request sent with requests returns HTTP 422 from a FastAPI service. Find the Python source files across fastapi/fastapi and psf/requests that (1) serialize and send the request body on the client side, (2) parse request bodies and trigger validation in FastAPI, and (3) construct the validation error response returned to the caller.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "fastapi-requests",
+      "difficulty": "hard",
+      "estimated_repos_needed": 2,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "422 OR validation error OR request body OR requests"
+    },
+    {
+      "use_case_id": 298,
+      "category": "D",
+      "title": "FastAPI Streaming Upload Timeout Trace",
+      "customer_prompt": "A large upload made with requests times out against a FastAPI endpoint. Find the Python source files across psf/requests and fastapi/fastapi that (1) stream request bodies on the client side, (2) consume the ASGI request body on the server side, and (3) raise or surface timeout and disconnect handling during request processing.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "fastapi-requests",
+      "difficulty": "hard",
+      "estimated_repos_needed": 2,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "stream upload OR timeout OR disconnect OR request body"
+    },
+    {
+      "use_case_id": 299,
+      "category": "D",
+      "title": "Gin Middleware Panic Trace With Test Harness",
+      "customer_prompt": "A Gin service panics after a middleware is added and the regression is reproduced in a testify-backed test. Find the Go source files across gin-gonic/gin and stretchr/testify that (1) compose the Gin handler chain, (2) dispatch handlers through Gin's request pipeline, and (3) implement the testify panic assertions used by the reproducer.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "gin-testify",
+      "difficulty": "hard",
+      "estimated_repos_needed": 2,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "combineHandlers OR handleHTTPRequest OR Panics OR NotPanics",
+      "curation_queries": [
+        "combineHandlers",
+        "handleHTTPRequest",
+        "Panics OR NotPanics"
+      ]
+    },
+    {
+      "use_case_id": 300,
+      "category": "D",
+      "title": "Gin Request Binding Failure Trace With Assertions",
+      "customer_prompt": "A Gin handler starts returning 400 after a binding change and the failure is checked in a testify suite. Find the Go source files across gin-gonic/gin and stretchr/testify that (1) invoke Gin's request-binding entry points, (2) attach the 400/ErrorTypeBind response for invalid input, and (3) provide the testify error assertions used to verify the failure.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "gin-testify",
+      "difficulty": "hard",
+      "estimated_repos_needed": 2,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "ShouldBind OR MustBindWith OR ErrorTypeBind OR EqualError",
+      "curation_queries": [
+        "ShouldBind OR ShouldBindWith",
+        "MustBindWith OR ErrorTypeBind",
+        "EqualError OR NoError"
+      ]
+    },
+    {
+      "use_case_id": 301,
+      "category": "D",
+      "title": "Consul Service Mesh Timeout Trace",
+      "customer_prompt": "Consul service mesh traffic starts timing out between sidecars. Find the Go source files in hashicorp/consul that (1) build or propagate upstream proxy configuration, (2) manage Connect sidecar or proxy timeouts, and (3) surface timeout failures during request forwarding or service resolution.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-consul",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "Connect OR proxy timeout OR service mesh OR upstream"
+    },
+    {
+      "use_case_id": 302,
+      "category": "D",
+      "title": "Consul Anti-Entropy Sync Failure Root Cause",
+      "customer_prompt": "Consul reports anti-entropy sync failures and stale catalog state. Find the Go source files in hashicorp/consul that (1) schedule anti-entropy reconciliation, (2) compare local and remote service/catalog state, and (3) apply or log sync failure handling when reconciliation cannot complete.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-consul",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "anti entropy OR reconcile OR catalog sync"
+    },
+    {
+      "use_case_id": 303,
+      "category": "D",
+      "title": "Consul ACL Deny Incident Trace",
+      "customer_prompt": "A Consul API call unexpectedly returns permission denied. Find the Go source files in hashicorp/consul that (1) parse or attach ACL tokens to the request context, (2) enforce ACL policy decisions for the request path, and (3) generate the deny response or audit log entry that surfaces the incident.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-consul",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "ACL OR permission denied OR authorize OR token"
+    },
+    {
+      "use_case_id": 304,
+      "category": "D",
+      "title": "Vault Secret Lease Expiry Trace",
+      "customer_prompt": "A Vault client loses access because a dynamic secret lease expires unexpectedly. Find the Go source files in hashicorp/vault that (1) issue and renew leases, (2) revoke or expire leases in the expiration manager, and (3) surface lease-expiry errors back through the request path.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "lease OR expiration OR renew OR revoke"
+    },
+    {
+      "use_case_id": 305,
+      "category": "D",
+      "title": "Vault Auth Method Failure Trace",
+      "customer_prompt": "A Vault login flow begins failing after an auth backend change. Find the Go source files in hashicorp/vault that (1) dispatch login requests to auth backends, (2) validate the auth method response and token creation path, and (3) propagate authentication failures to the API caller or audit logs.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "auth backend OR login OR token OR authenticate"
+    },
+    {
+      "use_case_id": 306,
+      "category": "D",
+      "title": "Vault Seal-Unseal Error Trace",
+      "customer_prompt": "Vault fails to unseal after a restart and operators see a seal-related error. Find the Go source files in hashicorp/vault that (1) coordinate seal and unseal state, (2) process recovery or unseal key shares, and (3) emit the error path when unseal initialization fails.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "seal OR unseal OR recovery key OR barrier"
+    },
+    {
+      "use_case_id": 307,
+      "category": "D",
+      "title": "Linux Kernel Oops Driver Trace",
+      "customer_prompt": "A kernel oops points at a driver path after a device event. Find the C source files in torvalds/linux that (1) register the relevant driver probe or interrupt path, (2) report kernel oops or BUG diagnostics for that subsystem, and (3) unwind or log the fault from the crashing code path.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "linux-kernel",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "oops OR BUG OR driver probe OR interrupt"
+    },
+    {
+      "use_case_id": 308,
+      "category": "D",
+      "title": "Linux OOM Kill Path Trace",
+      "customer_prompt": "A production node is killing processes because it is out of memory. Find the C source files in torvalds/linux that (1) detect global or cgroup memory pressure, (2) select a victim for the OOM killer, and (3) log or notify the final kill decision.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "linux-kernel",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "oom OR out of memory OR victim OR cgroup"
+    },
+    {
+      "use_case_id": 309,
+      "category": "D",
+      "title": "Linux IRQ Storm Incident Trace",
+      "customer_prompt": "A system enters an IRQ storm and stops making forward progress. Find the C source files in torvalds/linux that (1) dispatch hard IRQ handling, (2) detect interrupt flood or stuck-interrupt conditions, and (3) disable, throttle, or log the problematic IRQ line.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "linux-kernel",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "IRQ OR interrupt storm OR disable_irq OR flood"
+    },
+    {
+      "use_case_id": 310,
+      "category": "D",
+      "title": "Chromium Renderer Crash Trace",
+      "customer_prompt": "Chromium starts crashing in the renderer process after a navigation event. Find the C++ source files in chromium/chromium that (1) bootstrap renderer process startup, (2) dispatch the failing navigation or document lifecycle work inside the renderer, and (3) surface the crash or fatal termination back to browser-side crash handling.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "renderer crash OR navigation OR RenderProcessHost"
+    },
+    {
+      "use_case_id": 311,
+      "category": "D",
+      "title": "Chromium IPC Channel Failure Trace",
+      "customer_prompt": "Chromium reports an IPC channel error between browser and renderer processes. Find the C++ source files in chromium/chromium that (1) create or bind the IPC/Mojo channel, (2) handle channel disconnect or pipe closure, and (3) propagate the resulting error to process teardown or recovery code.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "IPC OR Mojo OR channel error OR disconnect"
+    },
+    {
+      "use_case_id": 312,
+      "category": "D",
+      "title": "Chromium GPU Process Abort Trace",
+      "customer_prompt": "The Chromium GPU process aborts during graphics initialization. Find the C++ source files in chromium/chromium that (1) launch and initialize the GPU process, (2) set up the graphics or command-buffer path that can fail, and (3) handle or report the GPU-process crash back to the browser process.",
+      "mcp_suite": "csb_org_incident",
+      "task_family": "incident-debug",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "chromium-browser",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "GPU process OR command buffer OR graphics init OR crash"
+    },
+    {
+      "use_case_id": 313,
+      "category": "B",
+      "title": "FastAPI CORS Middleware Audit",
+      "customer_prompt": "Audit FastAPI's CORS handling. Find the Python source files in fastapi/fastapi that (1) configure allowed origins, methods, and headers for CORS, (2) process preflight OPTIONS requests, and (3) attach the final CORS response headers to application responses.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "fastapi-web-framework",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "CORS OR preflight OR allow origins OR response headers"
+    },
+    {
+      "use_case_id": 314,
+      "category": "B",
+      "title": "FastAPI OAuth2 and JWT Scope Resolution Audit",
+      "customer_prompt": "Audit FastAPI's security dependency flow for bearer-token-protected routes. Find the Python source files in fastapi/fastapi that (1) define OAuth2 bearer helpers and security scopes, (2) resolve security dependencies for a request, and (3) raise the authentication or authorization errors returned when token validation fails.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "fastapi-web-framework",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "OAuth2 OR JWT OR security scopes OR bearer"
+    },
+    {
+      "use_case_id": 315,
+      "category": "B",
+      "title": "FastAPI API Key Security Dependency Audit",
+      "customer_prompt": "Audit FastAPI's API-key authentication path. Find the Python source files in fastapi/fastapi that (1) define APIKeyHeader/APIKeyCookie/APIKeyQuery and reject missing credentials, (2) thread security dependencies and scopes through dependency resolution, and (3) raise the authentication errors or headers returned to callers when credentials are absent or invalid.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "fastapi-web-framework",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "APIKeyHeader OR APIKeyCookie OR APIKeyQuery OR check_api_key OR solve_dependencies",
+      "curation_queries": [
+        "APIKeyHeader OR APIKeyCookie OR APIKeyQuery",
+        "check_api_key OR WWW-Authenticate",
+        "solve_dependencies OR SecurityScopes"
+      ]
+    },
+    {
+      "use_case_id": 316,
+      "category": "B",
+      "title": "Flask Session Cookie Security Audit",
+      "customer_prompt": "Audit Flask's session-cookie handling. Find the Python source files in pallets/flask that (1) create and load the secure cookie session, (2) configure cookie security attributes such as HttpOnly, Secure, SameSite, and domain/path settings, and (3) sign or verify session data before it is trusted.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "flask-web-framework",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "session cookie OR SameSite OR HttpOnly OR Secure"
+    },
+    {
+      "use_case_id": 317,
+      "category": "B",
+      "title": "Flask Host Validation and Trusted Routing Audit",
+      "customer_prompt": "Audit Flask's host and URL security boundaries. Find the Python source files in pallets/flask that (1) validate trusted hosts or server names, (2) bind request routing to the incoming host header, and (3) reject or normalize unsafe host information before URL matching proceeds.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "flask-web-framework",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "trusted hosts OR SERVER_NAME OR host header OR routing"
+    },
+    {
+      "use_case_id": 318,
+      "category": "B",
+      "title": "Vault TLS Certificate Rotation Audit",
+      "customer_prompt": "Audit Vault's TLS certificate lifecycle. Find the Go source files in hashicorp/vault that (1) load TLS certificates and key material, (2) watch for or apply certificate rotation and reload events, and (3) rebuild listener or client TLS configuration after the rotation occurs.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "TLS OR certificate reload OR listener OR rotate"
+    },
+    {
+      "use_case_id": 319,
+      "category": "B",
+      "title": "Vault Auth Boundary Enforcement Audit",
+      "customer_prompt": "Audit Vault's authentication and authorization boundary. Find the Go source files in hashicorp/vault that (1) authenticate a request into an identity or token, (2) resolve attached policies and capabilities, and (3) enforce the final authorization decision for a protected path.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "token OR identity OR policy OR capability"
+    },
+    {
+      "use_case_id": 320,
+      "category": "B",
+      "title": "Vault Secret Engine Access Control Audit",
+      "customer_prompt": "Audit Vault secret-engine access control. Find the Go source files in hashicorp/vault that (1) register or dispatch secret-engine backends, (2) gate secret-engine operations on capabilities or path policy checks, and (3) emit the deny path when a caller crosses an auth boundary.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "hashicorp-vault",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "secret engine OR capability OR authorize OR deny"
+    },
+    {
+      "use_case_id": 321,
+      "category": "B",
+      "title": "Redis AUTH and ACL Enforcement Audit",
+      "customer_prompt": "Audit Redis authentication and ACL enforcement. Find the C source files in redis/redis that (1) parse AUTH or ACL commands, (2) attach authenticated user state to the client connection, and (3) enforce command-level permissions before an operation is executed.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "redis-database",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "AUTH OR ACL OR authenticated user OR permissions"
+    },
+    {
+      "use_case_id": 322,
+      "category": "B",
+      "title": "Redis Protected Mode Configuration Audit",
+      "customer_prompt": "Audit Redis protected-mode behavior. Find the C source files in redis/redis that (1) load and validate bind/protected-mode configuration, (2) decide whether a remote client should be rejected before authentication, and (3) return the protected-mode error sent to disallowed connections.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "redis-database",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "protected mode OR bind OR reject OR remote client"
+    },
+    {
+      "use_case_id": 323,
+      "category": "B",
+      "title": "Elasticsearch Transport TLS Audit",
+      "customer_prompt": "Audit Elasticsearch transport-layer TLS. Find the Java source files in elastic/elasticsearch that (1) load transport SSL/TLS settings and certificates, (2) build the transport-layer SSL context or channel handlers, and (3) enforce certificate validation for inter-node transport connections.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "elasticsearch-search",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "transport TLS OR SSL context OR certificate validation"
+    },
+    {
+      "use_case_id": 324,
+      "category": "B",
+      "title": "Elasticsearch API Key Scope Validation Audit",
+      "customer_prompt": "Audit Elasticsearch API key authorization. Find the Java source files in elastic/elasticsearch that (1) parse or authenticate API keys, (2) resolve the privileges and scopes attached to an API key, and (3) enforce those scopes when a request reaches a protected REST or transport action.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "elasticsearch-search",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "API key OR privileges OR scopes OR authenticate"
+    },
+    {
+      "use_case_id": 325,
+      "category": "B",
+      "title": "Elasticsearch RBAC Resolution Audit",
+      "customer_prompt": "Audit Elasticsearch role-based access control. Find the Java source files in elastic/elasticsearch that (1) resolve user roles and role descriptors, (2) map those roles into cluster or index privileges, and (3) apply the final allow-or-deny authorization decision for an incoming action.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "elasticsearch-search",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "role descriptor OR privileges OR authorization OR allow deny"
+    },
+    {
+      "use_case_id": 326,
+      "category": "B",
+      "title": "Spark UI Authentication Audit",
+      "customer_prompt": "Audit Spark's web UI authentication path. Find the Java or Scala source files in apache/spark that (1) configure UI authentication filters or servlet handlers, (2) attach authenticated user identity to UI requests, and (3) reject unauthenticated access to protected UI routes.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "spark-analytics",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "UI auth OR filter OR servlet OR unauthenticated"
+    },
+    {
+      "use_case_id": 327,
+      "category": "B",
+      "title": "Spark Executor Secret Handling Audit",
+      "customer_prompt": "Audit Spark's executor secret and credential handling. Find the Java or Scala source files in apache/spark that (1) generate or distribute secrets from the driver to executors, (2) store or redact those secrets in runtime configuration, and (3) validate the secret on executor startup or RPC authentication.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "spark-analytics",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "executor secret OR token OR redact OR authenticate"
+    },
+    {
+      "use_case_id": 328,
+      "category": "B",
+      "title": "Spark Network Encryption and Auth Audit",
+      "customer_prompt": "Audit Spark's encrypted RPC and shuffle authentication path. Find the Java or Scala source files in apache/spark that (1) configure network encryption or SASL/auth settings, (2) build the secure transport or shuffle-service connection, and (3) enforce handshake failure handling when authentication or encryption negotiation breaks.",
+      "mcp_suite": "csb_org_security",
+      "task_family": "vuln-remediation",
+      "mcp_unique": true,
+      "oracle_type": "deterministic_json",
+      "oracle_check_types": [
+        "file_set_match"
+      ],
+      "repo_set_id": "spark-analytics",
+      "difficulty": "hard",
+      "estimated_repos_needed": 1,
+      "deepsearch_relevant": false,
+      "mcp_capabilities_required": [
+        "keyword_search",
+        "read_file",
+        "find_references"
+      ],
+      "verification_modes": [
+        "artifact"
+      ],
+      "search_pattern": "network encryption OR SASL OR shuffle OR handshake"
     }
   ]
 }

@@ -35,6 +35,9 @@ Environment variables:
     SRC_ACCESS_TOKEN         Fallback for SOURCEGRAPH_ACCESS_TOKEN
     ANTHROPIC_API_KEY        Enables LLM query expansion (optional)
 
+If `.env.local` exists at the repo root, missing env vars are loaded from it
+automatically without overriding already-exported values.
+
 Usage:
     python3 scripts/curate_oracle.py --task-dir benchmarks/csb_org_incident/ccx-incident-142
     python3 scripts/curate_oracle.py --task-dir <dir> --mode deep --num-runs 4 --min-hits 2
@@ -56,6 +59,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
 
 try:
     import anthropic as _anthropic_mod
@@ -924,9 +929,54 @@ def merge_oracle_answers(existing: Dict, new: Dict) -> Dict:
     return merged
 
 
+def sync_task_spec_oracle(task_spec: Dict, oracle_answer: Dict) -> Dict:
+    """Copy curated oracle artifacts into task_spec.json for validator compatibility."""
+    updated = dict(task_spec)
+    artifacts = dict(updated.get("artifacts", {}))
+    oracle = dict(artifacts.get("oracle", {}))
+
+    oracle["required_files"] = list(oracle_answer.get("files", []))
+    oracle["required_symbols"] = list(oracle_answer.get("symbols", []))
+    oracle["required_references"] = list(oracle_answer.get("provenance", {}).get("must_cite_paths", []))
+
+    chains = list(oracle_answer.get("chains", []))
+    if not chains and oracle_answer.get("chain"):
+        chains = [{"steps": list(oracle_answer.get("chain", []))}]
+    oracle["dependency_chains"] = chains
+
+    artifacts["oracle"] = oracle
+    updated["artifacts"] = artifacts
+    return updated
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
+
+
+def _load_dotenv_defaults(dotenv_path: Path) -> None:
+    """Populate missing env vars from .env.local without overriding exports."""
+    if not dotenv_path.exists():
+        return
+
+    for raw_line in dotenv_path.read_text().splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[len("export ") :].strip()
+        if "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key:
+            continue
+        if value and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        os.environ.setdefault(key, value)
+
 
 def _get_sg_credentials() -> Tuple[str, str]:
     url = (
@@ -943,6 +993,8 @@ def _get_sg_credentials() -> Tuple[str, str]:
 
 
 def main() -> int:
+    _load_dotenv_defaults(REPO_ROOT / ".env.local")
+
     parser = argparse.ArgumentParser(
         description="Curate oracle_answer.json for MCP-unique benchmark tasks.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -1080,6 +1132,12 @@ def main() -> int:
         f.write("\n")
     logging.info("Wrote %s: %d files, %d symbols",
                  out_oracle, len(oracle_answer.get("files", [])), len(oracle_answer.get("symbols", [])))
+
+    synced_task_spec = sync_task_spec_oracle(task_spec, oracle_answer)
+    with open(spec_path, "w") as f:
+        json.dump(synced_task_spec, f, indent=2)
+        f.write("\n")
+    logging.info("Synced curated oracle into %s", spec_path)
 
     log_data = {
         "task_id": task_spec.get("id", ""),
