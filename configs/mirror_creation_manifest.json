@@ -1,7 +1,7 @@
 {
   "_description": "Mirrors needed for reproducible Sourcegraph indexing",
   "_generated": "2026-02-22",
-  "_status": "UPDATED 2026-03-06 \u2014 170 mirrors (11 new scaling-gap repos)",
+  "_status": "UPDATED 2026-03-08 \u2014 178 mirrors (8 new SWE-bench Pro repos)",
   "mirrors": [
     {
       "upstream": "github.com/NVIDIA/TensorRT-LLM",
@@ -1632,6 +1632,78 @@
       "tasks": [
         "csb_sdlc_understand/clickhouse-mergetree-arch-understand-001",
         "csb_org_security/ccx-vuln-remed-296"
+      ]
+    },
+    {
+      "upstream": "github.com/gravitational/teleport",
+      "commit": "4b11dc4a8e02ec5620b27f9ecb28f3180a5e67f7",
+      "mirror": "sg-evals/teleport--4b11dc4a",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/teleport-users-can-delete-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/ProtonMail/WebClients",
+      "commit": "7c7e668956cf9df0f51d401dbb00b7e1d445198b",
+      "mirror": "sg-evals/WebClients--7c7e6689",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/webclients-api-error-metrics-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/ProtonMail/WebClients",
+      "commit": "52ada0340f0ae0869ef1e3b92e1cc4c799b637cf",
+      "mirror": "sg-evals/WebClients--52ada034",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/webclients-contact-import-fails-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/ProtonMail/WebClients",
+      "commit": "83c2b47478a5224db61c6557ad326c2bbda18645",
+      "mirror": "sg-evals/WebClients--83c2b474",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/webclients-excessive-repeated-api-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/ProtonMail/WebClients",
+      "commit": "8472bc64099be00753167dbb516a1187e0ce9b69",
+      "mirror": "sg-evals/WebClients--8472bc64",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/webclients-implement-proper-punycode-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/ProtonMail/WebClients",
+      "commit": "85560278585cd2d6f6f022112c912d03a79b2da7",
+      "mirror": "sg-evals/WebClients--85560278",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/webclients-incorrect-rendering-content-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/element-hq/element-web",
+      "commit": "8ebdcab7d92f90422776c4390363338dcfd98ba5",
+      "mirror": "sg-evals/element-web--8ebdcab7",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/element-web-roomheaderbuttons-can-crash-fix-001"
+      ]
+    },
+    {
+      "upstream": "github.com/element-hq/element-web",
+      "commit": "526645c79160ab1ad4b4c3845de27d51263a405e",
+      "mirror": "sg-evals/element-web--526645c7",
+      "pin_source": "SWE-bench Pro base_commit",
+      "tasks": [
+        "csb_sdlc_fix/element-web-unread-indicators-diverge-fix-001"
       ]
     }
   ],
