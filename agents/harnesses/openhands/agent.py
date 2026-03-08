@@ -129,21 +129,36 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             env=env,
         ))
 
-        # Build the openhands command reading task from file
+        # Build a Python launcher script that reads the task from file and
+        # passes it as a proper argv element to openhands.core.main.
+        # This completely bypasses shell quoting/expansion issues.
         mcp_config = self._build_mcp_config_toml()
         config_file_path = "~/.openhands/config.toml"
 
-        commands = [
-            "SANDBOX_VOLUMES=${PWD}:/workspace:rw",
-            "/opt/openhands-venv/bin/python -m openhands.core.main",
-            f'--task="$(cat {self._TASK_FILE})"',
+        launcher_lines = [
+            "import sys, subprocess",
+            f"task = open('{self._TASK_FILE}').read()",
+            "cmd = [sys.executable, '-m', 'openhands.core.main', '--task=' + task]",
         ]
         if mcp_config:
-            commands.append(f"--config-file={config_file_path}")
+            launcher_lines.append(f"cmd.append('--config-file={config_file_path}')")
+        launcher_lines.append("sys.exit(subprocess.call(cmd, stdin=subprocess.DEVNULL))")
+
+        launcher_script = "; ".join(launcher_lines)
+        launcher_b64 = base64.b64encode(launcher_script.encode()).decode()
+
+        # Write launcher, then execute it — two separate commands to avoid
+        # any shell interpretation of the task content.
+        launcher_path = "/tmp/oh_launcher.py"
+        exec_inputs.append(ExecInput(
+            command=f"echo '{launcher_b64}' | base64 -d > {launcher_path}",
+            env=env,
+        ))
 
         main_cmd = (
-            " ".join(commands)
-            + " 2>&1 </dev/null | stdbuf -oL tee /logs/agent/openhands.txt"
+            f"SANDBOX_VOLUMES=${{PWD}}:/workspace:rw "
+            f"/opt/openhands-venv/bin/python {launcher_path}"
+            " 2>&1 | stdbuf -oL tee /logs/agent/openhands.txt"
         )
 
         exec_inputs.append(ExecInput(
