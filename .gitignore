@@ -74,6 +74,9 @@ vendor/dependeval_repos/
 # Oracle curation logs (auto-generated, not needed for benchmark)
 oracle_curation_log.json
 
+# Experimental / internal task mining (not for public benchmark)
+sourcegraph_tasks/
+
 # Credentials
 *.key
 *.pem

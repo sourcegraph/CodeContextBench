@@ -151,15 +151,12 @@ if [ ${#TASK_ROWS[@]} -eq 0 ]; then
 fi
 
 declare -A TASK_PATH_BY_ID
-declare -A TASK_SUITE_BY_ID
 TASK_IDS=()
 for row in "${TASK_ROWS[@]}"; do
     task_id=$(echo "$row" | cut -f1)
     task_path=$(echo "$row" | cut -f2)
-    benchmark=$(echo "$row" | cut -f3)
     TASK_IDS+=("$task_id")
     TASK_PATH_BY_ID["$task_id"]="$task_path"
-    TASK_SUITE_BY_ID["$task_id"]="$benchmark"
 done
 
 if [ -z "${PARALLEL_JOBS:-}" ] || [ "$PARALLEL_JOBS" -lt 1 ] 2>/dev/null; then
@@ -167,6 +164,7 @@ if [ -z "${PARALLEL_JOBS:-}" ] || [ "$PARALLEL_JOBS" -lt 1 ] 2>/dev/null; then
 fi
 
 # Multi-account support: rotate OAuth tokens across accounts.
+# REAL_HOME must be set before setup_multi_accounts.
 REAL_HOME="$HOME"
 setup_multi_accounts
 
@@ -181,17 +179,6 @@ case "$_model_lower" in
     *opus-4-6*|*opus46*) MODEL_SHORT="opus46" ;;
     *haiku-4-5*|*haiku45*) MODEL_SHORT="haiku45" ;;
     *) MODEL_SHORT=$(echo "$_model_lower" | tr -d '-' | tr -d '_' | cut -c1-12) ;;
-esac
-
-# Dotted model version for official directory structure (e.g. sonnet-4.6)
-case "$_model_lower" in
-    *sonnet-4-6*|*sonnet46*) MODEL_DIR="sonnet-4.6" ;;
-    *sonnet-4-5*|*sonnet45*) MODEL_DIR="sonnet-4.5" ;;
-    *opus-4-6*|*opus46*)     MODEL_DIR="opus-4.6" ;;
-    *haiku-4-5*|*haiku45*)   MODEL_DIR="haiku-4.5" ;;
-    *gpt-5*|*gpt5*)          MODEL_DIR="gpt-5" ;;
-    *gpt-4o*|*gpt4o*)        MODEL_DIR="gpt-4o" ;;
-    *)                        MODEL_DIR="$MODEL_SHORT" ;;
 esac
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -216,54 +203,17 @@ echo "ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:+set (${#ANTHROPIC_API_KEY} chars)}
 echo "Storage override: ${DAYTONA_OVERRIDE_STORAGE:-<none>} MB"
 echo ""
 
-if [ "${HARBOR_ENV:-}" = "daytona" ]; then
-    clear_daytona_cost_guard_ready
-    _cost_guard_cmd=(
-        python3 "$REPO_ROOT/scripts/daytona_cost_guard.py" preflight
-        --selection-file "$SELECTION_FILE"
-        --parallel-tasks "$PARALLEL_JOBS"
-        --concurrency "$CONCURRENCY"
-        --policy "$DAYTONA_COST_POLICY"
-    )
-    [ -n "$BENCHMARK_FILTER" ] && _cost_guard_cmd+=(--benchmark "$BENCHMARK_FILTER")
-    for task_id in "${TASK_IDS[@]}"; do
-        _cost_guard_cmd+=(--task-id "$task_id")
-    done
-    [ "$RUN_BASELINE" = true ] && _cost_guard_cmd+=(--config "baseline-local-direct")
-    [ "$RUN_FULL" = true ] && _cost_guard_cmd+=(--config "mcp-remote-direct")
-    "${_cost_guard_cmd[@]}" || exit 1
-    mark_daytona_cost_guard_ready
-fi
-
 _openhands_run_single() {
     local task_id=$1
     local _task_home=$2
     local config=${3:-baseline-local-direct}
     local mcp_type=${4:-none}
     local jobs_base=${5:-$JOBS_BASE}
+    local jobs_subdir="${jobs_base}/${config}"
     local task_path="${TASK_PATH_BY_ID[$task_id]}"
 
-    # Map harness config name to official config dir name
-    local official_config
-    case "$config" in
-        baseline-local-direct) official_config="baseline" ;;
-        mcp-remote-direct)     official_config="sourcegraph_full" ;;
-        *)                     official_config="$config" ;;
-    esac
-
-    # Build official-structure jobs dir:
-    #   {jobs_base}/openhands/{csb_sdlc|csb_org}/{model_dir}/{suite}/{official_config}
-    local suite="${TASK_SUITE_BY_ID[$task_id]}"
-    local top_level
-    if [[ "$suite" == csb_sdlc_* ]]; then
-        top_level="csb_sdlc"
-    else
-        top_level="csb_org"
-    fi
-    local jobs_subdir="${jobs_base}/openhands/${top_level}/${MODEL_DIR}/${suite}/${official_config}"
-
     # Extract ANTHROPIC_API_KEY from this account's OAuth credentials.
-    # run_tasks_parallel sets HOME=$_task_home for account rotation.
+    # run_tasks_parallel sets HOME=$_task_home, so we read that account's token.
     if [ "$USE_SUBSCRIPTION" = "true" ]; then
         local _acct_token
         _acct_token=$(python3 -c "
@@ -312,19 +262,14 @@ if os.path.exists(creds_file):
     fi
 
     echo "Running task: $task_id ($config)"
-    DAYTONA_LABEL_RUN_ID="$(basename "$JOBS_BASE")" \
-    DAYTONA_LABEL_BENCHMARK="${TASK_SUITE_BY_ID[$task_id]}" \
-    DAYTONA_LABEL_TASK_ID="$task_id" \
-    DAYTONA_LABEL_CONFIG="$config" \
-    DAYTONA_LABEL_CATEGORY="$CATEGORY" \
-    TASK_SOURCE_DIR="$task_path" \
-    BASELINE_MCP_TYPE="$mcp_type" harbor_run_guarded \
+    BASELINE_MCP_TYPE="$mcp_type" harbor run \
         --path "$_run_path" \
         --agent-import-path "$AGENT_PATH" \
         --model "$MODEL" \
         --jobs-dir "$jobs_subdir" \
         -n "$CONCURRENCY" \
         --timeout-multiplier "$TIMEOUT_MULTIPLIER" \
+        ${HARBOR_ENV:+--env "$HARBOR_ENV"} \
         ${DAYTONA_OVERRIDE_STORAGE:+--override-storage-mb "$DAYTONA_OVERRIDE_STORAGE"} \
         2>&1 | tee "${jobs_subdir}/${task_id}.log" \
         || echo "WARNING: Task $task_id ($config) failed"
@@ -334,20 +279,23 @@ run_mode() {
     local mode=$1
     local mcp_type=$2
 
+    jobs_subdir="${JOBS_BASE}/${mode}"
+    mkdir -p "$jobs_subdir"
+
     _mode_dispatch() {
         _openhands_run_single "$1" "$2" "$mode" "$mcp_type" "$JOBS_BASE"
     }
 
     run_tasks_parallel TASK_IDS _mode_dispatch || true
-    validate_and_report "$JOBS_BASE" "$mode"
+    validate_and_report "$jobs_subdir" "$mode"
 }
 
 if [ "$PAIRED_MODE" = true ] && [ "$RUN_BASELINE" = true ] && [ "$RUN_FULL" = true ]; then
     # Run baseline + MCP simultaneously per task (interleaved, not sequential)
     export FULL_CONFIG="mcp-remote-direct"
     run_paired_configs TASK_IDS _openhands_run_single "$JOBS_BASE"
-    validate_and_report "$JOBS_BASE" "baseline"
-    validate_and_report "$JOBS_BASE" "sourcegraph_full"
+    validate_and_report "${JOBS_BASE}/baseline-local-direct" "baseline-local-direct"
+    validate_and_report "${JOBS_BASE}/mcp-remote-direct" "mcp-remote-direct"
 else
     # Sequential mode (--baseline-only, --full-only, or --sequential)
     if [ "$RUN_BASELINE" = true ]; then

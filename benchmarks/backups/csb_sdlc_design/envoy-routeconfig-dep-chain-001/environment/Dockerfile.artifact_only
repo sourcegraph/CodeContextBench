@@ -3,10 +3,10 @@
 # MCP agent deletes source files at runtime via agent startup script.
 # Verifier applies patches from review.json to /repo_full copy for scoring.
 
-FROM golang:1.23-alpine AS base
+FROM golang:1.23 AS base
 
 # Install git, bash, and python3 (needed by verifier test.sh scoring)
-RUN apk add --no-cache git bash python3
+RUN apt-get update && apt-get install -y --no-install-recommends git bash python3 && rm -rf /var/lib/apt/lists/*
 
 # Clone repos at pinned commits
 WORKDIR /workspace
