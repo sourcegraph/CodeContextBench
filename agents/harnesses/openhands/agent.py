@@ -136,9 +136,9 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             else:
                 env.pop("PYTHONPATH", None)
         env["PYTHONSAFEPATH"] = "1"
-        # Disable jupyter at every config level to prevent LocalRuntime
-        # from starting jupyter-kernelgateway (crashes in Daytona).
-        env["SANDBOX_PLUGINS"] = "agent_skills"  # excludes jupyter plugin
+        # Hint to OpenHands config to disable jupyter/browsing.
+        # The real fix is the monkey-patch in oh_main_wrapper.py that
+        # removes JupyterRequirement from CodeActAgent.sandbox_plugins.
         env["ENABLE_JUPYTER"] = "false"
         env["ENABLE_BROWSING"] = "false"
         env["AGENT_ENABLE_JUPYTER"] = "false"
@@ -214,6 +214,18 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             "    sys.meta_path.insert(0, _WorkspaceSafeFinder)",
             "",
             "_preload_site_package('pandas')",
+            "",
+            "# Monkey-patch CodeActAgent to exclude the jupyter plugin.",
+            "# OpenHands v1.4.0 hardcodes JupyterRequirement in sandbox_plugins",
+            "# and the jupyter-kernelgateway cannot bind inside Daytona sandboxes.",
+            "import openhands.agenthub.codeact_agent.codeact_agent as _ca_mod",
+            "from openhands.runtime.plugins import AgentSkillsRequirement",
+            "_orig_plugins = _ca_mod.CodeActAgent.sandbox_plugins.fget",
+            "@property",
+            "def _no_jupyter_plugins(self):",
+            "    return [p for p in _orig_plugins(self) if p.name != 'jupyter']",
+            "_ca_mod.CodeActAgent.sandbox_plugins = _no_jupyter_plugins",
+            "",
             "runpy.run_module('openhands.core.main', run_name='__main__')",
         ])
 
@@ -302,14 +314,6 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             "[core]",
             "enable_jupyter = false",
             "enable_browsing = false",
-            "",
-            # The sandbox plugins list controls what LocalRuntime passes to
-            # --plugins on the action_execution_server command line.  The
-            # default is ["agent_skills", "jupyter"].  Excluding "jupyter"
-            # prevents the jupyter-kernelgateway from starting — it cannot
-            # bind inside Daytona sandboxes and crashes with RetryError.
-            "[sandbox]",
-            'plugins = ["agent_skills"]',
             "",
             "[agent]",
             f"enable_mcp = {'true' if mcp_url else 'false'}",
