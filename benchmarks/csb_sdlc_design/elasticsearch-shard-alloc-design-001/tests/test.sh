@@ -2,10 +2,19 @@
 set -euo pipefail
 
 [ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+# Artifact mode: parse answer.json, extract analysis text, apply diffs
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
 
 SCORE=0
 TOTAL=6
 WORKSPACE="${VERIFY_REPO:-/workspace}"
+
+if [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    answer_json_fail_closed_if_missing_or_no_changes
+    answer_json_copy_analysis_text "$WORKSPACE/design_doc.md"
+fi
 
 # Check 1: Design document exists
 if [ -f "$WORKSPACE/design_doc.md" ]; then

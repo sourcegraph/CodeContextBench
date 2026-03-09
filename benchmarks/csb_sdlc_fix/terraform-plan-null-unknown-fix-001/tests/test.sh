@@ -11,6 +11,9 @@ fi
 set -eo pipefail
 TASK_WORKDIR="${TASK_WORKDIR:-/workspace}"
 TASK_REPO_ROOT="${TASK_REPO_ROOT:-${VERIFY_REPO:-$TASK_WORKDIR}}"
+if [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    answer_json_fail_closed_if_missing_or_no_changes
+fi
 VERIFY_REPO="${VERIFY_REPO:-$TASK_REPO_ROOT}"
 
 mkdir -p /logs/verifier

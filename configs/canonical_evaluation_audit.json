@@ -117,90 +117,90 @@
         "validation_result": 5
       },
       "csb_sdlc_debug": {
-        "answer_json_bridge": 12,
+        "answer_json_bridge": 13,
         "answer_json_native": 0,
         "artifact_baseline": 0,
-        "artifact_only": 12,
+        "artifact_only": 13,
         "excluded": 8,
         "reward_json": 0,
         "total": 13,
         "validation_result": 0
       },
       "csb_sdlc_design": {
-        "answer_json_bridge": 6,
+        "answer_json_bridge": 7,
         "answer_json_native": 0,
         "artifact_baseline": 0,
-        "artifact_only": 10,
+        "artifact_only": 11,
         "excluded": 0,
         "reward_json": 0,
         "total": 11,
         "validation_result": 1
       },
       "csb_sdlc_document": {
-        "answer_json_bridge": 9,
-        "answer_json_native": 0,
-        "artifact_baseline": 0,
-        "artifact_only": 9,
-        "excluded": 0,
-        "reward_json": 0,
-        "total": 11,
-        "validation_result": 0
-      },
-      "csb_sdlc_feature": {
-        "answer_json_bridge": 9,
-        "answer_json_native": 0,
-        "artifact_baseline": 0,
-        "artifact_only": 10,
-        "excluded": 0,
-        "reward_json": 5,
-        "total": 23,
-        "validation_result": 0
-      },
-      "csb_sdlc_fix": {
-        "answer_json_bridge": 15,
-        "answer_json_native": 3,
-        "artifact_baseline": 0,
-        "artifact_only": 12,
-        "excluded": 3,
-        "reward_json": 8,
-        "total": 19,
-        "validation_result": 0
-      },
-      "csb_sdlc_refactor": {
-        "answer_json_bridge": 6,
-        "answer_json_native": 0,
-        "artifact_baseline": 0,
-        "artifact_only": 6,
-        "excluded": 0,
-        "reward_json": 0,
-        "total": 18,
-        "validation_result": 1
-      },
-      "csb_sdlc_secure": {
-        "answer_json_bridge": 11,
-        "answer_json_native": 0,
-        "artifact_baseline": 0,
-        "artifact_only": 10,
-        "excluded": 0,
-        "reward_json": 0,
-        "total": 13,
-        "validation_result": 0
-      },
-      "csb_sdlc_test": {
         "answer_json_bridge": 11,
         "answer_json_native": 0,
         "artifact_baseline": 0,
         "artifact_only": 11,
         "excluded": 0,
         "reward_json": 0,
+        "total": 11,
+        "validation_result": 0
+      },
+      "csb_sdlc_feature": {
+        "answer_json_bridge": 22,
+        "answer_json_native": 0,
+        "artifact_baseline": 0,
+        "artifact_only": 23,
+        "excluded": 0,
+        "reward_json": 5,
+        "total": 23,
+        "validation_result": 0
+      },
+      "csb_sdlc_fix": {
+        "answer_json_bridge": 19,
+        "answer_json_native": 0,
+        "artifact_baseline": 0,
+        "artifact_only": 19,
+        "excluded": 3,
+        "reward_json": 8,
+        "total": 19,
+        "validation_result": 0
+      },
+      "csb_sdlc_refactor": {
+        "answer_json_bridge": 18,
+        "answer_json_native": 0,
+        "artifact_baseline": 0,
+        "artifact_only": 18,
+        "excluded": 0,
+        "reward_json": 0,
+        "total": 18,
+        "validation_result": 1
+      },
+      "csb_sdlc_secure": {
+        "answer_json_bridge": 13,
+        "answer_json_native": 0,
+        "artifact_baseline": 0,
+        "artifact_only": 13,
+        "excluded": 0,
+        "reward_json": 0,
+        "total": 13,
+        "validation_result": 0
+      },
+      "csb_sdlc_test": {
+        "answer_json_bridge": 12,
+        "answer_json_native": 0,
+        "artifact_baseline": 0,
+        "artifact_only": 12,
+        "excluded": 0,
+        "reward_json": 0,
         "total": 12,
         "validation_result": 0
       },
       "csb_sdlc_understand": {
-        "answer_json_bridge": 7,
+        "answer_json_bridge": 8,
         "answer_json_native": 0,
         "artifact_baseline": 0,
-        "artifact_only": 9,
+        "artifact_only": 11,
         "excluded": 0,
         "reward_json": 0,
         "total": 11,
@@ -209,13 +209,13 @@
     },
     "counts": {
       "answer_json_modes": {
-        "bridge": 89,
-        "native": 136,
-        "none": 50
+        "bridge": 126,
+        "native": 133,
+        "none": 16
       },
       "artifact_primary_outputs": {
         "/app/solution.json": 8,
-        "/workspace/answer.json": 217,
+        "/workspace/answer.json": 259,
         "repo_state": 7,
         "unspecified": 1
       },
@@ -234,10 +234,9 @@
         "test_ratio": 6
       },
       "output_contracts": {
-        "answer_json_bridge": 89,
-        "answer_json_native": 136,
-        "repo_state": 40,
-        "report_markdown": 1,
+        "answer_json_bridge": 126,
+        "answer_json_native": 133,
+        "repo_state": 7,
         "solution_json": 8,
         "unspecified": 1
       },
@@ -326,176 +325,7 @@
           "task_id": "numpy-dtype-localize-001"
         }
       ],
-      "missing_artifact_only": [
-        {
-          "benchmark": "csb_sdlc_debug",
-          "task_id": "tidb-query-plan-regression-debug-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "elasticsearch-shard-alloc-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_document",
-          "task_id": "godot-gdscript-api-docgen-001"
-        },
-        {
-          "benchmark": "csb_sdlc_document",
-          "task_id": "grpc-channel-api-docgen-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "cilium-policy-audit-logger-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "cilium-policy-quota-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "curl-http3-priority-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "django-rate-limit-middleware-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "envoy-custom-header-filter-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "numpy-rolling-median-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "pandas-merge-asof-indicator-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "postgres-copy-csv-header-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "prometheus-silence-bulk-api-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "pytorch-gradient-noise-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "servo-css-container-query-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "terraform-compact-diff-fmt-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "vscode-custom-fold-region-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "element-web-roomheaderbuttons-can-crash-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "element-web-unread-indicators-diverge-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "envoy-dfp-host-leak-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "envoy-udp-proxy-cds-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "flink-window-late-data-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "teleport-users-can-delete-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "terraform-plan-null-unknown-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "beam-pipeline-builder-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "cilium-endpoint-manager-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "django-request-factory-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "envoy-listener-manager-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "istio-discovery-server-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "kubernetes-scheduler-profile-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "numpy-array-dispatch-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "pandas-index-engine-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "prometheus-query-engine-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "pytorch-optimizer-foreach-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "roslyn-symbol-resolver-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "terraform-eval-context-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "ceph-rgw-auth-secure-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "k8s-rbac-auth-audit-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "typescript-type-narrowing-secure-001"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
-          "task_id": "bazel-starlark-eval-test-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "clickhouse-mergetree-arch-understand-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "grafana-platform-orient-001"
-        }
-      ],
+      "missing_artifact_only": [],
       "missing_validation_result": [
         {
           "benchmark": "csb_org_compliance",
@@ -10327,10 +10157,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -10344,17 +10176,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -10362,7 +10196,7 @@
       "task_id": "tidb-query-plan-regression-debug-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -10653,10 +10487,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -10670,17 +10506,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -10688,7 +10526,7 @@
       "task_id": "elasticsearch-shard-alloc-design-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11206,10 +11044,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11223,17 +11063,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11241,7 +11083,7 @@
       "task_id": "godot-gdscript-api-docgen-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11257,10 +11099,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11274,17 +11118,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11292,7 +11138,7 @@
       "task_id": "grpc-channel-api-docgen-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11760,10 +11606,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11777,17 +11625,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11795,7 +11645,7 @@
       "task_id": "cilium-policy-audit-logger-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11811,10 +11661,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11828,17 +11680,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11846,7 +11700,7 @@
       "task_id": "cilium-policy-quota-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11862,10 +11716,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11879,17 +11735,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11897,7 +11755,7 @@
       "task_id": "curl-http3-priority-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11913,10 +11771,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11930,17 +11790,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11948,7 +11810,7 @@
       "task_id": "django-rate-limit-middleware-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -11964,10 +11826,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -11981,17 +11845,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -11999,7 +11865,7 @@
       "task_id": "envoy-custom-header-filter-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12237,10 +12103,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12254,17 +12122,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12272,7 +12142,7 @@
       "task_id": "numpy-rolling-median-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12288,10 +12158,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12305,17 +12177,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12323,7 +12197,7 @@
       "task_id": "pandas-merge-asof-indicator-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12339,10 +12213,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12356,17 +12232,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12374,7 +12252,7 @@
       "task_id": "postgres-copy-csv-header-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12390,10 +12268,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12407,17 +12287,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12425,7 +12307,7 @@
       "task_id": "prometheus-silence-bulk-api-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12441,10 +12323,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12458,17 +12342,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12476,7 +12362,7 @@
       "task_id": "pytorch-gradient-noise-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12492,10 +12378,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12509,17 +12397,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12527,7 +12417,7 @@
       "task_id": "servo-css-container-query-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12714,10 +12604,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12731,17 +12623,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12749,7 +12643,7 @@
       "task_id": "terraform-compact-diff-fmt-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -12765,10 +12659,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -12782,17 +12678,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -12800,7 +12698,7 @@
       "task_id": "vscode-custom-fold-region-feat-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -13044,12 +12942,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "native",
+        "answer_json_mode": "bridge",
         "answer_json_signals": [
-          "primary_output_path=answer.json"
+          "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13062,15 +12960,16 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "answer_json_native",
+        "classification": "answer_json_bridge",
         "env_defaults": {
+          "TASK_REPO_ROOT": "/workspace",
           "TASK_WORKDIR": "/workspace"
         },
         "known_outputs": [
@@ -13084,7 +12983,7 @@
       "task_id": "element-web-roomheaderbuttons-can-crash-fix-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "answer_json_native",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "test_ratio"
       },
@@ -13100,12 +12999,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "native",
+        "answer_json_mode": "bridge",
         "answer_json_signals": [
-          "primary_output_path=answer.json"
+          "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13118,15 +13017,16 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "answer_json_native",
+        "classification": "answer_json_bridge",
         "env_defaults": {
+          "TASK_REPO_ROOT": "/workspace",
           "TASK_WORKDIR": "/workspace"
         },
         "known_outputs": [
@@ -13140,7 +13040,7 @@
       "task_id": "element-web-unread-indicators-diverge-fix-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "answer_json_native",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "test_ratio"
       },
@@ -13161,7 +13061,7 @@
           "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13217,7 +13117,7 @@
           "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13268,10 +13168,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13285,20 +13187,21 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "report_markdown",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
         "known_outputs": [
           "solution.md",
+          "answer.json",
           "analysis.md"
         ],
-        "primary_output_path": null,
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": [
           "/logs/agent/solution.md",
@@ -13309,7 +13212,7 @@
       "task_id": "flink-window-late-data-fix-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "report_markdown",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -13833,12 +13736,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "native",
+        "answer_json_mode": "bridge",
         "answer_json_signals": [
-          "primary_output_path=answer.json"
+          "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13851,15 +13754,16 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "answer_json_native",
+        "classification": "answer_json_bridge",
         "env_defaults": {
+          "TASK_REPO_ROOT": "/workspace",
           "TASK_WORKDIR": "/workspace"
         },
         "known_outputs": [
@@ -13873,7 +13777,7 @@
       "task_id": "teleport-users-can-delete-fix-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "answer_json_native",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "test_ratio"
       },
@@ -13894,7 +13798,7 @@
           "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13945,10 +13849,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -13962,17 +13868,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -13980,7 +13888,7 @@
       "task_id": "beam-pipeline-builder-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -13996,10 +13904,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14013,17 +13923,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14031,7 +13943,7 @@
       "task_id": "cilium-endpoint-manager-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14047,10 +13959,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14064,17 +13978,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14082,7 +13998,7 @@
       "task_id": "django-request-factory-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14098,10 +14014,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14115,17 +14033,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14133,7 +14053,7 @@
       "task_id": "envoy-listener-manager-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14263,10 +14183,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14280,17 +14202,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14298,7 +14222,7 @@
       "task_id": "istio-discovery-server-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14428,10 +14352,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14445,17 +14371,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14463,7 +14391,7 @@
       "task_id": "kubernetes-scheduler-profile-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14479,10 +14407,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14496,17 +14426,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14514,7 +14446,7 @@
       "task_id": "numpy-array-dispatch-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14530,10 +14462,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14547,17 +14481,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14565,7 +14501,7 @@
       "task_id": "pandas-index-engine-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14581,10 +14517,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14598,17 +14536,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14616,7 +14556,7 @@
       "task_id": "prometheus-query-engine-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14686,10 +14626,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14703,17 +14645,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14721,7 +14665,7 @@
       "task_id": "pytorch-optimizer-foreach-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14737,10 +14681,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14754,17 +14700,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14772,7 +14720,7 @@
       "task_id": "roslyn-symbol-resolver-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14845,10 +14793,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14862,17 +14812,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14880,7 +14832,7 @@
       "task_id": "terraform-eval-context-refac-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -14896,10 +14848,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -14913,17 +14867,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -14931,7 +14887,7 @@
       "task_id": "ceph-rgw-auth-secure-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -15466,7 +15422,7 @@
           "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -15575,10 +15531,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -15592,17 +15550,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -15610,7 +15570,7 @@
       "task_id": "typescript-type-narrowing-secure-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -15684,10 +15644,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -15701,17 +15663,19 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -15719,7 +15683,7 @@
       "task_id": "bazel-starlark-eval-test-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -16478,10 +16442,12 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "bridge",
+        "answer_json_signals": [
+          "answer_json_verifier_lib.sh"
+        ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -16495,19 +16461,20 @@
       },
       "excluded": false,
       "ground_truth": {
-        "answer_json_bridge_lib": false,
+        "answer_json_bridge_lib": true,
         "ground_truth_json": true,
         "oracle_checks_py": false,
         "promoted_verifier_py": false,
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_bridge",
         "env_defaults": {},
         "known_outputs": [
-          "analysis.md"
+          "analysis.md",
+          "answer.json"
         ],
-        "primary_output_path": null,
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
@@ -16515,7 +16482,7 @@
       "task_id": "clickhouse-mergetree-arch-understand-001",
       "validation_result_plan": {
         "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -16697,7 +16664,7 @@
           "answer_json_verifier_lib.sh"
         ],
         "dockerfile_artifact_baseline": false,
-        "dockerfile_artifact_only": false,
+        "dockerfile_artifact_only": true,
         "dockerfile_default": true,
         "dockerfile_sg_only": true
       },
@@ -17084,9 +17051,8 @@
         "current_task_count": 58,
         "notes": "Use stable assertion ids instead of only shell log output.",
         "output_contracts": {
-          "answer_json_bridge": 19,
-          "repo_state": 38,
-          "report_markdown": 1
+          "answer_json_bridge": 53,
+          "repo_state": 5
         },
         "recommended_sub_scores": [
           "checks.<assertion_id>"
@@ -17156,8 +17122,7 @@
         "current_task_count": 6,
         "notes": "Store passed/failed counts in details when available.",
         "output_contracts": {
-          "answer_json_bridge": 3,
-          "answer_json_native": 3
+          "answer_json_bridge": 6
         },
         "recommended_sub_scores": [
           "tests_passed_ratio"

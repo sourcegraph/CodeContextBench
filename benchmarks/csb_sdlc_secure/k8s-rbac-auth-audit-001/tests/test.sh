@@ -25,11 +25,9 @@ source /tests/verifier_lib.sh
 
 # ── Output check ─────────────────────────────────────────────────────────
 SOLUTION_FILE="/logs/agent/solution.md"
-# In artifact mode, populate expected output from answer.json analysis
-if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
-    mkdir -p "/logs/agent"
-    cp "$ANALYSIS_TEXT_FILE" "/logs/agent/solution.md"
-    echo "[answer_json] Copied analysis text to /logs/agent/solution.md"
+if [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    answer_json_fail_closed_if_missing
+    answer_json_copy_analysis_text "/logs/agent/solution.md"
 fi
 if [ ! -f "$SOLUTION_FILE" ] || [ "$(wc -c < "$SOLUTION_FILE" 2>/dev/null || echo 0)" -lt 200 ]; then
     echo "No sufficient solution.md — agent did not produce analysis"

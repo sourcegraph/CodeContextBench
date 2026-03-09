@@ -1,0 +1,35 @@
+# cilium-policy-quota-feat-001 — artifact_only variant (build-requiring)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier applies patches from answer.json to /repo_full copy for scoring.
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git ca-certificates python3 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
+
+RUN mkdir -p /workspace && chown claude:claude /workspace
+
+USER claude
+WORKDIR /workspace
+RUN git clone --depth 1 https://github.com/sg-evals/cilium--v1.16.5.git . || \
+    (git init && git config user.email "agent@example.com" && git config user.name "Agent")
+USER root
+
+RUN mkdir -p /logs/agent /logs/verifier && \
+    chown -R claude:claude /logs
+
+
+# --- artifact_only: backup full repo for verifier scoring ---
+# Source stays in /workspace (readable by baseline agent).
+# MCP agent deletes source files at runtime via agent startup script.
+RUN cp -a /workspace /repo_full
+RUN chmod 700 /repo_full
+RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir
+
+ENTRYPOINT []

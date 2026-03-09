@@ -13,11 +13,9 @@ fi
 
 
 REPORT_PATH="${REPORT_PATH:-/logs/agent/onboarding.md}"
-# In artifact mode, populate expected output from answer.json analysis
-if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
-    mkdir -p "/logs/agent"
-    cp "$ANALYSIS_TEXT_FILE" "/logs/agent/onboarding.md"
-    echo "[answer_json] Copied analysis text to /logs/agent/onboarding.md"
+if [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    answer_json_fail_closed_if_missing
+    answer_json_copy_analysis_text "/logs/agent/onboarding.md"
 fi
 GROUND_TRUTH="${GROUND_TRUTH:-/tests/ground_truth.json}"
 REWARD_FILE="/logs/verifier/reward.txt"

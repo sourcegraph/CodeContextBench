@@ -26,6 +26,8 @@ if [ ! -f /tmp/.artifact_only_mode ]; then
     export ANALYSIS_TEXT_FILE=""
     export ANALYSIS_FILES_FILE=""
     export ANSWER_JSON=""
+    export ANSWER_JSON_MISSING=false
+    export ANSWER_JSON_NO_CHANGES=false
     return 0 2>/dev/null || true
 fi
 
@@ -34,6 +36,39 @@ export ARTIFACT_ONLY=true
 export ANSWER_JSON="/workspace/answer.json"
 export ANALYSIS_TEXT_FILE="/tmp/analysis.txt"
 export ANALYSIS_FILES_FILE="/tmp/analysis_files.json"
+export ANSWER_JSON_MISSING=false
+export ANSWER_JSON_NO_CHANGES=false
+
+answer_json_fail_closed_if_missing() {
+    if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ "${ANSWER_JSON_MISSING:-false}" = "true" ]; then
+        mkdir -p /logs/verifier
+        printf '0.0\n' > /logs/verifier/reward.txt
+        echo "[answer_json_verifier] Scored 0.0 because answer.json is missing"
+        exit 0
+    fi
+}
+
+answer_json_fail_closed_if_missing_or_no_changes() {
+    if [ "${ARTIFACT_ONLY:-false}" = "true" ] && {
+        [ "${ANSWER_JSON_MISSING:-false}" = "true" ] || [ "${ANSWER_JSON_NO_CHANGES:-false}" = "true" ]
+    }; then
+        mkdir -p /logs/verifier
+        printf '0.0\n' > /logs/verifier/reward.txt
+        echo "[answer_json_verifier] Scored 0.0 because answer.json has no usable artifact payload"
+        exit 0
+    fi
+}
+
+answer_json_copy_analysis_text() {
+    local target_path="$1"
+    if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ -f "${ANALYSIS_TEXT_FILE:-}" ]; then
+        mkdir -p "$(dirname "$target_path")"
+        cp "$ANALYSIS_TEXT_FILE" "$target_path"
+        echo "[answer_json_verifier] Copied analysis text to $target_path"
+    fi
+}
+
+rm -f /tmp/.answer_json_no_changes /tmp/.answer_json_verify_repo
 
 # ── Validate answer.json ──────────────────────────────────────────────────
 
@@ -41,6 +76,7 @@ if [ ! -f "$ANSWER_JSON" ]; then
     echo "[answer_json_verifier] ERROR: /workspace/answer.json not found"
     echo "[answer_json_verifier] Agent did not produce required artifact"
     export VERIFY_REPO="${VERIFY_REPO:-/workspace}"
+    export ANSWER_JSON_MISSING=true
     # Signal to test.sh that there's no output — it should score 0
     return 0 2>/dev/null || true
 fi
@@ -284,6 +320,9 @@ with open("/tmp/.answer_json_verify_repo", "w") as f:
 PYEOF
 
 # Pick up VERIFY_REPO from Python output
+if [ -f /tmp/.answer_json_no_changes ]; then
+    export ANSWER_JSON_NO_CHANGES=true
+fi
 if [ -f /tmp/.answer_json_verify_repo ]; then
     export VERIFY_REPO="$(cat /tmp/.answer_json_verify_repo)"
     cd "$VERIFY_REPO"
