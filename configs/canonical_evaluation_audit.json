@@ -124,17 +124,17 @@
         "excluded": 8,
         "reward_json": 0,
         "total": 13,
-        "validation_result": 0
+        "validation_result": 1
       },
       "csb_sdlc_design": {
         "answer_json_bridge": 7,
-        "answer_json_native": 0,
+        "answer_json_native": 3,
         "artifact_baseline": 0,
         "artifact_only": 11,
         "excluded": 0,
         "reward_json": 0,
         "total": 11,
-        "validation_result": 1
+        "validation_result": 5
       },
       "csb_sdlc_document": {
         "answer_json_bridge": 11,
@@ -144,7 +144,7 @@
         "excluded": 0,
         "reward_json": 0,
         "total": 11,
-        "validation_result": 0
+        "validation_result": 2
       },
       "csb_sdlc_feature": {
         "answer_json_bridge": 22,
@@ -154,7 +154,7 @@
         "excluded": 0,
         "reward_json": 0,
         "total": 23,
-        "validation_result": 5
+        "validation_result": 18
       },
       "csb_sdlc_fix": {
         "answer_json_bridge": 19,
@@ -164,7 +164,7 @@
         "excluded": 3,
         "reward_json": 0,
         "total": 19,
-        "validation_result": 8
+        "validation_result": 10
       },
       "csb_sdlc_refactor": {
         "answer_json_bridge": 18,
@@ -174,7 +174,7 @@
         "excluded": 0,
         "reward_json": 0,
         "total": 18,
-        "validation_result": 1
+        "validation_result": 15
       },
       "csb_sdlc_secure": {
         "answer_json_bridge": 13,
@@ -184,7 +184,7 @@
         "excluded": 0,
         "reward_json": 0,
         "total": 13,
-        "validation_result": 0
+        "validation_result": 10
       },
       "csb_sdlc_test": {
         "answer_json_bridge": 12,
@@ -194,29 +194,29 @@
         "excluded": 0,
         "reward_json": 0,
         "total": 12,
-        "validation_result": 0
+        "validation_result": 5
       },
       "csb_sdlc_understand": {
         "answer_json_bridge": 8,
-        "answer_json_native": 0,
+        "answer_json_native": 2,
         "artifact_baseline": 0,
         "artifact_only": 11,
         "excluded": 0,
         "reward_json": 0,
         "total": 11,
-        "validation_result": 1
+        "validation_result": 4
       }
     },
     "counts": {
       "answer_json_modes": {
         "bridge": 126,
-        "native": 133,
-        "none": 16
+        "native": 138,
+        "none": 11
       },
       "artifact_primary_outputs": {
         "/app/solution.json": 8,
-        "/workspace/answer.json": 259,
-        "repo_state": 7,
+        "/workspace/answer.json": 264,
+        "repo_state": 2,
         "unspecified": 1
       },
       "evaluator_families": {
@@ -235,8 +235,8 @@
       },
       "output_contracts": {
         "answer_json_bridge": 126,
-        "answer_json_native": 133,
-        "repo_state": 7,
+        "answer_json_native": 138,
+        "repo_state": 2,
         "solution_json": 8,
         "unspecified": 1
       },
@@ -252,8 +252,8 @@
         "test_ratio": 6
       },
       "structured_output_modes": {
-        "none": 115,
-        "validation_result": 160
+        "none": 61,
+        "validation_result": 214
       }
     },
     "excluded_tasks": 11,
@@ -293,31 +293,11 @@
         },
         {
           "benchmark": "csb_sdlc_design",
-          "task_id": "django-pre-validate-signal-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "django-rate-limit-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
           "task_id": "etcd-grpc-api-upgrade-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "flipt-protobuf-metadata-design-001"
         },
         {
           "benchmark": "csb_sdlc_feature",
           "task_id": "bustub-hyperloglog-impl-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "django-composite-field-recover-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "django-template-inherit-recall-001"
         },
         {
           "benchmark": "csb_sdlc_understand",
@@ -372,10 +352,6 @@
         },
         {
           "benchmark": "csb_sdlc_debug",
-          "task_id": "tidb-query-plan-regression-debug-001"
-        },
-        {
-          "benchmark": "csb_sdlc_debug",
           "task_id": "vuls-oval-regression-prove-001"
         },
         {
@@ -388,23 +364,7 @@
         },
         {
           "benchmark": "csb_sdlc_design",
-          "task_id": "django-pre-validate-signal-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "django-rate-limit-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "elasticsearch-shard-alloc-design-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
           "task_id": "flink-checkpoint-arch-001"
-        },
-        {
-          "benchmark": "csb_sdlc_design",
-          "task_id": "flipt-protobuf-metadata-design-001"
         },
         {
           "benchmark": "csb_sdlc_design",
@@ -429,14 +389,6 @@
         {
           "benchmark": "csb_sdlc_document",
           "task_id": "envoy-migration-doc-gen-001"
-        },
-        {
-          "benchmark": "csb_sdlc_document",
-          "task_id": "godot-gdscript-api-docgen-001"
-        },
-        {
-          "benchmark": "csb_sdlc_document",
-          "task_id": "grpc-channel-api-docgen-001"
         },
         {
           "benchmark": "csb_sdlc_document",
@@ -468,26 +420,6 @@
         },
         {
           "benchmark": "csb_sdlc_feature",
-          "task_id": "cilium-policy-audit-logger-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "cilium-policy-quota-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "curl-http3-priority-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "django-rate-limit-middleware-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "envoy-custom-header-filter-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
           "task_id": "envoy-grpc-server-impl-001"
         },
         {
@@ -500,47 +432,11 @@
         },
         {
           "benchmark": "csb_sdlc_feature",
-          "task_id": "numpy-rolling-median-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "pandas-merge-asof-indicator-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "postgres-copy-csv-header-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "prometheus-silence-bulk-api-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "pytorch-gradient-noise-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "servo-css-container-query-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
           "task_id": "strata-cds-tranche-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "terraform-compact-diff-fmt-feat-001"
-        },
-        {
-          "benchmark": "csb_sdlc_feature",
-          "task_id": "vscode-custom-fold-region-feat-001"
         },
         {
           "benchmark": "csb_sdlc_fix",
           "task_id": "ansible-abc-imports-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "django-modelchoice-fk-fix-001"
         },
         {
           "benchmark": "csb_sdlc_fix",
@@ -553,10 +449,6 @@
         {
           "benchmark": "csb_sdlc_fix",
           "task_id": "element-web-unread-indicators-diverge-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_fix",
-          "task_id": "flink-window-late-data-fix-001"
         },
         {
           "benchmark": "csb_sdlc_fix",
@@ -580,34 +472,6 @@
         },
         {
           "benchmark": "csb_sdlc_refactor",
-          "task_id": "beam-pipeline-builder-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "cilium-endpoint-manager-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "django-request-factory-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "envoy-listener-manager-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "flipt-dep-refactor-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "flipt-flagexists-refactor-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "istio-discovery-server-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
           "task_id": "k8s-score-normalizer-refac-001"
         },
         {
@@ -616,75 +480,11 @@
         },
         {
           "benchmark": "csb_sdlc_refactor",
-          "task_id": "kubernetes-scheduler-profile-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "numpy-array-dispatch-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "pandas-index-engine-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "prometheus-query-engine-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "pytorch-optimizer-foreach-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "roslyn-symbol-resolver-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
           "task_id": "strata-fx-european-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_refactor",
-          "task_id": "terraform-eval-context-refac-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "ceph-rgw-auth-secure-001"
         },
         {
           "benchmark": "csb_sdlc_secure",
           "task_id": "curl-cve-triage-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-audit-trail-implement-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-cross-team-boundary-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-legacy-dep-vuln-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-repo-scoped-access-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-role-based-access-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "django-sensitive-file-exclusion-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "flipt-degraded-context-fix-001"
-        },
-        {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "flipt-repo-scoped-access-001"
         },
         {
           "benchmark": "csb_sdlc_secure",
@@ -695,16 +495,8 @@
           "task_id": "kafka-sasl-auth-audit-001"
         },
         {
-          "benchmark": "csb_sdlc_secure",
-          "task_id": "typescript-type-narrowing-secure-001"
-        },
-        {
           "benchmark": "csb_sdlc_test",
           "task_id": "aspnetcore-code-review-001"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
-          "task_id": "bazel-starlark-eval-test-001"
         },
         {
           "benchmark": "csb_sdlc_test",
@@ -728,22 +520,6 @@
         },
         {
           "benchmark": "csb_sdlc_test",
-          "task_id": "test-coverage-gap-001"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
-          "task_id": "test-coverage-gap-002"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
-          "task_id": "test-unitgen-go-001"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
-          "task_id": "test-unitgen-py-001"
-        },
-        {
-          "benchmark": "csb_sdlc_test",
           "task_id": "vscode-code-review-001"
         },
         {
@@ -757,18 +533,6 @@
         {
           "benchmark": "csb_sdlc_understand",
           "task_id": "cilium-project-orient-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "clickhouse-mergetree-arch-understand-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "django-composite-field-recover-001"
-        },
-        {
-          "benchmark": "csb_sdlc_understand",
-          "task_id": "django-template-inherit-recall-001"
         },
         {
           "benchmark": "csb_sdlc_understand",
@@ -9624,7 +9388,7 @@
       "task_dir": "csb_sdlc_debug/tidb-query-plan-regression-debug-001",
       "task_id": "tidb-query-plan-regression-debug-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -9635,7 +9399,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_debug/tidb-query-plan-regression-debug-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -9810,8 +9574,10 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "native",
+        "answer_json_signals": [
+          "primary_output_path=answer.json"
+        ],
         "dockerfile_artifact_baseline": false,
         "dockerfile_artifact_only": true,
         "dockerfile_default": true,
@@ -9834,20 +9600,22 @@
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_native",
         "env_defaults": {
           "TASK_WORKDIR": "/workspace"
         },
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
       "task_dir": "csb_sdlc_design/django-pre-validate-signal-design-001",
       "task_id": "django-pre-validate-signal-design-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -9857,14 +9625,16 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_design/django-pre-validate-signal-design-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "native",
+        "answer_json_signals": [
+          "primary_output_path=answer.json"
+        ],
         "dockerfile_artifact_baseline": false,
         "dockerfile_artifact_only": true,
         "dockerfile_default": true,
@@ -9887,20 +9657,22 @@
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_native",
         "env_defaults": {
           "TASK_WORKDIR": "/workspace"
         },
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
       "task_dir": "csb_sdlc_design/django-rate-limit-design-001",
       "task_id": "django-rate-limit-design-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -9910,7 +9682,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_design/django-rate-limit-design-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -9954,7 +9726,7 @@
       "task_dir": "csb_sdlc_design/elasticsearch-shard-alloc-design-001",
       "task_id": "elasticsearch-shard-alloc-design-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -9965,7 +9737,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_design/elasticsearch-shard-alloc-design-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -10078,8 +9850,10 @@
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "native",
+        "answer_json_signals": [
+          "primary_output_path=answer.json"
+        ],
         "dockerfile_artifact_baseline": false,
         "dockerfile_artifact_only": true,
         "dockerfile_default": true,
@@ -10102,20 +9876,22 @@
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_native",
         "env_defaults": {
           "TASK_WORKDIR": "/workspace"
         },
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
       "task_dir": "csb_sdlc_design/flipt-protobuf-metadata-design-001",
       "task_id": "flipt-protobuf-metadata-design-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -10125,7 +9901,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_design/flipt-protobuf-metadata-design-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -10511,7 +10287,7 @@
       "task_dir": "csb_sdlc_document/godot-gdscript-api-docgen-001",
       "task_id": "godot-gdscript-api-docgen-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -10522,7 +10298,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_document/godot-gdscript-api-docgen-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -10566,7 +10342,7 @@
       "task_dir": "csb_sdlc_document/grpc-channel-api-docgen-001",
       "task_id": "grpc-channel-api-docgen-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -10577,7 +10353,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_document/grpc-channel-api-docgen-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11073,7 +10849,7 @@
       "task_dir": "csb_sdlc_feature/cilium-policy-audit-logger-feat-001",
       "task_id": "cilium-policy-audit-logger-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11084,7 +10860,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/cilium-policy-audit-logger-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11128,7 +10904,7 @@
       "task_dir": "csb_sdlc_feature/cilium-policy-quota-feat-001",
       "task_id": "cilium-policy-quota-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11139,7 +10915,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/cilium-policy-quota-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11183,7 +10959,7 @@
       "task_dir": "csb_sdlc_feature/curl-http3-priority-feat-001",
       "task_id": "curl-http3-priority-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11194,7 +10970,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/curl-http3-priority-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11238,7 +11014,7 @@
       "task_dir": "csb_sdlc_feature/django-rate-limit-middleware-feat-001",
       "task_id": "django-rate-limit-middleware-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11249,7 +11025,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/django-rate-limit-middleware-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11293,7 +11069,7 @@
       "task_dir": "csb_sdlc_feature/envoy-custom-header-filter-feat-001",
       "task_id": "envoy-custom-header-filter-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11304,7 +11080,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/envoy-custom-header-filter-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11570,7 +11346,7 @@
       "task_dir": "csb_sdlc_feature/numpy-rolling-median-feat-001",
       "task_id": "numpy-rolling-median-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11581,7 +11357,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/numpy-rolling-median-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11625,7 +11401,7 @@
       "task_dir": "csb_sdlc_feature/pandas-merge-asof-indicator-feat-001",
       "task_id": "pandas-merge-asof-indicator-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11636,7 +11412,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/pandas-merge-asof-indicator-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11680,7 +11456,7 @@
       "task_dir": "csb_sdlc_feature/postgres-copy-csv-header-feat-001",
       "task_id": "postgres-copy-csv-header-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11691,7 +11467,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/postgres-copy-csv-header-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11735,7 +11511,7 @@
       "task_dir": "csb_sdlc_feature/prometheus-silence-bulk-api-feat-001",
       "task_id": "prometheus-silence-bulk-api-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11746,7 +11522,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/prometheus-silence-bulk-api-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11790,7 +11566,7 @@
       "task_dir": "csb_sdlc_feature/pytorch-gradient-noise-feat-001",
       "task_id": "pytorch-gradient-noise-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11801,7 +11577,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/pytorch-gradient-noise-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -11845,7 +11621,7 @@
       "task_dir": "csb_sdlc_feature/servo-css-container-query-feat-001",
       "task_id": "servo-css-container-query-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -11856,7 +11632,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/servo-css-container-query-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -12071,7 +11847,7 @@
       "task_dir": "csb_sdlc_feature/terraform-compact-diff-fmt-feat-001",
       "task_id": "terraform-compact-diff-fmt-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -12082,7 +11858,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/terraform-compact-diff-fmt-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -12126,7 +11902,7 @@
       "task_dir": "csb_sdlc_feature/vscode-custom-fold-region-feat-001",
       "task_id": "vscode-custom-fold-region-feat-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -12137,7 +11913,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_feature/vscode-custom-fold-region-feat-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -12297,7 +12073,7 @@
       "task_dir": "csb_sdlc_fix/django-modelchoice-fk-fix-001",
       "task_id": "django-modelchoice-fk-fix-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -12308,7 +12084,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_fix/django-modelchoice-fk-fix-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -12640,7 +12416,7 @@
       "task_dir": "csb_sdlc_fix/flink-window-late-data-fix-001",
       "task_id": "flink-window-late-data-fix-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -12651,7 +12427,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_fix/flink-window-late-data-fix-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13316,7 +13092,7 @@
       "task_dir": "csb_sdlc_refactor/beam-pipeline-builder-refac-001",
       "task_id": "beam-pipeline-builder-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13327,7 +13103,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/beam-pipeline-builder-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13371,7 +13147,7 @@
       "task_dir": "csb_sdlc_refactor/cilium-endpoint-manager-refac-001",
       "task_id": "cilium-endpoint-manager-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13382,7 +13158,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/cilium-endpoint-manager-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13426,7 +13202,7 @@
       "task_dir": "csb_sdlc_refactor/django-request-factory-refac-001",
       "task_id": "django-request-factory-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13437,7 +13213,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/django-request-factory-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13481,7 +13257,7 @@
       "task_dir": "csb_sdlc_refactor/envoy-listener-manager-refac-001",
       "task_id": "envoy-listener-manager-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13492,7 +13268,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/envoy-listener-manager-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13538,7 +13314,7 @@
       "task_dir": "csb_sdlc_refactor/flipt-dep-refactor-001",
       "task_id": "flipt-dep-refactor-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13549,7 +13325,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/flipt-dep-refactor-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13595,7 +13371,7 @@
       "task_dir": "csb_sdlc_refactor/flipt-flagexists-refactor-001",
       "task_id": "flipt-flagexists-refactor-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13606,7 +13382,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/flipt-flagexists-refactor-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13650,7 +13426,7 @@
       "task_dir": "csb_sdlc_refactor/istio-discovery-server-refac-001",
       "task_id": "istio-discovery-server-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13661,7 +13437,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/istio-discovery-server-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13819,7 +13595,7 @@
       "task_dir": "csb_sdlc_refactor/kubernetes-scheduler-profile-refac-001",
       "task_id": "kubernetes-scheduler-profile-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13830,7 +13606,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/kubernetes-scheduler-profile-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13874,7 +13650,7 @@
       "task_dir": "csb_sdlc_refactor/numpy-array-dispatch-refac-001",
       "task_id": "numpy-array-dispatch-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13885,7 +13661,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/numpy-array-dispatch-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13929,7 +13705,7 @@
       "task_dir": "csb_sdlc_refactor/pandas-index-engine-refac-001",
       "task_id": "pandas-index-engine-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13940,7 +13716,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/pandas-index-engine-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -13984,7 +13760,7 @@
       "task_dir": "csb_sdlc_refactor/prometheus-query-engine-refac-001",
       "task_id": "prometheus-query-engine-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -13995,7 +13771,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/prometheus-query-engine-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14093,7 +13869,7 @@
       "task_dir": "csb_sdlc_refactor/pytorch-optimizer-foreach-refac-001",
       "task_id": "pytorch-optimizer-foreach-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14104,7 +13880,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/pytorch-optimizer-foreach-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14148,7 +13924,7 @@
       "task_dir": "csb_sdlc_refactor/roslyn-symbol-resolver-refac-001",
       "task_id": "roslyn-symbol-resolver-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14159,7 +13935,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/roslyn-symbol-resolver-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14260,7 +14036,7 @@
       "task_dir": "csb_sdlc_refactor/terraform-eval-context-refac-001",
       "task_id": "terraform-eval-context-refac-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14271,7 +14047,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_refactor/terraform-eval-context-refac-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14315,7 +14091,7 @@
       "task_dir": "csb_sdlc_secure/ceph-rgw-auth-secure-001",
       "task_id": "ceph-rgw-auth-secure-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14326,7 +14102,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/ceph-rgw-auth-secure-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14430,7 +14206,7 @@
       "task_dir": "csb_sdlc_secure/django-audit-trail-implement-001",
       "task_id": "django-audit-trail-implement-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14441,7 +14217,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-audit-trail-implement-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14487,7 +14263,7 @@
       "task_dir": "csb_sdlc_secure/django-cross-team-boundary-001",
       "task_id": "django-cross-team-boundary-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14498,7 +14274,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-cross-team-boundary-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14544,7 +14320,7 @@
       "task_dir": "csb_sdlc_secure/django-legacy-dep-vuln-001",
       "task_id": "django-legacy-dep-vuln-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14555,7 +14331,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-legacy-dep-vuln-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14601,7 +14377,7 @@
       "task_dir": "csb_sdlc_secure/django-repo-scoped-access-001",
       "task_id": "django-repo-scoped-access-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14612,7 +14388,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-repo-scoped-access-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14658,7 +14434,7 @@
       "task_dir": "csb_sdlc_secure/django-role-based-access-001",
       "task_id": "django-role-based-access-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14669,7 +14445,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-role-based-access-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14715,7 +14491,7 @@
       "task_dir": "csb_sdlc_secure/django-sensitive-file-exclusion-001",
       "task_id": "django-sensitive-file-exclusion-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14726,7 +14502,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/django-sensitive-file-exclusion-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14772,7 +14548,7 @@
       "task_dir": "csb_sdlc_secure/flipt-degraded-context-fix-001",
       "task_id": "flipt-degraded-context-fix-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14783,7 +14559,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/flipt-degraded-context-fix-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14829,7 +14605,7 @@
       "task_dir": "csb_sdlc_secure/flipt-repo-scoped-access-001",
       "task_id": "flipt-repo-scoped-access-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -14840,7 +14616,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/flipt-repo-scoped-access-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -14998,7 +14774,7 @@
       "task_dir": "csb_sdlc_secure/typescript-type-narrowing-secure-001",
       "task_id": "typescript-type-narrowing-secure-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15009,7 +14785,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_secure/typescript-type-narrowing-secure-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15111,7 +14887,7 @@
       "task_dir": "csb_sdlc_test/bazel-starlark-eval-test-001",
       "task_id": "bazel-starlark-eval-test-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15122,7 +14898,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_test/bazel-starlark-eval-test-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15459,7 +15235,7 @@
       "task_dir": "csb_sdlc_test/test-coverage-gap-001",
       "task_id": "test-coverage-gap-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15470,7 +15246,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_test/test-coverage-gap-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15517,7 +15293,7 @@
       "task_dir": "csb_sdlc_test/test-coverage-gap-002",
       "task_id": "test-coverage-gap-002",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15528,7 +15304,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_test/test-coverage-gap-002/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15574,7 +15350,7 @@
       "task_dir": "csb_sdlc_test/test-unitgen-go-001",
       "task_id": "test-unitgen-go-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15585,7 +15361,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_test/test-unitgen-go-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15631,7 +15407,7 @@
       "task_dir": "csb_sdlc_test/test-unitgen-py-001",
       "task_id": "test-unitgen-py-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15642,7 +15418,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_test/test-unitgen-py-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -15910,7 +15686,7 @@
       "task_dir": "csb_sdlc_understand/clickhouse-mergetree-arch-understand-001",
       "task_id": "clickhouse-mergetree-arch-understand-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
+        "migration_class": "already_validation_result",
         "output_contract_mode": "answer_json_bridge",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
@@ -15921,14 +15697,16 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_understand/clickhouse-mergetree-arch-understand-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "native",
+        "answer_json_signals": [
+          "primary_output_path=answer.json"
+        ],
         "dockerfile_artifact_baseline": false,
         "dockerfile_artifact_only": true,
         "dockerfile_default": true,
@@ -15951,20 +15729,22 @@
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_native",
         "env_defaults": {
           "TASK_WORKDIR": "/workspace"
         },
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
       "task_dir": "csb_sdlc_understand/django-composite-field-recover-001",
       "task_id": "django-composite-field-recover-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -15974,14 +15754,16 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_understand/django-composite-field-recover-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
     {
       "artifact_support": {
-        "answer_json_mode": "none",
-        "answer_json_signals": [],
+        "answer_json_mode": "native",
+        "answer_json_signals": [
+          "primary_output_path=answer.json"
+        ],
         "dockerfile_artifact_baseline": false,
         "dockerfile_artifact_only": true,
         "dockerfile_default": true,
@@ -16004,20 +15786,22 @@
         "task_spec_json": false
       },
       "output_contract": {
-        "classification": "repo_state",
+        "classification": "answer_json_native",
         "env_defaults": {
           "TASK_WORKDIR": "/workspace"
         },
-        "known_outputs": [],
-        "primary_output_path": null,
+        "known_outputs": [
+          "answer.json"
+        ],
+        "primary_output_path": "/workspace/answer.json",
         "repo_state_required": true,
         "report_paths": []
       },
       "task_dir": "csb_sdlc_understand/django-template-inherit-recall-001",
       "task_id": "django-template-inherit-recall-001",
       "validation_result_plan": {
-        "migration_class": "emit_validation_result_sidecar",
-        "output_contract_mode": "repo_state",
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
         "schema_version": "validation_result.v1alpha1",
         "scorer_family": "repo_state_heuristic"
       },
@@ -16027,7 +15811,7 @@
         "deterministic_verifier_present": true,
         "entrypoint": "benchmarks/csb_sdlc_understand/django-template-inherit-recall-001/tests/test.sh",
         "reward_type": "checklist",
-        "structured_output_mode": "none",
+        "structured_output_mode": "validation_result",
         "verification_modes": []
       }
     },
@@ -16480,7 +16264,7 @@
         "notes": "Use stable assertion ids instead of only shell log output.",
         "output_contracts": {
           "answer_json_bridge": 53,
-          "repo_state": 5
+          "answer_json_native": 5
         },
         "recommended_sub_scores": [
           "checks.<assertion_id>"
@@ -16492,8 +16276,7 @@
           "django-rate-limit-design-001"
         ],
         "structured_output_modes": {
-          "none": 54,
-          "validation_result": 4
+          "validation_result": 58
         }
       },
       "score": {
@@ -16572,8 +16355,8 @@
       "wrap_reward_json": "Task writes reward.json today and should wrap that scalar into validation_result.json."
     },
     "migration_counts": {
-      "already_validation_result": 160,
-      "emit_validation_result_sidecar": 115
+      "already_validation_result": 214,
+      "emit_validation_result_sidecar": 61
     },
     "minimum_required_fields": [
       "schema_version",
