@@ -7099,8 +7099,6 @@
       "task_complexity": 0.15,
       "task_complexity_label": "medium",
       "task_complexity_source": "ground_truth_meta_plus_registry",
-      "execution_env": "local_docker_only",
-      "daytona_incompatible_reason": "repo_too_large_for_10gb_sandbox",
       "repo_approx_loc_source": "cloc",
       "repo_cloc_total_files": 24074,
       "repo_cloc_top_languages": [

@@ -10,6 +10,7 @@
 #   bash configs/validate_one_per_benchmark.sh --smoke-runtime [--smoke-timeout-sec 300] [--dry-run]
 #   bash configs/validate_one_per_benchmark.sh --sg-only [--smoke-timeout-sec 600] [--dry-run]
 #   bash configs/validate_one_per_benchmark.sh --artifact-only [--smoke-timeout-sec 600] [--dry-run]
+#   bash configs/validate_one_per_benchmark.sh --selection-file configs/registry_smoke_matrix.json --exact-selection --smoke-runtime
 #
 # --sg-only: swaps Dockerfile -> Dockerfile.sg_only before each smoke, then restores.
 #            Implies --smoke-runtime. Tests that sg_only_env images build and verify.
@@ -38,6 +39,7 @@ ARTIFACT_ONLY=false
 SMOKE_TIMEOUT_SEC=300
 SMOKE_TIMEOUT_OVERRIDES="${SMOKE_TIMEOUT_OVERRIDES:-}"
 MAX_CONCURRENT=0
+EXACT_SELECTION=false
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -74,6 +76,10 @@ while [[ $# -gt 0 ]]; do
         --max-concurrent)
             MAX_CONCURRENT="${2:-0}"
             shift 2
+            ;;
+        --exact-selection)
+            EXACT_SELECTION=true
+            shift
             ;;
         *)
             echo "Unknown option: $1"
@@ -152,7 +158,20 @@ wait_for_slot() {
     done
 }
 
-# Extract first task per benchmark into arrays
+# Extract task selection into arrays
+if [ "$EXACT_SELECTION" = true ]; then
+readarray -t TASK_LINES < <(python3 -c "
+import json
+sel = json.load(open('$SELECTION_FILE'))
+archived = set('$ARCHIVED_SUITES'.split())
+tasks = sel['tasks'] if isinstance(sel, dict) and 'tasks' in sel else sel
+for t in tasks:
+    bm = t['benchmark']
+    if bm in archived:
+        continue
+    print(f'{bm}\tbenchmarks/{t[\"task_dir\"]}')
+")
+else
 readarray -t TASK_LINES < <(python3 -c "
 import json
 sel = json.load(open('$SELECTION_FILE'))
@@ -167,6 +186,7 @@ for t in tasks:
         seen.add(bm)
         print(f'{bm}\tbenchmarks/{t[\"task_dir\"]}')
 ")
+fi
 
 echo "=============================================="
 echo "CodeScaleBench Validation Run (parallel)"
@@ -185,11 +205,16 @@ else
     echo "Model:   $MODEL"
 fi
 echo "Selection:$SELECTION_FILE"
+if [ "$EXACT_SELECTION" = true ]; then
+    echo "ModeSel: exact curated tasks"
+else
+    echo "ModeSel: first task per benchmark"
+fi
 if [ "$MAX_CONCURRENT" -gt 0 ]; then
     echo "Parallel: up to ${MAX_CONCURRENT} tasks at once"
-    echo "Tasks:   1 per benchmark (${#TASK_LINES[@]} total, throttled)"
+    echo "Tasks:   ${#TASK_LINES[@]} total, throttled"
 else
-    echo "Tasks:   1 per benchmark (${#TASK_LINES[@]} total, all concurrent)"
+    echo "Tasks:   ${#TASK_LINES[@]} total, all concurrent"
 fi
 echo "Output:  $JOBS_DIR"
 echo ""

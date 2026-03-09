@@ -866,7 +866,6 @@ echo "Sourcegraph MCP available for code search"
 def generate_dockerfile(task):
     """Generate baseline Dockerfile that clones from the mirror."""
     mirror = task['mirror']
-    # Extract just the mirror name for git clone URL
     return f'''FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -879,11 +878,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \\
 
 # Pre-create claude user
 RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
+RUN mkdir -p /workspace && chown claude:claude /workspace
 
 # Clone repo as claude user
 USER claude
 WORKDIR /workspace
-RUN git clone --depth 1 https://github.com/{task['repo']}.git . || \\
+RUN git clone --depth 1 https://github.com/{mirror}.git . || \\
     (git init && git config user.email "agent@example.com" && git config user.name "Agent")
 USER root
 
@@ -896,10 +896,14 @@ ENTRYPOINT []
 
 def generate_dockerfile_sg_only(task):
     """Generate Dockerfile.sg_only for MCP-only mode."""
+    manifest = json.dumps({
+        "workdir": "/workspace",
+        "repos": [{"mirror": task["mirror"], "target_dir": "."}],
+    }, separators=(",", ":"))
     return f'''FROM ubuntu:22.04
 
-ENV SOURCEGRAPH_REPO_NAME={task['mirror']}
 ENV DEBIAN_FRONTEND=noninteractive
+ENV SOURCEGRAPH_REPOS="{task['mirror']}"
 ENV TASK_WORKDIR=/workspace
 ENV TASK_REPO_ROOT=/workspace
 
@@ -915,10 +919,12 @@ RUN git init && \\
 
 RUN mkdir -p /logs/agent /logs/verifier
 
+RUN echo '{manifest}' > /tmp/.sg_only_clone_manifest.json
+
 RUN touch /tmp/.sg_only_mode
 
 RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \\
-    for d in /workspace /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
 
 ENTRYPOINT []
 '''

@@ -8,6 +8,7 @@ on:
       - "benchmarks/**"
       - "configs/validate_one_per_benchmark.sh"
       - "configs/registry_smoke_matrix.json"
+      - "configs/registry_smoke_artifact_matrix.json"
       - "scripts/validate_tasks_preflight.py"
       - "docs/reference/TASK_CONTRACT.md"
       - ".github/workflows/task_smoke_matrix.yml"
@@ -17,6 +18,7 @@ on:
       - "benchmarks/**"
       - "configs/validate_one_per_benchmark.sh"
       - "configs/registry_smoke_matrix.json"
+      - "configs/registry_smoke_artifact_matrix.json"
       - "scripts/validate_tasks_preflight.py"
       - "docs/reference/TASK_CONTRACT.md"
       - ".github/workflows/task_smoke_matrix.yml"
@@ -54,10 +56,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant:
-          - baseline
-          - sg-only
-          - artifact-only
+        include:
+          - variant: baseline
+            selection_file: configs/registry_smoke_matrix.json
+          - variant: sg-only
+            selection_file: configs/registry_smoke_matrix.json
+          - variant: artifact-only
+            selection_file: configs/registry_smoke_artifact_matrix.json
     steps:
       - uses: actions/checkout@v4
 
@@ -76,7 +81,8 @@ jobs:
             artifact-only) extra_args+=(--artifact-only) ;;
           esac
           bash configs/validate_one_per_benchmark.sh \
-            --selection-file configs/registry_smoke_matrix.json \
+            --selection-file "${{ matrix.selection_file }}" \
+            --exact-selection \
             --smoke-runtime \
             --smoke-timeout-sec 300 \
             --smoke-timeout-overrides "csb_sdlc_design=450,csb_sdlc_document=450,csb_sdlc_feature=600,csb_sdlc_fix=600,csb_sdlc_refactor=600,csb_sdlc_test=450,csb_sdlc_understand=450" \

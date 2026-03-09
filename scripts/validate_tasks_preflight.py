@@ -50,6 +50,7 @@ from typing import NamedTuple
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BENCHMARKS_DIR = PROJECT_ROOT / "benchmarks"
+SOURCEGRAPH_TASKS_DIR = PROJECT_ROOT / "sourcegraph_tasks"
 SELECTED_TASKS_PATH = PROJECT_ROOT / "configs" / "selected_benchmark_tasks.json"
 
 # Minimum instruction.md length (characters) to consider non-truncated
@@ -94,6 +95,7 @@ CONTRACT_CHECKS = {
     "sg_only_restore_contract_missing",
     "sg_only_base_mismatch",
     "daytona_storage_over_10g",
+    "stale_daytona_routing_metadata",
 }
 
 
@@ -185,10 +187,7 @@ def validate_task(task_dir: Path, selected_index: dict) -> list[dict]:
     """Validate a single task directory. Returns list of issues."""
     issues = []
     task_name = task_dir.name
-
-    # Determine benchmark from parent dir
     benchmark = task_dir.parent.name
-    # Handle tasks/ subdirectory (swebenchpro)
     if benchmark == "tasks":
         benchmark = task_dir.parent.parent.name
 
@@ -226,6 +225,17 @@ def validate_task(task_dir: Path, selected_index: dict) -> list[dict]:
         toml_data = {}
     else:
         toml_data = parse_task_toml_simple(toml_path)
+
+    # Determine benchmark from task location and task metadata.
+    benchmark = task_dir.parent.name
+    if benchmark == "tasks":
+        benchmark = task_dir.parent.parent.name
+    elif benchmark == "sourcegraph_tasks":
+        benchmark = (
+            toml_data.get("task.mcp_suite")
+            or toml_data.get("task.category")
+            or benchmark
+        )
 
     storage_raw = toml_data.get("environment.storage", "") or toml_data.get("task.storage", "")
     storage_gb = _storage_gb(storage_raw)
@@ -372,9 +382,26 @@ def validate_task(task_dir: Path, selected_index: dict) -> list[dict]:
         if toml_difficulty and selected_difficulty and toml_difficulty != selected_difficulty:
             issue("WARNING", "difficulty_mismatch",
                   f"task.toml difficulty='{toml_difficulty}' vs selected_tasks difficulty='{selected_difficulty}'")
+
+        selected_execution_env = selected.get("execution_env")
+        selected_daytona_reason = selected.get("daytona_incompatible_reason")
+        if (
+            selected_execution_env == "local_docker_only"
+            and selected_daytona_reason == "repo_too_large_for_10gb_sandbox"
+            and storage_gb is not None
+            and storage_gb <= DAYTONA_DEFAULT_STORAGE_GB
+        ):
+            issue(
+                "WARNING",
+                "stale_daytona_routing_metadata",
+                "selected_benchmark_tasks.json still marks task local_docker_only for "
+                "repo_too_large_for_10gb_sandbox, but task.toml now requests storage "
+                f"{storage_raw or f'{storage_gb}G'} within the Daytona default cap",
+            )
     else:
-        issue("INFO", "not_in_selection",
-              f"Task not found in selected_benchmark_tasks.json")
+        if task_dir.parent.name != "sourcegraph_tasks":
+            issue("INFO", "not_in_selection",
+                  f"Task not found in selected_benchmark_tasks.json")
 
     # --- Check expected_changes.json (crossrepo) ---
     expected_changes = task_dir / "expected_changes.json"
@@ -1268,6 +1295,11 @@ def discover_task_dirs(suite: str | None = None, all_tasks: bool = False) -> lis
     dirs = []
 
     if suite:
+        if suite == "sourcegraph_tasks":
+            for entry in sorted(SOURCEGRAPH_TASKS_DIR.iterdir()):
+                if entry.is_dir() and (entry / "task.toml").is_file():
+                    dirs.append(entry)
+            return dirs
         suite_dir = BENCHMARKS_DIR / suite
         if not suite_dir.is_dir():
             print(f"ERROR: Suite directory not found: {suite_dir}", file=sys.stderr)
@@ -1295,6 +1327,10 @@ def discover_task_dirs(suite: str | None = None, all_tasks: bool = False) -> lis
                     for sub in sorted(entry.iterdir()):
                         if sub.is_dir() and (sub / "task.toml").is_file():
                             dirs.append(sub)
+        if SOURCEGRAPH_TASKS_DIR.is_dir():
+            for entry in sorted(SOURCEGRAPH_TASKS_DIR.iterdir()):
+                if entry.is_dir() and (entry / "task.toml").is_file():
+                    dirs.append(entry)
         return dirs
 
     return dirs

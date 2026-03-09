@@ -9,10 +9,14 @@
 set -euo pipefail
 
 TASK_ID="$task_id"
-TASK_WORKDIR="${TASK_WORKDIR:-/workspace}"
-TASK_REPO_ROOT="${TASK_REPO_ROOT:-${VERIFY_REPO:-$TASK_WORKDIR}}"
-TASK_OUTPUT="${TASK_OUTPUT:-$TASK_WORKDIR/answer.json}"
-ANSWER_PATH="$TASK_OUTPUT"
+TASK_WORKDIR="$$(printenv TASK_WORKDIR || true)"
+[ -n "$$TASK_WORKDIR" ] || TASK_WORKDIR="/workspace"
+TASK_REPO_ROOT="$$(printenv TASK_REPO_ROOT || true)"
+[ -n "$$TASK_REPO_ROOT" ] || TASK_REPO_ROOT="$$(printenv VERIFY_REPO || true)"
+[ -n "$$TASK_REPO_ROOT" ] || TASK_REPO_ROOT="$$TASK_WORKDIR"
+TASK_OUTPUT="$$(printenv TASK_OUTPUT || true)"
+[ -n "$$TASK_OUTPUT" ] || TASK_OUTPUT="$$TASK_WORKDIR/answer.json"
+ANSWER_PATH="$$TASK_OUTPUT"
 TASK_SPEC_PATH="/tests/task_spec.json"
 ORACLE_CHECKS="/tests/oracle_checks.py"
 REWARD_PATH="/logs/verifier/reward.txt"

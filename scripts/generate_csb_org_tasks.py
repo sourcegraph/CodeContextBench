@@ -119,6 +119,23 @@ def _task_dir(project_root: Path, mcp_suite: str, task_slug: str) -> Path:
     return project_root / "benchmarks" / mcp_suite / task_slug
 
 
+def _selected_tasks_by_id(project_root: Path) -> Dict[str, Dict]:
+    selected_path = project_root / "configs" / "selected_benchmark_tasks.json"
+    if not selected_path.exists():
+        return {}
+    with open(selected_path) as f:
+        data = json.load(f)
+    index: Dict[str, Dict] = {}
+    for task in data.get("tasks", []):
+        task_id = task.get("task_id")
+        if not task_id:
+            continue
+        index[task_id] = task
+        index[task_id.lower()] = task
+        index[task_id.upper()] = task
+    return index
+
+
 # ---------------------------------------------------------------------------
 # Task ID and slug derivation
 # ---------------------------------------------------------------------------
@@ -144,6 +161,7 @@ def build_template_vars(
     use_case: Dict,
     fixture: Optional[Dict],
     task_id: str,
+    selected_entry: Optional[Dict] = None,
 ) -> Dict[str, str]:
     """Build the full set of string.Template variables for all templates."""
     mcp_suite = use_case.get("mcp_suite", "ccb_mcp_unknown")
@@ -248,7 +266,7 @@ def build_template_vars(
         # Language / env
         "language": language.lower(),
         "language_packages": lang_pkgs,
-        "difficulty": use_case.get("difficulty", "medium"),
+        "difficulty": (selected_entry or {}).get("difficulty") or use_case.get("difficulty") or "hard",
         "time_limit_sec": "900",
         # Repo info
         "primary_repo": primary_repo,
@@ -305,6 +323,7 @@ def render_template(templates_dir: Path, template_name: str, variables: Dict[str
 def generate_task(
     use_case: Dict,
     project_root: Path,
+    selected_tasks_by_id: Optional[Dict[str, Dict]] = None,
     out_root: Optional[Path] = None,
     dry_run: bool = False,
     verbose: bool = False,
@@ -336,7 +355,15 @@ def generate_task(
             logging.warning("  Fixture '%s' not found — proceeding without fixture", repo_set_id)
 
     # Build template variables
-    variables = build_template_vars(use_case, fixture, task_id)
+    variables = build_template_vars(
+        use_case,
+        fixture,
+        task_id,
+        selected_entry=(
+            (selected_tasks_by_id or {}).get(task_id)
+            or (selected_tasks_by_id or {}).get(task_id.lower())
+        ),
+    )
 
     templates_dir = _templates_dir(project_root)
 
@@ -374,6 +401,11 @@ def generate_task(
     eval_sh = tests_dir / "eval.sh"
     write_rendered("eval.sh.j2", eval_sh)
     eval_sh.chmod(0o755)
+
+    # tests/test.sh wrapper for Harbor/local smoke entrypoint parity
+    test_sh = tests_dir / "test.sh"
+    test_sh.write_text("#!/bin/bash\nset -euo pipefail\nexec bash /tests/eval.sh\n")
+    test_sh.chmod(0o755)
 
     # tests/task_spec.json
     write_rendered("task_spec.json.j2", tests_dir / "task_spec.json")
@@ -434,8 +466,18 @@ def validate_generated_task(task_dir: Path) -> bool:
     toml_file = task_dir / "task.toml"
     if toml_file.exists():
         content = toml_file.read_text()
-        if "mcp_suite" not in content or "org_scale = true" not in content:
-            logging.error("task.toml missing required fields: %s", toml_file)
+        required_toml_snippets = (
+            "mcp_suite",
+            'org_scale = true',
+            'verification_modes =',
+            'command = "bash /tests/test.sh"',
+            'cpus = 4',
+            'memory = "8G"',
+            'storage = "10G"',
+        )
+        missing = [snippet for snippet in required_toml_snippets if snippet not in content]
+        if missing:
+            logging.error("task.toml missing required fields %s: %s", missing, toml_file)
             ok = False
     else:
         logging.error("task.toml missing: %s", task_dir)
@@ -554,6 +596,7 @@ def main() -> int:
     with open(registry_path) as f:
         registry_data = json.load(f)
     all_use_cases: List[Dict] = registry_data.get("use_cases", [])
+    selected_tasks_by_id = _selected_tasks_by_id(project_root)
     logging.info("Registry loaded: %d use cases", len(all_use_cases))
 
     # Filter use cases
@@ -597,6 +640,7 @@ def main() -> int:
             task_dir = generate_task(
                 use_case=uc,
                 project_root=project_root,
+                selected_tasks_by_id=selected_tasks_by_id,
                 out_root=out_root,
                 dry_run=args.dry_run,
                 verbose=args.verbose,

@@ -162,6 +162,8 @@ Before publishing a task, confirm:
 - `task.toml` storage is justified and not inflated by default
 - `python3 scripts/validate_tasks_preflight.py --task <task_dir>` passes
 - new or changed tasks also pass `--smoke-runtime` before large batch use
+- curated smoke coverage includes regression sentinels for task families that
+  previously needed harness or variant fixes
 
 ## CI / Validation Guidance
 

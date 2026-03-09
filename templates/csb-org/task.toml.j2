@@ -16,6 +16,7 @@ mcp_suite = "$mcp_suite"
 use_case_id = $use_case_id
 repo_set_id = "$repo_set_id"
 mcp_unique = true
+org_scale = true
 verification_modes = $verification_modes_json
 
 [verification]
@@ -27,3 +28,6 @@ description = "$task_description"
 
 [environment]
 build_timeout_sec = 600.0
+cpus = 4
+memory = "8G"
+storage = "10G"

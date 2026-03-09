@@ -63,17 +63,20 @@ bash configs/validate_one_per_benchmark.sh --smoke-runtime --smoke-timeout-sec 3
 # Curated registry smoke for CI/local verification (baseline variant)
 bash configs/validate_one_per_benchmark.sh \
   --selection-file configs/registry_smoke_matrix.json \
+  --exact-selection \
   --smoke-runtime \
   --max-concurrent 2
 
 # Variant-specific smoke
 bash configs/validate_one_per_benchmark.sh \
   --selection-file configs/registry_smoke_matrix.json \
+  --exact-selection \
   --sg-only \
   --max-concurrent 2
 
 bash configs/validate_one_per_benchmark.sh \
-  --selection-file configs/registry_smoke_matrix.json \
+  --selection-file configs/registry_smoke_artifact_matrix.json \
+  --exact-selection \
   --artifact-only \
   --max-concurrent 2
 ```
