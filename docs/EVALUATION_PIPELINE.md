@@ -50,8 +50,11 @@ Harbor run output (result.json, transcript)
 
 Every task ships a `tests/test.sh` (SDLC tasks) or `tests/eval.sh` (Org
 tasks) that runs inside the Docker container after the agent finishes. The
-verifier writes a reward (0.0–1.0) to `/logs/verifier/reward.txt` and exits 0
-on success, non-zero on failure.
+verifier writes a reward (0.0–1.0) to `/logs/verifier/reward.txt`. Canonical
+tasks should also emit `/logs/verifier/validation_result.json` using the schema
+in [docs/reference/VALIDATION_RESULT_SCHEMA.md](reference/VALIDATION_RESULT_SCHEMA.md)
+so downstream reporting can preserve scorer family, pass semantics, and failure
+context.
 
 Verifier types are documented in [SCORING_SEMANTICS.md](SCORING_SEMANTICS.md).
 

@@ -46,7 +46,10 @@ The test script (`tests/test.sh`) is uploaded by Harbor to `/tests/` in the cont
 
 1. Runs inside the container after the agent completes
 2. Writes a reward to `/logs/verifier/reward.txt` as a plain decimal float (0.0-1.0)
-3. Always exits 0 (Harbor reads the reward value, not the exit code)
+3. For canonical tasks, should also write `/logs/verifier/validation_result.json`
+   following `docs/reference/VALIDATION_RESULT_SCHEMA.md`
+4. May use non-zero exit codes to distinguish scored failure from verifier/runtime failure;
+   Harbor still reads the scalar reward artifact
 
 ### Result Format
 

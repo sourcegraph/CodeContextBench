@@ -20,21 +20,34 @@ Exit codes:
 """
 
 import argparse
+import importlib.util
 import json
 import sys
 from pathlib import Path
 from typing import Any, Dict
 
-# Import oracle_checks from the same directory
-sys.path.insert(0, str(Path(__file__).parent))
-from oracle_checks import (
-    check_dependency_chain,
-    check_file_set_match,
-    check_keyword_presence,
-    check_provenance,
-    check_symbol_resolution,
-    run_all_checks,
-)
+SCRIPT_DIR = Path(__file__).parent
+
+
+def _load_run_all_checks():
+    """Load oracle_checks.py from the copied task dir or the repo copy."""
+    candidates = (
+        SCRIPT_DIR / "oracle_checks.py",
+        SCRIPT_DIR / "csb_metrics" / "oracle_checks.py",
+    )
+    for candidate in candidates:
+        if not candidate.is_file():
+            continue
+        spec = importlib.util.spec_from_file_location("oracle_checks", candidate)
+        if spec is None or spec.loader is None:
+            continue
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.run_all_checks
+    raise ModuleNotFoundError("oracle_checks.py not found next to promoted_verifier.py")
+
+
+run_all_checks = _load_run_all_checks()
 
 # ---------------------------------------------------------------------------
 # Suite-specific composite weights
@@ -87,6 +100,14 @@ SCORE_KEYS: Dict[str, str] = {
     "dependency_chain": "chain_recall",
     "keyword_presence": "keyword_recall",
     "provenance": "provenance_score",
+}
+
+VALIDATION_RESULT_SCHEMA_VERSION = "validation_result.v1alpha1"
+DEFAULT_PASS_THRESHOLD = 0.0
+DEFAULT_OUTPUT_CONTRACT: Dict[str, Any] = {
+    "mode": "answer_json_native",
+    "primary_path": "/workspace/answer.json",
+    "required_artifact": True,
 }
 
 
@@ -149,6 +170,55 @@ def compute_weighted_composite(
     }
 
 
+def _canonicalize_sub_scores(per_check: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    """Normalize suite-weighted check data into the shared sub_scores shape."""
+    sub_scores: Dict[str, Dict[str, Any]] = {}
+    for check_type, info in per_check.items():
+        score = float(info.get("score", 0.0))
+        entry: Dict[str, Any] = {
+            "score": round(score, 4),
+            "passed": score > 0.0,
+        }
+        for key in ("weight", "weighted_contribution", "note"):
+            if key in info:
+                entry[key] = info[key]
+        sub_scores[check_type] = entry
+    return sub_scores
+
+
+def _build_validation_result(
+    reward: float,
+    target_suite: str,
+    sub_scores: Dict[str, Dict[str, Any]],
+    failure: Dict[str, str] | None,
+    legacy_fields: Dict[str, Any],
+    details: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Build the canonical validation_result payload while preserving legacy keys."""
+    reward = round(float(reward), 4)
+    result: Dict[str, Any] = {
+        "schema_version": VALIDATION_RESULT_SCHEMA_VERSION,
+        "status": "scored" if failure is None else (
+            "invalid_output" if failure.get("stage") == "output_validation" else "verifier_error"
+        ),
+        "scorable": failure is None,
+        "scorer_family": "oracle_checks",
+        "reward": reward,
+        "pass_threshold": DEFAULT_PASS_THRESHOLD,
+        "passed": failure is None and reward > DEFAULT_PASS_THRESHOLD,
+        "output_contract": dict(DEFAULT_OUTPUT_CONTRACT),
+        "sub_scores": sub_scores,
+        "failure": failure,
+        "details": {
+            "reward_type": "score",
+            "target_suite": target_suite,
+            **details,
+        },
+    }
+    result.update(legacy_fields)
+    return result
+
+
 def run_promoted_verifier(
     answer_path: str,
     task_spec_path: str,
@@ -163,24 +233,50 @@ def run_promoted_verifier(
     base_result = run_all_checks(answer_path, task_spec_path)
 
     if "error" in base_result:
-        result = {
-            "composite_score": 0.0,
-            "error": base_result["error"],
-            "target_suite": target_suite,
-            "oracle_checks": base_result,
-        }
+        result = _build_validation_result(
+            reward=0.0,
+            target_suite=target_suite,
+            sub_scores={},
+            failure={
+                "code": "oracle_checks_error",
+                "message": str(base_result["error"]),
+                "stage": "scoring",
+            },
+            legacy_fields={
+                "composite_score": 0.0,
+                "error": base_result["error"],
+                "target_suite": target_suite,
+                "oracle_checks": base_result,
+                "per_check": {},
+                "weights_used": {},
+            },
+            details={
+                "oracle_checks": base_result,
+                "weights_used": {},
+            },
+        )
     else:
         # Compute suite-weighted composite
         weighted = compute_weighted_composite(
             base_result.get("checks", {}), target_suite
         )
-        result = {
-            "composite_score": weighted["composite_score"],
-            "target_suite": target_suite,
-            "weights_used": weighted["weights_used"],
-            "per_check": weighted["per_check"],
-            "oracle_checks": base_result,
-        }
+        result = _build_validation_result(
+            reward=weighted["composite_score"],
+            target_suite=target_suite,
+            sub_scores=_canonicalize_sub_scores(weighted["per_check"]),
+            failure=None,
+            legacy_fields={
+                "composite_score": weighted["composite_score"],
+                "target_suite": target_suite,
+                "weights_used": weighted["weights_used"],
+                "per_check": weighted["per_check"],
+                "oracle_checks": base_result,
+            },
+            details={
+                "weights_used": weighted["weights_used"],
+                "oracle_checks": base_result,
+            },
+        )
 
     # Write output file
     if output_path:

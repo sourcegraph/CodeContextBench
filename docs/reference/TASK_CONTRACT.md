@@ -70,10 +70,17 @@ Missing required output is an invalid run when the verifier cannot establish
 that the agent actually produced a scorable answer. It should not silently look
 like a clean `reward=0.0` benchmark miss.
 
+Canonical tasks should treat `reward.txt` as the scalar compatibility artifact
+and `validation_result.json` as the semantic verifier contract. The JSON
+sidecar is where verifiers should record scorer family, pass semantics,
+sub-scores, and failure context.
+
 At minimum, verifiers should:
 
 - emit a clear error for missing required output
 - write reward artifacts only after classifying whether the run was scorable
+- for canonical tasks, also write `/logs/verifier/validation_result.json`
+  using `docs/reference/VALIDATION_RESULT_SCHEMA.md`
 - avoid hardcoded assumptions like `cd /app` unless that is the published task contract
 
 ## Image Variant Parity

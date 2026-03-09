@@ -11,6 +11,7 @@ Stable specifications and policy/reference documents.
 ## Evaluation / Scoring
 - `docs/SCORING_SEMANTICS.md`
 - `docs/EVALUATION_PIPELINE.md`
+- `docs/reference/VALIDATION_RESULT_SCHEMA.md`
 - `docs/RETRIEVAL_EVAL_SPEC.md`
 - `docs/ORG_CALIBRATION.md`
 

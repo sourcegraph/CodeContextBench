@@ -57,8 +57,59 @@ PROMOTED_VERIFIER="/tests/promoted_verifier.py"
 ORACLE_CHECKS="/tests/oracle_checks.py"
 REWARD_PATH="/logs/verifier/reward.txt"
 VALIDATION_RESULT="/logs/verifier/validation_result.json"
+VALIDATION_RESULT_SCHEMA="validation_result.v1alpha1"
+SCORER_FAMILY="oracle_checks"
+OUTPUT_CONTRACT_MODE="answer_json_native"
+OUTPUT_CONTRACT_PRIMARY="/workspace/answer.json"
 
 mkdir -p /logs/verifier
+
+write_validation_failure() {
+    local code="$$1"
+    local message="$$2"
+    local stage="$$3"
+    python3 - "$$VALIDATION_RESULT" "$$code" "$$message" "$$stage" "$$OUTPUT_CONTRACT_MODE" "$$OUTPUT_CONTRACT_PRIMARY" "$$SCORER_FAMILY" "$$VALIDATION_RESULT_SCHEMA" <<'PYEOF'
+import json
+import sys
+
+(
+    output_path,
+    code,
+    message,
+    stage,
+    output_mode,
+    primary_path,
+    scorer_family,
+    schema_version,
+) = sys.argv[1:]
+
+status = "invalid_output" if stage == "output_validation" else "verifier_error"
+payload = {
+    "schema_version": schema_version,
+    "status": status,
+    "scorable": False,
+    "scorer_family": scorer_family,
+    "reward": 0.0,
+    "pass_threshold": 0.0,
+    "passed": False,
+    "output_contract": {
+        "mode": output_mode,
+        "primary_path": primary_path,
+        "required_artifact": True,
+    },
+    "sub_scores": {},
+    "failure": {
+        "code": code,
+        "message": message,
+        "stage": stage,
+    },
+    "composite_score": 0.0,
+    "error": message,
+}
+with open(output_path, "w") as f:
+    json.dump(payload, f, indent=2)
+PYEOF
+}
 
 echo "=== $$TASK_ID deterministic verifier ===" >&2
 echo "Suite: $$TARGET_SUITE (promoted from $from_suite)" >&2
@@ -70,7 +121,7 @@ echo "" >&2
 if [ ! -f "$$ANSWER_PATH" ]; then
     echo "FAIL: answer.json not found at $$ANSWER_PATH" >&2
     echo "0.0" > "$$REWARD_PATH"
-    echo '{"composite_score": 0.0, "error": "answer.json not found"}' > "$$VALIDATION_RESULT"
+    write_validation_failure "missing_required_output" "answer.json not found at $$ANSWER_PATH" "output_validation"
     exit 1
 fi
 echo "PASS: answer.json exists" >&2
@@ -101,7 +152,7 @@ PYEOF
 if [ "$$STRUCT_CHECK" != "ok" ]; then
     echo "FAIL: answer.json structure check: $$STRUCT_CHECK" >&2
     echo "0.0" > "$$REWARD_PATH"
-    echo '{"composite_score": 0.0, "error": "answer.json invalid structure"}' > "$$VALIDATION_RESULT"
+    write_validation_failure "invalid_answer_json" "answer.json structure check failed: $$STRUCT_CHECK" "output_validation"
     exit 1
 fi
 echo "PASS: answer.json is valid JSON with expected structure" >&2
@@ -112,11 +163,13 @@ echo "PASS: answer.json is valid JSON with expected structure" >&2
 if [ ! -f "$$TASK_SPEC_PATH" ]; then
     echo "FAIL: task_spec.json not found" >&2
     echo "0.0" > "$$REWARD_PATH"
+    write_validation_failure "missing_task_spec" "task_spec.json not found" "verifier_runtime"
     exit 1
 fi
 if [ ! -f "$$ORACLE_CHECKS" ]; then
     echo "FAIL: oracle_checks.py not found" >&2
     echo "0.0" > "$$REWARD_PATH"
+    write_validation_failure "missing_oracle_checks" "oracle_checks.py not found" "verifier_runtime"
     exit 1
 fi
 echo "PASS: oracle data and checker available" >&2
@@ -150,6 +203,7 @@ fi
 if ! echo "$$SCORE" | python3 -c "import sys; float(sys.stdin.read().strip())" 2>/dev/null; then
     echo "FAIL: verifier did not return a valid score: $$SCORE" >&2
     echo "0.0" > "$$REWARD_PATH"
+    write_validation_failure "invalid_verifier_score" "verifier did not return a valid score: $$SCORE" "scoring"
     exit 1
 fi
 

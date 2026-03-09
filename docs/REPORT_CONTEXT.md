@@ -135,6 +135,9 @@ The evaluation uses a multi-layer pipeline:
 1. **Deterministic verifier** (every task): Task-specific `test.sh` or
    `eval.sh` runs inside the Docker container after the agent finishes.
    Produces a reward score (0.0--1.0) written to `/logs/verifier/reward.txt`.
+   Canonical tasks are converging on a paired
+   `/logs/verifier/validation_result.json` sidecar so scorer family,
+   pass/fail semantics, sub-scores, and invalid-output context are preserved.
 
 2. **Optional LLM judge**: Post-hoc qualitative scoring across five
    dimensions (correctness 0.30, completeness 0.25, code quality 0.20,

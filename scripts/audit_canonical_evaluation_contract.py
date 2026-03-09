@@ -68,6 +68,116 @@ KNOWN_REPORT_PATH_PATTERNS = tuple(
     for name in REPORT_OUTPUT_FILES
 )
 
+VALIDATION_RESULT_SCHEMA_VERSION = "validation_result.v1alpha1"
+VALIDATION_RESULT_MINIMUM_FIELDS = (
+    "schema_version",
+    "status",
+    "scorable",
+    "scorer_family",
+    "reward",
+    "pass_threshold",
+    "passed",
+    "output_contract",
+    "sub_scores",
+    "failure",
+)
+VALIDATION_RESULT_OPTIONAL_FIELDS = (
+    "details",
+    "artifacts",
+    "timing",
+    "legacy",
+)
+OUTPUT_CONTRACT_MINIMUM_FIELDS = (
+    "mode",
+    "primary_path",
+    "required_artifact",
+)
+VALIDATION_RESULT_STATUS_VALUES = {
+    "scored": "Verifier had enough task output to compute a reward.",
+    "invalid_output": "Required task output was missing or malformed, so the run was not scorable.",
+    "verifier_error": "Verifier dependencies or runtime failed before scoring could complete.",
+}
+VALIDATION_RESULT_FAMILY_MAP: dict[str, dict[str, Any]] = {
+    "binary": {
+        "reward_source": "Binary pass/fail outcome.",
+        "recommended_sub_scores": ["binary_pass"],
+        "notes": "Use sub_scores={} only if the family exposes no finer-grained assertions.",
+    },
+    "checklist": {
+        "reward_source": "Weighted checklist aggregate.",
+        "recommended_sub_scores": ["checks.<assertion_id>"],
+        "notes": "Preserve stable assertion ids rather than emitting only a scalar reward.",
+    },
+    "continuous": {
+        "reward_source": "Family-defined continuous score.",
+        "recommended_sub_scores": ["continuous_score"],
+        "notes": "Use the family metric name when one already exists.",
+    },
+    "diff_similarity": {
+        "reward_source": "Diff similarity composite.",
+        "recommended_sub_scores": ["file_recall", "line_recall", "line_precision"],
+        "notes": "Keep the weighted composite in reward and component recalls in sub_scores.",
+    },
+    "f1": {
+        "reward_source": "F1 score.",
+        "recommended_sub_scores": ["precision", "recall", "f1"],
+        "notes": "Include precision/recall even when reward duplicates f1.",
+    },
+    "f1_hybrid": {
+        "reward_source": "Blended detection F1 and fix quality score.",
+        "recommended_sub_scores": ["detection_f1", "fix_score"],
+        "notes": "Artifact bridge tasks should still identify answer_json_bridge in output_contract.mode.",
+    },
+    "find_and_prove": {
+        "reward_source": "Composite regression-proof score.",
+        "recommended_sub_scores": ["checks.<assertion_id>"],
+        "notes": "Use stable assertion ids for fail-on-buggy, pass-after-patch, and explanation checks.",
+    },
+    "ir_checklist": {
+        "reward_source": "Checklist-style retrieval score.",
+        "recommended_sub_scores": ["checks.<assertion_id>"],
+        "notes": "Preserve retrieval-specific assertion ids in sub_scores.",
+    },
+    "oracle_checks": {
+        "reward_source": "Suite-weighted composite over oracle checks.",
+        "recommended_sub_scores": [
+            "file_set_match",
+            "symbol_resolution",
+            "dependency_chain",
+            "keyword_presence",
+            "provenance",
+            "json_schema_match",
+            "test_ratio",
+        ],
+        "notes": "One sub-score entry per configured oracle check; keep raw checker payload in details.",
+    },
+    "repo_state_heuristic": {
+        "reward_source": "Repo-state heuristic aggregate.",
+        "recommended_sub_scores": ["checks.<assertion_id>"],
+        "notes": "Use stable assertion ids instead of only shell log output.",
+    },
+    "score": {
+        "reward_source": "Generic scalar score.",
+        "recommended_sub_scores": [],
+        "notes": "Transitional family only; preferred family names should be more specific.",
+    },
+    "semantic_retrieval_qa": {
+        "reward_source": "Primary QA correctness score.",
+        "recommended_sub_scores": ["correct_function", "correct_path", "justification_score"],
+        "notes": "Keep free-form reasoning under details rather than flattening it into top-level fields.",
+    },
+    "semantic_similarity": {
+        "reward_source": "Semantic similarity score.",
+        "recommended_sub_scores": ["similarity"],
+        "notes": "Record the exact similarity measure in details when multiple measures exist.",
+    },
+    "test_ratio": {
+        "reward_source": "Passed/total test ratio.",
+        "recommended_sub_scores": ["tests_passed_ratio"],
+        "notes": "Store passed/failed counts in details when available.",
+    },
+}
+
 
 def read_text(path: Path) -> str:
     if not path.is_file():
@@ -248,6 +358,73 @@ def classify_output_contract(
     return "unspecified"
 
 
+def classify_validation_result_migration(structured_output_mode: str) -> str:
+    if structured_output_mode == "validation_result":
+        return "already_validation_result"
+    if structured_output_mode == "reward_json":
+        return "wrap_reward_json"
+    return "emit_validation_result_sidecar"
+
+
+def build_validation_result_contract(records: list[dict[str, Any]]) -> dict[str, Any]:
+    family_counts = Counter()
+    family_output_contracts: dict[str, Counter[str]] = defaultdict(Counter)
+    family_structured_modes: dict[str, Counter[str]] = defaultdict(Counter)
+    family_examples: dict[str, list[str]] = defaultdict(list)
+    migration_counts = Counter()
+
+    for record in records:
+        if record.get("error"):
+            continue
+
+        family = record["evaluator"]["family"]
+        structured_output_mode = record["verification"]["structured_output_mode"]
+        output_contract = record["output_contract"]["classification"]
+        migration_class = classify_validation_result_migration(structured_output_mode)
+
+        family_counts[family] += 1
+        family_output_contracts[family][output_contract] += 1
+        family_structured_modes[family][structured_output_mode] += 1
+        migration_counts[migration_class] += 1
+
+        if len(family_examples[family]) < 3:
+            family_examples[family].append(record["task_id"])
+
+    families = sorted(set(VALIDATION_RESULT_FAMILY_MAP) | set(family_counts))
+    family_mappings: dict[str, dict[str, Any]] = {}
+    for family in families:
+        spec = VALIDATION_RESULT_FAMILY_MAP.get(
+            family,
+            {
+                "reward_source": "Family-specific scalar reward.",
+                "recommended_sub_scores": [],
+                "notes": "Populate sub_scores={} until the family receives a more specific contract.",
+            },
+        )
+        family_mappings[family] = {
+            **spec,
+            "current_task_count": family_counts.get(family, 0),
+            "structured_output_modes": dict(sorted(family_structured_modes[family].items())),
+            "output_contracts": dict(sorted(family_output_contracts[family].items())),
+            "sample_tasks": family_examples[family],
+        }
+
+    return {
+        "schema_version": VALIDATION_RESULT_SCHEMA_VERSION,
+        "minimum_required_fields": list(VALIDATION_RESULT_MINIMUM_FIELDS),
+        "recommended_optional_fields": list(VALIDATION_RESULT_OPTIONAL_FIELDS),
+        "output_contract_required_fields": list(OUTPUT_CONTRACT_MINIMUM_FIELDS),
+        "status_values": VALIDATION_RESULT_STATUS_VALUES,
+        "migration_classes": {
+            "already_validation_result": "Task already writes validation_result.json and should backfill any missing canonical fields.",
+            "wrap_reward_json": "Task writes reward.json today and should wrap that scalar into validation_result.json.",
+            "emit_validation_result_sidecar": "Task writes reward.txt only and should add validation_result.json alongside it.",
+        },
+        "migration_counts": dict(sorted(migration_counts.items())),
+        "family_mappings": family_mappings,
+    }
+
+
 def build_task_record(task: dict[str, Any]) -> dict[str, Any]:
     task_dir = find_task_dir(task)
     if task_dir is None:
@@ -376,6 +553,7 @@ def build_task_record(task: dict[str, Any]) -> dict[str, Any]:
         report_paths=report_paths,
         repo_state_required=repo_state_required,
     )
+    migration_class = classify_validation_result_migration(structured_output_mode)
 
     return {
         "task_id": task.get("task_id"),
@@ -417,6 +595,12 @@ def build_task_record(task: dict[str, Any]) -> dict[str, Any]:
             "known_outputs": known_outputs,
             "report_paths": report_paths,
             "repo_state_required": repo_state_required,
+        },
+        "validation_result_plan": {
+            "schema_version": VALIDATION_RESULT_SCHEMA_VERSION,
+            "migration_class": migration_class,
+            "output_contract_mode": output_contract,
+            "scorer_family": evaluator_family,
         },
     }
 
@@ -545,6 +729,7 @@ def main() -> None:
             "total_selected_entries": len(tasks),
         },
         "summary": summarize(records),
+        "validation_result_contract": build_validation_result_contract(records),
         "tasks": records,
     }
 

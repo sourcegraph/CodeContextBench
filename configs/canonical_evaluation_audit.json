@@ -1411,6 +1411,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-052",
       "task_id": "ccx-compliance-052",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Compliance Audit: Envoy Access Logging Configuration Coverage",
@@ -1463,6 +1469,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-053",
       "task_id": "ccx-compliance-053",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Compliance Audit: Kafka Audit Logging and Authorization Events",
@@ -1515,6 +1527,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-124",
       "task_id": "ccx-compliance-124",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox Content Security Policy Enforcement Audit",
@@ -1567,6 +1585,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-182",
       "task_id": "ccx-compliance-182",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes RBAC ClusterRole Verb Coverage Audit",
@@ -1619,6 +1643,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-183",
       "task_id": "ccx-compliance-183",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes API Deprecation Policy Enforcement",
@@ -1671,6 +1701,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-184",
       "task_id": "ccx-compliance-184",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Pod Security Context Validation",
@@ -1723,6 +1759,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-187",
       "task_id": "ccx-compliance-187",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy gRPC Health Check Protocol Compliance",
@@ -1775,6 +1817,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-189",
       "task_id": "ccx-compliance-189",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana User Permission Model Role Coverage Audit",
@@ -1827,6 +1875,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-190",
       "task_id": "ccx-compliance-190",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Plugin Security Signature Verification",
@@ -1879,6 +1933,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-191",
       "task_id": "ccx-compliance-191",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka SASL Mechanism Configuration Validation",
@@ -1931,6 +1991,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-192",
       "task_id": "ccx-compliance-192",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka Log Retention Policy Configuration Audit",
@@ -1983,6 +2049,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-286",
       "task_id": "ccx-compliance-286",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "TiDB SQL Privilege Check and RBAC Enforcement Audit",
@@ -2035,6 +2107,12 @@
       },
       "task_dir": "csb_org_compliance/ccx-compliance-292",
       "task_id": "ccx-compliance-292",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Godot GDScript Sandbox and Security Boundary Audit",
@@ -2087,6 +2165,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-062",
       "task_id": "ccx-crossorg-062",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Cross-Org gRPC Service Definition Discovery",
@@ -2139,6 +2223,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-121",
       "task_id": "ccx-crossorg-121",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Cross-Org WebIDL to DOM Binding Discovery",
@@ -2191,6 +2281,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-132",
       "task_id": "ccx-crossorg-132",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust-Servo Shared Style System Discovery",
@@ -2243,6 +2339,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-217",
       "task_id": "ccx-crossorg-217",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Django vs Flask Middleware Chain Implementation Comparison",
@@ -2295,6 +2397,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-218",
       "task_id": "ccx-crossorg-218",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Structured Logging Pattern in Python ML Repos",
@@ -2347,6 +2455,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-219",
       "task_id": "ccx-crossorg-219",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "OpenTelemetry Span Creation Across Monitoring Stack",
@@ -2399,6 +2513,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-220",
       "task_id": "ccx-crossorg-220",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Java Service Initialization Lifecycle Pattern in Kafka",
@@ -2451,6 +2571,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-221",
       "task_id": "ccx-crossorg-221",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Java Dependency Injection with Kafka Plugin Architecture",
@@ -2503,6 +2629,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-222",
       "task_id": "ccx-crossorg-222",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Java Annotation Processing for Kafka Config Keys",
@@ -2555,6 +2687,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-280",
       "task_id": "ccx-crossorg-280",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Prometheus Metrics Exposition Pattern Across Kubernetes and Grafana",
@@ -2607,6 +2745,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-288",
       "task_id": "ccx-crossorg-288",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Apache Beam Pipeline Runner Translation Layer",
@@ -2659,6 +2803,12 @@
       },
       "task_dir": "csb_org_crossorg/ccx-crossorg-295",
       "task_id": "ccx-crossorg-295",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "CockroachDB Raft Consensus and Lease Management Cross-Component Discovery",
@@ -2711,6 +2861,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-106",
       "task_id": "ccx-dep-trace-106",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "GCC Optimization Pass Registration and Execution Chain",
@@ -2763,6 +2919,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-253",
       "task_id": "ccx-dep-trace-253",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM Pass Manager Registration and Execution Chain",
@@ -2815,6 +2977,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-254",
       "task_id": "ccx-dep-trace-254",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM IR Type System to Code Generation Chain",
@@ -2867,6 +3035,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-258",
       "task_id": "ccx-dep-trace-258",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Deployment Controller Reconcile to Pod Creation Chain",
@@ -2919,6 +3093,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-260",
       "task_id": "ccx-dep-trace-260",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes CRD Validation to OpenAPI Schema Publishing Chain",
@@ -2971,6 +3151,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-264",
       "task_id": "ccx-dep-trace-264",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox SpiderMonkey JS Parsing to Bytecode Chain",
@@ -3023,6 +3209,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-265",
       "task_id": "ccx-dep-trace-265",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox CSS Style Resolution to Layout Paint Chain",
@@ -3075,6 +3267,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-266",
       "task_id": "ccx-dep-trace-266",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox DOM Event Dispatch Chain",
@@ -3127,6 +3325,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-267",
       "task_id": "ccx-dep-trace-267",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust Borrow Checker MIR Analysis Chain",
@@ -3179,6 +3383,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-268",
       "task_id": "ccx-dep-trace-268",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust Trait Solver Obligation Chain",
@@ -3231,6 +3441,12 @@
       },
       "task_dir": "csb_org_crossrepo/ccx-dep-trace-271",
       "task_id": "ccx-dep-trace-271",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "OpenJDK G1 GC Garbage Collection Cycle Chain",
@@ -3283,6 +3499,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-config-trace-010",
       "task_id": "ccx-config-trace-010",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Stack Trace Symbol Resolution: rest.Config",
@@ -3335,6 +3557,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-001",
       "task_id": "ccx-dep-trace-001",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Blast Radius of a Shared Kubernetes Library",
@@ -3387,6 +3615,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-102",
       "task_id": "ccx-dep-trace-102",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Cross-Compiler Sanitizer Tracing: ASan in LLVM vs GCC",
@@ -3439,6 +3673,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-116",
       "task_id": "ccx-dep-trace-116",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Cross-Repo Dep Trace: Kubernetes TypeMeta Re-Export Chain",
@@ -3492,6 +3732,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-123",
       "task_id": "ccx-dep-trace-123",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox Necko Networking to NSS TLS Handshake Chain",
@@ -3544,6 +3790,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-133",
       "task_id": "ccx-dep-trace-133",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Chromium Blink Rendering Pipeline: Style to Paint",
@@ -3596,6 +3848,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-171",
       "task_id": "ccx-dep-trace-171",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes apimachinery runtime.Object Import Chain",
@@ -3648,6 +3906,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-172",
       "task_id": "ccx-dep-trace-172",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Controller Runtime Reconciler Registration",
@@ -3700,6 +3964,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-173",
       "task_id": "ccx-dep-trace-173",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Informer Cache Event Handler Chain",
@@ -3752,6 +4022,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-273",
       "task_id": "ccx-dep-trace-273",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Admission Webhook Processing Chain",
@@ -3804,6 +4080,12 @@
       },
       "task_dir": "csb_org_crossrepo_tracing/ccx-dep-trace-293",
       "task_id": "ccx-dep-trace-293",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Roslyn C# Type Inference and Overload Resolution Chain",
@@ -3856,6 +4138,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-073",
       "task_id": "ccx-domain-073",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Domain Lineage: Kubernetes Watch Event Delivery Path",
@@ -3908,6 +4196,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-101",
       "task_id": "ccx-domain-101",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM Optimization Pass Pipeline Propagation",
@@ -3960,6 +4254,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-112",
       "task_id": "ccx-domain-112",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox Servo CSS Style System Integration",
@@ -4012,6 +4312,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-129",
       "task_id": "ccx-domain-129",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Java ClassLoader Delegation Chain",
@@ -4064,6 +4370,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-137",
       "task_id": "ccx-domain-137",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Android View Rendering Pipeline",
@@ -4116,6 +4428,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-140",
       "task_id": "ccx-domain-140",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "ArangoDB AQL Query Execution Pipeline",
@@ -4168,6 +4486,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-155",
       "task_id": "ccx-domain-155",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes API Server Admission Webhook Chain",
@@ -4220,6 +4544,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-156",
       "task_id": "ccx-domain-156",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes SharedInformer Factory and Cache Sync",
@@ -4272,6 +4602,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-157",
       "task_id": "ccx-domain-157",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Datasource Plugin Query Architecture",
@@ -4324,6 +4660,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-159",
       "task_id": "ccx-domain-159",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox Layout Engine Reflow Architecture",
@@ -4376,6 +4718,12 @@
       },
       "task_dir": "csb_org_domain/ccx-domain-160",
       "task_id": "ccx-domain-160",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "OpenJDK JVM Bytecode Interpretation Loop",
@@ -4428,6 +4776,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-032",
       "task_id": "ccx-incident-032",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Incident Debugging: Envoy Connection Pool Exhaustion",
@@ -4480,6 +4834,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-034",
       "task_id": "ccx-incident-034",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Incident Investigation: Loki Client Retry and Timeout Configuration",
@@ -4532,6 +4892,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-037",
       "task_id": "ccx-incident-037",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Incident Debugging: etcd DialTimeout Configuration Across Kubernetes Ecosystem",
@@ -4584,6 +4950,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-108",
       "task_id": "ccx-incident-108",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM SelectionDAG Assertion Failure Diagnosis",
@@ -4636,6 +5008,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-110",
       "task_id": "ccx-incident-110",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox Multi-Process Architecture: Content Process Lifecycle",
@@ -4688,6 +5066,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-113",
       "task_id": "ccx-incident-113",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Incident Root-Cause: Grafana Dashboard Migration Field Config Loss",
@@ -4741,6 +5125,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-125",
       "task_id": "ccx-incident-125",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "GCC Internal Compiler Error Diagnosis: GIMPLE Verification Failure",
@@ -4793,6 +5183,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-131",
       "task_id": "ccx-incident-131",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust Borrow Checker Error Origin Trace",
@@ -4845,6 +5241,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-139",
       "task_id": "ccx-incident-139",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LibreOffice Calc Formula Evaluation Chain",
@@ -4897,6 +5299,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-144",
       "task_id": "ccx-incident-144",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Pod Eviction on Node Memory Pressure",
@@ -4949,6 +5357,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-145",
       "task_id": "ccx-incident-145",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Alert Evaluation Cycle Overrun",
@@ -5001,6 +5415,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-148",
       "task_id": "ccx-incident-148",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust ICE in Trait Method Candidate Collection",
@@ -5053,6 +5473,12 @@
       },
       "task_dir": "csb_org_incident/ccx-incident-149",
       "task_id": "ccx-incident-149",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox CSS calc() Value Overflow",
@@ -5105,6 +5531,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-026",
       "task_id": "ccx-migration-026",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy Deprecated v2 API References Migration",
@@ -5157,6 +5589,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-107",
       "task_id": "ccx-migration-107",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM Legacy Pass Manager to New Pass Manager Migration Inventory",
@@ -5209,6 +5647,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-114",
       "task_id": "ccx-migration-114",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Migration Inventory: Kafka RecordAccumulator Rename Impact",
@@ -5262,6 +5706,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-117",
       "task_id": "ccx-migration-117",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Migration Inventory: K8s Scheduler ScoreExtensions Rename Impact",
@@ -5315,6 +5765,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-195",
       "task_id": "ccx-migration-195",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka Old Consumer API to New Consumer API Migration",
@@ -5367,6 +5823,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-196",
       "task_id": "ccx-migration-196",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka Streams DSL to Processor API Migration",
@@ -5419,6 +5881,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-197",
       "task_id": "ccx-migration-197",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka Connect REST API v1 to v2 Migration",
@@ -5471,6 +5939,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-198",
       "task_id": "ccx-migration-198",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Ingress v1beta1 to v1 Migration",
@@ -5523,6 +5997,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-199",
       "task_id": "ccx-migration-199",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes CronJob v1beta1 to batch/v1 Migration",
@@ -5575,6 +6055,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-200",
       "task_id": "ccx-migration-200",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes ConfigMap Immutability Feature Migration",
@@ -5627,6 +6113,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-201",
       "task_id": "ccx-migration-201",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy xDS v2 to v3 API Migration",
@@ -5679,6 +6171,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-202",
       "task_id": "ccx-migration-202",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy HTTP/1.1 to HTTP/2 Header Normalization Migration",
@@ -5731,6 +6229,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-203",
       "task_id": "ccx-migration-203",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Django URL Patterns Migration from patterns() to list",
@@ -5783,6 +6287,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-204",
       "task_id": "ccx-migration-204",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Django CharField max_length Enforcement Migration",
@@ -5835,6 +6345,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-205",
       "task_id": "ccx-migration-205",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Legacy Alerting to Unified Alerting Migration",
@@ -5887,6 +6403,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-206",
       "task_id": "ccx-migration-206",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Dashboard JSON Model Version Migration",
@@ -5939,6 +6461,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-207",
       "task_id": "ccx-migration-207",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Rust Edition 2018 to 2021 Import Path Migration",
@@ -5991,6 +6519,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-274",
       "task_id": "ccx-migration-274",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Flink DataStream API Deprecation Markers",
@@ -6043,6 +6577,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-275",
       "task_id": "ccx-migration-275",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes v1beta1 to v1 API Storage Version Registration",
@@ -6095,6 +6635,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-276",
       "task_id": "ccx-migration-276",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Node.js CommonJS to ESM Module Loader Migration Surface",
@@ -6147,6 +6693,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-277",
       "task_id": "ccx-migration-277",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "OpenJDK Security Provider Registration Framework",
@@ -6199,6 +6751,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-278",
       "task_id": "ccx-migration-278",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy xDS v3 Transport Protocol Implementation",
@@ -6251,6 +6809,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-279",
       "task_id": "ccx-migration-279",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Dashboard Schema Version Migration Pipeline",
@@ -6303,6 +6867,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-289",
       "task_id": "ccx-migration-289",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Bazel Starlark Evaluation and BUILD File Migration Inventory",
@@ -6355,6 +6925,12 @@
       },
       "task_dir": "csb_org_migration/ccx-migration-294",
       "task_id": "ccx-migration-294",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "TypeScript Module Resolution Migration from Classic to Node16",
@@ -6407,6 +6983,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-103",
       "task_id": "ccx-onboard-103",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM IR-to-Machine-Code Generation Pipeline",
@@ -6459,6 +7041,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-109",
       "task_id": "ccx-onboard-109",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "SpiderMonkey JIT Compilation Pipeline",
@@ -6511,6 +7099,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-134",
       "task_id": "ccx-onboard-134",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Chromium Multi-Process Architecture Overview",
@@ -6562,6 +7156,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-207",
       "task_id": "ccx-onboard-search-207",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6611,6 +7211,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-208",
       "task_id": "ccx-onboard-search-208",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6660,6 +7266,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-209",
       "task_id": "ccx-onboard-search-209",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6709,6 +7321,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-210",
       "task_id": "ccx-onboard-search-210",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6758,6 +7376,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-211",
       "task_id": "ccx-onboard-search-211",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6807,6 +7431,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-212",
       "task_id": "ccx-onboard-search-212",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6856,6 +7486,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-213",
       "task_id": "ccx-onboard-search-213",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6905,6 +7541,12 @@
       },
       "task_dir": "csb_org_onboarding/ccx-onboard-search-214",
       "task_id": "ccx-onboard-search-214",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "solution_json",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_retrieval_qa"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Correct function retrieval similarity score",
@@ -6955,6 +7597,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-081",
       "task_id": "ccx-agentic-081",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Agentic Correctness: Implement Kafka Consumer Following Ecosystem Patterns",
@@ -7008,6 +7656,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-082",
       "task_id": "ccx-agentic-082",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Agentic Correctness: Implement Kubernetes Custom Resource Client",
@@ -7061,6 +7715,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-083",
       "task_id": "ccx-agentic-083",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Agentic Correctness: Implement Envoy HTTP Filter Following Extension Patterns",
@@ -7114,6 +7774,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-122",
       "task_id": "ccx-agentic-122",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Agentic Correctness: Implement Firefox XPCOM Component",
@@ -7167,6 +7833,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-127",
       "task_id": "ccx-agentic-127",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Agentic Correctness: Implement Minimal GCC GIMPLE Pass",
@@ -7220,6 +7892,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-223",
       "task_id": "ccx-agentic-223",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes sig-node Kubelet Component Ownership Map",
@@ -7272,6 +7950,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-224",
       "task_id": "ccx-agentic-224",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Storage Subsystem CSI Driver Integration",
@@ -7324,6 +8008,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-225",
       "task_id": "ccx-agentic-225",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes CNI Network Plugin Interface Architecture",
@@ -7376,6 +8066,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-229",
       "task_id": "ccx-agentic-229",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Unified Alerting Architecture Overview",
@@ -7428,6 +8124,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-232",
       "task_id": "ccx-agentic-232",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kafka Inter-Broker Replication Protocol Architecture",
@@ -7480,6 +8182,12 @@
       },
       "task_dir": "csb_org_org/ccx-agentic-290",
       "task_id": "ccx-agentic-290",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "gRPC Health Checking and Keepalive Protocol Implementation",
@@ -7532,6 +8240,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-091",
       "task_id": "ccx-platform-091",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Service Deployment Pattern Discovery",
@@ -7584,6 +8298,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-094",
       "task_id": "ccx-platform-094",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Platform Engineering: CODEOWNERS Infrastructure Discovery",
@@ -7636,6 +8356,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-100",
       "task_id": "ccx-platform-100",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Platform Audit: Deprecated Struct Fields in Kubernetes API Types",
@@ -7688,6 +8414,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-104",
       "task_id": "ccx-platform-104",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "LLVM Loop Vectorization Infrastructure",
@@ -7740,6 +8472,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-238",
       "task_id": "ccx-platform-238",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes API Server Admission Controller Chain",
@@ -7792,6 +8530,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-239",
       "task_id": "ccx-platform-239",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Audit Log Middleware and Backend",
@@ -7844,6 +8588,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-240",
       "task_id": "ccx-platform-240",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes API Server Authentication Chain",
@@ -7896,6 +8646,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-241",
       "task_id": "ccx-platform-241",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Controller Manager Work Queue and Rate Limiting",
@@ -7948,6 +8704,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-242",
       "task_id": "ccx-platform-242",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Scheduler Framework Plugin Extension Points",
@@ -8000,6 +8762,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-243",
       "task_id": "ccx-platform-243",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Envoy Admin API Endpoint Registration",
@@ -8052,6 +8820,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-248",
       "task_id": "ccx-platform-248",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Database Migration Framework",
@@ -8104,6 +8878,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-249",
       "task_id": "ccx-platform-249",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana Configuration File Parsing and Override Chain",
@@ -8156,6 +8936,12 @@
       },
       "task_dir": "csb_org_platform/ccx-platform-291",
       "task_id": "ccx-platform-291",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Elasticsearch Index Lifecycle Management Policy Engine",
@@ -8208,6 +8994,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-014",
       "task_id": "ccx-vuln-remed-014",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Security Audit: Missing Authentication Middleware in HTTP Handlers",
@@ -8260,6 +9052,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-105",
       "task_id": "ccx-vuln-remed-105",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Stack Protection Mechanisms in LLVM",
@@ -8312,6 +9110,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-111",
       "task_id": "ccx-vuln-remed-111",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Firefox NSS TLS Implementation Audit",
@@ -8364,6 +9168,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-126",
       "task_id": "ccx-vuln-remed-126",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "GCC Stack Clash Protection Implementation Audit",
@@ -8416,6 +9226,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-130",
       "task_id": "ccx-vuln-remed-130",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "JCE Cryptography Provider Architecture Audit",
@@ -8468,6 +9284,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-135",
       "task_id": "ccx-vuln-remed-135",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Chromium Renderer Process Sandbox Audit",
@@ -8520,6 +9342,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-141",
       "task_id": "ccx-vuln-remed-141",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "ArangoDB Authentication and Authorization Audit",
@@ -8572,6 +9400,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-161",
       "task_id": "ccx-vuln-remed-161",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes RBAC ClusterRole Privilege Escalation Paths",
@@ -8624,6 +9458,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-162",
       "task_id": "ccx-vuln-remed-162",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes Service Account Token Auto-Mount Audit",
@@ -8676,6 +9516,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-167",
       "task_id": "ccx-vuln-remed-167",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Grafana API Key Authentication and Scope Enforcement",
@@ -8728,6 +9574,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-169",
       "task_id": "ccx-vuln-remed-169",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Node.js Prototype Pollution Prevention in Core",
@@ -8780,6 +9632,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-281",
       "task_id": "ccx-vuln-remed-281",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Node.js child_process Command Injection Guards",
@@ -8832,6 +9690,12 @@
       },
       "task_dir": "csb_org_security/ccx-vuln-remed-282",
       "task_id": "ccx-vuln-remed-282",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "oracle_checks"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Kubernetes RBAC Authorization Implementation",
@@ -8883,6 +9747,12 @@
       },
       "task_dir": "csb_sdlc_debug/ansible-galaxy-tar-regression-prove-001",
       "task_id": "ansible-galaxy-tar-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -8932,6 +9802,12 @@
       },
       "task_dir": "csb_sdlc_debug/flipt-auth-cookie-regression-prove-001",
       "task_id": "flipt-auth-cookie-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -8984,6 +9860,12 @@
       },
       "task_dir": "csb_sdlc_debug/linux-acpi-backlight-fault-001",
       "task_id": "linux-acpi-backlight-fault-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "10-point rubric for fault localization accuracy",
@@ -9036,6 +9918,12 @@
       },
       "task_dir": "csb_sdlc_debug/linux-hda-intel-suspend-fault-001",
       "task_id": "linux-hda-intel-suspend-fault-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "10-point rubric for fault localization accuracy",
@@ -9088,6 +9976,12 @@
       },
       "task_dir": "csb_sdlc_debug/linux-iwlwifi-subdevice-fault-001",
       "task_id": "linux-iwlwifi-subdevice-fault-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "10-point rubric for fault localization accuracy",
@@ -9140,6 +10034,12 @@
       },
       "task_dir": "csb_sdlc_debug/linux-nfs-inode-revalidate-fault-001",
       "task_id": "linux-nfs-inode-revalidate-fault-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "10-point rubric for fault localization accuracy",
@@ -9189,6 +10089,12 @@
       },
       "task_dir": "csb_sdlc_debug/qutebrowser-adblock-cache-regression-prove-001",
       "task_id": "qutebrowser-adblock-cache-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9238,6 +10144,12 @@
       },
       "task_dir": "csb_sdlc_debug/qutebrowser-darkmode-threshold-regression-prove-001",
       "task_id": "qutebrowser-darkmode-threshold-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9287,6 +10199,12 @@
       },
       "task_dir": "csb_sdlc_debug/qutebrowser-hsv-color-regression-prove-001",
       "task_id": "qutebrowser-hsv-color-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9336,6 +10254,12 @@
       },
       "task_dir": "csb_sdlc_debug/qutebrowser-url-regression-prove-001",
       "task_id": "qutebrowser-url-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9385,6 +10309,12 @@
       },
       "task_dir": "csb_sdlc_debug/teleport-ssh-regression-prove-001",
       "task_id": "teleport-ssh-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9430,6 +10360,12 @@
       },
       "task_dir": "csb_sdlc_debug/tidb-query-plan-regression-debug-001",
       "task_id": "tidb-query-plan-regression-debug-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -9479,6 +10415,12 @@
       },
       "task_dir": "csb_sdlc_debug/vuls-oval-regression-prove-001",
       "task_id": "vuls-oval-regression-prove-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "find_and_prove"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Two-phase navprove verification: regression test must fail on buggy code and pass after reference fix",
@@ -9530,6 +10472,12 @@
       },
       "task_dir": "csb_sdlc_design/camel-routing-arch-001",
       "task_id": "camel-routing-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for architectural analysis",
@@ -9581,6 +10529,12 @@
       },
       "task_dir": "csb_sdlc_design/django-orm-query-arch-001",
       "task_id": "django-orm-query-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for architectural analysis",
@@ -9628,6 +10582,12 @@
       },
       "task_dir": "csb_sdlc_design/django-pre-validate-signal-design-001",
       "task_id": "django-pre-validate-signal-design-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: signal exists + follows real pattern + no stale pattern artifacts + syntax",
@@ -9675,6 +10635,12 @@
       },
       "task_dir": "csb_sdlc_design/django-rate-limit-design-001",
       "task_id": "django-rate-limit-design-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: feature correctness + follows actual patterns (not stale docs) + compilation",
@@ -9720,6 +10686,12 @@
       },
       "task_dir": "csb_sdlc_design/elasticsearch-shard-alloc-design-001",
       "task_id": "elasticsearch-shard-alloc-design-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -9764,6 +10736,12 @@
       },
       "task_dir": "csb_sdlc_design/etcd-grpc-api-upgrade-001",
       "task_id": "etcd-grpc-api-upgrade-001",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_similarity"
+      },
       "verification": {
         "command": null,
         "description": "Semantic similarity of content, file references, and patterns",
@@ -9815,6 +10793,12 @@
       },
       "task_dir": "csb_sdlc_design/flink-checkpoint-arch-001",
       "task_id": "flink-checkpoint-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for architectural analysis",
@@ -9862,6 +10846,12 @@
       },
       "task_dir": "csb_sdlc_design/flipt-protobuf-metadata-design-001",
       "task_id": "flipt-protobuf-metadata-design-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: proto schema change + Go server propagation + cross-language consistency",
@@ -9913,6 +10903,12 @@
       },
       "task_dir": "csb_sdlc_design/k8s-crd-lifecycle-arch-001",
       "task_id": "k8s-crd-lifecycle-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for cross-repo architectural analysis",
@@ -9964,6 +10960,12 @@
       },
       "task_dir": "csb_sdlc_design/kafka-flink-streaming-arch-001",
       "task_id": "kafka-flink-streaming-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for cross-repo architectural analysis",
@@ -10015,6 +11017,12 @@
       },
       "task_dir": "csb_sdlc_design/postgres-query-exec-arch-001",
       "task_id": "postgres-query-exec-arch-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file recall/precision) + keyword overlap for architectural analysis",
@@ -10067,6 +11075,12 @@
       },
       "task_dir": "csb_sdlc_document/docgen-inline-002",
       "task_id": "docgen-inline-002",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: Javadoc presence (0.30) + thread-safety documentation (0.30) + performance notes (0.20) + cross-reference accuracy (0.20)",
@@ -10119,6 +11133,12 @@
       },
       "task_dir": "csb_sdlc_document/envoy-arch-doc-gen-001",
       "task_id": "envoy-arch-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10168,6 +11188,12 @@
       },
       "task_dir": "csb_sdlc_document/envoy-migration-doc-gen-001",
       "task_id": "envoy-migration-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "continuous"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": null,
@@ -10213,6 +11239,12 @@
       },
       "task_dir": "csb_sdlc_document/godot-gdscript-api-docgen-001",
       "task_id": "godot-gdscript-api-docgen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -10258,6 +11290,12 @@
       },
       "task_dir": "csb_sdlc_document/grpc-channel-api-docgen-001",
       "task_id": "grpc-channel-api-docgen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -10310,6 +11348,12 @@
       },
       "task_dir": "csb_sdlc_document/k8s-apiserver-doc-gen-001",
       "task_id": "k8s-apiserver-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10362,6 +11406,12 @@
       },
       "task_dir": "csb_sdlc_document/k8s-applyconfig-doc-gen-001",
       "task_id": "k8s-applyconfig-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10414,6 +11464,12 @@
       },
       "task_dir": "csb_sdlc_document/k8s-clientgo-doc-gen-001",
       "task_id": "k8s-clientgo-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10466,6 +11522,12 @@
       },
       "task_dir": "csb_sdlc_document/k8s-fairqueuing-doc-gen-001",
       "task_id": "k8s-fairqueuing-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10518,6 +11580,12 @@
       },
       "task_dir": "csb_sdlc_document/k8s-kubelet-cm-doc-gen-001",
       "task_id": "k8s-kubelet-cm-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: required topics (0.40), file references (0.25), data flow (0.20), extension points (0.15)",
@@ -10567,6 +11635,12 @@
       },
       "task_dir": "csb_sdlc_document/kafka-api-doc-gen-001",
       "task_id": "kafka-api-doc-gen-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "continuous"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": null,
@@ -10611,6 +11685,12 @@
       },
       "task_dir": "csb_sdlc_feature/bustub-hyperloglog-impl-001",
       "task_id": "bustub-hyperloglog-impl-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "unspecified",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Task-specific evaluation checklist",
@@ -10662,6 +11742,12 @@
       },
       "task_dir": "csb_sdlc_feature/camel-fix-protocol-feat-001",
       "task_id": "camel-fix-protocol-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Compilation check + IR metrics (file coverage) + keyword scoring for feature implementation",
@@ -10707,6 +11793,12 @@
       },
       "task_dir": "csb_sdlc_feature/cilium-policy-audit-logger-feat-001",
       "task_id": "cilium-policy-audit-logger-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -10752,6 +11844,12 @@
       },
       "task_dir": "csb_sdlc_feature/cilium-policy-quota-feat-001",
       "task_id": "cilium-policy-quota-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -10797,6 +11895,12 @@
       },
       "task_dir": "csb_sdlc_feature/curl-http3-priority-feat-001",
       "task_id": "curl-http3-priority-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: option definition, backend integration, CLI support, tests",
@@ -10842,6 +11946,12 @@
       },
       "task_dir": "csb_sdlc_feature/django-rate-limit-middleware-feat-001",
       "task_id": "django-rate-limit-middleware-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -10887,6 +11997,12 @@
       },
       "task_dir": "csb_sdlc_feature/envoy-custom-header-filter-feat-001",
       "task_id": "envoy-custom-header-filter-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -10935,6 +12051,12 @@
       },
       "task_dir": "csb_sdlc_feature/envoy-grpc-server-impl-001",
       "task_id": "envoy-grpc-server-impl-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1"
+      },
       "verification": {
         "command": null,
         "description": "F1 score on structured JSON: precision and recall of gRPC server implementor entries",
@@ -10986,6 +12108,12 @@
       },
       "task_dir": "csb_sdlc_feature/flink-pricing-window-feat-001",
       "task_id": "flink-pricing-window-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Compilation check + IR metrics (file coverage) + keyword scoring for feature implementation",
@@ -11037,6 +12165,12 @@
       },
       "task_dir": "csb_sdlc_feature/k8s-noschedule-taint-feat-001",
       "task_id": "k8s-noschedule-taint-feat-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist of required code structure and patterns",
@@ -11085,6 +12219,12 @@
       },
       "task_dir": "csb_sdlc_feature/k8s-runtime-object-impl-001",
       "task_id": "k8s-runtime-object-impl-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1"
+      },
       "verification": {
         "command": null,
         "description": "F1 score on structured JSON: precision and recall of implementor entries",
@@ -11130,6 +12270,12 @@
       },
       "task_dir": "csb_sdlc_feature/numpy-rolling-median-feat-001",
       "task_id": "numpy-rolling-median-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -11175,6 +12321,12 @@
       },
       "task_dir": "csb_sdlc_feature/pandas-merge-asof-indicator-feat-001",
       "task_id": "pandas-merge-asof-indicator-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -11220,6 +12372,12 @@
       },
       "task_dir": "csb_sdlc_feature/postgres-copy-csv-header-feat-001",
       "task_id": "postgres-copy-csv-header-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: grammar changes, COPY option parsing, header validation, error handling, regression test",
@@ -11265,6 +12423,12 @@
       },
       "task_dir": "csb_sdlc_feature/prometheus-silence-bulk-api-feat-001",
       "task_id": "prometheus-silence-bulk-api-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -11310,6 +12474,12 @@
       },
       "task_dir": "csb_sdlc_feature/pytorch-gradient-noise-feat-001",
       "task_id": "pytorch-gradient-noise-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -11355,6 +12525,12 @@
       },
       "task_dir": "csb_sdlc_feature/servo-css-container-query-feat-001",
       "task_id": "servo-css-container-query-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: container type definition, size query parsing, evaluation logic, style integration",
@@ -11406,6 +12582,12 @@
       },
       "task_dir": "csb_sdlc_feature/servo-scrollend-event-feat-001",
       "task_id": "servo-scrollend-event-feat-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist of required code structure and patterns",
@@ -11457,6 +12639,12 @@
       },
       "task_dir": "csb_sdlc_feature/strata-cds-tranche-feat-001",
       "task_id": "strata-cds-tranche-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Compilation check + IR metrics (file coverage) + keyword scoring for feature implementation",
@@ -11508,6 +12696,12 @@
       },
       "task_dir": "csb_sdlc_feature/tensorrt-mxfp4-quant-feat-001",
       "task_id": "tensorrt-mxfp4-quant-feat-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist of required code structure and patterns",
@@ -11553,6 +12747,12 @@
       },
       "task_dir": "csb_sdlc_feature/terraform-compact-diff-fmt-feat-001",
       "task_id": "terraform-compact-diff-fmt-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: file existence, class/function definitions, pattern usage, tests",
@@ -11598,6 +12798,12 @@
       },
       "task_dir": "csb_sdlc_feature/vscode-custom-fold-region-feat-001",
       "task_id": "vscode-custom-fold-region-feat-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks feature implementation: region provider, fold decoration, command registration, navigation, test",
@@ -11649,6 +12855,12 @@
       },
       "task_dir": "csb_sdlc_feature/vscode-stale-diagnostics-feat-001",
       "task_id": "vscode-stale-diagnostics-feat-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist of required code structure and patterns",
@@ -11700,6 +12912,12 @@
       },
       "task_dir": "csb_sdlc_fix/ansible-abc-imports-fix-001",
       "task_id": "ansible-abc-imports-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": null,
         "description": "Fraction of repository tests passing after agent changes",
@@ -11751,6 +12969,12 @@
       },
       "task_dir": "csb_sdlc_fix/django-modelchoice-fk-fix-001",
       "task_id": "django-modelchoice-fk-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: bug fix correctness + compilation + cross-file tracing evidence",
@@ -11802,6 +13026,12 @@
       },
       "task_dir": "csb_sdlc_fix/django-select-for-update-fix-001",
       "task_id": "django-select-for-update-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (root cause MRR, call chain accuracy) for bug investigation",
@@ -11852,6 +13082,12 @@
       },
       "task_dir": "csb_sdlc_fix/element-web-roomheaderbuttons-can-crash-fix-001",
       "task_id": "element-web-roomheaderbuttons-can-crash-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "SWE-bench Pro test verification with partial credit",
@@ -11902,6 +13138,12 @@
       },
       "task_dir": "csb_sdlc_fix/element-web-unread-indicators-diverge-fix-001",
       "task_id": "element-web-unread-indicators-diverge-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "SWE-bench Pro test verification with partial credit",
@@ -11952,6 +13194,12 @@
       },
       "task_dir": "csb_sdlc_fix/envoy-dfp-host-leak-fix-001",
       "task_id": "envoy-dfp-host-leak-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12002,6 +13250,12 @@
       },
       "task_dir": "csb_sdlc_fix/envoy-udp-proxy-cds-fix-001",
       "task_id": "envoy-udp-proxy-cds-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12053,6 +13307,12 @@
       },
       "task_dir": "csb_sdlc_fix/flink-window-late-data-fix-001",
       "task_id": "flink-window-late-data-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "report_markdown",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks bug fix: root cause identification, late data side output handling, merging window cleanup, test",
@@ -12104,6 +13364,12 @@
       },
       "task_dir": "csb_sdlc_fix/k8s-dra-scheduler-event-fix-001",
       "task_id": "k8s-dra-scheduler-event-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (root cause MRR, call chain accuracy) for bug investigation",
@@ -12155,6 +13421,12 @@
       },
       "task_dir": "csb_sdlc_fix/kafka-producer-bufpool-fix-001",
       "task_id": "kafka-producer-bufpool-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (root cause MRR, call chain accuracy) for bug investigation",
@@ -12206,6 +13478,12 @@
       },
       "task_dir": "csb_sdlc_fix/nodebb-notif-dropdown-fix-001",
       "task_id": "nodebb-notif-dropdown-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": null,
         "description": "Fraction of repository tests passing after agent changes",
@@ -12257,6 +13535,12 @@
       },
       "task_dir": "csb_sdlc_fix/nodebb-plugin-validate-fix-001",
       "task_id": "nodebb-plugin-validate-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": null,
         "description": "Fraction of repository tests passing after agent changes",
@@ -12307,6 +13591,12 @@
       },
       "task_dir": "csb_sdlc_fix/pytorch-cudnn-version-fix-001",
       "task_id": "pytorch-cudnn-version-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12357,6 +13647,12 @@
       },
       "task_dir": "csb_sdlc_fix/pytorch-dynamo-keyerror-fix-001",
       "task_id": "pytorch-dynamo-keyerror-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12407,6 +13703,12 @@
       },
       "task_dir": "csb_sdlc_fix/pytorch-release-210-fix-001",
       "task_id": "pytorch-release-210-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12457,6 +13759,12 @@
       },
       "task_dir": "csb_sdlc_fix/pytorch-relu-gelu-fusion-fix-001",
       "task_id": "pytorch-relu-gelu-fusion-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12507,6 +13815,12 @@
       },
       "task_dir": "csb_sdlc_fix/pytorch-tracer-graph-cleanup-fix-001",
       "task_id": "pytorch-tracer-graph-cleanup-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12557,6 +13871,12 @@
       },
       "task_dir": "csb_sdlc_fix/teleport-users-can-delete-fix-001",
       "task_id": "teleport-users-can-delete-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_native",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "test_ratio"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "SWE-bench Pro test verification with partial credit",
@@ -12607,6 +13927,12 @@
       },
       "task_dir": "csb_sdlc_fix/terraform-plan-null-unknown-fix-001",
       "task_id": "terraform-plan-null-unknown-fix-001",
+      "validation_result_plan": {
+        "migration_class": "wrap_reward_json",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "diff_similarity"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Similarity between agent diff and expected ground-truth diff",
@@ -12652,6 +13978,12 @@
       },
       "task_dir": "csb_sdlc_refactor/beam-pipeline-builder-refac-001",
       "task_id": "beam-pipeline-builder-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -12697,6 +14029,12 @@
       },
       "task_dir": "csb_sdlc_refactor/cilium-endpoint-manager-refac-001",
       "task_id": "cilium-endpoint-manager-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -12742,6 +14080,12 @@
       },
       "task_dir": "csb_sdlc_refactor/django-request-factory-refac-001",
       "task_id": "django-request-factory-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -12787,6 +14131,12 @@
       },
       "task_dir": "csb_sdlc_refactor/envoy-listener-manager-refac-001",
       "task_id": "envoy-listener-manager-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -12838,6 +14188,12 @@
       },
       "task_dir": "csb_sdlc_refactor/flipt-dep-refactor-001",
       "task_id": "flipt-dep-refactor-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: signature change + call site updates + compilation",
@@ -12889,6 +14245,12 @@
       },
       "task_dir": "csb_sdlc_refactor/flipt-flagexists-refactor-001",
       "task_id": "flipt-flagexists-refactor-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: interface addition + implementations + compilation",
@@ -12934,6 +14296,12 @@
       },
       "task_dir": "csb_sdlc_refactor/istio-discovery-server-refac-001",
       "task_id": "istio-discovery-server-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -12985,6 +14353,12 @@
       },
       "task_dir": "csb_sdlc_refactor/k8s-score-normalizer-refac-001",
       "task_id": "k8s-score-normalizer-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file coverage/completeness) + compilation check for cross-file refactoring",
@@ -13036,6 +14410,12 @@
       },
       "task_dir": "csb_sdlc_refactor/kafka-batch-accumulator-refac-001",
       "task_id": "kafka-batch-accumulator-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file coverage/completeness) + compilation check for cross-file refactoring",
@@ -13081,6 +14461,12 @@
       },
       "task_dir": "csb_sdlc_refactor/kubernetes-scheduler-profile-refac-001",
       "task_id": "kubernetes-scheduler-profile-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13126,6 +14512,12 @@
       },
       "task_dir": "csb_sdlc_refactor/numpy-array-dispatch-refac-001",
       "task_id": "numpy-array-dispatch-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13171,6 +14563,12 @@
       },
       "task_dir": "csb_sdlc_refactor/pandas-index-engine-refac-001",
       "task_id": "pandas-index-engine-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13216,6 +14614,12 @@
       },
       "task_dir": "csb_sdlc_refactor/prometheus-query-engine-refac-001",
       "task_id": "prometheus-query-engine-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13264,6 +14668,12 @@
       },
       "task_dir": "csb_sdlc_refactor/python-http-class-naming-refac-001",
       "task_id": "python-http-class-naming-refac-001",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_similarity"
+      },
       "verification": {
         "command": null,
         "description": "Semantic similarity of content, file references, and patterns",
@@ -13309,6 +14719,12 @@
       },
       "task_dir": "csb_sdlc_refactor/pytorch-optimizer-foreach-refac-001",
       "task_id": "pytorch-optimizer-foreach-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13354,6 +14770,12 @@
       },
       "task_dir": "csb_sdlc_refactor/roslyn-symbol-resolver-refac-001",
       "task_id": "roslyn-symbol-resolver-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -13405,6 +14827,12 @@
       },
       "task_dir": "csb_sdlc_refactor/strata-fx-european-refac-001",
       "task_id": "strata-fx-european-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (file coverage/completeness) + compilation check for cross-file refactoring",
@@ -13450,6 +14878,12 @@
       },
       "task_dir": "csb_sdlc_refactor/terraform-eval-context-refac-001",
       "task_id": "terraform-eval-context-refac-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks refactoring: old symbol removal, new symbol presence, reference count, multi-file changes",
@@ -13495,6 +14929,12 @@
       },
       "task_dir": "csb_sdlc_secure/ceph-rgw-auth-secure-001",
       "task_id": "ceph-rgw-auth-secure-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -13547,6 +14987,12 @@
       },
       "task_dir": "csb_sdlc_secure/curl-cve-triage-001",
       "task_id": "curl-cve-triage-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist scoring triage report against ground-truth findings",
@@ -13598,6 +15044,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-audit-trail-implement-001",
       "task_id": "django-audit-trail-implement-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: bug fix correctness + audit.log completeness + compilation",
@@ -13649,6 +15101,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-cross-team-boundary-001",
       "task_id": "django-cross-team-boundary-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: fix correctness + changes scoped to sessions/ only + compilation",
@@ -13700,6 +15158,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-legacy-dep-vuln-001",
       "task_id": "django-legacy-dep-vuln-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: feature correctness + legacy API understanding + compilation",
@@ -13751,6 +15215,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-repo-scoped-access-001",
       "task_id": "django-repo-scoped-access-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: bug fix correctness + code compiles + tests pass",
@@ -13802,6 +15272,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-role-based-access-001",
       "task_id": "django-role-based-access-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: bug fix correctness + changes scoped to writable_paths only + syntax",
@@ -13853,6 +15329,12 @@
       },
       "task_dir": "csb_sdlc_secure/django-sensitive-file-exclusion-001",
       "task_id": "django-sensitive-file-exclusion-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: fix correctness + no sensitive file access + compilation",
@@ -13904,6 +15386,12 @@
       },
       "task_dir": "csb_sdlc_secure/flipt-degraded-context-fix-001",
       "task_id": "flipt-degraded-context-fix-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: error handling implementation + correct type usage + compilation",
@@ -13955,6 +15443,12 @@
       },
       "task_dir": "csb_sdlc_secure/flipt-repo-scoped-access-001",
       "task_id": "flipt-repo-scoped-access-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: feature implementation + compilation + scope compliance",
@@ -14006,6 +15500,12 @@
       },
       "task_dir": "csb_sdlc_secure/k8s-rbac-auth-audit-001",
       "task_id": "k8s-rbac-auth-audit-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (attack surface coverage, data flow tracing) for RBAC security analysis",
@@ -14057,6 +15557,12 @@
       },
       "task_dir": "csb_sdlc_secure/kafka-sasl-auth-audit-001",
       "task_id": "kafka-sasl-auth-audit-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "ir_checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "IR metrics (attack surface coverage, data flow tracing) for security analysis",
@@ -14102,6 +15608,12 @@
       },
       "task_dir": "csb_sdlc_secure/typescript-type-narrowing-secure-001",
       "task_id": "typescript-type-narrowing-secure-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -14154,6 +15666,12 @@
       },
       "task_dir": "csb_sdlc_test/aspnetcore-code-review-001",
       "task_id": "aspnetcore-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14199,6 +15717,12 @@
       },
       "task_dir": "csb_sdlc_test/bazel-starlark-eval-test-001",
       "task_id": "bazel-starlark-eval-test-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -14251,6 +15775,12 @@
       },
       "task_dir": "csb_sdlc_test/calcom-code-review-001",
       "task_id": "calcom-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14303,6 +15833,12 @@
       },
       "task_dir": "csb_sdlc_test/envoy-code-review-001",
       "task_id": "envoy-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14355,6 +15891,12 @@
       },
       "task_dir": "csb_sdlc_test/ghost-code-review-001",
       "task_id": "ghost-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14407,6 +15949,12 @@
       },
       "task_dir": "csb_sdlc_test/kafka-security-review-001",
       "task_id": "kafka-security-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness with 2x weight for security-critical defects",
@@ -14459,6 +16007,12 @@
       },
       "task_dir": "csb_sdlc_test/terraform-code-review-001",
       "task_id": "terraform-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14511,6 +16065,12 @@
       },
       "task_dir": "csb_sdlc_test/test-coverage-gap-001",
       "task_id": "test-coverage-gap-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: gap identification precision (0.40) + proposed test case feasibility (0.30) + code reference accuracy (0.30)",
@@ -14563,6 +16123,12 @@
       },
       "task_dir": "csb_sdlc_test/test-coverage-gap-002",
       "task_id": "test-coverage-gap-002",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: failure mode recall (0.40) + proposed test correctness (0.30) + coverage delta estimate (0.30)",
@@ -14614,6 +16180,12 @@
       },
       "task_dir": "csb_sdlc_test/test-unitgen-go-001",
       "task_id": "test-unitgen-go-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: test file presence (0.25) + test function coverage (0.40) + edge case detection (0.20) + table-driven test pattern (0.15)",
@@ -14665,6 +16237,12 @@
       },
       "task_dir": "csb_sdlc_test/test-unitgen-py-001",
       "task_id": "test-unitgen-py-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist: test file presence (0.25) + test class/function count (0.35) + edge case coverage (0.25) + Django TestCase usage (0.15)",
@@ -14717,6 +16295,12 @@
       },
       "task_dir": "csb_sdlc_test/vscode-code-review-001",
       "task_id": "vscode-code-review-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "f1_hybrid"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "F1 score for defect detection plus fix correctness",
@@ -14766,6 +16350,12 @@
       },
       "task_dir": "csb_sdlc_understand/argocd-arch-orient-001",
       "task_id": "argocd-arch-orient-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist scoring onboarding answers against ground-truth findings",
@@ -14815,6 +16405,12 @@
       },
       "task_dir": "csb_sdlc_understand/cilium-ebpf-fault-qa-001",
       "task_id": "cilium-ebpf-fault-qa-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist scoring Q&A report against ground-truth findings",
@@ -14864,6 +16460,12 @@
       },
       "task_dir": "csb_sdlc_understand/cilium-project-orient-001",
       "task_id": "cilium-project-orient-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist scoring onboarding answers against ground-truth findings",
@@ -14911,6 +16513,12 @@
       },
       "task_dir": "csb_sdlc_understand/clickhouse-mergetree-arch-understand-001",
       "task_id": "clickhouse-mergetree-arch-understand-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Checks task completion: file existence, content validation, pattern matching",
@@ -14958,6 +16566,12 @@
       },
       "task_dir": "csb_sdlc_understand/django-composite-field-recover-001",
       "task_id": "django-composite-field-recover-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: validator exists + integrates with forms + uses existing patterns + syntax",
@@ -15005,6 +16619,12 @@
       },
       "task_dir": "csb_sdlc_understand/django-template-inherit-recall-001",
       "task_id": "django-template-inherit-recall-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "repo_state_heuristic"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted check: regression fix correctness + integration + syntax",
@@ -15054,6 +16674,12 @@
       },
       "task_dir": "csb_sdlc_understand/envoy-request-routing-qa-001",
       "task_id": "envoy-request-routing-qa-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "checklist"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": "Weighted checklist scoring Q&A report against ground-truth findings",
@@ -15100,6 +16726,12 @@
       },
       "task_dir": "csb_sdlc_understand/grafana-platform-orient-001",
       "task_id": "grafana-platform-orient-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "continuous"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": null,
@@ -15146,6 +16778,12 @@
       },
       "task_dir": "csb_sdlc_understand/kafka-build-orient-001",
       "task_id": "kafka-build-orient-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "continuous"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": null,
@@ -15192,6 +16830,12 @@
       },
       "task_dir": "csb_sdlc_understand/kafka-contributor-workflow-001",
       "task_id": "kafka-contributor-workflow-001",
+      "validation_result_plan": {
+        "migration_class": "emit_validation_result_sidecar",
+        "output_contract_mode": "answer_json_bridge",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "continuous"
+      },
       "verification": {
         "command": "bash /tests/test.sh",
         "description": null,
@@ -15240,6 +16884,12 @@
       },
       "task_dir": "csb_sdlc_understand/numpy-dtype-localize-001",
       "task_id": "numpy-dtype-localize-001",
+      "validation_result_plan": {
+        "migration_class": "already_validation_result",
+        "output_contract_mode": "repo_state",
+        "schema_version": "validation_result.v1alpha1",
+        "scorer_family": "semantic_similarity"
+      },
       "verification": {
         "command": null,
         "description": "Semantic similarity of content, file references, and patterns",
@@ -15250,5 +16900,317 @@
         "verification_modes": []
       }
     }
-  ]
+  ],
+  "validation_result_contract": {
+    "family_mappings": {
+      "binary": {
+        "current_task_count": 0,
+        "notes": "Use sub_scores={} only if the family exposes no finer-grained assertions.",
+        "output_contracts": {},
+        "recommended_sub_scores": [
+          "binary_pass"
+        ],
+        "reward_source": "Binary pass/fail outcome.",
+        "sample_tasks": [],
+        "structured_output_modes": {}
+      },
+      "checklist": {
+        "current_task_count": 17,
+        "notes": "Preserve stable assertion ids rather than emitting only a scalar reward.",
+        "output_contracts": {
+          "answer_json_bridge": 16,
+          "unspecified": 1
+        },
+        "recommended_sub_scores": [
+          "checks.<assertion_id>"
+        ],
+        "reward_source": "Weighted checklist aggregate.",
+        "sample_tasks": [
+          "linux-acpi-backlight-fault-001",
+          "linux-hda-intel-suspend-fault-001",
+          "linux-iwlwifi-subdevice-fault-001"
+        ],
+        "structured_output_modes": {
+          "none": 16,
+          "reward_json": 1
+        }
+      },
+      "continuous": {
+        "current_task_count": 5,
+        "notes": "Use the family metric name when one already exists.",
+        "output_contracts": {
+          "answer_json_bridge": 5
+        },
+        "recommended_sub_scores": [
+          "continuous_score"
+        ],
+        "reward_source": "Family-defined continuous score.",
+        "sample_tasks": [
+          "envoy-migration-doc-gen-001",
+          "kafka-api-doc-gen-001",
+          "grafana-platform-orient-001"
+        ],
+        "structured_output_modes": {
+          "none": 5
+        }
+      },
+      "diff_similarity": {
+        "current_task_count": 8,
+        "notes": "Keep the weighted composite in reward and component recalls in sub_scores.",
+        "output_contracts": {
+          "answer_json_bridge": 8
+        },
+        "recommended_sub_scores": [
+          "file_recall",
+          "line_recall",
+          "line_precision"
+        ],
+        "reward_source": "Diff similarity composite.",
+        "sample_tasks": [
+          "envoy-dfp-host-leak-fix-001",
+          "envoy-udp-proxy-cds-fix-001",
+          "pytorch-cudnn-version-fix-001"
+        ],
+        "structured_output_modes": {
+          "reward_json": 8
+        }
+      },
+      "f1": {
+        "current_task_count": 2,
+        "notes": "Include precision/recall even when reward duplicates f1.",
+        "output_contracts": {
+          "answer_json_bridge": 2
+        },
+        "recommended_sub_scores": [
+          "precision",
+          "recall",
+          "f1"
+        ],
+        "reward_source": "F1 score.",
+        "sample_tasks": [
+          "envoy-grpc-server-impl-001",
+          "k8s-runtime-object-impl-001"
+        ],
+        "structured_output_modes": {
+          "none": 2
+        }
+      },
+      "f1_hybrid": {
+        "current_task_count": 7,
+        "notes": "Artifact bridge tasks should still identify answer_json_bridge in output_contract.mode.",
+        "output_contracts": {
+          "answer_json_bridge": 7
+        },
+        "recommended_sub_scores": [
+          "detection_f1",
+          "fix_score"
+        ],
+        "reward_source": "Blended detection F1 and fix quality score.",
+        "sample_tasks": [
+          "aspnetcore-code-review-001",
+          "calcom-code-review-001",
+          "envoy-code-review-001"
+        ],
+        "structured_output_modes": {
+          "none": 7
+        }
+      },
+      "find_and_prove": {
+        "current_task_count": 8,
+        "notes": "Use stable assertion ids for fail-on-buggy, pass-after-patch, and explanation checks.",
+        "output_contracts": {
+          "answer_json_bridge": 8
+        },
+        "recommended_sub_scores": [
+          "checks.<assertion_id>"
+        ],
+        "reward_source": "Composite regression-proof score.",
+        "sample_tasks": [
+          "ansible-galaxy-tar-regression-prove-001",
+          "flipt-auth-cookie-regression-prove-001",
+          "qutebrowser-adblock-cache-regression-prove-001"
+        ],
+        "structured_output_modes": {
+          "none": 8
+        }
+      },
+      "ir_checklist": {
+        "current_task_count": 17,
+        "notes": "Preserve retrieval-specific assertion ids in sub_scores.",
+        "output_contracts": {
+          "answer_json_bridge": 17
+        },
+        "recommended_sub_scores": [
+          "checks.<assertion_id>"
+        ],
+        "reward_source": "Checklist-style retrieval score.",
+        "sample_tasks": [
+          "camel-routing-arch-001",
+          "django-orm-query-arch-001",
+          "flink-checkpoint-arch-001"
+        ],
+        "structured_output_modes": {
+          "none": 17
+        }
+      },
+      "oracle_checks": {
+        "current_task_count": 136,
+        "notes": "One sub-score entry per configured oracle check; keep raw checker payload in details.",
+        "output_contracts": {
+          "answer_json_bridge": 3,
+          "answer_json_native": 133
+        },
+        "recommended_sub_scores": [
+          "file_set_match",
+          "symbol_resolution",
+          "dependency_chain",
+          "keyword_presence",
+          "provenance",
+          "json_schema_match",
+          "test_ratio"
+        ],
+        "reward_source": "Suite-weighted composite over oracle checks.",
+        "sample_tasks": [
+          "ccx-compliance-052",
+          "ccx-compliance-053",
+          "ccx-compliance-124"
+        ],
+        "structured_output_modes": {
+          "none": 81,
+          "validation_result": 55
+        }
+      },
+      "repo_state_heuristic": {
+        "current_task_count": 58,
+        "notes": "Use stable assertion ids instead of only shell log output.",
+        "output_contracts": {
+          "answer_json_bridge": 19,
+          "repo_state": 38,
+          "report_markdown": 1
+        },
+        "recommended_sub_scores": [
+          "checks.<assertion_id>"
+        ],
+        "reward_source": "Repo-state heuristic aggregate.",
+        "sample_tasks": [
+          "tidb-query-plan-regression-debug-001",
+          "django-pre-validate-signal-design-001",
+          "django-rate-limit-design-001"
+        ],
+        "structured_output_modes": {
+          "none": 54,
+          "reward_json": 4
+        }
+      },
+      "score": {
+        "current_task_count": 0,
+        "notes": "Transitional family only; preferred family names should be more specific.",
+        "output_contracts": {},
+        "recommended_sub_scores": [],
+        "reward_source": "Generic scalar score.",
+        "sample_tasks": [],
+        "structured_output_modes": {}
+      },
+      "semantic_retrieval_qa": {
+        "current_task_count": 8,
+        "notes": "Keep free-form reasoning under details rather than flattening it into top-level fields.",
+        "output_contracts": {
+          "solution_json": 8
+        },
+        "recommended_sub_scores": [
+          "correct_function",
+          "correct_path",
+          "justification_score"
+        ],
+        "reward_source": "Primary QA correctness score.",
+        "sample_tasks": [
+          "ccx-onboard-search-207",
+          "ccx-onboard-search-208",
+          "ccx-onboard-search-209"
+        ],
+        "structured_output_modes": {
+          "reward_json": 8
+        }
+      },
+      "semantic_similarity": {
+        "current_task_count": 3,
+        "notes": "Record the exact similarity measure in details when multiple measures exist.",
+        "output_contracts": {
+          "answer_json_bridge": 1,
+          "repo_state": 2
+        },
+        "recommended_sub_scores": [
+          "similarity"
+        ],
+        "reward_source": "Semantic similarity score.",
+        "sample_tasks": [
+          "etcd-grpc-api-upgrade-001",
+          "python-http-class-naming-refac-001",
+          "numpy-dtype-localize-001"
+        ],
+        "structured_output_modes": {
+          "validation_result": 3
+        }
+      },
+      "test_ratio": {
+        "current_task_count": 6,
+        "notes": "Store passed/failed counts in details when available.",
+        "output_contracts": {
+          "answer_json_bridge": 3,
+          "answer_json_native": 3
+        },
+        "recommended_sub_scores": [
+          "tests_passed_ratio"
+        ],
+        "reward_source": "Passed/total test ratio.",
+        "sample_tasks": [
+          "ansible-abc-imports-fix-001",
+          "element-web-roomheaderbuttons-can-crash-fix-001",
+          "element-web-unread-indicators-diverge-fix-001"
+        ],
+        "structured_output_modes": {
+          "none": 6
+        }
+      }
+    },
+    "migration_classes": {
+      "already_validation_result": "Task already writes validation_result.json and should backfill any missing canonical fields.",
+      "emit_validation_result_sidecar": "Task writes reward.txt only and should add validation_result.json alongside it.",
+      "wrap_reward_json": "Task writes reward.json today and should wrap that scalar into validation_result.json."
+    },
+    "migration_counts": {
+      "already_validation_result": 58,
+      "emit_validation_result_sidecar": 196,
+      "wrap_reward_json": 21
+    },
+    "minimum_required_fields": [
+      "schema_version",
+      "status",
+      "scorable",
+      "scorer_family",
+      "reward",
+      "pass_threshold",
+      "passed",
+      "output_contract",
+      "sub_scores",
+      "failure"
+    ],
+    "output_contract_required_fields": [
+      "mode",
+      "primary_path",
+      "required_artifact"
+    ],
+    "recommended_optional_fields": [
+      "details",
+      "artifacts",
+      "timing",
+      "legacy"
+    ],
+    "schema_version": "validation_result.v1alpha1",
+    "status_values": {
+      "invalid_output": "Required task output was missing or malformed, so the run was not scorable.",
+      "scored": "Verifier had enough task output to compute a reward.",
+      "verifier_error": "Verifier dependencies or runtime failed before scoring could complete."
+    }
+  }
 }

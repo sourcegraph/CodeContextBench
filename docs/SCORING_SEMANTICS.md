@@ -14,6 +14,11 @@ How each benchmark is scored, what the numbers mean, and known limitations.
 | **ordering** | 0.0–1.0 continuous | Position-exact-match blended with rank correlation |
 | **external** | 0.0–1.0 continuous | External verifier (e.g., TheAgentCompany eval) |
 
+Canonical tasks should normalize these families into
+`/logs/verifier/validation_result.json` using
+`docs/reference/VALIDATION_RESULT_SCHEMA.md`. The reward type determines the
+meaning of `reward` and `sub_scores`, but not the top-level contract.
+
 ## Per-Verifier Scoring (Active Suites)
 
 Tasks are organized into 8 SDLC-phase suites (`csb_sdlc_understand` through `csb_sdlc_debug`)
