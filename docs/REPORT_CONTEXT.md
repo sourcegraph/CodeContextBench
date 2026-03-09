@@ -148,7 +148,10 @@ The evaluation uses a multi-layer pipeline:
    and task rewards.
 
 4. **Report generator**: Aggregates all layers into structured JSON and
-   Markdown reports.
+   Markdown reports. Reporting should preserve continuous `reward`,
+   authoritative `passed` / `pass_threshold`, scorer family, and output
+   contract separately rather than collapsing unlike verifier families into
+   one implicitly calibrated scalar.
 
 ### 3.3 Scoring Types
 
@@ -164,6 +167,12 @@ Different task categories use different verifier types:
 | **oracle-checks** | 0.0--1.0 | Org tasks (composite of file/symbol/chain/keyword checks) |
 | **navigation-verified** | 0.0--1.0 | Regression proving (fail-on-buggy + pass-after-patch) |
 | **external** | 0.0--1.0 | TheAgentCompany tasks |
+
+Canonical reporting now treats these families as separate semantic buckets.
+Mean reward remains useful within a family or benchmark, but aggregate views
+should either partition by `scorer_family` or clearly caveat mixed-family
+comparisons. Solved/pass status should come from verifier `passed`, not from
+recomputing `reward > 0`.
 
 ### 3.4 CodeScaleBench-Org Oracle Evaluation
 

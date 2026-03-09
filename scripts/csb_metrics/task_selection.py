@@ -47,6 +47,11 @@ def load_selected_tasks(path: str | Path) -> dict:
     return json.loads(Path(path).read_text())
 
 
+def load_canonical_evaluation_audit(path: str | Path) -> dict:
+    """Load configs/canonical_evaluation_audit.json."""
+    return json.loads(Path(path).read_text())
+
+
 def build_task_index(selection: dict) -> dict[str, dict]:
     """Build a task_id → task metadata lookup from the selection document.
 
@@ -77,6 +82,19 @@ def build_task_index(selection: dict) -> dict[str, dict]:
     return index
 
 
+def build_task_contract_index(audit: dict) -> dict[str, dict]:
+    """Build a task_id → canonical evaluation contract lookup."""
+    index: dict[str, dict] = {}
+    for task in audit.get("tasks", []):
+        tid = _normalize_task_id(task["task_id"])
+        index[tid] = task
+        if tid.startswith(("csb_", "ccb_")):
+            bare = tid[4:]
+            if bare not in index:
+                index[bare] = task
+    return index
+
+
 def enrich_task_metrics(
     tm: TaskMetrics,
     task_index: dict[str, dict],
@@ -104,6 +122,27 @@ def enrich_task_metrics(
     tm.task_files_count = meta.get("files_count")
 
 
+def enrich_task_contract_metrics(
+    tm: TaskMetrics,
+    contract_index: dict[str, dict],
+) -> None:
+    """Enrich TaskMetrics with canonical scorer-family and output-contract metadata."""
+    contract = contract_index.get(_normalize_task_id(tm.task_id))
+    if contract is None:
+        return
+
+    validation_plan = contract.get("validation_result_plan") or {}
+    evaluator = contract.get("evaluator") or {}
+    output_contract = contract.get("output_contract") or {}
+
+    if tm.scorer_family is None:
+        tm.scorer_family = validation_plan.get("scorer_family") or evaluator.get("family")
+    if tm.output_contract_mode is None:
+        tm.output_contract_mode = output_contract.get("classification")
+    if tm.output_contract_primary_path is None:
+        tm.output_contract_primary_path = output_contract.get("primary_output_path")
+
+
 def enrich_runs(
     runs: list[RunMetrics],
     task_index: dict[str, dict],
@@ -117,6 +156,16 @@ def enrich_runs(
     for run in runs:
         for tm in run.tasks:
             enrich_task_metrics(tm, task_index)
+
+
+def enrich_run_contracts(
+    runs: list[RunMetrics],
+    contract_index: dict[str, dict],
+) -> None:
+    """Enrich all TaskMetrics within a list of RunMetrics with contract metadata."""
+    for run in runs:
+        for tm in run.tasks:
+            enrich_task_contract_metrics(tm, contract_index)
 
 
 def filter_runs_to_selected(

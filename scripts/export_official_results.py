@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# ruff: noqa: E402
 """Export GitHub-friendly run summaries with parsed trace views.
 
 Builds a static bundle from runs/analysis with:
@@ -44,6 +45,10 @@ if str(PROJECT_ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from config_utils import discover_configs, is_config_dir, is_mcp_config
+from csb_metrics.task_selection import (
+    load_canonical_evaluation_audit,
+    build_task_contract_index,
+)
 from official_runs import (
     top_level_run_dirs,
     load_manifest,
@@ -141,6 +146,7 @@ _REPO_ALIAS_OVERRIDES = {
     "envoy": "envoyproxy/envoy",
 }
 _SELECTED_TASK_INDEX: dict[str, dict[str, Any]] | None = None
+_TASK_CONTRACT_INDEX: dict[str, dict[str, Any]] | None = None
 _REPO_SET_INDEX: dict[str, dict[str, Any]] | None = None
 _REPO_INFO_INDEX: dict[str, dict[str, Any]] | None = None
 BENCHMARK_METADATA_KEYS = (
@@ -169,6 +175,11 @@ class TaskRecord:
     task_dir: str
     status: str
     reward: float
+    passed: bool | None
+    pass_threshold: float | None
+    scorer_family: str | None
+    output_contract_mode: str | None
+    validation_status: str | None
     timed_out: bool
     wall_clock_seconds: float | None
     agent_execution_seconds: float | None
@@ -222,6 +233,14 @@ def _safe_int(value: Any) -> int | None:
     if isinstance(value, float):
         return int(value)
     return None
+
+
+def _format_counter(values: list[str]) -> str:
+    counts: Counter[str] = Counter(value or "unknown" for value in values)
+    return ", ".join(
+        f"{label} ({count})"
+        for label, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    ) or "-"
 
 
 def _official_exclusion_reasons(flags: list[str] | None) -> list[str]:
@@ -405,6 +424,67 @@ def _extract_reward_and_status(result_payload: dict[str, Any]) -> tuple[float | 
     return reward, "failed"
 
 
+def _extract_outcome_from_task_metrics(
+    task_metrics: dict[str, Any] | None,
+    fallback_reward: float | None,
+    fallback_status: str,
+) -> tuple[float | None, str, bool | None, float | None, str | None, str | None, str | None]:
+    reward = fallback_reward
+    status = fallback_status
+    passed = None
+    pass_threshold = None
+    scorer_family = None
+    output_contract_mode = None
+    validation_status = None
+
+    if not task_metrics:
+        return reward, status, passed, pass_threshold, scorer_family, output_contract_mode, validation_status
+
+    metrics_reward = _safe_float(task_metrics.get("reward"))
+    if metrics_reward is not None:
+        reward = metrics_reward
+
+    metrics_passed = task_metrics.get("passed")
+    if isinstance(metrics_passed, bool):
+        passed = metrics_passed
+        status = "passed" if metrics_passed else "failed"
+    else:
+        metrics_status = task_metrics.get("status")
+        if metrics_status in {"passed", "failed"}:
+            status = str(metrics_status)
+
+    pass_threshold = _safe_float(task_metrics.get("pass_threshold"))
+    scorer_family = str(task_metrics.get("scorer_family")) if isinstance(task_metrics.get("scorer_family"), str) else None
+    output_contract_mode = (
+        str(task_metrics.get("output_contract_mode"))
+        if isinstance(task_metrics.get("output_contract_mode"), str)
+        else None
+    )
+    validation_status = (
+        str(task_metrics.get("validation_status"))
+        if isinstance(task_metrics.get("validation_status"), str)
+        else None
+    )
+
+    if passed is None and status in {"passed", "failed"}:
+        passed = status == "passed"
+
+    return reward, status, passed, pass_threshold, scorer_family, output_contract_mode, validation_status
+
+
+def _task_passed_value(task: dict[str, Any]) -> bool:
+    passed = task.get("passed")
+    if isinstance(passed, bool):
+        return passed
+    status = task.get("status")
+    if status == "passed":
+        return True
+    if status == "failed":
+        return False
+    reward = task.get("reward")
+    return isinstance(reward, (int, float)) and reward > 0
+
+
 def _load_task_metrics(task_dir: Path) -> dict[str, Any] | None:
     path = task_dir / "task_metrics.json"
     if not path.is_file():
@@ -486,6 +566,28 @@ def _selected_task_metadata(task_name: str) -> dict[str, Any]:
         if value is not None:
             metadata[key] = value
     return metadata
+
+
+def _load_task_contract_index() -> dict[str, dict[str, Any]]:
+    global _TASK_CONTRACT_INDEX
+    if _TASK_CONTRACT_INDEX is not None:
+        return _TASK_CONTRACT_INDEX
+    audit_path = PROJECT_ROOT / "configs" / "canonical_evaluation_audit.json"
+    if not audit_path.is_file():
+        _TASK_CONTRACT_INDEX = {}
+        return _TASK_CONTRACT_INDEX
+    try:
+        audit = load_canonical_evaluation_audit(audit_path)
+    except Exception:
+        _TASK_CONTRACT_INDEX = {}
+        return _TASK_CONTRACT_INDEX
+    _TASK_CONTRACT_INDEX = build_task_contract_index(audit)
+    return _TASK_CONTRACT_INDEX
+
+
+def _task_contract_metadata(task_name: str) -> dict[str, Any]:
+    entry = _load_task_contract_index().get(_canonical_task_name(task_name))
+    return entry if isinstance(entry, dict) else {}
 
 
 def _canonicalize_benchmark_path(path: Path | str | None) -> str | None:
@@ -1414,10 +1516,6 @@ def _extract_task_record(
     except Exception:
         return None
 
-    reward, status = _extract_reward_and_status(result_payload)
-    if reward is None or status not in {"passed", "failed"}:
-        return None
-
     task_name = str(result_payload.get("task_name") or _task_name_from_dir(task_dir))
     started_at_raw = result_payload.get("started_at")
     started_at = started_at_raw if isinstance(started_at_raw, str) else None
@@ -1450,6 +1548,12 @@ def _extract_task_record(
     )
 
     task_metrics = _load_task_metrics(task_dir)
+    reward, status = _extract_reward_and_status(result_payload)
+    reward, status, passed, pass_threshold, scorer_family, output_contract_mode, validation_status = (
+        _extract_outcome_from_task_metrics(task_metrics, reward, status)
+    )
+    if reward is None or status not in {"passed", "failed"}:
+        return None
 
     tool_calls_total = _safe_int(task_metrics.get("tool_calls_total")) if task_metrics else None
     tool_calls_mcp = _safe_int(task_metrics.get("tool_calls_mcp")) if task_metrics else None
@@ -1509,6 +1613,24 @@ def _extract_task_record(
         suite,
     )
     benchmark_metadata = _selected_task_metadata(task_name)
+    contract_metadata = _task_contract_metadata(task_name)
+    if scorer_family is None and isinstance(contract_metadata, dict):
+        validation_plan = contract_metadata.get("validation_result_plan") or {}
+        evaluator = contract_metadata.get("evaluator") or {}
+        if isinstance(validation_plan, dict):
+            scorer_family = (
+                validation_plan.get("scorer_family")
+                if isinstance(validation_plan.get("scorer_family"), str)
+                else scorer_family
+            )
+        if scorer_family is None and isinstance(evaluator, dict):
+            scorer_family = evaluator.get("family") if isinstance(evaluator.get("family"), str) else None
+    if output_contract_mode is None and isinstance(contract_metadata, dict):
+        output_contract = contract_metadata.get("output_contract") or {}
+        if isinstance(output_contract, dict):
+            mode = output_contract.get("classification")
+            if isinstance(mode, str):
+                output_contract_mode = mode
     ir_metrics = _load_ir_metrics(task_dir, task_metrics)
 
     agent_info = result_payload.get("agent_info") if isinstance(result_payload.get("agent_info"), dict) else {}
@@ -1577,6 +1699,11 @@ def _extract_task_record(
         task_dir=rel_task_dir,
         status=status,
         reward=reward,
+        passed=passed,
+        pass_threshold=pass_threshold,
+        scorer_family=scorer_family,
+        output_contract_mode=output_contract_mode,
+        validation_status=validation_status,
         timed_out=timed_out,
         wall_clock_seconds=wall_clock_seconds,
         agent_execution_seconds=agent_execution_seconds,
@@ -1646,6 +1773,11 @@ def _extract_task_record(
         "score": {
             "status": status,
             "reward": reward,
+            "passed": passed,
+            "pass_threshold": pass_threshold,
+            "scorer_family": scorer_family,
+            "output_contract_mode": output_contract_mode,
+            "validation_status": validation_status,
             "timed_out": timed_out,
         },
         "metrics": {
@@ -1776,6 +1908,11 @@ def _to_task_dict(
         "task_dir": record.task_dir,
         "status": record.status,
         "reward": record.reward,
+        "passed": record.passed,
+        "pass_threshold": record.pass_threshold,
+        "scorer_family": record.scorer_family,
+        "output_contract_mode": record.output_contract_mode,
+        "validation_status": record.validation_status,
         "timed_out": record.timed_out,
         "wall_clock_seconds": record.wall_clock_seconds,
         "agent_execution_seconds": record.agent_execution_seconds,
@@ -2073,6 +2210,10 @@ def _build_task_page(record: TaskRecord) -> str:
       <div class="grid">
         <div class="metric"><div class="k">Reward</div><div class="v">{_fmt_float(record.reward, 4)}</div></div>
         <div class="metric"><div class="k">Status</div><div class="v">{esc(record.status)}</div></div>
+        <div class="metric"><div class="k">Passed</div><div class="v">{esc(record.passed)}</div></div>
+        <div class="metric"><div class="k">Pass Threshold</div><div class="v">{_fmt_float(record.pass_threshold, 3)}</div></div>
+        <div class="metric"><div class="k">Scorer Family</div><div class="v">{esc(record.scorer_family)}</div></div>
+        <div class="metric"><div class="k">Output Contract</div><div class="v">{esc(record.output_contract_mode)}</div></div>
         <div class="metric"><div class="k">Total Time</div><div class="v">{_fmt_float(record.wall_clock_seconds, 1)}s</div></div>
         <div class="metric"><div class="k">Agent Time</div><div class="v">{_fmt_float(record.agent_execution_seconds, 1)}s</div></div>
         <div class="metric"><div class="k">Input Tokens</div><div class="v">{_fmt_int(record.input_tokens)}</div></div>
@@ -2130,19 +2271,27 @@ def _build_run_page(run_dir: str, config_tasks: dict[str, list[dict[str, Any]]])
 
     for config, tasks in sorted(config_tasks.items()):
         rewards = [t["reward"] for t in tasks]
-        passes = sum(1 for t in tasks if t["status"] == "passed")
+        passes = sum(1 for t in tasks if _task_passed_value(t))
         mean_reward = statistics.mean(rewards) if rewards else 0.0
         pass_rate = (passes / len(tasks)) if tasks else 0.0
+        scorer_families = _format_counter(
+            [str(t.get("scorer_family") or "unknown") for t in tasks]
+        )
+        output_contracts = _format_counter(
+            [str(t.get("output_contract_mode") or "unknown") for t in tasks]
+        )
 
         lines.append(f"## {config}")
         lines.append("")
         lines.append(f"- Valid tasks: `{len(tasks)}`")
         lines.append(f"- Mean reward: `{mean_reward:.3f}`")
         lines.append(f"- Pass rate: `{pass_rate:.3f}`")
+        lines.append(f"- Scorer families: `{scorer_families}`")
+        lines.append(f"- Output contracts: `{output_contracts}`")
         lines.append("")
 
-        lines.append("| Task | Status | Reward | MCP Ratio | Tool Calls | Trace |")
-        lines.append("|---|---|---:|---:|---:|---|")
+        lines.append("| Task | Status | Reward | Passed | Scorer Family | Output Contract | MCP Ratio | Tool Calls | Trace |")
+        lines.append("|---|---|---:|---|---|---|---:|---:|---|")
 
         tasks_sorted = sorted(tasks, key=lambda x: (x["status"], x["task_name"]))
         for task in tasks_sorted:
@@ -2157,6 +2306,9 @@ def _build_run_page(run_dir: str, config_tasks: dict[str, list[dict[str, Any]]])
                 f"[{task['task_name']}]({task['task_page']}) | "
                 f"`{task['status']}` | "
                 f"{task['reward']:.3f} | "
+                f"`{task.get('passed')}` | "
+                f"`{task.get('scorer_family') or '-'}` | "
+                f"`{task.get('output_contract_mode') or '-'}` | "
                 f"{_fmt_float(task['mcp_ratio'])} | "
                 f"{_fmt_int(task['tool_calls_total'])} | "
                 f"{trace_label} |"
@@ -2183,7 +2335,7 @@ def _build_suite_page(
     lines.append("|---|---|---:|---:|---:|")
     for (run_dir, config), tasks in sorted(run_config_tasks.items(), key=lambda kv: (kv[0][0], kv[0][1])):
         rewards = [t["reward"] for t in tasks]
-        passes = sum(1 for t in tasks if t["status"] == "passed")
+        passes = sum(1 for t in tasks if _task_passed_value(t))
         mean_reward = statistics.mean(rewards) if rewards else 0.0
         pass_rate = (passes / len(tasks)) if tasks else 0.0
         lines.append(
@@ -2208,8 +2360,8 @@ def _build_suite_page(
                 cn = _canonical_task_name(t["task_name"])
                 run_counts[(cn, t["config"])] += 1
 
-    lines.append("| Task | Benchmark | Config | Status | Reward | Runs | MCP Ratio |")
-    lines.append("|---|---|---|---|---:|---:|---:|")
+    lines.append("| Task | Benchmark | Config | Status | Reward | Passed | Scorer Family | Output Contract | Runs | MCP Ratio |")
+    lines.append("|---|---|---|---|---:|---|---|---|---:|---:|")
 
     for task in sorted(deduped_rows, key=lambda t: (_canonical_task_name(t["task_name"]), t["config"])):
         cn = _canonical_task_name(task["task_name"])
@@ -2224,6 +2376,9 @@ def _build_suite_page(
             f"`{task['config']}` | "
             f"`{task['status']}` | "
             f"{task['reward']:.3f} | "
+            f"`{task.get('passed')}` | "
+            f"`{task.get('scorer_family') or '-'}` | "
+            f"`{task.get('output_contract_mode') or '-'}` | "
             f"{runs_cell} | "
             f"{_fmt_float(task['mcp_ratio'])} |"
         )
@@ -2289,6 +2444,7 @@ def _build_root_readme(suite_summaries: list[dict[str, Any]], run_summaries: lis
     lines.append("# Official Results Browser")
     lines.append("")
     lines.append("This bundle is generated from `runs/analysis/` and includes only valid scored tasks (`passed`/`failed` with numeric reward) that pass config-specific validity checks.")
+    lines.append("Mean reward and pass rate are reported separately. Mixed scorer-family reward means are convenience summaries, not calibrated cross-family comparisons.")
     lines.append("")
     lines.append(f"Generated: `{generated}`")
     lines.append("")
@@ -2684,7 +2840,7 @@ def build_export(
 
         for config, tasks in sorted(config_map.items()):
             rewards = [t["reward"] for t in tasks]
-            pass_count = sum(1 for t in tasks if t["status"] == "passed")
+            pass_count = sum(1 for t in tasks if _task_passed_value(t))
             mean_reward = statistics.mean(rewards) if rewards else 0.0
             pass_rate = pass_count / len(tasks) if tasks else 0.0
             run_summaries.append(
@@ -2727,7 +2883,7 @@ def build_export(
             config_buckets[config].extend(tasks)
         for config, tasks in sorted(config_buckets.items()):
             rewards = [t["reward"] for t in tasks]
-            passes = sum(1 for t in tasks if t["status"] == "passed")
+            passes = sum(1 for t in tasks if _task_passed_value(t))
             suite_summaries.append(
                 {
                     "suite": suite,

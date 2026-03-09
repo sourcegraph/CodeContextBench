@@ -21,6 +21,98 @@ logger = logging.getLogger(__name__)
 _WARNED_UNKNOWN_PRICING_MODELS: set[str] = set()
 
 
+def _coerce_float(value: object) -> Optional[float]:
+    try:
+        return float(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return None
+
+
+def _coerce_bool(value: object) -> Optional[bool]:
+    if isinstance(value, bool):
+        return value
+    return None
+
+
+def _infer_passed(reward: Optional[float], pass_threshold: Optional[float]) -> Optional[bool]:
+    if reward is None:
+        return None
+    threshold = 0.0 if pass_threshold is None else pass_threshold
+    if threshold <= 0.0:
+        return reward > 0.0
+    return reward >= threshold
+
+
+def _extract_validation_result_payload(result_json_path: Path) -> Optional[dict]:
+    """Load validation_result.json or compatible legacy sidecar payloads."""
+    validation_result_path = result_json_path.parent / "verifier" / "validation_result.json"
+    if not validation_result_path.is_file():
+        return None
+    try:
+        data = json.loads(validation_result_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _normalize_validation_result(payload: dict) -> dict[str, object]:
+    """Normalize canonical and legacy validation_result payloads."""
+    output_contract = payload.get("output_contract")
+    if not isinstance(output_contract, dict):
+        output_contract = {}
+
+    reward = _coerce_float(payload.get("reward"))
+    if reward is None:
+        reward = _coerce_float(payload.get("overall_score"))
+    if reward is None:
+        reward = _coerce_float(payload.get("score"))
+
+    pass_threshold = _coerce_float(payload.get("pass_threshold"))
+    passed = _coerce_bool(payload.get("passed"))
+    if passed is None:
+        passed = _infer_passed(reward, pass_threshold)
+
+    status = payload.get("status")
+    if not isinstance(status, str):
+        status = "scored" if reward is not None else None
+
+    scorable = _coerce_bool(payload.get("scorable"))
+    if scorable is None:
+        scorable = status == "scored" if status is not None else reward is not None
+
+    scorer_family = payload.get("scorer_family")
+    if not isinstance(scorer_family, str):
+        scorer_family = None
+
+    output_contract_mode = output_contract.get("mode")
+    if not isinstance(output_contract_mode, str):
+        output_contract_mode = output_contract.get("classification")
+    if not isinstance(output_contract_mode, str):
+        output_contract_mode = None
+
+    output_contract_primary_path = output_contract.get("primary_path")
+    if not isinstance(output_contract_primary_path, str):
+        output_contract_primary_path = output_contract.get("primary_output_path")
+    if not isinstance(output_contract_primary_path, str):
+        output_contract_primary_path = None
+
+    output_contract_required_artifact = _coerce_bool(
+        output_contract.get("required_artifact")
+    )
+
+    return {
+        "reward": reward,
+        "passed": passed,
+        "pass_threshold": pass_threshold,
+        "validation_status": status,
+        "validation_scorable": scorable,
+        "scorer_family": scorer_family,
+        "output_contract_mode": output_contract_mode,
+        "output_contract_primary_path": output_contract_primary_path,
+        "output_contract_required_artifact": output_contract_required_artifact,
+    }
+
+
 def _parse_iso(ts: Optional[str]) -> Optional[datetime]:
     """Parse an ISO 8601 timestamp, returning None on failure."""
     if not ts:
@@ -87,6 +179,12 @@ def extract_task_from_result_json(
 
     # Reward
     reward = None
+    validation_payload = _extract_validation_result_payload(path)
+    normalized_validation = (
+        _normalize_validation_result(validation_payload)
+        if validation_payload is not None
+        else None
+    )
     verifier_result = data.get("verifier_result") or {}
     rewards = verifier_result.get("rewards") or {}
     for key in ("reward", "score"):
@@ -96,6 +194,26 @@ def extract_task_from_result_json(
             except (TypeError, ValueError):
                 continue
             break
+    if normalized_validation and normalized_validation.get("reward") is not None:
+        reward = normalized_validation["reward"]  # type: ignore[assignment]
+
+    passed = None
+    pass_threshold = None
+    scorer_family = None
+    output_contract_mode = None
+    output_contract_primary_path = None
+    output_contract_required_artifact = None
+    validation_status = None
+    validation_scorable = None
+    if normalized_validation:
+        passed = normalized_validation.get("passed")
+        pass_threshold = normalized_validation.get("pass_threshold")
+        scorer_family = normalized_validation.get("scorer_family")
+        output_contract_mode = normalized_validation.get("output_contract_mode")
+        output_contract_primary_path = normalized_validation.get("output_contract_primary_path")
+        output_contract_required_artifact = normalized_validation.get("output_contract_required_artifact")
+        validation_status = normalized_validation.get("validation_status")
+        validation_scorable = normalized_validation.get("validation_scorable")
 
     # Status — agent timeouts are scored normally (verifier runs on partial work)
     exc = data.get("exception_info") or {}
@@ -103,6 +221,8 @@ def extract_task_from_result_json(
     timed_out = bool(exc and exc_type == "AgentTimeoutError")
     if exc and not timed_out:
         status = "error"
+    elif isinstance(passed, bool):
+        status = "passed" if passed else "failed"
     elif reward is not None:
         status = "passed" if reward > 0 else "failed"
     else:
@@ -162,7 +282,25 @@ def extract_task_from_result_json(
         benchmark=benchmark,
         config_name=config_name,
         reward=reward,
+        passed=passed if isinstance(passed, bool) else None,
+        pass_threshold=pass_threshold if isinstance(pass_threshold, float) else None,
         status=status,
+        scorer_family=scorer_family if isinstance(scorer_family, str) else None,
+        output_contract_mode=output_contract_mode if isinstance(output_contract_mode, str) else None,
+        output_contract_primary_path=(
+            output_contract_primary_path
+            if isinstance(output_contract_primary_path, str)
+            else None
+        ),
+        output_contract_required_artifact=(
+            output_contract_required_artifact
+            if isinstance(output_contract_required_artifact, bool)
+            else None
+        ),
+        validation_status=validation_status if isinstance(validation_status, str) else None,
+        validation_scorable=(
+            validation_scorable if isinstance(validation_scorable, bool) else None
+        ),
         timed_out=timed_out,
         wall_clock_seconds=wall_clock,
         agent_execution_seconds=agent_execution_seconds,

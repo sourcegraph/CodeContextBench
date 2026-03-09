@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# ruff: noqa: E402
 """Generate a comprehensive evaluation report from Harbor run data.
 
 Discovers all runs in a Harbor official runs directory, extracts metrics,
@@ -33,9 +34,12 @@ if str(_SCRIPT_DIR) not in sys.path:
 
 from csb_metrics import discover_runs, collect_retrieval_data, EvalReport, RunMetrics
 from csb_metrics.task_selection import (
+    load_canonical_evaluation_audit,
     load_selected_tasks,
     build_task_index,
+    build_task_contract_index,
     enrich_runs,
+    enrich_run_contracts,
     filter_runs_to_selected,
 )
 
@@ -67,6 +71,35 @@ def _fmt_usd(val: Optional[float]) -> str:
     if val is None:
         return "-"
     return f"${val:.4f}"
+
+
+def _task_is_scored(task) -> bool:
+    return task.passed is not None or task.status in ("passed", "failed")
+
+
+def _task_is_passed(task) -> bool:
+    if task.passed is not None:
+        return task.passed
+    return task.status == "passed"
+
+
+def _format_counter(values: list[str]) -> str:
+    counts: dict[str, int] = {}
+    for value in values:
+        label = value or "unknown"
+        counts[label] = counts.get(label, 0) + 1
+    return ", ".join(
+        f"{label} ({count})"
+        for label, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    ) or "-"
+
+
+def _task_scorer_family(task) -> str:
+    return task.scorer_family or "unknown"
+
+
+def _task_output_contract(task) -> str:
+    return task.output_contract_mode or "unknown"
 
 
 def _md_table(headers: list[str], rows: list[list[str]]) -> str:
@@ -125,7 +158,7 @@ def _build_run_inventory(runs: list[RunMetrics]) -> tuple[list[str], list[list[s
 
 def _build_aggregate_performance(runs: list[RunMetrics]) -> tuple[list[str], list[list[str]]]:
     """Table 2: Aggregate Performance per config across all benchmarks."""
-    headers = ["Config", "Mean Reward", "Pass Rate", "Tasks"]
+    headers = ["Config", "Mean Reward", "Pass Rate", "Tasks Passed", "Tasks Scored", "Tasks"]
 
     # Group runs by config_name
     config_runs: dict[str, list[RunMetrics]] = {}
@@ -139,8 +172,8 @@ def _build_aggregate_performance(runs: list[RunMetrics]) -> tuple[list[str], lis
             all_tasks.extend(r.tasks)
 
         rewards = [t.reward for t in all_tasks if t.reward is not None]
-        passed = sum(1 for t in all_tasks if t.status == "passed")
-        scored = sum(1 for t in all_tasks if t.status in ("passed", "failed"))
+        passed = sum(1 for t in all_tasks if _task_is_passed(t))
+        scored = sum(1 for t in all_tasks if _task_is_scored(t))
 
         mean_reward = mean(rewards) if rewards else None
         pass_rate = passed / scored if scored > 0 else None
@@ -149,6 +182,8 @@ def _build_aggregate_performance(runs: list[RunMetrics]) -> tuple[list[str], lis
             config,
             _fmt(mean_reward),
             _fmt(pass_rate),
+            str(passed),
+            str(scored),
             str(len(all_tasks)),
         ])
     return headers, rows
@@ -249,7 +284,6 @@ def _build_sdlc_phase_breakdown(runs: list[RunMetrics]) -> Optional[tuple[list[s
     headers = ["SDLC Phase", "Tasks"] + configs
     rows = []
     for phase in phases:
-        task_count = sum(1 for t in all_tasks if t.sdlc_phase == phase)
         # Avoid double-counting across configs — count unique task_ids
         unique_ids = {t.task_id for t in all_tasks if t.sdlc_phase == phase}
         row = [phase, str(len(unique_ids))]
@@ -401,6 +435,64 @@ def _build_cache_efficiency(runs: list[RunMetrics]) -> Optional[tuple[list[str],
             _fmt(r.mean_cache_hit_rate),
             _fmt(r.mean_input_output_ratio, 1),
             _fmt_usd(_safe_mean([t.cost_usd for t in r.tasks])),
+        ])
+    return headers, rows
+
+
+def _build_scoring_semantics(runs: list[RunMetrics]) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: scorer-family and output-contract mix per benchmark x config."""
+    if not any(t.scorer_family or t.output_contract_mode for r in runs for t in r.tasks):
+        return None
+
+    headers = [
+        "Benchmark", "Config", "Tasks",
+        "Scorer Families", "Output Contracts", "Pass Thresholds",
+    ]
+    rows = []
+    for r in sorted(runs, key=lambda x: (x.benchmark, x.config_name)):
+        families = _format_counter([_task_scorer_family(t) for t in r.tasks])
+        contracts = _format_counter([_task_output_contract(t) for t in r.tasks])
+        thresholds = sorted({
+            f"{t.pass_threshold:.3f}"
+            for t in r.tasks
+            if t.pass_threshold is not None
+        })
+        rows.append([
+            r.benchmark,
+            r.config_name,
+            str(r.task_count),
+            families,
+            contracts,
+            ", ".join(thresholds) if thresholds else "-",
+        ])
+    return headers, rows
+
+
+def _build_performance_by_scorer_family(
+    runs: list[RunMetrics],
+) -> Optional[tuple[list[str], list[list[str]]]]:
+    """Table: partition rewards and pass rates by scorer family."""
+    grouped: dict[tuple[str, str], list] = {}
+    for r in runs:
+        for t in r.tasks:
+            grouped.setdefault((r.config_name, _task_scorer_family(t)), []).append(t)
+
+    if not grouped:
+        return None
+
+    headers = ["Config", "Scorer Family", "Mean Reward", "Pass Rate", "Tasks"]
+    rows = []
+    for (config, scorer_family) in sorted(grouped):
+        tasks = grouped[(config, scorer_family)]
+        rewards = [t.reward for t in tasks if t.reward is not None]
+        passed = sum(1 for t in tasks if _task_is_passed(t))
+        scored = sum(1 for t in tasks if _task_is_scored(t))
+        rows.append([
+            config,
+            scorer_family,
+            _fmt(_safe_mean(rewards)),
+            _fmt((passed / scored) if scored > 0 else None),
+            str(len(tasks)),
         ])
     return headers, rows
 
@@ -710,6 +802,7 @@ def generate_report(
     output_dir: str | Path,
     write_csv_flag: bool = True,
     selected_tasks_path: Optional[str | Path] = None,
+    canonical_audit_path: Optional[str | Path] = "./configs/canonical_evaluation_audit.json",
 ) -> None:
     """Generate the full evaluation report.
 
@@ -748,6 +841,16 @@ def generate_report(
             print(f"Filtered to selected tasks: {pre_count} -> {post_count}")
         else:
             print(f"WARNING: selected tasks file not found: {sel_path}", file=sys.stderr)
+
+    if canonical_audit_path:
+        audit_path = Path(canonical_audit_path)
+        if audit_path.is_file():
+            print(f"Loading canonical evaluation audit: {audit_path}")
+            audit = load_canonical_evaluation_audit(audit_path)
+            contract_index = build_task_contract_index(audit)
+            enrich_run_contracts(runs, contract_index)
+        else:
+            print(f"WARNING: canonical audit file not found: {audit_path}", file=sys.stderr)
 
     # Build EvalReport
     report = EvalReport(
@@ -822,6 +925,16 @@ def generate_report(
         h, r = cache_eff
         tables.append(("Cache Efficiency", "cache_efficiency", h, r))
 
+    semantics = _build_scoring_semantics(runs)
+    if semantics:
+        h, r = semantics
+        tables.append(("Run Scoring Semantics", "run_scoring_semantics", h, r))
+
+    family_perf = _build_performance_by_scorer_family(runs)
+    if family_perf:
+        h, r = family_perf
+        tables.append(("Performance by Scorer Family", "performance_by_scorer_family", h, r))
+
     swe = _build_swebench_partial(runs)
     if swe:
         h, r = swe
@@ -872,6 +985,9 @@ def generate_report(
         f"Generated: {report.generated_at}",
         f"Report ID: {report.report_id}",
         "",
+        "Reward and solved/pass status are reported separately.",
+        "Aggregate mean reward rows can mix scorer families; use the scoring-semantics and scorer-family tables before comparing unlike verifier families.",
+        "",
     ]
 
     for title, slug, headers, rows in tables:
@@ -913,8 +1029,8 @@ def generate_report(
         all_tasks = []
         for r in config_runs[config]:
             all_tasks.extend(r.tasks)
-        passed = sum(1 for t in all_tasks if t.status == "passed")
-        scored = sum(1 for t in all_tasks if t.status in ("passed", "failed"))
+        passed = sum(1 for t in all_tasks if _task_is_passed(t))
+        scored = sum(1 for t in all_tasks if _task_is_scored(t))
         rate = f"{passed}/{scored} ({passed/scored:.1%})" if scored > 0 else "no scored tasks"
         print(f"  {config}: {rate}")
     print("=" * 60)
@@ -967,6 +1083,12 @@ def main() -> None:
         help="Path to selected_benchmark_tasks.json for filtering and metadata enrichment "
              "(default: ./configs/selected_benchmark_tasks.json). Set to empty string to disable.",
     )
+    parser.add_argument(
+        "--canonical-audit",
+        default="./configs/canonical_evaluation_audit.json",
+        help="Path to canonical_evaluation_audit.json for scorer-family and output-contract enrichment "
+             "(default: ./configs/canonical_evaluation_audit.json). Set to empty string to disable.",
+    )
 
     args = parser.parse_args()
     selected = args.selected_tasks if args.selected_tasks else None
@@ -975,6 +1097,7 @@ def main() -> None:
         output_dir=args.output_dir,
         write_csv_flag=args.csv,
         selected_tasks_path=selected,
+        canonical_audit_path=args.canonical_audit if args.canonical_audit else None,
     )
 
 

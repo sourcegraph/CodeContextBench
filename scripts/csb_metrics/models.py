@@ -24,7 +24,15 @@ class TaskMetrics:
     # Scoring
     reward: Optional[float] = None
     partial_score: Optional[float] = None
+    passed: Optional[bool] = None
+    pass_threshold: Optional[float] = None
     status: str = "unknown"  # passed / failed / error
+    scorer_family: Optional[str] = None
+    output_contract_mode: Optional[str] = None
+    output_contract_primary_path: Optional[str] = None
+    output_contract_required_artifact: Optional[bool] = None
+    validation_status: Optional[str] = None
+    validation_scorable: Optional[bool] = None
 
     # LLM Judge (optional — separate from verifier reward)
     judge_score: Optional[float] = None
@@ -155,10 +163,16 @@ class RunMetrics:
 
     @property
     def pass_rate(self) -> Optional[float]:
-        scored = [t for t in self.tasks if t.status in ("passed", "failed")]
+        scored = [
+            t for t in self.tasks
+            if t.passed is not None or t.status in ("passed", "failed")
+        ]
         if not scored:
             return None
-        return sum(1 for t in scored if t.status == "passed") / len(scored)
+        return sum(
+            1 for t in scored
+            if t.passed is True or (t.passed is None and t.status == "passed")
+        ) / len(scored)
 
     @property
     def mean_judge_score(self) -> Optional[float]:

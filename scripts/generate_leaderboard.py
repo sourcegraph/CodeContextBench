@@ -63,11 +63,30 @@ def load_benchmark_task_counts() -> dict[str, int]:
 
 
 def compute_pass_rate(tasks: dict) -> float:
-    """Fraction of tasks with reward > 0.0."""
+    """Fraction of tasks marked passed by status/passed metadata."""
     if not tasks:
         return 0.0
-    passed = sum(1 for t in tasks.values() if t.get("reward", 0.0) > 0.0)
-    return round(passed / len(tasks), 4)
+    pass_count = 0
+    scored = 0
+    for task in tasks.values():
+        passed = task.get("passed")
+        if isinstance(passed, bool):
+            scored += 1
+            if passed:
+                pass_count += 1
+            continue
+        status = task.get("status")
+        if status in {"passed", "failed"}:
+            scored += 1
+            if status == "passed":
+                pass_count += 1
+            continue
+        reward = task.get("reward")
+        if isinstance(reward, (int, float)):
+            scored += 1
+            if reward > 0:
+                pass_count += 1
+    return round(pass_count / scored, 4) if scored else 0.0
 
 
 def compute_median_reward(tasks: dict) -> float:
@@ -222,6 +241,10 @@ def generate_leaderboard(manifest: dict, benchmark_task_counts: dict) -> dict:
     return {
         "generated": datetime.now(timezone.utc).isoformat(),
         "manifest_source": str(MANIFEST_PATH),
+        "caveats": [
+            "Pass rate uses passed/status metadata when available, falling back to reward > 0 only for legacy rows.",
+            "Mean reward is not calibrated across mixed scorer families; compare within benchmarks or with family-aware caveats.",
+        ],
         "per_benchmark": per_benchmark,
         "aggregate": aggregate,
     }
@@ -233,6 +256,9 @@ def generate_markdown(leaderboard: dict, benchmark_task_counts: dict) -> str:
         "# CodeScaleBench Leaderboard Results",
         "",
         f"*Generated: {leaderboard['generated']}*",
+        "",
+        "Mean reward is not calibrated across mixed scorer families; use per-benchmark views for like-for-like comparisons.",
+        "Pass rate uses authoritative `passed`/`status` fields when available and falls back to legacy reward semantics only when necessary.",
         "",
     ]
 
@@ -255,6 +281,7 @@ def generate_markdown(leaderboard: dict, benchmark_task_counts: dict) -> str:
             )
         lines.append("")
         lines.append("*Aggregate score is the mean of per-benchmark mean rewards over qualifying (complete) benchmarks.*")
+        lines.append("*These reward means can mix scorer families and should be treated as a convenience ranking, not a calibrated cross-family scale.*")
         lines.append("")
     else:
         lines.append("*No submissions found.*")

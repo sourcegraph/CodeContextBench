@@ -230,7 +230,11 @@ def _process_task_dir(
         reward = extract_reward_from_file(reward_path)
         if reward is not None:
             tm.reward = reward
-            tm.status = "passed" if reward > 0 else "failed"
+            if tm.passed is None:
+                tm.pass_threshold = 0.0 if tm.pass_threshold is None else tm.pass_threshold
+                tm.passed = reward > 0
+            if tm.status != "error":
+                tm.status = "passed" if tm.passed else "failed"
 
     # SWE-bench partial score
     if is_swebench:

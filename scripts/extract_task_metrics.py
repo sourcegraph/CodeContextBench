@@ -54,7 +54,14 @@ from csb_metrics.extractors import (
     extract_mcp_latency_from_trajectory,
     classify_search_strategy,
 )
-from csb_metrics.task_selection import load_selected_tasks, build_task_index, enrich_task_metrics
+from csb_metrics.task_selection import (
+    load_selected_tasks,
+    load_canonical_evaluation_audit,
+    build_task_index,
+    build_task_contract_index,
+    enrich_task_metrics,
+    enrich_task_contract_metrics,
+)
 
 GT_CACHE = Path(__file__).resolve().parent.parent / "configs" / "ground_truth_files.json"
 _GT_REGISTRY: dict[str, TaskGroundTruth] | None = None
@@ -189,7 +196,11 @@ def process_task_dir(
                     pass
         if reward is not None:
             tm.reward = reward
-            tm.status = "passed" if reward > 0 else "failed"
+            if tm.passed is None:
+                tm.pass_threshold = 0.0 if tm.pass_threshold is None else tm.pass_threshold
+                tm.passed = reward > 0
+            if tm.status != "error":
+                tm.status = "passed" if tm.passed else "failed"
 
     # SWE-bench partial score
     if is_swebench:
@@ -345,6 +356,10 @@ def main() -> None:
         "--selected-tasks", type=Path, default=None,
         help="Path to selected_benchmark_tasks.json for enrichment",
     )
+    parser.add_argument(
+        "--canonical-audit", type=Path, default=Path("./configs/canonical_evaluation_audit.json"),
+        help="Path to canonical_evaluation_audit.json for scorer-family/output-contract enrichment",
+    )
     args = parser.parse_args()
 
     task_dir = args.task_dir.resolve()
@@ -365,6 +380,14 @@ def main() -> None:
             enrich_task_metrics(tm, task_index)
         except Exception as e:
             print(f"WARNING: Could not enrich metrics: {e}", file=sys.stderr)
+
+    if args.canonical_audit and args.canonical_audit.is_file():
+        try:
+            audit = load_canonical_evaluation_audit(args.canonical_audit)
+            contract_index = build_task_contract_index(audit)
+            enrich_task_contract_metrics(tm, contract_index)
+        except Exception as e:
+            print(f"WARNING: Could not enrich contract metadata: {e}", file=sys.stderr)
 
     # Write task_metrics.json
     out_path = task_dir / "task_metrics.json"
