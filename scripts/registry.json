@@ -139,6 +139,14 @@
       "summary": "Helper library/wrapper used by other scripts (artifact verifier lib)."
     },
     {
+      "name": "audit_canonical_evaluation_contract.py",
+      "path": "scripts/audit_canonical_evaluation_contract.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for audit canonical evaluation contract."
+    },
+    {
       "name": "audit_gt_coverage.py",
       "path": "scripts/audit_gt_coverage.py",
       "category": "misc",
@@ -1811,7 +1819,7 @@
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 4,
-    "misc": 98,
+    "misc": 99,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,
