@@ -26,7 +26,7 @@
       "csb_sdlc_debug": 19,
       "csb_sdlc_design": 15,
       "csb_sdlc_document": 15,
-      "csb_sdlc_feature": 23,
+      "csb_sdlc_feature": 22,
       "csb_sdlc_fix": 34,
       "csb_sdlc_refactor": 18,
       "csb_sdlc_secure": 15,
@@ -835,110 +835,6 @@
       "task_type": "implementation",
       "suite": "csb_sdlc_refactor",
       "loc_band": "2M-8M"
-    },
-    {
-      "task_id": "bustub-hyperloglog-impl-001",
-      "benchmark": "csb_sdlc_feature",
-      "sdlc_phase": "Implementation (feature)",
-      "language": "cpp",
-      "difficulty": "hard",
-      "category": "implement",
-      "repo": "cmu-db/bustub",
-      "mcp_benefit_score": 0.49,
-      "mcp_breakdown": {
-        "context_complexity": 0.5,
-        "cross_file_deps": 0.3,
-        "semantic_search_potential": 0.5,
-        "task_category_weight": 0.7
-      },
-      "selection_rationale": "All ccb_tac tasks selected (small benchmark)",
-      "task_dir": "csb_sdlc_feature/bustub-hyperloglog-impl-001",
-      "context_length": 500000,
-      "context_length_source": "task_metrics_run",
-      "files_count": 6,
-      "files_count_source": "task_metrics_run",
-      "repo_size_bytes": 10676224,
-      "repo_size_mb": 10.182,
-      "repo_file_count": 1248,
-      "repo_directory_count": 191,
-      "repo_approx_loc": 262071,
-      "repo_languages": [
-        {
-          "language": "cpp",
-          "files": 450,
-          "pct_files": 36.06
-        },
-        {
-          "language": "c_cpp_headers",
-          "files": 297,
-          "pct_files": 23.8
-        },
-        {
-          "language": "c",
-          "files": 51,
-          "pct_files": 4.09
-        },
-        {
-          "language": "python",
-          "files": 44,
-          "pct_files": 3.53
-        },
-        {
-          "language": "shell",
-          "files": 8,
-          "pct_files": 0.64
-        },
-        {
-          "language": "makefile",
-          "files": 7,
-          "pct_files": 0.56
-        },
-        {
-          "language": "javascript",
-          "files": 1,
-          "pct_files": 0.08
-        },
-        {
-          "language": "ruby",
-          "files": 1,
-          "pct_files": 0.08
-        }
-      ],
-      "repo_primary_language": "cpp",
-      "repo_complexity": 0.67,
-      "repo_complexity_label": "hard",
-      "repo_complexity_source": "cached_registry",
-      "task_complexity": 0.391,
-      "task_complexity_label": "medium",
-      "task_complexity_source": "ground_truth_meta_plus_registry",
-      "repo_approx_loc_source": "cloc",
-      "repo_cloc_total_files": 1114,
-      "repo_cloc_top_languages": [
-        {
-          "language": "C++",
-          "code_lines": 109869
-        },
-        {
-          "language": "C/C++ Header",
-          "code_lines": 70314
-        },
-        {
-          "language": "C",
-          "code_lines": 34476
-        },
-        {
-          "language": "Markdown",
-          "code_lines": 21089
-        },
-        {
-          "language": "Python",
-          "code_lines": 8280
-        }
-      ],
-      "n_repos": 1,
-      "task_type": "implementation",
-      "suite": "csb_sdlc_feature",
-      "loc_band": "<400K"
     },
     {
       "task_id": "calcom-code-review-001",

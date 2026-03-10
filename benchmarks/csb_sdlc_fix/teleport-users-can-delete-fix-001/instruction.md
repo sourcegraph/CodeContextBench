@@ -18,7 +18,7 @@ Deletion of a user's last MFA device should be prevented when the security polic
 ## Reproduction Steps
  1.Set `second_factor: on` on the `auth_service`
  2.Create a user with 1 MFA device 
-3.Run `tsh mfa rm $DEVICE_NAME` 
+3.Run `tsh mfa rm <device-name>`
 
 ## Bug details 
 - Teleport version: v6.0.0-rc.1
