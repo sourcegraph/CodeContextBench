@@ -52,6 +52,8 @@ payload = {
 }
 with open("/logs/verifier/validation_result.json", "w") as f:
     json.dump(payload, f, indent=2)
+with open("/logs/verifier/reward.txt", "w") as f:
+    f.write(f"{reward:.4f}\n")
 PYEOF
     echo "0.0" > /logs/verifier/reward.txt
 }
@@ -134,8 +136,10 @@ if details:
     payload["details"] = details
 with open("/logs/verifier/validation_result.json", "w") as f:
     json.dump(payload, f, indent=2)
+with open("/logs/verifier/reward.txt", "w") as f:
+    f.write(f"{reward:.4f}\n")
 PYEOF
-    echo "$score" > /logs/verifier/reward.txt
+    # reward.txt now written by Python (respects no_changes_guard)
 }
 
 
