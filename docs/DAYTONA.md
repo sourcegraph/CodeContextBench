@@ -317,7 +317,7 @@ Each **sandbox** is deleted after the trial (Harbor + Daytona and the standalone
 
 - **Dashboard**: [Daytona Snapshots](https://app.daytona.io/dashboard/snapshots) — list and delete snapshots you no longer need. Snapshots auto-deactivate after 2 weeks of no use; deleting them frees storage.
 - **CLI**: `daytona snapshot list` and `daytona snapshot delete <name>` (see [Daytona CLI](https://daytona.io/docs/en/tools/cli)).
-- **Script**: `python3 scripts/daytona_snapshot_cleanup.py --list` to list snapshots; `--delete-all` or `--delete-prefix PREFIX` to remove them (requires confirmation). Use this to prune one-off or old snapshots after big runs.
+- **API**: Use the Daytona SDK (`daytona_sdk`) to list and delete snapshots programmatically if you need to prune one-off or old snapshots after big runs.
 
 ### Orphan sandboxes
 

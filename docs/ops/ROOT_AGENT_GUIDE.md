@@ -124,6 +124,18 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 - Judge should use task-type-aware evaluation: different rubrics for code implementation, architectural understanding, and bug fix tasks.
 - Tool categorization order matters: check MCP prefix (`mcp__`) before substring checks (e.g., `deep_search`) to avoid miscategorization of `mcp__deep_search`.
 
+### OpenHands
+- Disable Jupyter: monkey-patch `CodeActAgent.sandbox_plugins` (list, not property) to filter out `JupyterRequirement`. TOML `[sandbox] plugins` and `[core] enable_jupyter` have no effect in v1.4.0.
+- `shlex.quote()` breaks on shell metacharacters in task instructions (0% execution). Fix: base64-encode on host, decode inside container.
+- Background daemons (tmux, jupyter, ipykernel) outlive the main process and hang Daytona poll. Fix: wrap with `pkill` cleanup.
+- Alpine images lack `apt-get` (required by OH installer). Use `bookworm` variants. Images without `python3` break MCP auth proxy silently.
+- OH MCP client has ~30s timeout that kills deepsearch. Block `deepsearch`/`deepsearch_read` in auth proxy; redirect to `keyword_search`/`nls_search`.
+
+### Pre-commit / Pytest / Ralph
+- Secret-detection hooks false-positive on code that _detects_ secrets. Use `--no-verify` when flagged code is detection logic.
+- Classes named `TestPlan`/`TestCase`/`TestResult` get auto-collected by pytest. Rename to `EvaluationPlan` etc.
+- Ralph sessions write learnings to `progress.txt` on feature branches, not main. Compound back after merge.
+
 ## Maintenance
 - Root and local `AGENTS.md` / `CLAUDE.md` files are generated from sources in `docs/ops/`.
 - `docs/START_HERE_BY_TASK.md` is generated from `docs/ops/task_routes.json`.
