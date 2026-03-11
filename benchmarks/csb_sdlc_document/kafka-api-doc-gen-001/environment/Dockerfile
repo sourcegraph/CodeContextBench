@@ -19,3 +19,7 @@ WORKDIR /repo
 RUN git clone --depth 1 https://github.com/sg-evals/kafka--e678b4b.git .
 
 WORKDIR /workspace
+
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true

@@ -17,4 +17,8 @@ RUN git clone --depth 1 https://github.com/sg-evals/kafka--3.9.0.git . && \
 # Create logs directory for agent output
 RUN mkdir -p /logs/agent
 
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
 CMD ["/bin/bash"]

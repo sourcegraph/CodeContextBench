@@ -731,6 +731,14 @@
       "summary": "Historical one-off script: fix h3 tokens."
     },
     {
+      "name": "fix_memory_mb.py",
+      "path": "scripts/fix_memory_mb.py",
+      "category": "misc",
+      "status": "one_off",
+      "language": "python",
+      "summary": "Historical one-off script: fix memory mb."
+    },
+    {
       "name": "fix_workspace_perms.py",
       "path": "scripts/fix_workspace_perms.py",
       "category": "misc",
@@ -1891,7 +1899,7 @@
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 6,
-    "misc": 104,
+    "misc": 105,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

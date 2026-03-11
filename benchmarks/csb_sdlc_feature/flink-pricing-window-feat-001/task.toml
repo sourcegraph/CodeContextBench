@@ -13,6 +13,7 @@ language = "java"
 pre_fix_rev = "release-2.2.0"
 difficulty = "expert"
 time_limit_sec = 1200
+memory_mb = 4096
 reward_type = "ir_checklist"
 
 [verification]

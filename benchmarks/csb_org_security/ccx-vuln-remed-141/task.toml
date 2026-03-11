@@ -12,6 +12,7 @@ category = "vuln-remediation"
 language = "cpp"
 difficulty = "hard"
 time_limit_sec = 900
+memory_mb = 4096
 mcp_suite = "csb_org_security"
 use_case_id = 141
 repo_set_id = "arangodb-database"

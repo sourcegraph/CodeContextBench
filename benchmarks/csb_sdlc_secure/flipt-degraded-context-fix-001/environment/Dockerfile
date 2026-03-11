@@ -22,3 +22,7 @@ RUN go mod download 2>/dev/null || true
 RUN rm -f internal/storage/storage.go && \
     rm -f rpc/flipt/evaluation/evaluation.proto && \
     rm -f rpc/flipt/flipt.proto
+
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true

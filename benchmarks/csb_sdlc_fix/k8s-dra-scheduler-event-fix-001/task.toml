@@ -13,6 +13,7 @@ language = "go"
 pre_fix_rev = "v1.30.0"
 difficulty = "hard"
 time_limit_sec = 1200
+memory_mb = 4096
 reward_type = "ir_checklist"
 
 [verification]

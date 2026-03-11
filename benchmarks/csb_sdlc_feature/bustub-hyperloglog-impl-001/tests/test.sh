@@ -15,6 +15,21 @@ if [ ! -f "$TRAJECTORY_PATH" ]; then
     echo '[]' > "$TRAJECTORY_PATH"
 fi
 
+# --- Timeout guard: re-exec under timeout if not already guarded ---
+if [ -z "$__TIMEOUT_GUARD" ]; then
+    export __TIMEOUT_GUARD=1
+    timeout 600 bash "$0" "$@" || {
+        rc=$?
+        if [ $rc -eq 124 ]; then
+            mkdir -p /logs/verifier
+            echo "0.0" > /logs/verifier/reward.txt
+            echo "Verification timed out after 600s" >&2
+        fi
+        exit 0
+    }
+    exit 0
+fi
+
 echo "Running TAC evaluator for sde-implement-hyperloglog..."
 cd /utils
 
@@ -23,7 +38,7 @@ if [ -f "/utils/init.sh" ]; then
     SERVER_HOSTNAME="${TAC_SERVER_HOSTNAME:-localhost}" bash /utils/init.sh || true
 fi
 
-DECRYPTION_KEY="${DECRYPTION_KEY:-theagentcompany is all you need}" \
+export DECRYPTION_KEY="${DECRYPTION_KEY:-theagentcompany is all you need}"
 python_default /utils/eval.py \
     --trajectory_path "$TRAJECTORY_PATH" \
     --result_path "$OUTPUT_PATH" \

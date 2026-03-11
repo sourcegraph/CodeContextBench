@@ -13,6 +13,7 @@ pre_fix_rev = "5160151e14837c6f352b9d0b3a9f55119a9317e8"
 ground_truth_rev = "f20b6ca6b3cd1b3f2577d495e939831019d9a86d"
 difficulty = "hard"
 time_limit_sec = 900
+memory_mb = 4096
 
 [verification]
 type = "test"

@@ -24,4 +24,8 @@ RUN git clone --depth 1 https://github.com/sg-evals/emissary--3bbdbe0f.git emiss
 
 RUN mkdir -p /logs/verifier /logs/agent
 
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
 CMD ["/bin/bash"]

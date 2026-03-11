@@ -13,6 +13,7 @@ language = "go"
 pre_fix_rev = "3d5a345f94c2adc8a0eaa102c189c08ad4c0f8e8"
 difficulty = "hard"
 time_limit_sec = 900
+memory_mb = 4096
 
 [task.metadata]
 permitted_paths = ["internal/server/evaluation/", "rpc/flipt/evaluation/"]

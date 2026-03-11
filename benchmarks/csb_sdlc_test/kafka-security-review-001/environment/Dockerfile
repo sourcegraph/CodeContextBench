@@ -27,4 +27,8 @@ RUN chmod +x /tmp/inject_defects.sh && /tmp/inject_defects.sh
 # Set Java home
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
 CMD ["/bin/bash"]

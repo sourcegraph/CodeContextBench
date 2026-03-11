@@ -15,3 +15,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git . && \
 RUN pip install --no-cache-dir Django
 
 RUN mkdir -p /workspace/tests /app
+
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true

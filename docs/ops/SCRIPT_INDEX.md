@@ -227,6 +227,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/extract_v2_report_data.py` - Utility script for extract v2 report data.
 - `scripts/find_mcp_distracted.py` - Utility script for find mcp distracted.
 - `scripts/fix_h3_tokens.py` [one_off] - Historical one-off script: fix h3 tokens.
+- `scripts/fix_memory_mb.py` [one_off] - Historical one-off script: fix memory mb.
 - `scripts/fix_workspace_perms.py` [one_off] - Historical one-off script: fix workspace perms.
 - `scripts/handoff_monitor_scrollend.sh` - Utility script for handoff monitor scrollend.
 - `scripts/hybrid_retrieval_pipeline.py` - Utility script for hybrid retrieval pipeline.

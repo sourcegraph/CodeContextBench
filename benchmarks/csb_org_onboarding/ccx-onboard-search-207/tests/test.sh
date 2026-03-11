@@ -170,6 +170,6 @@ except Exception as e:
         f.write("0.0")
 PYEOF
 
-python3 "$VERIFY_SCRIPT" 2>&1 | tee /logs/verifier/verify-debug.log
+timeout 600 python3 "$VERIFY_SCRIPT" 2>&1 | tee /logs/verifier/verify-debug.log
 rm -f "$VERIFY_SCRIPT"
 exit 0

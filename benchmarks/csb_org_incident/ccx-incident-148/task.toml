@@ -12,6 +12,7 @@ category = "incident-debug"
 language = "rust"
 difficulty = "hard"
 time_limit_sec = 900
+memory_mb = 4096
 mcp_suite = "csb_org_incident"
 use_case_id = 148
 repo_set_id = "rust-systems"

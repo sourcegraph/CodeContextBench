@@ -12,6 +12,7 @@ category = "cross-repo-dep-trace"
 language = "cpp"
 difficulty = "hard"
 time_limit_sec = 900
+memory_mb = 4096
 mcp_suite = "csb_org_crossrepo"
 use_case_id = 253
 repo_set_id = "compiler-toolchain"

@@ -11,6 +11,7 @@ category = "fault_localization"
 language = "c"
 difficulty = "expert"
 time_limit_sec = 1800
+memory_mb = 4096
 
 [verification]
 type = "test"

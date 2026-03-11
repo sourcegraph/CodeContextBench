@@ -16,6 +16,21 @@ TASK_WORKDIR="${TASK_WORKDIR:-/workspace}"
 TASK_REPO_ROOT="${TASK_REPO_ROOT:-${VERIFY_REPO:-$TASK_WORKDIR}}"
 VERIFY_REPO="${VERIFY_REPO:-$TASK_REPO_ROOT}"
 
+# --- Timeout guard: re-exec under timeout if not already guarded ---
+if [ -z "$__TIMEOUT_GUARD" ]; then
+    export __TIMEOUT_GUARD=1
+    timeout 600 bash "$0" "$@" || {
+        rc=$?
+        if [ $rc -eq 124 ]; then
+            mkdir -p /logs/verifier
+            echo "0.0" > /logs/verifier/reward.txt
+            echo "Verification timed out after 600s" >&2
+        fi
+        exit 0
+    }
+    exit 0
+fi
+
 EXPECTED_CHANGES="/tests/expected_changes.json"
 REWARD_FILE="/logs/verifier/reward.txt"
 VALIDATION_RESULT="/logs/verifier/validation_result.json"

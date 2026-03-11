@@ -17,3 +17,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/cilium--v1.16.5.git . && \
 
 # Create output directories
 RUN mkdir -p /logs/agent /logs/verifier
+
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true

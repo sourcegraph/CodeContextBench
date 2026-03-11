@@ -11,4 +11,8 @@ WORKDIR /workspace
 ENV TAC_SERVER_HOSTNAME=localhost
 ENV DECRYPTION_KEY="theagentcompany is all you need"
 
+# Create non-root user for agent harness compatibility
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
 CMD ["bash"]
