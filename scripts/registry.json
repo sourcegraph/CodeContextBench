@@ -507,6 +507,14 @@
       "summary": "Utility script for daytona runner."
     },
     {
+      "name": "daytona_snapshot_cleanup.py",
+      "path": "scripts/daytona_snapshot_cleanup.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for daytona snapshot cleanup."
+    },
+    {
       "name": "dependeval_eval_dr.py",
       "path": "scripts/dependeval_eval_dr.py",
       "category": "misc",
@@ -875,6 +883,14 @@
       "summary": "Generation script for generate start here by task."
     },
     {
+      "name": "generate_task_specs_from_gt.py",
+      "path": "scripts/generate_task_specs_from_gt.py",
+      "category": "generation",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Generation script for generate task specs from gt."
+    },
+    {
       "name": "generate_verifier_labels.py",
       "path": "scripts/generate_verifier_labels.py",
       "category": "generation",
@@ -1217,6 +1233,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Utility script for plot conversation blog svgs."
+    },
+    {
+      "name": "plot_csb_mcp_blog_figures.py",
+      "path": "scripts/plot_csb_mcp_blog_figures.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for plot csb mcp blog figures."
     },
     {
       "name": "prebuild_images.sh",
@@ -1839,11 +1863,11 @@
     "analysis_comparison": 28,
     "core_operations": 13,
     "data_management": 10,
-    "generation": 10,
+    "generation": 11,
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 5,
-    "misc": 100,
+    "misc": 102,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

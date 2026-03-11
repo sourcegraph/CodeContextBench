@@ -166,6 +166,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/generate_repoqa_largerepo_tasks.py` - Generation script for generate repoqa largerepo tasks.
 - `scripts/generate_sgonly_dockerfiles.py` - Generation script for generate sgonly dockerfiles.
 - `scripts/generate_start_here_by_task.py` - Generation script for generate start here by task.
+- `scripts/generate_task_specs_from_gt.py` - Generation script for generate task specs from gt.
 - `scripts/generate_verifier_labels.py` - Generation script for generate verifier labels.
 
 ## Migration
@@ -204,6 +205,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/daytona_curator_runner.py` - Utility script for daytona curator runner.
 - `scripts/daytona_poc_runner.py` - Utility script for daytona poc runner.
 - `scripts/daytona_runner.py` - Utility script for daytona runner.
+- `scripts/daytona_snapshot_cleanup.py` - Utility script for daytona snapshot cleanup.
 - `scripts/dependeval_eval_dr.py` - Utility script for dependeval eval dr.
 - `scripts/dependeval_eval_me.py` - Utility script for dependeval eval me.
 - `scripts/derive_n_repos.py` - Utility script for derive n repos.
@@ -241,6 +243,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/plot_build_diary_supplementary.py` - Utility script for plot build diary supplementary.
 - `scripts/plot_build_narrative.py` - Utility script for plot build narrative.
 - `scripts/plot_conversation_blog_svgs.py` - Utility script for plot conversation blog svgs.
+- `scripts/plot_csb_mcp_blog_figures.py` - Utility script for plot csb mcp blog figures.
 - `scripts/prepare_analysis_runs.py` - Utility script for prepare analysis runs.
 - `scripts/promote_agent_oracles.py` - Utility script for promote agent oracles.
 - `scripts/promote_blocked.py` - Utility script for promote blocked.
