@@ -507,14 +507,6 @@
       "summary": "Utility script for daytona runner."
     },
     {
-      "name": "daytona_snapshot_cleanup.py",
-      "path": "scripts/daytona_snapshot_cleanup.py",
-      "category": "misc",
-      "status": "maintained",
-      "language": "python",
-      "summary": "Utility script for daytona snapshot cleanup."
-    },
-    {
       "name": "dependeval_eval_dr.py",
       "path": "scripts/dependeval_eval_dr.py",
       "category": "misc",
@@ -1227,14 +1219,6 @@
       "summary": "Utility script for plot conversation blog svgs."
     },
     {
-      "name": "plot_csb_mcp_blog_figures.py",
-      "path": "scripts/plot_csb_mcp_blog_figures.py",
-      "category": "misc",
-      "status": "maintained",
-      "language": "python",
-      "summary": "Utility script for plot csb mcp blog figures."
-    },
-    {
       "name": "prebuild_images.sh",
       "path": "scripts/prebuild_images.sh",
       "category": "infra_mirrors",
@@ -1859,7 +1843,7 @@
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 5,
-    "misc": 102,
+    "misc": 100,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

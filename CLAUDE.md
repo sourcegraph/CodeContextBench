@@ -87,9 +87,9 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 - Claude Code requires the `--mcp-config` CLI flag to load MCP config -- it does not auto-detect.
 - Inject MCP usage instructions into the task prompt. Agents won't use MCP tools just because they're available.
 - Set `NODE_TLS_REJECT_UNAUTHORIZED=0` for Node.js SSL in Docker containers (curl working does not mean Node.js fetch will work).
-- Sourcegraph MCP uses **stdio transport** (`npx @sourcegraph/cody --stdio`), NOT HTTP endpoints. HTTP 405 from the endpoint means it exists but requires stdio.
-- Sourcegraph skills installed via `npx -y skills add` show empty `"skills": []` in headless/containerized mode. Embed skill prompt content directly in the task's CLAUDE.md instead.
-- Sourcegraph MCP env vars are `SOURCEGRAPH_URL` and `SOURCEGRAPH_ACCESS_TOKEN`. Do NOT use `SOURCEGRAPH_ENDPOINT` or `SOURCEGRAPH_TOKEN` -- those are wrong variable names.
+- Sourcegraph MCP uses **stdio transport** (`npx @sourcegraph/cody --stdio`), NOT HTTP. HTTP 405 = correct endpoint, wrong protocol.
+- Sourcegraph skills show empty in headless mode. Embed skill prompt content in CLAUDE.md directly.
+- Sourcegraph env vars: `SOURCEGRAPH_URL` and `SOURCEGRAPH_ACCESS_TOKEN` (NOT `_ENDPOINT` or `_TOKEN`).
 
 ### Harbor Result Format
 - Timing fields (`started_at`, `finished_at`) live at the **top level** of `result.json`, not nested under `timing`.
@@ -104,20 +104,26 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 - Agent completing in **<2 seconds** = agent never installed/ran (smoke test heuristic).
 - Trial directory names are truncated with hash suffixes (e.g., `c_api_graphql_expert_079_archite__pm9xcPn`). The real task name lives in `config.json` at `task.path`.
 - LoCoBench task IDs contain multi-word fields (e.g., `game_engine`, `cross_file_refactoring`). Use the 3-digit task number as a positional anchor for parsing instead of rigid regexes that assume single-word fields.
+- **no_changes_guard**: Python sets `reward = 0.0` but bash `echo "$score"` uses the original variable. Write `reward.txt` inside the Python block, not after it.
+- Wrap all test runners with `timeout 600`. Add `--forceExit` to Jest. Indefinite hangs (>2h) observed without timeout.
+- Jest + TypeScript needs 4-6GB RAM. Set `memory_mb = 8192` in `task.toml` for front-end test suites (default 2GB causes OOM).
+- **CSB dual-score**: agents produce file edits + `answer.json`; scored independently. Fallback: `promoted_verifier.py` → `oracle_checks.py` → heuristic.
+- Rate-limited results (score=0, duration <30s): quarantine with `scripts/quarantine_invalid_tasks.py --execute`.
+- Bare `$VAR` in `instruction.md` gets expanded. Use `<placeholder>` syntax.
 
 ### Git / Auth
 - `gh auth refresh` without `-s <scope>` is a no-op for adding scopes. Must use `gh auth refresh -h github.com -s write:packages` explicitly.
 - Environment variables must be **explicitly exported** for Harbor subprocesses. Use `set -a` before sourcing `.env.local`.
-- Account readiness is tracked in `runs/state/account_health.json`. Launchers source `configs/_common.sh`, filter out unsafe accounts before launch, and record recent runtime rate-limit observations there for operator context.
-- GitHub push protection blocks synthetic/fake API keys in test data. Use `git reset --soft origin/main` to squash intermediate commits that contained fake credentials.
-- Shallow clones (`--depth 1`) fail on push to GitHub with `remote: fatal: did not receive expected object`. Always use full clones for repos that will be pushed.
-- Some repos use `master` as default branch. Detect with `git symbolic-ref refs/remotes/origin/HEAD` and remap to `main` if needed.
-- GitHub secret scanning blocks pushes containing embedded secrets (Slack webhooks, API keys in source). Users must manually unblock via the provided `/security/secret-scanning/unblock-secret/` URL.
+- Account readiness tracked in `runs/state/account_health.json`. Launchers source `configs/_common.sh` and filter unsafe accounts.
+- GitHub push protection blocks synthetic API keys. Squash with `git reset --soft origin/main`.
+- Shallow clones (`--depth 1`) fail on push. Always use full clones for repos that will be pushed.
+- Some repos use `master` as default branch. Detect with `git symbolic-ref refs/remotes/origin/HEAD`.
+- GitHub secret scanning blocks embedded secrets. Unblock via the `/security/secret-scanning/unblock-secret/` URL.
 
 ### Python / Subprocess
-- `dict.get(key, default)` does **NOT** protect against `None` values. If key exists with value `None`, the default is not used. Use `data.get("key") or default_value` for Harbor result fields that may be `null`.
-- `with open(log) as f: subprocess.Popen(stdout=f)` closes the file handle immediately after `Popen()` returns. Use `open()` without context manager for long-running subprocesses.
-- macOS ships Bash 3.2 which lacks associative arrays (`declare -A`). Use pipe-delimited string arrays with `IFS='|' read -r` for compatibility.
+- `dict.get(key, default)` does NOT protect against `None` values. Use `data.get("key") or default_value`.
+- `with open(log) as f: subprocess.Popen(stdout=f)` closes the handle. Use `open()` without context manager for long-running subprocesses.
+- macOS Bash 3.2 lacks `declare -A`. Use pipe-delimited strings with `IFS='|' read -r`.
 
 ### LLM Judge
 - Always include "Respond with valid JSON only (escape all quotes and special characters)" in judge prompts. Unescaped quotes in LLM-generated JSON break parsing.
@@ -125,11 +131,13 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 - Tool categorization order matters: check MCP prefix (`mcp__`) before substring checks (e.g., `deep_search`) to avoid miscategorization of `mcp__deep_search`.
 
 ### OpenHands
-- Disable Jupyter: monkey-patch `CodeActAgent.sandbox_plugins` (list, not property) to filter out `JupyterRequirement`. TOML `[sandbox] plugins` and `[core] enable_jupyter` have no effect in v1.4.0.
-- `shlex.quote()` breaks on shell metacharacters in task instructions (0% execution). Fix: base64-encode on host, decode inside container.
-- Background daemons (tmux, jupyter, ipykernel) outlive the main process and hang Daytona poll. Fix: wrap with `pkill` cleanup.
-- Alpine images lack `apt-get` (required by OH installer). Use `bookworm` variants. Images without `python3` break MCP auth proxy silently.
-- OH MCP client has ~30s timeout that kills deepsearch. Block `deepsearch`/`deepsearch_read` in auth proxy; redirect to `keyword_search`/`nls_search`.
+- `sandbox_plugins` is a list (not property). Strip ALL plugins (`= []`) -- `agent_skills` indexes `/workspace` at startup (120s timeout on large repos). TOML config has no effect in v1.4.0.
+- `shlex.quote()` breaks on shell metacharacters (0% execution). Base64-encode instructions on host, decode inside container.
+- Background daemons outlive the main process and hang Daytona poll. Wrap with `pkill` cleanup; guard with `shutil.which('pkill')` (missing on minimal images).
+- Alpine lacks `apt-get` (OH installer requirement). Use `bookworm` variants.
+- OH MCP client has ~30s timeout. Block `deepsearch`/`deepsearch_read` in auth proxy; redirect to `keyword_search`/`nls_search`.
+- `chown -R /workspace` blocks port binding >120s on large repos. Edit installed `runtime_init.py` source -- monkey-patches don't propagate to action_execution_server subprocess.
+- Set `PYTHONSAFEPATH=1` to prevent repo-local packages from shadowing installed deps.
 
 ### Pre-commit / Pytest / Ralph
 - Secret-detection hooks false-positive on code that _detects_ secrets. Use `--no-verify` when flagged code is detection logic.
