@@ -1099,6 +1099,14 @@
       "summary": "Data/run management script for migrate results."
     },
     {
+      "name": "migrate_sweap_to_ghcr.py",
+      "path": "scripts/migrate_sweap_to_ghcr.py",
+      "category": "migration",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Migration script for migrate sweap to ghcr."
+    },
+    {
       "name": "migrate_to_sg_evals.sh",
       "path": "scripts/migrate_to_sg_evals.sh",
       "category": "migration",
@@ -1882,7 +1890,7 @@
     "generation": 11,
     "infra_mirrors": 23,
     "library_helpers": 7,
-    "migration": 5,
+    "migration": 6,
     "misc": 104,
     "qa_quality": 10,
     "submission_reporting": 7,
