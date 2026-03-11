@@ -1,0 +1,15 @@
+{
+  "task_id": "CCX-incident-125",
+  "repos": [
+    "llvm/llvm-project"
+  ],
+  "code_areas": [
+    "gcc/passes.cc/",
+    "gcc/diagnostic-global-context.cc/",
+    "gcc/diagnostic-core.h/",
+    "gcc/tree-cfg.cc/",
+    "gcc/tree-cfg.h/",
+    "gcc/passes.def/"
+  ],
+  "discovery_method": "github_api"
+}

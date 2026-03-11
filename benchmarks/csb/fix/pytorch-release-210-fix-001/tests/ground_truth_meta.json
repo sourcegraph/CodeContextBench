@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "pytorch-release-210-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T23:57:41Z",
+  "files_count": 8,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 0,
+  "cost_usd": 0.804836,
+  "elapsed_sec": 217.5,
+  "exploration_notes": "Applied the PyTorch 2.10 release branch CI/CD configuration changes across all 110 files. The diff was extracted from the ground-truth release commit (7cd90e5e9a) and applied to the pre-release file state. All changes verified: 345 insertions, 463 deletions matching exactly."
+}

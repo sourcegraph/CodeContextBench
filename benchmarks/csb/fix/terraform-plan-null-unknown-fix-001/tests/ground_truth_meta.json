@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "terraform-plan-null-unknown-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T23:59:23Z",
+  "files_count": 4,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 2,
+  "cost_usd": 2.149583700000001,
+  "elapsed_sec": 398.1,
+  "exploration_notes": "Fixed nil pointer dereference in unknown.go when before.Renderer is nil during updates, and fixed block.go to pass diff.Action instead of hardcoded plans.Create for unknown blocks. Added test case and updated 6 expected outputs in plan_test.go."
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "CCX-platform-094",
+  "repos": [
+    "grafana/grafana"
+  ],
+  "top_contributors": [
+    {
+      "login": "joshhunt",
+      "commits": 7
+    },
+    {
+      "login": "macabu",
+      "commits": 4
+    },
+    {
+      "login": "kminehart",
+      "commits": 3
+    },
+    {
+      "login": "hugohaggmark",
+      "commits": 3
+    },
+    {
+      "login": "jesdavpet",
+      "commits": 2
+    }
+  ],
+  "code_areas": [
+    "scripts/codeowners-manifest/",
+    ".github/workflows/",
+    ".github/CODEOWNERS/",
+    "pkg/services/"
+  ],
+  "suggested_reviewers": [
+    "joshhunt",
+    "macabu",
+    "kminehart"
+  ],
+  "discovery_method": "git_log_frequency"
+}

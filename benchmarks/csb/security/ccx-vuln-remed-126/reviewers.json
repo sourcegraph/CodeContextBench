@@ -1,0 +1,16 @@
+{
+  "task_id": "CCX-vuln-remed-126",
+  "repos": [
+    "llvm/llvm-project"
+  ],
+  "code_areas": [
+    "gcc/targhooks.cc/",
+    "gcc/explow.cc/",
+    "gcc/explow.h/",
+    "gcc/target.def/",
+    "gcc/common.opt/",
+    "gcc/testsuite/",
+    "gcc/config/"
+  ],
+  "discovery_method": "github_api"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "CCX-vuln-remed-111",
+  "family": "vuln-remediation",
+  "use_case_id": 111,
+  "category": "J",
+  "mcp_suite": "csb_org_security",
+  "prd": {
+    "user_story": "As a developer, I want to: Audit the TLS/SSL implementation in Firefox's Network Security Services (NSS) library. Find all C source files in `mozilla-firefox/firefox` under `security/nss/lib/ssl/` that implement core TLS protocol handling: 1. The file that implements SSL 3.0/TLS record processing and cipher suite negotiation (`ssl3con.c`). 2. The file that implements TLS 1.3 handshake and record processing (`tls13con.c`). 3. The file that implements DTLS-specific protocol handling (`dtlscon.c`). 4. The file that implements ECC cipher suite operations (`ssl3ecc.c`). 5. The header file that declares experimental SSL APIs (`sslexp.h`). Report the repo, file path, and the primary protocol function or feature each file implements.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the mozilla-firefox fixture.",
+    "seed_prompt": "Audit the TLS/SSL implementation in Firefox's Network Security Services (NSS) library. Find all C source files in `mozilla-firefox/firefox` under `security/nss/lib/ssl/` that implement core TLS protocol handling: 1. The file that implements SSL 3.0/TLS record processing and cipher suite negotiation (`ssl3con.c`). 2. The file that implements TLS 1.3 handshake and record processing (`tls13con.c`). 3. The file that implements DTLS-specific protocol handling (`dtlscon.c`). 4. The file that implements ECC cipher suite operations (`ssl3ecc.c`). 5. The header file that declares experimental SSL APIs (`sslexp.h`). Report the repo, file path, and the primary protocol function or feature each file implements."
+  },
+  "artifacts": {
+    "repo_set_id": "mozilla-firefox",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "security/nss/lib/ssl/ssl3con.c"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "security/nss/lib/ssl/tls13con.c"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "security/nss/lib/ssl/dtlscon.c"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "security/nss/lib/ssl/ssl3ecc.c"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "security/nss/lib/ssl/sslexp.h"
+        }
+      ],
+      "required_symbols": [],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

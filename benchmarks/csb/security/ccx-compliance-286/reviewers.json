@@ -1,0 +1,38 @@
+{
+  "task_id": "CCX-compliance-286",
+  "repos": [
+    "pingcap/tidb"
+  ],
+  "top_contributors": [
+    {
+      "login": "tiancaiamao",
+      "commits": 8
+    },
+    {
+      "login": "D3Hunter",
+      "commits": 5
+    },
+    {
+      "login": "Defined2014",
+      "commits": 5
+    },
+    {
+      "login": "hawkingrei",
+      "commits": 5
+    },
+    {
+      "login": "YangKeao",
+      "commits": 4
+    }
+  ],
+  "code_areas": [
+    "pkg/privilege/",
+    "pkg/planner/"
+  ],
+  "suggested_reviewers": [
+    "tiancaiamao",
+    "D3Hunter",
+    "Defined2014"
+  ],
+  "discovery_method": "git_log_frequency"
+}

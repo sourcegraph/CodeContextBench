@@ -1,0 +1,16 @@
+{
+  "task_id": "CCX-dep-trace-001",
+  "repos": [
+    "kubernetes/kubernetes",
+    "etcd-io/etcd"
+  ],
+  "code_areas": [
+    "dynamic/golden_test.go/",
+    "dynamic/dynamiclister/",
+    "dynamic/dynamicinformer/",
+    "dynamic/scheme.go/",
+    "dynamic/fake/",
+    "dynamic/client_test.go/"
+  ],
+  "discovery_method": "github_api"
+}

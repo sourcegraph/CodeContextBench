@@ -1,0 +1,150 @@
+{
+  "files": [
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/related.py"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/boundfield.py"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/forms.py"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/__init__.py"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField.prepare_value"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField.to_python"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField.has_changed"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceIterator"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceIterator.choice"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceIteratorValue"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelMultipleChoiceField"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelMultipleChoiceField.prepare_value"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "model_to_dict"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/related.py",
+      "symbol": "ForeignKey.formfield"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/__init__.py",
+      "symbol": "Field.value_from_object"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/boundfield.py",
+      "symbol": "BoundField.value"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/forms.py",
+      "symbol": "BaseForm.get_initial_for_field"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/forms.py",
+      "symbol": "BaseForm.get_initial_for_field"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/boundfield.py",
+      "symbol": "BoundField.value"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField.prepare_value"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/__init__.py",
+      "symbol": "Field.value_from_object"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "model_to_dict"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/db/models/fields/related.py",
+      "symbol": "ForeignKey.formfield"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceField.to_python"
+    },
+    {
+      "repo": "sg-evals/django--674eda1c",
+      "path": "django/forms/models.py",
+      "symbol": "ModelChoiceIterator.choice"
+    }
+  ],
+  "text": "The bug is in ModelChoiceField.prepare_value() in django/forms/models.py. When a non-pk foreign key (to_field='code') is used, the initial value from model_to_dict is a raw scalar (the stored attname value, which is the pk). prepare_value() only handles model instances (hasattr(value, '_meta')), extracting to_field_name correctly in that case. But when a raw pk integer is passed (e.g., from model_to_dict), it falls through to super().prepare_value() unchanged, returning the pk integer. Meanwhile, ModelChoiceIterator.choice() calls prepare_value(obj) with a model instance, correctly returning the to_field value (e.g., 'US'). This mismatch causes the wrong option to be highlighted. The fix is to enhance prepare_value() to handle the case where a raw pk value is provided and to_field_name is set: look up the object by pk and return its to_field_name value, consistent with how to_python() works (which uses key = self.to_field_name or 'pk' for lookups). All changes must be in django/forms/models.py.",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 911620,
+    "output_tokens": 7176,
+    "tool_calls": 40,
+    "elapsed_sec": 130.2,
+    "cost_usd": 2.8425,
+    "timestamp": "2026-03-02T00:59:29.197986+00:00"
+  }
+}

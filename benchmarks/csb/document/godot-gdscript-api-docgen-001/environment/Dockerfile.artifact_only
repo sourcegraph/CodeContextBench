@@ -1,0 +1,39 @@
+# godot-gdscript-api-docgen-001 — artifact_only variant (build-requiring)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier applies patches from answer.json to /repo_full copy for scoring.
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    python3 \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Clone repo at pinned version
+RUN git clone --depth 1 https://github.com/sg-evals/godot--4.3-stable.git . && \
+    git config user.email "agent@benchmark.local" && \
+    git config user.name "Agent"
+
+# Create logs directory for agent output
+RUN mkdir -p /logs/agent /logs/verifier
+
+# Pre-create claude user and set ownership at build time
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
+
+# --- artifact_only: backup full repo for verifier scoring ---
+# Source stays in /workspace (readable by baseline agent).
+# MCP agent deletes source files at runtime via agent startup script.
+RUN cp -a /workspace /repo_full
+RUN chmod 700 /repo_full
+RUN touch /tmp/.artifact_only_mode && echo '/workspace' > /tmp/.artifact_only_workdir
+
+ENTRYPOINT []

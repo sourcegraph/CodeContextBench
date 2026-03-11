@@ -1,0 +1,14 @@
+{
+  "task_id": "CCX-dep-trace-106",
+  "repos": [
+    "llvm/llvm-project"
+  ],
+  "code_areas": [
+    "gcc/tree-ssa-dce.cc/",
+    "gcc/passes.cc/",
+    "gcc/pass_manager.h/",
+    "gcc/passes.def/",
+    "gcc/tree-pass.h/"
+  ],
+  "discovery_method": "github_api"
+}

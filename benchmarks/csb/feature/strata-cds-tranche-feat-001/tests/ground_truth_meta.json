@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "strata-cds-tranche-feat-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T14:39:58Z",
+  "files_count": 25,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 10,
+  "cost_usd": 7.591943499999999,
+  "elapsed_sec": 587.7,
+  "exploration_notes": "Implemented CDS Tranche product across 3 modules (product, pricer, measure) following existing CDS Index patterns. Created 8 new files: CdsTranche, CdsTrancheTrade, ResolvedCdsTranche, ResolvedCdsTrancheTrade (product); IsdaCdsTranchePricer, IsdaCdsTrancheTradePricer (pricer); CdsTrancheMeasureCalculations, CdsTrancheTradeCalculationFunction (measure). Modified 2 existing files: ProductType (added CDS_TRANCHE constant) and StandardComponents (registered CdsTrancheTradeCalculationFunction). The p"
+}

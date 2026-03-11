@@ -1,0 +1,14 @@
+# test-coverage-gap-002 — artifact_only variant
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier scores agent output only — no repo restore needed.
+
+FROM ccb-repo-kafka-e678b4b
+
+# Back up full repo so answer_json_verifier_lib.sh can apply diffs to /repo_full
+RUN cp -a /workspace /repo_full
+
+# Mark artifact-only mode
+RUN touch /tmp/.artifact_only_mode
+
+ENTRYPOINT []

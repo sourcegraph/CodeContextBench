@@ -1,0 +1,30 @@
+{
+  "task_id": "nodebb-notif-dropdown-fix-001",
+  "repos": [
+    "NodeBB/NodeBB"
+  ],
+  "top_contributors": [
+    {
+      "login": "barisusakli",
+      "commits": 58
+    },
+    {
+      "login": "julianlam",
+      "commits": 2
+    }
+  ],
+  "code_areas": [
+    "src/install.js/",
+    "public/src/",
+    "src/database/",
+    "src/emailer.js/",
+    "CHANGELOG.md",
+    "src/routes/",
+    "src/views/"
+  ],
+  "suggested_reviewers": [
+    "barisusakli",
+    "julianlam"
+  ],
+  "discovery_method": "git_log_frequency"
+}

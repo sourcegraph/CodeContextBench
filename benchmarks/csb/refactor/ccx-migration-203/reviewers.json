@@ -1,0 +1,42 @@
+{
+  "task_id": "CCX-migration-203",
+  "repos": [
+    "django/django"
+  ],
+  "top_contributors": [
+    {
+      "login": "jacobtylerwalls",
+      "commits": 10
+    },
+    {
+      "login": "felixxm",
+      "commits": 10
+    },
+    {
+      "login": "adamchainz",
+      "commits": 6
+    },
+    {
+      "login": "nessita",
+      "commits": 5
+    },
+    {
+      "login": "cliffordgama",
+      "commits": 4
+    }
+  ],
+  "code_areas": [
+    "docs/topics/",
+    "django/urls/",
+    "docs/ref/",
+    "tests/check_framework/",
+    "django/conf/",
+    "tests/urlpatterns_reverse/"
+  ],
+  "suggested_reviewers": [
+    "jacobtylerwalls",
+    "felixxm",
+    "adamchainz"
+  ],
+  "discovery_method": "git_log_frequency"
+}

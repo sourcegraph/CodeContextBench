@@ -212,6 +212,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/doe_select_tasks.py` - Utility script for doe select tasks.
 - `scripts/ds_hybrid_retrieval.py` - Utility script for ds hybrid retrieval.
 - `scripts/ds_wrapper.sh` - Utility script for ds wrapper.
+- `scripts/dual_score_lib.sh` - Utility script for dual score lib.
 - `scripts/export_conversation_blog_assets.py` - Utility script for export conversation blog assets.
 - `scripts/export_engineering_diary_assets.py` - Utility script for export engineering diary assets.
 - `scripts/export_official_results.py` - Utility script for export official results.
@@ -229,6 +230,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/integrate_answer_json_wave1.py` - Utility script for integrate answer json wave1.
 - `scripts/integrate_answer_json_wave2.py` - Utility script for integrate answer json wave2.
 - `scripts/integrate_answer_json_wave3.py` - Utility script for integrate answer json wave3.
+- `scripts/integrate_dual_score.py` - Utility script for integrate dual score.
 - `scripts/judge_demo.py` - Utility script for judge demo.
 - `scripts/launch_sonnet46_benchmark.sh` - Utility script for launch sonnet46 benchmark.
 - `scripts/list_gemini_models.py` - Utility script for list gemini models.
@@ -264,6 +266,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/run_sg_local.sh` - Utility script for run sg local.
 - `scripts/run_sg_validation.py` - Utility script for run sg validation.
 - `scripts/scaffold_contextbench_tasks.py` - Utility script for scaffold contextbench tasks.
+- `scripts/scaffold_csb_unified.py` - Utility script for scaffold csb unified.
 - `scripts/scaffold_feature_tasks.py` - Utility script for scaffold feature tasks.
 - `scripts/scaffold_refactor_tasks.py` - Utility script for scaffold refactor tasks.
 - `scripts/scaffold_scaling_gap_sdlc_tasks.py` - Utility script for scaffold scaling gap sdlc tasks.

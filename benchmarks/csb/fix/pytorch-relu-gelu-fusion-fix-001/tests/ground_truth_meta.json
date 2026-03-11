@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "pytorch-relu-gelu-fusion-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T00:01:47Z",
+  "files_count": 4,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 12,
+  "cost_usd": 1.4578375,
+  "elapsed_sec": 478.8,
+  "exploration_notes": "The Inductor ReLU/GELU(Addmm) fusion was introduced across two main commits: (1) commit 096c935 '[CUDA][cuBLASLt] addmm -- enable 2D bias in the Lt path when followed by an activation (#165548)' which modified Blas.cpp and CUDABlas.cpp to add cuBLASLt epilogue support for 2D bias with activation fusions, and (2) commit 8982850 '[Inductor] ReLU/GELU(Addmm) fusions (#168157)' which added the pattern matcher registrations in post_grad.py. The 4 files to modify are: (1) torch/_inductor/fx_passes/pos"
+}

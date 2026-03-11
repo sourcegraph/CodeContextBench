@@ -1,0 +1,105 @@
+{
+  "id": "CCX-incident-110",
+  "family": "incident-debug",
+  "use_case_id": 110,
+  "category": "C",
+  "mcp_suite": "csb_org_incident",
+  "prd": {
+    "user_story": "As a developer, I want to: An on-call engineer is debugging a content process crash in Firefox's multi-process (Fission) architecture. Trace the content process lifecycle by finding all C++ source files in `mozilla-firefox/firefox` under `dom/ipc/` that manage process creation, communication, and destruction: 1. The header and source files that define the `ContentParent` class \u2014 the parent-side content process manager. 2. The file that defines `ContentProcessManager` \u2014 the registry of all content processes. 3. The header file for `BrowserParent` \u2014 the parent-side tab representation. 4. The file that defines `PreallocatedProcessManager` \u2014 the process preallocation pool. Report the repo, file path, and key class name for each file.",
+    "constraints": [
+      "Provide specific file paths and repository names in your answer.",
+      "Write your findings to /workspace/answer.json."
+    ],
+    "success_definition": "Agent successfully identifies relevant files and symbols across all repos in the mozilla-firefox fixture.",
+    "seed_prompt": "An on-call engineer is debugging a content process crash in Firefox's multi-process (Fission) architecture. Trace the content process lifecycle by finding all C++ source files in `mozilla-firefox/firefox` under `dom/ipc/` that manage process creation, communication, and destruction: 1. The header and source files that define the `ContentParent` class \u2014 the parent-side content process manager. 2. The file that defines `ContentProcessManager` \u2014 the registry of all content processes. 3. The header file for `BrowserParent` \u2014 the parent-side tab representation. 4. The file that defines `PreallocatedProcessManager` \u2014 the process preallocation pool. Report the repo, file path, and key class name for each file."
+  },
+  "artifacts": {
+    "repo_set_id": "mozilla-firefox",
+    "oracle": {
+      "required_files": [
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/ContentParent.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/ContentParent.cpp"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/ContentProcessManager.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/BrowserParent.h"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/PreallocatedProcessManager.h"
+        }
+      ],
+      "required_symbols": [
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/ContentParent.h",
+          "symbol": "ContentParent"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/ContentProcessManager.h",
+          "symbol": "ContentProcessManager"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/BrowserParent.h",
+          "symbol": "BrowserParent"
+        },
+        {
+          "repo": "sg-evals/firefox--871325b8",
+          "path": "dom/ipc/PreallocatedProcessManager.h",
+          "symbol": "PreallocatedProcessManager"
+        }
+      ],
+      "required_references": [],
+      "dependency_chains": []
+    }
+  },
+  "evaluation": {
+    "modes": [
+      "deterministic"
+    ],
+    "checks": [
+      {
+        "type": "file_set_match",
+        "params": {
+          "search_pattern": "",
+          "file_filter": ""
+        }
+      },
+      {
+        "type": "symbol_resolution",
+        "params": {}
+      },
+      {
+        "type": "keyword_presence",
+        "params": {
+          "required_keywords": [
+            "ContentParent",
+            "ContentProcessManager",
+            "BrowserParent",
+            "PreallocatedProcessManager"
+          ]
+        }
+      }
+    ],
+    "eval_script": "/tests/eval.sh",
+    "pass_exit_code": 0
+  },
+  "logging": {
+    "required_metrics": [
+      "oracle_coverage",
+      "time_to_first_oracle_hit_ms",
+      "unique_repos_touched"
+    ]
+  }
+}

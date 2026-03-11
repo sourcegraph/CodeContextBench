@@ -1,0 +1,95 @@
+{
+  "files": [
+    "components/script/dom/document.rs",
+    "components/script/script_thread.rs",
+    "components/script/dom/document_event_handler.rs",
+    "components/script/dom/window.rs",
+    "components/script/dom/eventtarget.rs",
+    "components/script/dom/macros.rs",
+    "components/script/dom/visualviewport.rs",
+    "components/script/dom/element.rs",
+    "components/script/dom/scrolling_box.rs"
+  ],
+  "symbols": [
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "Document",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "pending_scroll_event_targets",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "scrollend_next_frame_targets",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "pending_scrollend_event_targets",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "run_the_scroll_steps",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "run_the_scrollend_steps",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "queue_scrollend_target",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "handle_viewport_scroll_event",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "handle_element_scroll_event",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "has_pending_scroll_events",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document.rs",
+      "symbol": "needs_rendering_update",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/window.rs",
+      "symbol": "perform_a_scroll",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/document_event_handler.rs",
+      "symbol": "handle_embedder_scroll_event",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/eventtarget.rs",
+      "symbol": "fire_bubbling_event",
+      "repo": null
+    },
+    {
+      "file": "components/script/dom/eventtarget.rs",
+      "symbol": "fire_event",
+      "repo": null
+    },
+    {
+      "file": "components/script/script_thread.rs",
+      "symbol": "update_the_rendering",
+      "repo": null
+    }
+  ]
+}

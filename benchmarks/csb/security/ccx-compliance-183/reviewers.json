@@ -1,0 +1,12 @@
+{
+  "task_id": "CCX-compliance-183",
+  "repos": [
+    "kubernetes/kubernetes",
+    "etcd-io/etcd"
+  ],
+  "code_areas": [
+    "sg-evals/kubernetes--v1.32.0/",
+    "sg-evals/etcd-io-etcd/"
+  ],
+  "discovery_method": "github_api"
+}

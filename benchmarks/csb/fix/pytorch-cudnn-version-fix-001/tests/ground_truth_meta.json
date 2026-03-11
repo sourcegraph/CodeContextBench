@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "pytorch-cudnn-version-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T23:54:16Z",
+  "files_count": 7,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 11,
+  "cost_usd": 0.17273,
+  "elapsed_sec": 29.9,
+  "exploration_notes": "This commit adds cuDNN runtime version exposure across 7 files in 4 layers: (1) Interface layer: CUDAHooksInterface.h adds virtual methods versionRuntimeCuDNN() and versionCuDNNFrontend(). (2) Implementation layer: CUDAHooks.h declares and CUDAHooks.cpp implements these methods - versionRuntimeCuDNN() calls cudnnGetVersion() for dynamic linking or falls back to CUDNN_VERSION for static, and versionCuDNNFrontend() returns CUDNN_FRONTEND_VERSION. (3) Context layer: Context.h exposes static wrapper"
+}

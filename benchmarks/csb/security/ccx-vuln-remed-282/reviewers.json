@@ -1,0 +1,39 @@
+{
+  "task_id": "CCX-vuln-remed-282",
+  "repos": [
+    "kubernetes/kubernetes",
+    "etcd-io/etcd"
+  ],
+  "top_contributors": [
+    {
+      "login": "pohly",
+      "commits": 4
+    },
+    {
+      "login": "lalitc375",
+      "commits": 4
+    },
+    {
+      "login": "liggitt",
+      "commits": 3
+    },
+    {
+      "login": "yliaog",
+      "commits": 3
+    },
+    {
+      "login": "carlory",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "pkg/registry/",
+    "plugin/pkg/"
+  ],
+  "suggested_reviewers": [
+    "pohly",
+    "lalitc375",
+    "liggitt"
+  ],
+  "discovery_method": "git_log_frequency"
+}

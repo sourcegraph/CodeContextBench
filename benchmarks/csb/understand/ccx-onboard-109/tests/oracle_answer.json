@@ -1,0 +1,76 @@
+{
+  "files": [
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/Ion.cpp"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/IonCompileTask.h"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/IonCompileTask.cpp"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/BaselineJIT.h"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/BaselineJIT.cpp"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/JitRuntime.h"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/JitOptions.cpp"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/Ion.cpp",
+      "symbol": "IonCompile"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/IonCompileTask.h",
+      "symbol": "IonCompileTask"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/IonCompileTask.cpp",
+      "symbol": "IonCompileTask"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/BaselineJIT.h",
+      "symbol": "BaselineScript"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/BaselineJIT.cpp",
+      "symbol": "BaselineScript"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/JitRuntime.h",
+      "symbol": "JitRuntime"
+    },
+    {
+      "repo": "sg-evals/firefox--871325b8",
+      "path": "js/src/jit/JitOptions.cpp",
+      "symbol": "JitOptions"
+    }
+  ],
+  "chain": [],
+  "text": "A new contributor wants to understand how Firefox's SpiderMonkey JavaScript engine compiles JS to optimized native code. Find all key C++ source files in `mozilla-firefox/firefox` that define the JIT compilation pipeline stages: 1. The file that implements the top-level `IonCompile` function which orchestrates the Ion optimizing compiler (in `js/src/jit/`). 2. The header and source files for `IonCompileTask` \u2014 the off-thread compilation task (in `js/src/jit/`). 3. The file that defines `BaselineJIT` \u2014 the first-tier JIT compiler (look for `BaselineScript` class in `js/src/jit/`). 4. The header that defines `JitRuntime` \u2014 the per-runtime JIT state (in `js/src/jit/`). 5. The file that defines `JitOptions` \u2014 JIT configuration (in `js/src/jit/`). Report the repo, file path, and key class or function name for each file.",
+  "_metadata": {
+    "task_id": "CCX-onboard-109",
+    "oracle_source": "task_spec.json extraction",
+    "generated_date": "2026-02-24"
+  }
+}

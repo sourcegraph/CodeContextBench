@@ -1,0 +1,40 @@
+{
+  "task_id": "CCX-migration-275",
+  "repos": [
+    "kubernetes/kubernetes",
+    "etcd-io/etcd"
+  ],
+  "top_contributors": [
+    {
+      "login": "richabanker",
+      "commits": 9
+    },
+    {
+      "login": "lalitc375",
+      "commits": 6
+    },
+    {
+      "login": "liggitt",
+      "commits": 5
+    },
+    {
+      "login": "soltysh",
+      "commits": 2
+    },
+    {
+      "login": "brianpursley",
+      "commits": 2
+    }
+  ],
+  "code_areas": [
+    "staging/src/",
+    "pkg/controlplane/",
+    "pkg/registry/"
+  ],
+  "suggested_reviewers": [
+    "richabanker",
+    "lalitc375",
+    "liggitt"
+  ],
+  "discovery_method": "git_log_frequency"
+}

@@ -1,0 +1,44 @@
+{
+  "task_id": "argocd-arch-orient-001",
+  "repos": [
+    "argoproj/argo-cd"
+  ],
+  "top_contributors": [
+    {
+      "login": "ppapapetrou76",
+      "commits": 14
+    },
+    {
+      "login": "mmorel-35",
+      "commits": 11
+    },
+    {
+      "login": "sivchari",
+      "commits": 5
+    },
+    {
+      "login": "pjiang-dev",
+      "commits": 4
+    },
+    {
+      "login": "alexef",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "test/",
+    "util/",
+    "cmd/",
+    "controller/",
+    "reposerver/",
+    "pkg/",
+    "applicationset/",
+    "repository/"
+  ],
+  "suggested_reviewers": [
+    "ppapapetrou76",
+    "mmorel-35",
+    "sivchari"
+  ],
+  "discovery_method": "git_log_frequency"
+}

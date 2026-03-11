@@ -1,0 +1,13 @@
+{
+  "task_id": "envoy-arch-doc-gen-001",
+  "repos": [
+    "envoyproxy/envoy"
+  ],
+  "code_areas": [
+    "conn_manager_impl\\.cc|conn_manager_impl\\.h|source/",
+    "cluster_manager_impl\\.cc|cluster_manager_impl\\.h|source/",
+    "filter_manager\\.cc|filter_manager\\.h|source/",
+    "source/"
+  ],
+  "discovery_method": "github_api"
+}

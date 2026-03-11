@@ -1,0 +1,42 @@
+{
+  "task_id": "CCX-crossorg-280",
+  "repos": [
+    "kubernetes/kubernetes",
+    "grafana/grafana"
+  ],
+  "top_contributors": [
+    {
+      "login": "ryantxu",
+      "commits": 9
+    },
+    {
+      "login": "yongruilin",
+      "commits": 7
+    },
+    {
+      "login": "lalitc375",
+      "commits": 3
+    },
+    {
+      "login": "aaron-prindle",
+      "commits": 3
+    },
+    {
+      "login": "macabu",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "pkg/infra/",
+    "pkg/api/",
+    "staging/src/",
+    "pkg/kubelet/",
+    "pkg/services/"
+  ],
+  "suggested_reviewers": [
+    "ryantxu",
+    "yongruilin",
+    "lalitc375"
+  ],
+  "discovery_method": "git_log_frequency"
+}

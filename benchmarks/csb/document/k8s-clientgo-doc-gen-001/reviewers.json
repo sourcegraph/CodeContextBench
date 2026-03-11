@@ -1,0 +1,13 @@
+{
+  "task_id": "k8s-clientgo-doc-gen-001",
+  "repos": [
+    "kubernetes/kubernetes"
+  ],
+  "code_areas": [
+    "kubernetes/",
+    "tools/",
+    "dynamic/",
+    "discovery/"
+  ],
+  "discovery_method": "github_api"
+}

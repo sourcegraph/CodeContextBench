@@ -1,0 +1,39 @@
+{
+  "task_id": "CCX-domain-159",
+  "repos": [
+    "mozilla-firefox/firefox"
+  ],
+  "top_contributors": [
+    {
+      "login": "jnjaeschke",
+      "commits": 8
+    },
+    {
+      "login": "aethanyc",
+      "commits": 8
+    },
+    {
+      "login": "dholbert",
+      "commits": 8
+    },
+    {
+      "login": "hiikezoe",
+      "commits": 4
+    },
+    {
+      "login": "sylvestre",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "docs/overview/",
+    "layout/generic/",
+    "layout/docs/"
+  ],
+  "suggested_reviewers": [
+    "jnjaeschke",
+    "aethanyc",
+    "dholbert"
+  ],
+  "discovery_method": "git_log_frequency"
+}

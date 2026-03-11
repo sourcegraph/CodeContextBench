@@ -1,0 +1,46 @@
+{
+  "task_id": "CCX-migration-026",
+  "repos": [
+    "envoyproxy/envoy",
+    "grpc/grpc"
+  ],
+  "top_contributors": [
+    {
+      "login": "phlax",
+      "commits": 18
+    },
+    {
+      "login": "htuch",
+      "commits": 5
+    },
+    {
+      "login": "danzh2010",
+      "commits": 3
+    },
+    {
+      "login": "ravenblackx",
+      "commits": 3
+    },
+    {
+      "login": "RyanTheOptimist",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "configs/using_deprecated_config.yaml/",
+    "envoy/api/",
+    "tools/api_proto_plugin/",
+    "source/common/",
+    "tools/type_whisperer/",
+    "envoy/config/",
+    "test/test_common/",
+    "api/envoy/",
+    "api/test/"
+  ],
+  "suggested_reviewers": [
+    "phlax",
+    "htuch",
+    "danzh2010"
+  ],
+  "discovery_method": "git_log_frequency"
+}

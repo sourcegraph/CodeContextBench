@@ -1,0 +1,30 @@
+version = "1.0"
+
+[metadata]
+origin_suite = "csb_org_incident"
+name = "CCX-incident-034"
+description = "Incident Investigation: Loki Client Retry and Timeout Configuration"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-incident-034"
+repo = "sg-evals/grafana--26d36ec"
+category = "incident-debug"
+language = "go"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "csb_org_incident"
+use_case_id = 34
+repo_set_id = "grafana-observability"
+org_scale = true
+verification_modes = ["artifact"]
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+
+reward_type = "score"
+description = "Incident Investigation: Loki Client Retry and Timeout Configuration"
+
+[environment]
+build_timeout_sec = 600.0

@@ -1,0 +1,28 @@
+{
+  "files": [
+    "source/common/router/upstream_request.cc"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "source/common/router/upstream_request.cc",
+      "symbol": "onPoolReady",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "source/common/router/upstream_request.cc",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: onPoolReady"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: source/common/router/upstream_request.cc::onPoolReady",
+  "_metadata": {
+    "model": "manual",
+    "backend": "manual",
+    "ground_truth_source": "converted_from_function_id_schema",
+    "timestamp": "2026-03-06T19:47:38.689435+00:00"
+  }
+}

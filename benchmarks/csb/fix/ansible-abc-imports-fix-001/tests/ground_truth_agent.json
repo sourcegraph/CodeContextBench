@@ -1,0 +1,98 @@
+{
+  "files": [
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/sanity/ignore.txt"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/tests/integration/targets/hello/files/bad.py"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/tests/sanity/ignore.txt"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/vars/clean.py"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/warnings.py"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py",
+      "symbol": "Mapping"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py",
+      "symbol": "MutableMapping"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py",
+      "symbol": "Sequence"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py",
+      "symbol": "MutableSequence"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py",
+      "symbol": "BAD_IMPORT"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py",
+      "symbol": "BAD_IMPORT_FROM"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py",
+      "symbol": "UnwantedEntry"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/_collections_compat.py",
+      "symbol": "deprecate"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "lib/ansible/module_utils/common/warnings.py",
+      "symbol": "deprecate"
+    },
+    {
+      "repo": "github.com/ansible/ansible",
+      "path": "test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py",
+      "symbol": "UnwantedEntry"
+    }
+  ],
+  "text": "The task involves migrating away from `ansible.module_utils.common._collections_compat` \u2014 an internal shim that re-exports abstract base classes (ABCs) from `collections.abc` such as `Mapping`, `MutableMapping`, `Sequence`, and `MutableSequence`. \n\nKey findings:\n1. **`lib/ansible/module_utils/common/_collections_compat.py`**: The shim itself \u2014 it re-exports ABCs from `collections.abc` and already includes a deprecation warning (`_warnings.deprecate(...)`) when imported. It imports from `ansible.module_utils.common.warnings` to issue the deprecation.\n2. **`test/lib/ansible_test/_util/controller/sanity/pylint/plugins/unwanted.py`**: The pylint plugin that enforces `ansible-bad-import` and `ansible-bad-import-from` rules. It contains an `UnwantedEntry` for `collections` (with a note referencing `collections.abc`), which needs to be updated to also flag or stop recommending `_collections_compat` as the canonical import.\n3. **`test/sanity/ignore.txt`**: The sanity ignore file that currently allows certain pylint bad-import violations; needs review to ensure no `_collections_compat` exceptions are present.\n4. **`test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/tests/integration/targets/hello/files/bad.py`**: Test file that intentionally triggers `ansible-bad-import` and `ansible-bad-import-from` for testing the pylint plugin.\n5. **`test/integration/targets/ansible-test-sanity/ansible_collections/ns/col/tests/sanity/ignore.txt`**: Corresponding sanity ignore for the integration test.\n6. **`lib/ansible/vars/clean.py`**: One of the controller-side files that likely imports collection ABCs and may be using the internal shim.\n7. **`lib/ansible/module_utils/common/warnings.py`**: Used by the shim to issue deprecation warnings.\n\nThe migration requires: finding all internal usages of `_collections_compat`, replacing them with direct `collections.abc` imports, updating the `unwanted.py` pylint plugin to flag `_collections_compat` as a bad import, and verifying the sanity ignore files are clean.",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 135793,
+    "output_tokens": 4535,
+    "tool_calls": 41,
+    "elapsed_sec": 69.7,
+    "cost_usd": 0.4754,
+    "timestamp": "2026-03-02T00:56:02.324119+00:00"
+  }
+}

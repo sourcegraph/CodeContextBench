@@ -1,0 +1,45 @@
+{
+  "task_id": "cilium-project-orient-001",
+  "repos": [
+    "cilium/cilium"
+  ],
+  "top_contributors": [
+    {
+      "login": "aanm",
+      "commits": 5
+    },
+    {
+      "login": "mhofstetter",
+      "commits": 4
+    },
+    {
+      "login": "smagnani96",
+      "commits": 3
+    },
+    {
+      "login": "puwun",
+      "commits": 2
+    },
+    {
+      "login": "joestringer",
+      "commits": 2
+    }
+  ],
+  "code_areas": [
+    "cilium\\.io/",
+    "maps/",
+    "test/",
+    "daemon/",
+    "option/",
+    "bpf/",
+    "datapath/",
+    "pkg/",
+    "policy/"
+  ],
+  "suggested_reviewers": [
+    "aanm",
+    "mhofstetter",
+    "smagnani96"
+  ],
+  "discovery_method": "git_log_frequency"
+}

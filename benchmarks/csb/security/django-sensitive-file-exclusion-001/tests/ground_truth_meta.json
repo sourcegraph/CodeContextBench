@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "django-sensitive-file-exclusion-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T20:52:30Z",
+  "files_count": 1,
+  "edit_files_count": 2,
+  "chunks_count": 0,
+  "symbols_count": 2,
+  "cost_usd": 2.555415000000001,
+  "elapsed_sec": 599.6,
+  "exploration_notes": "Fixed the persistent database connection lifecycle in django/db/backends/base/base.py. The connect() method's close_at calculation and the close_if_unusable_or_obsolete() method's age check were made more explicit to properly handle CONN_MAX_AGE=None (persistent connections). The compound condition was split so persistent connections (close_at=None) get an explicit early return instead of relying on short-circuit evaluation."
+}

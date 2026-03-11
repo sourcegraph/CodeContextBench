@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "element-web-unread-indicators-diverge-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-06T16:02:32Z",
+  "files_count": 5,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 8,
+  "cost_usd": 1.9887579999999998,
+  "elapsed_sec": 395.1,
+  "exploration_notes": "The fix addresses three bugs in apps/web/src/Unread.ts:\n\n1. **Fallback path for non-renderable events**: The old `doesTimelineHaveUnreadMessages` had a fallback that returned `true` (unread) when no 'important' events were found but unimportant events existed without receipts. This caused redacted-only rooms to show as unread. The new code returns `false` when no relevant events exist.\n\n2. **Own last message triggers unread**: The old code used `findLatestImportantEvent` which skipped the curren"
+}

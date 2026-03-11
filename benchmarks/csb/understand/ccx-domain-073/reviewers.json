@@ -1,0 +1,41 @@
+{
+  "task_id": "CCX-domain-073",
+  "repos": [
+    "kubernetes/kubernetes",
+    "etcd-io/etcd"
+  ],
+  "top_contributors": [
+    {
+      "login": "serathius",
+      "commits": 16
+    },
+    {
+      "login": "liggitt",
+      "commits": 14
+    },
+    {
+      "login": "ptabor",
+      "commits": 14
+    },
+    {
+      "login": "ahrtr",
+      "commits": 8
+    },
+    {
+      "login": "brianpursley",
+      "commits": 2
+    }
+  ],
+  "code_areas": [
+    "staging/src/",
+    "server/etcdserver/",
+    "server/mvcc/",
+    "tools/cache/"
+  ],
+  "suggested_reviewers": [
+    "serathius",
+    "liggitt",
+    "ptabor"
+  ],
+  "discovery_method": "git_log_frequency"
+}

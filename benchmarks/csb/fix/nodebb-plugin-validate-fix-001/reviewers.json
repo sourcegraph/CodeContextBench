@@ -1,0 +1,35 @@
+{
+  "task_id": "nodebb-plugin-validate-fix-001",
+  "repos": [
+    "NodeBB/NodeBB"
+  ],
+  "top_contributors": [
+    {
+      "login": "barisusakli",
+      "commits": 64
+    },
+    {
+      "login": "julianlam",
+      "commits": 16
+    },
+    {
+      "login": "nodebb-misty",
+      "commits": 10
+    }
+  ],
+  "code_areas": [
+    "src/plugins/",
+    "public/src/",
+    "public/language/",
+    "install/package.json/",
+    "install/data/",
+    "src/flags.js/",
+    "src/views/"
+  ],
+  "suggested_reviewers": [
+    "barisusakli",
+    "julianlam",
+    "nodebb-misty"
+  ],
+  "discovery_method": "git_log_frequency"
+}

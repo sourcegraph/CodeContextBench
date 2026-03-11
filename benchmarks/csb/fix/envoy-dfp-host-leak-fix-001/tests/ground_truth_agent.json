@@ -1,0 +1,96 @@
+{
+  "files": [
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.h"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "test/extensions/clusters/dynamic_forward_proxy/cluster_test.cc"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/common/upstream/upstream_impl.cc"
+    }
+  ],
+  "symbols": [
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::addOrUpdateHost"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::onDnsHostAddOrUpdate"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::updatePriorityState"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::startPreInit"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::onDnsHostRemove"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/common/upstream/upstream_impl.cc",
+      "symbol": "MainPrioritySetImpl::updateCrossPriorityHostMap"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/common/upstream/upstream_impl.cc",
+      "symbol": "MainPrioritySetImpl::updateHosts"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/common/upstream/upstream_impl.cc",
+      "symbol": "MainPrioritySetImpl::crossPriorityHostMap"
+    }
+  ],
+  "chain": [
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::addOrUpdateHost"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::onDnsHostAddOrUpdate"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/extensions/clusters/dynamic_forward_proxy/cluster.cc",
+      "symbol": "Cluster::updatePriorityState"
+    },
+    {
+      "repo": "sg-evals/envoy--5160151e",
+      "path": "source/common/upstream/upstream_impl.cc",
+      "symbol": "MainPrioritySetImpl::updateCrossPriorityHostMap"
+    }
+  ],
+  "text": "The fix addresses a memory leak in the DFP cluster's cross-priority host map. The key files are:\n\n1. `cluster.cc`: Contains `addOrUpdateHost()` (lines 238-295) which currently does in-place address updates via `setNewAddresses()` instead of removing the old host and adding a new one. Also `onDnsHostAddOrUpdate()` (lines 297-308) which accumulates hosts_added before calling `updatePriorityState()`. Both need refactoring to properly emit hosts_added+hosts_removed events.\n\n2. `cluster.h`: Contains the `addOrUpdateHost()` declaration with the `hosts_added` out-parameter (lines 162-166) that needs to be simplified by removing that parameter.\n\n3. `cluster_test.cc`: The `BasicFlow` test (lines 237-273) needs updated expectations for the address-change path \u2014 the new implementation will emit a member update callback (hosts_added=1, hosts_removed=1) when the address changes, rather than silently updating in-place.\n\n4. `upstream_impl.cc`: The `updateCrossPriorityHostMap()` method (lines 830-851) operates on `host->address()` to key the map. Debug logging needs to be added here to trace cross-priority host map mutations (insertions/erasures).",
+  "_metadata": {
+    "generator": "context_retrieval_agent",
+    "model": "claude-sonnet-4-6",
+    "backend": "hybrid",
+    "input_tokens": 273615,
+    "output_tokens": 3077,
+    "tool_calls": 16,
+    "elapsed_sec": 50.2,
+    "cost_usd": 0.867,
+    "timestamp": "2026-03-02T01:00:21.651421+00:00"
+  }
+}

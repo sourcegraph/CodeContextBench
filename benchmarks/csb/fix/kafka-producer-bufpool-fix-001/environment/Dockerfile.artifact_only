@@ -1,0 +1,29 @@
+# kafka-producer-bufpool-fix-001 — artifact_only variant (write-only)
+# Repos cloned for baseline agent to read locally.
+# MCP agent deletes source files at runtime via agent startup script.
+# Verifier scores agent output only — no repo restore needed.
+
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /workspace
+
+# Install dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone Apache Kafka at pinned commit (4.1.1)
+RUN git clone --filter=blob:none --no-checkout https://github.com/apache/kafka.git . && \
+    git checkout be816b82d25370ceac697ccf7c88cea873e9b4e3 && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
+# --- artifact_only mode ---
+# Back up full repo so answer_json_verifier_lib.sh can apply diffs to /repo_full
+RUN cp -a /workspace /repo_full
+# Sentinel flag for artifact-based verification.
+# Source stays readable for baseline agent; MCP agent deletes at runtime.
+RUN touch /tmp/.artifact_only_mode
+
+ENTRYPOINT []

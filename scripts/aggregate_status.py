@@ -259,6 +259,16 @@ def _extract_reward(data: dict) -> float | None:
     return None
 
 
+def _extract_dual_rewards(data: dict) -> dict:
+    """Extract dual scores (reward_direct, reward_artifact) from result.json."""
+    verifier = data.get("verifier_result") or {}
+    rewards = verifier.get("rewards") or {}
+    return {
+        "reward_direct": rewards.get("reward_direct"),
+        "reward_artifact": rewards.get("reward_artifact"),
+    }
+
+
 def _extract_tokens(data: dict) -> dict:
     """Extract token counts from result.json."""
     agent_result = data.get("agent_result") or {}

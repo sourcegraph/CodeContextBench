@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "teleport-ssh-regression-prove-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T03:27:54Z",
+  "files_count": 17,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 20,
+  "cost_usd": 4.1449571,
+  "elapsed_sec": 448.5,
+  "exploration_notes": "The regression test at /workspace/regression_test.go covers three key aspects of the multi-device U2F authentication bug:\n\n1. **Multi-device challenge generation** (testMultiDeviceU2FChallengeGeneration): Registers 3 U2F devices and verifies U2FSignRequest returns challenges for ALL devices, not just one. The key function is `U2FSignRequest` in lib/auth/auth.go:839 which iterates through GetMFADevices and creates challenges via u2f.AuthenticateInit for each device.\n\n2. **Authentication with any "
+}

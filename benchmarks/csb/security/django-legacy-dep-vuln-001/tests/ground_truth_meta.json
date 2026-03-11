@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "django-legacy-dep-vuln-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T01:04:02Z",
+  "files_count": 2,
+  "edit_files_count": 4,
+  "chunks_count": 0,
+  "symbols_count": 5,
+  "cost_usd": 1.07968825,
+  "elapsed_sec": 129.9,
+  "exploration_notes": "Added escape_with_encoding() to django/utils/html.py. It reuses force_str() and is_protected_type() from django.utils.encoding, and conditional_escape() from the same module."
+}

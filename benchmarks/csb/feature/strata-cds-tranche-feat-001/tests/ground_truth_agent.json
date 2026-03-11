@@ -1,0 +1,81 @@
+{
+  "files": [
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsTranche.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsTrancheTrade.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsTranche.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsTrancheTrade.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/ProductType.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTranchePricer.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTrancheTradePricer.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsTrancheMeasureCalculations.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsTrancheTradeCalculationFunction.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/StandardComponents.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndex.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsIndexTrade.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsIndex.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsIndexTrade.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsProductPricer.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaHomogenousCdsIndexProductPricer.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaHomogenousCdsIndexTradePricer.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTradePricer.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsTradeCalculationFunction.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsIndexTradeCalculationFunction.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsIndexMeasureCalculations.java",
+    "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsMeasureCalculations.java",
+    "modules/product/src/main/java/com/opengamma/strata/product/credit/CreditCouponPaymentPeriod.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/SpreadSensitivityCalculator.java",
+    "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/AccrualOnDefaultFormula.java"
+  ],
+  "symbols": [
+    {
+      "file": "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsTranche.java",
+      "symbol": "CdsTranche",
+      "repo": null
+    },
+    {
+      "file": "modules/product/src/main/java/com/opengamma/strata/product/credit/CdsTrancheTrade.java",
+      "symbol": "CdsTrancheTrade",
+      "repo": null
+    },
+    {
+      "file": "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsTranche.java",
+      "symbol": "ResolvedCdsTranche",
+      "repo": null
+    },
+    {
+      "file": "modules/product/src/main/java/com/opengamma/strata/product/credit/ResolvedCdsTrancheTrade.java",
+      "symbol": "ResolvedCdsTrancheTrade",
+      "repo": null
+    },
+    {
+      "file": "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTranchePricer.java",
+      "symbol": "IsdaCdsTranchePricer",
+      "repo": null
+    },
+    {
+      "file": "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTrancheTradePricer.java",
+      "symbol": "IsdaCdsTrancheTradePricer",
+      "repo": null
+    },
+    {
+      "file": "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsTrancheMeasureCalculations.java",
+      "symbol": "CdsTrancheMeasureCalculations",
+      "repo": null
+    },
+    {
+      "file": "modules/measure/src/main/java/com/opengamma/strata/measure/credit/CdsTrancheTradeCalculationFunction.java",
+      "symbol": "CdsTrancheTradeCalculationFunction",
+      "repo": null
+    },
+    {
+      "file": "modules/product/src/main/java/com/opengamma/strata/product/ProductType.java",
+      "symbol": "CDS_TRANCHE",
+      "repo": null
+    },
+    {
+      "file": "modules/pricer/src/main/java/com/opengamma/strata/pricer/credit/IsdaCdsTranchePricer.java",
+      "symbol": "trancheLossAllocation",
+      "repo": null
+    }
+  ]
+}

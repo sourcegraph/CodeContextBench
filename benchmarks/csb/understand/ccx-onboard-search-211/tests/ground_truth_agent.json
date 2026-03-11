@@ -1,0 +1,22 @@
+{
+  "files": [
+    "sklearn/decomposition/_fastica.py"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "sklearn/decomposition/_fastica.py",
+      "symbol": "_fit_transform",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "sklearn/decomposition/_fastica.py",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: _fit_transform"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: sklearn/decomposition/_fastica.py::_fit_transform"
+}

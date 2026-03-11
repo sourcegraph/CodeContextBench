@@ -1,0 +1,41 @@
+{
+  "task_id": "CCX-agentic-083",
+  "repos": [
+    "envoyproxy/envoy",
+    "grpc/grpc"
+  ],
+  "top_contributors": [
+    {
+      "login": "wbpcode",
+      "commits": 22
+    },
+    {
+      "login": "agrawroh",
+      "commits": 15
+    },
+    {
+      "login": "ggreenway",
+      "commits": 4
+    },
+    {
+      "login": "mathetake",
+      "commits": 3
+    },
+    {
+      "login": "phlax",
+      "commits": 3
+    }
+  ],
+  "code_areas": [
+    "envoy/server/",
+    "envoy/http/",
+    "source/extensions/",
+    "envoy/registry/"
+  ],
+  "suggested_reviewers": [
+    "wbpcode",
+    "agrawroh",
+    "ggreenway"
+  ],
+  "discovery_method": "git_log_frequency"
+}

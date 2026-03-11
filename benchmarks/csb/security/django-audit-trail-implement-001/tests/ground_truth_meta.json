@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "django-audit-trail-implement-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-04T03:26:56Z",
+  "files_count": 4,
+  "edit_files_count": 2,
+  "chunks_count": 0,
+  "symbols_count": 4,
+  "cost_usd": 1.75306025,
+  "elapsed_sec": 450.6,
+  "exploration_notes": "Fixed context isolation in IncludeNode.render() by replacing the shared (shallow-copied) RenderContext with a fresh RenderContext() when isolated_context=True. The existing context.new(values) properly resets dicts but only shallow-copies render_context, allowing parent template tag state to potentially leak into isolated includes."
+}

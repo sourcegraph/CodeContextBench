@@ -1,0 +1,30 @@
+version = "1.0"
+
+[metadata]
+origin_suite = "csb_org_crossrepo_tracing"
+name = "CCX-dep-trace-133"
+description = "Chromium Blink Rendering Pipeline: Style to Paint"
+license = "Apache-2.0"
+
+[task]
+id = "CCX-dep-trace-133"
+repo = "sg-evals/chromium--2d05e315"
+category = "cross-repo-dep-trace"
+language = "cpp,c,javascript"
+difficulty = "hard"
+time_limit_sec = 900
+mcp_suite = "csb_org_crossrepo_tracing"
+use_case_id = 133
+repo_set_id = "chromium-browser"
+org_scale = true
+verification_modes = ["artifact"]
+
+[verification]
+type = "test"
+command = "bash /tests/test.sh"
+
+reward_type = "score"
+description = "Chromium Blink Rendering Pipeline: Style to Paint"
+
+[environment]
+build_timeout_sec = 600.0

@@ -216,12 +216,42 @@ def _process_task_dir(task_dir, run_name, config_type, records):
         if t_s and t_e:
             agent_exec_seconds = (t_e - t_s).total_seconds()
 
+    # Extract dual scores if present (from validation_result.json or result.json)
+    reward_direct = None
+    reward_artifact = None
+    validation_result_file = task_dir / "validation_result.json"
+    if validation_result_file.exists():
+        try:
+            with open(validation_result_file) as f:
+                vr_data = json.load(f)
+            dual = vr_data.get("dual_score") or {}
+            reward_direct = dual.get("reward_direct")
+            reward_artifact = dual.get("reward_artifact")
+            # Fallback to top-level fields
+            if reward_direct is None:
+                reward_direct = vr_data.get("reward_direct")
+            if reward_artifact is None:
+                reward_artifact = vr_data.get("reward_artifact")
+        except (json.JSONDecodeError, IOError):
+            pass
+    # Also check verifier_result in result.json
+    if reward_direct is None:
+        reward_direct = rewards.get("reward_direct")
+    if reward_artifact is None:
+        reward_artifact = rewards.get("reward_artifact")
+    # Default: reward_direct = reward (backward compat for pre-dual runs)
+    if reward_direct is None:
+        reward_direct = reward
+    # Default: reward_artifact = None (missing = not scored)
+
     rec = {
         "task_name": task_name,
         "run_name": run_name,
         "config_type": config_type,
         "suite_type": suite_type,
         "reward": reward,
+        "reward_direct": reward_direct,
+        "reward_artifact": reward_artifact,
         "input_tokens": n_input,
         "output_tokens": n_output,
         "cache_tokens": n_cache,
@@ -344,6 +374,11 @@ def compute_paired_stats(records):
             "bl_reward": bl_mean,
             "mcp_reward": mcp_mean,
             "delta": mcp_mean - bl_mean,
+            # Dual scores (direct edits vs answer.json artifact)
+            "bl_reward_direct": avg_field(bl_records, "reward_direct"),
+            "mcp_reward_direct": avg_field(mcp_records, "reward_direct"),
+            "bl_reward_artifact": avg_field(bl_records, "reward_artifact"),
+            "mcp_reward_artifact": avg_field(mcp_records, "reward_artifact"),
             "n_bl_runs": len(bl_records),
             "n_mcp_runs": len(mcp_records),
             # Timing/cost averages
@@ -394,7 +429,7 @@ def breakdown_by(paired, field, min_n=3):
         losses = sum(1 for t in tasks if t["delta"] < -0.01)
         neutral = n - wins - losses
 
-        results[val] = {
+        entry = {
             "n": n,
             "bl_mean": round(bl_mean, 3),
             "mcp_mean": round(mcp_mean, 3),
@@ -403,6 +438,21 @@ def breakdown_by(paired, field, min_n=3):
             "losses": losses,
             "neutral": neutral,
         }
+
+        # Dual-score breakdowns (only if data available)
+        for dim in ("direct", "artifact"):
+            bl_key = f"bl_reward_{dim}"
+            mcp_key = f"mcp_reward_{dim}"
+            bl_vals = [t[bl_key] for t in tasks if t.get(bl_key) is not None]
+            mcp_vals = [t[mcp_key] for t in tasks if t.get(mcp_key) is not None]
+            if bl_vals and mcp_vals:
+                bl_d = statistics.mean(bl_vals)
+                mcp_d = statistics.mean(mcp_vals)
+                entry[f"bl_mean_{dim}"] = round(bl_d, 3)
+                entry[f"mcp_mean_{dim}"] = round(mcp_d, 3)
+                entry[f"delta_{dim}"] = round(mcp_d - bl_d, 3)
+
+        results[val] = entry
 
     return results
 
@@ -646,6 +696,49 @@ def main():
         all_bl = statistics.mean(p["bl_reward"] for p in paired)
         all_mcp = statistics.mean(p["mcp_reward"] for p in paired)
         print(f"BL={all_bl:.3f}, MCP={all_mcp:.3f}, delta={all_mcp-all_bl:+.3f}")
+
+    # Dual-score analysis (direct vs artifact)
+    has_dual = [p for p in paired
+                if p.get("bl_reward_direct") is not None
+                and p.get("bl_reward_artifact") is not None]
+    if has_dual:
+        print(f"\n=== DUAL-SCORE ANALYSIS ({len(has_dual)} tasks with dual scores) ===")
+        bl_direct = statistics.mean(p["bl_reward_direct"] for p in has_dual)
+        bl_artifact = statistics.mean(p["bl_reward_artifact"] for p in has_dual)
+        mcp_direct_vals = [p["mcp_reward_direct"] for p in has_dual if p.get("mcp_reward_direct") is not None]
+        mcp_artifact_vals = [p["mcp_reward_artifact"] for p in has_dual if p.get("mcp_reward_artifact") is not None]
+        mcp_direct = statistics.mean(mcp_direct_vals) if mcp_direct_vals else None
+        mcp_artifact = statistics.mean(mcp_artifact_vals) if mcp_artifact_vals else None
+        print(json.dumps({
+            "n_tasks": len(has_dual),
+            "baseline": {
+                "direct": round(bl_direct, 3),
+                "artifact": round(bl_artifact, 3),
+                "gap": round(bl_direct - bl_artifact, 3),
+            },
+            "mcp": {
+                "direct": round(mcp_direct, 3) if mcp_direct else None,
+                "artifact": round(mcp_artifact, 3) if mcp_artifact else None,
+                "gap": round(mcp_direct - mcp_artifact, 3) if mcp_direct and mcp_artifact else None,
+            },
+        }, indent=2))
+
+        # Correlation between direct and artifact scores
+        if len(has_dual) >= 5:
+            direct_scores = [p["bl_reward_direct"] for p in has_dual]
+            artifact_scores = [p["bl_reward_artifact"] for p in has_dual]
+            n = len(direct_scores)
+            mean_d = statistics.mean(direct_scores)
+            mean_a = statistics.mean(artifact_scores)
+            cov = sum((d - mean_d) * (a - mean_a) for d, a in zip(direct_scores, artifact_scores)) / n
+            std_d = statistics.pstdev(direct_scores)
+            std_a = statistics.pstdev(artifact_scores)
+            corr = cov / (std_d * std_a) if std_d > 0 and std_a > 0 else 0
+            print(f"\n  Correlation (BL direct vs artifact): r={corr:.3f}")
+
+        print("\n=== DUAL-SCORE BY SUITE ===")
+        dual_suite = breakdown_by(has_dual, "merged_suite")
+        print(json.dumps(dual_suite, indent=2))
 
     # Cost by language (for the cost section)
     print("\n=== COST BY LANGUAGE ===")

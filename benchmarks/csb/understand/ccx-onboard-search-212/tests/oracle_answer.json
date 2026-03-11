@@ -1,0 +1,28 @@
+{
+  "files": [
+    "pandas/core/reshape/pivot.py"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "pandas/core/reshape/pivot.py",
+      "symbol": "__internal_pivot_table",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "pandas/core/reshape/pivot.py",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: __internal_pivot_table"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: pandas/core/reshape/pivot.py::__internal_pivot_table",
+  "_metadata": {
+    "model": "manual",
+    "backend": "manual",
+    "ground_truth_source": "converted_from_function_id_schema",
+    "timestamp": "2026-03-06T19:47:38.689962+00:00"
+  }
+}

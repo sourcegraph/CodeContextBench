@@ -77,7 +77,24 @@ You MUST follow these rules to avoid wasting time on operations that will hang o
 - ✅ `cargo check -p crate 2>&1 | head -100` — `head` returns as soon as it has enough output
 - ✅ Run long builds in the background and check output later
 
-**If a command takes more than 60 seconds, it is probably too broad.** Kill it, narrow the scope, and retry."""
+**If a command takes more than 60 seconds, it is probably too broad.** Kill it, narrow the scope, and retry.
+
+## OUTPUT ARTIFACT
+
+After completing your work, also write `/workspace/answer.json` summarizing what you did:
+```json
+{
+  "analysis": {
+    "summary": "Brief description of your approach",
+    "files_examined": [{"path": "file.ext", "description": "why you looked at it"}],
+    "reasoning": "Detailed explanation or analysis"
+  },
+  "changes": [
+    {"file": "path.ext", "description": "what you changed", "diff": "unified diff"}
+  ]
+}
+```
+Include `changes` with unified diffs for every file you modified. For analysis-only tasks, omit `changes` and focus on `analysis`. This artifact is scored independently from your direct edits."""
 
 
 # Concise Sourcegraph MCP tool reference for CLAUDE.md injection.
@@ -106,7 +123,7 @@ Note: Sourcegraph indexes the remote repository. Local source files are not pres
 # No truncation language — local source files simply aren't present.
 # 25% shorter than V4: removes Workflows, Output Formatting, Common Mistakes, Query Patterns.
 # {repo_scope} is replaced at runtime with the target repository filter.
-# {workflow_tail} is replaced with edit+test steps (direct) or produce-artifact step (artifact_full).
+# {workflow_tail} is replaced with edit+test+answer.json steps (always both direct and artifact).
 V5_PREAMBLE_TEMPLATE = """# IMPORTANT: Source Code Access
 
 **Local source files are not present.** Your workspace does not contain source code. You **MUST** use Sourcegraph MCP tools to discover, read, and understand code before making any changes.
@@ -643,35 +660,30 @@ class BaselineClaudeCodeAgent(ClaudeCode):
                 )
                 repo_scope += branch_instructions
 
-            # Workflow steps 3-4 vary by config: direct configs edit+test
-            # locally, artifact configs produce diffs as output artifacts.
-            if mcp_type == "artifact_full":
-                workflow_tail = (
-                    "3. **Produce answer.json** — Write ALL output to "
-                    "`/workspace/answer.json` with this structure:\n"
-                    "   ```json\n"
-                    "   {\n"
-                    '     "analysis": {\n'
-                    '       "summary": "Brief description of your approach",\n'
-                    '       "files_examined": [{"path": "file.ext", "description": "..."}],\n'
-                    '       "reasoning": "Detailed explanation or analysis"\n'
-                    "     },\n"
-                    '     "changes": [\n'
-                    '       {"file": "path.ext", "description": "...", "diff": "unified diff"}\n'
-                    "     ]\n"
-                    "   }\n"
-                    "   ```\n"
-                    "   Omit `changes` if the task is analysis-only. "
-                    "Do NOT edit source files directly — produce diffs in "
-                    "`changes[]` instead."
-                )
-            else:
-                workflow_tail = (
-                    "3. **Edit locally** — Use Edit, Write, and Bash to "
-                    "create or modify files in your working directory\n"
-                    "4. **Verify locally** — Run tests with Bash to check "
-                    "your changes"
-                )
+            # Workflow steps 3-5: agent always does BOTH direct edits AND
+            # produces answer.json.  The verifier scores both independently.
+            workflow_tail = (
+                "3. **Edit locally** — Use Edit, Write, and Bash to "
+                "create or modify files in your working directory\n"
+                "4. **Verify locally** — Run tests with Bash to check "
+                "your changes\n"
+                "5. **Produce answer.json** — After completing your edits, "
+                "also write `/workspace/answer.json` summarizing your work:\n"
+                "   ```json\n"
+                "   {\n"
+                '     "analysis": {\n'
+                '       "summary": "Brief description of your approach",\n'
+                '       "files_examined": [{"path": "file.ext", "description": "..."}],\n'
+                '       "reasoning": "Detailed explanation or analysis"\n'
+                "     },\n"
+                '     "changes": [\n'
+                '       {"file": "path.ext", "description": "...", "diff": "unified diff"}\n'
+                "     ]\n"
+                "   }\n"
+                "   ```\n"
+                "   Include `changes` with unified diffs for every file you modified. "
+                "For analysis-only tasks, omit `changes` and focus on `analysis`."
+            )
 
             mcp_preamble = V5_PREAMBLE_TEMPLATE.format(
                 repo_scope=repo_scope, workflow_tail=workflow_tail
@@ -830,12 +842,7 @@ before retrying."""
             else:
                 repo_filter_system = "Use list_repos to discover available repositories first."
 
-            if mcp_type == "artifact_full":
-                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code. Write ALL output to /workspace/answer.json with "analysis" (summary, files_examined, reasoning) and optional "changes" (file, description, diff) arrays. Do NOT edit source files directly.
-
-{repo_filter_system}"""
-            else:
-                mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then create or edit local files based on what you learn. Run tests locally to verify your changes.
+            mcp_system_prompt = f"""IMPORTANT: Local source files are not present. You MUST use Sourcegraph MCP tools to discover and read code, then create or edit local files based on what you learn. Run tests locally to verify your changes. After completing edits, also write /workspace/answer.json with "analysis" (summary, files_examined, reasoning) and "changes" (file, description, diff) arrays.
 
 {repo_filter_system}"""
             system_prompt_append = EVALUATION_CONTEXT_PROMPT + "\n\n---\n\n" + mcp_system_prompt

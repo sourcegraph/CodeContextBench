@@ -603,6 +603,14 @@
       "summary": "Utility script for ds wrapper."
     },
     {
+      "name": "dual_score_lib.sh",
+      "path": "scripts/dual_score_lib.sh",
+      "category": "misc",
+      "status": "maintained",
+      "language": "shell",
+      "summary": "Utility script for dual score lib."
+    },
+    {
       "name": "economic_analysis.py",
       "path": "scripts/economic_analysis.py",
       "category": "analysis_comparison",
@@ -961,6 +969,14 @@
       "status": "maintained",
       "language": "python",
       "summary": "Utility script for integrate answer json wave3."
+    },
+    {
+      "name": "integrate_dual_score.py",
+      "path": "scripts/integrate_dual_score.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for integrate dual score."
     },
     {
       "name": "ir_analysis.py",
@@ -1507,6 +1523,14 @@
       "summary": "Utility script for scaffold contextbench tasks."
     },
     {
+      "name": "scaffold_csb_unified.py",
+      "path": "scripts/scaffold_csb_unified.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for scaffold csb unified."
+    },
+    {
       "name": "scaffold_feature_tasks.py",
       "path": "scripts/scaffold_feature_tasks.py",
       "category": "misc",
@@ -1827,7 +1851,7 @@
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 5,
-    "misc": 99,
+    "misc": 102,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

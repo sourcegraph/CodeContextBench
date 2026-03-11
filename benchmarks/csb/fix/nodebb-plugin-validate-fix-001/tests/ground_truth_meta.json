@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "nodebb-plugin-validate-fix-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-03T23:54:00Z",
+  "files_count": 5,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 7,
+  "cost_usd": 0.2926785,
+  "elapsed_sec": 38.6,
+  "exploration_notes": "The plugin activation/installation system has three entry points: (1) `src/socket.io/admin/plugins.js` \u2014 the admin panel socket handlers for `toggleActive` and `toggleInstall`, (2) `src/plugins/install.js` \u2014 the core plugin management logic with `Plugins.toggleActive` and `Plugins.toggleInstall`, and (3) `src/cli/manage.js` \u2014 the CLI `activate` and `install` commands. The naming pattern regex is defined in `src/constants.js` as `pluginNamePattern = /^(@[\\w-]+\\/)?nodebb-(theme|plugin|widget|rewar"
+}

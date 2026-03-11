@@ -1,0 +1,31 @@
+# bustub-hyperloglog-impl-001 — sg_only_env variant
+# Keep the TAC base image so verifier utilities under /utils remain available.
+# Empty /workspace so the agent still has to use MCP or clone explicitly.
+
+FROM ghcr.io/theagentcompany/sde-implement-hyperloglog-image:1.0.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV SOURCEGRAPH_REPOS="sg-evals/bustub--d5f79431"
+ENV TAC_SERVER_HOSTNAME=localhost
+ENV DECRYPTION_KEY="theagentcompany is all you need"
+
+RUN mkdir -p /logs /workspace /logs/agent /logs/verifier
+
+WORKDIR /workspace
+
+# Remove any preloaded checkout so source is not locally readable in sg_only mode.
+RUN find /workspace -mindepth 1 -maxdepth 1 -exec rm -rf {} + 2>/dev/null || true
+
+# Empty git repo so agent can commit work
+RUN git init && \
+    git config user.email "agent@example.com" && \
+    git config user.name "Agent"
+
+# Mark sg_only mode so verifiers can skip local-path checks
+RUN touch /tmp/.sg_only_mode
+
+# Pre-create claude user and set ownership at build time.
+RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
+    for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
+
+ENTRYPOINT []

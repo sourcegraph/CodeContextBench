@@ -1,0 +1,39 @@
+{
+  "task_id": "CCX-vuln-remed-167",
+  "repos": [
+    "grafana/grafana"
+  ],
+  "top_contributors": [
+    {
+      "login": "RafaelPaulovic",
+      "commits": 8
+    },
+    {
+      "login": "mgyongyosi",
+      "commits": 6
+    },
+    {
+      "login": "macabu",
+      "commits": 5
+    },
+    {
+      "login": "volcanonoodle",
+      "commits": 4
+    },
+    {
+      "login": "mihai-turdean",
+      "commits": 4
+    }
+  ],
+  "code_areas": [
+    "pkg/login/",
+    "pkg/setting/",
+    "pkg/services/"
+  ],
+  "suggested_reviewers": [
+    "RafaelPaulovic",
+    "mgyongyosi",
+    "macabu"
+  ],
+  "discovery_method": "git_log_frequency"
+}

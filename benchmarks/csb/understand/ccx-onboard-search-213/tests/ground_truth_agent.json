@@ -1,0 +1,22 @@
+{
+  "files": [
+    "src/vs/platform/userDataSync/common/keybindingsMerge.ts"
+  ],
+  "expected_edit_files": [],
+  "symbols": [
+    {
+      "file": "src/vs/platform/userDataSync/common/keybindingsMerge.ts",
+      "symbol": "computeMergeResult",
+      "repo": null
+    }
+  ],
+  "chunks": [
+    {
+      "file": "src/vs/platform/userDataSync/common/keybindingsMerge.ts",
+      "line_start": 1,
+      "line_end": 50,
+      "annotation": "Target function: computeMergeResult"
+    }
+  ],
+  "text": "Semantic function retrieval task. Target: src/vs/platform/userDataSync/common/keybindingsMerge.ts::computeMergeResult"
+}

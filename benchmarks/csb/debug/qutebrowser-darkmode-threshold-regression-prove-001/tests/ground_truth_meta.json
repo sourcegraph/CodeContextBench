@@ -1,0 +1,18 @@
+{
+  "has_ground_truth": true,
+  "has_chunk_ground_truth": false,
+  "ground_truth_source": "curator_agent",
+  "ground_truth_confidence": "medium",
+  "task_name": "qutebrowser-darkmode-threshold-regression-prove-001",
+  "curator_agent_version": "2.0",
+  "model": "claude-opus-4-6",
+  "backend": "hybrid",
+  "timestamp": "2026-03-06T14:49:26Z",
+  "files_count": 3,
+  "edit_files_count": 0,
+  "chunks_count": 0,
+  "symbols_count": 8,
+  "cost_usd": 1.6713492500000002,
+  "elapsed_sec": 361.8,
+  "exploration_notes": "The bug is in darkmode.py. Before the fix (commit 50efac08f), there was no Variant.qt_64 enum value. The _variant() function mapped Qt 6.4 to Variant.qt_63 (since 6.4 >= 6.3). The Qt 6.3 definition uses 'TextBrightnessThreshold' as the Chromium key for the threshold.text setting. However, Qt 6.4's Chromium (99.0.4785.0) renamed this to 'ForegroundBrightnessThreshold'. Since the old key name is not recognized by Qt 6.4's Chromium, the threshold.text setting was silently ignored. The fix adds a ne"
+}

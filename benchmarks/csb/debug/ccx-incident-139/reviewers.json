@@ -1,0 +1,39 @@
+{
+  "task_id": "CCX-incident-139",
+  "repos": [
+    "LibreOffice/core"
+  ],
+  "top_contributors": [
+    {
+      "login": "michaelweghorn",
+      "commits": 14
+    },
+    {
+      "login": "x1sc0",
+      "commits": 14
+    },
+    {
+      "login": "caolanm",
+      "commits": 9
+    },
+    {
+      "login": "karthikgodha",
+      "commits": 6
+    },
+    {
+      "login": "bvarga91",
+      "commits": 5
+    }
+  ],
+  "code_areas": [
+    "sc/inc/",
+    "include/formula/",
+    "sc/source/"
+  ],
+  "suggested_reviewers": [
+    "michaelweghorn",
+    "x1sc0",
+    "caolanm"
+  ],
+  "discovery_method": "git_log_frequency"
+}

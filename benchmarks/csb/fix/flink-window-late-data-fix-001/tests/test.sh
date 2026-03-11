@@ -1,0 +1,250 @@
+#!/bin/bash
+set -euo pipefail
+
+[ -f /tmp/.sg_only_mode ] && [ -f /tests/sgonly_verifier_wrapper.sh ] && source /tests/sgonly_verifier_wrapper.sh
+# Artifact mode: parse answer.json, extract analysis text, apply diffs
+if [ -f /tmp/.artifact_only_mode ] && [ -f /tests/answer_json_verifier_lib.sh ]; then
+    source /tests/answer_json_verifier_lib.sh
+fi
+
+SCORE=0
+TOTAL=6
+WORKSPACE="${VERIFY_REPO:-/workspace}"
+
+TASK_OUTPUT="${TASK_OUTPUT:-/workspace/answer.json}"
+PASS_THRESHOLD="0.7"
+OUTPUT_CONTRACT_MODE="answer_json_bridge"
+OUTPUT_PRIMARY_PATH="$TASK_OUTPUT"
+ARTIFACT_REQUIRED=false
+if [ "$OUTPUT_CONTRACT_MODE" = "repo_state" ]; then
+    OUTPUT_PRIMARY_PATH=""
+elif [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    ARTIFACT_REQUIRED=true
+fi
+
+write_invalid_output() {
+    local code="$1"
+    local message="$2"
+    python3 - "$code" "$message" "$OUTPUT_CONTRACT_MODE" "$OUTPUT_PRIMARY_PATH" "$ARTIFACT_REQUIRED" "$PASS_THRESHOLD" <<'PYEOF'
+import json
+import sys
+
+code, message, mode, primary_path, required_artifact, pass_threshold = sys.argv[1:7]
+payload = {
+    "schema_version": "validation_result.v1alpha1",
+    "status": "invalid_output",
+    "scorable": False,
+    "scorer_family": "repo_state_heuristic",
+    "reward": 0.0,
+    "pass_threshold": float(pass_threshold),
+    "passed": False,
+    "output_contract": {
+        "mode": mode,
+        "primary_path": primary_path or None,
+        "required_artifact": required_artifact == "true",
+    },
+    "sub_scores": {},
+    "failure": {
+        "code": code,
+        "message": message,
+        "stage": "output_validation",
+    },
+}
+with open("/logs/verifier/validation_result.json", "w") as f:
+    json.dump(payload, f, indent=2)
+with open("/logs/verifier/reward.txt", "w") as f:
+    f.write(f"{reward:.4f}\n")
+PYEOF
+    echo "0.0" > /logs/verifier/reward.txt
+}
+
+write_scored_result() {
+    local score="$1"
+    local reason="${2:-}"
+    local passed_checks="${3:-}"
+    local total_checks="${4:-}"
+    env         VALIDATION_SCORE="$score"         VALIDATION_REASON="$reason"         VALIDATION_PASSED_CHECKS="$passed_checks"         VALIDATION_TOTAL_CHECKS="$total_checks"         CHANGE_UNSTAGED="${UNSTAGED_COUNT:-${UNSTAGED:-0}}"         CHANGE_STAGED="${STAGED_COUNT:-${STAGED:-0}}"         CHANGE_UNTRACKED="${UNTRACKED_COUNT:-${UNTRACKED:-0}}"         CHANGE_COMMITS="${COMMIT_COUNT:-${COMMITS:-0}}"         VALIDATION_OUTPUT_PATH="${VALIDATION_OUTPUT_PATH:-}"         python3 - "$OUTPUT_CONTRACT_MODE" "$OUTPUT_PRIMARY_PATH" "$ARTIFACT_REQUIRED" "$PASS_THRESHOLD" <<'PYEOF'
+import json
+import os
+import sys
+
+mode, primary_path, required_artifact, pass_threshold = sys.argv[1:5]
+reward = float(os.environ.get("VALIDATION_SCORE", "0.0") or 0.0)
+threshold = float(pass_threshold)
+checks = {"heuristic_score": reward}
+details = {}
+reason = os.environ.get("VALIDATION_REASON")
+if reason:
+    details["reason"] = reason
+passed_checks_raw = os.environ.get("VALIDATION_PASSED_CHECKS", "")
+total_checks_raw = os.environ.get("VALIDATION_TOTAL_CHECKS", "")
+if passed_checks_raw and total_checks_raw:
+    try:
+        passed_checks = float(passed_checks_raw)
+        total_checks = float(total_checks_raw)
+    except ValueError:
+        passed_checks = None
+        total_checks = None
+    if passed_checks is not None and total_checks and total_checks > 0:
+        checks["passed_checks_ratio"] = round(passed_checks / total_checks, 4)
+        details["passed_checks"] = int(passed_checks) if passed_checks.is_integer() else passed_checks
+        details["total_checks"] = int(total_checks) if total_checks.is_integer() else total_checks
+change_detection = {
+    "unstaged": int(os.environ.get("CHANGE_UNSTAGED", "0") or 0),
+    "staged": int(os.environ.get("CHANGE_STAGED", "0") or 0),
+    "untracked": int(os.environ.get("CHANGE_UNTRACKED", "0") or 0),
+    "commits": int(os.environ.get("CHANGE_COMMITS", "0") or 0),
+}
+if any(change_detection.values()):
+    checks["change_detected"] = 1.0
+    details["change_detection"] = change_detection
+else:
+    # No-changes guard: env counts are all 0.  Verify via git that the agent
+    # actually modified the repo — if not, force reward to 0.0 so tests that
+    # pass on the unmodified repo don't produce false-positive scores.
+    import subprocess as _sp
+    _verify = os.environ.get("VERIFY_REPO") or os.environ.get("TASK_REPO_ROOT") or "/workspace"
+    try:
+        _d = _sp.run(["git", "diff", "HEAD", "--stat"], capture_output=True, text=True, cwd=_verify, timeout=5)
+        _u = _sp.run(["git", "ls-files", "--others", "--exclude-standard"], capture_output=True, text=True, cwd=_verify, timeout=5)
+        if not _d.stdout.strip() and not _u.stdout.strip():
+            reward = 0.0
+            checks["no_changes_guard"] = 0.0
+            details["no_changes_guard"] = "git confirmed zero agent changes"
+    except Exception:
+        pass
+output_path = os.environ.get("VALIDATION_OUTPUT_PATH")
+if output_path:
+    details["output_path"] = output_path
+payload = {
+    "schema_version": "validation_result.v1alpha1",
+    "status": "scored",
+    "scorable": True,
+    "scorer_family": "repo_state_heuristic",
+    "reward": reward,
+    "pass_threshold": threshold,
+    "passed": reward >= threshold,
+    "output_contract": {
+        "mode": mode,
+        "primary_path": primary_path or None,
+        "required_artifact": required_artifact == "true",
+    },
+    "sub_scores": {"checks": checks},
+    "failure": None,
+}
+if details:
+    payload["details"] = details
+with open("/logs/verifier/validation_result.json", "w") as f:
+    json.dump(payload, f, indent=2)
+with open("/logs/verifier/reward.txt", "w") as f:
+    f.write(f"{reward:.4f}\n")
+PYEOF
+    # reward.txt now written by Python (respects no_changes_guard)
+}
+
+
+if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ "${ANSWER_JSON_MISSING:-false}" = "true" ]; then
+    write_invalid_output "missing_required_output" \
+        "answer.json not found at ${ANSWER_JSON:-$TASK_OUTPUT}"
+    exit 0
+fi
+if [ "${ARTIFACT_ONLY:-false}" = "true" ] && [ "${ANSWER_JSON_NO_CHANGES:-false}" = "true" ]; then
+    write_scored_result "0.0" "no_code_changes" "0" "$TOTAL"
+    exit 0
+fi
+if [ "${ARTIFACT_ONLY:-false}" = "true" ]; then
+    answer_json_copy_analysis_text "/logs/agent/solution.md"
+fi
+
+WINDOW_OP_DIR="$WORKSPACE/flink-runtime/src/main/java/org/apache/flink/streaming/runtime/operators/windowing"
+WINDOW_TEST_DIR="$WORKSPACE/flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/windowing"
+
+# Check 1: WindowOperator.processElement modified (late element handling)
+if grep -q 'isElementLate\|lateElement\|sideOutputLateData\|late.*data' \
+    "$WINDOW_OP_DIR/WindowOperator.java" 2>/dev/null; then
+    # Check for modification: look for changes near the late element handling
+    if git -C "$WORKSPACE" diff HEAD -- "$(realpath --relative-to="$WORKSPACE" "$WINDOW_OP_DIR/WindowOperator.java")" 2>/dev/null | grep -q '+.*late\|+.*merge\|+.*sideOutput\|+.*OutputTag'; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: WindowOperator.processElement modified for late data handling"
+    elif grep -q 'merge.*late\|late.*merge\|sideOutput.*late\|lateOutputTag' \
+        "$WINDOW_OP_DIR/WindowOperator.java" 2>/dev/null; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: WindowOperator has late data + merge handling"
+    else
+        echo "FAIL: WindowOperator found but no late data fix detected"
+    fi
+else
+    echo "FAIL: WindowOperator.processElement not found or missing late data handling"
+fi
+
+# Check 2: Late element check reordered or merge-aware
+if grep -rq 'merge.*before.*late\|late.*after.*merge\|mergingWindows.*isElementLate\|!isElementLate\|isCleanupTime' \
+    "$WINDOW_OP_DIR/WindowOperator.java" 2>/dev/null; then
+    SCORE=$((SCORE + 1))
+    echo "PASS: Late element check interacts with merge logic"
+else
+    echo "FAIL: No merge-aware late element check found"
+fi
+
+# Check 3: OutputTag correctly wired for side output
+if grep -rq 'OutputTag\|lateDataOutputTag\|sideOutput.*late\|output.*tag.*late' \
+    "$WINDOW_OP_DIR/WindowOperator.java" 2>/dev/null; then
+    SCORE=$((SCORE + 1))
+    echo "PASS: OutputTag wiring for late data side output exists"
+else
+    echo "FAIL: OutputTag wiring for late data not found"
+fi
+
+# Check 4: Side output emission in late path
+if grep -rq 'sideOutput\|collect.*outputTag\|output\.collect.*Tag' \
+    "$WINDOW_OP_DIR/WindowOperator.java" 2>/dev/null; then
+    SCORE=$((SCORE + 1))
+    echo "PASS: Side output emission in late element path"
+else
+    echo "FAIL: No side output emission found in window operator"
+fi
+
+# Check 5: Test case for late data with session/merging windows
+if grep -rq 'sideOutputLateData\|lateData.*session\|session.*late\|merging.*late.*output\|OutputTag.*late' \
+    "$WINDOW_TEST_DIR/" 2>/dev/null; then
+    if git -C "$WORKSPACE" diff HEAD -- \
+        "$(realpath --relative-to="$WORKSPACE" "$WINDOW_TEST_DIR")" 2>/dev/null | grep -q '+.*late\|+.*sideOutput\|+.*session'; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: New test case for late data with session windows"
+    elif grep -cq 'lateData.*Merging\|session.*late.*side\|testLateSideOutput' \
+        "$WINDOW_TEST_DIR/"*.java 2>/dev/null; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: Test case for merging window late data exists"
+    else
+        echo "FAIL: Late data tests found but no new session/merge-specific test"
+    fi
+else
+    echo "FAIL: No test case for late data side output found"
+fi
+
+# Check 6: Solution documentation
+if [ -f /logs/agent/solution.md ] || [ -f /logs/agent/analysis.md ]; then
+    if grep -rq 'root.cause\|late.*data\|side.*output\|merging' /logs/agent/ 2>/dev/null; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: Solution documentation with root cause analysis"
+    else
+        echo "FAIL: Solution file exists but lacks root cause details"
+    fi
+else
+    # Also accept if the code changes are clear enough
+    if git -C "$WORKSPACE" diff HEAD 2>/dev/null | wc -l | grep -qv '^0$'; then
+        SCORE=$((SCORE + 1))
+        echo "PASS: Code changes present (implicit fix documentation)"
+    else
+        echo "FAIL: No solution documentation or code changes found"
+    fi
+fi
+
+echo ""
+echo "Score: $SCORE / $TOTAL"
+
+FINAL_SCORE=$(python3 -c "print($SCORE / $TOTAL)")
+write_scored_result "$FINAL_SCORE" "" "$SCORE" "$TOTAL"
+
+# Dual-score: independently score both direct edits and answer.json
+[ -f /tests/dual_score_lib.sh ] && source /tests/dual_score_lib.sh
