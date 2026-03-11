@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the security domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/llvm-project--a8f3c97d, sg-evals/gcc--96dfb333.
-
-
 ## Output Format
 
 Use the published task contract:

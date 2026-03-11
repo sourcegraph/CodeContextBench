@@ -20,4 +20,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/terraform--abd6b9ef.git /wor
 USER root
 
 WORKDIR /workspace
+
+RUN chmod -R a+rwX /workspace
+
 ENTRYPOINT []

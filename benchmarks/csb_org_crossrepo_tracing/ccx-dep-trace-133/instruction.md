@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the crossrepo tracing do
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/chromium--2d05e315.
-
-
 ## Output Format
 
 Use the published task contract:

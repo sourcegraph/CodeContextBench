@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the security domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/jdk--742e735d.
-
-
 ## Output Format
 
 Use the published task contract:

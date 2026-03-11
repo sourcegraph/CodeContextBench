@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the crossorg domain. Bot
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/grafana--v11.4.0.
-
-
 ## Output Format
 
 Use the published task contract:

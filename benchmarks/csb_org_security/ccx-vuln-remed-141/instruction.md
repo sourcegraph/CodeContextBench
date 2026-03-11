@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the security domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/arangodb--a5cca0b8.
-
-
 ## Output Format
 
 Use the published task contract:

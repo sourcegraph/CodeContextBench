@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the compliance domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/grafana--26d36ec.
-
-
 ## Output Format
 
 Use the published task contract:

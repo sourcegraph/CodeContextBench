@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the org domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/envoy--v1.31.2, sg-evals/data-plane-api--84e84367, sg-evals/go-control-plane--71637ad6, sg-evals/grpc--957dba5e.
-
-
 ## Output Format
 
 Use the published task contract:

@@ -10,8 +10,6 @@ You are working on a codebase task involving repos from the crossorg domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/beam--v2.62.0.
-
 ## Output Format
 
 Use the published task contract:

@@ -19,4 +19,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/pandas--41968da5.git /app/re
     mv /app/repo/* /app/repo/.* /app/ 2>/dev/null; \
     rm -rf /app/repo
 USER root
+
+RUN chmod -R a+rwX /workspace
+
 ENTRYPOINT []

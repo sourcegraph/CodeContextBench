@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the crossrepo domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/rust--01f6ddf7, sg-evals/servo--be6a2f99.
-
-
 ## Output Format
 
 Use the published task contract:

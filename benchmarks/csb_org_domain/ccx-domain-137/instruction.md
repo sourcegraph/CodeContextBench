@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the domain domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/android-frameworks-base--d41da232.
-
-
 ## Output Format
 
 Use the published task contract:

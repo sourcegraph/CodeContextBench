@@ -10,8 +10,6 @@ You are working on a codebase task involving repos from the compliance domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/godot--4.3-stable.
-
 ## Output Format
 
 Use the published task contract:

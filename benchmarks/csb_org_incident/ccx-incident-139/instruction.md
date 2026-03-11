@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the incident domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/libreoffice-core--9c8b85f3.
-
-
 ## Output Format
 
 Use the published task contract:

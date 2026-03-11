@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the migration domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/node--v22.13.0.
-
-
 ## Output Format
 
 Use the published task contract:

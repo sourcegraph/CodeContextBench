@@ -10,8 +10,6 @@ You are working on a codebase task involving repos from the migration domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/TypeScript--v5.7.2.
-
 ## Output Format
 
 Use the published task contract:

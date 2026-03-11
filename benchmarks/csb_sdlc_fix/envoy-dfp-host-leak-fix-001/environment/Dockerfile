@@ -20,4 +20,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/envoy--5160151e.git /workspa
 USER root
 
 WORKDIR /workspace
+
+RUN chmod -R a+rwX /workspace
+
 ENTRYPOINT []

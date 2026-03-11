@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the migration domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/django--674eda1c.
-
-
 ## Output Format
 
 Use the published task contract:

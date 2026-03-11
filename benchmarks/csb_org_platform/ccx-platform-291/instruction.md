@@ -10,8 +10,6 @@ You are working on a codebase task involving repos from the platform domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/elasticsearch--v8.17.0.
-
 ## Output Format
 
 Use the published task contract:

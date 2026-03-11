@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the migration domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/kafka--0753c489, sg-evals/flink--0cc95fcc, sg-evals/camel--1006f047.
-
-
 ## Output Format
 
 Use the published task contract:

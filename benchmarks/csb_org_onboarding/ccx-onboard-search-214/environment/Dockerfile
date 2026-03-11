@@ -20,4 +20,7 @@ RUN git clone --depth 1 https://github.com/sg-evals/grafana--26d36ec.git /worksp
     mv /workspace/repo/* /workspace/repo/.* /workspace/ 2>/dev/null; \
     rm -rf /workspace/repo
 USER root
+
+RUN chmod -R a+rwX /workspace
+
 ENTRYPOINT []

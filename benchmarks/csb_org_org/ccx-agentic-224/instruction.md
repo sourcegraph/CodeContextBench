@@ -10,9 +10,6 @@ You are working on a codebase task involving repos from the org domain.
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/kubernetes--v1.32.0, sg-evals/client-go--v0.32.0, sg-evals/api--v0.32.0, sg-evals/etcd-io-etcd.
-
-
 ## Output Format
 
 Use the published task contract:

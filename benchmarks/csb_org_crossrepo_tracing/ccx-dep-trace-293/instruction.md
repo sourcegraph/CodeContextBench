@@ -10,8 +10,6 @@ You are working on a codebase task involving repos from the crossrepo tracing do
 
 ## Available Resources
 
-The local `/workspace/` directory contains: sg-evals/roslyn--v4.12.0.
-
 ## Output Format
 
 Use the published task contract:

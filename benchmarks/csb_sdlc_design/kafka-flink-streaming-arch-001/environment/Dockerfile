@@ -26,4 +26,6 @@ USER root
 RUN mkdir -p /logs/agent /logs/verifier && \
     chown -R claude:claude /logs
 
+RUN chmod -R a+rwX /workspace
+
 ENTRYPOINT []
