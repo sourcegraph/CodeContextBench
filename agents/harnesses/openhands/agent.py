@@ -152,6 +152,27 @@ class OpenHandsHarnessAgent(BaselineHarnessMixin, OpenHands):
             env=env,
         ))
 
+        # Block local search tools in MCP mode so the agent is forced to use
+        # Sourcegraph MCP tools (keyword_search, read_file, etc.) instead of
+        # grep/find on truncated local files.  Wrappers go in /opt/mcp_blockers/
+        # and PATH is prepended in the agent's env.  Verifiers run as separate
+        # processes with the original PATH and are unaffected.
+        if mcp_type in ("sourcegraph_full", "sourcegraph_base", "sourcegraph_isolated"):
+            blocked_cmds = "grep rg ag ack find fd tree"
+            blocker_script = (
+                "mkdir -p /opt/mcp_blockers && "
+                + " && ".join(
+                    f"printf '#!/bin/sh\\necho \"ERROR: {cmd} is disabled in MCP mode."
+                    f" Use Sourcegraph MCP tools (keyword_search, read_file, list_files)"
+                    f" instead.\" >&2\\nexit 1\\n' > /opt/mcp_blockers/{cmd}"
+                    f" && chmod +x /opt/mcp_blockers/{cmd}"
+                    for cmd in blocked_cmds.split()
+                )
+            )
+            exec_inputs.append(ExecInput(command=blocker_script, env=env))
+            # Prepend blocker dir to PATH so agent hits wrappers first
+            env["PATH"] = "/opt/mcp_blockers:" + env.get("PATH", "/usr/local/bin:/usr/bin:/bin")
+
         # Build a Python launcher script that reads the task from file,
         # runs openhands.core.main, pipes output to a log file, and cleans up
         # orphan daemons. Everything stays in Python — no shell quoting at all.

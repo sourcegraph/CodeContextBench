@@ -140,6 +140,13 @@ RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \\
     for d in /workspace /app /testbed /logs; do [ -d "$d" ] && chown -R claude:claude "$d"; done || true
 """
 
+# Blocked local search commands in MCP (sg_only) mode.
+# Container-level blocking is NOT safe here because verifiers (test.sh,
+# verifier_lib.sh, sgonly_verifier_wrapper.sh) use bare grep/find extensively.
+# Instead, tool blocking is handled at the agent level:
+# - Claude Code: --disallowedTools flag (agents/claude_baseline_agent.py)
+# - OpenHands: PATH manipulation in agent startup (agents/harnesses/openhands/agent.py)
+
 
 def inject_chown_optimization(dockerfile_text: str) -> str:
     """Insert the claude-user + chown block before the final ENTRYPOINT."""

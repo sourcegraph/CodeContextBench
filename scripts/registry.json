@@ -219,6 +219,14 @@
       "summary": "Historical one-off script: backfill triage from manifest."
     },
     {
+      "name": "browse_results.py",
+      "path": "scripts/browse_results.py",
+      "category": "misc",
+      "status": "maintained",
+      "language": "python",
+      "summary": "Utility script for browse results."
+    },
+    {
       "name": "build_conversation_db.py",
       "path": "scripts/build_conversation_db.py",
       "category": "infra_mirrors",
@@ -1867,7 +1875,7 @@
     "infra_mirrors": 23,
     "library_helpers": 7,
     "migration": 5,
-    "misc": 102,
+    "misc": 103,
     "qa_quality": 10,
     "submission_reporting": 7,
     "task_creation_selection": 13,

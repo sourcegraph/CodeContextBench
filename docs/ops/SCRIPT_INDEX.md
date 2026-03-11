@@ -190,6 +190,7 @@ Generated from `scripts/registry.json` by `scripts/generate_script_index.py`.
 - `scripts/backfill_reviewers.py` [one_off] - Historical one-off script: backfill reviewers.
 - `scripts/backfill_size_metadata.py` [one_off] - Historical one-off script: backfill size metadata.
 - `scripts/backfill_triage_from_manifest.py` [one_off] - Historical one-off script: backfill triage from manifest.
+- `scripts/browse_results.py` - Utility script for browse results.
 - `scripts/check_harness_readiness.py` - Utility script for check harness readiness.
 - `scripts/collect_repo_cloc.py` - Utility script for collect repo cloc.
 - `scripts/compare_contextbench_results.py` - Utility script for compare contextbench results.
