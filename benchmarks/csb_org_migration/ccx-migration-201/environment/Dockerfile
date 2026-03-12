@@ -14,10 +14,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/envoy--v1.31.2 /workspace/envoy--v1.31.2
-RUN git clone --depth 1 https://github.com/sg-evals/data-plane-api--84e84367 /workspace/data-plane-api--84e84367
-RUN git clone --depth 1 https://github.com/sg-evals/go-control-plane--71637ad6 /workspace/go-control-plane--71637ad6
-RUN git clone --depth 1 https://github.com/sg-evals/grpc--957dba5e /workspace/grpc--957dba5e
+RUN git clone --depth 1 https://github.com/sg-evals/envoy--v1.31.2 /workspace/envoy--v1.31.2 || \
+    (mkdir -p /workspace/envoy--v1.31.2 && cd /workspace/envoy--v1.31.2 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/data-plane-api--84e84367 /workspace/data-plane-api--84e84367 || \
+    (mkdir -p /workspace/data-plane-api--84e84367 && cd /workspace/data-plane-api--84e84367 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/go-control-plane--71637ad6 /workspace/go-control-plane--71637ad6 || \
+    (mkdir -p /workspace/go-control-plane--71637ad6 && cd /workspace/go-control-plane--71637ad6 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/grpc--957dba5e /workspace/grpc--957dba5e || \
+    (mkdir -p /workspace/grpc--957dba5e && cd /workspace/grpc--957dba5e && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

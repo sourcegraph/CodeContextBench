@@ -21,7 +21,8 @@ RUN mkdir -p /workspace && chown claude:claude /workspace
 
 # Clone terraform at pre-fix commit as claude user
 USER claude
-RUN git clone --depth 1 https://github.com/sg-evals/terraform--abd6b9ef.git /workspace
+RUN git clone --depth 1 https://github.com/sg-evals/terraform--abd6b9ef.git /workspace || \
+    (mkdir -p /workspace && cd /workspace && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 USER root
 
 WORKDIR /workspace

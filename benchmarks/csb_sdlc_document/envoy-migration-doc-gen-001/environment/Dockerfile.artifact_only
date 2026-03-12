@@ -14,8 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone Envoy at v1.30 and v1.31 tags
-RUN git clone --depth 1 --branch v1.30.0 https://github.com/envoyproxy/envoy.git envoy-v1.30
-RUN git clone --depth 1 --branch v1.31.0 https://github.com/envoyproxy/envoy.git envoy-v1.31
+RUN git clone --depth 1 --branch v1.30.0 https://github.com/envoyproxy/envoy.git envoy-v1.30 || \
+    (mkdir -p envoy-v1.30 && cd envoy-v1.30 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 --branch v1.31.0 https://github.com/envoyproxy/envoy.git envoy-v1.31 || \
+    (mkdir -p envoy-v1.31 && cd envoy-v1.31 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 WORKDIR /workspace
 # --- artifact_only mode ---

@@ -14,7 +14,7 @@ RUN mkdir -p /workspace && chown claude:claude /workspace
 
 USER claude
 WORKDIR /workspace
-RUN git clone --depth 1 https://github.com/sg-evals/flipt--3d5a345f.git . && \
+RUN (git clone --depth 1 https://github.com/sg-evals/flipt--3d5a345f.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 USER root

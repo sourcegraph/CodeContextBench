@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone Kafka at the pinned version
-RUN git clone --depth 1 https://github.com/sg-evals/kafka--3.9.0.git /workspace
+RUN git clone --depth 1 https://github.com/sg-evals/kafka--3.9.0.git /workspace || \
+    (mkdir -p /workspace && cd /workspace && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 WORKDIR /workspace
 

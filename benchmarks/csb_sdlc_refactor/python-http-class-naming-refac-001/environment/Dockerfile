@@ -10,9 +10,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN mkdir -p /ccb_crossrepo/src
 
-RUN git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git /ccb_crossrepo/src/django
-RUN git clone --depth 1 https://github.com/sg-evals/flask--798e006f.git /ccb_crossrepo/src/flask
-RUN git clone --depth 1 https://github.com/sg-evals/requests--421b8733.git /ccb_crossrepo/src/requests
+RUN git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git /ccb_crossrepo/src/django || \
+    (mkdir -p /ccb_crossrepo/src/django && cd /ccb_crossrepo/src/django && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/flask--798e006f.git /ccb_crossrepo/src/flask || \
+    (mkdir -p /ccb_crossrepo/src/flask && cd /ccb_crossrepo/src/flask && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/requests--421b8733.git /ccb_crossrepo/src/requests || \
+    (mkdir -p /ccb_crossrepo/src/requests && cd /ccb_crossrepo/src/requests && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 

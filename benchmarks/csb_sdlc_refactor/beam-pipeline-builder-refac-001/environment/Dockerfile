@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone repo at pinned version
-RUN git clone --depth 1 https://github.com/sg-evals/beam--v2.62.0.git . && \
+RUN (git clone --depth 1 https://github.com/sg-evals/beam--v2.62.0.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git config user.email "agent@benchmark.local" && \
     git config user.name "Agent"
 

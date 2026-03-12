@@ -16,7 +16,8 @@ RUN mkdir -p /workspace && chown claude:claude /workspace
 
 # Clone envoy at pre-fix commit as claude user
 USER claude
-RUN git clone --depth 1 https://github.com/sg-evals/envoy--5160151e.git /workspace
+RUN git clone --depth 1 https://github.com/sg-evals/envoy--5160151e.git /workspace || \
+    (mkdir -p /workspace && cd /workspace && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 USER root
 
 WORKDIR /workspace

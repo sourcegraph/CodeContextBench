@@ -22,7 +22,8 @@ RUN mkdir -p /workspace /logs/agent /logs/verifier && \
 USER claude
 WORKDIR /workspace
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/libreoffice-core--9c8b85f3 /workspace/libreoffice-core--9c8b85f3
+RUN git clone --depth 1 https://github.com/sg-evals/libreoffice-core--9c8b85f3 /workspace/libreoffice-core--9c8b85f3 || \
+    (mkdir -p /workspace/libreoffice-core--9c8b85f3 && cd /workspace/libreoffice-core--9c8b85f3 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

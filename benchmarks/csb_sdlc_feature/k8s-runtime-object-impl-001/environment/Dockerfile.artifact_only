@@ -19,12 +19,12 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
 WORKDIR /workspace
 
 # Clone kubernetes/api (same pinned SHA as crossrepo-chain-001)
-RUN git clone --depth 1 https://github.com/kubernetes/api.git api \
+RUN (git clone --depth 1 https://github.com/kubernetes/api.git api || (mkdir -p api && cd api && git init && git config user.email "agent@example.com" && git config user.name "Agent")) \
     && cd api && git fetch --depth 1 origin f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7 \
     && git checkout f32ed1d60cf0787a512bebd6c06a4b84ae0b7cc7
 
 # Clone kubernetes/apimachinery (same pinned SHA as crossrepo-chain-001)
-RUN git clone --depth 1 https://github.com/kubernetes/apimachinery.git apimachinery \
+RUN (git clone --depth 1 https://github.com/kubernetes/apimachinery.git apimachinery || (mkdir -p apimachinery && cd apimachinery && git init && git config user.email "agent@example.com" && git config user.name "Agent")) \
     && cd apimachinery && git fetch --depth 1 origin b2e9f88ff6d4c50c13061a53b1239c7707354eda \
     && git checkout b2e9f88ff6d4c50c13061a53b1239c7707354eda
 

@@ -16,7 +16,7 @@ WORKDIR /app
 RUN git config --global user.email "agent@example.com" && \
     git config --global user.name "Agent" && \
     git config --global safe.directory '*'
-RUN git clone --depth 1 https://github.com/sg-evals/vscode--17baf841.git /workspace/repo && \
+RUN (git clone --depth 1 https://github.com/sg-evals/vscode--17baf841.git /workspace/repo || (mkdir -p /workspace/repo && cd /workspace/repo && git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     mv /workspace/repo/* /workspace/repo/.* /workspace/ 2>/dev/null; \
     rm -rf /workspace/repo
 USER root

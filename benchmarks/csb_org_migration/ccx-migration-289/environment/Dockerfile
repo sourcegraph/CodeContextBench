@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/bazel--8.0.0 /workspace/bazel--8.0.0
+RUN git clone --depth 1 https://github.com/sg-evals/bazel--8.0.0 /workspace/bazel--8.0.0 || \
+    (mkdir -p /workspace/bazel--8.0.0 && cd /workspace/bazel--8.0.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

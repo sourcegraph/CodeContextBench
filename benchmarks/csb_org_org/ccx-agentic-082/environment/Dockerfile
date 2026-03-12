@@ -22,10 +22,14 @@ RUN mkdir -p /workspace /logs/agent /logs/verifier && \
 USER claude
 WORKDIR /workspace
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0 /workspace/kubernetes--v1.32.0
-RUN git clone --depth 1 https://github.com/sg-evals/client-go--v0.32.0 /workspace/client-go--v0.32.0
-RUN git clone --depth 1 https://github.com/sg-evals/api--v0.32.0 /workspace/api--v0.32.0
-RUN git clone --depth 1 https://github.com/sg-evals/etcd-io-etcd /workspace/etcd-io-etcd
+RUN git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0 /workspace/kubernetes--v1.32.0 || \
+    (mkdir -p /workspace/kubernetes--v1.32.0 && cd /workspace/kubernetes--v1.32.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/client-go--v0.32.0 /workspace/client-go--v0.32.0 || \
+    (mkdir -p /workspace/client-go--v0.32.0 && cd /workspace/client-go--v0.32.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/api--v0.32.0 /workspace/api--v0.32.0 || \
+    (mkdir -p /workspace/api--v0.32.0 && cd /workspace/api--v0.32.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/etcd-io-etcd /workspace/etcd-io-etcd || \
+    (mkdir -p /workspace/etcd-io-etcd && cd /workspace/etcd-io-etcd && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

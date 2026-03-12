@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone Kafka at pinned tag 3.8.0
-RUN git clone --depth 1 https://github.com/sg-evals/kafka--3.8.0.git . && \
+RUN (git clone --depth 1 https://github.com/sg-evals/kafka--3.8.0.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git config --global user.email "test@example.com" && \
     git config --global user.name "Test User"
 

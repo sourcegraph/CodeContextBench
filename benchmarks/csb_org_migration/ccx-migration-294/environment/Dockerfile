@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/TypeScript--v5.7.2 /workspace/TypeScript--v5.7.2
+RUN git clone --depth 1 https://github.com/sg-evals/TypeScript--v5.7.2 /workspace/TypeScript--v5.7.2 || \
+    (mkdir -p /workspace/TypeScript--v5.7.2 && cd /workspace/TypeScript--v5.7.2 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

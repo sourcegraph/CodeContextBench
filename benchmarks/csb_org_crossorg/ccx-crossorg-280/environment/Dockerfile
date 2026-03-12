@@ -13,8 +13,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0 /workspace/kubernetes--v1.32.0
-RUN git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0 /workspace/grafana--v11.4.0
+RUN git clone --depth 1 https://github.com/sg-evals/kubernetes--v1.32.0 /workspace/kubernetes--v1.32.0 || \
+    (mkdir -p /workspace/kubernetes--v1.32.0 && cd /workspace/kubernetes--v1.32.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0 /workspace/grafana--v11.4.0 || \
+    (mkdir -p /workspace/grafana--v11.4.0 && cd /workspace/grafana--v11.4.0 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

@@ -22,8 +22,10 @@ RUN mkdir -p /workspace /logs/agent /logs/verifier && \
 USER claude
 WORKDIR /workspace
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/rust--01f6ddf7 /workspace/rust--01f6ddf7
-RUN git clone --depth 1 https://github.com/sg-evals/servo--be6a2f99 /workspace/servo--be6a2f99
+RUN git clone --depth 1 https://github.com/sg-evals/rust--01f6ddf7 /workspace/rust--01f6ddf7 || \
+    (mkdir -p /workspace/rust--01f6ddf7 && cd /workspace/rust--01f6ddf7 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/servo--be6a2f99 /workspace/servo--be6a2f99 || \
+    (mkdir -p /workspace/servo--be6a2f99 && cd /workspace/servo--be6a2f99 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

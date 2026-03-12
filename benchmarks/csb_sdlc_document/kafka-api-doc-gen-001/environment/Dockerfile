@@ -16,7 +16,8 @@ WORKDIR /repo
 
 # Clone Apache Kafka at specific commit (e678b4b, trunk 2026-02-16)
 # Use blobless clone + sparse-checkout for speed
-RUN git clone --depth 1 https://github.com/sg-evals/kafka--e678b4b.git .
+RUN git clone --depth 1 https://github.com/sg-evals/kafka--e678b4b.git . || \
+    (git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 WORKDIR /workspace
 

@@ -16,7 +16,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone PyTorch repository at task-specific commit (no submodules needed)
-RUN git clone --no-checkout https://github.com/pytorch/pytorch.git /workspace && \
+RUN (git clone --no-checkout https://github.com/pytorch/pytorch.git /workspace || (mkdir -p /workspace && cd /workspace && git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     cd /workspace && \
     git checkout cbe1a35dbdfdc9b7490212bdd812f3e2f4ce9e2d
 

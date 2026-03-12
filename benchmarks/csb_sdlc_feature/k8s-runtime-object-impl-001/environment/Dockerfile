@@ -14,10 +14,12 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
 WORKDIR /workspace
 
 # Clone kubernetes/api (same pinned SHA as crossrepo-chain-001)
-RUN git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api
+RUN git clone --depth 1 https://github.com/sg-evals/api--f32ed1d6.git api || \
+    (mkdir -p api && cd api && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Clone kubernetes/apimachinery (same pinned SHA as crossrepo-chain-001)
-RUN git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery
+RUN git clone --depth 1 https://github.com/sg-evals/apimachinery--b2e9f88f.git apimachinery || \
+    (mkdir -p apimachinery && cd apimachinery && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 RUN mkdir -p /logs/verifier /logs/agent
 

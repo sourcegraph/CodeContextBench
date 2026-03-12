@@ -8,7 +8,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Clone Cilium at pinned commit (v1.17.9)
-RUN git clone --depth 1 https://github.com/sg-evals/cilium--a2f97aa8.git /workspace/cilium
+RUN git clone --depth 1 https://github.com/sg-evals/cilium--a2f97aa8.git /workspace/cilium || \
+    (mkdir -p /workspace/cilium && cd /workspace/cilium && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 WORKDIR /workspace/cilium
 

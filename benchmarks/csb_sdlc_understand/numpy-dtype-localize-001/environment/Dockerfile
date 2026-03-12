@@ -11,8 +11,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN mkdir -p /ccb_crossrepo/src
 
-RUN git clone --depth 1 https://github.com/sg-evals/numpy--a639fbf5.git /ccb_crossrepo/src/numpy
-RUN git clone --depth 1 https://github.com/sg-evals/pandas--41968da5.git /ccb_crossrepo/src/pandas
+RUN git clone --depth 1 https://github.com/sg-evals/numpy--a639fbf5.git /ccb_crossrepo/src/numpy || \
+    (mkdir -p /ccb_crossrepo/src/numpy && cd /ccb_crossrepo/src/numpy && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/pandas--41968da5.git /ccb_crossrepo/src/pandas || \
+    (mkdir -p /ccb_crossrepo/src/pandas && cd /ccb_crossrepo/src/pandas && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true)
 

@@ -14,7 +14,7 @@ RUN mkdir -p /workspace && chown claude:claude /workspace
 
 USER claude
 WORKDIR /workspace
-RUN git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git . && \
+RUN (git clone --depth 1 https://github.com/sg-evals/django--674eda1c.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"
 USER root

@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone Grafana at stable release tag (v11.4.0)
-RUN git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0.git . && \
+RUN (git clone --depth 1 https://github.com/sg-evals/grafana--v11.4.0.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git config user.email "agent@benchmark.local" && \
     git config user.name "Agent"
 

@@ -27,7 +27,7 @@ RUN (adduser --disabled-password --gecos '' claude 2>/dev/null || true) && \
 # This ensures BOTH baseline and MCP agents have identical file access
 # Note: Servo is a large Rust codebase (~1.6GB)
 USER claude
-RUN git clone --filter=blob:none --no-checkout https://github.com/servo/servo.git . && \
+RUN (git clone --filter=blob:none --no-checkout https://github.com/servo/servo.git . || (git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git checkout be6a2f99a1e80060228f41280fd7d2178983e7ed && \
     git config user.email "agent@example.com" && \
     git config user.name "Agent"

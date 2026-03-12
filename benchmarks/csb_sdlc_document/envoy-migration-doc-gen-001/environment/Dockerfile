@@ -9,8 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 
 # Clone Envoy at v1.30 and v1.31 tags
-RUN git clone --depth 1 https://github.com/sg-evals/envoy--50ea83e6.git envoy-v1.30
-RUN git clone --depth 1 https://github.com/sg-evals/envoy--7b8baff1.git envoy-v1.31
+RUN git clone --depth 1 https://github.com/sg-evals/envoy--50ea83e6.git envoy-v1.30 || \
+    (mkdir -p envoy-v1.30 && cd envoy-v1.30 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
+RUN git clone --depth 1 https://github.com/sg-evals/envoy--7b8baff1.git envoy-v1.31 || \
+    (mkdir -p envoy-v1.31 && cd envoy-v1.31 && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 WORKDIR /workspace
 

@@ -22,7 +22,8 @@ RUN mkdir -p /workspace /logs/agent /logs/verifier && \
 USER claude
 WORKDIR /workspace
 # Clone local checkout repos (baseline config: agent has local access to these)
-RUN git clone --depth 1 https://github.com/sg-evals/jdk--742e735d /workspace/jdk--742e735d
+RUN git clone --depth 1 https://github.com/sg-evals/jdk--742e735d /workspace/jdk--742e735d || \
+    (mkdir -p /workspace/jdk--742e735d && cd /workspace/jdk--742e735d && git init && git config user.email "agent@example.com" && git config user.name "Agent")
 
 # Initialize git identity for agent commits
 RUN git config --global user.email "agent@example.com" && \

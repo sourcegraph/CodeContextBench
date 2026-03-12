@@ -17,7 +17,7 @@ WORKDIR /workspace
 RUN mkdir -p /workspace && chown claude:claude /workspace
 
 USER claude
-RUN git clone --depth 1 https://github.com/sg-evals/kafka--0753c489.git kafka && \
+RUN (git clone --depth 1 https://github.com/sg-evals/kafka--0753c489.git kafka || (mkdir -p kafka && cd kafka && git init && git config user.email "agent@example.com" && git config user.name "Agent")) && \
     git clone --depth 1 https://github.com/sg-evals/flink--0cc95fcc.git flink && \
     cd kafka && git config user.email "agent@example.com" && git config user.name "Agent" && \
     cd /workspace/flink && git config user.email "agent@example.com" && git config user.name "Agent"
